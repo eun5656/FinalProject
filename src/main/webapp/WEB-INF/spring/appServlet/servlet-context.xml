@@ -25,4 +25,49 @@
 	
 	
 	
+
+	<!-- 파일업로두 bean등록 dependency 등록되어있는지 확인 commons-io, commons-fileupload -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- multipartResolver 는 class에서 받아와서한다 보통 bean class가 있는 것은 id가 정해져있따. -->
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+
+
+	<!-- jsonVIew등록 및 viewResolver등록 -->
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1">	<!-- 이 객체를 사용할떄 값을 매긴다... order은 순수 value 는 1 제일먼저 한다 -->
+		</beans:property>
+	</beans:bean>
+
+	<!-- jsonView 등록 -->
+	<beans:bean id="jsonView"
+		class="net.sf.json.spring.web.servlet.view.JsonView">
+
+	</beans:bean>
+
+	<!-- jackon 등록 1 -->
+	<beans:bean id="mappingJackson2HttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	</beans:bean>
+
+
+	<beans:bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	<beans:bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<beans:property name="messageConverters">
+			<beans:list>
+				<beans:ref bean="jacksonMessageConverter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	
+	
+	
+	
+	
+	
 </beans:beans>
