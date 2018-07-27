@@ -1,0 +1,40 @@
+/*메인 carousel*/
+
+
+
+.carousel-inner img {
+  width: 100%;
+  height: 300px;
+  /* Set width to 100% */
+  min-height: 200px;
+}
+
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+
+/*나중에 내리기*/
+@media (max-width: 736) {
+  .carousel-caption, .icon-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .carousel-caption, .icon-bar{
+    display: none;
+  }
+  .carousel-inner img{
+    height: 60px;
+  }
+}
+
+@media (max-width: 376px) {
+  .carousel-inner img{
+    height: 30px;
+  }
+}
+
+.img-responsive{
+  height: 300px;
+  weight: 300px;
+}

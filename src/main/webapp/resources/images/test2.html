@@ -1,0 +1,99 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<style media="screen">
+  .open>.dropdown-menu,
+  .nav>li:click .dropdown-menu {
+    display: inline-block;
+    text-align: center;
+    padding-right: 5px;
+  }
+
+  .dropdown-menu>li {
+    display: inline-block;
+  }
+
+
+  .dropdown-menu>li>a:click {
+    color: inherit;
+    text-decoration: none;
+    background-color: inherit;
+  }
+
+  .nail-color{
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align:center;
+  }
+</style>
+
+<script type="text/javascript">
+  $(function() {
+
+    $('li.dropdown > a').each(function() {
+      var scroll = $(this).offset().left;
+      $(this).next('.dropdown-menu').css({
+        'width': '100vw',
+        'padding-top': '1em',
+        'padding-bottom': '1em',
+        'left': '-' + scroll + 'px'
+      });
+    });
+
+  })
+</script>
+
+<nav class="navbar  navbar-default " role="navigation">
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                  전체
+              </a>
+          <ul class="dropdown-menu">
+
+            <li class="nail-color">
+              <div style="text-align:center"><img src="https://i.pinimg.com/736x/c5/b2/fe/c5b2fe60edbe07b56efdf1434502c7c1--solid-colors.jpg" class="img-circle" alt="Cinque Terre" width="30" height="30"></div>빨강</li>
+            <li  class="nail-color">
+              <div style="text-align:center"><img src="https://i.pinimg.com/736x/c5/b2/fe/c5b2fe60edbe07b56efdf1434502c7c1--solid-colors.jpg" class="img-circle" alt="Cinque Terre" width="30" height="30"></div>빨강</li>
+
+            <li><a href="#">주황</a></li>
+            <li><a href="#">노랑</a></li>
+            <li><a href="#">초록</a></li>
+            <li><a href="#">파랑</a></li>
+            <li><a href="#">남색</a></li>
+            <li><a href="#">보라</a></li>
+            <li><a href="#">민트</a></li>
+            <li><a href="#">핑크</a></li>
+            <li><a href="#">라벤더</a></li>
+            <li><a href="#">화이트</a></li>
+            <li><a href="#">그레이</a></li>
+            <li><a href="#">블랙</a></li>
+            <li><a href="#">베이지</a></li>
+            <li><a href="#">믹스</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                  Java
+              </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">전체</a></li>
+            <li><a href="#">빨강</a></li>
+            <li><a href="#">주황</a></li>
+            <li><a href="#">노랑</a></li>
+          </ul>
+        </li>
+        <li><a href="#">SVN</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
