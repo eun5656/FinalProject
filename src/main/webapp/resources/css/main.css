@@ -346,7 +346,41 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: #e45757;
+  color:black;
 }
+
+
+.login101-form-btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(255, 248, 94);
+
+  font-family: OpenSans-Regular;
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.login101-form-btn:hover {
+  background-color: rgb(255, 236, 0);
+  color:black;
+}
+
+
 
 
 /*------------------------------------------------------------------
