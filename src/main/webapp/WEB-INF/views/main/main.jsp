@@ -521,7 +521,7 @@
     </div>
   </div>
 
-  <!--모달 틀-->
+  <!--모달 틀
   <div class="modal fade pop-up-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -567,14 +567,14 @@
 
         </div>
       </div>
-      <!-- /.modal-content -->
+      <!-- /.modal-content 
     </div>
-    <!-- /.modal-dialog -->
+    <!-- /.modal-dialog
   </div>
   <!-- /.modal mixer image -->
 
 
-  <script type="text/javascript">
+  <!--  <script type="text/javascript">
   function fn_nail_img(index) {
 
 
@@ -582,7 +582,7 @@
 
        $("#modal-nail-img").attr("src",rimage);
      }
-  </script>
+  </script>-->
 
 
   <div class="cover-card col-sm-2">
