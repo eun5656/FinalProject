@@ -53,6 +53,22 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/views/common/error404.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>505</error-code>
+		<location>/WEB-INF/views/common/error505.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/views/common/ExceptionError.jsp</location>
+	</error-page>
+	
+	
 	
 
 </web-app>
