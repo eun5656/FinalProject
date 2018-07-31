@@ -6,6 +6,11 @@
 <c:set var='path' value="${pageContext.request.contextPath}"/> 
 <link href="${path }/resources/css/naillist.css" rel="stylesheet">
 <link href="${path }/resources/css/carousel.css" rel="stylesheet">   
+
+<script type="text/javascript">
+	
+</script>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -499,28 +504,27 @@
 
     </div>
 
+				<script type="text/javascript">
+						$(".nail-color").on("click", function(event) {	
+							var color = $(this).find("img").attr('src');
+							var value=$(this).find("img").attr('value');
+							var main_nail=$("#main-nail-color");
+							main_nail.attr('src', color);
+							main_nail.val(value);
+							
+							
+							
+							
+							alert(main_nail.attr('src'));
+							alert(main_nail.val());
+						})
+					</script>
 
 
   </div>
 
   <!--네일 이미지시작-->
 
-  <a href="#" data-toggle="modal" data-target=".pop-up-2">
-  <div class="cover-card col-sm-4">
-
-
-    <div class="hovereffect">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resourcesimages/image-7.jpg" >
-      <div class="overlay" data-toggle="modal"  data-target=".pop-up-2" onclick="fn_nail_img(1)">
-        <h2>사진이름</h2>
-        <p>
-          <a href="#">점포명</a><br>
-          <a href="#">설명</a>
-        </a>
-        </p>
-      </div>
-    </div>
-  </div>
 
   <!--모달 틀
   <div class="modal fade pop-up-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
@@ -585,6 +589,24 @@
      }
   </script>-->
 
+
+
+
+
+  <a href="#" data-toggle="modal" data-target=".pop-up-2">
+  <div class="cover-card col-sm-4">
+
+
+    <div class="hovereffect">
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resourcesimages/image-7.jpg" >
+      <div class="overlay" data-toggle="modal"  data-target=".pop-up-2" onclick="fn_nail_img(1)">
+       <h2>Effect 13</h2>
+        <p>
+          <a href="#">LINK HERE</a>
+        </p>
+      </div>
+    </div>
+  </div>
 
   <div class="cover-card col-sm-2">
     <div class="hovereffect">
@@ -686,6 +708,7 @@
       </div>
     </div>
   </div>
+  
 
   </div>
   </div>

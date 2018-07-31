@@ -15,16 +15,15 @@ public class Nail implements Serializable{
 	private String nail_style;
 	private int shop_pk;
 	private String nail_ori_img;
-	private String re_img;
+	private String nail_re_img;
 	
 	public Nail() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
+
 	public Nail(int nail_pk, String nail_name, String nail_color, String nail_style, int shop_pk, String nail_ori_img,
-			String re_img) {
+			String nail_re_img) {
 		super();
 		this.nail_pk = nail_pk;
 		this.nail_name = nail_name;
@@ -32,9 +31,8 @@ public class Nail implements Serializable{
 		this.nail_style = nail_style;
 		this.shop_pk = shop_pk;
 		this.nail_ori_img = nail_ori_img;
-		this.re_img = re_img;
+		this.nail_re_img = nail_re_img;
 	}
-
 
 
 	public int getNail_pk() {
@@ -73,25 +71,21 @@ public class Nail implements Serializable{
 	public void setNail_ori_img(String nail_ori_img) {
 		this.nail_ori_img = nail_ori_img;
 	}
-	public String getRe_img() {
-		return re_img;
+	public String getNail_re_img() {
+		return nail_re_img;
 	}
-	public void setRe_img(String re_img) {
-		this.re_img = re_img;
+	public void setNail_re_img(String nail_re_img) {
+		this.nail_re_img = nail_re_img;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
-
 	@Override
 	public String toString() {
 		return "Nail [nail_pk=" + nail_pk + ", nail_name=" + nail_name + ", nail_color=" + nail_color + ", nail_style="
-				+ nail_style + ", shop_pk=" + shop_pk + ", nail_ori_img=" + nail_ori_img + ", re_img=" + re_img + "]";
+				+ nail_style + ", shop_pk=" + shop_pk + ", nail_ori_img=" + nail_ori_img + ", nail_re_img="
+				+ nail_re_img + "]";
 	}
-
-	
 	
 	
 

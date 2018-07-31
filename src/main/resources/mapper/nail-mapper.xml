@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="nail">
+
+	<resultMap type="nail" id="selectList">
+	</resultMap>
+	
+	<select id="nailList" resultMap="selectList">
+	 select * from nail
+	</select>
+</mapper>
