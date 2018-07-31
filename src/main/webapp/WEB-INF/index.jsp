@@ -602,7 +602,6 @@
 
 <c:forEach  items="${nailist}" var="nail" varStatus="status">
 	
-		
 	
 	
  <div class="cover-card col-sm-${col_i[status.index]}"> 

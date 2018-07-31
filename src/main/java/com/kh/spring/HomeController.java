@@ -1,15 +1,11 @@
 package com.kh.spring;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Random;
-
-import org.aspectj.weaver.ast.Var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,28 +35,24 @@ public class HomeController {
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
-
 		List<Nail> list = service.nailList();
-
-		// nail화면 엊갈리게하는 인덱스
-		
 		List<Integer> col_i = new ArrayList<Integer>();
 
-		int [] col_o = { 4, 2, 4,2,3,4,3,2,2,6,4 };
+		int [] col1 = { 4, 2, 6,3,4,3,2,2,6,4 };
+		int[] col2=col1;
 		for (int i = 0; i < list.size(); i++) {
-			int [] col_r = { 4, 2, 4,2, 3,4,3,2,2,6,4 };
-			col_i.add(col_r[i]);	
-			if(col_r.length==0){
-				col_r=col_o;
+			col_i.add(col1[i]);	
+			if(col1.length==0){
+				col1=col2;
 			}
 		}
+		
 		
 		model.addAttribute("nailist", list);
 		model.addAttribute("col_i", col_i);
 
 		System.out.println(list);
-		System.out.println(col_i);
-
+		System.out.println(col_i);	
 		return "index";
 	}
 
