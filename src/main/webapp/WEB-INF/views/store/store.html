@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- full calendar -->
+<link href='css/fullcalendar.min.css' rel='stylesheet' />
+<link href='css/scheduler.min.css' rel='stylesheet' />
+<script src='js/moment.min.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script src='locale/ko.js'></script>
+<script src='js/gcal.min.js'></script>
+<script src='js/scheduler.min.js'></script>
+<link href="css/navbar.css" rel="stylesheet">
+<link href="css/footer.css" rel="stylesheet">
+
+<!--댓글관련-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="css/review.css" rel="stylesheet">
+
+<head>
+	<meta charset="utf-8">
+	<title>NailStore</title>
+	<style class="cp-pen-styles">
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #eee;
+			font-family: 'Raleway';
+		}
+
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.b_icon {
+			position: absolute;
+			width: 32px;
+			height: 32px;
+			display: block;
+			-webkit-transition: all .2s ease-out;
+			transition: all .2s ease-out;
+
+		}
+
+		.b_icon.active {
+			content: url("icons/love_filled.svg");
+		}
+
+		.icon {
+			position: relative;
+			width: 32px;
+			height: 32px;
+			display: block;
+			fill: rgba(51, 51, 51, 0.5);
+			margin-right: 20px;
+			-webkit-transition: all .2s ease-out;
+			transition: all .2s ease-out;
+		}
+
+		.icon.active {
+			fill: #E74C3C;
+		}
+
+		#wrapper {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			background-color: #fff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: left;
+			-ms-flex-pack: left;
+			justify-content: left;
+			overflow: hidden;
+			padding-top: 10px;
+		}
+
+		#right-side {
+			height: 90%;
+			width: 20%;
+			margin-left: 5px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+		}
+
+		#right-side ul li {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			line-height: 34px;
+			color: rgba(51, 51, 51, 0.5);
+			font-weight: 500;
+			cursor: pointer;
+			-webkit-transition: all .2s ease-out;
+			transition: all .2s ease-out;
+
+		}
+
+		#right-side ul li:hover {
+			color: #333333;
+			-webkit-transition: all .2s ease-out;
+			transition: all .2s ease-out;
+		}
+
+		#right-side ul li:hover>.icon {
+			fill: #333;
+		}
+
+		#right-side ul li.active {
+			color: #333333;
+		}
+
+		#right-side ul li.active:hover>.icon {
+			fill: #E74C3C;
+		}
+
+		#border {
+			height: 288px;
+			width: 1px;
+			background-color: rgba(51, 51, 51, 0.2);
+		}
+
+		#border #line.one {
+			width: 5px;
+			height: 54px;
+			background-color: #feb0a7;
+			margin-left: -2px;
+			margin-top: 35px;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}
+
+		#border #line.two {
+			width: 5px;
+			height: 54px;
+			background-color: #feb0a7;
+			margin-left: -2px;
+			margin-top: 89px;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}
+
+		#border #line.three {
+			width: 5px;
+			height: 54px;
+			background-color: #feb0a7;
+			margin-left: -2px;
+			margin-top: 143px;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}
+
+		#border #line.four {
+			width: 5px;
+			height: 54px;
+			background-color: #feb0a7;
+			margin-left: -2px;
+			margin-top: 197px;
+			-webkit-transition: all .4s ease-in-out;
+			transition: all .4s ease-in-out;
+		}
+
+		#left-side {
+			padding-top: 100px;
+			padding: 70px;
+			padding-right: 10px;
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+
+		#left-side #first,
+		#left-side #second,
+		#left-side #third,
+		#left-side #fourth {
+			height: 100%;
+			width: 100%;
+			-webkit-transition: all .6s ease-in-out;
+			transition: all .6s ease-in-out;
+			margin-top: -350px;
+			opacity: 0;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: none;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			align-items: center;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			justify-content: center;
+			-webkit-box-orient: vertical;
+			-webkit-box-direction: normal;
+			-ms-flex-direction: column;
+			flex-direction: column;
+			vertical-align: middle;
+
+
+		}
+
+		#left-side #first h1,
+		#left-side #second h1,
+		#left-side #third h1,
+		#left-side #fourth h1 {
+			font-weight: 800;
+			color: #333;
+		}
+
+		#left-side #first p,
+		#left-side #second p,
+		#left-side #third p,
+		#left-side #fourth p {
+			color: #333;
+			font-weight: 500;
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		#left-side #first.active,
+		#left-side #second.active,
+		#left-side #third.active,
+		#left-side #fourth.active {
+			overflow: auto;
+			margin-top: 0px;
+			display: flex;
+			opacity: 1;
+			-webkit-transition: all .6s ease-in-out;
+			transition: all .6s ease-in-out;
+			overflow-x: hidden;
+		}
+
+		.NailStoreMap {
+			width: 70%;
+			margin-top: 5px;
+			margin-left: 5px;
+			height: 380px;
+
+			text-align: center;
+			box-shadow: 5px 5px 30px -10px #ff9494;
+			border-radius: 14px;
+		}
+
+		.animatepop {
+			-webkit-transition: all .2s;
+			transition: all .2s;
+			-webkit-animation: intro 1s 0.1s forwards;
+			animation: intro 1s 0.1s forwards;
+		}
+
+		.pinkshadow {
+			box-shadow: 5px 5px 30px -10px #ff9494;
+		}
+
+		.radius14 {
+			border-radius: 14px;
+		}
+
+		.zindex {
+			position: absolute;
+			z-index: 1;
+		}
+
+		@-webkit-keyframes intro {
+			0% {
+				-webkit-transform: scale(0);
+				transform: scale(0);
+			}
+			25% {
+				-webkit-transform: scale(1.06);
+				transform: scale(1.06);
+			}
+			50% {
+				-webkit-transform: scale(0.965);
+				transform: scale(0.965);
+			}
+			75% {
+				-webkit-transform: scale(1.02);
+				transform: scale(1.02);
+			}
+			100% {
+				-webkit-transform: scale(1);
+				transform: scale(1);
+			}
+		}
+
+		@keyframes intro {
+			0% {
+				-webkit-transform: scale(0);
+				transform: scale(0);
+			}
+			25% {
+				-webkit-transform: scale(1.06);
+				transform: scale(1.06);
+			}
+			50% {
+				-webkit-transform: scale(0.965);
+				transform: scale(0.965);
+			}
+			75% {
+				-webkit-transform: scale(1.02);
+				transform: scale(1.02);
+			}
+			100% {
+				-webkit-transform: scale(1);
+				transform: scale(1);
+			}
+		}
+
+		.addrText {
+			width: 90%;
+			height: auto;
+			margin-left: 5px;
+			position: relative;
+			text-align: center;
+			border-bottom: 3px solid #ffadad;
+			overflow: hidden;
+			box-shadow: 0px 1px 0px rgba(0, 0, 0, .5);
+			animation: intro 2s linear forwards;
+		}
+
+		.addrText p {
+			/* font-family: sans-serif; */
+			font-size: 1em;
+			color: #f96767;
+			/* text-shadow: 2px 2px 2px rgba(0,0,0,.5); */
+		}
+
+		.row {
+			width: 100%;
+		}
+
+		@media (max-width: 768px) {
+			body {
+				background-color: lightblue;
+			}
+			#right-side {
+				display: none;
+			}
+			#wrapper {
+				width: 100%;
+
+			}
+			#left-side {
+				/* 스크롤 바 숨기기 */
+				overflow: scroll;
+				overflow-x: hidden;
+				height: 100%;
+			}
+
+			::-webkit-scrollbar {
+				width: 0px;
+				/* remove scrollbar space */
+				background: transparent;
+				/* optional: just make scrollbar invisible */
+			}
+			.NailStoreMap {
+				width: 80%;
+				margin-right: 50px;
+			}
+			.addrText {
+				width: 80%;
+				margin-right: 50px;
+			}
+			#left-side #second,
+			#left-side #third,
+			#left-side #fourth {
+				margin-top: 0px;
+				margin-bottom: 20px;
+				display: flex;
+				opacity: 1;
+				-webkit-transition: all .6s ease-in-out;
+				transition: all .6s ease-in-out;
+			}
+			#left-side #first {
+				height: auto;
+				margin-top: 0px;
+				margin-bottom: 20px;
+				display: block;
+				opacity: 1;
+				-webkit-transition: all .6s ease-in-out;
+				transition: all .6s ease-in-out;
+			}
+
+			.disappear {
+				display: none;
+			}
+			.appear {
+				display: block;
+			}
+			.row {
+				position: relative;
+				 !important;
+				height: auto;
+				 !important;
+			}
+		}
+
+		/* media end */
+
+		/* tab css */
+
+		/***
+Bootstrap Line Tabs by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+		/* Tabs panel */
+
+		.tabbable-panel {
+			border: 1px solid #eee;
+			padding: 10px;
+		}
+
+		/* Default mode */
+
+		.tabbable-line>.nav-tabs {
+			border: none;
+			margin: 0px;
+		}
+
+		.tabbable-line>.nav-tabs>li {
+			margin-right: 2px;
+		}
+
+		.tabbable-line>.nav-tabs>li>a {
+			border: 0;
+			margin-right: 0;
+			color: #737373;
+		}
+
+		.tabbable-line>.nav-tabs>li>a>i {
+			color: #a6a6a6;
+		}
+
+		.tabbable-line>.nav-tabs>li.open,
+		.tabbable-line>.nav-tabs>li:hover {
+			border-bottom: 4px solid #fbcdcf;
+		}
+
+		.tabbable-line>.nav-tabs>li.open>a,
+		.tabbable-line>.nav-tabs>li:hover>a {
+			border: 0;
+			background: none !important;
+			color: #333333;
+		}
+
+		.tabbable-line>.nav-tabs>li.open>a>i,
+		.tabbable-line>.nav-tabs>li:hover>a>i {
+			color: #a6a6a6;
+		}
+
+		.tabbable-line>.nav-tabs>li.open .dropdown-menu,
+		.tabbable-line>.nav-tabs>li:hover .dropdown-menu {
+			margin-top: 0px;
+		}
+
+		.tabbable-line>.nav-tabs>li.active {
+			border-bottom: 4px solid #ff989c;
+			position: relative;
+		}
+
+		.tabbable-line>.nav-tabs>li.active>a {
+			border: 0;
+			color: #333333;
+		}
+
+		.tabbable-line>.nav-tabs>li.active>a>i {
+			color: #404040;
+		}
+
+		.tabbable-line>.tab-content {
+			margin-top: -3px;
+			background-color: #fff;
+			border: 0;
+			border-top: 1px solid #eee;
+			padding: 15px 0;
+		}
+
+		.portlet .tabbable-line>.tab-content {
+			padding-bottom: 0;
+		}
+
+		/* Below tabs mode */
+
+		.tabbable-line.tabs-below>.nav-tabs>li {
+			border-top: 4px solid transparent;
+		}
+
+		.tabbable-line.tabs-below>.nav-tabs>li>a {
+			margin-top: 0;
+		}
+
+		.tabbable-line.tabs-below>.nav-tabs>li:hover {
+			border-bottom: 0;
+			border-top: 4px solid #fbcdcf;
+		}
+
+		.tabbable-line.tabs-below>.nav-tabs>li.active {
+			margin-bottom: -2px;
+			border-bottom: 0;
+			border-top: 4px solid #f3565d;
+		}
+
+		.tabbable-line.tabs-below>.tab-content {
+			margin-top: -10px;
+			border-top: 0;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 15px;
+		}
+
+		/* tab css end */
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-icon-top navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+					<a class="navbar-brand" href="#">로고~~</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
+						<!--active사용시 home하얀색으로 변함-->
+						<li><a href="#">Introduce</a></li>
+						<li><a href="#">Shop</a></li>
+						<li><a href="#">Market</a></li>
+						<li><a href="#">Service center</a></li>
+
+					</ul>
+					<form class="navbar-form navbar-left">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Search">
+						</div>
+						<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search w3-spin"></span></button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">
+	                            <i class="fa fa-envelope-o">
+	                                <span class="badge badge-danger">11</span>
+	                            </i>
+	                            Messages
+	                        </a>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+								<!--<i class="fa fa-user-circle-o"></i>-->
+								<img class="img-circle" src="images/image-7.jpg" alt="" style="width:50px; height:50px;">
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu" style="border-radius:10px; border-color:white">
+								<li><a href="#">로그인</a></li>
+								<li><a href="#">회원가입</a></li>
+								<li><a href="#">마이페이지</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+	</header>
+	<div>
+		<div id="wrapper">
+
+			<div id="left-side">
+
+				<div id="first" class="active">
+
+					<div class="row">
+
+						<!-- 가게 이미지 시작 -->
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
+							<img src="icons/love_blank.svg" alt="북마크 아이콘" class="b_icon zindex" value="false" id="b_icon">
+							<div class="hovereffect">
+								<img class="img-responsive radius14" src="http://placehold.it/350x250" alt="">
+								<div class="overlay">
+									<h2>가게 이름</h2>
+									<p>
+										<a href="#">가게 이미지</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<!--가게 이미지 끝-->
+						<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+							<h3>NailShop</h3>
+							<p>장소 : 서울 마포구 월드컵북로 396</p>
+							<p>Tel 02.355.2311 </p>
+							<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00 공휴일 10:00 - 20:00</p>
+							<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>
+						</div>
+					</div>
+					<div class="row" style="margin-top:20px;">
+						<marquee>공지사항입니다~~~~~~~~~~~~</marquee>
+					</div>
+					<!-- tab 화면 시작-->
+					<div class="row">
+						<div class="tabbable-panel">
+							<div class="tabbable-line">
+								<ul class="nav nav-tabs ">
+									<li class="active">
+										<a href="#tab_default_2" data-toggle="tab">
+							가격 </a>
+									</li>
+									<li>
+										<a href="#tab_default_1" data-toggle="tab">
+							시술정보 </a>
+									</li>
+									<li>
+										<a href="#tab_default_3" data-toggle="tab">
+							리뷰 </a>
+									</li>
+								</ul>
+								<div class="tab-content">
+									<!-- tab1 시작 -->
+									<div class="tab-pane" id="tab_default_1">
+										<div class="carousel slide multi-item-carousel" id="theCarousel">
+											<div class="carousel-inner">
+												<div class="item active">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop " style="margin-top:10px;">
+														<div class="hovereffect">
+															<img class="img-responsive radius14 smail-carousel" src="http://placehold.it/350x250" alt="">
+															<div class="overlay">
+																<h2>네일 디자인 이름1</h2>
+																<p>
+																	<a href="#">더보기</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="item">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top:10px;">
+														<div class="hovereffect">
+															<img class="img-responsive radius14 smail-carousel" src="http://placehold.it/350x250" alt="">
+															<div class="overlay">
+																<h2>네일 디자인 이름2</h2>
+																<p>
+																	<a href="#">더보기</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="item">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear" style="margin-top:10px;">
+														<div class="hovereffect">
+															<img class="img-responsive radius14 smail-carousel" src="http://placehold.it/350x250" alt="">
+															<div class="overlay">
+																<h2>네일 디자인 이름3</h2>
+																<p>
+																	<a href="#">더보기</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="item">
+													<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear" style="margin-top:10px;">
+														<div class="hovereffect">
+															<img class="img-responsive radius14 smail-carousel" src="http://placehold.it/350x250" alt="">
+															<div class="overlay">
+																<h2>네일 디자인 이름4</h2>
+																<p>
+																	<a href="#">더보기</a>
+																</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!--  Example item end -->
+											</div>
+											<a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+											<a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+										</div>
+									</div>
+									<!-- tab1 끝 -->
+									<div class="tab-pane active" id="tab_default_2">
+										<p>
+											Howdy, I'm in Tab 2.
+										</p>
+										<p>
+											Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat. Ut wisi enim ad minim veniam, quis
+											nostrud exerci tation.
+										</p>
+										<p>
+											<a class="btn btn-warning" href="http://j.mp/metronictheme" target="_blank">
+									Click for more features...
+								</a>
+										</p>
+									</div>
+									<div class="tab-pane" id="tab_default_3">
+
+											<br>
+											<br>
+
+											<ul id='comment-main' class='level1'>
+												<li id='review-view' class='comment-reply level1'>
+													<!--댓글보기-->
+													<div class='row'>
+														<div class="col-xs-8">
+															<div class="row">
+																<div class="col-md-6 ">
+																	<span class='panel-2-body-font'>아이디:</span>
+																	<!--아이디부여-->
+																</div>
+																<div class="col-md-6 date-padding">
+																	<span class='panel-2-body-font'>작성일:</span><br>
+																	<!--date 부여 -->
+																</div>
+															</div>
+															<span class="rating"> <label> <span class="star-icon">평점: </span>
+
+															</label>
+															</span>
+
+														</div>
+
+														<div class="col-xs-12">
+															<a id="menu-modal" data-toggle="modal" data-target=".pop-up-3">
+													 <img class='comment-check-img' src="images/truckReview/<%=reviewList.get(i).getReviewCommentRimage()%>" alt="Card image cap"onclick="fn_modal_review('images/truckReview/<%=reviewList.get(i).getReviewCommentRimage()%>');"></a><br>
+														</div>
+													</div>
+
+													<div class="row" style="text-align:right;">
+
+														<div class="col-xs-11 result-btn-positon">
+															<br>
+
+															<button class='btn btn-light basic-btn btn-update' type="button" onclick="fn_commentDelete(<%=k%>,<%=reviewList.get(k).getReviewCommentPk()%>)">수정</button>
+															<button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="fn_commentDelete(<%=i%>,<%=reviewList.get(i).getReviewCommentPk()%>)">삭제</button>
+															<hr>
+														</div>
+													</div>
+												</li>
+
+												<ul id='comment-reply' class="level2">
+													<li class='review-comment-view<%=k%>'>
+														<div class='row'>
+															<div class="col-xs-2"></div>
+															<div class="col-xs-10" id="review-list">
+																<div class="row">
+																	<div class="col-xs-5 ">
+																		<span class='panel-2-body-font'>아이디:</span>
+																		<!--아이디부여-->
+																	</div>
+																	<div class="col-md-5 date-padding">
+																		<span class='panel-2-body-font'>작성일:</span><br>
+																		<!--date 부여 -->
+																	</div>
+																	<div class="col-md-2">
+
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-xs-12">
+																		<span></span>
+																	</div>
+																	<br>
+
+
+																<div class="col-xs-11" align="right">
+
+																		<button class='btn btn-light basic-btn btn-update' type="button" onclick="fn_commentDelete(<%=k%>,<%=reviewList.get(k).getReviewCommentPk()%>)">수정</button>
+
+																		<button class='btn btn-light basic-btn btn-delete' type="button" onclick="fn_commentDelete(<%=k%>,<%=reviewList.get(k).getReviewCommentPk()%>)">삭제</button>
+
+																		<hr>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</li>
+												</ul>
+											</ul>
+
+
+											<div class="col-xs-8" style="text-align:center;">
+												<button id="load-review-button" class='btn btn-light basic-btn' type="button">더보기</button>
+											</div>
+											<br> <br> <br>
+
+											<!--모달 틀-->
+											<div class="modal fade pop-up-3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true" data-backdrop="false">
+												<div class="modal-dialog modal-lg">
+													<div class="modal-content">
+														<div class="modal-header">
+															<button type="button" class=" close" data-dismiss="modal" aria-hidden="true">×</button>
+															<h4 class="modal-title" id="myLargeModalLabel-1">확대 이미지</h4>
+														</div>
+														<div class="modal-body">
+															<img id="modal-review-img" class="img-responsive img-rounded center-block" alt="" width="500" height="500">
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+
+
+
+
+											<ul id="comment-insert">
+												<li>
+													<form name="TruckCommentFrm" action="" method="post" enctype="multipart/form-data">
+														<!--form클래스 아이디부여-->
+														<div class='row'>
+															<div class="col-xs-12">
+																<div class="row">
+																	<div class="col-md-6 ">
+																		<input type="hidden" name="truckPk" value="<%=truckPk%>" /> <input type="hidden" name="reviewCommentWriter" value="<%=memberId%>" />
+																		<input type="hidden" name="reviewCommentRef" value="0" /> <input type="hidden" name="reviewCommentLevel" value="1" /> <input type="hidden" name="memberPk" value="1" /> <span class='panel-2-body-font' name="reviewCommentWriter"><%=memberId%></span>
+
+																		<!--아이디부여-->
+																	</div>
+																	<div class="col-md-6 date-padding panel-2-body-font">
+																		작성일 <span id="localTime" class='panel-2-body-font'></span><br>
+																		<!--date 부여 -->
+																	</div>
+																</div>
+
+																<span class="rating"> <label> <input type="radio"
+														name="reviewStar" value="1" /> <span class="star-icon">★</span>
+																</label> <label> <input type="radio" name="reviewStar" value="2" />
+														<span class="star-icon">★</span> <span class="star-icon">★</span>
+												</label> <label> <input type="radio" name="reviewStar" value="3" />
+														<span class="star-icon">★</span> <span class="star-icon">★</span> <span
+														class="star-icon">★</span>
+												</label> <label> <input type="radio" name="reviewStar" value="4" />
+														<span class="star-icon">★</span> <span class="star-icon">★</span> <span
+														class="star-icon">★</span> <span class="star-icon">★</span>
+												</label> <label> <input type="radio" name="reviewStar" value="5" />
+														<span class="star-icon">★</span> <span class="star-icon">★</span> <span
+														class="star-icon">★</span> <span class="star-icon">★</span> <span
+														class="star-icon">★</span>
+												</label>
+																</span> <br>
+																<div class="row">
+																	<div class="col-xs-8">
+																		<!-- image-preview-filename input [CUT FROM HERE]-->
+																		<div class="input-group image-preview">
+																			<input type="text" class="form-control image-preview-filename" disabled="disabled">
+																			<!-- don't give a name === doesn't send on POST/GET -->
+																			<span class="input-group-btn">
+																							<!-- image-preview-clear button -->
+																							<button type="button" class="btn btn-default image-preview-clear" style="display:none;">
+																									<span class="glyphicon glyphicon-remove"></span> Clear
+																			</button>
+																			<!-- image-preview-input -->
+																			<div class="btn btn-default image-preview-input">
+																				<span class="glyphicon glyphicon-folder-open"></span>
+																				<span class="image-preview-input-title">Browse</span>
+																				<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" />
+																				<!-- rename it -->
+																			</div>
+																			</span>
+																		</div>
+																		<!-- /input-group image-preview [TO HERE]-->
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-xs-8">
+																		<textarea class="form-control" id="content" name="reviewCommentContent" placeholder="내용을 입력하세요." rows="2" cols="100" style="resize: none;" autofocus required="required"></textarea>
+																	</div>
+																	<div class="col-xs-8" style="text-align:center;">
+																		<br>
+																		<button id="result-button" class='btn btn-light basic-btn btn-center' type="submit">완료</button>
+
+																		<button id="reset-button" class='btn btn-light basic-btn btn-center' type="reset">취소</button>
+																		<hr>
+																	</div>
+																</div>
+															</div>
+
+													</form>
+												</li>
+											</ul>
+
+
+											<script type="text/javascript">
+												//review script
+												//댓글삭제 ajax
+												function fn_commentDelete(index, pk) {
+													$.ajax({
+														url: "<%=request.getContextPath()%>/truckReviewCommentDelete",
+														type: "POST",
+														data: {
+															reviewCommentPk: pk
+														},
+														success: function(data) {
+															alert(data.msg);
+															var delbtn = $('#delete-button');
+															delbtn.parent().parent().parent().parent("ul").remove();
+															/* parent 4번
+															var comment=$("#review-view"+index);
+															comment.remove(); */
+														},
+														error: function(request, status, error) {
+															alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+														}
+													})
+												}
+
+												$("#myonoffswitch").on('click', function(e) {
+													e.preventDefault();
+												});
+
+												//별 스크립트
+												$(':radio').change(function() {
+													console.log('New star rating: ' + this.value);
+												});
+
+
+												//미리보기 스크립트
+												$(document).on('click', '#close-preview', function() {
+													$('.image-preview').popover('hide');
+													// Hover befor close the preview
+													$('.image-preview').hover(
+														function() {
+															$('.image-preview').popover('show');
+														},
+														function() {
+															$('.image-preview').popover('hide');
+														}
+													);
+												});
+
+												$(function() {
+													// Create the close button
+													var closebtn = $('<button/>', {
+														type: "button",
+														text: 'x',
+														id: 'close-preview',
+														style: 'font-size: initial;',
+													});
+													closebtn.attr("class", "close pull-right");
+													// Set the popover default content
+													$('.image-preview').popover({
+														trigger: 'manual',
+														html: true,
+														title: "<strong>Preview</strong>" + $(closebtn)[0].outerHTML,
+														content: "There's no image",
+														placement: 'bottom'
+													});
+													// Clear event
+													$('.image-preview-clear').click(function() {
+														$('.image-preview').attr("data-content", "").popover('hide');
+														$('.image-preview-filename').val("");
+														$('.image-preview-clear').hide();
+														$('.image-preview-input input:file').val("");
+														$(".image-preview-input-title").text("Browse");
+													});
+													// Create the preview image
+													$(".image-preview-input input:file").change(function() {
+														var img = $('<img/>', {
+															id: 'dynamic',
+															width: 250,
+															height: 200
+														});
+														var file = this.files[0];
+														var reader = new FileReader();
+														// Set preview image into the popover data-content
+														reader.onload = function(e) {
+															$(".image-preview-input-title").text("Change");
+															$(".image-preview-clear").show();
+															$(".image-preview-filename").val(file.name);
+															img.attr('src', e.target.result);
+															$(".image-preview").attr("data-content", $(img)[0].outerHTML).popover("show");
+														}
+														reader.readAsDataURL(file);
+													});
+												});
+
+												//현재시간 스크립트
+												$(function() {
+													function fn_localTime() {
+														var now = new Date();
+														var year = now.getFullYear();
+														var mon = (now.getMonth() + 1) > 9 ? '' + (now.getMonth() + 1) : '0' + (now.getMonth() + 1);
+														var day = now.getDate() > 9 ? '' + now.getDate() : '0' + now.getDate();
+
+														var st_date = year + '-' + mon + '-' + day;
+
+
+														return st_date;
+													}
+													$("#localTime").html(fn_localTime());
+
+
+
+												})
+
+												//모달주석
+												function fn_modal_review(rimage) {
+													console.log(rimage);
+													$("#modal-review-img").attr("src", rimage);
+												}
+
+												//더보기
+												$(function() {
+													$(".more-comment").slice(0, 10).show(); // 최초 10개 선택
+													$("#load-review-button").click(function(e) { // Load More를 위한 클릭 이벤트e
+														e.preventDefault();
+														$(".more-comment:hidden").slice(0, 10).show(); // 숨김 설정된 다음 10개를 선택하여 표시
+														if ($(".more-comment:hidden").length == 0) { // 숨겨진 DIV가 있는지 체크
+															$("#load-review-button").hide();
+														}
+													});
+												});
+											</script>
+										</div>
+										<!-- 3번째 탭 끝 -->
+									</div>
+									<!-- tab content 끝 -->
+								</div>
+							</div>
+							<!-- tab 화면 끝 -->
+
+							<style>
+								.hovereffect {
+									width: 100%;
+									height: 100%;
+									float: left;
+									overflow: hidden;
+									position: relative;
+									text-align: center;
+									cursor: default;
+								}
+
+								.hovereffect .overlay {
+									position: absolute;
+									overflow: hidden;
+									width: 80%;
+									height: 80%;
+									left: 10%;
+									top: 10%;
+									border-bottom: 1px solid #FFF;
+									border-top: 1px solid #FFF;
+									-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+									transition: opacity 0.35s, transform 0.35s;
+									-webkit-transform: scale(0, 1);
+									-ms-transform: scale(0, 1);
+									transform: scale(0, 1);
+								}
+
+								.hovereffect:hover .overlay {
+									opacity: 1;
+									filter: alpha(opacity=100);
+									-webkit-transform: scale(1);
+									-ms-transform: scale(1);
+									transform: scale(1);
+								}
+
+								.hovereffect img {
+									display: block;
+									position: relative;
+									-webkit-transition: all 0.35s;
+									transition: all 0.35s;
+								}
+
+								.hovereffect:hover img {
+									filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+									filter: brightness(0.6);
+									-webkit-filter: brightness(0.6);
+								}
+
+								.hovereffect h2 {
+									text-transform: uppercase;
+									text-align: center;
+									position: relative;
+									font-size: 17px;
+									background-color: transparent;
+									color: #FFF;
+									padding: 1em 0;
+									opacity: 0;
+									filter: alpha(opacity=0);
+									-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+									transition: opacity 0.35s, transform 0.35s;
+									-webkit-transform: translate3d(0, -100%, 0);
+									transform: translate3d(0, -100%, 0);
+								}
+
+								.hovereffect a,
+								.hovereffect p {
+									color: #FFF;
+									padding: 1em 0;
+									opacity: 0;
+									filter: alpha(opacity=0);
+									-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+									transition: opacity 0.35s, transform 0.35s;
+									-webkit-transform: translate3d(0, 100%, 0);
+									transform: translate3d(0, 100%, 0);
+								}
+
+								.hovereffect:hover a,
+								.hovereffect:hover p,
+								.hovereffect:hover h2 {
+									opacity: 1;
+									filter: alpha(opacity=100);
+									-webkit-transform: translate3d(0, 0, 0);
+									transform: translate3d(0, 0, 0);
+								}
+							</style>
+						</div>
+						<!-- row 끝 -->
+					</div>
+
+
+					<div id="second">
+
+						<div class="NailStoreMap animatepop" id="map">
+							map 삽입
+						</div>
+						<div class="addrText animatepop">
+							<p>London, England</P>
+						</div>
+
+					</div>
+					<div id="third">
+						<style>
+							#calendar {
+								max-width: 600px;
+								margin: 50px auto;
+							}
+
+							/*custom*/
+
+							.fc-highlight,
+							.alert-info {
+								background: rgb(255, 252, 253);
+							}
+
+							.fc-day-number {
+								color: black;
+							}
+
+							/*.ui-timepicker-container {
+								      z-index: 1080 !important;
+								    }*/
+
+							#reservaiton-form tr td {
+								border-top: 0px !important;
+							}
+
+							#reservaiton-form label {
+								padding-top: 5px;
+							}
+
+							#reserDate,
+							#reserName {
+								text-align: left;
+								padding-top: 3px;
+								padding-left: 3px;
+								font-size: 12pt;
+							}
+
+							/*.fc-day-grid-container {
+								      pointer-events: none;
+								      cursor: default;
+								    }*/
+
+							.fc-more {
+								pointer-events: visible;
+							}
+
+							.fc-day-header.fc-sun span {
+								color: red;
+							}
+
+							.fc-sun .fc-day-number {
+								color: red;
+							}
+
+							.fc-day-number {
+								color: rgb(57, 113, 205);
+							}
+
+							.fc-license-message {
+								display: none !important;
+							}
+						</style>
+					<script type="text/javascript">
+
+								$(function() {
+
+
+
+									//영업시작시간~~
+									var min = '10:00:00';
+									var max = '23:00:00';
+									var reserDate;
+									var startTime;
+									var endTime;
+
+
+
+									//전체휴일
+									var businessHours1 = [
+
+										{
+											start: '2018-07-30',
+											end: '2018-07-30',
+										},
+										{
+											start: '2018-08-21',
+											end: '2018-08-21',
+										},
+
+									];
+
+
+
+
+									/*변수 초기화*/
+									var reservaiton = [{
+											id: '1',
+											resourceId: 'a',
+											start: '2018-04-06',
+											end: '2018-04-08',
+											title: 'event 1'
+										},
+										{
+											id: '2',
+											resourceId: 'a',
+											start: '2018-04-07T09:00:00',
+											end: '2018-04-07T14:00:00',
+											title: 'event 2'
+										},
+										{
+											id: '3',
+											resourceId: 'b',
+											start: '2018-04-07T12:00:00',
+											end: '2018-04-08T06:00:00',
+											title: 'event 3'
+										},
+										{
+											id: '4',
+											resourceId: 'c',
+											start: '2018-04-07T07:30:00',
+											end: '2018-04-07T09:30:00',
+											title: 'event 4'
+										},
+										{
+											id: '5',
+											resourceId: 'd',
+											start: '2018-04-07T10:00:00',
+											end: '2018-04-07T15:00:00',
+											title: 'event 5'
+										},
+										{
+											id: '6',
+											resourceId: 'a',
+											start: '2018-07-24T10:00:00',
+											end: '2018-07-24T10:30:00',
+											color: 'rgb(49, 128, 208)',
+											title: '홍성진',
+											description: '- a 디자이너님 예약'
+										}, {
+											id: '7',
+											resourceId: 'b',
+											start: '2018-07-24T10:30:00',
+											end: '2018-07-24T11:00:00',
+											title: '홍성진',
+											description: '- a 디자이너님 예약'
+										},
+										{
+											id: '8',
+											resourceId: 'c',
+											start: '2018-07-24T11:30:00',
+											end: '2018-07-24T12:00:00',
+											title: '홍성진',
+											description: '- a 디자이너님 예약'
+										},
+										{
+											id: '9',
+											resourceId: 'c',
+											start: '2018-07-24T12:30:00',
+											end: '2018-07-24T13:00:00',
+											title: '홍성진',
+											description: '- a 디자이너님 예약'
+
+										}
+									];
+
+									var employee = [{
+											id: 'a',
+											title: '원장님',
+											eventColor: 'blue',
+											businessHours1: businessHours1,
+											businessHours: [ // specify an array instead
+												{
+													dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+													start: '08:00', // 8am
+													end: '23:00' // 6pm
+												},
+
+												{
+													dow: [6], // Thursday, Friday
+													start: '11:00', // 10am
+													end: '21:00' // 4pm
+												},
+												{
+													dow: [0], // Thursday, Friday
+													start: '11:00', // 10am
+													end: '21:00' // 4pm
+												}
+											]
+										},
+
+										{
+											id: 'b',
+											title: '디자이너',
+											eventColor: 'green',
+											businessHours1: businessHours1,
+											businessHours: [ // specify an array instead
+												{
+													dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+													start: '08:00', // 8am
+													end: '23:00' // 6pm
+												},
+
+												{
+													dow: [6], // Thursday, Friday
+													start: '11:00', // 10am
+													end: '21:00' // 4pm
+												},
+												{
+													dow: [0], // Thursday, Friday
+													start: '11:00', // 10am
+													end: '21:00' // 4pm
+												}
+											]
+
+										},
+										{
+											id: 'c',
+											title: '디자이너',
+											eventColor: 'orange',
+											businessHours1: businessHours1,
+											businessHours: [ // specify an array instead
+												{
+													dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+													start: '08:00', // 8am
+													end: '23:00' // 6pm
+												},
+
+												{
+													dow: [6], //
+													start: '11:00',
+													end: '21:00'
+												},
+												{
+													dow: [0], //
+													start: '11:00',
+													end: '21:00'
+												}
+											]
+										},
+									];
+
+
+
+									$('#calendar').fullCalendar({
+										themeSystem: 'bootstrap3',
+
+										//// uncomment this line to hide the all-day slot
+										allDaySlot: false,
+
+										//설정
+										//영업 시작, 종료시간
+										minTime: min,
+										maxTime: max,
+
+										//디자이너 추가
+										resources: employee,
+
+										//예약내역 추가
+										events: reservaiton,
+
+										//이벤트에 시각까지 보여주기
+										displayEventTime: false,
+
+
+										editable: true, //드래그해서 움직이는것
+										eventLimit: true, // allow "more" link when too many events
+										displayEventTime: true,
+
+										navLinks: true, // can click day/week names to navigate views
+										businessHours: false,
+
+
+
+										lang: "ko",
+
+										//shows time in 15 min slot
+										slotDuration: '00:30:00',
+										slotLabelInterval: 60,
+										slotLabelFormat: 'a HH :mm ',
+
+										/*점포 휴무일
+										businessHours: {
+											// days of week. an array of zero-based day of week integers (0=Sunday)
+											dow: [1, 2, 3, 4], // Monday - Thursday
+
+											start: '10:00', // a start time (10am in this example)
+											end: '18:00', // an end time (6pm in this example)
+										},*/
+
+
+
+
+										header: {
+											left: 'prev,next',
+											center: 'title',
+											right: 'month,agendaThreeDay,agendaDay' //agendaTwoDay
+										},
+
+										views: {
+											agendaThreeDay: {
+												duration: {
+													days: 3
+												},
+
+												type: 'agenda',
+
+												// views that are more than a day will NOT do this behavior by default
+												// so, we need to explicitly enable it
+												groupByResource: true
+
+												//// uncomment this line to group by day FIRST with resources underneath
+												//groupByDateAndResource: true
+											},
+											agendaDay: {
+												// options apply to basicWeek and basicDay views
+											}
+										},
+
+
+										googleCalendarApiKey: "AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE", // Google API KEY
+										eventSources: [
+											// 대한민국의 공휴일
+											{
+												googleCalendarId: "ko.south_korea#holiday@group.v.calendar.google.com",
+												className: "koHolidays",
+												color: "#be0000",
+												textColor: "#FFFFFF"
+											}
+										],
+
+
+										/* hover시 예약내역보여주기*/
+										eventRender: function(eventObj, $el) {
+											$el.popover({
+												title: '예약내역',
+												content: eventObj.description,
+												trigger: 'hover',
+												placement: 'top',
+												container: 'body'
+											});
+										},
+
+
+
+
+
+
+
+
+
+										dayClick: function(date, jsEvent, view, resource) {
+
+
+											var checkHoliday = true;
+											console.log(resource.businessHours[1].dow[0])
+											console.log(resource.businessHours[2].dow[0])
+
+											var mydateObj = new Date(date);
+											var chosenDay = mydateObj.getUTCDay();
+
+											if (chosenDay == resource.businessHours[1].dow[0]) {
+												if (resource.businessHours[1].start.substr(0, 2) > date.format("HH") || resource.businessHours[1].end.substr(0, 2) <= date.format("HH")) {
+													checkHoliday = false;
+													console.log(checkHoliday)
+
+												}
+											}
+											if (chosenDay == resource.businessHours[2].dow[0]) {
+												if (resource.businessHours[2].start.substr(0, 2) > date.format("HH") || resource.businessHours[2].end.substr(0, 2) <= date.format("HH")) {
+													checkHoliday = false;
+													console.log(checkHoliday)
+
+												}
+											}
+
+
+
+
+
+
+											var check = true;
+											//휴무일. 특정 휴무일 (일로 받았을떄 처리)
+											for (var i = 0; i < businessHours1.length; i++) {
+												if (date.format('YYYY-MM-DD') == businessHours1[i].start || date.format('YYYY-MM-DD') == businessHours1[i].end) {
+													check = false; //휴무일.
+												}
+											}
+											if (check == true) {
+												var now = new Date
+												var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
+												console.log("now" + nowDate);
+
+
+												var checkDate = new Date(date.format());
+												console.log("check" + checkDate);
+
+												/*1시간전 예약 못하게만들기*/
+												if (checkDate <= nowDate) { //&& flag == truenowDate
+													alert("예약시간이 아닙니다...");
+													check2 = false;
+													date=null;
+												} else if (checkHoliday == false) {
+													alert("영업시간이 아닙니다.");
+													date=null;
+
+												} else {
+													$('#calendarModal').modal();
+													$('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
+												}
+											} else {
+												console.log(i);
+												alert("휴무일입니다.");
+												date=null;
+
+											}
+
+
+
+
+
+
+
+
+											$("#result-reservaiton").one('click', function() {
+												/*받아오기*/
+												var title = $('#reservation-userName').val();
+												var description = title + "-" + $('select[name=choice-employee]').val() + "디자이너 님 예약"
+												var id = $('#reservation-id').val();
+												var choice1 = $('#choice1').val();
+												var choice2 = $('#choice2').val();
+												var choice_employee = $('#choice-employee').val();
+
+												//reservation 객체 추가로직
+												var aJson = new Object();
+												aJson.id = '8';
+												aJson.resourceId = 'a';
+												aJson.start = '2018-07-28T13:15:00';
+												aJson.end = '2018-07-28T15:15:00';
+												aJson.color = 'rgb(49, 128, 208)';
+												aJson.title = '홍성진님 예약'
+												reservaiton.push(aJson);
+
+												/*30분 추가*/
+												console.log(reservaiton);
+												var javaScriptRelease = Date.parse(date);
+												//alert(javaScriptRelease + 1800000);
+												javaScriptRelease += (1800000 * 2); //시간으로바꾸기
+
+												/*화면에 등록시키기*/
+												$('#calendar').fullCalendar('renderEvent', {
+													title: title,
+													start: date, //specify start date
+													id: '10',
+													description: description,
+													resourceId: resource.id,
+													end: javaScriptRelease
+
+												});
+
+											});
+
+
+
+										},
+
+
+										eventClick: function(calEvent, jsEvent, view) {
+											$('#reserDate').html(calEvent.start.format('YYYY년MM월DD일 HH시mm분'));
+											//  var check = calEvent.choice1;
+											console.log(jsEvent);
+											//$("#choice1").val("Someoranges").attr("selected", "selected");
+
+
+											//$('#choice1').val(calEvent.choice1).prop("selected", true);;
+											//$('#choice2').option(calEvent.choice2).attr("selected", "selected");
+											//$('#choice_employee').val(calEvent.choice_employee).attr("selected", "selected");
+
+											$('#calendarModal').modal();
+
+											/*alert('Event: ' + calEvent.start.format());
+											alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+											alert('View: ' + view.name);*/
+											$('#remove-reservaiton').one('click', function() {
+												//var check = prompt("예약비밀번호입력");
+												var check1 = confirm("삭제하시겠습니까?")
+												if (check1 == true) {
+													$('#calendar').fullCalendar('removeEvents', calEvent.id);
+													$('#calendarModal').modal('toggle');
+												}
+											})
+										},
+
+										/*$('#calendar').fullCalendar('option', {
+											businessHours: [{
+													dow: [0, 1, 2, 3, 4, 5, 6],
+													start: '09:00',
+													end: '11:00'
+												}, {
+													dow: [0, 1, 2, 3, 4, 5, 6],
+													start: '09:00',
+													end: '11:00'
+												},
+												{
+													dow: [0, 1, 2, 3, 4, 5, 6],
+													start: '09:00',
+													end: '11:00'
+												}
+											]
+										});*/
+
+
+
+
+
+									});
+
+
+									/*하루 날린timepicker...
+									$('input.timepicker').timepicker({
+										defaultTime: '09:00 AM',
+										timeFormat: 'HH시mm분',
+										// year, month, day and seconds are not important
+										minTime: min,
+										maxTime: max,
+										// time entries start being generated at 6AM but the plugin
+										// shows only those within the [minTime, maxTime] interval
+										startHour: 6,
+										// the value of the first item in the dropdown, when the input
+										// field is empty. This overrides the startHour and startMinute
+										// options
+										//  startTime: new Date(0, 0, 0, 8, 20, 0),
+										// items in the dropdown are separated by at interval minutes
+										interval: 60, //몇분단위
+										autoclose: true
+
+									});*/
+
+
+
+
+								});
+							</script>
+						</script>
+						<div id='calendar'></div>
+						<div id='calendarModal' class="modal fade pop-up-1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
+							<div class="modal-dialog" style="width:400px;">
+								<form class="" action="" method="post">
+
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+											<h4 class="modal-title" id="myLargeModalLabel-1">예약등록</h4>
+										</div>
+										<div class="modal-body">
+
+											<div class="row">
+												<div class="form-group">
+													<table id="reservaiton-form" class="table">
+														<thead>
+															<tr>
+																<td><label for="sel1">예약자:</label></td>
+																<td colspan="6">
+																	<p id="reserName" for="sel1">홍성진</p>
+																	<!---->
+																</td>
+															</tr>
+														</thead>
+														<tbody>
+
+															<tr>
+																<td><label for="sel1">예약일시:</label></td>
+																<td colspan="6">
+																	<p id="reserDate" for="sel1"></p>
+																	<!--<input type="type" id="reservation-timepicker" class="timepicker form-control input-sm" name="reservation-timepicker" style="width:130px;" />-->
+																	<input type="hidden" id="reservation-userName" name="reservation-userName" value="홍성진" />
+																	<input type="hidden" id="reservation-id" name="reservation-id" value="10" />
+																</td>
+															</tr>
+
+															<tr>
+																<td><label for="sel1">시술선택:</label></td>
+																<td style="width:72">
+																	<select class="form-control input-sm" id="choice1" name='choice1'> <!--점주레벨이 아니면 disabled-->
+				                        <option>손</option>
+				                        <option>발</option>
+				                        </select>
+																</td>
+																<td colspan="5" style="width: 172px;">
+																	<select class="form-control input-sm" id="choice2" name='choice2'>  <!--점주레벨이 아니면 disabled-->
+				                          <option>메뉴1</option>
+				                          <option>메뉴2</option>
+				                          <option>메뉴3</option>
+				                          </select>
+																</td>
+															</tr>
+
+															<tr>
+																<td><label for="sel1">담당자:</label></td>
+																<td>
+																	<select class="form-control input-sm" id="choice-employee" name="choice-employee">  <!--점주레벨이 아니면 disabled-->
+				                        <option value="a">원장</option>
+				                        <option value="b">디자이너1</option>
+				                        <option value="c">디자이너2</option>
+				                        </select></td>
+															</tr>
+													</table>
+													</tbody>
+													<hr>
+													<div class="col-xs-2"></div>
+													<div class="col-xs-4" style="text-align:right;"><button id="result-reservaiton" type="button" class="btn btn-success" name="button">확인</button></div>
+													<!--점주만 삭제-->
+													<div class="col-xs-4" style="text-align:left;"><button id="remove-reservaiton" type="button" class="btn btn-danger" name="button">삭제</button></div>
+													<div class="col-xs-2"></div>
+
+												</div>
+
+											</div>
+										</div>
+										<!-- /.modal-content -->
+								</form>
+								</div>
+								<!-- /.modal-dialog -->
+							</div>
+							<!-- /.modal mixer image -->
+						</div>
+					</div>
+					<div id="fourth">
+
+
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
+								<h3>Nail Shop Name</h3>
+								<p>Nail Shop Tel 02.355.2311 </p>
+								<p>KakaoChat : nail0997</p>
+								<p>instagram : @beautyU21</p>
+							</div>
+							<!--가게 Info 끝-->
+							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
+								<form class="" action="/insertQnA.html" method="post">
+									<div class="form-group">
+										<label> 문의사항 :  <input type="text" class="form-control" placeholder="제목 입력" autofocus size="20"></label>
+										<br>
+										<textarea name="content" cols="40" rows="6"></textarea>
+										<button type="submit" name="answer-submit" class="btn btn-default">전송!</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="border">
+					<div id="line" class="one"></div>
+				</div>
+				<div id="right-side">
+					<div style="position:fixed;">
+						<ul>
+							<li class="shop active">
+								<div class="icon active">
+									<img src="icons/shop.svg" alt="">
+								</div>
+								Shop
+							</li>
+							<li class="map">
+								<div class="icon">
+									<img src="icons/map.svg" alt="">
+								</div>
+								Map(지도)
+							</li>
+							<li class="reserve">
+								<div class="icon">
+									<img src="icons/calander.svg" alt="">
+								</div>
+								Reserve(예약)
+							</li>
+							<li class="qna">
+								<div class="icon">
+									<img src="icons/customer.svg" alt="">
+								</div>
+								Contact(문의)
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<script src="https://maps.googleapis.com/maps/api/js"></script>
+			<script>
+				// 구글맵 세팅
+				$(function() {
+					var mapCanvas = document.getElementById("map");
+					var mapOptions = {
+						center: new google.maps.LatLng(51.5, -0.2),
+						zoom: 10
+					};
+					var map = new google.maps.Map(mapCanvas, mapOptions);
+				})
+				// 반응형 적용
+				$(window).resize(function() {
+					if ($(window).width() < 640) {
+						$(".shop").addClass("active");
+						$(".map").removeClass("active");
+						$(".reserve").removeClass("active");
+						$(".qna").removeClass("active");
+						$("#line").addClass("one");
+						$("#line").removeClass("two");
+						$("#line").removeClass("three");
+						$("#line").removeClass("four");
+					}
+				});
+				// 메뉴 이동
+				$(".shop").click(function() {
+					$(".shop").addClass("active");
+					$(".map").removeClass("active");
+					$(".reserve").removeClass("active");
+					$(".qna").removeClass("active");
+					$("#line").addClass("one");
+					$("#line").removeClass("two");
+					$("#line").removeClass("three");
+					$("#line").removeClass("four");
+				})
+				$(".map").click(function() {
+					$(".map").addClass("active");
+					$(".shop").removeClass("active");
+					$(".reserve").removeClass("active");
+					$(".qna").removeClass("active");
+					$("#line").addClass("two");
+					$("#line").removeClass("one");
+					$("#line").removeClass("three");
+					$("#line").removeClass("four");
+				})
+
+				$(".reserve").click(function() {
+					$(".reserve").addClass("active");
+					$(".map").removeClass("active");
+					$(".shop").removeClass("active");
+					$(".qna").removeClass("active");
+					$("#line").addClass("three");
+					$("#line").removeClass("two");
+					$("#line").removeClass("one");
+					$("#line").removeClass("four");
+				})
+
+				$(".qna").click(function() {
+					$(".qna").addClass("active");
+					$(".map").removeClass("active");
+					$(".reserve").removeClass("active");
+					$(".shop").removeClass("active");
+					$("#line").addClass("four");
+					$("#line").removeClass("two");
+					$("#line").removeClass("three");
+					$("#line").removeClass("one");
+				})
+
+				$(".shop").click(function() {
+					$("#first").addClass("active");
+					$("#second").removeClass("active");
+					$("#third").removeClass("active");
+					$("#fourth").removeClass("active");
+				})
+
+				$(".map").click(function() {
+					$("#first").removeClass("active");
+					$("#second").addClass("active");
+					$("#third").removeClass("active");
+					$("#fourth").removeClass("active");
+				})
+
+				$(".reserve").click(function() {
+					$("#first").removeClass("active");
+					$("#second").removeClass("active");
+					$("#third").addClass("active");
+					$("#fourth").removeClass("active");
+				})
+
+				$(".qna").click(function() {
+					$("#first").removeClass("active");
+					$("#second").removeClass("active");
+					$("#third").removeClass("active");
+					$("#fourth").addClass("active");
+				})
+				//메뉴이동 끝
+
+				//북마크 기능
+				$("#b_icon").click(function() {
+					if ($('#b_icon').val().trim() == 'false') {
+						$('#b_icon').addClass("active");
+						$('#b_icon').val().trim() == 'true';
+					} else {
+						$('#b_icon').removeClass("active");
+						$('#b_icon').val().trim() == 'false';
+					}
+				})
+			</script>
+
+			<script type="text/javascript">
+				//작은케러셀
+				// Instantiate the Bootstrap carousel
+				$('.multi-item-carousel').carousel({
+					interval: false
+				});
+
+				// for every slide in carousel, copy the next slide's item in the slide.
+				// Do the same for the next, next item.
+				$('.multi-item-carousel .item').each(function() {
+					var next = $(this).next();
+					if (!next.length) {
+						next = $(this).siblings(':first');
+					}
+					next.children(':first-child').clone().appendTo($(this));
+
+					if (next.next().length > 0) {
+						next.next().children(':first-child').clone().appendTo($(this));
+					} else {
+						$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
+					}
+				});
+			</script>
+
+		</div>
+		<footer id="contact" class="contact-us">
+			<div class="container">
+				<div class="row">
+					<div class="contact-area">
+						<h2>Contact Us</h2>
+						<ul class="contact-list">
+							<li>
+								<i class="fa fa-phone"></i> <a href="##">  +44 (0) 232 090 505</a>
+							</li>
+							<li>
+								<i class="fa fa-envelope"></i> <a href="#">  hi@dsfg.co.uk</a>
+							</li>
+							<li>
+								<i class="fa fa-map-marker"></i> <a href="#">  Rampura,Dhaka Bangladesh k</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+</body>
+
+</html>
