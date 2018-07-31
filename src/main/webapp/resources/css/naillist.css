@@ -105,9 +105,15 @@
 }
 
 .nail-color {
+  padding-top: 10px;
   text-align: center;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+
+.nail-style{
+	padding-right: 10px;
 }
 
 #dropdown-menu {

@@ -32,5 +32,16 @@ public class NailServiceImpl implements NailService{
 		List<Nail> list=dao.nailList(sqlSession);
 		return list;
 	}
+
+
+
+	@Override
+	public List<Nail> selectNailColor(String nailColor) {
+		List<Nail> list=dao.selectNailColor(sqlSession,nailColor);
+		return list;
+	}
+
+
+
 	
 }

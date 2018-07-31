@@ -10,4 +10,7 @@ public interface NailDao {
 
 	List<Nail> nailList(SqlSessionTemplate sqlSession);
 
+
+	List<Nail> selectNailColor(SqlSessionTemplate sqlSession, String nailColor);
+
 }

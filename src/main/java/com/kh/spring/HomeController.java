@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
@@ -28,7 +29,7 @@ public class HomeController {
 	private NailService service;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	public ModelAndView home(Locale locale) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -47,13 +48,13 @@ public class HomeController {
 			}
 		}
 		
-		
-		model.addAttribute("nailist", list);
-		model.addAttribute("col_i", col_i);
+		ModelAndView mv=new ModelAndView();
+		mv.addObject("nailist", list);
+		mv.addObject("col_i", col_i);
 
 		System.out.println(list);
 		System.out.println(col_i);	
-		return "/";
+		mv.setViewName("index");
+		return mv;
 	}
-
 }

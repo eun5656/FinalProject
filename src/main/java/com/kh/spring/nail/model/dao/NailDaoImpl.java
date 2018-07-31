@@ -21,5 +21,11 @@ public class NailDaoImpl implements NailDao {
 		return list;
 	}
 
+	@Override
+	public List<Nail> selectNailColor(SqlSessionTemplate sqlSession, String nailColor) {
+		List<Nail> list=sqlSession.selectList("nail.selectNailColor");	
+		return list;
+	}
+
 
 }
