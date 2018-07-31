@@ -602,9 +602,13 @@
 
 <c:forEach  items="${nailist}" var="nail" varStatus="status">
 	
-  <div class="cover-card col-sm-${col_i[status.index]}">
+		
+	
+	
+ <div class="cover-card col-sm-${col_i[status.index]}"> 
+    <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/image-7.jpg" >
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/${nail.nail_re_img}" >
       <div class="overlay">
         <p>
          <h2>${nail.nail_name}</h2>      
