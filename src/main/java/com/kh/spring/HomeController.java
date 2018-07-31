@@ -53,7 +53,7 @@ public class HomeController {
 
 		System.out.println(list);
 		System.out.println(col_i);	
-		return "index";
+		return "/";
 	}
 
 }
