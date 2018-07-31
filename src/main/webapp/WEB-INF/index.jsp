@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Home Spring" name="pageTitle"/>
 </jsp:include>
