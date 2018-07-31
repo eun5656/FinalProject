@@ -19,8 +19,10 @@ public class StoreController {
 	public String store(
 			HttpServletRequest req
 			) {
-		String view="";
-		Store store = service.selectOne(req.getParameter("store_pk"));
+		String view="store/store";
+		String store_pk = req.getParameter("store_pk");
+		Store store = service.selectOne(req.getParameter("1"));
+		System.out.println("스토어 값 확인 : "+store);
 		return view;
 	}
 	
