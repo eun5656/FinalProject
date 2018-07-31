@@ -20,10 +20,6 @@
 
 
 <div class="container-fluid">
-<br>
-<br>
-<br>
-<br>
 
     <div class="row">
       <div class="col-xs-12">
