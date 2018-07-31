@@ -9,8 +9,10 @@
 </jsp:include>
 
 <c:set var='path' value="${pageContext.request.contextPath}"/> 
-<link href="${path }/resources/css/naillist.css" rel="stylesheet">
-<link href="${path }/resources/css/carousel.css" rel="stylesheet">   
+ <link href="${path }/resources/css/carousel.css" rel="stylesheet">
+  <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
+  <link href="${path }/resources/css/naillist.css" rel="stylesheet">
+
 
 <script type="text/javascript">
 	
