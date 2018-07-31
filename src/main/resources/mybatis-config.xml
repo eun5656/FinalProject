@@ -5,7 +5,11 @@
 	
 		<typeAlias type="com.kh.spring.common.StringArrayTypeHandler" alias="stringArray"/> 
 		<!--  <typeAlias type="com.kh.spring.member.model.vo.Member" alias="member"/>-->
+
 		<typeAlias type="com.kh.spring.nail.model.vo.Nail" alias="nail"/> 
+
+		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
+
 		
 	</typeAliases>  
 </configuration>
