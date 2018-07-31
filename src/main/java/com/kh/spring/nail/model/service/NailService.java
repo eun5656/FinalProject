@@ -8,4 +8,6 @@ public interface NailService {
 
 	List<Nail> nailList();
 
+	List<Nail> selectNailColor(String nailColor);
+
 }
