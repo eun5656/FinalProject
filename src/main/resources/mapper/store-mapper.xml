@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="store">
-<resultMap type="map" id="store">
+<resultMap type="store" id="storeMap">
 </resultMap>
 
-<select id="selectOne" resultMap="store">
+<select id="selectOne" resultMap="storeMap" parameterType="String">
 	select * from store where store_pk = #{store_pk}
 </select>
 
