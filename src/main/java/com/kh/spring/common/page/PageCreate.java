@@ -1,4 +1,4 @@
-package com.sung.spring.common.page;
+package com.kh.spring.common.page;
 
 public class PageCreate {
 
