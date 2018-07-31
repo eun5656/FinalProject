@@ -6,6 +6,6 @@ import com.kh.spring.store.model.vo.Store;
 
 public interface StoreDAO {
 
-	Store selectOne(SqlSessionTemplate sqlSession, String store_pk);
+	Store selectOne(SqlSessionTemplate sqlSession, int store_pk);
 
 }

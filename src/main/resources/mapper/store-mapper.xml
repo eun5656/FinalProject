@@ -4,7 +4,7 @@
 <resultMap type="store" id="storeMap">
 </resultMap>
 
-<select id="selectOne" resultMap="storeMap" parameterType="String">
+<select id="selectOne" resultMap="storeMap" parameterType="int">
 	select * from store where store_pk = #{store_pk}
 </select>
 

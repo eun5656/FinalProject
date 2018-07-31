@@ -21,7 +21,7 @@ public class StoreController {
 			) {
 		String view="store/store";
 		String store_pk = req.getParameter("store_pk");
-		Store store = service.selectOne(req.getParameter("1"));
+		Store store = service.selectOne(1);
 		System.out.println("스토어 값 확인 : "+store);
 		return view;
 	}

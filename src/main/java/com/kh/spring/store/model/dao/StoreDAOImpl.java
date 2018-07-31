@@ -9,7 +9,7 @@ import com.kh.spring.store.model.vo.Store;
 public class StoreDAOImpl implements StoreDAO {
 
 	@Override
-	public Store selectOne(SqlSessionTemplate sqlSession, String store_pk) {
+	public Store selectOne(SqlSessionTemplate sqlSession, int store_pk) {
 			
 		return sqlSession.selectOne("store.selectOne",store_pk);
 	}

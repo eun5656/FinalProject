@@ -20,7 +20,7 @@ public class StoreServiceImpl implements StoreService {
 	private SqlSessionTemplate sqlSession;
 	
 	@Override
-	public Store selectOne(String store_pk) {
+	public Store selectOne(int store_pk) {
 		
 		Store store = dao.selectOne(sqlSession,store_pk);
 		return store;
