@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<jsp:include page="/WEB-INF/views/common/header.jsp">
+	<jsp:param value="Home Spring" name="pageTitle"/>
+</jsp:include>
+
 <c:set var='path' value="${pageContext.request.contextPath}"/> 
 <link href="${path }/resources/css/naillist.css" rel="stylesheet">
 <link href="${path }/resources/css/carousel.css" rel="stylesheet">   
@@ -10,6 +15,7 @@
 <script type="text/javascript">
 	
 </script>
+
 
 <div class="container-fluid">
 
@@ -593,122 +599,25 @@
 
 
 
-  <a href="#" data-toggle="modal" data-target=".pop-up-2">
-  <div class="cover-card col-sm-4">
 
-
+<c:forEach  items="${nailist}" var="nail" varStatus="status">
+	
+  <div class="cover-card col-sm-${col_i[status.index]}">
     <div class="hovereffect">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resourcesimages/image-7.jpg" >
-      <div class="overlay" data-toggle="modal"  data-target=".pop-up-2" onclick="fn_nail_img(1)">
-       <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="cover-card col-sm-2">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-6.jpg">
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/image-7.jpg" >
       <div class="overlay">
-        <h2>Effect 13</h2>
         <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-6">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-100.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-3">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-8.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-4">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-9.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-3">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-10.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-2">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-11.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-3">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-11.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="cover-card col-sm-5">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-9.jpg">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
+         <h2>${nail.nail_name}</h2>      
+          <a href="#">${nail.nail_style}</a><br>
+          <a href="#">점포로 이동</a>
         </p>
       </div>
     </div>
   </div>
 
-  <div class="cover-card col-sm-4">
-    <div class="hovereffect">
-      <img class=" img-responsive nail-main-images" src="${path }/resources/images/image-13.png">
-      <div class="overlay">
-        <h2>Effect 13</h2>
-        <p>
-          <a href="#">LINK HERE</a>
-        </p>
-      </div>
-    </div>
-  </div>
   
+
+ </c:forEach>
 
   </div>
   </div>
@@ -716,3 +625,5 @@
   </div>
 
   <!--</div>-->
+<jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+
