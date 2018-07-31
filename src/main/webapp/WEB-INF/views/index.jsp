@@ -4,13 +4,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
+
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="Home Spring" name="pageTitle"/>
 </jsp:include>
 
 <c:set var='path' value="${pageContext.request.contextPath}"/> 
-<link href="${path }/resources/css/naillist.css" rel="stylesheet">
-<link href="${path }/resources/css/carousel.css" rel="stylesheet">   
+ <link href="${path }/resources/css/carousel.css" rel="stylesheet">
+  <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
+  <link href="${path }/resources/css/naillist.css" rel="stylesheet">
+
 
 <script type="text/javascript">
 	
@@ -602,9 +606,12 @@
 
 <c:forEach  items="${nailist}" var="nail" varStatus="status">
 	
-  <div class="cover-card col-sm-${col_i[status.index]}">
+	
+	
+ <div class="cover-card col-sm-${col_i[status.index]}"> 
+    <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/image-7.jpg" >
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/${nail.nail_re_img}" >
       <div class="overlay">
         <p>
          <h2>${nail.nail_name}</h2>      

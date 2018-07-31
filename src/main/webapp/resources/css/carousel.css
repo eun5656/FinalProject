@@ -13,7 +13,7 @@
 /* Hide the carousel text when the screen is less than 600 pixels wide */
 
 /*나중에 내리기*/
-@media (max-width: 736) {
+@media (max-width: 736px) {
   .carousel-caption, .icon-bar {
     display: none;
   }
