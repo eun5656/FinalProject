@@ -92,6 +92,7 @@
 												</div>
 											</div>
 										</div>
+<<<<<<< HEAD
 										<div class="item">
 											<div
 												class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear"
@@ -123,6 +124,19 @@
 													</div>
 												</div>
 											</div>
+=======
+									</div>
+									<!-- tab1 끝 -->
+									<div class="tab-pane active" id="tab_default_2">
+									
+										<p>
+											<a class="btn btn-warning" href="http://j.mp/metronictheme" target="_blank">
+									Click for more features...
+								</a>
+										</p>
+									</div>
+									<div class="tab-pane" id="tab_default_3">
+>>>>>>> 78faa942df9b9228ebb270f845df87eba1ec93d4
 										</div>
 										<!--  Example item end -->
 									</div>
