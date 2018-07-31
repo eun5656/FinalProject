@@ -76,15 +76,14 @@
 						// 로그인 창을 띄웁니다.
 						Kakao.Auth.login({
 							success : function(authObj) {
-									
-								 $.get("https://kauth.kakao.com/oauth/authorize?client_id= REST API d9017667478b08f250cdb1d058a4d03a &redirect_uri=http://localhost:9191/oauth&response_type=code");
+								alert(JSON.stringify(authObj));
+									location.href="https://kauth.kakao.com/oauth/authorize?client_id= REST API d9017667478b08f250cdb1d058a4d03a &redirect_uri=http://localhost:9191/oauth&response_type=code";
 							},
 							fail : function(err) {
 								alert(JSON.stringify(err));
 							}
 						});
 					};
-					//]]>
 				</script>
 
 				<script type="text/javascript">
