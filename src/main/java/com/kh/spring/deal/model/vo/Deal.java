@@ -1,4 +1,4 @@
-package com.kh.deal.model.vo;
+package com.kh.spring.deal.model.vo;
 
 public class Deal {
 	private int dealPk;
