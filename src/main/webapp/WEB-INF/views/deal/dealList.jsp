@@ -10,23 +10,19 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value=" " name="pageTitle" />
 </jsp:include>
-<link rel="stylesheet" type="text/css" href="${path }/resources/css/dealList.css">
+
+<link rel="stylesheet" type="text/css" href="${path}/resources/css/dealList.css">
 
 
-
-<section>
   <div class="container">
     <div class="panel" style="padding-top:30px;">
       <div class="panel-heading">
         <h2>Market</h2>
-
       </div>
 
-   <div class="panel-body">
+   	<div class="panel-body">
     
-      <div class="col-xs-7"></div>
-     
-   
+    <div class="col-xs-7"></div>
     <div class="col-xs-5">
       <form>
           <div class="col-xs-12">
@@ -127,7 +123,7 @@
 				
       </div>
       <div class="row1 text-right" id="btn-enroll">
-          <button type="button" class="btn btn-warning" style=""><a href="dealForm.html">글 등록</a></button>
+          <button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealForm.do'">글 등록</button>
       </div>
     
       <div class="row1 text-center" id="paging">
@@ -151,7 +147,7 @@
 </div>
 
 </div>
-</section>
+
 
 
 

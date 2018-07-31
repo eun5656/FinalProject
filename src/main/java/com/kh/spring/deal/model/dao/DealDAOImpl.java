@@ -1,4 +1,4 @@
-package com.kh.deal.model.dao;
+package com.kh.spring.deal.model.dao;
 
 import org.springframework.stereotype.Repository;
 
