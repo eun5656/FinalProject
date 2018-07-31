@@ -59,4 +59,23 @@ public class MemberController {
 	}
 
 	
+	
+	
+	
+	@RequestMapping("/member/memberJoin.do")
+	public String memberEnroll() {
+		return "member/joinSelect";
+	}
+	
+	@RequestMapping("/member/JoinShopOwner.do")
+	public String joinShopOwner() {
+		return "member/joinShop";
+	}
+
+	@RequestMapping("/member/JoinUser.do")
+	public String joinUser() {
+		return "member/joinUser";
+	}
+	
+	
 }
