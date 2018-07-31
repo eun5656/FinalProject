@@ -47,7 +47,7 @@
             <!--active사용시 home하얀색으로 변함-->
             <li><a href="${path}/intro/intro.do">Introduce</a></li>
             <li><a href="${path}/shop/shop.do">Shop</a></li>
-            <li><a href="${path}/market/market.do">Market</a></li>
+            <li><a href="${path}/deal/dealList.do">Market</a></li>
 
 
           </ul>
