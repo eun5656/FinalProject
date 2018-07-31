@@ -52,13 +52,13 @@ background: rgba(237, 88, 149, 0.1) !important;
 	<div class="jumbotron">
 	<br>
 		<h1 class="display-1">
-			5<i class="fa  fa-spin fa-cog fa-3x"></i>5
+			Exc<i class="fa  fa-spin fa-cog fa-3x"></i>eption
 		</h1>
 		<h1 class="display-3">ERROR</h1>
 		<p class="lower-case">Aw !! webpage not found please try to
 			refresh</p>
 		<p class="lower-case">Maybe the page is under maintenance</p>
-		<p class="lower-case"><a href="index.jsp">첫화면으로 돌아가기</a></p>
+		<p class="lower-case"><a href="${path}">Go Home</a></p>
 
 	</div>
 

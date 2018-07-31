@@ -310,6 +310,7 @@
 
   <div class="w3-bar <w3-light-white></w3-light-white>" style="text-align:center;">
 
+	<!-- 지우면 꺠짐 hiddien으로 해놨음 -->
     <div id="first-dropdown" class="w3-dropdown-hover">
       <button class="w3-button">Dropdown</button>
       <div class="w3-dropdown-content w3-card-4">
@@ -330,7 +331,7 @@
         <ul id="dropdown-menu">
           <li class="nail-color">
             <a>
-              <div style="text-align:center"><img src="https://www.colorcombos.com/images/colors/FF0000.png" class="w3-circle" alt="Cinque Terre" width="30" height="30"> </div>
+              <div  style="text-align:center"><img src="https://www.colorcombos.com/images/colors/FF0000.png" class="w3-circle" alt="Cinque Terre" width="30" height="30"> </div>
               레드
             </a>
           </li>
