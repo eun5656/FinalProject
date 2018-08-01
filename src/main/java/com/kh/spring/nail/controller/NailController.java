@@ -29,7 +29,7 @@ public class NailController {
 	@RequestMapping("/nail/nailList.do")
 	public String  nailList(){
 		List<Nail> list=service.nailList();
-		logger.debug("list"+list);
+		//logger.debug("list"+list);
 		return "/";
 	}
 	

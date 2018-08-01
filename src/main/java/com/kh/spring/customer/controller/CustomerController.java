@@ -1,4 +1,4 @@
-package com.kh.spring.customer.cotroller;
+package com.kh.spring.customer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
