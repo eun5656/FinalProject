@@ -566,17 +566,16 @@
 								 
 									for (var i = 0; i < data.list.length; i++) {
 										//for(var nail in data.list[i]){
-											alert(data.list[i]);
-										 	 html2+="<div class='cover-card col-sm-4'>";
-										 	 html2+="<div class='hovereffect'>";
-											 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
-											 html2+="<div class='overlay'>";
-											 html2+="<p>";
-											 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-											 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-											 html2+="<a href='#'>점포로 이동</a>";
-											 html2+="</p>";
-											 html2+="</div></div></div>";
+											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											 	 html2+="<div class='hovereffect'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<div class='overlay'>";
+												 html2+="<p>";
+												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="</p>";
+												 html2+="</div></div></div>";
 										//}
 								}
 									console.log(html2);
@@ -623,8 +622,7 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 											//for(var nail in data.list[i]){
-												alert(data.list[i]);
-											 	 html2+="<div class='cover-card col-sm-4'>";
+												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -681,8 +679,7 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 											//for(var nail in data.list[i]){
-												alert(data.list[i]);
-											 	 html2+="<div class='cover-card col-sm-4'>";
+											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -746,7 +743,6 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 											//for(var nail in data.list[i]){
-												alert(data.list[i]);
 											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
