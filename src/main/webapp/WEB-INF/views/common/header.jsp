@@ -77,13 +77,26 @@
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="height: 20px;"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li>
+            <!-- <li>
               <a href="#">
                             <i class="fa fa-envelope-o">
                                 <span class="badge badge-danger">11</span>
                             </i>
                             Messages
                         </a>
+            </li> -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope-o">
+                                <span class="badge badge-danger">11</span>
+                            </i>
+                            Messages
+                            <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+                <li><a href="${path}/message/sendMessage.do">쪽지쓰기</a></li>
+                <li><a href="${path}/message/receiveMessage.do">쪽지함</a></li>
+              </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
