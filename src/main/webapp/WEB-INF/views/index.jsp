@@ -484,10 +484,10 @@
               파츠
             </a>
           </li>
-          <li class="nail-style" value="글리터">
+          <li class="nail-style" value="클리터">
             <a>
               <div style="text-align:center"><img src="https://i.ytimg.com/vi/IHjdyDyd7hk/hqdefault.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
-              글리터
+              클리터
             </a>
           </li>
           <li class="nail-style" value="그라데이션">
@@ -559,26 +559,34 @@
 								type: "post",
 								dataType: "json",
 								success: function(data){
-									$("#nail-list *").remove();
+								$("#nail-list *").remove();
 									
 								 var html1="<div id='nail-list'><div>";
-
-								for (var i = 0; i <Object.keys(data).length; i++) {																	
+								 var html2="";
 								 
-									 
-							 var html2="<div class='cover-card col-sm-4'>";
-							 	 html2+="<div class='hovereffect'>";
-								 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nail_re_image1.jpg'>";
-								 html2+="<div class='overlay'>";
-								 html2+="<p>";
-								 html2+="<h2>${nail.nail_name}</h2>";
-								 html2+="<a href='#'>${nail.nail_style}</a><br><br><br><br>";
-								 html2+="<a href='#'>점포로 이동</a>";
-								 html2+="</p>";
-								 html2+="</div></div></div>";
-								 } 
+									for (var i = 0; i < data.list.length; i++) {
+										//for(var nail in data.list[i]){
+											alert(data.list[i]);
+										 	 html2+="<div class='cover-card col-sm-4'>";
+										 	 html2+="<div class='hovereffect'>";
+											 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+											 html2+="<div class='overlay'>";
+											 html2+="<p>";
+											 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+											 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+											 html2+="<a href='#'>점포로 이동</a>";
+											 html2+="</p>";
+											 html2+="</div></div></div>";
+										//}
+								}
+									console.log(html2);
 								 selectbar.after(html1);
 								 $("#nail-list").html(html2);
+									
+										
+							
+
+								
 							},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -598,7 +606,6 @@
 						
 
 							selectAry.nail_check=value;
-							//selectAry[2]=value;
 
 							main_nail_check_img.attr('src', check);
 							main_nail_check_button.html(value);
@@ -609,8 +616,33 @@
 								type: "post",
 								dataType: "json",
 								success: function(data){
+									$("#nail-list *").remove();
+									
+									 var html1="<div id='nail-list'><div>";
+									 var html2="";
+									 
+										for (var i = 0; i < data.list.length; i++) {
+											//for(var nail in data.list[i]){
+												alert(data.list[i]);
+											 	 html2+="<div class='cover-card col-sm-4'>";
+											 	 html2+="<div class='hovereffect'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<div class='overlay'>";
+												 html2+="<p>";
+												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="</p>";
+												 html2+="</div></div></div>";
+											//}
+									}
+										console.log(html2);
+									 selectbar.after(html1);
+									 $("#nail-list").html(html2);
+										
+											
+								
 
-									alert(data);
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -642,7 +674,33 @@
 								type: "post",
 								dataType: "json",
 								success: function(data){
+									$("#nail-list *").remove();
 									
+									 var html1="<div id='nail-list'><div>";
+									 var html2="";
+									 
+										for (var i = 0; i < data.list.length; i++) {
+											//for(var nail in data.list[i]){
+												alert(data.list[i]);
+											 	 html2+="<div class='cover-card col-sm-4'>";
+											 	 html2+="<div class='hovereffect'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<div class='overlay'>";
+												 html2+="<p>";
+												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="</p>";
+												 html2+="</div></div></div>";
+											//}
+									}
+										console.log(html2);
+									 selectbar.after(html1);
+									 $("#nail-list").html(html2);
+										
+											
+								
+
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -673,6 +731,49 @@
 							 main_nail_style_img.removeClass("w3-circle");
 							main_nail_style_img.attr("src","${path }/resources/images/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
+							
+							
+							$.ajax({
+							 	url:"${path}/nail/selectNailreset.do",
+								data:{reset:"reset"},
+								type: "post",
+								dataType: "json",
+								success: function(data){
+									$("#nail-list *").remove();
+									
+									 var html1="<div id='nail-list'><div>";
+									 var html2="";
+									 
+										for (var i = 0; i < data.list.length; i++) {
+											//for(var nail in data.list[i]){
+												alert(data.list[i]);
+											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											 	 html2+="<div class='hovereffect'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<div class='overlay'>";
+												 html2+="<p>";
+												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="</p>";
+												 html2+="</div></div></div>";
+											//}
+									}
+										console.log(html2);
+									 selectbar.after(html1);
+									 $("#nail-list").html(html2);
+										
+											
+								
+
+								},
+								error: function(jpxhr,textStatus,errormsg) {
+									console.log("ajax전송실패");
+									console.log(jpxhr);
+									console.log(textStatus);
+									console.log(errormsg);
+								}
+							})
 							
 							
 

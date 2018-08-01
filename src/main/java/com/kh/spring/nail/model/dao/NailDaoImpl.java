@@ -24,10 +24,11 @@ public class NailDaoImpl implements NailDao {
 
 
 	@Override
-	public Map<String, Nail> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu) {
-		Map<String, Nail> selectNailMap=sqlSession.selectOne("nail.selectNailMap",selectMenu);	
-	
-		return selectNailMap;
+	public List<Map<String, Object>> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu) {
+		//Map<String, Nail> selectNailMap=sqlSession.selectOne("nail.selectNailMap",selectMenu);
+		 List<Map<String, Object>> check=sqlSession.selectList("nail.selectNailMap",selectMenu);
+		
+	return check;
 	}
 
 

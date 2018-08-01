@@ -40,8 +40,8 @@ public class NailServiceImpl implements NailService{
 
 
 	@Override
-	public Map<String, Nail> selectNailList(Map selectMenu) {
-		Map<String, Nail> selectNailMap=dao.selectNailList(sqlSession,selectMenu);
+	public List<Map<String, Object>> selectNailList(Map selectMenu) {
+		List<Map<String, Object>> selectNailMap=dao.selectNailList(sqlSession,selectMenu);
 		return selectNailMap;
 	}
 

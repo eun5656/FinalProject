@@ -12,6 +12,6 @@ public interface NailService {
 	//List<Nail> selectNailColor(String nailColor);
 
 
-	Map<String, Nail> selectNailList(Map selectMenu);
+	List<Map<String, Object>> selectNailList(Map selectMenu);
 
 }

@@ -17,6 +17,6 @@ public interface NailDao {
 
 
 
-	Map<String, Nail> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu);
+	List<Map<String, Object>> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu);
 
 }
