@@ -2,10 +2,61 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="nail">
 
-	<resultMap type="nail" id="selectList">
+	<resultMap type="nail" id="selectAll">
 	</resultMap>
 	
-	<select id="nailList" resultMap="selectList">
+	<resultMap type="map" id="selectNail">
+	</resultMap>
+	
+	<select id="nailList" resultMap="selectAll">
 	 select * from nail
 	</select>
+	
+	
+	<select id='selectNailMap' resultType="map" >
+		select * from nail 
+		where 1=1
+ 	<!--마이바티스 foreach
+		속성
+		1. collection : 반복할 객체 (예 job_code)
+		2. item : 객체의 데이터가 들어갈 변수
+		3. index : 반복횟수
+		4. open : 시작문자
+		5. close : 끝낼문자
+		6. separator : 구분자
+		DB에서 중복값을 다중행 비교! in 다음에 들어갈 구문을 작성
+		(값,값,값,값) -->
+	
+		<if test="nail_color!=null">
+		and nail_color=#{nail_color}
+		</if>
+		
+		<if test="nail_check!=null">
+		and nail_check=#{nail_check}
+		</if>
+		
+		<if test="nail_style!=null">
+		and nail_style=#{nail_style}
+		</if>
+		
+		<if test="nail_color!=null and nail_check!=null">
+		and nail_color=#{nail_color} and nail_check=#{nail_check}
+		</if>
+		
+		<if test="nail_color!=null and nail_style!=null">
+		and nail_color=#{nail_color} and nail_style=#{nail_style}
+		</if>
+		
+		<if test=" nail_check!=null and nail_style!=null">
+		and nail_check=#{nail_check} and nail_style=#{nail_style}
+		</if>
+		
+		
+		<if test="nail_color!=null and nail_check!=null and nail_style!=null">
+		and nail_color=#{nail_color} and nail_check=#{nail_check} and nail_style=#{nail_style}
+		</if>
+		
+	</select>
+	
+	
 </mapper>

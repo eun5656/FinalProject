@@ -321,7 +321,7 @@
 
 
 
-  <div class="w3-bar <w3-light-white></w3-light-white>" style="text-align:center;">
+  <div id="select-nail-bar" class="w3-bar" style="text-align:center;">
 
 	<!-- 지우면 꺠짐 hiddien으로 해놨음 -->
     <div id="first-dropdown" class="w3-dropdown-hover">
@@ -338,7 +338,7 @@
     <!--nail 선택-->
     <div class="w3-dropdown-hover">
       <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체">
-        <img src="${path }/resources/images/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체&nbsp;</button></div>
+        <img src="${path }/resources/images/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
       <div  class="w3-dropdown-content w3-card-12 w3-border w3-round">
         <!--media로 조정해주기 default는 height 3.5%-->
         <ul id="dropdown-menu">
@@ -367,21 +367,21 @@
               옐로우
             </a>
           </li>
-          <li class="nail-color" value="블루">
+          <li class="nail-color" value="그린">
             <a>
               <div style="text-align:center"><img src="https://i.ytimg.com/vi/pNWz84Sn1oo/maxresdefault.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               그린
             </a>
           </li>
-          <li class="nail-color" value="핑크">
+          <li class="nail-color" value="민트">
             <a>
               <div style="text-align:center"><img src="https://wallpapertag.com/wallpaper/middle/7/5/8/143301-full-size-mint-green-background-1920x1419-for-iphone-6.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               민트
             </a>
           </li>
-          <li class="nail-color" value="핑크">
+          <li class="nail-color" value="블루">
             <a>
-              <div style="text-align:center"><img src="https://vignette.wikia.nocookie.net/p__/images/4/4b/Solid_blue.svg.png/revision/latest?cb=20160330012046&path-prefix=protagonist" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
+              <div style="text-align:center"><img src="	" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               블루
             </a>
           </li>
@@ -447,20 +447,20 @@
 
 
     <div class="w3-dropdown-hover">
-      <div id="main-choice" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="네일/패디">
+      <div id="main-check" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="네일/패디">
         <img src="${path }/resources/images\nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
      
       <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
        
-          <div class="nail-choice " style="text-align:left" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+          <div class="nail-check " style="text-align:left" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
         
-          <div  class="nail-choice" style="text-align:left" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
+          <div  class="nail-check" style="text-align:left" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
 	</div>	
 
 
     <div class="w3-dropdown-hover">
-      <div id=main-nail-style class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체옵션">
+      <div id="main-nail-style" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체옵션">
       <img src="${path }/resources/images/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
       <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round">
 
@@ -513,27 +513,104 @@
 
     </div>
 
-				<script type="text/javascript">
+				 
+	 <button id="reset-all" class="w3-bar-item w3-button w3-border w3-hover-border-pale-red  w3-round w3-large" style="height: 40px;"><i class="fa fa-refresh"></i>
+</button>	
+  </div>
+  
+  <script type="text/javascript">
 				$(function () {
+					var main_nail_color_img=$("#main-nail-color").find("img");
+					var main_nail_color_button=$("#main-nail-color").find("button");
+					
+					var main_nail_style_img=$("#main-nail-style").find("img");
+					var main_nail_style_button=$("#main-nail-style").find("button");
+					
+					var main_nail_check_img=$("#main-check").find("img");
+					var main_nail_check_button=$("#main-check").find("button");
+
+					var selectbar=$("#select-nail-bar");
+
+					//var nailList= $("#nail-list *");
+				
+					//	var selectAry = new Array();	
+					
+					var selectAry = { 
+							nail_color: null,
+							nail_style: null,
+							nail_check: null
+							}
 					
 						$(".nail-color").on("click", function(event) {															
 							var color = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
-							var main_nail_color_img=$("#main-nail-color").find("img");
-							var main_nail_color_button=$("#main-nail-color").find("button");
+							//selectAry[0]=value;
+							
+							selectAry.nail_color=value;
+							
 							main_nail_color_img.attr('src', color);
 							main_nail_color_button.html(value);
 							
+
 	
-						/*	$.ajax({
+							$.ajax({
 							 	url:"${path}/nail/selectNailColor.do",
-								data:{nailColor:color},
+								data:{nail_color:selectAry.nail_color,  nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
 								type: "post",
 								dataType: "json",
 								success: function(data){
-									console.log(data);
-									main_nail.attr('src', color);
-									main_nail.val(value);
+									$("#nail-list *").remove();
+									
+								 var html1="<div id='nail-list'><div>";
+
+								for (var i = 0; i <Object.keys(data).length; i++) {																	
+								 
+									 
+							 var html2="<div class='cover-card col-sm-4'>";
+							 	 html2+="<div class='hovereffect'>";
+								 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nail_re_image1.jpg'>";
+								 html2+="<div class='overlay'>";
+								 html2+="<p>";
+								 html2+="<h2>${nail.nail_name}</h2>";
+								 html2+="<a href='#'>${nail.nail_style}</a><br><br><br><br>";
+								 html2+="<a href='#'>점포로 이동</a>";
+								 html2+="</p>";
+								 html2+="</div></div></div>";
+								 } 
+								 selectbar.after(html1);
+								 $("#nail-list").html(html2);
+							},
+								error: function(jpxhr,textStatus,errormsg) {
+									console.log("ajax전송실패");
+									console.log(jpxhr);
+									console.log(textStatus);
+									console.log(errormsg);
+								}
+							})
+								
+						});
+						
+					
+						
+						$(".nail-check").on("click", function(event) {																					
+							var check = $(this).find("img").attr('src');
+							var value=$(this).attr('value');
+						
+
+							selectAry.nail_check=value;
+							//selectAry[2]=value;
+
+							main_nail_check_img.attr('src', check);
+							main_nail_check_button.html(value);
+							
+							$.ajax({
+							 	url:"${path}/nail/selectNailColor.do",
+								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+								type: "post",
+								dataType: "json",
+								success: function(data){
+
+									alert(data);
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -541,34 +618,67 @@
 									console.log(textStatus);
 									console.log(errormsg);
 								}
-							})*/
-								
-								
+							})
+							
+							
+							
 						});
 						
 						$(".nail-style").on("click", function(event) {																					
 							var style = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
-							var main_nail_style_img=$("#main-nail-style").find("img");
-							var main_nail_style_button=$("#main-nail-style").find("button");
 							
+							//selectAry[1]=value;
+
+							selectAry.nail_style=value;
 							main_nail_style_img.addClass("w3-circle");
 							main_nail_style_img.attr('src', style);
 							main_nail_style_button.html(value);
 							
+							
+							$.ajax({
+							 	url:"${path}/nail/selectNailColor.do",
+								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+								type: "post",
+								dataType: "json",
+								success: function(data){
+									
+								},
+								error: function(jpxhr,textStatus,errormsg) {
+									console.log("ajax전송실패");
+									console.log(jpxhr);
+									console.log(textStatus);
+									console.log(errormsg);
+								}
+							})
+							
 						});
 						
-						$(".nail-choice").on("click", function(event) {																					
-							var style = $(this).find("img").attr('src');
-							var value=$(this).attr('value');
-							var main_nail_choice_img=$("#main-choice").find("img");
-							var main_nail_choice_button=$("#main-choice").find("button");
+						
+						$("#reset-all").on("click", function() {
+							console.log(selectAry);
+
+							selectAry.nail_color=null;
+							selectAry.nail_check=null;
+							selectAry.nail_style=null;
+
+							console.log(selectAry);
+
+							main_nail_color_img.attr("src","${path }/resources/images/all-color.jpg");
+							main_nail_color_button.html("전체");
+							
+							 main_nail_check_img.attr("src","${path }/resources/images/nail-polish.png");
+							 main_nail_check_button.html("네일/페디");
+							
+							 main_nail_style_img.removeClass("w3-circle");
+							main_nail_style_img.attr("src","${path }/resources/images/plus_btn.png");
+							main_nail_style_button.html("전체옵션");
 							
 							
-							main_nail_choice_img.attr('src', style);
-							main_nail_choice_button.html(value);
-							
-						});
+
+						})
+						
+						
 						
 						  $('.good-btn').on("click", function() {
 						      $(this).toggleClass("selected");
@@ -578,86 +688,12 @@
 				})
 			
 					</script>
+					
 
 
-  </div>
-
-  <!--네일 이미지시작-->
-
-
-  <!--모달 틀
-  <div class="modal fade pop-up-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-          <h4 class="modal-title" id="myLargeModalLabel-1">확대 이미지</h4>
-        </div>
-        <div class="modal-body">
-
-            <div class="col-item">
-              <div class="photo">
-                <img id="modal-nail-img"  src="http://placehold.it/350x260" class="img-responsive img-rounded center-block" alt="" width="300" height="300">
-
-              </div>
-              <div class="info">
-                <div class="row">
-                  <div class="price col-md-6">
-                    <h5 style="margin-bottom:7px;">
-                                                                1위 ****샵</h5>
-                    <h5 class="price-text-color">
-                                                                경기도 구리시</h5>
-                  </div>
-                  <div class="rating hidden-sm col-md-6">
-                    <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                             </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                             </i><i class="fa fa-star"></i>
-                  </div>
-                </div>
-                <div class="separator clear-left">
-                  <p class="btn-add">
-                    <button href="#" class="btn btn-danger good-btn selected " style="width:90%" onclick="myFunction();"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
-                  </p>
-                  <p class="btn-details">
-                    <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-                </div>
-                <div class="clearfix">
-                </div>
-              </div>
-            </div>
-
-
-
-
-        </div>
-      </div>
-      <!-- /.modal-content 
-    </div>
-    <!-- /.modal-dialog
-  </div>
-  <!-- /.modal mixer image -->
-
-
-  <!--  <script type="text/javascript">
-  function fn_nail_img(index) {
-
-
-      var rimage=$('#nail-img'+index).attr('src');
-
-       $("#modal-nail-img").attr("src",rimage);
-     }
-  </script>-->
-
-
-
-
-
-
-<c:forEach  items="${nailist}" var="nail" varStatus="status">
-	
-	
-	
- <div class="cover-card col-sm-${col_i[status.index]}"> 
+<div id="nail-list">	
+ <c:forEach  items="${nailist}" var="nail" varStatus="status">
+ <div  class="cover-card col-sm-${col_i[status.index]}"> 
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/${nail.nail_re_img}" >
@@ -670,10 +706,10 @@
       </div>
     </div>
   </div>
-
   
-
+  
  </c:forEach>
+</div>
 
   </div>
   </div>
