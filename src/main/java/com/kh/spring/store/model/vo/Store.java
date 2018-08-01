@@ -16,7 +16,7 @@ public class Store implements Serializable {
 	private String store_name;
 	private String store_address;
 	private String store_phone;
-	private String store_holiiday;
+	private String store_holiday;
 	private String store_latitude;
 	private String store_longitude;
 	private String store_designer;
@@ -29,7 +29,7 @@ public class Store implements Serializable {
 	
 	
 	public Store(int store_pk, int member_pke, String store_num, String store_name, String store_address,
-			String store_phone, String store_holiiday, String store_latitude, String store_longitude,
+			String store_phone, String store_holiday, String store_latitude, String store_longitude,
 			String store_designer, String store_ori_img, String store_re_img) {
 		super();
 		this.store_pk = store_pk;
@@ -38,7 +38,7 @@ public class Store implements Serializable {
 		this.store_name = store_name;
 		this.store_address = store_address;
 		this.store_phone = store_phone;
-		this.store_holiiday = store_holiiday;
+		this.store_holiday = store_holiday;
 		this.store_latitude = store_latitude;
 		this.store_longitude = store_longitude;
 		this.store_designer = store_designer;
@@ -83,11 +83,11 @@ public class Store implements Serializable {
 	public void setStore_phone(String store_phone) {
 		this.store_phone = store_phone;
 	}
-	public String getStore_holiiday() {
-		return store_holiiday;
+	public String getStore_holiday() {
+		return store_holiday;
 	}
-	public void setStore_holiiday(String store_holiiday) {
-		this.store_holiiday = store_holiiday;
+	public void setStore_holiday(String store_holiday) {
+		this.store_holiday = store_holiday;
 	}
 	public String getStore_latitude() {
 		return store_latitude;
@@ -128,7 +128,7 @@ public class Store implements Serializable {
 	public String toString() {
 		return "Store [store_pk=" + store_pk + ", member_pke=" + member_pke + ", store_num=" + store_num
 				+ ", store_name=" + store_name + ", store_address=" + store_address + ", store_phone=" + store_phone
-				+ ", store_holiiday=" + store_holiiday + ", store_latitude=" + store_latitude + ", store_longitude="
+				+ ", store_holiday=" + store_holiday + ", store_latitude=" + store_latitude + ", store_longitude="
 				+ store_longitude + ", store_designer=" + store_designer + ", store_ori_img=" + store_ori_img
 				+ ", store_re_img=" + store_re_img + "]";
 	}

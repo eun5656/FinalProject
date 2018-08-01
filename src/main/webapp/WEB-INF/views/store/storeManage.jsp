@@ -1,39 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" import="com.kh.spring.store.model.vo.Store"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% Store store=(Store)request.getAttribute("store"); %>
 <!-- 해더부분 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="NailStore" name="pageTitle" />
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link
-	href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
-	rel="stylesheet">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- full calendar -->
-<link href='${path }/resource/css/fullcalendar.min.css' rel='stylesheet' />
-<link href='${path }/resource/css/scheduler.min.css' rel='stylesheet' />
-<script src='${path }/resource/js/moment.min.js'></script>
-<script src='${path }/resource/js/fullcalendar.min.js'></script>
-<script src='${path }/resource/locale/ko.js'></script>
-<script src='${path }/resource/js/gcal.min.js'></script>
-<script src='${path }/resource/js/scheduler.min.js'></script>
-<!-- store css -->
-<link href="${path }/resource/css/storeManage.css" rel="stylesheet" />
-
+<link href='${path }/resources/css/fullcalendar.min.css' rel='stylesheet' />
+<link href='${path }/resources/css/scheduler.min.css' rel='stylesheet' />
+<script src='${path }/resources/js/moment.min.js'></script>
+<script src='${path }/resources/js/fullcalendar.min.js'></script>
+<script src='${path }/resources/locale/ko.js'></script>
+<script src='${path }/resources/js/gcal.min.js'></script>
+<script src='${path }/resources/js/scheduler.min.js'></script>
+<!-- storeManage css -->
+<link href="${path }/resources/css/storeManage.css" rel="stylesheet" />
+<!-- storeManage js -->
+<script src="${path }/resources/js/storeManage.js"></script>
 <div>
 	<div id="wrapper">
 
@@ -68,15 +55,19 @@
 							<!-- /input-group image-preview [TO HERE]-->
 
 							<img class="img-responsive radius14"
-								src="http://placehold.it/350x250" alt="">
+								src="${path }/resources/images/${store.store_re_img }" alt="">
 						</div>
 					</div>
 					<!--가게 이미지 끝-->
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 						<label> 가게 이름 : <input type="text" class="form-control"
-							value="가게이름"></label> <br> <label>상세 설명 : <br>
-							<textarea name="content" cols="50" rows="7" id="storeInfo">가게에 대한 설명 ex) 상세정보 시술가격표 등등...
-                    </textarea></label>
+							value="가게이름"></label> 
+							<label>주소 : <input type="text" name="address" class="form-control" value="${store.store_address}">
+													</label>
+							<label>연락처 : <input type="text" name="phone" class="form-control" value="${store.store_phone}">
+													</label>	
+							<label>휴일 : <input type="text" name="holiday" class="form-control" value="${store.store_holiday!=null?'<%=store.getStore_holiday()%>':'연중무휴'}"> <br>
+													</label>
 					</div>
 				</div>
 				<div class="row" style="margin-top: 20px;">
@@ -544,91 +535,7 @@
 			</div>
 		</div>
 	</div>
-	<style>
-a:hover, a:focus {
-	outline: none;
-	text-decoration: none;
-}
 
-#accordion .panel {
-	border: 0px none;
-	box-shadow: none;
-}
-
-#accordion .panel-heading {
-	padding: 0;
-	background: #fff;
-}
-
-#accordion .panel-title a {
-	display: block;
-	position: relative;
-	background: transparent;
-	color: #de4d4e;
-	font-size: 14px;
-	font-weight: bolder;
-	text-transform: uppercase;
-	margin-bottom: 15px;
-	padding: 15px 50px;
-	border-bottom: 1px solid #de4d4e;
-	border-radius: 0 15px 0 15px;
-	transition: all 0.10s linear 0s;
-}
-
-#accordion .panel-title a.collapsed {
-	color: #808080;
-	border-bottom: 1px solid #d3d3d3;
-	margin: 0;
-}
-
-#accordion .panel-title a i {
-	color: #de4d4e;
-	position: absolute;
-	top: 14px;
-	left: 25px;
-}
-
-#accordion .panel-title a:before, #accordion .panel-title a.collapsed:before
-	{
-	content: "";
-	position: absolute;
-	bottom: -15px;
-	left: 36px;
-	border: 7px solid transparent;
-	border-top: 7px solid #de4d4e;
-}
-
-#accordion .panel-title a.collapsed:before {
-	content: "";
-	border: 0px none;
-}
-
-#accordion .panel-title a.collapsed:hover {
-	color: #6a6060;
-}
-
-#accordion .panel-title a:after, #accordion .panel-title a.collapsed:after
-	{
-	content: "\f106";
-	font-family: FontAwesome;
-	color: #de4d4e;
-	font-size: 20px;
-	line-height: 20px;
-	position: absolute;
-	top: 14px;
-	right: 25px;
-}
-
-#accordion .panel-title a.collapsed:after {
-	content: "\f107";
-	color: #808080;
-}
-
-#accordion .panel-body {
-	border-top: 0 none;
-	color: #808080;
-}
-</style>
 
 </div>
 <div id="fifth" style="height: 700px;">

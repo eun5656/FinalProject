@@ -1,5 +1,6 @@
 
 // 구글맵 세팅
+//js 파일은 읽은 뒤에 바인딩 되기 때문에 onLoad로 설정해주어야 바인딩이 제대로 된
 $(function() {
 	var mapCanvas = document.getElementById("map");
 	var mapOptions = {
@@ -7,7 +8,7 @@ $(function() {
 		zoom : 10
 	};
 	var map = new google.maps.Map(mapCanvas, mapOptions);
-});
+
 // 반응형 적용
 $(window).resize(function() {
 	if ($(window).width() < 640) {
@@ -96,12 +97,12 @@ $(".qna").click(function() {
 
 //북마크 기능
 $("#b_icon").click(function() {
-	if ($('#b_icon').val().trim() == 'false') {
-		$('#b_icon').addClass("active");
-		$('#b_icon').val().trim() == 'true';
+	if ($('#b_icon').attr("alt")=='false') 
+	{	$('#b_icon').attr("alt","true");
+		$('#b_icon').attr("src","/spring/resources/icons/love_filled.svg");
 	} else {
-		$('#b_icon').removeClass("active");
-		$('#b_icon').val().trim() == 'false';
+		$('#b_icon').attr("alt","false");
+		$('#b_icon').attr("src","/spring/resources/icons/love_blank.svg");
 	}
 });
 //작은케러셀
@@ -127,3 +128,4 @@ $('.multi-item-carousel .item').each(
 						.appendTo($(this));
 			}
 		});
+});
