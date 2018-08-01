@@ -447,64 +447,62 @@
 
 
     <div class="w3-dropdown-hover">
-      <div class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
+      <div id="main-choice" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
         <img src="${path }/resources/images\nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
+     
       <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
-        <a href="#" class="w3-bar-item w3-button">
-          <div style="text-align:left"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
-        </a>
-        <a href="#" class="w3-bar-item w3-button">
-          <div style="text-align:left"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
-        </a>
+       
+          <div class="nail-choice " style="text-align:left"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+        
+          <div  class="nail-choice" style="text-align:left"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
-
-    </div>
+	</div>	
 
 
     <div class="w3-dropdown-hover">
-      <div class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
-        <button class="select-menu w3-button w3-round w3-hover-white"><i class="fa fa-plus-square-o"></i> 전체옵션</button></div>
-      <div id="nailing-color" class="w3-dropdown-content w3-card-12 w3-border w3-round">
+      <div id=main-nail-style class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
+      <img src="${path }/resources/images/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
+      <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round">
 
         <!--media로 조정해주기 default는 height 3.5%-->
         <ul id="dropdown-menu">
-          <li class="nail-style" style="padding-left: 10px;">
+          <li class="nail-style" value="프렌치" style="padding-left: 10px;">
             <a>
               <div style="text-align:center"><img src="http://www.cuded.com/wp-content/uploads/2015/04/21-French-Manicure.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               프렌치
             </a>
           </li>
-          <li class="nail-style">
+          <li class="nail-style" value="아트">
             <a>
               <div style="text-align:center"><img src="https://1.bp.blogspot.com/-6rVc4GNTKVU/Vtfa_wIBA5I/AAAAAAAAWnQ/tll1NnimnII/s1600/constellation-nail-art-3.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               아트
             </a>
           </li>
-          <li class="nail-style">
+          <li class="nail-style" value="파츠">
             <a>
               <div style="text-align:center"><img src="https://s-media-cache-ak0.pinimg.com/originals/cf/28/fa/cf28fa8f1d236e4479e2eb3e3e3165fd.png" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               파츠
             </a>
           </li>
-          <li class="nail-style">
+          <li class="nail-style" value="글리터">
             <a>
               <div style="text-align:center"><img src="https://i.ytimg.com/vi/IHjdyDyd7hk/hqdefault.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               글리터
             </a>
           </li>
-          <li class="nail-style">
+          <li class="nail-style" value="그라데이션">
             <a>
               <div style="text-align:center"><img src="https://assets.teenvogue.com/photos/55829f6ca28d9d4e0540e581/master/pass/beauty-nails-2012-04-05-gradient-nail-tutorial.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               그라데이션
             </a>
           </li>
-          <li class="nail-style">
+          <li class="nail-style" value="풀컬러">
             <a>
               <div style="text-align:center"><img src="http://katheryne.info/images5/0917L/full-color-acrylic-nail-designs/full-color-acrylic-nail-designs-44_13.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               풀컬러
             </a>
           </li>
-          <li class="nail-color">
+          <li class="nail-style" value="캐릭터">
             <a>
               <div style="text-align:center"><img src="http://bebelushbeauty.com/uploads/best-marvel-nail-art-request-pict-for-cute-character-inspiration-and-names-trends_FILES_28561.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               캐릭터
@@ -516,17 +514,15 @@
     </div>
 
 				<script type="text/javascript">
-						$(".nail-color").on("click", function(event) {	
-							
-							
-							
-						
+				$(function () {
+					
+						$(".nail-color").on("click", function(event) {															
 							var color = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
-							var main_nail_img=$("#main-nail-color").find("img");
-							var main_nail_button=$("#main-nail-color").find("button");
-							main_nail_img.attr('src', color);
-							main_nail_button.html(value);
+							var main_nail_color_img=$("#main-nail-color").find("img");
+							var main_nail_color_button=$("#main-nail-color").find("button");
+							main_nail_color_img.attr('src', color);
+							main_nail_color_button.html(value);
 							
 	
 						/*	$.ajax({
@@ -548,7 +544,34 @@
 							})*/
 								
 								
-						})
+						});
+						
+						$(".nail-style").on("click", function(event) {																					
+							var style = $(this).find("img").attr('src');
+							var value=$(this).attr('value');
+							var main_nail_style_img=$("#main-nail-style").find("img");
+							var main_nail_style_button=$("#main-nail-style").find("button");
+							
+							main_nail_style_img.addClass("w3-circle");
+							main_nail_style_img.attr('src', style);
+							main_nail_style_button.html(value);
+							
+						});
+						
+						$(".nail-choice").on("click", function(event) {																					
+							var style = $(this).find("img").attr('src');
+							var value=$(this).attr('value');
+							var main_nail_style_img=$("#main-nail-style").find("img");
+							var main_nail_style_button=$("#main-nail-style").find("button");
+							
+							main_nail_style_img.addClass("w3-circle");
+							main_nail_style_img.attr('src', style);
+							main_nail_style_button.html(value);
+							
+						});
+						
+				})
+			
 					</script>
 
 
