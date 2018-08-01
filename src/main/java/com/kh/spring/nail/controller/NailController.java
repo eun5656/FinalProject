@@ -97,11 +97,13 @@ public class NailController {
 		selectlist.put("list", list);
 		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4 };
 		int[] col2=col1;
+		int k=0;
 		for (int i = 0; i < list.size(); i++) {
-			col_i.add(col1[i]);	
-			if(col1.length==0){
-				col1=col2;
+			col_i.add(col1[k]);	
+			if(i%9==0){
+				k=0;
 			}
+			k++;
 		}
 		System.out.println("col_i"+col_i);
 		selectlist.put("col_i",col_i);
