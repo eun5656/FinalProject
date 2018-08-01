@@ -9,8 +9,9 @@
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- <!-- store css -->
--->
+
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
+<script src="${path }/resources/js/store.js"></script>
 <div id="wrapper">
 
 	<div id="left-side">
@@ -36,11 +37,10 @@
 				</div>
 				<!--가게 이미지 끝-->
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-					<h3>NailShop</h3>
-					<p>장소 : 서울 마포구 월드컵북로 396</p>
-					<p>Tel 02.355.2311</p>
-					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00 공휴일
-						10:00 - 20:00</p>
+					<h3>${store. store_name }</h3>
+					<p>장소 : ${store. store_address }</p>
+					<p>Tel. ${store. store_phone }</p>
+					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
 					<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>
 				</div>
 			</div>
@@ -92,7 +92,6 @@
 												</div>
 											</div>
 										</div>
-<<<<<<< HEAD
 										<div class="item">
 											<div
 												class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear"
@@ -294,23 +293,23 @@
 		<ul>
 			<li class="shop active">
 				<div class="icon active">
-					<img src="icons/shop.svg" alt="">
+					<img src="${path }/resources/icons/shop.svg" alt="">
 				</div> Shop
 			</li>
 			<li class="map">
 				<div class="icon">
-					<img src="icons/map.svg" alt="">
-				</div> Map(지도)
+					<img src="${path }/resources/icons/map.svg" alt="">
+				</div> Map
 			</li>
 			<li class="reserve">
 				<div class="icon">
-					<img src="icons/calander.svg" alt="">
-				</div> Reserve(예약)
+					<img src="${path }/resources/icons/calander.svg" alt="">
+				</div> Reserve
 			</li>
 			<li class="qna">
 				<div class="icon">
-					<img src="icons/customer.svg" alt="">
-				</div> Contact(문의)
+					<img src="${path }/resources/icons/customer.svg" alt="">
+				</div> Contact
 			</li>
 		</ul>
 	</div>
