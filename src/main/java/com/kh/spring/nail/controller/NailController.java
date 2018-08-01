@@ -95,7 +95,7 @@ public class NailController {
 		
 		Map selectlist=new HashMap();	
 		selectlist.put("list", list);
-		int [] col1 = { 4, 2, 6,3,4,3,2,2,6,4 };
+		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4 };
 		int[] col2=col1;
 		for (int i = 0; i < list.size(); i++) {
 			col_i.add(col1[i]);	
@@ -138,7 +138,7 @@ public class NailController {
 		
 		Map selectlist=new HashMap();	
 
-		int [] col1 = { 4, 2, 6,3,4,3,2,2,6,4 };
+		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4 };
 		int[] col2=col1;
 		for (int i = 0; i < list.size(); i++) {
 			col_i.put(String.valueOf(i), col1[i]);	

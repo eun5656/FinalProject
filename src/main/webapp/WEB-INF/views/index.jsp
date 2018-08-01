@@ -452,9 +452,9 @@
      
       <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
        
-          <div class="nail-check " style="text-align:left" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+          <div class="nail-check " style="text-align:left; padding-left: 10px;" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
         
-          <div  class="nail-check" style="text-align:left" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
+          <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
 	</div>	
 
@@ -528,12 +528,8 @@
 					
 					var main_nail_check_img=$("#main-check").find("img");
 					var main_nail_check_button=$("#main-check").find("button");
-
-					var selectbar=$("#select-nail-bar");
-
-					//var nailList= $("#nail-list *");
 				
-					//	var selectAry = new Array();	
+					var selectbar=$("#select-nail-bar");
 					
 					var selectAry = { 
 							nail_color: null,
@@ -544,14 +540,12 @@
 						$(".nail-color").on("click", function(event) {															
 							var color = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
-							//selectAry[0]=value;
 							
 							selectAry.nail_color=value;
 							
 							main_nail_color_img.attr('src', color);
 							main_nail_color_button.html(value);
-							
-
+						
 	
 							$.ajax({
 							 	url:"${path}/nail/selectNailColor.do",
@@ -565,7 +559,6 @@
 								 var html2="";
 								 
 									for (var i = 0; i < data.list.length; i++) {
-										//for(var nail in data.list[i]){
 											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
@@ -576,16 +569,10 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
-										//}
 								}
-									console.log(html2);
+								 console.log(html2);
 								 selectbar.after(html1);
 								 $("#nail-list").html(html2);
-									
-										
-							
-
-								
 							},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -603,7 +590,6 @@
 							var check = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
 						
-
 							selectAry.nail_check=value;
 
 							main_nail_check_img.attr('src', check);
@@ -621,7 +607,6 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											//for(var nail in data.list[i]){
 												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
@@ -632,14 +617,9 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
-											//}
 									}
-										console.log(html2);
 									 selectbar.after(html1);
-									 $("#nail-list").html(html2);
-										
-											
-								
+									 $("#nail-list").html(html2);							
 
 								},
 								error: function(jpxhr,textStatus,errormsg) {
@@ -658,14 +638,12 @@
 							var style = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
 							
-							//selectAry[1]=value;
 
 							selectAry.nail_style=value;
 							main_nail_style_img.addClass("w3-circle");
 							main_nail_style_img.attr('src', style);
 							main_nail_style_button.html(value);
-							
-							
+														
 							$.ajax({
 							 	url:"${path}/nail/selectNailColor.do",
 								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
@@ -678,7 +656,6 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											//for(var nail in data.list[i]){
 											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
@@ -689,7 +666,6 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
-											//}
 									}
 										console.log(html2);
 									 selectbar.after(html1);
@@ -711,13 +687,10 @@
 						
 						
 						$("#reset-all").on("click", function() {
-							console.log(selectAry);
-
 							selectAry.nail_color=null;
 							selectAry.nail_check=null;
 							selectAry.nail_style=null;
 
-							console.log(selectAry);
 
 							main_nail_color_img.attr("src","${path }/resources/images/all-color.jpg");
 							main_nail_color_button.html("전체");
@@ -725,7 +698,7 @@
 							 main_nail_check_img.attr("src","${path }/resources/images/nail-polish.png");
 							 main_nail_check_button.html("네일/페디");
 							
-							 main_nail_style_img.removeClass("w3-circle");
+							main_nail_style_img.removeClass("w3-circle");
 							main_nail_style_img.attr("src","${path }/resources/images/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
 							
@@ -742,7 +715,6 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											//for(var nail in data.list[i]){
 											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
@@ -753,15 +725,10 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
-											//}
 									}
 										console.log(html2);
 									 selectbar.after(html1);
-									 $("#nail-list").html(html2);
-										
-											
-								
-
+									 $("#nail-list").html(html2);																		
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -769,17 +736,13 @@
 									console.log(textStatus);
 									console.log(errormsg);
 								}
-							})
-							
-							
-
+							})							
 						})
 						
 						
 						
 						  $('.good-btn').on("click", function() {
 						      $(this).toggleClass("selected");
-
 						    })
 						
 				})
