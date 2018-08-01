@@ -1,3 +1,4 @@
+
 // 구글맵 세팅
 $(function() {
 	var mapCanvas = document.getElementById("map");
@@ -6,7 +7,7 @@ $(function() {
 		zoom : 10
 	};
 	var map = new google.maps.Map(mapCanvas, mapOptions);
-})
+});
 // 반응형 적용
 $(window).resize(function() {
 	if ($(window).width() < 640) {
@@ -30,7 +31,7 @@ $(".shop").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("three");
 	$("#line").removeClass("four");
-})
+});
 $(".map").click(function() {
 	$(".map").addClass("active");
 	$(".shop").removeClass("active");
@@ -40,7 +41,7 @@ $(".map").click(function() {
 	$("#line").removeClass("one");
 	$("#line").removeClass("three");
 	$("#line").removeClass("four");
-})
+});
 
 $(".reserve").click(function() {
 	$(".reserve").addClass("active");
@@ -51,7 +52,7 @@ $(".reserve").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("one");
 	$("#line").removeClass("four");
-})
+});
 
 $(".qna").click(function() {
 	$(".qna").addClass("active");
@@ -62,35 +63,35 @@ $(".qna").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("three");
 	$("#line").removeClass("one");
-})
+});
 
 $(".shop").click(function() {
 	$("#first").addClass("active");
 	$("#second").removeClass("active");
 	$("#third").removeClass("active");
 	$("#fourth").removeClass("active");
-})
+});
 
 $(".map").click(function() {
 	$("#first").removeClass("active");
 	$("#second").addClass("active");
 	$("#third").removeClass("active");
 	$("#fourth").removeClass("active");
-})
+});
 
 $(".reserve").click(function() {
 	$("#first").removeClass("active");
 	$("#second").removeClass("active");
 	$("#third").addClass("active");
 	$("#fourth").removeClass("active");
-})
+});
 
 $(".qna").click(function() {
 	$("#first").removeClass("active");
 	$("#second").removeClass("active");
 	$("#third").removeClass("active");
 	$("#fourth").addClass("active");
-})
+});
 //메뉴이동 끝
 
 //북마크 기능
@@ -102,7 +103,7 @@ $("#b_icon").click(function() {
 		$('#b_icon').removeClass("active");
 		$('#b_icon').val().trim() == 'false';
 	}
-})
+});
 //작은케러셀
 // Instantiate the Bootstrap carousel
 $('.multi-item-carousel').carousel({
