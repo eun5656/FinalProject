@@ -61,12 +61,12 @@
 					<!--가게 이미지 끝-->
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 						<label> 가게 이름 : <input type="text" class="form-control"
-							value="가게이름"></label> <br> 
-							<label>주소 : <input type="text" name="address" value="${store.store_address}"> <br>
+							value="가게이름"></label> 
+							<label>주소 : <input type="text" name="address" class="form-control" value="${store.store_address}">
 													</label>
-							<label>연락처 : <input type="text" name="phone"value="${store.store_phone}"> <br>
+							<label>연락처 : <input type="text" name="phone" class="form-control" value="${store.store_phone}">
 													</label>	
-							<label>휴일 : <input type="text" name="holiday" value="${store.store_holiday!=null?'<%=store.getStore_holiday()%>':'연중무휴'}"> <br>
+							<label>휴일 : <input type="text" name="holiday" class="form-control" value="${store.store_holiday!=null?'<%=store.getStore_holiday()%>':'연중무휴'}"> <br>
 													</label>
 					</div>
 				</div>
