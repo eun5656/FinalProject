@@ -337,7 +337,7 @@
 
     <!--nail 선택-->
     <div class="w3-dropdown-hover">
-      <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
+      <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체">
         <img src="${path }/resources/images/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체&nbsp;</button></div>
       <div  class="w3-dropdown-content w3-card-12 w3-border w3-round">
         <!--media로 조정해주기 default는 height 3.5%-->
@@ -447,20 +447,20 @@
 
 
     <div class="w3-dropdown-hover">
-      <div id="main-choice" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
+      <div id="main-choice" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="네일/패디">
         <img src="${path }/resources/images\nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
      
       <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
        
-          <div class="nail-choice " style="text-align:left"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+          <div class="nail-choice " style="text-align:left" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
         
-          <div  class="nail-choice" style="text-align:left"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
+          <div  class="nail-choice" style="text-align:left" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
 	</div>	
 
 
     <div class="w3-dropdown-hover">
-      <div id=main-nail-style class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;">
+      <div id=main-nail-style class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체옵션">
       <img src="${path }/resources/images/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
       <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round">
 
@@ -561,14 +561,19 @@
 						$(".nail-choice").on("click", function(event) {																					
 							var style = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
-							var main_nail_style_img=$("#main-nail-style").find("img");
-							var main_nail_style_button=$("#main-nail-style").find("button");
+							var main_nail_choice_img=$("#main-choice").find("img");
+							var main_nail_choice_button=$("#main-choice").find("button");
 							
-							main_nail_style_img.addClass("w3-circle");
-							main_nail_style_img.attr('src', style);
-							main_nail_style_button.html(value);
+							
+							main_nail_choice_img.attr('src', style);
+							main_nail_choice_button.html(value);
 							
 						});
+						
+						  $('.good-btn').on("click", function() {
+						      $(this).toggleClass("selected");
+
+						    })
 						
 				})
 			
