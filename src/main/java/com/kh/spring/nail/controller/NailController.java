@@ -42,7 +42,6 @@ public class NailController {
 	}
 	
 	@RequestMapping( value="/nail/selectNailColor.do",produces = "application/text; charset=utf8")
-
 	@ResponseBody
 	public String selectNailList(String nail_color,String nail_check,String nail_style, HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
 	{

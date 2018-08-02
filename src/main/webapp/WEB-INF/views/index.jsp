@@ -803,7 +803,8 @@
 					    		//var member_pk=temp.next().next().val();					    		
 					    		
 					    		bookmark_val.nail_pk=temp.nextAll("[name='nail_pk']").val();					    		
-					    		bookmark_val.member_pk=temp.nextAll("[name='member_pk']").val();					    		
+					    		bookmark_val.member_pk=temp.nextAll("[name='store_pk']").val();			    		
+					    		bookmark_val.store_pk=temp.nextAll("[name='member_pk']").val();						    		
 					    		bookmark_val.bookmark_check='true';
 					    		
 					    		///*json 객체로 바로넘기기
@@ -811,16 +812,13 @@
 					    		      jQuery.ajaxSettings.traditional = true;
 					    		
 					    		    $.ajax({
-								 	url:"${path}/nail/selectNailreset.do",
+								 	url:"${path}/bookmark/insertBookmark.do",
 									data:{"bookmark_val":jsonData},
 									type: "post",
 									dataType: "json",
 									success: function(data){
-										//temp.attr("alt","true");
-							    		//temp.attr("src","/spring/resources/icons/love_filled.svg");
-										}
-									
-									},
+										alert(data);
+										},
 									error: function(jpxhr,textStatus,errormsg) {
 										console.log("ajax전송실패");
 										console.log(jpxhr);
@@ -829,7 +827,8 @@
 									}
 								})	
 					    		
-					    	} else {
+					    	} 
+					    	else {
 					    		temp.attr("alt","false");
 					    		temp.attr("src","/spring/resources/icons/love_blank.svg");
 					    	}
@@ -849,7 +848,8 @@
  <div  class="cover-card col-sm-${col_i[status.index]}">
  	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
-		<input class="member_pk" name="member_pk" type="hidden" value="member_pk" >
+		<input class="store_pk" name="store_pk" type="hidden" value="3" >
+		<input class="member_pk" name="member_pk" type="hidden" value="2" >
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
