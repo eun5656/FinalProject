@@ -789,35 +789,34 @@
 				function eventBind(){
 					  //북마크 기능
 					    $(".b_icon").click(function() {
+					    	var temp=$(this);
 					    	var bookmark_val = { 
-					    			nail_pk: null,
-					    			member_pk: null,
-					    			bookmark_check: null
+					    			nail_pk: temp.nextAll("[name='nail_pk']").val(),
+					    			member_pk: temp.nextAll("[name='member_pk']").val(),
+					    			store_pk: temp.nextAll("[name='store_pk']").val(),
+					    			bookmark_check:null 			
 									}
 					    	
-					    	var temp=$(this);
+					    
+			    		      
+					    	
 					    	if (temp.attr("alt")=='false') 
-					    	{	temp.attr("alt","true");
-					    		temp.attr("src","/spring/resources/icons/love_filled.svg");
+					    	{	
+					    		bookmark_val.bookmark_check="ture";
 					    		//var nail_pk=temp.next().val();					    		
-					    		//var member_pk=temp.next().next().val();					    		
-					    		
-					    		bookmark_val.nail_pk=temp.nextAll("[name='nail_pk']").val();					    		
-					    		bookmark_val.member_pk=temp.nextAll("[name='store_pk']").val();			    		
-					    		bookmark_val.store_pk=temp.nextAll("[name='member_pk']").val();						    		
-					    		bookmark_val.bookmark_check='true';
-					    		
-					    		///*json 객체로 바로넘기기
-					    		var jsonData = JSON.stringify(bookmark_val);
-					    		      jQuery.ajaxSettings.traditional = true;
-					    		
+					    		//var member_pk=temp.next().next().val();
+					    	  var jsonData = JSON.stringify(bookmark_val);
+			    		      jQuery.ajaxSettings.traditional = true;
+					    		///*json 객체로 바로넘기기					    							    		
 					    		    $.ajax({
 								 	url:"${path}/bookmark/insertBookmark.do",
 									data:{"bookmark_val":jsonData},
 									type: "post",
 									dataType: "json",
 									success: function(data){
-										alert(data);
+			    		  		    alert(data);
+										temp.attr("alt","true");
+						    			temp.attr("src","/spring/resources/icons/love_filled.svg");
 										},
 									error: function(jpxhr,textStatus,errormsg) {
 										console.log("ajax전송실패");
@@ -829,8 +828,30 @@
 					    		
 					    	} 
 					    	else {
-					    		temp.attr("alt","false");
-					    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+					    		
+					    		//bookmark_val.bookmark_check="false";
+					    		//var nail_pk=temp.next().val();					    		
+					    		//var member_pk=temp.next().next().val();\ss
+					    		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+					    		var member_pk=temp.nextAll("[name='member_pk']").val()
+				    		    $.ajax({
+							 	url:"${path}/bookmark/deleteBookmark.do",
+								data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+								type: "post",
+								dataType: "json",
+								success: function(data){
+									temp.attr("alt","false");
+						    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+									},
+								error: function(jpxhr,textStatus,errormsg) {
+									console.log("ajax전송실패");
+									console.log(jpxhr);
+									console.log(textStatus);
+									console.log(errormsg);
+								}
+							})	
+							
+					    		
 					    	}
 					    });
 				}
@@ -846,10 +867,13 @@
 <div id="nail-list">	
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
  <div  class="cover-card col-sm-${col_i[status.index]}">
- 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
+ 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
+ 	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
 		<input class="store_pk" name="store_pk" type="hidden" value="3" >
 		<input class="member_pk" name="member_pk" type="hidden" value="2" >
+		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
+		<!-- 내일 ajax모두에 추가해주기...졸려 -->
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >

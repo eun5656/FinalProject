@@ -41,12 +41,7 @@ public class BookmarkController {
 		int nail_pk = Integer.parseInt(jsonObject.getString("nail_pk"));
 		int member_pk = Integer.parseInt(jsonObject.getString("member_pk"));
 		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
-		String bookmark_check=(String) jsonObject.get("bookmark_check");
-		
-		System.out.println(nail_pk);
-		System.out.println(member_pk);
-		System.out.println(store_pk);
-		System.out.println(bookmark_check);
+		String bookmark_check=String.valueOf(jsonObject.get("bookmark_check"));
 		
 		
 		Map map=new HashMap();
@@ -59,6 +54,32 @@ public class BookmarkController {
 		//그냥...해봤음....
 		
 		int result=service.insertBookmark(map);
+		ObjectMapper mapper=new ObjectMapper();
+		String jsonstr="";
+		jsonstr=mapper.writeValueAsString("hi");
+		
+		return jsonstr;
+	}
+	
+	@RequestMapping(value="/bookmark/deleteBookmark.do", produces="application/text; charset=utf-8")
+	@ResponseBody
+	public String deleteBookmark(String bookmark_pk,String member_pk, HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
+	{
+		
+		System.out.println(bookmark_pk);
+		System.out.println(member_pk);
+		/*String jsonStr ="";
+		JSONObject jsonObject = JSONObject.fromObject(jsonStr);*/
+		
+		
+		Map map=new HashMap();
+
+		map.put("member_pk", member_pk);
+		map.put("bookmark_pk", bookmark_pk);
+		
+		System.out.println(map);
+		
+		int result=service.deleteBookmark(map);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
@@ -66,4 +87,7 @@ public class BookmarkController {
 		
 		return jsonstr;
 	}
+	
+	
+	
 }

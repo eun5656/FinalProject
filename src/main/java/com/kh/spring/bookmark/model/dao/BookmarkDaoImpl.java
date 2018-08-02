@@ -16,6 +16,13 @@ public class BookmarkDaoImpl implements BookmarkDao{
 		return result;
 	}
 
+	@Override
+	public int deleteBookmark(Map map, SqlSessionTemplate sqlSession) {
+		int result=sqlSession.insert("bookmark.deleteBookmark",map);
+		return result;
+	}
+
+	
 
 
 	

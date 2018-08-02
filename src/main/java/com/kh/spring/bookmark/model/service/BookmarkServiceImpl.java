@@ -21,6 +21,13 @@ public class BookmarkServiceImpl implements BookmarkService {
 		int result=dao.insertBookmark(map,sqlSession);
 		return result;
 	}
+
+	@Override
+	public int deleteBookmark(Map map) {
+		int result=dao.deleteBookmark(map,sqlSession);
+		return result;
+	}
+
 	
 	
 	

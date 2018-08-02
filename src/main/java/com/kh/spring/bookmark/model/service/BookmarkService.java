@@ -8,5 +8,8 @@ public interface BookmarkService {
 
 	int insertBookmark(Map map);
 
+	int deleteBookmark(Map map);
+
+
 
 }

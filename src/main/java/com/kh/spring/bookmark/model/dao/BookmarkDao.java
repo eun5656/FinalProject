@@ -9,4 +9,7 @@ public interface BookmarkDao {
 
 	int insertBookmark(Map map, SqlSessionTemplate sqlSession);
 
+	int deleteBookmark(Map map, SqlSessionTemplate sqlSession);
+
+
 }
