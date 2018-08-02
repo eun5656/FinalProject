@@ -108,8 +108,7 @@
                           <div class="price col-md-6">
                             <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-                            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+                            <h5 class="">경기도 구리시</h5>
                           </div>
                           <div class="rating hidden-sm col-md-6">
                             <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -147,8 +146,7 @@
           <div class="price col-md-6">
             <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+            <h5 class=""> 경기도 구리시</h5>
           </div>
           <div class="rating hidden-sm col-md-6">
             <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -181,8 +179,7 @@
           <div class="price col-md-6">
             <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+            <h5 class="">경기도 구리시</h5>
           </div>
           <div class="rating hidden-sm col-md-6">
             <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -225,8 +222,7 @@
               <div class="price col-md-6">
                 <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+                <h5 class="">경기도 구리시</h5>
               </div>
               <div class="rating hidden-sm col-md-6">
                 <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -258,8 +254,7 @@
               <div class="price col-md-6">
                 <h5 style="margin-bottom:7px;">
                                         1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                        경기도 구리시</h5>
+                <h5 class="">경기도 구리시</h5>
               </div>
               <div class="rating hidden-sm col-md-6">
                 <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -292,8 +287,7 @@
               <div class="price col-md-6">
                 <h5 style="margin-bottom:7px;">
                                           1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                          경기도 구리시</h5>
+                <h5 class="">경기도 구리시</h5>
               </div>
               <div class="rating hidden-sm col-md-6">
                 <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -338,7 +332,7 @@
     <!--nail 선택-->
     <div class="w3-dropdown-hover">
       <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체">
-        <img src="${path }/resources/images/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
+        <img src="${path }/resources/images/nails/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
       <div  class="w3-dropdown-content w3-card-12 w3-border w3-round">
         <!--media로 조정해주기 default는 height 3.5%-->
         <ul id="dropdown-menu">
@@ -448,20 +442,20 @@
 
     <div class="w3-dropdown-hover">
       <div id="main-check" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="네일/패디">
-        <img src="${path }/resources/images\nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
+        <img src="${path }/resources/images/nails/nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
      
       <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
        
-          <div class="nail-check " style="text-align:left; padding-left: 10px;" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+          <div class="nail-check " style="text-align:left; padding-left: 10px;" value="네일"><img src="${path }/resources/images/nails/beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
         
-          <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
+          <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images/nails/footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
 	</div>	
 
 
     <div class="w3-dropdown-hover">
       <div id="main-nail-style" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체옵션">
-      <img src="${path }/resources/images/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
+      <img src="${path }/resources/images/nails/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
       <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round">
 
         <!--media로 조정해주기 default는 height 3.5%-->
@@ -690,7 +684,6 @@
 							selectAry.nail_color=null;
 							selectAry.nail_check=null;
 							selectAry.nail_style=null;
-
 
 							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
 							main_nail_color_button.html("전체");

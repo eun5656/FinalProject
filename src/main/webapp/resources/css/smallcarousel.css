@@ -69,7 +69,7 @@
 }
 
 .col-item:hover .info {
-  background-color: #F5F5DC;
+  background-color: rgba(228, 21, 21, 0.06);
 }
 
 .col-item .price {
@@ -84,7 +84,7 @@
 }
 
 .price-text-color {
-  color: #219FD1;
+  color:rgb(252, 230, 23);
 }
 
 .col-item .info .rating {
