@@ -9,6 +9,8 @@
 		<typeAlias type="com.kh.spring.nail.model.vo.Nail" alias="nail"/> 
 
 		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
+		<typeAlias type="com.kh.spring.bookmark.model.vo.Bookmark" alias="bookmark"/>
+		
 
 		
 	</typeAliases>  

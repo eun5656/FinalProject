@@ -38,20 +38,27 @@ public class BookmarkController {
 		
 		String jsonStr = request.getParameter("bookmark_val");
 		JSONObject jsonObject = JSONObject.fromObject(jsonStr);
-
+		int nail_pk = Integer.parseInt(jsonObject.getString("nail_pk"));
+		int member_pk = Integer.parseInt(jsonObject.getString("member_pk"));
+		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
+		String bookmark_check=(String) jsonObject.get("bookmark_check");
+		
+		System.out.println(nail_pk);
+		System.out.println(member_pk);
+		System.out.println(store_pk);
+		System.out.println(bookmark_check);
+		
+		
 		Map map=new HashMap();
 
-		map.put("nail_pk", jsonObject.get("nail_pk"));
+		map.put("nail_pk", nail_pk);
 		map.put("member_pk", jsonObject.get("member_pk"));
+		map.put("bookmark_check", jsonObject.get("bookmark_check"));
+		map.put("store_pk", jsonObject.get("store_pk"));
 
-
-		String nail_pk=(String) (jsonObject.get("nail_pk"));
-		String member_pk=(String) (jsonObject.get("member_pk"));
-		String bookmark_check=(String)(jsonObject.get("bookmark_check"));
-		String store_pk=(String)(jsonObject.get("store_pk"));
 		//그냥...해봤음....
 		
-		int result=service.insertBookmark(nail_pk,member_pk,bookmark_check,store_pk);
+		int result=service.insertBookmark(map);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";

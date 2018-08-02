@@ -1,9 +1,12 @@
 package com.kh.spring.bookmark.model.service;
 
+import java.util.Map;
+
 public interface BookmarkService {
 
 
-	int insertBookmark(String nail_pk, String member_pk, String bookmark_check, String store_pk);
+
+	int insertBookmark(Map map);
 
 
 }
