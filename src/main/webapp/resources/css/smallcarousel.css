@@ -1,9 +1,10 @@
-/*작은케러셀*/
+/*작은케러셀
 .carousel {
   margin-bottom: 0;
   padding: 0 40px 30px 40px;
+  padding-bottom:30px;
 }
-/* The controlsy */
+/* The controlsy 
 .carousel-control {
   left: -12px;
   height: 40px;
@@ -16,20 +17,20 @@
 .carousel-control.right {
   right: -12px;
 }
-/* The indicators */
+/* The indicators 
 .carousel-indicators {
   right: 50%;
   top: auto;
   bottom: -10px;
   margin-right: -19px;
 }
-/* The colour of the indicators */
+/* The colour of the indicators 
 .carousel-indicators li {
   background: #cecece;
 }
 .carousel-indicators .active {
   background: #428bca;
-}
+}*/
 
 
 /**/
@@ -69,7 +70,7 @@
 }
 
 .col-item:hover .info {
-  background-color: rgba(228, 21, 21, 0.06);
+  background-color: #F5F5DC;
 }
 
 .col-item .price {
@@ -84,7 +85,7 @@
 }
 
 .price-text-color {
-  color:rgb(252, 230, 23);
+  color: #219FD1;
 }
 
 .col-item .info .rating {
