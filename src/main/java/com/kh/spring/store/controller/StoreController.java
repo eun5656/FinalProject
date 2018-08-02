@@ -38,5 +38,10 @@ public class StoreController {
 		return view;
 	}
 	
+	@RequestMapping("/store/storeList.do")
+	public String store(Model model){
+		return null;
+	}
+	
 	
 }
