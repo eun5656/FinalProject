@@ -47,11 +47,7 @@ public class NailController {
 	public String selectNailList(String nail_color,String nail_check,String nail_style, HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
 	{
 		
-	//	ObjectMapper mapper=new ObjectMapper();
 
-		//String jsonstr="";
-		
-		
 		logger.info("nail_color"+nail_color);
 		logger.info("nail_check"+nail_check);
 		logger.info("nail_style"+nail_style);
@@ -74,9 +70,7 @@ public class NailController {
 		else {
 			nail_check=null;
 		}
-		
-		
-		
+			
 		
 		Map map=new HashMap();
 		map.put("nail_color", nail_color);
@@ -95,8 +89,7 @@ public class NailController {
 		
 		Map selectlist=new HashMap();	
 		selectlist.put("list", list);
-		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4 };
-		int[] col2=col1;
+		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4,5,3,4 };
 		int k=0;
 		for (int i = 0; i < list.size(); i++) {
 			col_i.add(col1[k]);	
@@ -105,6 +98,7 @@ public class NailController {
 			}
 			k++;
 		}
+		
 		System.out.println("col_i"+col_i);
 		selectlist.put("col_i",col_i);
 		
@@ -122,46 +116,37 @@ public class NailController {
 	}
 	
 	@RequestMapping( value="/nail/selectNailreset.do",produces = "application/text; charset=utf8")
-
 	@ResponseBody
 	public String selectNailreset(String reset)throws JsonProcessingException
 	{
-	
-		
 		
 		Map map=new HashMap();//걍 귀찮아서 map으로함 
-		List<Map<String, Object>> list=service.selectNailList(map);
+		List<Map<String, Object>> list=service.selectNailList(map);		
+		List<Integer> col_i = new ArrayList<Integer>();
+	
 		
-		Map<String, Integer> col_i = new HashMap<String, Integer>();
-		
-		ObjectMapper mapper=new ObjectMapper();
-		
+		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr="";
+		
+		
 		
 		Map selectlist=new HashMap();	
 
-		int [] col1 = { 4, 2,3, 3,3,4,3,2,2,6,4 };
-		int[] col2=col1;
+		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
+		int k=0;
 		for (int i = 0; i < list.size(); i++) {
-			col_i.put(String.valueOf(i), col1[i]);	
-			if(col1.length==0){
-				col1=col2;
+			col_i.add(col1[k]);	
+			if(i%9==0){
+				k=0;
 			}
+			k++;
 		}
 		selectlist.put("list", list);
 		selectlist.put("col_i", col_i);
 		logger.info("selectlist"+selectlist);
-		/*mv.addAllObjects(selectlist);
-		//mv.addAllObjects(col_i);
 
-
-		mv.setViewName("jsonView");
-		return mv;*/
 		jsonstr=mapper.writeValueAsString(selectlist);
 		return jsonstr;		//String으로 보내고 jsp단에서 dkfa
 
-	}
-	
-	
-	
+	}	
 }

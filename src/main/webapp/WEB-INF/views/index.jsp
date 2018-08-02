@@ -561,7 +561,7 @@
 									for (var i = 0; i < data.list.length; i++) {
 											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
@@ -609,7 +609,7 @@
 										for (var i = 0; i < data.list.length; i++) {
 												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
@@ -658,7 +658,7 @@
 										for (var i = 0; i < data.list.length; i++) {
 											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
@@ -692,14 +692,14 @@
 							selectAry.nail_style=null;
 
 
-							main_nail_color_img.attr("src","${path }/resources/images/all-color.jpg");
+							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
 							main_nail_color_button.html("전체");
 							
-							 main_nail_check_img.attr("src","${path }/resources/images/nail-polish.png");
+							 main_nail_check_img.attr("src","${path }/resources/images/nails/nail-polish.png");
 							 main_nail_check_button.html("네일/페디");
 							
 							main_nail_style_img.removeClass("w3-circle");
-							main_nail_style_img.attr("src","${path }/resources/images/plus_btn.png");
+							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
 							
 							
@@ -717,7 +717,7 @@
 										for (var i = 0; i < data.list.length; i++) {
 											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
@@ -756,7 +756,7 @@
  <div  class="cover-card col-sm-${col_i[status.index]}"> 
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/${nail.nail_re_img}" >
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
       <div class="overlay">
         <p>
          <h2>${nail.nail_name}</h2>      
