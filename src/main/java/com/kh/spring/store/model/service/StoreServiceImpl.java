@@ -1,11 +1,14 @@
 package com.kh.spring.store.model.service;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.kh.spring.store.model.dao.StoreDAO;
+import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 
 @Service
@@ -24,6 +27,12 @@ public class StoreServiceImpl implements StoreService {
 		
 		Store store = dao.selectOne(sqlSession,store_pk);
 		return store;
+	}
+
+	@Override
+	public List<Menu> selectMenu(int i) {
+		
+		return dao.selectMenus(sqlSession,i);
 	}
 
 }

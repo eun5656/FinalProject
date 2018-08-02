@@ -141,7 +141,17 @@
 							</div>
 							<!-- tab1 끝 -->
 							<div class="tab-pane active" id="tab_default_2">
-							<p></p>
+							<div style="width: 70%;">
+										<h3 style="margin-left: 30px;">젤네일</h3>
+											<hr style="margin-left: 30px;">
+										<c:forEach var="menu" items="${menus }" varStatus="status">									
+										<p style="width: 100%;">
+											<span>${menu.menu_name }</span><span style="float: right;">${menu.menu_price }원</span>
+										</p>
+										<p style="margin-left: 20px; color:grey;">${menu.menu_info }</p>
+										</c:forEach>
+										<br> <br>
+									</div>
 							</div>
 							<div class="tab-pane" id="tab_default_3">
 

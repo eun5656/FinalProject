@@ -10,6 +10,7 @@
 
 		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
 
+		<typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
 		
 	</typeAliases>  
 </configuration>
