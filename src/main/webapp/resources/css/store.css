@@ -373,8 +373,8 @@
 }
 
 .zindex {
-	position: absolute!important; 
-	z-index: 1;!important;
+	position: absolute;
+	z-index: 1;
 }
 @
 -webkit-keyframes intro {

@@ -1,5 +1,7 @@
 package com.kh.spring.store.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -30,6 +32,11 @@ public class StoreController {
 		System.out.println("스토어 값 확인 : "+store);
 		model.addAttribute("store",store);
 		return view;
+	}
+	
+	@RequestMapping("/store/storeList.do")
+	public String store(Model model){
+		return null;
 	}
 	
 	

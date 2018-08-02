@@ -30,6 +30,12 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale) {
+		
+		
+		
+		/*작은케러셀*/
+		
+		
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
