@@ -870,7 +870,7 @@
  	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
-		<input class="store_pk" name="store_pk" type="hidden" value="3" >
+		<input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
 		<input class="member_pk" name="member_pk" type="hidden" value="2" >
 		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
 		<!-- 내일 ajax모두에 추가해주기...졸려 -->
