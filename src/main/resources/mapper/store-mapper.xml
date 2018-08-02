@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="store">
-<!--  <resultMap type="store" id="storeMap">
-</resultMap>-->
-<resultMap type="menu" id="menuMap">
+<resultMap type="store" id="storeMap">
 </resultMap>
+<!-- <resultMap type="menu" id="menuMap">
+</resultMap> -->
 
 <select id="selectOne" resultMap="storeMap" parameterType="int">
 	select * from store where store_pk = #{store_pk}
 </select>
 
-<select id="selectMenus" resultMap="menuMap" parameterType="int">
+<!--  <select id="selectMenus" resultMap="menuMap" parameterType="int">
 	select * from menu where store_pk = #{store_pk}
-</select>
+</select>-->
 </mapper>
