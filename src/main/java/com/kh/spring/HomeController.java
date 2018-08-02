@@ -39,13 +39,14 @@ public class HomeController {
 		List<Nail> list = service.nailList();
 		List<Integer> col_i = new ArrayList<Integer>();
 
-		int [] col1 = { 4, 2, 6,3,4,3,2,2,6,4 };
-		int[] col2=col1;
+		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
+		int k=0;
 		for (int i = 0; i < list.size(); i++) {
-			col_i.add(col1[i]);	
-			if(col1.length==0){
-				col1=col2;
+			col_i.add(col1[k]);	
+			if(i%9==0){
+				k=0;
 			}
+			k++;
 		}
 		
 		ModelAndView mv=new ModelAndView();

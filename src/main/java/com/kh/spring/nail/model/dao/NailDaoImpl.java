@@ -1,6 +1,7 @@
 package com.kh.spring.nail.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -21,11 +22,16 @@ public class NailDaoImpl implements NailDao {
 		return list;
 	}
 
+
 	@Override
-	public List<Nail> selectNailColor(SqlSessionTemplate sqlSession, String nailColor) {
-		List<Nail> list=sqlSession.selectList("nail.selectNailColor");	
-		return list;
+	public List<Map<String, Object>> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu) {
+		//Map<String, Nail> selectNailMap=sqlSession.selectOne("nail.selectNailMap",selectMenu);
+		 List<Map<String, Object>> check=sqlSession.selectList("nail.selectNailMap",selectMenu);
+		
+	return check;
 	}
+
+
 
 
 }

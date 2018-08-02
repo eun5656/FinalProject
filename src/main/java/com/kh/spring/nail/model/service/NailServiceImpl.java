@@ -1,6 +1,7 @@
 package com.kh.spring.nail.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -35,11 +36,19 @@ public class NailServiceImpl implements NailService{
 
 
 
+	
+
+
 	@Override
-	public List<Nail> selectNailColor(String nailColor) {
-		List<Nail> list=dao.selectNailColor(sqlSession,nailColor);
-		return list;
+	public List<Map<String, Object>> selectNailList(Map selectMenu) {
+		List<Map<String, Object>> selectNailMap=dao.selectNailList(sqlSession,selectMenu);
+		return selectNailMap;
 	}
+
+
+
+	
+	
 
 
 
