@@ -15,8 +15,43 @@
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/naillist.css" rel="stylesheet">
   
-<link href="${path }/resources/css/store.css" rel="stylesheet" />
   
+  <style>
+<!--
+/* 기본 */
+.b_icon {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	display: block;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.b_icon.active {
+	content: url("icons/love_filled.svg");
+}
+
+.icon {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	display: block;
+	fill: rgba(51, 51, 51, 0.5);
+	margin-right: 20px;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.icon.active {
+	fill: #E74C3C;
+}
+.zindex {
+	position: absolute;
+	z-index: 1;
+}
+-->
+</style>
 
 <div class="container-fluid">
 
@@ -513,31 +548,7 @@
 </button>	
   </div>
   
-
-
-
-<div id="nail-list">	
- <c:forEach  items="${nailist}" var="nail" varStatus="status">
- <div  class="cover-card col-sm-${col_i[status.index]}">
- 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
-    <!--<div class="cover-card col-sm-4">-->
-    <div class="hovereffect" style="border-radius: 10px;">
-      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
-      <div class="overlay">
-        <p>
-         <h2>${nail.nail_name}</h2>      
-          <a href="#">${nail.nail_style}</a><br><br><br><br>
-          <a href="#">점포로 이동</a>
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  
- </c:forEach>
-</div>
-
-  <script type="text/javascript">
+ <script type="text/javascript">
 				$(function () {
 					var main_nail_color_img=$("#main-nail-color").find("img");
 					var main_nail_color_button=$("#main-nail-color").find("button");
@@ -579,8 +590,8 @@
 								 
 									for (var i = 0; i < data.list.length; i++) {
 											     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<div class='hovereffect'>";
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
@@ -593,6 +604,7 @@
 								 console.log(html2);
 								 selectbar.after(html1);
 								 $("#nail-list").html(html2);
+								 eventBind()
 							},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -641,6 +653,7 @@
 									}
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);							
+									 eventBind()
 
 								},
 								error: function(jpxhr,textStatus,errormsg) {
@@ -692,6 +705,7 @@
 										console.log(html2);
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);
+										eventBind()
 										
 											
 								
@@ -722,7 +736,7 @@
 							main_nail_style_img.removeClass("w3-circle");
 							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
-							
+
 							
 							$.ajax({
 							 	url:"${path}/nail/selectNailreset.do",
@@ -747,10 +761,14 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
+												 
+												 
+												 
 									}
 										console.log(html2);
 									 selectbar.after(html1);
-									 $("#nail-list").html(html2);																		
+									 $("#nail-list").html(html2);
+									 eventBind();
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -758,17 +776,98 @@
 									console.log(textStatus);
 									console.log(errormsg);
 								}
-							})							
+							})	
+							
 						})
 											
 						  $('.good-btn').on("click", function() {
 						      $(this).toggleClass("selected");
 						    })
-
-						
+						    
+					eventBind();
 				})
+				function eventBind(){
+					  //북마크 기능
+					    $(".b_icon").click(function() {
+					    	var bookmark_val = { 
+					    			nail_pk: null,
+					    			member_pk: null,
+					    			bookmark_check: null
+									}
+					    	
+					    	var temp=$(this);
+					    	if (temp.attr("alt")=='false') 
+					    	{	temp.attr("alt","true");
+					    		temp.attr("src","/spring/resources/icons/love_filled.svg");
+					    		//var nail_pk=temp.next().val();					    		
+					    		//var member_pk=temp.next().next().val();					    		
+					    		
+					    		bookmark_val.nail_pk=temp.nextAll("[name='nail_pk']").val();					    		
+					    		bookmark_val.member_pk=temp.nextAll("[name='member_pk']").val();					    		
+					    		bookmark_val.bookmark_check='true';
+					    		
+					    		///*json 객체로 바로넘기기
+					    		var jsonData = JSON.stringify(bookmark_val);
+					    		      jQuery.ajaxSettings.traditional = true;
+					    		
+					    		    $.ajax({
+								 	url:"${path}/nail/selectNailreset.do",
+									data:{"bookmark_val":jsonData},
+									type: "post",
+									dataType: "json",
+									success: function(data){
+										//temp.attr("alt","true");
+							    		//temp.attr("src","/spring/resources/icons/love_filled.svg");
+										}
+									
+									},
+									error: function(jpxhr,textStatus,errormsg) {
+										console.log("ajax전송실패");
+										console.log(jpxhr);
+										console.log(textStatus);
+										console.log(errormsg);
+									}
+								})	
+					    		
+					    	} else {
+					    		temp.attr("alt","false");
+					    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+					    	}
+					    });
+				}
+				/*
+				$("h2").on("click", "p.test", function(){
+  				  alert($(this).text());
+				});
+				*/
 			
 					</script>
+
+
+<div id="nail-list">	
+ <c:forEach  items="${nailist}" var="nail" varStatus="status">
+ <div  class="cover-card col-sm-${col_i[status.index]}">
+ 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
+		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
+		<input class="member_pk" name="member_pk" type="hidden" value="member_pk" >
+    <!--<div class="cover-card col-sm-4">-->
+    <div class="hovereffect">
+      <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
+      <div class="overlay">
+        <p>
+         <h2>${nail.nail_name}</h2>      
+          <a href="#">${nail.nail_style}</a><br><br><br><br>
+          <a href="#">점포로 이동</a>
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  
+ </c:forEach>
+</div>
+
+ 
 					
 					
 

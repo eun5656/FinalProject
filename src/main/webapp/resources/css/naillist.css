@@ -8,6 +8,8 @@
   position: relative;
   text-align: center;
   cursor: default;
+  
+  border-radius: 10px;
 }
 
 .hovereffect .overlay {
@@ -199,6 +201,7 @@ position: inherit;
   padding: 0px;
   margin: 0px;
   height: 300px;
+  border-radius: 10px;
 }
 
 /*
