@@ -15,7 +15,41 @@
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/naillist.css" rel="stylesheet">
   
-  
+  <style>/* 기본 */
+.b_icon {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	display: block;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.b_icon.active {
+	content: url("icons/love_filled.svg");
+}
+
+.icon {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	display: block;
+	fill: rgba(51, 51, 51, 0.5);
+	margin-right: 20px;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.icon.active {
+	fill: #E74C3C;
+}
+
+.zindex {
+	position: absolute;
+	z-index: 1;
+}
+</style>
+
 
 
 
@@ -518,6 +552,7 @@
 </button>	
   </div>
   
+
   <script type="text/javascript">
 				$(function () {
 					var main_nail_color_img=$("#main-nail-color").find("img");
@@ -559,7 +594,8 @@
 								 var html2="";
 								 
 									for (var i = 0; i < data.list.length; i++) {
-											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -608,6 +644,7 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -657,6 +694,7 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+										 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -691,7 +729,6 @@
 							selectAry.nail_check=null;
 							selectAry.nail_style=null;
 
-
 							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
 							main_nail_color_button.html("전체");
 							
@@ -716,6 +753,7 @@
 									 
 										for (var i = 0; i < data.list.length; i++) {
 											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -738,12 +776,22 @@
 								}
 							})							
 						})
-						
-						
-						
+											
 						  $('.good-btn').on("click", function() {
 						      $(this).toggleClass("selected");
 						    })
+						    
+						  //북마크 기능
+						    $(".b_icon").click(function() {
+						    	if ($(this).attr("alt")=='false') 
+						    	{	$(this).attr("alt","true");
+						    		$(this).attr("src","/spring/resources/icons/love_filled.svg");
+						    	} else {
+						    		$(this).attr("alt","false");
+						    		$(this).attr("src","/spring/resources/icons/love_blank.svg");
+						    	}
+						    });
+
 						
 				})
 			
@@ -753,9 +801,10 @@
 
 <div id="nail-list">	
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
- <div  class="cover-card col-sm-${col_i[status.index]}"> 
+ <div  class="cover-card col-sm-${col_i[status.index]}">
+ 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
     <!--<div class="cover-card col-sm-4">-->
-    <div class="hovereffect">
+    <div class="hovereffect" style="border-radius: 10px;">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
       <div class="overlay">
         <p>
@@ -765,9 +814,8 @@
         </p>
       </div>
     </div>
-  </div>
-  
-  
+  </div>  
+ 
  </c:forEach>
 </div>
 
