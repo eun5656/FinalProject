@@ -48,9 +48,4 @@ public class NailServiceImpl implements NailService{
 
 
 	
-	
-
-
-
-	
 }

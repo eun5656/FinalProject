@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,7 +16,10 @@
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/naillist.css" rel="stylesheet">
   
-  <style>/* 기본 */
+  
+  <style>
+<!--
+/* 기본 */
 .b_icon {
 	position: absolute;
 	width: 32px;
@@ -43,15 +47,12 @@
 .icon.active {
 	fill: #E74C3C;
 }
-
 .zindex {
 	position: absolute;
 	z-index: 1;
 }
+-->
 </style>
-
-
-
 
 <div class="container-fluid">
 
@@ -127,51 +128,12 @@
         </div>
         <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
           <!-- Wrapper for slides -->
-          <div class="carousel-inner">
+          <div class="carousel-inner" style="height: 430px;">
             <div class="item active">
               <div class="row">
 
 
-                  <div class="col-sm-4">
-                    <div class="col-item">
-                      <div class="photo">
-                        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-                      </div>
-                      <div class="info">
-                        <div class="row">
-                          <div class="price col-md-6">
-                            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-                            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
-                          </div>
-                          <div class="rating hidden-sm col-md-6">
-                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
-                          </div>
-
-                        <div class="separator clear-left">
-
-                          <p class="btn-add">
-                          <button href="#" class="btn btn-danger good-btn selected" style="width:90%"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
-            </p>
-
-
-            <p class="btn-details">
-              <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-
-          </div>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="col-sm-4">
+            <div class="col-sm-4">
     <div class="col-item">
       <div class="photo">
         <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
@@ -181,8 +143,7 @@
           <div class="price col-md-6">
             <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+            <h5 class=""> 경기도 구리시</h5>
           </div>
           <div class="rating hidden-sm col-md-6">
             <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -190,10 +151,10 @@
                                                      </i><i class="fa fa-star"></i>
           </div>
         </div>
-        <div class="separator clear-left">
+    <div class="separator clear-left">
           <p class="btn-add">
 
-            <button href="#" class="btn btn-danger good-btn selected " style="width:90%"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
             <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
@@ -205,7 +166,8 @@
   </div>
 
 
-  <div class="col-sm-4">
+
+        <div class="col-sm-4">
     <div class="col-item">
       <div class="photo">
         <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
@@ -215,8 +177,7 @@
           <div class="price col-md-6">
             <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-            <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
+            <h5 class=""> 경기도 구리시</h5>
           </div>
           <div class="rating hidden-sm col-md-6">
             <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
@@ -224,9 +185,43 @@
                                                      </i><i class="fa fa-star"></i>
           </div>
         </div>
-        <div class="separator clear-left">
+    <div class="separator clear-left">
           <p class="btn-add">
-            <button href="#" class="btn btn-danger good-btn selected " style="width:90%" onclick="myFunction();"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
+
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+          </p>
+          <p class="btn-details">
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+         <div class="col-sm-4">
+    <div class="col-item">
+      <div class="photo">
+        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+      </div>
+      <div class="info">
+        <div class="row">
+          <div class="price col-md-6">
+            <h5 style="margin-bottom:7px;">
+                                                        1위 ****샵</h5>
+            <h5 class=""> 경기도 구리시</h5>
+          </div>
+          <div class="rating hidden-sm col-md-6">
+            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="fa fa-star"></i>
+          </div>
+        </div>
+    <div class="separator clear-left">
+          <p class="btn-add">
+
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
             <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
@@ -249,104 +244,106 @@
 
 
 
-      <div class="col-sm-4">
-        <div class="col-item">
-          <div class="photo">
-            <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-          </div>
-          <div class="info">
-            <div class="row">
-              <div class="price col-md-6">
-                <h5 style="margin-bottom:7px;">
+           <div class="col-sm-4">
+    <div class="col-item">
+      <div class="photo">
+        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+      </div>
+      <div class="info">
+        <div class="row">
+          <div class="price col-md-6">
+            <h5 style="margin-bottom:7px;">
                                                         1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                                        경기도 구리시</h5>
-              </div>
-              <div class="rating hidden-sm col-md-6">
-                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+            <h5 class=""> 경기도 구리시</h5>
+          </div>
+          <div class="rating hidden-sm col-md-6">
+            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
                                                      </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
                                                      </i><i class="fa fa-star"></i>
-              </div>
-            </div>
-            <div class="separator clear-left">
-              <p class="btn-add">
-                <a href="#" class="btn btn-danger good-btn selected " style="width:90%"><span class="glyphicon glyphicon-heart"></span> 좋아요</a>
-              </p>
-              <p class="btn-details">
-                <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-            </div>
-            <div class="clearfix">
-            </div>
           </div>
         </div>
-      </div>
+    <div class="separator clear-left">
+          <p class="btn-add">
 
-
-      <div class="col-sm-4">
-        <div class="col-item">
-          <div class="photo">
-            <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-          </div>
-          <div class="info">
-            <div class="row">
-              <div class="price col-md-6">
-                <h5 style="margin-bottom:7px;">
-                                        1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                        경기도 구리시</h5>
-              </div>
-              <div class="rating hidden-sm col-md-6">
-                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                     </i><i class="fa fa-star"></i>
-              </div>
-            </div>
-            <div class="separator clear-left">
-              <p class="btn-add">
-                <button href="#" class="btn btn-danger good-btn selected" style="width:90%"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
-              </p>
-              <p class="btn-details">
-                <a href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</a>
-            </div>
-            <div class="clearfix">
-            </div>
-          </div>
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+          </p>
+          <p class="btn-details">
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+        </div>
+        <div class="clearfix">
         </div>
       </div>
+    </div>
+  </div>
 
 
-
-      <div class="col-sm-4">
-        <div class="col-item">
-          <div class="photo">
-            <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+            <div class="col-sm-4">
+    <div class="col-item">
+      <div class="photo">
+        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+      </div>
+      <div class="info">
+        <div class="row">
+          <div class="price col-md-6">
+            <h5 style="margin-bottom:7px;">
+                                                        1위 ****샵</h5>
+            <h5 class=""> 경기도 구리시</h5>
           </div>
-          <div class="info">
-            <div class="row">
-              <div class="price col-md-6">
-                <h5 style="margin-bottom:7px;">
-                                          1위 ****샵</h5>
-                <h5 class="price-text-color">
-                                          경기도 구리시</h5>
-              </div>
-              <div class="rating hidden-sm col-md-6">
-                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                       </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                       </i><i class="fa fa-star"></i>
-              </div>
-            </div>
-            <div class="separator clear-left">
-              <p class="btn-add">
-                <button href="#" class="btn btn-danger good-btn selected " style="width:90%"><span class="glyphicon glyphicon-heart"></span> 좋아요</button>
-              </p>
-              <p class="btn-details">
-                <a href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</a>
-            </div>
-            <div class="clearfix">
-            </div>
+          <div class="rating hidden-sm col-md-6">
+            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="fa fa-star"></i>
           </div>
         </div>
+    <div class="separator clear-left">
+          <p class="btn-add">
+
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+          </p>
+          <p class="btn-details">
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+        </div>
+        <div class="clearfix">
+        </div>
       </div>
+    </div>
+  </div>
+
+
+
+         <div class="col-sm-4">
+    <div class="col-item">
+      <div class="photo">
+        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+      </div>
+      <div class="info">
+        <div class="row">
+          <div class="price col-md-6">
+            <h5 style="margin-bottom:7px;">
+                                                        1위 ****샵</h5>
+            <h5 class=""> 경기도 구리시</h5>
+          </div>
+          <div class="rating hidden-sm col-md-6">
+            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
+                                                     </i><i class="fa fa-star"></i>
+          </div>
+        </div>
+    <div class="separator clear-left">
+          <p class="btn-add">
+
+                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+          </p>
+          <p class="btn-details">
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+        </div>
+        <div class="clearfix">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
     </div>
   </div>
   </div>
@@ -370,10 +367,10 @@
     </div>
 
     <!--nail 선택-->
-    <div class="w3-dropdown-hover">
+    <div class="w3-dropdown-hover" >
       <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체">
-        <img src="${path }/resources/images/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
-      <div  class="w3-dropdown-content w3-card-12 w3-border w3-round">
+        <img src="${path }/resources/images/nails/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
+      <div  class="w3-dropdown-content w3-card-12 w3-border w3-round" style="z-index: 999">
         <!--media로 조정해주기 default는 height 3.5%-->
         <ul id="dropdown-menu">
           <li class="nail-color" value="레드" >
@@ -482,21 +479,21 @@
 
     <div class="w3-dropdown-hover">
       <div id="main-check" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="네일/패디">
-        <img src="${path }/resources/images\nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
+        <img src="${path }/resources/images/nails/nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button></div>
      
-      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round">
+      <div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border w3-round" style="z-index: 999">
        
-          <div class="nail-check " style="text-align:left; padding-left: 10px;" value="네일"><img src="${path }/resources/images\beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
+          <div class="nail-check " style="text-align:left; padding-left: 10px;" value="네일"><img src="${path }/resources/images/nails/beauty.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">네일</button></div>
         
-          <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images\footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
+          <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images/nails/footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
 	</div>	
 
 
     <div class="w3-dropdown-hover">
       <div id="main-nail-style" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체옵션">
-      <img src="${path }/resources/images/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
-      <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round">
+      <img src="${path }/resources/images/nails/plus_btn.png" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button></div>
+      <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round" style="z-index: 999">
 
         <!--media로 조정해주기 default는 height 3.5%-->
         <ul id="dropdown-menu">
@@ -552,8 +549,7 @@
 </button>	
   </div>
   
-
-  <script type="text/javascript">
+ <script type="text/javascript">
 				$(function () {
 					var main_nail_color_img=$("#main-nail-color").find("img");
 					var main_nail_color_button=$("#main-nail-color").find("button");
@@ -609,6 +605,7 @@
 								 console.log(html2);
 								 selectbar.after(html1);
 								 $("#nail-list").html(html2);
+								 eventBind()
 							},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -657,6 +654,7 @@
 									}
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);							
+									 eventBind()
 
 								},
 								error: function(jpxhr,textStatus,errormsg) {
@@ -708,6 +706,7 @@
 										console.log(html2);
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);
+										eventBind()
 										
 											
 								
@@ -738,7 +737,7 @@
 							main_nail_style_img.removeClass("w3-circle");
 							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
-							
+
 							
 							$.ajax({
 							 	url:"${path}/nail/selectNailreset.do",
@@ -763,10 +762,14 @@
 												 html2+="<a href='#'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
+												 
+												 
+												 
 									}
 										console.log(html2);
 									 selectbar.after(html1);
-									 $("#nail-list").html(html2);																		
+									 $("#nail-list").html(html2);
+									 eventBind();
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -774,35 +777,97 @@
 									console.log(textStatus);
 									console.log(errormsg);
 								}
-							})							
+							})	
+							
 						})
 											
 						  $('.good-btn').on("click", function() {
 						      $(this).toggleClass("selected");
 						    })
 						    
-						  //북마크 기능
-						    $(".b_icon").click(function() {
-						    	if ($(this).attr("alt")=='false') 
-						    	{	$(this).attr("alt","true");
-						    		$(this).attr("src","/spring/resources/icons/love_filled.svg");
-						    	} else {
-						    		$(this).attr("alt","false");
-						    		$(this).attr("src","/spring/resources/icons/love_blank.svg");
-						    	}
-						    });
-
-						
+					eventBind();
 				})
+				function eventBind(){
+					  //북마크 기능
+					    $(".b_icon").click(function() {
+					    	var temp=$(this);
+					    	var bookmark_val = { 
+					    			nail_pk: temp.nextAll("[name='nail_pk']").val(),
+					    			member_pk: temp.nextAll("[name='member_pk']").val(),
+					    			store_pk: temp.nextAll("[name='store_pk']").val(),
+					    			bookmark_check:null 			
+									}
+					    	
+					    
+			    		      
+					    	
+					    	if (temp.attr("alt")=='false') 
+					    	{	
+					    		bookmark_val.bookmark_check="ture";
+					    		//var nail_pk=temp.next().val();					    		
+					    		//var member_pk=temp.next().next().val();
+					    	  var jsonData = JSON.stringify(bookmark_val);
+			    		      jQuery.ajaxSettings.traditional = true;
+					    		///*json 객체로 바로넘기기					    							    		
+					    		    $.ajax({
+								 	url:"${path}/bookmark/insertBookmark.do",
+									data:{"bookmark_val":jsonData},
+									type: "post",
+									dataType: "json",
+									success: function(data){
+			    		  		    alert(data);
+										temp.attr("alt","true");
+						    			temp.attr("src","/spring/resources/icons/love_filled.svg");
+										},
+									error: function(jpxhr,textStatus,errormsg) {
+										console.log("ajax전송실패");
+										console.log(jpxhr);
+										console.log(textStatus);
+										console.log(errormsg);
+									}
+								})	
+					    		
+					    	} 
+					    	else {
+					    		
+					    		//bookmark_val.bookmark_check="false";
+					    		//var nail_pk=temp.next().val();					    		
+					    		//var member_pk=temp.next().next().val();\ss
+					    		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+					    		var member_pk=temp.nextAll("[name='member_pk']").val()
+				    		    $.ajax({
+							 	url:"${path}/bookmark/deleteBookmark.do",
+								data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+								type: "post",
+								dataType: "json",
+								success: function(data){
+									temp.attr("alt","false");
+						    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+									},
+								error: function(jpxhr,textStatus,errormsg) {
+									console.log("ajax전송실패");
+									console.log(jpxhr);
+									console.log(textStatus);
+									console.log(errormsg);
+								}
+							})	
+							
+					    		
+					    	}
+					    });
+				}
+				/*
+				$("h2").on("click", "p.test", function(){
+  				  alert($(this).text());
+				});
+				*/
 			
 					</script>
-					
 
 
 <div id="nail-list">	
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
  <div  class="cover-card col-sm-${col_i[status.index]}">
- 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> 
  	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
@@ -810,7 +875,8 @@
 		<input class="member_pk" name="member_pk" type="hidden" value="2" >
 		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
 		<!-- 내일 ajax모두에 추가해주기...졸려 -->
-    <div class="hovereffect" style="border-radius: 10px;">
+    <!--<div class="cover-card col-sm-4">-->
+    <div class="hovereffect">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
       <div class="overlay">
         <p>
@@ -820,10 +886,15 @@
         </p>
       </div>
     </div>
-  </div>  
- 
+  </div>
+  
+  
  </c:forEach>
 </div>
+
+ 
+					
+					
 
   </div>
   </div>
@@ -832,4 +903,3 @@
 
   <!--</div>-->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-
