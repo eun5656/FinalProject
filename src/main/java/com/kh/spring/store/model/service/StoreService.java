@@ -11,4 +11,8 @@ public interface StoreService {
 
 	List<Menu> selectMenu(int i);
 
+	List<Store> storeList();
+
+	List<Store> mainStoreList();
+
 }

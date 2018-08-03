@@ -35,4 +35,16 @@ public class StoreServiceImpl implements StoreService {
 		return dao.selectMenus(sqlSession,i);
 	}
 
+	@Override
+	public List<Store> storeList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Store> mainStoreList() {
+		List<Store> naillist=dao.mainStoreList(sqlSession);
+		return naillist;
+	}
+
 }

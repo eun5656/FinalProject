@@ -13,4 +13,6 @@ public interface StoreDAO {
 
 	List<Menu> selectMenus(SqlSessionTemplate sqlSession, int i);
 
+	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
+
 }
