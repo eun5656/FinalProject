@@ -50,12 +50,15 @@ public class NailServiceImpl implements NailService{
 
 
 
+<<<<<<< HEAD
 	@Override
 	public List<Nail> nailListStore(int store_pk) {
 		
 		return dao.listNailStore(sqlSession,store_pk);
 	}
 
+=======
+>>>>>>> sungjin_ver1.5
 
 
 	

@@ -24,9 +24,15 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk) {
 	
 		return sqlSession.delete("store.deleteMenu",menu_pk);
+=======
+	public List<Store> mainStoreList(SqlSessionTemplate sqlSession) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("store.mainStoreList");
+>>>>>>> sungjin_ver1.5
 	}
 
 }

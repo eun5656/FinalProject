@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.store.model.vo.Store;
 
 public interface NailService {
 
@@ -14,6 +15,9 @@ public interface NailService {
 
 	List<Map<String, Object>> selectNailList(Map selectMenu);
 
+<<<<<<< HEAD
 	List<Nail> nailListStore(int i);
+=======
+>>>>>>> sungjin_ver1.5
 
 }
