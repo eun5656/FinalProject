@@ -13,10 +13,7 @@ public interface StoreDAO {
 
 	List<Menu> selectMenus(SqlSessionTemplate sqlSession, int i);
 
-<<<<<<< HEAD
 	int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk);
-=======
 	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
->>>>>>> sungjin_ver1.5
 
 }
