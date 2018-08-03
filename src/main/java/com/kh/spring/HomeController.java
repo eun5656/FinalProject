@@ -44,7 +44,6 @@ public class HomeController {
 		
 		List<Store> storelist =storeService.mainStoreList();
 		List<Nail> naillist = nailService.nailList();
-		System.out.println(storelist);
 		List<Integer> col_i = new ArrayList<Integer>();
 
 		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
@@ -58,11 +57,11 @@ public class HomeController {
 		}
 		
 		ModelAndView mv=new ModelAndView();
+		mv.addObject("storelist", storelist);
+		logger.info("storelist"+storelist);
 		mv.addObject("nailist", naillist);
 		mv.addObject("col_i", col_i);
 
-		System.out.println(naillist);
-		System.out.println(col_i);	
 		mv.setViewName("index");
 		return mv;
 	}
