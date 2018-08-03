@@ -54,9 +54,19 @@ public class BookmarkController {
 		//그냥...해봤음....
 		
 		int result=service.insertBookmark(map);
+		String msg;
+		if(result>0){
+			msg="북마크 등록완료";
+		}
+		else {
+			msg="북마크 등록실패";
+
+		}
+		
+		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
-		jsonstr=mapper.writeValueAsString("hi");
+		jsonstr=mapper.writeValueAsString(msg);
 		
 		return jsonstr;
 	}
@@ -80,10 +90,18 @@ public class BookmarkController {
 		System.out.println(map);
 		
 		int result=service.deleteBookmark(map);
+		String msg;
+		if(result>0){
+			msg="북마크 삭제완료";
+		}
+		else {
+			msg="북마크 삭제실패";
+
+		}
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
-		jsonstr=mapper.writeValueAsString("hi");
+		jsonstr=mapper.writeValueAsString(msg);
 		
 		return jsonstr;
 	}

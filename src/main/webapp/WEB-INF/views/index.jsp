@@ -592,6 +592,11 @@
 									for (var i = 0; i < data.list.length; i++) {
 											     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -642,6 +647,12 @@
 										for (var i = 0; i < data.list.length; i++) {
 												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+											     html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
+											
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -695,6 +706,12 @@
 										 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+												 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
+											
 												 html2+="<div class='overlay'>";
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
@@ -753,6 +770,12 @@
 										for (var i = 0; i < data.list.length; i++) {
 											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
+											
 											 	 html2+="<div class='hovereffect'>";
 												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
 												 html2+="<div class='overlay'>";
@@ -841,6 +864,7 @@
 								type: "post",
 								dataType: "json",
 								success: function(data){
+			    		  		    alert(data);
 									temp.attr("alt","false");
 						    		temp.attr("src","/spring/resources/icons/love_blank.svg");
 									},
