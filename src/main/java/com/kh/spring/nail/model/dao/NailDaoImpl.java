@@ -1,3 +1,4 @@
+
 package com.kh.spring.nail.model.dao;
 
 import java.util.List;
@@ -22,14 +23,14 @@ public class NailDaoImpl implements NailDao {
 		return list;
 	}
 
-
 	@Override
 	public List<Map<String, Object>> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu) {
-		//Map<String, Nail> selectNailMap=sqlSession.selectOne("nail.selectNailMap",selectMenu);
-		 List<Map<String, Object>> check=sqlSession.selectList("nail.selectNailMap",selectMenu);
-		
-	return check;
+		 List<Map<String, Object>> selectNailMap=sqlSession.selectList("nail.selectNailMap",selectMenu);
+
+		return selectNailMap;
 	}
+
+
 
 
 
