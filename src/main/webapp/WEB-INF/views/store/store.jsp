@@ -68,69 +68,54 @@
 							<div class="tab-pane" id="tab_default_1">
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
 									<div class="carousel-inner">
-										<div class="item active">
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop "
-												style="margin-top: 10px;">
+									<c:forEach var="nail1" items="${nails }" varStatus="status">
+										<div class="item" id="item${status.count }">
+										<a href="#NailModal${nail.nail_pk }" data-toggle="modal">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;">
 												<div class="hovereffect">
 													<img class="img-responsive radius14 smail-carousel"
-														src="http://placehold.it/350x250" alt="">
+														src="${path }/resources/images/nails/${nail.nail_re_img}" alt="">
 													<div class="overlay">
-														<h2>네일 디자인 이름1</h2>
+														<h2>${nail.nail_name}</h2>
 														<p>
-															<a href="#">더보기</a>
+															<a href="#NailModal${nail.nail_pk }" data-toggle="modal">더보기</a>
 														</p>
 													</div>
 												</div>
 											</div>
-										</div>
-										<div class="item">
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop"
-												style="margin-top: 10px;">
-												<div class="hovereffect">
-													<img class="img-responsive radius14 smail-carousel"
-														src="http://placehold.it/350x250" alt="">
-													<div class="overlay">
-														<h2>네일 디자인 이름2</h2>
-														<p>
-															<a href="#">더보기</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div
-												class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear"
-												style="margin-top: 10px;">
-												<div class="hovereffect">
-													<img class="img-responsive radius14 smail-carousel"
-														src="http://placehold.it/350x250" alt="">
-													<div class="overlay">
-														<h2>네일 디자인 이름3</h2>
-														<p>
-															<a href="#">더보기</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="item">
-											<div
-												class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop disappear"
-												style="margin-top: 10px;">
-												<div class="hovereffect">
-													<img class="img-responsive radius14 smail-carousel"
-														src="http://placehold.it/350x250" alt="">
-													<div class="overlay">
-														<h2>네일 디자인 이름4</h2>
-														<p>
-															<a href="#">더보기</a>
-														</p>
-													</div>
-												</div>
-											</div>
-											</div>
+											</a>
+											</div>										
+										</c:forEach>
 									</div>
+									<c:forEach var ="nail" items="${nails }">
+										<!-- Modal start -->
+											<div class="modal fade" id="NailModal${nail.nail_pk }">
+										<div class="modal-dialog">
+											<div class="modal-content">
+
+												<!-- Modal Header -->
+												<div class="modal-header">
+													<h4 class="modal-title">시술정보 상세</h4>
+													<button type="button" class="close" data-dismiss="modal">&times;</button>
+												</div>
+
+												<!-- Modal body -->
+												<div class="modal-body">
+													<div class="wh100">
+															<img class="img-responsive radius14"
+															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
+													</div>
+													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check==1?'네일':'페디' }, 종류	 : ${nail.nail_style }</p>
+												</div>
+												<!-- Modal footer -->
+												<div class="modal-footer">
+												</div>
+
+											</div>
+										</div>
+									</div>
+									<!-- Modal End -->
+									</c:forEach>
 									<a class="left carousel-control" href="#theCarousel"
 										data-slide="prev"><i
 										class="glyphicon glyphicon-chevron-left"></i></a> <a

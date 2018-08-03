@@ -47,5 +47,16 @@ public class NailServiceImpl implements NailService{
 
 
 
+
+
+
+	@Override
+	public List<Nail> nailListStore(int store_pk) {
+		
+		return dao.listNailStore(sqlSession,store_pk);
+	}
+
+
+
 	
 }

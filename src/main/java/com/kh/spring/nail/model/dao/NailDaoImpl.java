@@ -30,6 +30,12 @@ public class NailDaoImpl implements NailDao {
 		return selectNailMap;
 	}
 
+	@Override
+	public List<Nail> listNailStore(SqlSessionTemplate sqlSession, int store_pk) {
+		
+		return sqlSession.selectList("nail.listNailStore", store_pk);
+	}
+
 
 
 

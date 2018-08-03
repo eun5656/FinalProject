@@ -20,4 +20,7 @@ public interface NailDao {
 
 	List<Map<String, Object>> selectNailList(SqlSessionTemplate sqlSession, Map selectMenu);
 
+
+	List<Nail> listNailStore(SqlSessionTemplate sqlSession, int store_pk);
+
 }

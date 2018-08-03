@@ -14,4 +14,6 @@ public interface NailService {
 
 	List<Map<String, Object>> selectNailList(Map selectMenu);
 
+	List<Nail> nailListStore(int i);
+
 }

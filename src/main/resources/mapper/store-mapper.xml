@@ -3,22 +3,20 @@
 <mapper namespace="store">
 <resultMap type="store" id="storeMap">
 </resultMap>
-<!-- <resultMap type="menu" id="menuMap">
-</resultMap> -->
+<resultMap type="menu" id="menuMap">
+</resultMap>
 
 <select id="selectOne" resultMap="storeMap" parameterType="int">
 	select * from store where store_pk = #{store_pk}
 </select>
 
-<!--  <select id="selectMenus" resultMap="menuMap" parameterType="int">
+ <select id="selectMenus" resultMap="menuMap" parameterType="int">
 	select * from menu where store_pk = #{store_pk}
-<<<<<<< HEAD
+
 </select>
 
-<delete id="deleteMenu" parameterType="int">
+<delete id="deleteMenu" parameterType="string">
 	delete from menu where menu_pk=#{menu_pk}
 </delete>
-=======
-</select>-->
->>>>>>> 04f59317b423a5839d061eb1db00fce564234924
+
 </mapper>

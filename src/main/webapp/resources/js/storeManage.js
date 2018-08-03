@@ -97,7 +97,6 @@ $("#menuDelete").click(function(){
 				alert("메뉴 삭제 완료");
 			},
 			error:function(jqXHR, textStatus, errorThrown){
-				alert("에러 발생!!"+ textStatus +" : "+errorThrown);
 			}
 		});
 	});		
