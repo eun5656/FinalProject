@@ -68,25 +68,41 @@
 							<div class="tab-pane" id="tab_default_1">
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
 									<div class="carousel-inner">
-									<c:forEach var="nail1" items="${nails }" varStatus="status">
-										<div class="item" id="item${status.count }">
-										<a href="#NailModal${nail.nail_pk }" data-toggle="modal">
+									<c:forEach var="nail" items="${nails }" varStatus="status" step='3'>
+										<c:if test="${status.count eq 1 }">
+										<div class="item active" >
+										</c:if>
+										<c:if test="${status.count%3 eq 1 }">
+										<div class="item">
+										</c:if>
+										<c:forEach var='i' begin='1' end="${status.count +2 }">
+										<a href="#NailModal${nails[i-1].nail_pk }" data-toggle="modal">
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;">
 												<div class="hovereffect">
+												
 													<img class="img-responsive radius14 smail-carousel"
-														src="${path }/resources/images/nails/${nail.nail_re_img}" alt="">
+														src="${path }/resources/images/nails/${nails[i-1].nail_re_img}" alt="">
 													<div class="overlay">
-														<h2>${nail.nail_name}</h2>
+														<h2>${nails[i-1].nail_name}</h2>
 														<p>
-															<a href="#NailModal${nail.nail_pk }" data-toggle="modal">더보기</a>
+															<a href="#NailModal${nails[i-1].nail_pk }" data-toggle="modal">더보기</a>
 														</p>
 													</div>
+													
 												</div>
 											</div>
-											</a>
-											</div>										
+											</a>																				
+											</c:forEach>
+										<c:if test="${status.count eq 1 }">
+										</div>
+										</c:if>
+										<c:if test="${status.count%3 eq 1 }">
+										</div>		
+										</c:if>	
+										<!-- item end -->						
 										</c:forEach>
 									</div>
+									<!--  casual inner end -->
 									<c:forEach var ="nail" items="${nails }">
 										<!-- Modal start -->
 											<div class="modal fade" id="NailModal${nail.nail_pk }">
