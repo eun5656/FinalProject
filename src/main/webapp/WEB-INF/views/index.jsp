@@ -128,7 +128,7 @@
         </div>
         <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
           <!-- Wrapper for slides -->
-          <div class="carousel-inner" style="height: 430px;">
+          <div class="carousel-inner">
             <div class="item active">
               <div class="row">
 
