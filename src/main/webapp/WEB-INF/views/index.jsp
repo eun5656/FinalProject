@@ -106,6 +106,7 @@
         <br>
 
         <!--작은 케러셀-->
+        
 
         <div class="row">
           <div class="col-md-12">
@@ -123,114 +124,54 @@
               <a class="right fa fa-chevron-right btn  btn-outline-light text-dark" href="#carousel-example-generic"
                   data-slide="next"></a>
             </div>
-
       </div>
         </div>
+        
+        
         <div id="carousel-example-generic" class="carousel slide " data-ride="carousel">
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
             <div class="item active">
               <div class="row">
 
-
+ <c:forEach begin="0" end="2"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
       <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+        <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
         <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
+          <div class="price col-sm-6">
+            <h5 style="margin-bottom:7px;">1위  :<c:out value="${store.store_name}"/> 샵</h5>
+            <h6 class=""><c:out value="주소 : ${store.store_address}"/></h6>
           </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
+          
+          <div class="rating col-sm-6">
+          <c:forEach begin="1" end="${store.store_rank}">
+            <i class="price-text-color fa fa-star"></i>
+            </c:forEach>
+            <c:forEach begin="1" end="${5-store.store_rank}">
+              <i class=" fa fa-star"></i>
+           </c:forEach>    
           </div>
         </div>
     <div class="separator clear-left">
-          <p class="btn-add">
+          <p class="btn-add" style=""> 
 
                           <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
       </div>
     </div>
   </div>
+</c:forEach>
 
-
-
-        <div class="col-sm-4">
-    <div class="col-item">
-      <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-      </div>
-      <div class="info">
-        <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
-          </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
-          </div>
-        </div>
-    <div class="separator clear-left">
-          <p class="btn-add">
-
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
-          </p>
-          <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-         <div class="col-sm-4">
-    <div class="col-item">
-      <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-      </div>
-      <div class="info">
-        <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
-          </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
-          </div>
-        </div>
-    <div class="separator clear-left">
-          <p class="btn-add">
-
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
-          </p>
-          <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-  </div>
+ 
 
 
 
@@ -243,105 +184,42 @@
     <div class="row">
 
 
-
-           <div class="col-sm-4">
-    <div class="col-item">
-      <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-      </div>
-      <div class="info">
-        <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
-          </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
-          </div>
-        </div>
-    <div class="separator clear-left">
-          <p class="btn-add">
-
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
-          </p>
-          <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-  </div>
-
-
+ <c:forEach begin="3" end="5"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
       <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+        <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
         <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
+          <div class="price col-sm-6">
+            <h5 style="margin-bottom:7px;">1위  :<c:out value="${store.store_name}"/> 샵</h5>
+            <h6 class=""><c:out value="주소 : ${store.store_address}"/></h6>
           </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
+          
+          <div class="rating col-sm-6">
+          <c:forEach begin="1" end="${store.store_rank}">
+            <i class="price-text-color fa fa-star"></i>
+            </c:forEach>
+            <c:forEach begin="1" end="${5-store.store_rank}">
+              <i class=" fa fa-star"></i>
+           </c:forEach>    
           </div>
         </div>
     <div class="separator clear-left">
-          <p class="btn-add">
+          <p class="btn-add" style=""> 
 
                           <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
+            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
       </div>
     </div>
   </div>
-
-
-
-         <div class="col-sm-4">
-    <div class="col-item">
-      <div class="photo">
-        <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
-      </div>
-      <div class="info">
-        <div class="row">
-          <div class="price col-md-6">
-            <h5 style="margin-bottom:7px;">
-                                                        1위 ****샵</h5>
-            <h5 class=""> 경기도 구리시</h5>
-          </div>
-          <div class="rating hidden-sm col-md-6">
-            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                                     </i><i class="fa fa-star"></i>
-          </div>
-        </div>
-    <div class="separator clear-left">
-          <p class="btn-add">
-
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
-          </p>
-          <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰</button>
-        </div>
-        <div class="clearfix">
-        </div>
-      </div>
-    </div>
-  </div>
+</c:forEach>
   
   
     </div>

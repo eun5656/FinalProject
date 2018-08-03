@@ -17,6 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.store.model.service.StoreService;
+import com.kh.spring.store.model.vo.Store;
 
 /**
  * Handles requests for the application home page.
@@ -26,7 +28,9 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired
-	private NailService service;
+	private NailService nailService;
+	@Autowired 
+	private StoreService storeService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale) {
@@ -34,14 +38,17 @@ public class HomeController {
 
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
+		
 		String formattedDate = dateFormat.format(date);
-		List<Nail> list = service.nailList();
+		
+		
+		List<Store> storelist =storeService.mainStoreList();
+		List<Nail> naillist = nailService.nailList();
 		List<Integer> col_i = new ArrayList<Integer>();
 
 		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
 		int k=0;
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < naillist.size(); i++) {
 			col_i.add(col1[k]);	
 			if(i%9==0){
 				k=0;
@@ -50,11 +57,11 @@ public class HomeController {
 		}
 		
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("nailist", list);
+		mv.addObject("storelist", storelist);
+		logger.info("storelist"+storelist);
+		mv.addObject("nailist", naillist);
 		mv.addObject("col_i", col_i);
 
-		System.out.println(list);
-		System.out.println(col_i);	
 		mv.setViewName("index");
 		return mv;
 	}
