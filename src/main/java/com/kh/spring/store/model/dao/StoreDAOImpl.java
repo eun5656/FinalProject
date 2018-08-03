@@ -23,4 +23,10 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.selectList("store.selectMenus",store_pk);
 	}
 
+	@Override
+	public int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk) {
+	
+		return sqlSession.delete("store.deleteMenu",menu_pk);
+	}
+
 }

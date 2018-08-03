@@ -13,4 +13,8 @@
 <select id="selectMenus" resultMap="menuMap" parameterType="int">
 	select * from menu where store_pk = #{store_pk}
 </select>
+
+<delete id="deleteMenu" parameterType="int">
+	delete from menu where menu_pk=#{menu_pk}
+</delete>
 </mapper>

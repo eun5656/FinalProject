@@ -13,4 +13,6 @@ public interface StoreDAO {
 
 	List<Menu> selectMenus(SqlSessionTemplate sqlSession, int i);
 
+	int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk);
+
 }

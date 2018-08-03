@@ -164,11 +164,11 @@ ul, li {
 
 #left-side {
 /* 	padding-top: 100px; */
-	padding: 70px;
+/* 	padding: 70px; */
 /* 	padding-right: 10px; */
 	height: auto%;
 	width: 100%;
-	overflow: hidden;
+	overflow: visible;
 	position: relative;
 }
 

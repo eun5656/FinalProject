@@ -35,4 +35,10 @@ public class StoreServiceImpl implements StoreService {
 		return dao.selectMenus(sqlSession,i);
 	}
 
+	@Override
+	public int deleteMenu(String menu_pk) {
+		
+		return dao.deleteMenu(sqlSession,menu_pk);
+	}
+
 }

@@ -11,4 +11,6 @@ public interface StoreService {
 
 	List<Menu> selectMenu(int i);
 
+	int deleteMenu(String menu_pk);
+
 }

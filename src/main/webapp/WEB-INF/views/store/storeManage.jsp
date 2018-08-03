@@ -14,11 +14,10 @@
 <link href='${path }/resources/css/scheduler.min.css' rel='stylesheet' />
 <script src='${path }/resources/js/moment.min.js'></script>
 <script src='${path }/resources/js/fullcalendar.min.js'></script>
-<script src='${path }/resources/locale/ko.js'></script>
 <script src='${path }/resources/js/gcal.min.js'></script>
 <script src='${path }/resources/js/scheduler.min.js'></script>
 <!-- storeManage css -->
-<link href="${path }/resources/css/storeManage.css" rel="stylesheet" />
+<link href="${path }/resources/css/storeManage.css?ver=2" rel="stylesheet" />
 <!-- storeManage js -->
 <script src="${path }/resources/js/storeManage.js"></script>
 <div>
@@ -89,7 +88,7 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 										<div class="wh100">
 											<a href="#NailModal" data-toggle="modal"> <img
-												class="img-responsive centerImg" src="images/plus.png"
+												class="img-responsive centerImg" src="${path}/resources/images/plus.png"
 												alt=""></a>
 										</div>
 									</div>
@@ -200,11 +199,14 @@
 									<div style="width: 70%;">
 										<h3 style="margin-left: 30px;">젤네일</h3>
 											<hr style="margin-left: 30px;">
-										<c:forEach var="menu" items=${menus } varStatus="status">									
+										<c:forEach var="menu" items="${menus }" varStatus="status">									
 										<p style="width: 100%;">
 											<span>${menu.menu_name }</span><span style="float: right;">${menu.menu_price }원</span>
 										</p>
-										<p style="margin-left: 20px; color:grey;">${menu.menu_info }</p>
+										<p style="margin-left: 20px; color:grey;">${menu.menu_info }
+										<button id ="menuDelete" class="btn-danger" value="${menu.menu_pk }" style="float:right;">삭제
+										</button>
+										</p>										
 										</c:forEach>
 										<br> <br>
 									</div>
@@ -229,13 +231,12 @@
 
 			<div id="second">
 				<form class="form-signin">
-					<div class="container">
-						<div class="row">
+					<div class="row">
 							<div class="col-md-7 col-md-offset-2">
 
 								<div class="panel panel-default">
 
-									<div class="panel panel-primary">
+									<div class="panel panel-primary" style='margin-bottom:0px;'>
 
 
 										<div class="text-center">
@@ -348,7 +349,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+	
 </div>
 <div id="third" class="active">
 
@@ -541,16 +542,6 @@
 
 
 </div>
-<div id="fifth" style="height: 700px;">
-
-	<h1>디자이너 관리</h1>
-
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-		at viverra est, eu finibus mauris. Quisque tempus vestibulum
-		fringilla. Morbi tortor eros, sollicitudin eu arcu sit amet, aliquet
-		sagittis dolor.</p>
-
-</div>
 </div>
 <div id="border">
 	<div id="line" class="two"></div>
@@ -560,460 +551,31 @@
 		<ul>
 			<li class="shop active">
 				<div class="icon active">
-					<img src="icons/shop.svg" alt="">
+					<img src="${path }/resources/icons/shop.svg" alt="">
 				</div> Shop
 			</li>
 			<li class="map">
 				<div class="icon">
-					<img src="icons/paper.svg" alt="">
+					<img src="${path }/resources/icons/paper.svg" alt="">
 				</div> 매출관리
 			</li>
 			<li class="reserve">
 				<div class="icon">
-					<img src="icons/calander.svg" alt="">
+					<img src="${path }/resources/icons/calander.svg" alt="">
 				</div> Reserve(예약)
 			</li>
 			<li class="qna">
 				<div class="icon">
-					<img src="icons/customer.svg" alt="">
+					<img src="${path }/resources/icons/customer.svg" alt="">
 				</div> QnA(문의)
-			</li>
-			<li class="designer">
-				<div class="icon">
-					<img src="icons/designer.svg" alt="">
-				</div> 임시
 			</li>
 		</ul>
 	</div>
 </div>
 </div>
-<script>
-			$(window).resize(function() {
-				if ($(window).width() < 768) {
-					$("#line").addClass("one");
-					$("#line").removeClass("two");
-					$("#line").removeClass("three");
-					$("#line").removeClass("four");
-					$("#line").removeClass("five");
-				}
-			});
-			// 메뉴 이동
-			$(".shop").click(function() {
-				$("#first").addClass("active");
-				$("#second").removeClass("active");
-				$("#third").removeClass("active");
-				$("#fourth").removeClass("active");
-				$("#fifth").removeClass("active");
-				$("#line").addClass("one");
-				$("#line").removeClass("two");
-				$("#line").removeClass("three");
-				$("#line").removeClass("four");
-				$("#line").removeClass("five");
-			})
-			$(".map").click(function() {
-				$("#first").removeClass("active");
-				$("#second").addClass("active");
-				$("#third").removeClass("active");
-				$("#fourth").removeClass("active");
-				$("#fifth").removeClass("active");
-				$("#line").addClass("two");
-				$("#line").removeClass("one");
-				$("#line").removeClass("three");
-				$("#line").removeClass("four");
-				$("#line").removeClass("five");
-			})
-
-			$(".reserve").click(function() {
-				$("#first").removeClass("active");
-				$("#second").removeClass("active");
-				$("#third").addClass("active");
-				$("#fourth").removeClass("active");
-				$("#fifth").removeClass("active");
-				$("#line").addClass("three");
-				$("#line").removeClass("two");
-				$("#line").removeClass("one");
-				$("#line").removeClass("four");
-				$("#line").removeClass("five");
-			})
-
-			$(".qna").click(function() {
-				$("#first").removeClass("active");
-				$("#second").removeClass("active");
-				$("#third").removeClass("active");
-				$("#fourth").addClass("active");
-				$("#fifth").removeClass("active");
-				$("#line").removeClass("five");
-				$("#line").addClass("four");
-				$("#line").removeClass("two");
-				$("#line").removeClass("three");
-				$("#line").removeClass("one");
-			})
-			$(".designer").click(function() {
-				$("#first").removeClass("active");
-				$("#second").removeClass("active");
-				$("#third").removeClass("active");
-				$("#fourth").removeClass("active");
-				$("#fifth").addClass("active");
-				$("#line").removeClass("four");
-				$("#line").removeClass("two");
-				$("#line").removeClass("three");
-				$("#line").removeClass("one");
-				$("#line").addClass("five");
-			})
-			//메뉴이동 끝
-			//파일 삽입
-
-			$('.image-preview-clear').click(function() {
-				var container = $(this).closest(".animatepop");
-				$(this).closest('.input-group').next().attr("src", "http://placehold.it/350x250");
-				container.find('.image-preview-filename').val("");
-				container.find('.image-preview-clear').hide();
-				container.find('.image-preview-input input:file').val("");
-				container.find(".image-preview-input-title").text("Browse");
-			});
-			// Create the preview image
-			$(".image-preview-input input:file").change(function() {
-				var file = this.files[0];
-				var reader = new FileReader();
-
-				var container = $(this).closest(".animatepop");
-				var image = container.find(".img-responsive");
-				reader.onload = function(e) {
-					container.find(".image-preview-input-title").text("Change");
-					container.find(".image-preview-clear").show();
-					container.find(".image-preview-filename").val(file.name);
-					image
-						.attr('src', e.target.result)
-						.css('width', '100%')
-						.css('height', '100%')
-						.css('position', 'relative');
-				}
-				reader.readAsDataURL(file);
-			});
-			$(".image-preview-filename").change(function() {
-				console.log("출력됨");
-			});
-			//파일 삽입 끝
-		</script>
-<!-- full calender script -->
-<script>
-			$(function() {
-				//영업시작시간~~
-				var min = '10:00:00';
-				var max = '23:00:00';
-				var reserDate;
-				var startTime;
-				var endTime;
-				var checkDate;
-				//직원휴일
-				var businessHours = [{
-					start: '2018년07월30일',
-					end: '2018년07월30일',
-				}];
-				/*변수 초기화*/
-				var reservaiton = [{
-						id: '1',
-						resourceId: 'a',
-						start: '2018-04-06',
-						end: '2018-04-08',
-						title: 'event 1'
-					},
-					{
-						id: '2',
-						resourceId: 'a',
-						start: '2018-04-07T09:00:00',
-						end: '2018-04-07T14:00:00',
-						title: 'event 2'
-					},
-					{
-						id: '3',
-						resourceId: 'b',
-						start: '2018-04-07T12:00:00',
-						end: '2018-04-08T06:00:00',
-						title: 'event 3'
-					},
-					{
-						id: '4',
-						resourceId: 'c',
-						start: '2018-04-07T07:30:00',
-						end: '2018-04-07T09:30:00',
-						title: 'event 4'
-					},
-					{
-						id: '5',
-						resourceId: 'd',
-						start: '2018-04-07T10:00:00',
-						end: '2018-04-07T15:00:00',
-						title: 'event 5'
-					},
-					{
-						id: '6',
-						resourceId: 'a',
-						start: '2018-07-24T10:00:00',
-						end: '2018-07-24T10:30:00',
-						color: 'rgb(49, 128, 208)',
-						title: '홍성진',
-						description: '- a 디자이너님 예약'
-					}, {
-						id: '7',
-						resourceId: 'b',
-						start: '2018-07-24T10:30:00',
-						end: '2018-07-24T11:00:00',
-						title: '홍성진',
-						description: '- a 디자이너님 예약'
-					},
-					{
-						id: '8',
-						resourceId: 'c',
-						start: '2018-07-24T11:30:00',
-						end: '2018-07-24T12:00:00',
-						title: '홍성진',
-						description: '- a 디자이너님 예약'
-					},
-					{
-						id: '9',
-						resourceId: 'c',
-						start: '2018-07-24T12:30:00',
-						end: '2018-07-24T13:00:00',
-						title: '홍성진',
-						description: '- a 디자이너님 예약'
-					}
-				];
-
-				var employee = [{
-						id: 'a',
-						title: '원장님',
-						eventColor: 'blue'
-					},
-					{
-						id: 'b',
-						title: '디자이너',
-						eventColor: 'green',
-
-					},
-					{
-						id: 'c',
-						title: '디자이너',
-						eventColor: 'orange',
-						businessHours: businessHours
-					},
-				];
-				$('#calendar').fullCalendar({
-					themeSystem: 'bootstrap3',
-
-					//// uncomment this line to hide the all-day slot
-					allDaySlot: false,
-
-					//설정
-					//영업 시작, 종료시간
-					minTime: min,
-					maxTime: max,
-
-					//디자이너 추가
-					resources: employee,
-
-					//예약내역 추가
-					events: reservaiton,
-
-					//이벤트에 시각까지 보여주기
-					displayEventTime: false,
-					editable: true, //드래그해서 움직이는것
-					eventLimit: true, // allow "more" link when too many events
-					displayEventTime: true,
-
-					navLinks: true, // can click day/week names to navigate views
-
-					select: function() {
-						dayClick();
-					},
-
-					lang: "ko",
-
-					//shows time in 15 min slot
-					slotDuration: '00:30:00',
-					slotLabelInterval: 30,
-					slotLabelFormat: 'a HH :mm ',
 
 
-					header: {
-						left: 'prev,next',
-						center: 'title',
-						right: 'month,agendaThreeDay,agendaDay' //agendaTwoDay
-					},
-
-					views: {
-						agendaThreeDay: {
-							duration: {
-								days: 3
-							},
-
-							type: 'agenda',
-
-							// views that are more than a day will NOT do this behavior by default
-							// so, we need to explicitly enable it
-							groupByResource: true
-
-							//// uncomment this line to group by day FIRST with resources underneath
-							//groupByDateAndResource: true
-						},
-						agendaDay: {
-							// options apply to basicWeek and basicDay views
-						}
-					},
-
-
-					googleCalendarApiKey: "AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE", // Google API KEY
-					eventSources: [
-						// 대한민국의 공휴일
-						{
-							googleCalendarId: "ko.south_korea#holiday@group.v.calendar.google.com",
-							className: "koHolidays",
-							color: "#be0000",
-							textColor: "#FFFFFF"
-						}
-					],
-
-
-					/* hover시 예약내역보여주기*/
-					eventRender: function(eventObj, $el) {
-						$el.popover({
-							title: '예약내역',
-							content: eventObj.description,
-							trigger: 'hover',
-							placement: 'top',
-							container: 'body'
-						});
-					},
-
-
-					dayClick: function(date, jsEvent, view, resource) {
-
-						var now = new Date
-						var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1, now.getMinutes());
-						//console.log("nowDate" + nowDate);
-						console.log("nowDate" + nowDate);
-
-
-						console.log(
-							'dayClick',
-							reserDate = date.format(),
-							resource ? resource.id : '(no resource)'
-						);
-						console.log('reserDate ' + reserDate);
-						console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-						console.log('Current view: ' + view.name);
-						console.log('Clicked on: ' + date.format('YYYY년MM월DD일'));
-						//console.log(resource.businessHours[0].start);
-						//console.log(resource.businessHours[0].end);
-						console.log(date.format());
-						$('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
-						var clickDate = date.format('YYYY년MM월DD일');
-
-						var checkDate = new Date(date.format());
-
-
-						// 현재날짜이전이면 못가게 로직처리하기
-
-						console.log("nowDate" + nowDate);
-						console.log("checkDate" + checkDate);
-						if (resource != null) {
-							/*쉬는날 로직*/
-							if (resource.businessHours != null) {
-								if (resource.businessHours[0].start == clickDate || resource.businessHours[0].end == clickDate) {
-									alert("휴무입니다.");
-									//window.location.reload();
-									date = null;
-								} else {
-									//현재날짜면 예약불가로.
-									if (nowDate <= checkDate) {
-										$('#calendarModal').modal();
-									} else {
-										date = null;
-										alert("예약시간이 아닙니다...");
-									}
-								}
-							} else {
-								//현재날짜면 예약불가로.
-								if (nowDate <= checkDate) {
-									$('#calendarModal').modal();
-								} else {
-									date = null;
-									alert("예약할수 없는 날짭입니다..");
-								}
-							}
-						}
-						//var title =$('select[name=choice1]').val()
-						var title = $('#reservation-userName').val();
-						var description = title + "-" + $('select[name=choice-employee]').val() + "디자이너 님 예약"
-						var id = $('#reservation-id').val();
-						var choice1 = $('#choice1').val();
-						var choice2 = $('#choice2').val();
-						var choice_employee = $('#choice-employee').val();
-
-						/*    var eventData;
-						    if (title) {
-						      eventData = {
-						        title: title,
-						        start: date
-						      };
-						      $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
-						    }
-						    $('#calendar').fullCalendar('unselect');*/
-
-						$("#result-reservaiton").one('click', function() {
-							//reservation 객체 추가로직
-							var aJson = new Object();
-							aJson.id = '8';
-							aJson.resourceId = 'a';
-							aJson.start = '2018-07-28T13:15:00';
-							aJson.end = '2018-07-28T15:15:00';
-							aJson.color = 'rgb(49, 128, 208)';
-							aJson.title = '홍성진님 예약'
-							reservaiton.push(aJson);
-
-
-							/*30분 추가*/
-							console.log(reservaiton);
-							var javaScriptRelease = Date.parse(date);
-							//alert(javaScriptRelease + 1800000);
-							javaScriptRelease += 1800000;
-
-							/*화면에 등록시키기*/
-							$('#calendar').fullCalendar('renderEvent', {
-								title: title,
-								start: date, //specify start date
-								id: '10',
-								description: description,
-								resourceId: resource.id,
-								end: javaScriptRelease
-
-							});
-
-						});
-
-					},
-
-
-					eventClick: function(calEvent, jsEvent, view) {
-						$('#reserDate').html(calEvent.start.format('YYYY년MM월DD일 HH시mm분'));
-						var check = calEvent.choice1;
-						console.log(typeof calEvent.choice_employee);
-						$('#calendarModal').modal();
-						$('#remove-reservaiton').one('click', function() {
-							//var check = prompt("예약비밀번호입력");
-							var check1 = confirm("삭제하시겠습니까?")
-							if (check1 == true) {
-								$('#calendar').fullCalendar('removeEvents', calEvent.id);
-								$('#calendarModal').modal('toggle');
-							}
-						})
-					},
-
-				});
-
-			});
-		</script>
-
+			
 
 </div>
 
