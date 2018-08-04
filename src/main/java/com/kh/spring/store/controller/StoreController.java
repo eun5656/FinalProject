@@ -46,13 +46,7 @@ public class StoreController {
 		return view;
 	}
 	
-	@RequestMapping("/store/storeList.do")
-	public String store(Model model){
-		List<Store> storelist =service.mainStoreList();
-		model.addAttribute("storelist", storelist);
-		String view="shop/shop";
-		return view;
-	}
+
 	
 	
 	
