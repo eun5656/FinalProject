@@ -16,6 +16,7 @@
   <link href="${path }/resources/css/shop.css" rel="stylesheet">
 
 <div class="container-fluid">
+<section>
 
          <div class="row">
           <div class="col-md-12">
@@ -26,7 +27,7 @@
         </div>
         
         
-         <div class="row">
+         <div id="sort_list" class="row">
         <div class="col-xs-9">
         
         </div>
@@ -46,12 +47,53 @@
 					$("#select_sort").on("change", function() {
 						$.ajax({
 						 	url:"${path}/shop/shopSort.do",
-							data:{"sort_value":$(this).val()},
+							data:{"sortValue":$(this).val()},
 							type: "post",
 							dataType: "json",
 							success: function(data){
-								$("#nail-list *").remove();
-								
+								$("#shop-list *").remove();
+
+								 var html1="<div id='shop-list' class='row'><div>";
+								 var html2="";
+								 
+									for (var i = 0; i <data.shopList.length; i++) {
+									  html2+="<div class='col-md-4' style='padding-top: 10px;'>";
+									  html2+="<div class='col-item'>";
+									  html2+="<div class='photo'>"
+									  html2+="<img src='${path }/resources/images/nail_store/"+data.shopList[i].store_re_img+"'class='img-responsive' alt='a'/>";
+									  html2+="</div>";
+									  html2+="<div class='info'>";
+									  html2+="<div class='row'>";
+									  html2+="<div class='price col-xs-6'>";
+									  html2+="<h5 style='margin-bottom:7px;'>"+data.shopList[i].store_name+"샵</h5>";
+									  html2+="<h6>"+data.shopList[i].store_address+"</h6>";
+									  html2+="</div>";
+									  html2+="<div class='rating col-xs-6' style='text-align: right;'>";
+									  for (var j = 0; j < data.shopList[i].store_rank; j++) {
+									  html2+="<i class='price-text-color fa fa-star'></i>";
+									  }
+									  for (var k = 0; k < 5-data.shopList[i].store_rank; k++) {
+									  html2+="<i class=' fa fa-star'></i>";
+									  }
+									  html2+="</div>";
+									  html2+="</div>";					
+									  html2+="<div class='separator clear-left'>";					
+									  html2+="<p class='btn-add'>";					
+									  html2+="<button href='#' class='btn btn-warning' style='width:90%'><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
+									  html2+="</p>";					
+									  html2+="<p class='btn-details'>";
+									  html2+="<button href='#' class='btn btn-info' style='width:90%'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
+									  html2+="</div>";  
+									  html2+="<div class='clearfix'>";
+									  html2+="</div>";
+									  html2+="</div>";
+									  html2+="</div>";
+									  html2+="</div>";
+									  html2+="</div>";
+								}
+									$("#sort_list").after(html1);
+									 $("#shop-list").html(html2);	
+								// eventBind();
 							},
 							error: function(jpxhr,textStatus,errormsg) {
 								console.log("ajax전송실패");
@@ -64,8 +106,7 @@
 			})
 	  </script>
 
-
-    <div  id="nail-list" class="row">
+    <div  id="shop-list" class="row">
 
 
  <c:forEach items="${shopList}" var="shop" varStatus="status">
@@ -110,6 +151,7 @@
   
   
     </div>
+ </section>
   <br>
 
 

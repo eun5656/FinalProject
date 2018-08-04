@@ -11,4 +11,10 @@ public interface ShopService {
 
 	List<Store> mainStoreList();
 
+	List<Store> reviewSortShopList();
+
+	List<Store> rankSortShopList();
+
+	List<Store> bookmarkSortShopList();
+
 }

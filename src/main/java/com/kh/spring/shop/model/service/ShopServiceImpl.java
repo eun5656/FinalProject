@@ -29,6 +29,24 @@ public class ShopServiceImpl implements ShopService {
 		return list;
 	}
 
+	@Override
+	public List<Store> reviewSortShopList() {
+		List<Store> list = dao.reviewSortShopList(sqlSession);
+		return list;
+	}
+
+	@Override
+	public List<Store> rankSortShopList() {
+		List<Store> list = dao.rankSortShopList(sqlSession);
+		return list;
+	}
+
+	@Override
+	public List<Store> bookmarkSortShopList() {
+		List<Store> list = dao.bookmarkSortShopList(sqlSession);
+		return list;
+	}
+
 	
 
 }

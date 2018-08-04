@@ -36,24 +36,36 @@ public class ShopController {
 	
 	@RequestMapping(value="/shop/shopSort.do",produces = "application/text; charset=utf8")
 	@ResponseBody
-	public String ReviewShopList(String sortValue)throws JsonProcessingException{
-		
+	public String SortShopList(String sortValue)throws JsonProcessingException
+	{
+
+List<Store> list;
+		if (sortValue.equals("review")) {
+			list=service.reviewSortShopList();
+		}
+		else if (sortValue.equals("rank")) {
+			list=service.rankSortShopList();
+
+		}else if (sortValue.equals("bookmark")) {
+			list=service.bookmarkSortShopList();
+
+		}
+		else {
+			list=service.basicShopList();
+		}
 		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr="";
-		jsonstr=mapper.writeValueAsString("hi");
+		
+		Map shopList=new HashMap();
+		shopList.put("shopList", list);
+		System.out.println(list);
+
+
+		jsonstr=mapper.writeValueAsString(shopList);
 		return jsonstr;
 	}
 	
 
-	
-	
-	@RequestMapping("/store/storeList.do")
-	public String store(Model model){
-		List<Store> storelist =service.mainStoreList();
-		model.addAttribute("storelist", storelist);
-		String view="shop/shop";
-		return view;
-	}
 	
 	
 

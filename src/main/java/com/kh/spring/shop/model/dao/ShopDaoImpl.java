@@ -31,4 +31,32 @@ public class ShopDaoImpl implements ShopDao {
 		return list;
 	}
 
+
+
+
+	@Override
+	public List<Store> reviewSortShopList(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.reviewSortShopList");
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<Store> rankSortShopList(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.rankSortShopList");
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<Store> bookmarkSortShopList(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.bookmarkSortShopList");
+		//수정하기
+		return list;
+	}
+
 }

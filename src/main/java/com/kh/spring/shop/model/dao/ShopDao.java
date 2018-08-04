@@ -12,4 +12,10 @@ public interface ShopDao {
 
 	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
 
+	List<Store> reviewSortShopList(SqlSessionTemplate sqlSession);
+
+	List<Store> rankSortShopList(SqlSessionTemplate sqlSession);
+
+	List<Store> bookmarkSortShopList(SqlSessionTemplate sqlSession);
+
 }
