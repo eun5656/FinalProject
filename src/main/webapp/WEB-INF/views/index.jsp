@@ -18,40 +18,6 @@
   
   
   <style>
-<!--
-/* 기본 */
-.b_icon {
-	position: absolute;
-	width: 32px;
-	height: 32px;
-	display: block;
-	-webkit-transition: all .2s ease-out;
-	transition: all .2s ease-out;
-}
-
-.b_icon.active {
-	content: url("icons/love_filled.svg");
-}
-
-.icon {
-	position: relative;
-	width: 32px;
-	height: 32px;
-	display: block;
-	fill: rgba(51, 51, 51, 0.5);
-	margin-right: 20px;
-	-webkit-transition: all .2s ease-out;
-	transition: all .2s ease-out;
-}
-
-.icon.active {
-	fill: #E74C3C;
-}
-.zindex {
-	position: absolute;
-	z-index: 1;
-}
--->
 </style>
 
 <div class="container-fluid">

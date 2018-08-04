@@ -31,13 +31,7 @@
 
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+        <div class="navbar-header">     
           <a class="navbar-brand" href="${path}">로고~~</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,7 +40,7 @@
             <li class="active"><a href="${path}">Home <span class="sr-only">(current)</span></a></li>
             <!--active사용시 home하얀색으로 변함-->
             <li><a href="${path}/intro/intro.do">Introduce</a></li>
-            <li><a href="${path}/shop/shop.do">Shop</a></li>
+            <li><a href="${path}/store/storeList.do">Shop</a></li>
             <li><a href="${path}/deal/dealList.do">Market</a></li>
 
 
@@ -71,10 +65,21 @@
                  </ul>
 
           <form class="navbar-form navbar-left">
-            <div class="form-group">
+          <!--   <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="height: 20px;"></span></button>
+         
+         --> 
+         
+           <div class="input-group col-md-12">
+            <input type="text" class=" input-sm  search-query form-control" placeholder="Search" />
+            <span class="input-group-btn"><button class="btn btn-danger input-sm" type="button">
+                                            <span class=" glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+          </div>
+         
           </form>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -88,7 +93,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="${path }/resources/images/image-8.jpg" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">

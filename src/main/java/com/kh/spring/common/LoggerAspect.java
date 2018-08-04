@@ -43,26 +43,26 @@ public class LoggerAspect {
 	
 	@Around("execution(* com.kh.spring..*(..))") //한번에하는방식
 	public Object loggerAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
-		System.out.println("진입");										//후보군
+		//sSystem.out.println("진입");										//후보군
 		Signature signature=joinPoint.getSignature();
 		String type=signature.getDeclaringTypeName(); //어떤 AOP가 적용됫는지
 		String methodName=signature.getName();
 		String component="";			
 		/*시비스 시작*/
 		long begin=System.currentTimeMillis();
-		
-		if(type.indexOf("controller")>-1){
+		logger.debug("ee"+type);
+		if(type.indexOf("Controller")>-1){
 			component="controller\t : ";
 		}
 		else if (type.indexOf("service")>-1) {
 			component="service\t :";
 		}
 		else if (type.indexOf("Dao")>-1) {
-			component="Dao\t : ";
+			component="dao\t : ";
 		}
 		logger.debug("[before] "+component+type+"."+methodName+"()");
-		long end=System.currentTimeMillis();
-		logger.debug("실행시간: "+new Date(end-begin));
+		//long end=System.currentTimeMillis();
+		//logger.debug("실행시간: "+new Date(end-begin));
 		
 		Object obj=joinPoint.proceed();
 			//aspect객체를 만들어서 보내준다.

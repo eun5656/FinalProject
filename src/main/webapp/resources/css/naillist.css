@@ -1,3 +1,56 @@
+/* 북마크 css */
+.b_icon {
+	position: absolute;
+	width: 32px;
+	height: 32px;
+	display: block;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.b_icon.active {
+	content: url("icons/love_filled.svg");
+}
+
+.icon {
+	position: relative;
+	width: 32px;
+	height: 32px;
+	display: block;
+	fill: rgba(51, 51, 51, 0.5);
+	margin-right: 20px;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.icon.active {
+	fill: #E74C3C;
+}
+.zindex {
+	position: absolute;
+	z-index: 1;
+}
+-->
+/**/
+@media screen and (min-width:768px) {
+  .navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    width: 160px;
+    text-align: center;
+    background-color: #eee;
+  }
+  .navbar>.container .navbar-brand-centered,
+  .navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+  }
+
+}
+
+
+
+
 /*hover image*/
 
 .hovereffect {
