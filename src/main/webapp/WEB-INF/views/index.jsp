@@ -749,7 +749,7 @@
         <p>
          <h2>${nail.nail_name}</h2>      
           <a href="#">${nail.nail_style}</a><br><br><br><br>
-          <a href="#">점포로 이동</a>
+          <a href="${path}/store/store.do?store_pk=${nail.nail_pk}">점포로 이동</a> <!-- 점포 쿼리스트링으로 pk쏴서 이동. -->
         </p>
       </div>
     </div>
