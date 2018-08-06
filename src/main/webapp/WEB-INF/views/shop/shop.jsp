@@ -59,7 +59,7 @@
 									for (var i = 0; i <data.shopList.length; i++) {
 									  html2+="<div class='col-md-4' style='padding-top: 10px;'>";
 									  html2+="<div class='col-item'>";
-									  html2+="<div id='store_img' class='photo' style=' cursor: pointer;' value='${shop.store_pk}'>"
+									  html2+="<div id='store_img' class='photo' style=' cursor: pointer;' value='"+data.shopList[i].store_pk+"'>"
 									  html2+="<img src='${path }/resources/images/nail_store/"+data.shopList[i].store_re_img+"'class='img-responsive' alt='a'/>";
 									  html2+="</div>";
 									  html2+="<div class='info'>";
@@ -79,10 +79,10 @@
 									  html2+="</div>";					
 									  html2+="<div class='separator clear-left'>";					
 									  html2+="<p class='btn-add'>";					
-									  html2+="<button href='#' class='btn btn-warning' style='width:90%'><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
+									  html2+="<button class='btn btn-warning store_reservaiton' style='width:90%;  z-index: 10;  '><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
 									  html2+="</p>";					
 									  html2+="<p class='btn-details'>";
-									  html2+="<button href='#' class='btn btn-info' style='width:90%'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
+									  html2+="<button class='btn btn-info store_review' style='width:90%; z-index: 10;'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
 									  html2+="</div>";  
 									  html2+="<div class='clearfix'>";
 									  html2+="</div>";
@@ -107,16 +107,16 @@
 					eventBind();
 					function eventBind(){
 						  //북마크 기능
-						    $("#store_img").click(function(){
+						    $(".store_img").click(function(){
 						    	location.href="${path}/store/store.do?store_pk=$"+$(this).attr("value");;
 						    });
 						  
-						  $("#store_reservaiton").click(function() {
+						  $(".store_reservaiton").click(function() {
 							  alert("예약");
 							//  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
 						 })
 						 
-						  $("#store_review").click(function() {
+						  $(".store_review").click(function() {
 							  alert("리뷰");
 						  //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
 						 })
@@ -130,7 +130,7 @@
  <c:forEach items="${shopList}" var="shop" varStatus="status">
   <div class="col-md-4" style="padding-top: 10px;">
     <div class="col-item">
-      <div id="store_img" class="photo" style=" cursor: pointer;" value="${shop.store_pk}" >
+      <div class="photo store_img" style=" cursor: pointer;" value="${shop.store_pk}" >
         <img src="${path }/resources/images/nail_store/${shop.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
@@ -153,10 +153,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-            <button id="store_reservaiton" class="btn btn-warning" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button id="store_review" class="btn btn-info" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${shop.store_review_count}"/>개</button>
+            <button  class="btn btn-info store_review" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${shop.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
