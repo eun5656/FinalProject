@@ -125,10 +125,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+           <button href="#" class="btn btn-warning" style="width:90%;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button href="#" class="btn btn-info" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>

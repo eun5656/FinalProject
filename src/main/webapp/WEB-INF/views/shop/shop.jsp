@@ -93,7 +93,7 @@
 								}
 									$("#sort_list").after(html1);
 									 $("#shop-list").html(html2);	
-								// eventBind();
+								eventBind();
 							},
 							error: function(jpxhr,textStatus,errormsg) {
 								console.log("ajax전송실패");
@@ -102,8 +102,16 @@
 								console.log(errormsg);
 							}
 						});	
-					})
-			})
+					});
+					
+					eventBind();
+					function eventBind(){
+						  //북마크 기능
+						    $(".col-item").click(function() {
+						    	location.href="${path}/store/store.do";
+						    });
+						  }
+				})
 	  </script>
 
     <div  id="shop-list" class="row">
@@ -111,14 +119,14 @@
 
  <c:forEach items="${shopList}" var="shop" varStatus="status">
   <div class="col-md-4" style="padding-top: 10px;">
-    <div class="col-item">
+    <div class="col-item" value="${shop.store_pk}">
       <div class="photo">
         <img src="${path }/resources/images/nail_store/${shop.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
         <div class="row">
           <div class="price col-xs-6">
-            <h5 style="margin-bottom:7px;">1위  :<c:out value="${shop.store_name}"/> 샵</h5>
+            <h5 style="margin-bottom:7px;"><c:out value="${shop.store_name}"/> 샵</h5>
             <h6 class=""><c:out value="주소 : ${shop.store_address}"/></h6>
           </div>
                  
@@ -135,7 +143,7 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
             <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${shop.store_review_count}"/>개</button>
