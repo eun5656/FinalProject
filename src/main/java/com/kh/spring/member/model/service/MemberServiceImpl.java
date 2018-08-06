@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.member.model.dao.MemberDAO;
+import com.kh.spring.member.model.vo.Member;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -14,6 +15,31 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	MemberDAO memberDAO;
+
+	@Override
+	public Member loginCheck(String memberId) {
+		
+		return memberDAO.loginCheck(sqlSession, memberId);
+	}
+	
+	
+	/*@Override
+	public int insertMember(Member m) {
+		
+		return memberDAO.insertMember(sqlSession, m);
+	}
+
+	@Override
+	public int updateMember(Member m) {
+		
+		return memberDAO.updateMember(sqlSession, m);
+	}
+
+	@Override
+	public int duplicateIdCheck(String userId) {
+		
+		return memberDAO.duplicateIdCheck(sqlSession, userId);
+	}*/
 	
 	
 }
