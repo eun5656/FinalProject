@@ -449,7 +449,7 @@
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
 												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
 								}
@@ -505,7 +505,7 @@
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
 												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
 									}
@@ -561,7 +561,7 @@
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
 												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
 									}
@@ -627,7 +627,7 @@
 												 html2+="<p>";
 												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
 												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='#'>점포로 이동</a>";
+												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
 												 html2+="</p>";
 												 html2+="</div></div></div>";
 												 
