@@ -32,11 +32,11 @@ public class StoreController {
 			HttpServletRequest req, Model model
 			) {
 		String view="store/store";
-		String store_pk = req.getParameter("store_pk");
+		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		logger.debug(store_pk + "끝");
-		Store store = service.selectOne(1);
-		List<Menu> menus = service.selectMenu(1);
-		List<Nail> nails= Nailservice.nailListStore(1);
+		Store store = service.selectOne(store_pk);
+		List<Menu> menus = service.selectMenu(store_pk);
+		List<Nail> nails= Nailservice.nailListStore(store_pk);
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);
 		System.out.println("Nail 값 확인 : "+nails);
