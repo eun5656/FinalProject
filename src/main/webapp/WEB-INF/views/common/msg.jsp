@@ -4,14 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>    
 <!doctype html>
+<c:set var='path' value="${pageContext.request.contextPath}"/> 
+
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title>알림</title>
-		<script scr="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script>
 			alert('${msg}');
-			location.href="${pageContext.request.contextPath}/${loc}";
+			location.href="${path}/${loc}";
 		</script>
 	</head>
 	<body>

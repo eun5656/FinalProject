@@ -103,7 +103,8 @@
  <c:forEach begin="0" end="2"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
-      <div class="photo store_img" style=" cursor: pointer;" value="${shop.store_pk}" >
+      <div class="photo store_img" style=" cursor: pointer;"  >
+        <input id="store_pk" type="hidden" value="${store.store_pk}">
         <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
@@ -153,7 +154,8 @@
  <c:forEach begin="3" end="5"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
-      <div class="photo store_img" style=" cursor: pointer;" value="${shop.store_pk}" >
+      <div class="photo store_img" style=" cursor: pointer;" value="${store.store_pk}" >
+              <input id="store_pk" type="hidden" value="${store.store_pk}">
         <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
@@ -653,7 +655,7 @@
 						    
 						    
 						     $(".store_img").click(function(){
-						    	location.href="${path}/store/store.do?store_pk=$"+$(this).attr("value");;
+						    	location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
 						    });
 						  
 						  $(".store_reservaiton").click(function() {
@@ -670,8 +672,10 @@
 					eventBind();
 				})
 				function eventBind(){
-					  //북마크 기능
-					    $(".b_icon").click(function() {
+					    $(".b_icon").click(function() {					    	
+					    	var memberLoggedIn= "${memberLoggedIn}"
+					    	if(memberLoggedIn.length!=0){
+					    
 					    	var temp=$(this);
 					    	var bookmark_val = { 
 					    			nail_pk: temp.nextAll("[name='nail_pk']").val(),
@@ -679,9 +683,9 @@
 					    			store_pk: temp.nextAll("[name='store_pk']").val(),
 					    			bookmark_check:null 			
 									}
-					    	
+						
 					    
-			    		      
+					    
 					    	
 					    	if (temp.attr("alt")=='false') 
 					    	{	
@@ -722,6 +726,7 @@
 								data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
 								type: "post",
 								dataType: "json",
+								
 								success: function(data){
 			    		  		    alert(data);
 									temp.attr("alt","false");
@@ -737,6 +742,11 @@
 							
 					    		
 					    	}
+							
+					    	}
+							else{
+								alert("로그인해주세요");
+							}
 					    });
 				}
 				/*
