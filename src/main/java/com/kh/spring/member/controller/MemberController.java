@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.kh.spring.member.model.service.MemberService;
-import com.kh.spring.member.util.KakaoLogin;
 
 //@SessionAttributes(value={"memberLoggedIn"})
 @Controller
