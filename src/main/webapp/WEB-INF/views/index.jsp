@@ -103,7 +103,7 @@
  <c:forEach begin="0" end="2"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
-      <div class="photo">
+      <div class="photo store_img" style=" cursor: pointer;" value="${shop.store_pk}" >
         <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
@@ -125,10 +125,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-           <button href="#" class="btn btn-warning" style="width:90%;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button class="btn btn-info store_review" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
@@ -153,7 +153,7 @@
  <c:forEach begin="3" end="5"  items="${storelist}" var="store" varStatus="status">
             <div class="col-sm-4">
     <div class="col-item">
-      <div class="photo">
+      <div class="photo store_img" style=" cursor: pointer;" value="${shop.store_pk}" >
         <img src="${path }/resources/images/nail_store/${store.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
@@ -175,10 +175,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-                          <button href="#" class="btn btn-warning" style="width:90%"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button href="#" class="btn btn-info" style="width:90%"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button class="btn btn-info store_review" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
@@ -438,7 +438,7 @@
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
 											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
 											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
 											 	 html2+="<div class='hovereffect'>";
@@ -493,7 +493,7 @@
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											     html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
 											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
 											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
 											
@@ -550,7 +550,7 @@
 										 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 										 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 										 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-										 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+										 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
 										 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
 										 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
 										 	 html2+="<div class='hovereffect'>";
@@ -615,7 +615,7 @@
 											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
 											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='2' >";
+											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
 											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
 											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
 											
@@ -651,6 +651,22 @@
 						      $(this).toggleClass("selected");
 						    })
 						    
+						    
+						     $(".store_img").click(function(){
+						    	location.href="${path}/store/store.do?store_pk=$"+$(this).attr("value");;
+						    });
+						  
+						  $(".store_reservaiton").click(function() {
+							  alert("예약");
+							//  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+						 })
+						 
+						  $(".store_review").click(function() {
+							  alert("리뷰");
+						  //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+						 })
+						 
+						 
 					eventBind();
 				})
 				function eventBind(){
@@ -739,7 +755,7 @@
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
 		<input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
-		<input class="member_pk" name="member_pk" type="hidden" value="2" >
+		<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
 		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
 		<!-- 내일 ajax모두에 추가해주기...졸려 -->
     <!--<div class="cover-card col-sm-4">-->
