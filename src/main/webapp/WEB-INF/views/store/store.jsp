@@ -69,10 +69,12 @@
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
 									<div class="carousel-inner">
 									<c:forEach var="nail" items="${nails }" varStatus="status" step='3'>
+											<c:out value="${status.count%3 }"></c:out>
 										<c:if test="${status.count eq 1 }">
 										<div class="item active" >
 										</c:if>
 										<c:if test="${status.count%3 eq 1 }">
+								
 										<div class="item">
 										</c:if>
 										<c:forEach var='i' begin='1' end="${status.count +2 }">
