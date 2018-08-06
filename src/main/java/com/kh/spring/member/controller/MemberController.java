@@ -38,24 +38,7 @@ public class MemberController {
 		return "intro/intro";
 	}
 	
-	@RequestMapping(value = "/oauth" , produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
-	public void kakaoLogin(@RequestParam("code") String code , HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-			System.out.println("hi");
-		JsonNode token = KakaoLogin.getAccessToken(code);
-
-		  JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
-		  System.out.println(profile);
-		  //UserVO vo = KakaoLogin.changeData(profile);
-		 // vo.setUser_snsId("k"+vo.getUser_snsId());
-
-		  //System.out.println(session);
-		 // session.setAttribute("login", vo);
-		 // System.out.println(vo.toString());
-
-		 // vo = service.kakaoLogin(vo);  
-		//  return "login/kakaoLogin";
-		
-	}
+	
 
 	
 	
