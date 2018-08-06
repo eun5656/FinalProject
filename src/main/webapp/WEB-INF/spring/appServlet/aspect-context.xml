@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"	
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!--선언적 AOP선언 순서  -->
+<!--  aop:config 취상위 루트안에 AOP관련 내용을 기술 
+			aop:aspect를 선언 : apsect객체를 불러오는것 /bean등록
+				aop:pointcut : 실행위치를 지정설정
+					aop:advice : 실행하는 구문(메소드)설정-->
+			
+<!-- 			(aspect객체) bean으로 등록		 -->
+
+
+		
+<!-- 어노테이션 적용 -->
+<aop:aspectj-autoproxy/>
+		
+		
+</beans>

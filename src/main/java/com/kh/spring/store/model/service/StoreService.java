@@ -11,12 +11,9 @@ public interface StoreService {
 
 	List<Menu> selectMenu(int i);
 
-<<<<<<< HEAD
 	int deleteMenu(String menu_pk);
-=======
 	List<Store> storeList();
 
 	List<Store> mainStoreList();
->>>>>>> sungjin_ver1.5
 
 }

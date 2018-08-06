@@ -36,11 +36,12 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public int deleteMenu(String menu_pk) {
 		
 		return dao.deleteMenu(sqlSession,menu_pk);
-=======
+	}
+	@Override
+
 	public List<Store> storeList() {
 		// TODO Auto-generated method stub
 		return null;
@@ -50,7 +51,6 @@ public class StoreServiceImpl implements StoreService {
 	public List<Store> mainStoreList() {
 		List<Store> naillist=dao.mainStoreList(sqlSession);
 		return naillist;
->>>>>>> sungjin_ver1.5
 	}
 
 }

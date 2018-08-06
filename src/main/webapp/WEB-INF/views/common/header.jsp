@@ -26,13 +26,11 @@
 
   <header>
     <nav class="navbar navbar-icon-top navbar-default navbar-fixed-top">
-
-
-
+  
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <div class="navbar-header">     
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -48,55 +46,115 @@
             <li><a href="${path}/intro/intro.do">Introduce</a></li>
             <li><a href="${path}/shop/shop.do">Shop</a></li>
             <li><a href="${path}/deal/dealList.do">Market</a></li>
-
-
+            <c:if test="${memberLoggedIn.memberLevel.equals('2') }">
+             <li><a href="${path}/customer/notice.do">MyShop</a></li>
+             </c:if>
           </ul>
-
-
-
-                 </ul>
-
-                 <ul class="nav navbar-nav">
-                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                       <!--<i class="fa fa-user-circle-o"></i>-->
-                    ServiceCenter
-                     </a>
-                     <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
-                       <li><a href="${path}/customer/notice.do">공지사항</a></li>
-                       <li><a href="${path}/customer/faq.do">자주묻는질문</a></li>
-
-                     </ul>
-                   </li>
-                 </ul>
+           
+         <ul class="nav navbar-nav">
+         <li class="dropdown">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            ServiceCenter
+            </a>
+           <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+			<li><a href="${path}/customer/notice.do">공지사항</a></li>
+			<li><a href="${path}/customer/faq.do">자주묻는질문</a></li>
+            </ul>
+         </li>
+        </ul>
 
           <form class="navbar-form navbar-left">
-            <div class="form-group">
+          <!--   <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="height: 20px;"></span></button>
+         
+         --> 
+         
+           <div class="input-group col-md-12">
+            <input type="text" class=" input-sm  search-query form-control" placeholder="Search" />
+            <span class="input-group-btn"><button class="btn btn-danger input-sm" type="button">
+                                            <span class=" glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+          </div>
+         
           </form>
+          
+          
           <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="#">
-                            <i class="fa fa-envelope-o">
-                                <span class="badge badge-danger">11</span>
-                            </i>
-                            Messages
-                        </a>
+          <c:if test="${memberLoggedIn!=null }">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-envelope-o">
+                <span class="badge badge-danger">11</span></i>Messages
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+                <li><a href="${path}/message/sendMessage.do">쪽지쓰기</a></li>
+                <li><a href="${path}/message/receiveMessage.do">쪽지함</a></li>
+              </ul>
             </li>
+            </c:if>
+            <c:if test="${memberLoggedIn==null }">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="${path }/resources/images/image-8.jpg" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
                 <li><a href="${path}/member/memberLogin.do">로그인</a></li>
                 <li><a href="${path}/member/memberJoin.do">회원가입</a></li>
-                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
               </ul>
             </li>
+            </c:if>
+            
+            <c:if test="${memberLoggedIn.memberLevel.equals('3') }">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <!--<i class="fa fa-user-circle-o"></i>-->
+                <span>${memberLoggedIn.memberName }님</span>
+                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
+                <li><a href="${path}/member/Logout.do">로그아웃</a></li>
+              </ul>
+            </li>
+           </c:if>
+           
+           <c:if test="${memberLoggedIn.memberLevel.equals('2') }">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <!--<i class="fa fa-user-circle-o"></i>-->
+                <span>${memberLoggedIn.memberName }점주님</span>
+                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
+                <li><a href="${path}/member/Logout.do">로그아웃</a></li>
+              </ul>
+            </li>
+           </c:if>
+           
+           <c:if test="${memberLoggedIn.memberLevel.equals('1') }">
+              <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <!--<i class="fa fa-user-circle-o"></i>-->
+                <span>${memberLoggedIn.memberName }관리자님</span>
+                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
+                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
+                <li><a href="${path}/member/Logout.do">로그아웃</a></li>
+              </ul>
+            </li>
+           </c:if>
+           
           </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -104,8 +162,6 @@
       <!-- /.container-fluid -->
     </nav>
     
-    
-  
   </header>
   
   

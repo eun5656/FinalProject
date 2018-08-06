@@ -1,33 +1,80 @@
 package com.kh.spring.member.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
-import com.fasterxml.jackson.databind.JsonNode;
+
 import com.kh.spring.member.model.service.MemberService;
-import com.kh.spring.member.util.KakaoLogin;
+import com.kh.spring.member.model.vo.Member;
 
-//@SessionAttributes(value={"memberLoggedIn"})
+@SessionAttributes(value={"memberLoggedIn"})
 @Controller
 public class MemberController {
 
 	@Autowired
 	private MemberService service;
 	
-//	@Autowired
-//	private BCryptPasswordEncoder bcryptpasswordEncoder;
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	
+	private Logger logger = Logger.getLogger(MemberController.class);
 	
+	@RequestMapping("/member/Login.do")
+	public String memberLogin(String memberId, String memberPw, Model model)
+	{
+		logger.debug("로그인메소드호출");
+		//System.out.println(memberId);
+		//System.out.println(memberPw);
+		Member m = service.loginCheck(memberId);
+		
+		//logger.debug("로그인객체"+m);
+	
+		//응답페이지 작성
+		String msg="";
+		String loc="/";
+		String view="/common/msg";
+		
+		
+		System.out.println(bcryptPasswordEncoder.encode(memberPw));
+
+		if(m!=null)
+		{
+			
+			if(bcryptPasswordEncoder.matches(memberPw, m.getMemberPw()))
+			{
+				msg="로그인성공";
+				
+				model.addAttribute("memberLoggedIn",m);
+			}
+			else {
+				msg="비밀번호가 일치하지 않습니다.";
+			}
+		}
+		else {
+			msg="없는 아이디입니다.";
+		}
+		
+		model.addAttribute("msg",msg);
+		model.addAttribute("loc",loc);
+		return view;
+	}
+	
+	@RequestMapping("/member/Logout.do")
+	public String logout(SessionStatus sessionStatus)
+	{
+		if(!sessionStatus.isComplete())
+		{
+			//세션끊기
+			sessionStatus.setComplete();
+		}
+		return "redirect:/";
+	}
 	
 	@RequestMapping("/member/memberLogin.do")
 	public String MemberLogin() {
@@ -38,30 +85,8 @@ public class MemberController {
 	public String Intro() {
 		return "intro/intro";
 	}
-	
-	@RequestMapping(value = "/oauth" , produces = "application/json", method = {RequestMethod.GET, RequestMethod.POST})
-	public void kakaoLogin(@RequestParam("code") String code , HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
-			System.out.println("hi");
-		JsonNode token = KakaoLogin.getAccessToken(code);
 
-		  JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
-		  System.out.println(profile);
-		  //UserVO vo = KakaoLogin.changeData(profile);
-		 // vo.setUser_snsId("k"+vo.getUser_snsId());
 
-		  //System.out.println(session);
-		 // session.setAttribute("login", vo);
-		 // System.out.println(vo.toString());
-
-		 // vo = service.kakaoLogin(vo);  
-		//  return "login/kakaoLogin";
-		
-	}
-
-	
-	
-	
-	
 	@RequestMapping("/member/memberJoin.do")
 	public String memberEnroll() {
 		return "member/joinSelect";
@@ -76,6 +101,5 @@ public class MemberController {
 	public String joinUser() {
 		return "member/joinUser";
 	}
-	
 	
 }
