@@ -29,11 +29,11 @@ public class MemberController {
 	public String memberLogin(String memberId, String memberPw, Model model)
 	{
 		logger.debug("로그인메소드호출");
-		System.out.println(memberId);
-		System.out.println(memberPw);
+		//System.out.println(memberId);
+		//System.out.println(memberPw);
 		Member m = service.loginCheck(memberId);
 		
-		logger.debug("로그인객체"+m);
+		//logger.debug("로그인객체"+m);
 	
 		//응답페이지 작성
 		String msg="";

@@ -137,6 +137,15 @@
 			<artifactId>json-lib-ext-spring</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+		
+		<!-- 웹소켓 적용하기 -->
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>5.0.5.RELEASE</version>
+		</dependency>
+		
 
 		<!-- jackson라이브러리 String으로 오는ㄹ걸 객체로받기위해 -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
@@ -145,6 +154,8 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.5</version>
 		</dependency>
+		
+		
 
 		<!-- Spring -->
 		<dependency>

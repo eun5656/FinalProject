@@ -14,4 +14,10 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	MessageDAO messageDAO;
 
+	@Override
+	public int CheckId(String receiveUser) {
+		
+		return messageDAO.CheckId(sqlSession,receiveUser);
+	}
+
 }
