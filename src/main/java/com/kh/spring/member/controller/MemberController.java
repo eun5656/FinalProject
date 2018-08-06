@@ -11,10 +11,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 
 import com.kh.spring.member.model.service.MemberService;
-<<<<<<< HEAD
-=======
 import com.kh.spring.member.model.vo.Member;
->>>>>>> hyeeun_version1
 
 @SessionAttributes(value={"memberLoggedIn"})
 @Controller
@@ -88,11 +85,7 @@ public class MemberController {
 	public String Intro() {
 		return "intro/intro";
 	}
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> hyeeun_version1
+
 
 	@RequestMapping("/member/memberJoin.do")
 	public String memberEnroll() {
