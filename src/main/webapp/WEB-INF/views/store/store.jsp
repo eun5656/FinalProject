@@ -32,7 +32,7 @@
 					
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
-							src="${path }/resources/images/${store.store_re_img }" alt="출력 실팽">
+							src="${path }/resources/images/nail_store/${store.store_re_img }" alt="출력 실팽">
 						<div class="overlay">
 							<h2>${store. store_name }</h2>
 							<p>
@@ -74,10 +74,11 @@
 										<c:out value="${status.count } + 한번만 나오세오"/>
 										<div class="item active" >
 										</c:if>
-<%-- 										<c:if test="${status.count eq 3 }"> --%>
-<%-- 										<c:out value="${status.count } + 너는 두번째 나오세오"/> --%>
-<!-- 										<div class="item"> -->
-<%-- 										</c:if> --%>
+										<c:if test="${status.index eq 3 }">
+										<c:out value="${status.count } + 너는 두번째 나오세오"/>
+										<div class="item">
+										</c:if>
+										
 										<c:forEach var='i' begin='${status.index }' end="${status.index +2 }">
 										<a href="#NailModal${nails[i-1].nail_pk }" data-toggle="modal">
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;">
@@ -99,9 +100,9 @@
 										<c:if test="${status.count eq 1 }">
 										</div>
 										</c:if>
-<%-- 										<c:if test="${status.count eq 3 }"> --%>
-<!-- 										</div>		 -->
-<%-- 										</c:if>	 --%>
+										<c:if test="${status.count eq 3 }">
+										</div>		
+										</c:if>	
 										<!-- item end -->						
 										</c:forEach>
 									</div>
