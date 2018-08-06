@@ -79,10 +79,10 @@
 									  html2+="</div>";					
 									  html2+="<div class='separator clear-left'>";					
 									  html2+="<p class='btn-add'>";					
-									  html2+="<button href='#' class='btn btn-warning' style='width:90%'><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
+									  html2+="<button id='store_reservaiton' class='btn btn-warning' style='width:90%'><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
 									  html2+="</p>";					
 									  html2+="<p class='btn-details'>";
-									  html2+="<button href='#' class='btn btn-info' style='width:90%'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
+									  html2+="<button id='store_review' class='btn btn-info' style='width:90%'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
 									  html2+="</div>";  
 									  html2+="<div class='clearfix'>";
 									  html2+="</div>";
