@@ -46,7 +46,7 @@
             <li><a href="${path}/intro/intro.do">Introduce</a></li>
             <li><a href="${path}/shop/shop.do">Shop</a></li>
             <li><a href="${path}/deal/dealList.do">Market</a></li>
-            <c:if test="${memberLoggedIn.memberLevel.equals('2') }">
+            <c:if test="${memberLoggedIn.member_level.equals('2') }">
              <li><a href="${path}/customer/notice.do">MyShop</a></li>
              </c:if>
           </ul>
@@ -64,13 +64,7 @@
         </ul>
 
           <form class="navbar-form navbar-left">
-          <!--   <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="height: 20px;"></span></button>
-         
-         --> 
-         
+          
            <div class="input-group col-md-12">
             <input type="text" class=" input-sm  search-query form-control" placeholder="Search" />
             <span class="input-group-btn"><button class="btn btn-danger input-sm" type="button">
@@ -110,11 +104,11 @@
             </li>
             </c:if>
             
-            <c:if test="${memberLoggedIn.memberLevel.equals('3') }">
+            <c:if test="${memberLoggedIn.member_level.equals('3') }">
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <span>${memberLoggedIn.memberName }님</span>
+                <span>${memberLoggedIn.member_name }님</span>
                 <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
@@ -125,11 +119,11 @@
             </li>
            </c:if>
            
-           <c:if test="${memberLoggedIn.memberLevel.equals('2') }">
+           <c:if test="${memberLoggedIn.member_level.equals('2') }">
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <span>${memberLoggedIn.memberName }점주님</span>
+                <span>${memberLoggedIn.member_name }점주님</span>
                 <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
@@ -140,11 +134,11 @@
             </li>
            </c:if>
            
-           <c:if test="${memberLoggedIn.memberLevel.equals('1') }">
+           <c:if test="${memberLoggedIn.member_level.equals('1') }">
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <span>${memberLoggedIn.memberName }관리자님</span>
+                <span>${memberLoggedIn.member_name }관리자님</span>
                 <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>

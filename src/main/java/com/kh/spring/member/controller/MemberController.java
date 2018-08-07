@@ -26,12 +26,11 @@ public class MemberController {
 	private Logger logger = Logger.getLogger(MemberController.class);
 	
 	@RequestMapping("/member/Login.do")
-	public String memberLogin(String memberId, String memberPw, Model model)
+	public String memberLogin(String member_id, String member_pw, Model model)
 	{
 		logger.debug("로그인메소드호출");
-		//System.out.println(memberId);
-		//System.out.println(memberPw);
-		Member m = service.loginCheck(memberId);
+		
+		Member m = service.loginCheck(member_id);
 		
 		//logger.debug("로그인객체"+m);
 	
@@ -41,12 +40,12 @@ public class MemberController {
 		String view="/common/msg";
 		
 		
-		System.out.println(bcryptPasswordEncoder.encode(memberPw));
+		System.out.println(bcryptPasswordEncoder.encode(member_pw));
 
 		if(m!=null)
 		{
 			
-			if(bcryptPasswordEncoder.matches(memberPw, m.getMemberPw()))
+			if(bcryptPasswordEncoder.matches(member_pw, m.getMember_pw()))
 			{
 				msg="로그인성공";
 				

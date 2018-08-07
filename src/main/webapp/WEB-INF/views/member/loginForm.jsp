@@ -27,12 +27,12 @@
          <form class="login100-form validate-form" method="post" action="${path }/member/Login.do">
             <span class="login100-form-title p-b-33">로그인</span>
             <div class="wrap-input100 validate-input">
-               <input class="input100" type="text" name="memberId" placeholder="ID"/>
+               <input class="input100" type="text" name="member_id" placeholder="ID"/>
                <span class="focus-input100-1"></span>
                <span class="focus-input100-2"></span>
             </div>
             <div class="wrap-input100 rs1 validate-input" data-validate="Password is required">
-               <input class="input100" type="password" name="memberPw" placeholder="Password"/>
+               <input class="input100" type="password" name="member_pw" placeholder="Password"/>
                <span class="focus-input100-1"></span>
                <span class="focus-input100-2"></span>
             </div>

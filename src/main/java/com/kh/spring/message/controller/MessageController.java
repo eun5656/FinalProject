@@ -36,17 +36,26 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/sendMessageEnd.do")
-	public String sendMessageEnd(String receiveUser, String sendContent) {
-	
+	public String sendMessageEnd(String send_user,String receive_user, String send_content) {
 		
+		Map<String, String> map=new HashMap();
+		map.put("send_user", send_user);
+		map.put("receive_user", receive_user);
+		map.put("send_content", send_content);
+		
+		messageService.insertMsg(map);
+		
+		System.out.println(map);
 		return "redirect:/";
 	}
 
 	
 	@RequestMapping("/member/checkId.do")
-	public ModelAndView CheckId(String receiveUser,ModelAndView mv) throws UnsupportedEncodingException {
+	public ModelAndView CheckId(String receive_user,ModelAndView mv) throws UnsupportedEncodingException {
 		
-		boolean check = messageService.CheckId(receiveUser)==0?true:false;
+		boolean check = messageService.CheckId(receive_user)==0?true:false;
+		
+		System.out.println(check);
 		
 		Map map = new HashMap();
 		

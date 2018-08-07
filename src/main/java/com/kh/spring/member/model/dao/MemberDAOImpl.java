@@ -8,9 +8,9 @@ import com.kh.spring.member.model.vo.Member;
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	@Override
-	public Member loginCheck(SqlSessionTemplate sqlSession, String memberId) {
+	public Member loginCheck(SqlSessionTemplate sqlSession, String member_id) {
 		
-		return sqlSession.selectOne("member.selectOne",memberId);
+		return sqlSession.selectOne("member.selectOne",member_id);
 	}
 
 	/*@Override

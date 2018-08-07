@@ -6,7 +6,7 @@ import com.kh.spring.member.model.vo.Member;
 
 public interface MemberDAO {
 	
-	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
+	Member loginCheck(SqlSessionTemplate sqlSession, String member_id);
 	
 	/*int insertMember(SqlSessionTemplate sqlSession,Member m);
 

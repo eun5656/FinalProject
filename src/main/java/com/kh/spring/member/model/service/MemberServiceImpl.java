@@ -17,9 +17,9 @@ public class MemberServiceImpl implements MemberService {
 	MemberDAO memberDAO;
 
 	@Override
-	public Member loginCheck(String memberId) {
+	public Member loginCheck(String member_id) {
 		
-		return memberDAO.loginCheck(sqlSession, memberId);
+		return memberDAO.loginCheck(sqlSession, member_id);
 	}
 	
 	

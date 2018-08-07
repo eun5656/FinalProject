@@ -1,5 +1,7 @@
 package com.kh.spring.message.model.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,15 @@ public class MessageServiceImpl implements MessageService {
 	MessageDAO messageDAO;
 
 	@Override
-	public int CheckId(String receiveUser) {
+	public int CheckId(String receive_user) {
 		
-		return messageDAO.CheckId(sqlSession,receiveUser);
+		return messageDAO.CheckId(sqlSession,receive_user);
+	}
+
+	@Override
+	public int insertMsg(Map<String, String> map) {
+		
+		return messageDAO.insertMsg(sqlSession, map);
 	}
 
 }

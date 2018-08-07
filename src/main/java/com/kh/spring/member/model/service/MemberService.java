@@ -4,7 +4,7 @@ import com.kh.spring.member.model.vo.Member;
 
 public interface MemberService {
 	
-	Member loginCheck(String memberId);
+	Member loginCheck(String member_id);
 	
 	/*int insertMember(Member m);
 	
