@@ -11,6 +11,7 @@
 		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
 		<typeAlias type="com.kh.spring.bookmark.model.vo.Bookmark" alias="bookmark"/>
 		 <typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
-		
+		 <typeAlias type="com.kh.spring.deal.model.vo.Deal" alias="deal"/>
+		 <typeAlias type="com.kh.spring.deal.model.vo.DealImage" alias="dealImage"/>
 	</typeAliases>  
 </configuration>
