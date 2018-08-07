@@ -69,7 +69,13 @@
 							<li class="active"><a href="#tab_default_2"
 								data-toggle="tab"> 가격 </a></li>
 							<li><a href="#tab_default_1" data-toggle="tab"> 시술정보 </a></li>
-							<li><a href="#tab_default_3" data-toggle="tab"> 리뷰 </a></li>
+							<li><a  id='reviewList' href="#" data-toggle="tab"> 리뷰 </a></li>
+								<script type="text/javascript">
+								$('#reviewList').on('click',function () {
+									location.href="${path}/review/reviewList.do?store_pk=${store.store_pk}";
+								});
+								</script>
+					
 						</ul>
 						<div class="tab-content">
 							<!-- tab1 시작 -->
