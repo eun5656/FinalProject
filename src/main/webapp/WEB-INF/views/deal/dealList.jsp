@@ -59,65 +59,43 @@
 						<div class="row1 header">
               
 							<div class="cell">
-                  Full Name
+               				 번호
 							</div>
 							<div class="cell">
-								Age 
+							제목 
 							</div>
 							<div class="cell">
-								Job Title
+							작성자
 							</div>
 							<div class="cell">
-								Location
-              </div>
+							조회수
+             				</div>
            
 						</div>
 
+
+						<c:if test="${not empty list }">
+							<c:forEach var='deal' items='${list}' varStatus="vs">
+
 						<div class="row1">
-							<div class="cell" data-title="Full Name">
-                  <a href="dealForm.html">Vincent Williamson</a>
+							<div class="cell" data-title="번호">
+                 			 <a href="${path }/deal/dealView.do?dealPk=${deal.dealPk}">${deal.dealPk }</a>
 							</div>
-							<div class="cell" data-title="Age">
-								31
+							<div class="cell" data-title="제목">
+								<a href="${path }/deal/dealView.do?dealPk=${deal.dealPk}">${deal.dealTitle }</a>
 							</div>
-							<div class="cell" data-title="Job Title">
-								iOS Developer
+							<div class="cell" data-title="작성자">
+								${deal.dealWriter }
 							</div>
-							<div class="cell" data-title="Location">
-								Washington
-              </div>
+							<div class="cell" data-title="조회수">
+								${deal.dealHits }
+             				 </div>
             
 						</div>
-
-						<div class="row1">
-							<div class="cell" data-title="Full Name">
-								Joseph Smith
-							</div>
-							<div class="cell" data-title="Age">
-								27
-							</div>
-							<div class="cell" data-title="Job Title">
-								Project Manager
-							</div>
-							<div class="cell" data-title="Location">
-								Somerville, MA
-							</div>
-						</div>
-
-						<div class="row1">
-							<div class="cell" data-title="Full Name">
-								Justin Black
-							</div>
-							<div class="cell" data-title="Age">
-								26
-							</div>
-							<div class="cell" data-title="Job Title">
-								Front-End Developer
-							</div>
-							<div class="cell" data-title="Location">
-								Los Angeles
-							</div>
-						</div>
+							</c:forEach>
+						</c:if>
+						
+					
 		
 					</div>
 				
@@ -127,15 +105,7 @@
       </div>
     
       <div class="row1 text-center" id="paging">
-        <ul class="pagination ">
-          <li><a href="#"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-          <li><a href="#">1</a></li>
-          <li><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-          <li><a href="#"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-        </ul>
+        ${pageBar }
       </div>
      
 		
