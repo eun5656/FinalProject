@@ -59,8 +59,8 @@
 									for (var i = 0; i <data.shopList.length; i++) {
 									  html2+="<div class='col-md-4' style='padding-top: 10px;'>";
 									  html2+="<div class='col-item'>";
-									  html2+="<div id='store_img' class='photo' style=' cursor: pointer;'>"
-									  html2+="<input id='store_pk' type='hidden' value='$"+data.shopList[i].store_pk+"'>";
+									  html2+="<div  class='photo store_img' style=' cursor: pointer;'>"
+									  html2+="<input id='store_pk' type='hidden' value='"+data.shopList[i].store_pk+"'>";
 									  html2+="<img src='${path }/resources/images/nail_store/"+data.shopList[i].store_re_img+"'class='img-responsive' alt='a'/>";
 									  html2+="</div>";
 									  html2+="<div class='info'>";
@@ -108,7 +108,7 @@
 					eventBind();
 					function eventBind(){
 						  //북마크 기능
-						     $(".store_img").click(function(){
+						   $(".store_img").click(function(){
 						    	location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
 						    });
 						  
@@ -132,7 +132,7 @@
   <div class="col-md-4" style="padding-top: 10px;">
     <div class="col-item">
       <div class="photo store_img" style=" cursor: pointer;" >
-       <input id="store_pk" type="hidden" value="${store.store_pk}">
+       <input id="store_pk" type="hidden" value="${shop.store_pk}">
         <img src="${path }/resources/images/nail_store/${shop.store_re_img}" class="img-responsive" alt="a" />
       </div>
       <div class="info">
