@@ -21,7 +21,7 @@ display: none;
 		</div>
 		<div class="container">
 			<div class="panel">
-				<form class="form-horizontal" action="${path}/message/sendMessageEnd.do?sendUser=${memberLoggedIn.member_id}" method="post">
+				<form class="form-horizontal" action="${path}/message/sendMessageEnd.do?member_pk=${memberLoggedIn.member_pk}" method="post">
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="">보내는사람 </label>
 						<div class="col-sm-6">
@@ -74,11 +74,11 @@ display: none;
 							$("#send_content").focus();
 							return false;
 						}
-						return true;
+					
 					}
 				
 				$(function(){
-					$('#receive_user').on('keyup',function(){
+					$('#receive_user').on('blur',function(){
 			
 						$.ajax({
 							url:"${pageContext.request.contextPath}/member/checkId.do",
@@ -92,7 +92,7 @@ display: none;
 									$('.guide.ok').hide();
 									$('.guide.error').show();
 									$('#idDuplicateCheck').val(0);
-									
+									$('#receive_user').val("");			
 								}
 								else
 								{
