@@ -1,4 +1,4 @@
-package com.kh.spring.review.model.vo;
+package com.kh.spring.storeReview.model.vo;
 
 import java.io.Serializable;
 

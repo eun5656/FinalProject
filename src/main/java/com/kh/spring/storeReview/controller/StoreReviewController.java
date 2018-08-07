@@ -1,4 +1,4 @@
-package com.kh.spring.review.controller;
+package com.kh.spring.storeReview.controller;
 
 import java.util.List;
 
@@ -15,17 +15,24 @@ import com.kh.spring.store.controller.StoreController;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.storeReview.model.service.StoreReviewService;
+import com.kh.spring.storeReview.model.vo.StoreReview;
 
 @Controller
-public class ReviewController {
+public class StoreReviewController {
+
+	@Autowired
+	private StoreReviewService service;
 	
 	private Logger logger = Logger.getLogger(StoreController.class);
-	
-	@RequestMapping("review/reviewList.do")
-	public String store(int store_pk, Model model) {
-		//String view="store/store";
-		System.out.println(store_pk);
-		return null;
+
+
+	@RequestMapping("/storeReview/storeReviewList.do")
+	public String storeReviewList(String store_pk, Model model) {
+		List<StoreReview>list=service.storeReviewList(store_pk);
+		String view = "store/store";
+
+		return view;
 	}
 
 }

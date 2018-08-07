@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.storeReview.model.vo.StoreReview;
 
 @Repository
 public class StoreDAOImpl implements StoreDAO {
@@ -33,5 +34,7 @@ public class StoreDAOImpl implements StoreDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("store.mainStoreList");
 	}
+
+
 
 }

@@ -72,7 +72,7 @@
 							<li><a  id='reviewList' href="#" data-toggle="tab"> 리뷰 </a></li>
 								<script type="text/javascript">
 								$('#reviewList').on('click',function () {
-									location.href="${path}/review/reviewList.do?store_pk=${store.store_pk}";
+									location.href="${path}/storeReview/storeReviewList.do?store_pk=${store.store_pk}";
 								});
 								</script>
 					
