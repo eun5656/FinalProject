@@ -24,8 +24,65 @@ public class Store implements Serializable {
 	private String store_ori_img;
 	private String store_re_img;
 	private int store_review_count;
+	private String store_info;
+	private String store_kakao;
+	private String store_instagram;
 	
-	
+	public Store(int store_pk, int member_pk, String store_num, String store_name, String store_address,
+			String store_phone, String store_holiday, String store_latitude, String store_longitude,
+			String store_designer, int store_rank, String store_ori_img, String store_re_img, int store_review_count,
+			String store_info, String store_kakao, String store_instagram) {
+		super();
+		this.store_pk = store_pk;
+		this.member_pk = member_pk;
+		this.store_num = store_num;
+		this.store_name = store_name;
+		this.store_address = store_address;
+		this.store_phone = store_phone;
+		this.store_holiday = store_holiday;
+		this.store_latitude = store_latitude;
+		this.store_longitude = store_longitude;
+		this.store_designer = store_designer;
+		this.store_rank = store_rank;
+		this.store_ori_img = store_ori_img;
+		this.store_re_img = store_re_img;
+		this.store_review_count = store_review_count;
+		this.store_info = store_info;
+		this.store_kakao = store_kakao;
+		this.store_instagram = store_instagram;
+	}
+
+
+	public String getStore_info() {
+		return store_info;
+	}
+
+
+	public void setStore_info(String store_info) {
+		this.store_info = store_info;
+	}
+
+
+	public String getStore_kakao() {
+		return store_kakao;
+	}
+
+
+	public void setStore_kakao(String store_kakao) {
+		this.store_kakao = store_kakao;
+	}
+
+
+	public String getStore_instagram() {
+		return store_instagram;
+	}
+
+
+	public void setStore_instagram(String store_instagram) {
+		this.store_instagram = store_instagram;
+	}
+
+
 	public Store() {
 		// TODO Auto-generated constructor stub
 	}
@@ -198,7 +255,9 @@ public class Store implements Serializable {
 				+ store_name + ", store_address=" + store_address + ", store_phone=" + store_phone + ", store_holiday="
 				+ store_holiday + ", store_latitude=" + store_latitude + ", store_longitude=" + store_longitude
 				+ ", store_designer=" + store_designer + ", store_rank=" + store_rank + ", store_ori_img="
-				+ store_ori_img + ", store_re_img=" + store_re_img + ", store_review_count=" + store_review_count + "]";
+				+ store_ori_img + ", store_re_img=" + store_re_img + ", store_review_count=" + store_review_count
+				+ ", store_info=" + store_info + ", store_kakao=" + store_kakao + ", store_instagram=" + store_instagram
+				+ "]";
 	}
 	
 }

@@ -14,8 +14,15 @@
 
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
 <!-- store js -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script src="${path }/resources/js/store.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
+
+<script type="text/javascript">
+// 외부 js 에서 쓰이는 변수 setting
+ var latitude = ${store.store_latitude };
+ var longitude = ${store.store_longitude };
+ var path = ${pageContext.request.contextPath };
+</script>
+<script src="${path }/resources/js/store.js?ver=2"></script>
 <div>
 <div id="wrapper">
 
@@ -67,7 +74,7 @@
 							<!-- tab1 시작 -->
 							<div class="tab-pane" id="tab_default_1">
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
-									<div class="carousel-inner">
+									<div class="carousel-inner" >
 									<c:forEach var="nail" items="${nails }" varStatus="status" step='3'>
 									<c:choose>
 										<c:when test="${status.count eq 1}">									
@@ -79,7 +86,7 @@
 									</c:choose>	
 										<c:forEach var='i' begin='${status.index }' end="${status.index +2 }">
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;height:250px;">
 												<div class="hovereffect">
 												
 													<img class="img-responsive radius14 smail-carousel"
@@ -176,9 +183,10 @@
 
 		<div id="second">
 
-			<div class="NailStoreMap animatepop" id="map">map 삽입</div>
+			<div class="NailStoreMap animatepop" id="map">
+			</div>
 			<div class="addrText animatepop">
-				<p>London, England</P>
+				<p>${store.store_address }</P>
 			</div>
 
 		</div>
@@ -281,19 +289,22 @@
 
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
-				<h3>Nail Shop Name</h3>
-				<p>Nail Shop Tel 02.355.2311</p>
-				<p>KakaoChat : nail0997</p>
-				<p>instagram : @beautyU21</p>
+				<h3>Nail Shop ${store.store_name }</h3>
+				<p>Nail Shop Tel ${store.store_phone }</p>
+				<p>KakaoChat : ${store.store_kakao }</p>
+				<p>instagram : ${store.store_instagram }</p>
 			</div>
 			<!--가게 Info 끝-->
 			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
-				<form class="" action="/insertQnA.html" method="post">
+				<form class="" action="/insertQna.do" method="post" name="QnaInsert">
 					<div class="form-group">
 						<label> 문의사항 : <input type="text" class="form-control"
-							placeholder="제목 입력" autofocus size="20"></label> <br>
+							placeholder="제목 입력" autofocus size="20" name ="title"></label> <br>
 						<textarea name="content" cols="40" rows="6"></textarea>
-						<button type="submit" name="answer-submit" class="btn btn-default">전송!</button>
+						<button type="button" id="answer-submit" class="btn btn-default">전송!</button>
+						<input type="hidden" value="${store.store_pk }" name="store_pk"/>
+						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
+						<input type="hidden" value="${memberLoggedIn.memberId }" name="qna_writer"/>
 					</div>
 				</form>
 			</div>

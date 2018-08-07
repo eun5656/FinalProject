@@ -19,7 +19,7 @@ $(function(){
 		$("#line").removeClass("two");
 		$("#line").removeClass("three");
 		$("#line").removeClass("four");
-	})
+ 	})
 	$(".map").click(function() {
 		$("#first").removeClass("active");
 		$("#second").addClass("active");

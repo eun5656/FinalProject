@@ -4,14 +4,14 @@
 $(function() {
 	var mapCanvas = document.getElementById("map");
 	var mapOptions = {
-		center : new google.maps.LatLng(51.5, -0.2),
-		zoom : 10
+		center : new google.maps.LatLng(latitude, longitude),
+		zoom : 14
 	};
 	var map = new google.maps.Map(mapCanvas, mapOptions);
 
-// 반응형 적용
+	
 $(window).resize(function() {
-	if ($(window).width() < 640) {
+	if ($(window).width() < 768) {
 		$(".shop").addClass("active");
 		$(".map").removeClass("active");
 		$(".reserve").removeClass("active");
@@ -32,6 +32,10 @@ $(".shop").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("three");
 	$("#line").removeClass("four");
+	$("#first").addClass("active");
+	$("#second").removeClass("active");
+	$("#third").removeClass("active");
+	$("#fourth").removeClass("active");
 });
 $(".map").click(function() {
 	$(".map").addClass("active");
@@ -42,6 +46,11 @@ $(".map").click(function() {
 	$("#line").removeClass("one");
 	$("#line").removeClass("three");
 	$("#line").removeClass("four");
+	$("#first").removeClass("active");
+	$("#second").addClass("active");
+	$("#third").removeClass("active");
+	$("#fourth").removeClass("active");
+	
 });
 
 $(".reserve").click(function() {
@@ -53,6 +62,10 @@ $(".reserve").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("one");
 	$("#line").removeClass("four");
+	$("#first").removeClass("active");
+	$("#second").removeClass("active");
+	$("#third").addClass("active");
+	$("#fourth").removeClass("active");
 });
 
 $(".qna").click(function() {
@@ -64,30 +77,6 @@ $(".qna").click(function() {
 	$("#line").removeClass("two");
 	$("#line").removeClass("three");
 	$("#line").removeClass("one");
-});
-
-$(".shop").click(function() {
-	$("#first").addClass("active");
-	$("#second").removeClass("active");
-	$("#third").removeClass("active");
-	$("#fourth").removeClass("active");
-});
-
-$(".map").click(function() {
-	$("#first").removeClass("active");
-	$("#second").addClass("active");
-	$("#third").removeClass("active");
-	$("#fourth").removeClass("active");
-});
-
-$(".reserve").click(function() {
-	$("#first").removeClass("active");
-	$("#second").removeClass("active");
-	$("#third").addClass("active");
-	$("#fourth").removeClass("active");
-});
-
-$(".qna").click(function() {
 	$("#first").removeClass("active");
 	$("#second").removeClass("active");
 	$("#third").removeClass("active");
@@ -128,4 +117,24 @@ $('.multi-item-carousel .item').each(
 						.appendTo($(this));
 			}
 		});
+//문의사항 전송
+$('#answer-submit').click(
+		function(){
+
+			var queryString = $("form[name=QnaInsert]").serialize();
+			$.ajax({
+				type :'post',
+				url: path + '/insertQna.do',
+				data: quertyString,
+				dataType : 'json',
+				success : function(json){
+					alert(json)
+				},
+				error : function(xhr, status, error){
+					alert(error);
+				}
+			})
+			
+		});
+
 });
