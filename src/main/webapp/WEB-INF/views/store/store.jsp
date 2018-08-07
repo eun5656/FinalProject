@@ -299,8 +299,8 @@
 				<form class="" action="/insertQna.do" method="post" name="QnaInsert">
 					<div class="form-group">
 						<label> 문의사항 : <input type="text" class="form-control"
-							placeholder="제목 입력" autofocus size="20" name ="title"></label> <br>
-						<textarea name="content" cols="40" rows="6"></textarea>
+							placeholder="제목 입력" autofocus size="20" name ="qna_title"></label> <br>
+						<textarea name="qna_content" cols="40" rows="6"></textarea>
 						<button type="button" id="answer-submit" class="btn btn-default">전송!</button>
 						<input type="hidden" value="${store.store_pk }" name="store_pk"/>
 						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
