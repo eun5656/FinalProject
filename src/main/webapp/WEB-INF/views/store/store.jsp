@@ -21,9 +21,9 @@
 // 외부 js 에서 쓰이는 변수 setting
  var latitude = ${store.store_latitude };
  var longitude = ${store.store_longitude };
- var path = ${pageContext.request.contextPath };
+var path = "${pageContext.request.contextPath }";
 </script>
-<script src="${path }/resources/js/store.js?ver=2"></script>
+<script src="${path }/resources/js/store.js?ver=4"></script>
 <div>
 <div id="wrapper">
 

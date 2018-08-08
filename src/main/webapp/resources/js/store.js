@@ -122,10 +122,11 @@ $('#answer-submit').click(
 		function(){
 
 			var queryString = $("form[name=QnaInsert]").serialize();
+			console.log(queryString);
 			$.ajax({
 				type :'post',
 				url: path + '/insertQna.do',
-				data: quertyString,
+				data: queryString,
 				dataType : 'json',
 				success : function(json){
 					alert(json)
