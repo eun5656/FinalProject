@@ -49,10 +49,10 @@ public class PageCreate {
 		pageBar += "</ul>";
 		pageBar += "<script>";		//버튼을 눌렀을떄 현재페이지를 쿼리스트링방식으로 다시 controller으로 보내야하므로 
 						//스크립트문을 여기서 정리해준다.
-		pageBar += "function fn_pageing(cPage,numPerPage){";
-		pageBar += "location.href='" + url + "?cPage='+cPage;";
+		pageBar += "function fn_paging(cPage,numPerPage){";
+		pageBar += "location.href='" + url + "&cPage='+cPage;";
 		pageBar += "}";
-		pageBar += "<scrpit>";
+		pageBar += "</script>";
 
 		return pageBar;
 

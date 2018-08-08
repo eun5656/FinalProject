@@ -7,6 +7,42 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value=" " name="pageTitle" />
 </jsp:include>
+<script>
+function fn_refuse(value){
+	
+	 $.ajax({
+		url:"${pageContext.request.contextPath}/message/deleteMessage.do",
+		dataType:"json",
+		data:{message_pk:value},
+	
+		success :function(data)
+		{
+			if(data.result==1)
+			{
+				alert("삭제완료");
+			    location.reload();
+
+				
+			}
+			else
+			{
+				
+				alert("삭제못함");
+			}
+		},
+		error:function(jpxhr, textStatus,errormsg)
+		{
+			console.log("ajax전송실패");
+			console.log(jpxhr);
+			console.log(textStatus);
+			console.log(errormsg);
+		}
+	}); 
+	
+	
+	
+}
+</script>
 <section>	
 	<div class='container'>
 		<div class='panel'>
@@ -26,25 +62,28 @@
 							<th>보낸이</th>
 							<th>쪽지내용</th>
 							<th>날짜</th>
-							
+							<th>삭제</th>
 						</tr>
 				
 				
 					<c:forEach  var='m' items='${messageList2}' varStatus="vs">
 						<tr>
-							<td><input type="checkbox"><a href="#"><i class="icon-star-empty"></i></a></td>
+							<td></td>
 							<td>${vs.count}</td>
 							<td>${m.send_user }</td>
-							<td>${m.send_content }</td>
+							<td><a href="${path}/message/receiveContent.do?message_pk=${m.message_pk}">${m.send_content }</td>
 							<td>${m.send_date}</td>
-							
+							<th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></th>
 						</tr>
 					</c:forEach>
 				
 				</table>
-			</div>	
+				<div class="row1 text-center" id="paging">
+        ${pageBar}
+      </div>
+			</div>	 
 		</div>
 	</div>
-
 </section>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

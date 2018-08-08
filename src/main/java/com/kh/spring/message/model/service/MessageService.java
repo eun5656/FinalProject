@@ -11,8 +11,17 @@ public interface MessageService {
 	
 	int insertMsg(Map<String, Object> map);
 
-	List<Message> selectList(String send_user);
+	List<Message> selectList(String send_user,int cPage, int numPerPage);
 	
-	List<Message> selectList2(String receive_user);
+	int selectCount(String send_user);
+	
+	List<Message> selectList2(String receive_user,int cPage, int numPerPage);
+	
+	int selectCount2(String receive_user);
 
+	Message selectOne(int message_pk);
+	
+	int update(int message_pk);
+	
+	int delete(int message_pk);
 }

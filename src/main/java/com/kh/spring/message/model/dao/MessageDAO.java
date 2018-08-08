@@ -13,7 +13,17 @@ public interface MessageDAO {
 	
 	int insertMsg(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
-	List<Message> selectList(SqlSessionTemplate sqlSession,String send_user);
+	List<Message> selectList(SqlSessionTemplate sqlSession,String send_user,int cPage, int numPerPage);
+	
+	int selectCount(SqlSessionTemplate sqlSession,String send_user);
 
-	List<Message> selectList2(SqlSessionTemplate sqlSession,String receive_user);
+	List<Message> selectList2(SqlSessionTemplate sqlSession,String receive_user,int cPage, int numPerPage);
+	
+	int selectCount2(SqlSessionTemplate sqlSession,String receive_user);
+	
+	Message selectOne(SqlSessionTemplate sqlSession, int message_pk);
+	
+	int update(SqlSessionTemplate sqlSession, int message_pk);
+	
+	int delete(SqlSessionTemplate sqlSession, int message_pk);
 }

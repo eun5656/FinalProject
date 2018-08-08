@@ -16,4 +16,24 @@
 
 
 <select id="selectList2" resultMap="message" parameterType="String"> select * from message where receive_user=#{receive_user} </select>
+
+<select id="selectOne" resultType="message">
+		select * from message where message_pk=#{message_pk}
+</select>
+
+<update id="update" parameterType="_int">
+  	update message set send_read_check='읽음' where message_pk=#{message_pk}
+  </update>
+  
+  <delete id="delete" parameterType="_int">
+  	delete from message where message_pk=#{message_pk}
+  </delete>
+  
+  <select id="selectCount" resultType="_int" parameterType="String">
+  	select count(*) from message where send_user=#{send_user}
+  </select>
+  
+  <select id="selectCount2" resultType="_int" parameterType="String">
+  	select count(*) from message where receive_user=#{receive_user}
+  </select>
 </mapper>

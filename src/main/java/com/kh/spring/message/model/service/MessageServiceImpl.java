@@ -31,17 +31,44 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	@Override
-	public List<Message> selectList(String send_user) {
+	public List<Message> selectList(String send_user,int cPage, int numPerPage) {
 		
-		return messageDAO.selectList(sqlSession,send_user);
+		return messageDAO.selectList(sqlSession,send_user,cPage, numPerPage);
 	}
 
 	@Override
-	public List<Message> selectList2(String receive_user) {
-		return messageDAO.selectList2(sqlSession,receive_user);
+	public List<Message> selectList2(String receive_user,int cPage, int numPerPage) {
+		return messageDAO.selectList2(sqlSession,receive_user,cPage, numPerPage);
 	}
 
-	
+	@Override
+	public Message selectOne(int message_pk) {
+		
+		return messageDAO.selectOne(sqlSession, message_pk);
+	}
 
+	@Override
+	public int update(int message_pk) {
+		
+		return messageDAO.update(sqlSession, message_pk);
+	}
+
+	@Override
+	public int delete(int message_pk) {
+
+		return messageDAO.delete(sqlSession, message_pk);
+	}
+
+	@Override
+	public int selectCount(String send_user) {
+		
+		return  messageDAO.selectCount(sqlSession,send_user);
+	}
+
+	@Override
+	public int selectCount2(String receive_user) {
+		
+		return  messageDAO.selectCount2(sqlSession,receive_user);
+	}
 
 }
