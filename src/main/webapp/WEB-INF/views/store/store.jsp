@@ -177,8 +177,9 @@
 
 
 								<!-- 시작.. -->
+	<c:forEach var="review" items="${reviews }" varStatus="status" >
+	<!--<c:if test="${review.review_level==2 }"></c:if>-->
 	<ul id='comment-main' class="media comment-box level1">
-	<c:forEach var="review" items="${reviews }" varStatus="status" >								
      <c:if test="${review.review_level==1}">
       <li>
         <div class="media-left">
@@ -195,7 +196,7 @@
                     </p>
                  <div class="reply-btn-positon">
                    <!-- 점주만-->
-                    <button class='btn btn-light basic-btn btn-reply' type="button">답글</button>
+                    <button class='btn btn-light basic-btn btn-reply' type="button" value='${status.index }'>답글</button>
                  </div>
                   </div>
                   <div class="row">
@@ -228,9 +229,10 @@
               	
              
          
-               <c:if test="${review.review_level==2}">
-                       		
-         		 <li class="media comment-box level2 comment-reply" >
+             	<ul class="media comment-box level2 comment-reply">
+					<c:forEach var="review2" items="${reviews }" varStatus="status1" >
+                <c:if test="${review2.review_level==2 && review2.review_ref==review.review_pk}">                     		
+         		 <li>
                    <div class="media-left">
                            <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                    </div>
@@ -238,25 +240,29 @@
                        <h5 class="media-heading">아이디       작성일</h5>
                        <div class="review_content">
                		   <p>
-                    <c:out value="${review.review_content}"></c:out>
+                    <c:out value="${review2.review_content}"></c:out>
                     </p>
                       <div class="result-btn-positon">
                       <button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
                       <button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="">삭제</button>
                       </div>
                        </div>
-                    </div>
+                    </div>          
+         	  <br>
                  </li>
+           
+                 </c:if>
+                 </c:forEach>
                  
-                 
-
-              
-               </c:if>
-             
-
-               </c:forEach>
+              </ul>
                   </ul>
-         			   <div id='' class="media comment-box insertComment">
+               </c:forEach>
+
+               
+
+
+
+                    <div id='' class="media comment-box insertComment">
          			  <form name="TruckCommentFrm" action="" method="post" enctype="multipart/form-data">
                 		 <div class="media-left">
                          <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
@@ -264,7 +270,7 @@
                 		 <div class="media-body purple-border input_comment">
                      		<h5 class="media-heading">아이디       작성일</h5>
                      		<div class="form-group" style="margin-bottom:0px;">
-                        		 <textarea class="form-control" id="insert-review-content" rows="3" autofocus placeholder='댓글을 작성하세요'></textarea>
+                        		 <textarea class="form-control" id="" rows="3"></textarea>
                      		</div>
                  <div class="row" style="margin-right:0px;">
                      <div class="col-sm-5">
@@ -428,41 +434,52 @@ $(function() {
 });
 
 $(".btn-reply").on('click',function() {
+ //$(this).parents('div').children(".level2").toggle();
+	 var index=$(this).attr('value');
+	 var div=$(this).parents('ul').children('ul').toggle();
 	
-	$('#insert-review-content').removeAttr('autofocus');
-	
-	var html='';
-	html+="<li class='media comment-box level2'>";
-	html+="<div id='' class='media comment-box insertComment'>";
-	html+="<form name='' action='' method='post'>";
-	html+="<div class='media-left'>";
-	html+="<img class='member_profile' src='${path}/resources/member_profile/{memberLogged.member_re_img}'>";
-	html+="</div>";
-	html+="<div class='media-body purple-border input_comment'>";
-	html+=" <h5 class='media-heading'>아이디       작성일</h5>";
-	html+="<div class='form-group' style='margin-bottom:0px;'>";
-	html+="<textarea class='form-control' id='' rows='3' placeholder='댓글을 작성하세요'></textarea>";
-	html+="</div>";
-	html+="</div>";
-	html+="<div class='row'>";
-	html+="<div class='col-sm-4 col-sm-offset-8' style='text-align:right; padding-top:5px; left: 30px;'>";
-	html+="<button class='btn btn-light basic-btn btn-center' type='submit'>완료</button> ";
-	html+="<button class='btn btn-light basic-btn btn-center' type='reset'>취소</button>";
-	html+="</div>";
-	html+="</div>";
-	html+="</div>";
-	html+="</form>";
-	html+="</div>";
-	html+="</br>";
-	html+="</li>";
-	$(this).parents("ul").children('.comment-reply').last().after(html);
- $(this).parents("ul").children(".comment-reply").toggle();
- //review_comment.children('textarea').focus();
+	 
+		
+		
+		
+
 })
 
-$('#review_tab').on('click', function() {	
+$('#review_tab').one('click', function() {	
 	$('.comment-reply').css('display','none');
+
+	 var li = $('<li></li>'); 
+	 var html='';
+		html+="<div id='' class='media comment-box insertComment'>";
+		html+="<form name='' action='' method='post'>";
+		html+="<div class='media-left'>";
+		html+="<img class='member_profile' src='${path}/resources/member_profile/{memberLogged.member_re_img}'>";
+		html+="</div>";
+		html+="<div class='media-body purple-border input_comment'>";
+		html+=" <h5 class='media-heading'>아이디       작성일</h5>";
+		html+="<div class='form-group' style='margin-bottom:0px;'>";
+		html+="<textarea class='form-control' id='' rows='3' placeholder='댓글을 작성하세요'></textarea>";
+		html+="</div>";
+		html+="</div>";
+		html+="<div class='row'>";
+		html+="<div class='col-sm-4 col-sm-offset-8' style='text-align:right; padding-top:5px; left: 30px;'>";
+		html+="<button class='btn btn-light basic-btn btn-center' type='submit'>완료</button> ";
+		html+="<button class='btn btn-light basic-btn btn-center' type='reset'>취소</button>";
+		html+="</div>";
+		html+="</div>";
+		html+="</div>";
+		html+="</form>";
+		html+="</div>";
+		html+="</br>";
+		li.html(html);
+		
+		$('.level2').append(li);
 })
+
+
+/*$('#review_tab').on('click', function() {	
+	$('.comment-reply').css('display','none');
+})*/
                </script>
 						</div>
 						<!-- tab content 끝 -->
