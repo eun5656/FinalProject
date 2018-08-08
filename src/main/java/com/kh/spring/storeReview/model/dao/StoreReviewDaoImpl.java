@@ -17,7 +17,7 @@ public class StoreReviewDaoImpl implements StoreReviewDao {
 	
 
 	@Override
-	public List<StoreReview> storeReviewList(SqlSessionTemplate sqlsession, String store_pk) {
+	public List<StoreReview> storeReviewList(SqlSessionTemplate sqlsession, int store_pk) {
 		return sqlsession.selectList("storeReview.storeReviewList",store_pk);
 	}
 

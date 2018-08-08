@@ -6,6 +6,8 @@ import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreReviewService {
 
-	List<StoreReview> storeReviewList(String store_pk);
+	List<StoreReview> storeReviewList(int store_pk);
+
+	
 
 }

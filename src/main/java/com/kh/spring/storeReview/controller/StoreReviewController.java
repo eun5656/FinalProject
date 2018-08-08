@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
 import com.kh.spring.store.controller.StoreController;
 import com.kh.spring.store.model.service.StoreService;
@@ -22,17 +23,35 @@ import com.kh.spring.storeReview.model.vo.StoreReview;
 public class StoreReviewController {
 
 	@Autowired
-	private StoreReviewService service;
+	private StoreReviewService reviewService;
 	
+	@Autowired
+	private StoreService storeService;
+
+	@Autowired
+	private NailService nailService;
 	private Logger logger = Logger.getLogger(StoreController.class);
 
 
 	@RequestMapping("/storeReview/storeReviewList.do")
-	public String storeReviewList(String store_pk, Model model) {
-		List<StoreReview>list=service.storeReviewList(store_pk);
-		String view = "store/store";
+	public String storeReviewList(int store_pk, Model model) {
+		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
+		/*int store_pk1 = Integer.parseInt((String)store_pk);
+		Store store = storeService.selectOne(store_pk1);
+		List<Menu> menus = storeService.selectMenu(store_pk1);
+		List<Nail> nails= nailService.nailListStore(store_pk1);
+		
 
-		return view;
+		model.addAttribute("store",store);
+		model.addAttribute("reviews",reviews);
+		model.addAttribute("menus",menus);
+		model.addAttribute("nails",nails);
+		
+		
+		
+		String view = "store/store";*/
+
+		return null;
 	}
 
 }

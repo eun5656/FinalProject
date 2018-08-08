@@ -12,7 +12,7 @@ public class StoreReview implements Serializable{
 	private int review_pk;
 	private int review_level;
 	private String review_writer;
-	private String review_contnet;
+	private String review_content;
 	private int review_ref;
 	private String review_date;
 	private String review_ori_img;
@@ -20,20 +20,20 @@ public class StoreReview implements Serializable{
 	private int review_star;
 	private String member_pk;
 	private String store_pk;
-
+	
 	public StoreReview() {
 		// TODO Auto-generated constructor stub
 	}
-	 
 	
-	public StoreReview(int review_pk, int review_level, String review_writer, String review_contnet, int review_ref,
+	
+	public StoreReview(int review_pk, int review_level, String review_writer, String review_content, int review_ref,
 			String review_date, String review_ori_img, String review_re_img, int review_star, String member_pk,
 			String store_pk) {
 		super();
 		this.review_pk = review_pk;
 		this.review_level = review_level;
 		this.review_writer = review_writer;
-		this.review_contnet = review_contnet;
+		this.review_content = review_content;
 		this.review_ref = review_ref;
 		this.review_date = review_date;
 		this.review_ori_img = review_ori_img;
@@ -42,6 +42,7 @@ public class StoreReview implements Serializable{
 		this.member_pk = member_pk;
 		this.store_pk = store_pk;
 	}
+	
 
 
 	public int getReview_pk() {
@@ -62,11 +63,11 @@ public class StoreReview implements Serializable{
 	public void setReview_writer(String review_writer) {
 		this.review_writer = review_writer;
 	}
-	public String getReview_contnet() {
-		return review_contnet;
+	public String getReview_content() {
+		return review_content;
 	}
-	public void setReview_contnet(String review_contnet) {
-		this.review_contnet = review_contnet;
+	public void setReview_content(String review_content) {
+		this.review_content = review_content;
 	}
 	public int getReview_ref() {
 		return review_ref;
@@ -113,12 +114,14 @@ public class StoreReview implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Review [review_pk=" + review_pk + ", review_level=" + review_level + ", review_writer=" + review_writer
-				+ ", review_contnet=" + review_contnet + ", review_ref=" + review_ref + ", review_date=" + review_date
-				+ ", review_ori_img=" + review_ori_img + ", review_re_img=" + review_re_img + ", review_star="
-				+ review_star + ", member_pk=" + member_pk + ", store_pk=" + store_pk + "]";
+		return "StoreReview [review_pk=" + review_pk + ", review_level=" + review_level + ", review_writer="
+				+ review_writer + ", review_content=" + review_content + ", review_ref=" + review_ref + ", review_date="
+				+ review_date + ", review_ori_img=" + review_ori_img + ", review_re_img=" + review_re_img
+				+ ", review_star=" + review_star + ", member_pk=" + member_pk + ", store_pk=" + store_pk + "]";
 	}
 	
 	

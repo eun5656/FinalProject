@@ -20,7 +20,7 @@ public class StoreReviewServiceImpl  implements StoreReviewService {
 	@Autowired
 	private SqlSessionTemplate sqlsession;
 	@Override
-	public List<StoreReview> storeReviewList(String store_pk) {
+	public List<StoreReview> storeReviewList(int store_pk) {
 		List<StoreReview> list=storeReviewDao.storeReviewList(sqlsession,store_pk);	
 		return list;
 	}

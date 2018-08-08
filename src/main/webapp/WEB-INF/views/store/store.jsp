@@ -69,12 +69,12 @@
 							<li class="active"><a href="#tab_default_2"
 								data-toggle="tab"> 가격 </a></li>
 							<li><a href="#tab_default_1" data-toggle="tab"> 시술정보 </a></li>
-							<li><a  id='reviewList' href="#" data-toggle="tab"> 리뷰 </a></li>
-								<script type="text/javascript">
+							<li><a id="review_tab" href="#tab_default_3" data-toggle="tab"> 리뷰 </a></li>
+								<!-- <script type="text/javascript">
 								$('#reviewList').on('click',function () {
 									location.href="${path}/storeReview/storeReviewList.do?store_pk=${store.store_pk}";
 								});
-								</script>
+								</script> -->
 					
 						</ul>
 						<div class="tab-content">
@@ -177,8 +177,9 @@
 
 
 								<!-- 시작.. -->
-								
-								<ul id='comment-main' class="media comment-box level1">
+	<ul id='comment-main' class="media comment-box level1">
+	<c:forEach var="review" items="${reviews }" varStatus="status" >								
+     <c:if test="${review.review_level==1}">
       <li>
         <div class="media-left">
           <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
@@ -186,42 +187,59 @@
         <div class="media-body">
         <span><h5 class="media-heading">아이디       작성일</h5><span>
                   <div class="review_content">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                    <p>
+                    <c:if test="${review.review_re_img != null}">
+                    <img class="review-img"alt="" src="${path}/resources/images/review_img/${review.review_re_img}">                
+                    </c:if>
+                    <c:out value="${review.review_content}"></c:out>
+                    </p>
                  <div class="reply-btn-positon">
                    <!-- 점주만-->
-                    <button class='btn btn-light basic-btn btn-reply' type="button">
-                      답글</button>
+                    <button class='btn btn-light basic-btn btn-reply' type="button">답글</button>
                  </div>
                   </div>
                   <div class="row">
                       <div class="col-sm-3" style="padding-top:10px;">
 
                         <!--for문으로 버튼 클릭안되게하기-->
+                        <c:forEach begin="1" end="${review.review_star}">
                      <button type="button" class=" btn btn-xs btn-warning" class="view_star" >
                          <i class="fa fa-star" aria-hidden="true"></i>
                      </button>
+                     </c:forEach>
 
+                        <c:forEach begin="1" end="${5-review.review_star}">
                      <button type="button" class=" btn btn-xs btn-default" class="view_star" >
                          <i class="fa fa-star" aria-hidden="true"></i>
                      </button>
+                      </c:forEach>
+                     
 
-                        <span class="">0</span><small> / 5</small>
+                        <span class=""><c:out value="${review.review_star}"></c:out></span><small> / 5</small>
                       </div>
                   </div>
               </div>
+              <br>
+         	  <br>
             </li>
-
-            <ul id='comment-reply' class="media comment-box level2">
-
-
-              <li>
+            </c:if>
+     
+             
+              	
+             
+         
+               <c:if test="${review.review_level==2}">
+                       		
+         		 <li class="media comment-box level2 comment-reply" >
                    <div class="media-left">
                            <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                    </div>
                    <div class="media-body">
                        <h5 class="media-heading">아이디       작성일</h5>
                        <div class="review_content">
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+               		   <p>
+                    <c:out value="${review.review_content}"></c:out>
+                    </p>
                       <div class="result-btn-positon">
                       <button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
                       <button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="">삭제</button>
@@ -229,124 +247,16 @@
                        </div>
                     </div>
                  </li>
+                 
+                 
 
-                 <li>
-                   <div id='' class="media comment-box insertComment">
-                     <form name="TruckCommentFrm" action="" method="post" enctype="multipart/form-data">
-                          <div class="media-left">
-                                  <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                          </div>
-                          <div class="media-body purple-border input_comment">
-                              <h5 class="media-heading">아이디       작성일</h5>
-                              <div class="form-group" style="margin-bottom:0px;">
-                                  <textarea class="form-control" id="" rows="3"></textarea>
-                              </div>
+              
+               </c:if>
+             
 
-                          <div class="row">
-
-
-                                   <div class="col-sm-4 col-sm-offset-8" style="text-align:right; padding-top:5px;">
-
-
-                                    <button  class='btn btn-light basic-btn btn-center' type="submit">완료</button>
-
-                                <button  class='btn btn-light basic-btn btn-center' type="reset">취소</button>
-                              </div>
-                          </div>
-                         </div>
-                      </form>
-                    </div>
-                       <br>
-                    </li>
-
-               </ul>
-
-              <!-- <li>
-                 <div class="media-left">
-                   <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                 </div>
-                 <div class="media-body">
-                   <h4 class="media-heading">아이디       작성일</h5>
-                           <div class="review_content">
-                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                          <div style="text-align:left;">
-                          <button class='btn btn-light basic-btn btn-reply' type="button" onclick="">답글</button>
-                          </div>
-                           </div>
-                         </div>
-                     </li>-->
+               </c:forEach>
                   </ul>
-
-                  <ul id='comment-main' class="media comment-box level1">
-                    <li>
-                      <div class="media-left">
-                        <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                      </div>
-                      <div class="media-body">
-                      <span><h5 class="media-heading">아이디       작성일</h5><span>
-                                <div class="review_content">
-                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                               <div class="result-btn-positon">
-                                 <!-- 점주만-->
-                                <button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
-                               <button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="">삭제</button>
-                               </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-3" style="padding-top:10px;">
-
-                                      <!--for문으로 버튼 클릭안되게하기-->
-                                   <button type="button" class=" btn btn-xs btn-warning" class="view_star" >
-                                       <i class="fa fa-star" aria-hidden="true"></i>
-                                   </button>
-
-                                   <button type="button" class=" btn btn-xs btn-default" class="view_star" >
-                                       <i class="fa fa-star" aria-hidden="true"></i>
-                                   </button>
-
-                                      <span class="">0</span><small> / 5</small>
-                                    </div>
-                                </div>
-                            </div>
-                          </li>
-
-                          <ul id='comment-reply' class="media comment-box level2">
-                            <li>
-                                 <div class="media-left">
-                                         <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                                 </div>
-                                 <div class="media-body">
-                                     <h5 class="media-heading">아이디       작성일</h5>
-                                     <div class="review_content">
-                                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                    <div class="result-btn-positon">
-                                    <button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
-                                    <button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="">삭제</button>
-                                    </div>
-                                     </div>
-                                  </div>
-                               </li>
-                             </ul>
-
-                            <!-- <li>
-                               <div class="media-left">
-                                 <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                               </div>
-                               <div class="media-body">
-                                 <h4 class="media-heading">아이디       작성일</h5>
-                                         <div class="review_content">
-                                           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        <div style="text-align:left;">
-                                        <button class='btn btn-light basic-btn btn-reply' type="button" onclick="">답글</button>
-                                        </div>
-                                         </div>
-                                       </div>
-                                   </li>-->
-                                </ul>
-
-
-
-                    <div id='' class="media comment-box insertComment">
+         			   <div id='' class="media comment-box insertComment">
          			  <form name="TruckCommentFrm" action="" method="post" enctype="multipart/form-data">
                 		 <div class="media-left">
                          <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
@@ -354,7 +264,7 @@
                 		 <div class="media-body purple-border input_comment">
                      		<h5 class="media-heading">아이디       작성일</h5>
                      		<div class="form-group" style="margin-bottom:0px;">
-                        		 <textarea class="form-control" id="" rows="3"></textarea>
+                        		 <textarea class="form-control" id="insert-review-content" rows="3" autofocus placeholder='댓글을 작성하세요'></textarea>
                      		</div>
                  <div class="row" style="margin-right:0px;">
                      <div class="col-sm-5">
@@ -518,7 +428,40 @@ $(function() {
 });
 
 $(".btn-reply").on('click',function() {
- $(this).parents("ul").children("ul").toggle();
+	
+	$('#insert-review-content').removeAttr('autofocus');
+	
+	var html='';
+	html+="<li class='media comment-box level2'>";
+	html+="<div id='' class='media comment-box insertComment'>";
+	html+="<form name='' action='' method='post'>";
+	html+="<div class='media-left'>";
+	html+="<img class='member_profile' src='${path}/resources/member_profile/{memberLogged.member_re_img}'>";
+	html+="</div>";
+	html+="<div class='media-body purple-border input_comment'>";
+	html+=" <h5 class='media-heading'>아이디       작성일</h5>";
+	html+="<div class='form-group' style='margin-bottom:0px;'>";
+	html+="<textarea class='form-control' id='' rows='3' placeholder='댓글을 작성하세요'></textarea>";
+	html+="</div>";
+	html+="</div>";
+	html+="<div class='row'>";
+	html+="<div class='col-sm-4 col-sm-offset-8' style='text-align:right; padding-top:5px; left: 30px;'>";
+	html+="<button class='btn btn-light basic-btn btn-center' type='submit'>완료</button> ";
+	html+="<button class='btn btn-light basic-btn btn-center' type='reset'>취소</button>";
+	html+="</div>";
+	html+="</div>";
+	html+="</div>";
+	html+="</form>";
+	html+="</div>";
+	html+="</br>";
+	html+="</li>";
+	$(this).parents("ul").children('.comment-reply').last().after(html);
+ $(this).parents("ul").children(".comment-reply").toggle();
+ //review_comment.children('textarea').focus();
+})
+
+$('#review_tab').on('click', function() {	
+	$('.comment-reply').css('display','none');
 })
                </script>
 						</div>

@@ -8,6 +8,7 @@ import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreReviewDao {
 
-	List<StoreReview> storeReviewList(SqlSessionTemplate sqlsession, String store_pk);
+	List<StoreReview> storeReviewList(SqlSessionTemplate sqlsession, int store_pk);
+
 
 }
