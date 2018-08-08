@@ -673,7 +673,7 @@
 				})
 				function eventBind(){
 					    $(".b_icon").click(function() {					    	
-					    	var memberLoggedIn= "${memberLoggedIn}"
+					    	var memberLoggedIn= "${memberLoggedIn}";
 					    	if(memberLoggedIn.length!=0){
 					    
 					    	var temp=$(this);
