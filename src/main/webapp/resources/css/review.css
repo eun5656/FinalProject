@@ -84,11 +84,18 @@
     .reply-btn-positon{
       text-align: left;
     }
+    
+    .review-img{
+    height: 100% !important;
+    width: 100% !important;
+    padding-bottom:3px; 
+    border-radius: 10px; 
+    }
 
     /*btn*/
 
     #comment-reply{
-      display: none;
+      /*display: none;*/
     }
     ul#comment-main button.btn-reply {
       display: none;
