@@ -16,6 +16,8 @@
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
+
 
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
@@ -259,22 +261,29 @@
                </c:forEach>
 
                
-
-
-
+					<jsp:useBean id="currTime" class="java.util.Date" />
                     <div id='' class="media comment-box insertComment">
-         			  <form name="TruckCommentFrm" action="" method="post" enctype="multipart/form-data">
+         			  <form id="review_insert" action="${path}/storeReview/storeReviewInsert.do" name="review_insert" method="post" enctype="multipart/form-data">
+						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
+						<input type="hidden" value="${memberLoggedIn.memberId }" name="review_writer"/>
+                		<input type="hidden" value="${store. store_pk  }" name="store_pk"/>
+                		<input type="hidden" value="${currTime }" name="review_date"/>
+                	    <input type="hidden" value="1" name="review_level"/>
+                	
                 		 <div class="media-left">
                          <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                  		</div>
                 		 <div class="media-body purple-border input_comment">
-                     		<h5 class="media-heading">아이디       작성일</h5>
+                     		<div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${memberLoggedIn.memberId}</div>
+                     			<div class="col-xs-9" style="text-align: right;"><fmt:formatDate value="${currTime}" pattern="yyyy년MM월dd일HH시mm분"/>
+								</div>
+							</div>
                      		<div class="form-group" style="margin-bottom:0px;">
-                        		 <textarea class="form-control" id="" rows="3"></textarea>
+                        		 <textarea class="form-control" id="" rows="3" name="review_content" required=" 	"></textarea>
                      		</div>
                  <div class="row" style="margin-right:0px;">
                      <div class="col-sm-5">
-                       <input type="hidden" id="selected_rating" name="selected_rating" value="" required="required">
+                       <input type="hidden" id="selected_rating" name=review_star value="" required="required">
                     <button type="button" class="btnrating btn btn-default btn-xs" data-attr="1" id="rating-star-1">
                         <i class="fa fa-star" aria-hidden="true"></i>
                     </button>
@@ -308,18 +317,60 @@
                      <div class="btn btn-default image-preview-input basic-btn">
                          <span class="glyphicon glyphicon-folder-open"></span>
                          <span class="image-preview-input-title ">Browse</span>
-                         <input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/> <!-- rename it -->
+                         <input type="file" accept="image/png, image/jpeg, image/gif" name="review_ori_img"/> <!-- rename it -->
                      </div>
                  </span> </div>
 
-                           <button id="result-button" class='btn btn-light basic-btn btn-center' type="submit">완료</button>
-
+                       <button id="result-button" class='btn btn-light basic-btn btn-center' type="button">완료</button>
                        <button id="reset-button" class='btn btn-light basic-btn btn-center' type="reset">취소</button>
                      </div>
                  </div>
                 </div>
              </form>
            </div>
+           
+           <script type="text/javascript">
+           $(function () {
+        	   $("#result-button").click(function() {
+        			          			   
+        		        var form = $('#review_insert')[0];
+              			var formData = new FormData(form);
+              			formData=$("input[name=review_ori_img]")[0].files[0];
+	      		        var review_value = { };
+        		        $.each($("form[name=review_insert]").serializeArray(), function() {
+        		        	review_value[this.name] = this.value;
+        		        });
+        		        review_value['review_ori_img']=$("input[name=review_ori_img]")[0].files[0];
+        		 		console.log(review_value);
+        		 		
+        		 		var jsonData = JSON.stringify(review_value);
+						console.log(jsonData);
+						
+						console.log(formData);
+
+						
+        		 		$.ajax({
+        		            type : 'POST',
+        		            url : '${path}/storeReview/storeReviewInsert.do',
+        		            data : formData,
+        		            enctype: 'multipart/form-data',
+        		            async: false,
+        		            cache: false,
+        		            contentType: false,
+        		            processData: false,
+        		            dataType : 'json',
+        		            
+        		            error: function(xhr, status, error){
+        		                alert(error);
+        		            },
+        		            
+        		  
+        		       })	
+        		       $("form[name=review_insert]").submit();
+        		    
+        		       })		
+        		    })
+           </script>
 							<br><br><br><br><br>
 							</div>
 							<!-- 3번째 탭 끝 -->
@@ -345,6 +396,7 @@
              $("#rating-star-"+ix).toggleClass('btn-warning');
              $("#rating-star-"+ix).toggleClass('btn-default');
              }
+             $("input[name=review_star]").val(selected_value);
              }));
 
                    $("#reset-button").on('click',function() {
@@ -359,11 +411,14 @@
                      $("#rating-star-"+i).addClass('btn-xs');
                      }
                      $("#selected_rating").val('');
+                     $("input[name=review_star]").val(0);
                    });
 
                     $('.view_star').attr('disabled', true);
 
 
+                    
+                  
    });
 
 
