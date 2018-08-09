@@ -7,7 +7,16 @@ $(function() {
 		center : new google.maps.LatLng(latitude, longitude),
 		zoom : 14
 	};
+	  var latlng = {
+		lat : latitude,
+		lng : longitude
+	};
 	var map = new google.maps.Map(mapCanvas, mapOptions);
+	
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map
+      });
 
 	
 $(window).resize(function() {
