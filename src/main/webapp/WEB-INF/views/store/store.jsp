@@ -23,7 +23,7 @@
  var longitude = ${store.store_longitude };
 var path = "${pageContext.request.contextPath }";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=2"></script>
 <div>
 <div id="wrapper">
 

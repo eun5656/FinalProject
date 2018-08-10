@@ -5,7 +5,7 @@ $(function() {
 	var mapCanvas = document.getElementById("map");
 	var mapOptions = {
 		center : new google.maps.LatLng(latitude, longitude),
-		zoom : 14
+		zoom : 17
 	};
 	  var latlng = {
 		lat : latitude,
