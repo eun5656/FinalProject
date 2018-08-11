@@ -16,4 +16,6 @@ public interface StoreService {
 
 	List<Store> mainStoreList();
 
+	int insertMenu(Menu menu, String store_pk);
+
 }

@@ -59,20 +59,39 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("reviews",reviews);
 		return view;
 	}
+	
+	@RequestMapping("/store/storeManage/menuInsert.do")
+	public String menuInsert(Menu menu, HttpServletRequest req) {
+		System.out.println("메뉴 삽입 접근완료");
+		String store_pk=(String)req.getSession().getAttribute("store_pk");
+		int result = service.insertMenu(menu,store_pk);
+		if(result>0) {
+			System.out.println("삽입 완료");
+		}else {
+			System.out.println("인서트 실패");
+		}
+		logger.debug(menu);//입력값 확인
+		
+		return "/store/storeManage.do";
+	}
+	
 	@RequestMapping("/store/storeManage/menuDelete.do")
 	@ResponseBody
 	public String menuDelete(HttpServletRequest req,
 			@RequestParam String menu_pk
 			) throws JsonProcessingException {
-		System.out.println("접근완료");
+		System.out.println("메뉴 삭제 접근완료");
 		System.out.println("menu_Pk = " + menu_pk);
-		Map map=new HashMap();//걍 귀찮아서 map으로함 
-		
+		HashMap<String, String> map=new HashMap<String, String>();//걍 귀찮아서 map으로함 
+		map.put("menu_pk", menu_pk);
 		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr=mapper.writeValueAsString(map);
 		
 		int result = service.deleteMenu(menu_pk);
+		System.out.println("삭제된 메뉴pk" + menu_pk);
 		return jsonstr;
 	}
+	
+	
 	
 }

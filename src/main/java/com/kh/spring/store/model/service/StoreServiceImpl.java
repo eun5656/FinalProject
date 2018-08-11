@@ -53,4 +53,10 @@ public class StoreServiceImpl implements StoreService {
 		return naillist;
 	}
 
+	@Override
+	public int insertMenu(Menu menu, String store_pk) {
+		
+		return dao.menuInsert(sqlSession,menu,store_pk);
+	}
+
 }

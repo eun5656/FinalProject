@@ -94,10 +94,26 @@ $("#menuDelete").click(function(){
 			url: path+"/store/storeManage/menuDelete.do",
 			data:{'menu_pk':menu_pk},
 			success:function(data){
-				alert("메뉴 삭제 완료");
+				alert("메뉴 삭제 완료"+data);
+				location.reload();
 			},
 			error:function(jqXHR, textStatus, errorThrown){
 			}
 		});
 	});		
 });
+//메뉴 추가
+
+function menuInsertForm(){
+	 var li = $('<li></li>'); 
+	 var html='';
+		html+='<form name ="menuInsert" method="post" action="/menuInsert.do">';								;
+		html+='<input type="text" placeholder="메뉴 제목 입력" name="menu_name" class="form-control"/>';
+		html+='<input type="text" placeholder="정보 입력" name="menu_Info" class="form-control"/>';
+		html+='<input type="number" placeholder="가격 입력" name="menu_price" class="form-control"/>';
+		html+='<select name="menu_check"><option value="손">손</option><option value="발">발</option></select>';
+		html+='<button type="submit" id ="menuInsert" class="btn-success"> 완료</button></form>';
+		li.html(html);
+		$('.menuInsertForm').append(li);
+	
+};
