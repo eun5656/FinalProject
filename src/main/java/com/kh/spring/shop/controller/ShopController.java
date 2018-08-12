@@ -65,6 +65,7 @@ List<Store> list;
 		return jsonstr;
 	}
 	
+	
 
 	
 	

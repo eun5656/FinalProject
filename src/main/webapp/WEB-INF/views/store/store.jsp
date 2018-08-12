@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+ <c:set var='path' value="${pageContext.request.contextPath}"/>
 <!-- 해더부분 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="NailStore" name="pageTitle" />
@@ -171,13 +172,12 @@
 
 
 		<div id="second">
-
 			<div class="NailStoreMap animatepop" id="map">map 삽입</div>
 			<div class="addrText animatepop">
 				<p>London, England</P>
 			</div>
-
 		</div>
+		
 		<div id="third">
 			<div id='calendar'></div>
 			<div id='calendarModal' class="modal fade pop-up-1" tabindex="-1"
@@ -272,9 +272,8 @@
 			<!-- /.modal mixer image -->
 		</div>
 	</div>
+	
 	<div id="fourth">
-
-
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 				<h3>Nail Shop Name</h3>
@@ -284,18 +283,67 @@
 			</div>
 			<!--가게 Info 끝-->
 			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
-				<form class="" action="/insertQnA.html" method="post">
+
+				<form class="form-horizontal" action="${path}/qna/storeQna.do?qna_writer=${memberLoggedIn.member_id}&store_pk=${store.store_pk}&member_pk=${memberLoggedIn.member_pk}" method="post">
 					<div class="form-group">
-						<label> 문의사항 : <input type="text" class="form-control"
-							placeholder="제목 입력" autofocus size="20"></label> <br>
-						<textarea name="content" cols="40" rows="6"></textarea>
-						<button type="submit" name="answer-submit" class="btn btn-default">전송!</button>
+						<label for="" class="col-sm-3 control-label">제목 : </label>
+						<div class="col-sm-6">
+						<input type="text" class="form-control" id="qna_title" name="qna_title" placeholder="제목 입력" autofocus size="20">
+						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">내 용: </label>
+						<div class="col-sm-6">
+							<textarea class="form-control" id="qna_content" name="qna_content" rows="10" style="resize: none;"></textarea>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<button type="submit"  class="btn btn-default center-block" value="${memberLoggedIn.member_id}" onclick="return fn_submit(${memberLoggedIn.member_id});">전송</button>
+					</div>
+					
 				</form>
+				
+				<script>
+				
+				function fn_submit(value) {
+					var qna_title = $("#qna_title").val();
+					var qna_content = $("#qna_content").val();
+					
+
+					qna_title = $.trim(qna_title);
+					qna_content = $.trim(qna_content);
+
+					if (qna_title.length == 0 || qna_title == null) {
+						alert("문의제목을 입력해주세요")
+						$("#qna_title").focus();
+						return false;
+					}
+					
+
+					if (qna_content.length == 0 || qna_content == null) {
+						alert("문의내용을 입력해주세요");
+						$("#qna_content").focus();
+						return false;
+					}
+				
+					if(value==null)
+					{
+						alert("로그인후 이용해주세요");
+						return false;
+					}
+				
+				}
+				</script>
+		
 			</div>
 		</div>
 	</div>
+	
+	
 </div>
+
 <div id="border">
 	<div id="line" class="one"></div>
 </div>

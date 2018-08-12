@@ -47,7 +47,7 @@
             <li><a href="${path}/shop/shop.do">Shop</a></li>
             <li><a href="${path}/deal/dealList.do">Market</a></li>
             <c:if test="${memberLoggedIn.member_level.equals('2') }">
-             <li><a href="${path}/customer/notice.do">MyShop</a></li>
+             <li><a href="${path}/store/mystore.do">MyShop</a></li>
              </c:if>
           </ul>
            

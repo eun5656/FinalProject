@@ -101,9 +101,9 @@ public class MessageController {
 		String msg="";
         String loc="";
         if(result>0) {
-           msg="작성 성공";
+           msg="쪽지보내기 성공";
         }else {
-           msg="작성 실패";
+           msg="쪽지보내기 실패";
         }
         mv.addObject("msg",msg);
         mv.addObject("loc","/message/receiveMessage.do?send_user="+((Member)session.getAttribute("memberLoggedIn")).getMember_id());

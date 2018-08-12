@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -52,5 +53,7 @@ public class StoreServiceImpl implements StoreService {
 		List<Store> naillist=dao.mainStoreList(sqlSession);
 		return naillist;
 	}
+
+	
 
 }

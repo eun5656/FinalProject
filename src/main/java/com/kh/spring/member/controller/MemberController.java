@@ -1,17 +1,27 @@
 package com.kh.spring.member.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
+import com.kh.spring.store.model.vo.Store;
 
 @SessionAttributes(value={"memberLoggedIn"})
 @Controller
@@ -80,25 +90,30 @@ public class MemberController {
 		return "member/loginForm";
 	}
 	
+	// 소개
 	@RequestMapping("/intro/intro.do")
 	public String Intro() {
 		return "intro/intro";
 	}
 
 
-	@RequestMapping("/member/memberJoin.do")
+	// 처음 회원가입 클릭 시 나오는 화면
+	@RequestMapping("/member/joinSelect.do")
 	public String memberEnroll() {
 		return "member/joinSelect";
 	}
 	
+	// 샵원장 가입
 	@RequestMapping("/member/JoinShopOwner.do")
 	public String joinShopOwner() {
 		return "member/joinShop";
 	}
 
+	// 일반회원 가입
 	@RequestMapping("/member/JoinUser.do")
 	public String joinUser() {
 		return "member/joinUser";
 	}
+	
 	
 }

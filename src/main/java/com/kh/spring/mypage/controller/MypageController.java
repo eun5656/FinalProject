@@ -21,12 +21,7 @@ public class MypageController {
 	public String mypage2() {
 		return "mypage/mypageBookmark";
 	}
-	
-	@RequestMapping("/mypage/mypageQNA.do")
-	public String mypage3() {
-		return "mypage/mypageQNA";
-	}
-	
+
 	@RequestMapping("/mypage/mypageQNAList.do")
 	public String mypage4() {
 		return "mypage/mypageQNAList";

@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -15,5 +16,7 @@ public interface StoreDAO {
 
 	int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk);
 	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
+	
+	
 
 }
