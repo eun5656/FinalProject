@@ -26,11 +26,11 @@
     
     <div class="col-xs-6"></div>
     <div class="col-xs-5">
-      <form action="${path }/deal/dealSelect.do" method="post">
+      <form action="${path }/deal/dealSelect.do" method="post" id="selectForm">
           <div class="col-xs-12">
           	<div class="input-group">
                   <div class="input-group-btn search-panel">
-                     	<select name="selectOption" title="" class="btn btn-default" style="width:90px;height:34px;">
+                     	<select id="selectOption" name="selectOption" title="" class="btn btn-default" style="width:90px;height:34px;">
 					<option selected="" value="1">제목</option>
 					<option value="2">내용</option>
 					<option value="3">작성자</option>
@@ -39,15 +39,15 @@
 				</select>
                   </div>
                   <input type="hidden" name="search_param" value="all" id="search_param">         
-                  <input type="text" class="form-control" name="searchOption" id="searchOption" placeholder="검색">
+                  <input type="text" class="form-control" id="searchOption" name="searchOption" placeholder="검색">
                   <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit" style="height:34px;" onclick="return fn_select();"><span class="glyphicon glyphicon-search"></span></button>
+                      <button class="btn btn-default" type="button" style="height:34px;"><span class="glyphicon glyphicon-search"></span></button>
                   </span>
               </div>
          
     	</div>
        </form>
-      
+     
       </div>
       <div class="col-xs-1"></div>
 
@@ -108,18 +108,7 @@
         ${pageBar}
       </div>
      
-		<script>
-		function fn_select(){
-			
-			
-			if($("#searchOption").val().length==0&&$("#searchOption").val("")){
-				alert("검색어를 입력해주세요.");
-				return false;
-				
-			}
-			return true;
-		}
-		</script>
+		
 		
 		
 	

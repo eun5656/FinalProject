@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="customer">
+	<resultMap type="faq" id="faq">
+		<result column="faq_pk" property="faqPk" />
+		<result column="faq_title" property="faqTitle" />
+		<result column="faq_content" property="faqContent" />
+		<result column="faq_date" property="faqDate" />
+	</resultMap>
+	<resultMap type="notice" id="notice">
+		<result column="notice_pk" property="noticePk" />
+		<result column="notice_title" property="noticeTitle" />
+		<result column="notice_content" property="noticeContent" />
+		<result column="notice_date" property="noticeDate" />
+	</resultMap>
+	
+
+	<select id="selectFaqList" resultMap="faq">
+		select * from faq order by faq_date desc
+	</select>
+	<select id="faqSelectCount" resultType='_int'>
+		select count(*) from faq
+	</select>
+	
+	<select id="selectNoticeList" resultMap="notice">
+		select * from notice order by notice_date desc
+	</select>
+	<select id="noticeSelectCount" resultType='_int'>
+		select count(*) from notice
+	</select>
+	<insert id="insertFaq" parameterType="faq">
+		insert into faq values(faq_seq.nextval,#{faqTitle},#{faqContent},sysdate)
+	</insert>
+	<insert id="insertNotice" parameterType="notice">
+		insert into notice values(notice_seq.nextval,#{noticeTitle},#{noticeContent},sysdate)
+	</insert>
+	<delete id="deleteFaq">
+		delete from faq where faq_pk=#{faqPk}
+	</delete>
+	<delete id="deleteNotice">
+		delete from notice where notice_pk=#{noticePk}
+	</delete>
+	<update id="updateNotice" parameterType="notice">
+		update notice set notice_title=#{noticeTitle},notice_content=#{noticeContent} where notice_pk=#{noticePk}
+	</update>
+	<update id="updateFaq" parameterType="faq">
+		update faq set faq_title=#{faqTitle},faq_content=#{faqContent} where faq_pk=#{faqPk}
+	</update>
+</mapper>

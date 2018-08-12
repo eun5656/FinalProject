@@ -14,10 +14,10 @@
 		 <typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
 
 		 <typeAlias type="com.kh.spring.qna.model.vo.Qna" alias="qna"/>
-		
-
-		 <typeAlias type="com.kh.spring.deal.model.vo.Deal" alias="deal"/>
-		 <typeAlias type="com.kh.spring.deal.model.vo.DealImage" alias="dealImage"/>
+		<typeAlias type="com.kh.spring.deal.model.vo.Deal" alias="deal"/>
+		<typeAlias type="com.kh.spring.deal.model.vo.DealImage" alias="dealImage"/>
+		<typeAlias type="com.kh.spring.customer.model.vo.Notice" alias="notice"/>
+		<typeAlias type="com.kh.spring.customer.model.vo.FAQ" alias="faq"/>
 
 	</typeAliases>  
 </configuration>

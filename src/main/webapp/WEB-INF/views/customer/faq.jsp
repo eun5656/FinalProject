@@ -8,6 +8,12 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
+<style>
+	.row{
+		padding:30px;
+	}
+</style>
+
 <section>
     <div class="row">
 				<div class="col-12">
@@ -20,51 +26,60 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          			  
+            <c:if test="${not empty list }">
+				<c:forEach var='faq' items='${list}' varStatus="vs">
+               
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingOne">
+                    <div class="panel-heading" role="tab" id="${heading}${vs.index}">
                         <h4 class="panel-title">
-                            <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <i class="fa fa-bars"></i>Section 1
+                            <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#${collapse}${vs.index}" aria-expanded='<c:if test="${vs.index==0 }">true</c:if><c:if test="${vs.index!=0 }">false</c:if>' aria-controls="${collapse}${vs.index}">
+                                <i class="fa fa-bars"></i>${faq.faqTitle }
                             </a>
                         </h4>
                     </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                    <div id="${collapse}${vs.index}" class="panel-collapse collapse <c:if test="${vs.index==0 }">in</c:if>" role="tabpanel" aria-labelledby="${heading}${vs.index}">
                         <div class="panel-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ligula, blandit non maximus id, tempus vitae nulla. Cras nec turpis vitae libero eleifend consequat. Phasellus eu rutrum erat. Etiam id urna sed odio placerat gravida. Integer molestie lectus eu.
+                         <div class="row text-right">
+                        <fmt:formatDate value="${faq.faqDate}" pattern="yyyy/MM/dd HH:mm"/>
+                        </div>
+                        <div class="row">
+                        	<div class="col-xs-1"></div>
+                        	<div class="col-xs-10"> ${faq.faqContent }</div>
+                        	<div class="col-xs-1"></div>
+                        
+                       </div>
+                       
+                       <div class="row text-right">
+                            <div class="btn-group">
+  								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/faqUpdate.do?faqPk=${faq.faqPk}'">수정</button>
+  								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/faqDelete.do?faqPk=${faq.faqPk}'">삭제</button>
+  							</div>
+  							</div>
+  		
+  		
+                       
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="fa fa-link"></i>Section 2
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ligula, blandit non maximus id, tempus vitae nulla. Cras nec turpis vitae libero eleifend consequat. Phasellus eu rutrum erat. Etiam id urna sed odio placerat gravida. Integer molestie lectus eu.
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <i class="fa fa-comment"></i>Section 3
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc dui ligula, blandit non maximus id, tempus vitae nulla. Cras nec turpis vitae libero eleifend consequat. Phasellus eu rutrum erat. Etiam id urna sed odio placerat gravida. Integer molestie lectus eu.
-                        </div>
-                    </div>
-                </div>
+              </c:forEach>
+			</c:if>
+                
+          
+            </div>
             </div>
         </div>
     </div>
+  
+  			
+    	 <div class="row text-right" id="btn-enroll">
+          <button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/faqForm.do'">글 등록</button>
+      	</div>
+      	 <div class="row text-center" id="paging">
+        ${pageBar}
+     	 </div>
+     
+   
 </div>
   </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

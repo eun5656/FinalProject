@@ -36,7 +36,7 @@
 		  	
           <div class="btn-group">
  			<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealList.do'">목록</button>
-  			<button type="button" class="btn btn-primary">수정</button>
+  			<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealUpdate.do?dealPk=${deal.dealPk}'">수정</button>
   			<button type="button" class="btn btn-primary" onclick='fn_delete()'>삭제</button>
   				<script>
   				function fn_delete(){
