@@ -47,7 +47,7 @@
             <li><a href="${path}/shop/shop.do">Shop</a></li>
             <li><a href="${path}/deal/dealList.do">Market</a></li>
             <c:if test="${memberLoggedIn.member_level.equals('2') }">
-             <li><a href="${path}/store/mystore.do">MyShop</a></li>
+             <li><a href="${path}/store/storeManage.do">MyShop</a></li>
              </c:if>
           </ul>
            
@@ -64,7 +64,13 @@
         </ul>
 
           <form class="navbar-form navbar-left">
-          
+          <!--   <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" style="height: 20px;"></span></button>
+         
+         --> 
+         
            <div class="input-group col-md-12">
             <input type="text" class=" input-sm  search-query form-control" placeholder="Search" />
             <span class="input-group-btn"><button class="btn btn-danger input-sm" type="button">

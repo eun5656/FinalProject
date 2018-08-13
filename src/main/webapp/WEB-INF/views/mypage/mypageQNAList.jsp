@@ -7,7 +7,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
-<style>
+<!-- <style>
   [ Table ]*/
 
 .limiter {
@@ -197,202 +197,51 @@
   background-color: white;
 }
 
-  </style>
-<section>
-    <div class='container'>
-      <div class="panel">
-
-        <ul class="nav nav-tabs">
-          <li role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
-          <li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
-          <li class="active" role="presentation"><a href="${path}/mypage/mypageQNAList.do">문의내역</a></li>
-          <li class="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
-          <li role="presentation"><a href="${path}/mypage/mypageDelete.do">탈퇴</a></li>
-        </ul>
-
-        <div class="panel-body">
-          <div class="page-header">
-            <h2>문의내역</h2>
-          </div>
-          <div class="container">
-            <div class="panel">
-
-              <div class="limiter">
-                <div class="container-table100">
-                  <div class="wrap-table100">
-                      <div class="table">
-
-                        <div class="row1 header">
-                          <div class="cell">
-                            제목
-                          </div>
-                          <div class="cell">
-                            작성일자
-                          </div>
-                          <div class="cell">
-                            답변상태
-                          </div>
-                          <div class="cell">
-                            삭제
-                          </div>
-                        </div>
-
-                        <div class="row1">
-                          <div class="cell" data-title="Full Name">
-                            Vincent Williamson
-                          </div>
-                          <div class="cell" data-title="Age">
-                            31
-                          </div>
-                          <div class="cell" data-title="Job Title">
-                            iOS Developer
-                          </div>
-                          <div class="cell" data-title="Location">
-                            Washington
-                          </div>
-
-                        </div>
-
-                        <div class="row1">
-                          <div class="cell" data-title="Full Name">
-                            Joseph Smith
-                          </div>
-                          <div class="cell" data-title="Age">
-                            27
-                          </div>
-                          <div class="cell" data-title="Job Title">
-                            Project Manager
-                          </div>
-                          <div class="cell" data-title="Location">
-                            Somerville, MA
-                          </div>
-                        </div>
-
-                        <div class="row1">
-                          <div class="cell" data-title="Full Name">
-                            Justin Black
-                          </div>
-                          <div class="cell" data-title="Age">
-                            26
-                          </div>
-                          <div class="cell" data-title="Job Title">
-                            Front-End Developer
-                          </div>
-                          <div class="cell" data-title="Location">
-                            Los Angeles
-                          </div>
-                        </div>
-                        <div class="row1">
-                            <div class="cell" data-title="Full Name">
-                              Justin Black
-                            </div>
-                            <div class="cell" data-title="Age">
-                              26
-                            </div>
-                            <div class="cell" data-title="Job Title">
-                              Front-End Developer
-                            </div>
-                            <div class="cell" data-title="Location">
-                              Los Angeles
-                            </div>
-                          </div>
-
-                          <div class="row1">
-                              <div class="cell" data-title="Full Name">
-                                Justin Black
-                              </div>
-                              <div class="cell" data-title="Age">
-                                26
-                              </div>
-                              <div class="cell" data-title="Job Title">
-                                Front-End Developer
-                              </div>
-                              <div class="cell" data-title="Location">
-                                Los Angeles
-                              </div>
-                            </div>
-
-                            <div class="row1">
-                                <div class="cell" data-title="Full Name">
-                                  Justin Black
-                                </div>
-                                <div class="cell" data-title="Age">
-                                  26
-                                </div>
-                                <div class="cell" data-title="Job Title">
-                                  Front-End Developer
-                                </div>
-                                <div class="cell" data-title="Location">
-                                  Los Angeles
-                                </div>
-                              </div>
-
-                              <div class="row1">
-                                  <div class="cell" data-title="Full Name">
-                                    Justin Black
-                                  </div>
-                                  <div class="cell" data-title="Age">
-                                    26
-                                  </div>
-                                  <div class="cell" data-title="Job Title">
-                                    Front-End Developer
-                                  </div>
-                                  <div class="cell" data-title="Location">
-                                    Los Angeles
-                                  </div>
-                                </div>
-
-                                <div class="row1">
-                                    <div class="cell" data-title="Full Name">
-                                      Justin Black
-                                    </div>
-                                    <div class="cell" data-title="Age">
-                                      26
-                                    </div>
-                                    <div class="cell" data-title="Job Title">
-                                      Front-End Developer
-                                    </div>
-                                    <div class="cell" data-title="Location">
-                                      Los Angeles
-                                    </div>
-                                  </div>
-
-
-
-                      </div>
-
-                  </div>
-
-                  <hr>
-                  <div class="row1 text-center" id="paging">
-                    <ul class="pagination ">
-                      <li><a href="#"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">4</a></li>
-                      <li><a href="#">5</a></li>
-                      <li><a href="#"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                    </ul>
-                  </div>
-
-
-
-
-              </div>
-              </div>
-              </div>
-            </div>
-
-            </div>
+  </style> -->
+<section>	
+	<div class='container'>
+		<div class='panel'>
+			<ul class="nav nav-tabs">
+				<li role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
+				<li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
+				<li class="active" role="presentation"><a href="${path}/mypage/mypageQNAList.do?member_pk=${memberLoggedIn.member_pk}">문의내역</a></li>
+				<li role="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
+				<li role="presentation"><a href="${path}/mypage/mypageDelete.do">탈퇴</a></li>
+			</ul>
+        	<div class='panel-body'>
+				<div class="page-header">
+					<h2>1대1문의내역</h2>
+				</div>
+				<table class="table table-condensed table-hover">
+					
+						<tr>
+							<th></th>
+							<th>번호</th>
+							<th>글 제목</th>
+							<th>날짜</th>
+							<th>답장여부</th>
+							<th>삭제</th>
+						</tr>
+				
+				
+					<c:forEach  var='m' items='${qnaList}' varStatus="vs">
+						<tr>
+							<td></td>
+							<td>${vs.count}</td>
+							<td>${m.qna_title }</td>
+							<td>${m.qna_date }</td>
+							<th>${m.answer_check}</th>
+							<th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.qna_pk})" value="${m.qna_pk}">삭제</i></button></th>
+						</tr>
+					</c:forEach>
+				</table>
+				
+				  <div class="row1 text-center" id="paging">
+        ${pageBar}
       </div>
-
-
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
+     
+			</div>	
+		</div>
+	</div>
+</section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

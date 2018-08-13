@@ -4,4 +4,13 @@
  	<insert id="insertQna">
 		insert into qna values(qna_SEQ.nextVal,#{qna_writer},default,#{store_pk},#{member_pk},#{qna_title},#{qna_content},sysdate,default,default,null)
 	</insert>
+	
+	<resultMap type="qna" id="qna"/>
+	<select id="selectList" resultMap="qna" parameterType="_int"> 
+		select * from qna where member_pk=#{member_pk} 
+		</select>
+
+	<select id="selectCount" resultType="_int" parameterType="_int">
+  	select count(*) from qna where member_pk=#{member_pk}
+  </select>
 </mapper>
