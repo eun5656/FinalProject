@@ -1,6 +1,7 @@
 package com.kh.spring.deal.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.kh.spring.deal.model.dao.DealDAO;
 import com.kh.spring.deal.model.vo.Deal;
 import com.kh.spring.deal.model.vo.DealImage;
+
 
 @Service
 public class DealServiceImpl implements DealService{
@@ -32,7 +34,7 @@ public class DealServiceImpl implements DealService{
 			
 			
 			result=dealDAO.insertDeal(sqlSession,deal);
-			System.out.println("확인요 : "+deal.getDealPk());
+			
 			if(imageList!=null) {
 				for(String a: imageList) {
 					DealImage dealImage=new DealImage();
@@ -40,7 +42,7 @@ public class DealServiceImpl implements DealService{
 					dealImage.setDealOriImg(a);
 					dealImage.setDealReImg(a);
 					result=dealDAO.insertDealImage(sqlSession,dealImage);
-					System.out.println("이미지 파일 저장 완료 :"+result);
+					
 				}
 			}
 			
@@ -87,4 +89,54 @@ public class DealServiceImpl implements DealService{
 		return dealDAO.deleteDeal(sqlSession, dealPk);
 	}
 
+	@Override
+	public List<DealImage> selectDealImageList(int dealPk) {
+		
+		return dealDAO.selectDealImageList(sqlSession, dealPk);
+	}
+
+	@Override
+	public int updateDeal(int dealPk,String subject, String content, String dealWriter, List<String> imageList) {
+		int result=0;
+		
+		Deal deal=new Deal();
+		deal.setDealPk(dealPk);
+		deal.setDealTitle(subject);
+		deal.setDealContent(content);
+	
+		result= dealDAO.updateDeal(sqlSession, deal);
+		
+		
+		int result1=dealDAO.deleteImg(sqlSession, dealPk);
+		
+
+		if(imageList!=null&&result1>0) {
+			for(String a: imageList) {
+				DealImage dealImage=new DealImage();
+				dealImage.setDealPk(deal.getDealPk());
+				dealImage.setDealOriImg(a);
+				dealImage.setDealReImg(a);
+				result=dealDAO.insertDealImage(sqlSession,dealImage);
+				
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public List<Deal> searchList(int cPage, int numPerPage,Map<String, String> search) {
+		
+		return dealDAO.searchList(sqlSession, search, cPage, numPerPage);
+	}
+
+	@Override
+	public int searchSelectCount(Map<String, String> search) {
+		
+		return dealDAO.searchSelectCount(sqlSession, search);
+	}
+
+	
+
+	
+	
 }

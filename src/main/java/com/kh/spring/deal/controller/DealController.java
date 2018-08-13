@@ -3,7 +3,9 @@ package com.kh.spring.deal.controller;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.common.page.PageCreate;
+import com.kh.spring.common.page.PageCreateDeal;
 import com.kh.spring.deal.model.service.DealService;
 import com.kh.spring.deal.model.vo.Deal;
 import com.kh.spring.deal.model.vo.DealImage;
+
 
 @Controller
 public class DealController {
@@ -40,14 +44,14 @@ public class DealController {
 		int totalCount=service.selectCount();
 
 		
-		String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"/deal/dealList.do");
+		String pageBar=new PageCreateDeal().getPageBar(cPage,numPerPage,totalCount,"dealList.do");
 		
 		
 		mv.addObject("pageBar", pageBar);
 		mv.addObject("list",list);
 		mv.addObject("cPage", cPage);
 		mv.addObject("totalCount", totalCount);
-		mv.setViewName("/deal/dealList");
+		mv.setViewName("deal/dealList");
 		
 		return mv;
 		
@@ -72,19 +76,19 @@ public class DealController {
 		PrintWriter out = response.getWriter();
 		
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/test/");
-		//String realFolder ="C:\\Users\\hong\\Desktop\\파이널플젝\\파이널 플젝\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\FinalProject\\resources\\images\\test\\"; 
-		//String realFolder = request.getSession().getServletContext().getRealPath("upload");
+		
 		UUID uuid = UUID.randomUUID();
 
 	
 		String org_filename = file.getOriginalFilename();
+		
 		String str_filename = uuid.toString() + org_filename;
-
+		
+		
 		System.out.println("원본명 : " + org_filename);
 		System.out.println("이름 재설정 : " + str_filename);
 		String filepath = realFolder + str_filename;
-		//String filepath = "C:\\ExpertJava\\FinalProject1234\\src\\main\\webapp\\resources\\images\\deal\\"  + str_filename;
-		//String filepath = realFolder + File.separator  + str_filename;
+		
 		System.out.println("파일경로 : " + filepath);
 
 		File f = new File(filepath);
@@ -137,14 +141,14 @@ public class DealController {
 	
 		//옮길 주소
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
-		//String realFolder ="C:\\Users\\hong\\Desktop\\파이널플젝\\파이널 플젝\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\FinalProject\\resources\\images\\deal\\";
+		
 		
 		//원래주소
 		String testFolder=request.getSession().getServletContext().getRealPath("/resources/images/test/");
-		//String testFolder="C:\\Users\\hong\\Desktop\\파이널플젝\\파이널 플젝\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\FinalProject\\resources\\images\\test\\";
+		
 		
 		//원래 주소의 파일명 가져오기
-		//File file= new File("C:\\Users\\hong\\Desktop\\파이널플젝\\파이널 플젝\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\FinalProject\\resources\\images\\test\\");
+		
 		File file= new File(testFolder);
 		File[] fileList=file.listFiles();
 
@@ -155,13 +159,14 @@ public class DealController {
 				
 				 File file1=new File(testFolder+a.getName());
 				 File file2=new File(realFolder+a.getName());
-				 if(file2.exists()) {
-					 file2.mkdirs();
-				 }
+				
 				 
 				 if(file1.exists()) {
 					 file1.renameTo(file2);
 					 System.out.println("파일 옮기기 성공");
+				 }
+				 if(!file2.exists()) {
+					 file2.mkdirs();
 				 }
 			}
 		}
@@ -171,9 +176,9 @@ public class DealController {
 
 		//예시
 		String content1=content.replace("/spring/resources/images/test/", "/spring/resources/images/deal/");
-		
+		System.out.println(content1);
 		int result=service.insertDeal(subject,content1,dealWriter,imageList);
-		System.out.println("딜 번호 : "+ result);
+		
 		
 		ModelAndView mv= new ModelAndView();
 		String msg="";
@@ -259,4 +264,201 @@ public class DealController {
 		return mv;
 		
 	}
+	
+	@RequestMapping("/deal/dealUpdate.do")
+	public ModelAndView dealUpdate(int dealPk) {
+		ModelAndView mv= new ModelAndView();
+		Deal deal=service.selectOne(dealPk);
+		mv.addObject("deal",deal);
+		mv.setViewName("/deal/dealUpdate");
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping("/deal/dealUpdateEnd.do")
+	public ModelAndView dealUpdateEnd(String subject, String content,String dealWriter,int dealPk, HttpServletRequest request) {
+				//받아온 값 확인
+				System.out.println("제목 :"+subject);
+				System.out.println("내용 : "+content);
+				
+				//내용 잘라서 이미지 명 가져오기
+				String cutting=content;
+				
+				//이미지 명 받아오는 리스트
+				List<String> imageList=new ArrayList<String>();
+				
+				//이미지 명 잘라오는 로직
+				while(cutting.contains("<img")){
+					int start=cutting.indexOf("src=");
+					String checkSrc = cutting.substring(start+5, start+9);
+					
+					if(checkSrc.equals("http")) {
+						//인터넷 주소 가져온 이미지
+						int startHttp=cutting.indexOf("src=");
+						int endHttp=cutting.indexOf("\"",start+5);
+						String image = cutting.substring(startHttp+5, endHttp);
+						imageList.add(image);
+						cutting=cutting.substring(endHttp);
+					}else {
+						
+						
+						int startUpload=cutting.indexOf("test/");
+						System.out.println("테스트가 언제나오니"+startUpload);
+						int startUploadDeal=cutting.indexOf("deal/");
+						System.out.println("딜이언제나오니"+startUploadDeal);
+						
+						
+						if(startUpload!=-1&&(startUpload<startUploadDeal||startUploadDeal==-1)) {
+						//업로드한 이미지
+						int endUpload=cutting.indexOf("&",start+5);
+						String image1 = cutting.substring(startUpload+5, endUpload);
+						System.out.println("추가할 이미지야 : "+image1);
+						imageList.add(image1);
+						cutting=cutting.substring(endUpload);
+						
+						}else if(startUploadDeal!=-1&&(startUpload>startUploadDeal||startUpload==-1)){
+							int endUploadDeal=cutting.indexOf("&",start+5);
+							String image1 = cutting.substring(startUploadDeal+5, endUploadDeal);
+							imageList.add(image1);
+							System.out.println("원래 있던 이미지야 : "+image1);
+							cutting=cutting.substring(endUploadDeal);
+						}
+					}	
+				}
+				
+				
+				
+				//이미지 명 확인하기 
+				for(String a: imageList) {
+					System.out.println("이미지 명 : "+a);
+				}
+				
+				
+				//저장되어 있던 이미지 명 가져오기
+				List<DealImage> saveImage=service.selectDealImageList(dealPk);
+				for(DealImage a: saveImage) {
+					System.out.println("이미지 명 저장저장 : "+a.getDealOriImg());
+				}
+				
+				
+				
+				
+				//딜 폴더에서 지울 파일 
+				List<String> deleteImage=new ArrayList<String>();
+				
+				//지울 파일명 가져오기
+				for(int i=0;i<saveImage.size();i++) {
+					boolean check=imageList.contains(saveImage.get(i).getDealOriImg());
+					if(!check) {
+						deleteImage.add(saveImage.get(i).getDealOriImg());
+					}
+				}
+				
+				//옮길 주소
+				String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
+				System.out.println("파일 경로오오오오오오오오오:" + realFolder);
+				
+				//원래주소
+				String testFolder=request.getSession().getServletContext().getRealPath("/resources/images/test/");
+				
+				//임시폴더 파일 가져오기(새로 입력되는 값)
+				File file= new File(testFolder);
+				File[] fileList=file.listFiles();
+				
+				
+				File fileDeal=new File(realFolder);
+				File[] fileDealList=fileDeal.listFiles();
+				
+				
+				//수정 이후 안쓰는 파일 삭제하기
+				for(int i=0;i<deleteImage.size();i++) {
+				System.out.println("지울 파일 입네다 지워주세요 : "+deleteImage.get(i));
+					for(File a: fileDealList) {
+						if(deleteImage.get(i).equals(a.getName())) {
+						 File fileDelete=new File(realFolder+a.getName());
+						 if(fileDelete.exists()) {
+							 fileDelete.delete();
+						 }
+						}
+					}
+				}
+				
+				//submit 임시 폴더에 있던 파일 deal폴더로 이동시키기
+				for(int i=0;i<imageList.size();i++) {
+					for(File a: fileList) {
+						if(imageList.get(i).equals(a.getName())) {
+						
+						 File file1=new File(testFolder+a.getName());
+						 
+						 File file2=new File(realFolder+a.getName());
+						
+						 
+						 if(file1.exists()) {
+							 file1.renameTo(file2);
+							
+						 }
+						 if(!file2.exists()) {
+							 file2.mkdirs();
+							 System.out.println("파일생성 성공");
+						 }
+					}
+				}
+				}
+
+				//디비 저장할때  불러올 위치 변경시켜주기
+				String content1=content.replace("/spring/resources/images/test/", "/spring/resources/images/deal/");
+				
+				System.out.println("내용 뽑아온거 확인하기"+content1);
+				//DB 업데이트 해주기
+				int result=service.updateDeal(dealPk,subject,content1,dealWriter,imageList);
+				
+				
+				ModelAndView mv= new ModelAndView();
+				String msg="";
+				String loc="";
+				if(result>0) {
+					msg="게시글 작성 성공";
+				}else {
+					msg="게시글 작성 실패";
+				}
+				mv.addObject("msg",msg);
+				mv.addObject("loc","/deal/dealList.do");
+				mv.setViewName("common/msg");
+
+				return mv;
+	}
+	
+	@RequestMapping("/deal/dealSelect.do")
+	public ModelAndView dealSelect(String selectOption, String searchOption,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage) {
+		
+			
+			ModelAndView mv=new ModelAndView();
+			int numPerPage=10;
+			Map<String, String> search=new HashMap<String, String>();
+
+			search.put("selectOption", selectOption);
+			search.put("searchOption", searchOption);
+			
+			
+			List<Deal> searchList=service.searchList(cPage,numPerPage,search);
+		
+			
+			int totalCount=service.searchSelectCount(search);
+		
+			String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"dealSelect.do?selectOption="+selectOption+"&searchOption="+searchOption);
+		
+			
+			System.out.println(pageBar);
+			
+			mv.addObject("pageBar", pageBar);
+			mv.addObject("list",searchList);
+			mv.addObject("cPage", cPage);
+			mv.addObject("totalCount", totalCount);
+			mv.setViewName("deal/dealSelect");
+			
+			return mv;
+	}
+
+	
 }

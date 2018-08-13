@@ -29,9 +29,11 @@
 	<select id="selectCount" resultType='_int'>
  		select count(*) from deal
  	</select>
+ 	
 	<insert id="insertDealImage" parameterType="dealImage">
 		insert into deal_Img values(#{dealPk},#{dealOriImg},#{dealReImg})
 	</insert>
+	
 	<select id="selectOne" resultMap="deal" parameterType="_int">
 		select * from deal where deal_pk=#{dealPk}
 	</select>
@@ -47,5 +49,52 @@
 	<delete id="deleteDeal">
 		delete from deal where deal_pk=#{dealPk}
 	</delete>
+	<select id="selectDealImageList" parameterType="_int" resultMap="dealImage">
+		select * from deal_img where deal_pk=#{dealPk}	
+	</select>
+	<update id="updateDeal" parameterType="deal">
+		update deal set deal_title=#{dealTitle}, deal_content=#{dealContent} where deal_pk=#{dealPk}	
+	</update>
+	
+	<update id="updateDealImage" parameterType="dealImage">
+		update deal_image set 
+	</update>
+	
+	
+	<select id="searchList" resultMap="deal" parameterType="map">
+		select * from deal where 1=1
+		<if test='selectOption.equals("1")'>
+			and deal_title like '%'||#{searchOption}||'%'
+		</if>  
+		<if test='selectOption.equals("2")'>
+			and deal_content like '%'||#{searchOption}||'%'
+		</if>
+		<if test='selectOption.equals("3")'>
+			and deal_writer like '%'||#{searchOption}||'%'
+		</if>
+		<if test='selectOption.equals("4")'>
+			and (deal_title like '%'||#{searchOption}||'%' or deal_content like '%'||#{searchOption}||'%'
+		</if>
+	</select>
+	
+	
+	
+	
+	
+	<select id="searchSelectCount" parameterType="map" resultType="_int">
+		select count(*) from deal where 1=1
+		<if test='selectOption==1'>
+			and deal_title like '%'||#{searchOption}||'%'
+		</if>  
+		<if test='selectOption.equals("2")'>
+			and deal_content like '%'||#{searchOption}||'%'
+		</if>
+		<if test='selectOption.equals("3")'>
+			and deal_writer like '%'||#{searchOption}||'%'
+		</if>
+		<if test='selectOption.equals("4")'>
+			and (deal_title like '%'||#{searchOption}||'%' or deal_content like '%'||#{searchOption}||'%'
+		</if>
+	</select>
 	
 </mapper>
