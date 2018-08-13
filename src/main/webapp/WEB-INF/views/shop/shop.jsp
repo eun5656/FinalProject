@@ -113,13 +113,12 @@
 						    });
 						  
 						  $(".store_reservaiton").click(function() {
-							  alert("예약");
-							//  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+							
+							  location.href="${path}/store/storeReserve.do?store_pk="+$(this).children("#store_pk").val(); //예약하기 바로갈수있는 로직으로..
 						 })
 						 
 						  $(".store_review").click(function() {
-							  alert("리뷰");
-						  //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+						   location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val(); 
 						 })
 						  }
 				})

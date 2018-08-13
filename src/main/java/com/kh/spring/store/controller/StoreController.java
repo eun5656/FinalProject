@@ -55,8 +55,52 @@ public class StoreController {
 		model.addAttribute("reviews",reviews);
 		return view;
 	}
-
-	
+	@RequestMapping("/store/storeMap.do")
+	public String storeMap(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeMap";
+		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+		
+			
+		
+		System.out.println("스토어 값 확인 : "+store);
+		
+		model.addAttribute("store",store);
+		
+		return view;
+	}
+	@RequestMapping("/store/storeReserve.do")
+	public String storeReserve(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeReserve";
+		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+		
+			
+		
+		System.out.println("스토어 값 확인 : "+store);
+		
+		model.addAttribute("store",store);
+		
+		return view;
+	}
+	@RequestMapping("/store/storeContact.do")
+	public String storeContact(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeContact";
+		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+		
+		System.out.println("스토어 값 확인 : "+store);
+		
+		model.addAttribute("store",store);
+		
+		return view;
+	}
 
 	
 	

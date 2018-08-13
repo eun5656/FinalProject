@@ -15,15 +15,14 @@
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
+
 
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
- var latitude = ${store.store_latitude };
- var longitude = ${store.store_longitude };
 var path = "${pageContext.request.contextPath }";
+var store_pk ="${store.store_pk}";
 </script>
-<script src="${path }/resources/js/store.js?ver=2"></script>
+<script src="${path }/resources/js/store.js?ver=3"></script>
 <div>
 <div id="wrapper">
 
@@ -490,138 +489,9 @@ $('#review_tab').one('click', function() {
 
 			</div>
 			<!-- row 끝 -->
-		</div>
-
-
-		<div id="second">
-
-			<div class="NailStoreMap animatepop" id="map">
-			</div>
-			<div class="addrText animatepop">
-				<p>${store.store_address }</P>
-			</div>
 
 		</div>
-		<div id="third">
-			<div id='calendar'></div>
-			<div id='calendarModal' class="modal fade pop-up-1" tabindex="-1"
-				role="dialog" aria-labelledby="myLargeModalLabel-1"
-				aria-hidden="true">
-				<div class="modal-dialog" style="width: 400px;">
-					<form class="" action="" method="post">
-
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">×</button>
-								<h4 class="modal-title" id="myLargeModalLabel-1">예약등록</h4>
-							</div>
-							<div class="modal-body">
-
-								<div class="row">
-									<div class="form-group">
-										<table id="reservaiton-form" class="table">
-											<thead>
-												<tr>
-													<td><label for="sel1">예약자:</label></td>
-													<td colspan="6">
-														<p id="reserName" for="sel1">홍성진</p> <!---->
-													</td>
-												</tr>
-											</thead>
-											<tbody>
-
-												<tr>
-													<td><label for="sel1">예약일시:</label></td>
-													<td colspan="6">
-														<p id="reserDate" for="sel1"></p> <!--<input type="type" id="reservation-timepicker" class="timepicker form-control input-sm" name="reservation-timepicker" style="width:130px;" />-->
-														<input type="hidden" id="reservation-userName"
-														name="reservation-userName" value="홍성진" /> <input
-														type="hidden" id="reservation-id" name="reservation-id"
-														value="10" />
-													</td>
-												</tr>
-
-												<tr>
-													<td><label for="sel1">시술선택:</label></td>
-													<td style="width: 72"><select
-														class="form-control input-sm" id="choice1" name='choice1'>
-															<!--점주레벨이 아니면 disabled-->
-															<option>손</option>
-															<option>발</option>
-													</select></td>
-													<td colspan="5" style="width: 172px;"><select
-														class="form-control input-sm" id="choice2" name='choice2'>
-															<!--점주레벨이 아니면 disabled-->
-															<option>메뉴1</option>
-															<option>메뉴2</option>
-															<option>메뉴3</option>
-													</select></td>
-												</tr>
-
-												<tr>
-													<td><label for="sel1">담당자:</label></td>
-													<td><select class="form-control input-sm"
-														id="choice-employee" name="choice-employee">
-															<!--점주레벨이 아니면 disabled-->
-															<option value="a">원장</option>
-															<option value="b">디자이너1</option>
-															<option value="c">디자이너2</option>
-													</select></td>
-												</tr>
-										</table>
-										</tbody>
-										<hr>
-										<div class="col-xs-2"></div>
-										<div class="col-xs-4" style="text-align: right;">
-											<button id="result-reservaiton" type="button"
-												class="btn btn-success" name="button">확인</button>
-										</div>
-										<!--점주만 삭제-->
-										<div class="col-xs-4" style="text-align: left;">
-											<button id="remove-reservaiton" type="button"
-												class="btn btn-danger" name="button">삭제</button>
-										</div>
-										<div class="col-xs-2"></div>
-
-									</div>
-
-								</div>
-							</div>
-							<!-- /.modal-content -->
-					</form>
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
-			<!-- /.modal mixer image -->
-		</div>
-	</div>
-	<div id="fourth">
-
-
-		<div class="row">
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
-				<h3>Nail Shop ${store.store_name }</h3>
-				<p>Nail Shop Tel ${store.store_phone }</p>
-				<p>KakaoChat : ${store.store_kakao }</p>
-				<p>instagram : ${store.store_instagram }</p>
-			</div>
-			<!--가게 Info 끝-->
-			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
-				<form class="" action="/insertQna.do" method="post" name="QnaInsert">
-					<div class="form-group">
-						<label> 문의사항 : <input type="text" class="form-control"
-							placeholder="제목 입력" autofocus size="20" name ="qna_title"></label> <br>
-						<textarea name="qna_content" cols="40" rows="6"></textarea>
-						<button type="button" id="answer-submit" class="btn btn-default">전송!</button>
-						<input type="hidden" value="${store.store_pk }" name="store_pk"/>
-						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
-						<input type="hidden" value="${memberLoggedIn.memberId }" name="qna_writer"/>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+<!-- first End -->
 </div>
 <div id="border">
 	<div id="line" class="one"></div>
@@ -653,5 +523,6 @@ $('#review_tab').one('click', function() {
 	</div>
 </div>
 </div>
+
 <!-- 푸터부분 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
