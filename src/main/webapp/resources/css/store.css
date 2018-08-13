@@ -84,8 +84,9 @@
 }
 /* 달력 */
 #calendar {
-	max-width: 600px;
+	max-width: 850px;
 	margin: 50px auto;
+	
 }
 
 /*custom*/

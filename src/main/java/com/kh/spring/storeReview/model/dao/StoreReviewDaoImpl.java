@@ -45,6 +45,13 @@ public class StoreReviewDaoImpl implements StoreReviewDao {
 
 
 
+	@Override
+	public String selectReImg(SqlSessionTemplate sqlsession, int review_pk) {
+		return sqlsession.selectOne("storeReview.selectReImg", review_pk);
+	}
+
+
+
 
 
 

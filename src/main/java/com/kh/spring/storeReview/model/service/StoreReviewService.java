@@ -14,6 +14,8 @@ public interface StoreReviewService {
 
 	int storeReviewReplyInsert(StoreReview store_review);
 
+	String selectReImg(int review_pk);
+
 
 	
 

@@ -20,7 +20,7 @@
   <style>
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding-top: 80px;">
 
     <div class="row">
       <div class="col-xs-12">

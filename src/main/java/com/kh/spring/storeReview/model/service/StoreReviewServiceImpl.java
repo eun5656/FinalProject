@@ -39,6 +39,11 @@ public class StoreReviewServiceImpl  implements StoreReviewService {
 		int result=storeReviewDao.storeReviewReplyInsert(sqlsession,store_review);
 		return result;
 	}
+	@Override
+	public String selectReImg(int review_pk) {
+		String fileName=storeReviewDao.selectReImg(sqlsession,review_pk);
+		return fileName;
+	}
 	
 	
 

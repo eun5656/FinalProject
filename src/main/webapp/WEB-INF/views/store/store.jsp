@@ -15,11 +15,8 @@
 <link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
->>>>>>> sungJin_ver1.5
 
 
 <script type="text/javascript">
@@ -206,7 +203,7 @@ var store_pk ="${store.store_pk}";
                    <!-- 점주만-->
 						<button id="reply-btn-${status.index}" class='btn btn-light basic-btn btn-reply' value="1" type="button" onclick="fn_reply(${status.index },${review.review_pk},${review.store_pk})">답글</button>               		
 						<c:if test="${memberLoggedIn.memberPk== review.member_pk}">
-                 	 <button id='reply-del-btn-${status.index}'  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete(${status.index },${review.review_pk},"${review.review_re_img }")'>삭제</button>
+                 	 <button id='reply-del-btn-${status.index}'  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete(${status.index },${review.review_pk})'>삭제</button>
                  
                  	</c:if>
                  </div>
@@ -386,7 +383,15 @@ var store_pk ="${store.store_pk}";
         		 	        cache: false,
         		 	        success: function (data) {
 								alert(data.review_value.review_pk);
-        		 	        	alert(data);
+							//var re_img;
+							/*re_img+=data.review_value.review_re_img;
+								    re_img+="'";
+        		 	        	alert(re_img);*/
+        		 	        	
+        		 	        	var re_img = new String(data.review_value.review_re_img);
+        		 	        	//re_img =String.valueOf(re_img);
+        		 				alert(isFinite(re_img));
+        		 				
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
 								 html2+="<div class='media-left'>";
@@ -410,7 +415,7 @@ var store_pk ="${store.store_pk}";
 								 html2+="</p>";
 								 html2+="<div class='reply-btn-positon'>";
 								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>답글</button>";
-								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+",'"+data.review_value.review_re_img+"')'>삭제</button>"
+								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+")'>삭제</button>";
 			               		 html2+="</div>";
 								 html2+="</div>";
 								 html2+="<div class='row'>";
@@ -620,12 +625,11 @@ function fn_reply(index,review_pk,store_pk) {
      reply_btn.parents('ul').children('ul').toggle();
 }
 
-function fn_reply_delete(index,review_pk,review_re_img ){
-	console.log(review_re_img);
+function fn_reply_delete(index,review_pk){
     	reply_del_btn=$("#reply-del-btn-"+index);
  	   $.ajax({
  	        url: "${path}/storeReview/storeReviewDelete.do",
-			data:{review_pk:review_pk,review_re_img:review_re_img},
+			data:{review_pk:review_pk},
 			type: "post",
 			dataType: "json",
  	        success: function (data) {

@@ -12,16 +12,15 @@ public interface StoreService {
 
 	List<Menu> selectMenu(int i);
 
-	int deleteMenu(String menu_pk);
 	List<Store> storeList();
 
 	List<Store> mainStoreList();
 
-
+	int deleteMenu(String menu_pk);
+	
 	int insertMenu(Menu menu, String store_pk);
 
 	int menuUpdate(Menu menu);
-
 
 
 

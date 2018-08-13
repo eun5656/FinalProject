@@ -16,5 +16,7 @@ public interface StoreReviewDao {
 
 	int storeReviewReplyInsert(SqlSessionTemplate sqlsession, StoreReview store_review);
 
+	String selectReImg(SqlSessionTemplate sqlsession, int review_pk);
+
 
 }
