@@ -174,21 +174,22 @@ var store_pk="${store.store_pk}"
 										<h3 style="margin-left: 30px;">젤네일</h3>
 										<hr style="margin-left: 30px;">
 										<c:forEach var="menu" items="${menus }" varStatus="status">
-											<form name="menuUpdate" method="post" action="/menuUpdate.do">
-											<label>제목 입력 : 
-											<input type="text" placeholder="메뉴 제목 입력" name="menu_name"
+											<form name="menuUpdate${status.count }" method="post" action="/menuUpdate.do">
+											<input type="hidden" name="menu_pk" value="${menu.menu_pk }"/>
+											<label for ="menu_name">제목 입력 : 
+											<input type="text" placeholder="메뉴 제목 입력" name="menu_name"  id="menu_name"
 												class="form-control" value="${menu.menu_name }"/></label>
-											<label>정보 입력: 
-											<input type="text" placeholder="정보 입력" name="menu_Info"
+											<label for="menu_info">정보 입력: 
+											<input type="text" placeholder="정보 입력" name="menu_info" id="menu_info"
 												class="form-control" value="${menu.menu_info }"/></label>
-											<label>가격 입력: 
-											<input type="number" placeholder="가격 입력" name="menu_price"
+											<label name="menu_price">가격 입력: 
+											<input type="number" placeholder="가격 입력" name="menu_price" id="menu_price"
 												class="form-control" value="${menu.menu_price }"/></label>
 											<select name="menu_check">
 												<option value="손"<c:if test="${menu.menu_check eq '손'}">selected</c:if>>손</option>
 												<option value="발"<c:if test="${menu.menu_check eq '발'}">selected</c:if>>발</option>
 											</select>
-											<button type="submit" id="menuUpdate" class="btn-success">
+											<button type="button" id="menuUpdate" class="btn-success">
 												수정</button>
 											<button id="menuDelete" class="btn-danger" value="${menu.menu_pk }" style="float: right;">삭제</button>
 											</form>

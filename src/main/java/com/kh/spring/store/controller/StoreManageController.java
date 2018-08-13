@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
@@ -27,6 +28,11 @@ import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
+
+import net.sf.json.JSON;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JSONSerializer;
 
 
 
@@ -135,7 +141,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 			) throws JsonProcessingException {
 		System.out.println("메뉴 삭제 접근완료");
 		System.out.println("menu_Pk = " + menu_pk);
-		HashMap<String, String> map=new HashMap<String, String>();//걍 귀찮아서 map으로함 
+		HashMap<String, String> map=new HashMap<String, String>(); 
 		map.put("menu_pk", menu_pk);
 		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr=mapper.writeValueAsString(map);
@@ -144,7 +150,23 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		System.out.println("삭제된 메뉴pk" + menu_pk);
 		return jsonstr;
 	}
-	
+
+	@RequestMapping("/store/storeManage/menuUpdate.do")
+	@ResponseBody
+	public String menuUpdate(HttpServletRequest req,
+			Menu menu
+			) throws JsonProcessingException {
+		System.out.println("메뉴 수정 접근완료");
+
+		int result = service.menuUpdate(menu);
+		logger.debug("menuUpdate 확인~ : "+result);
+		JSONObject json=JSONObject.fromObject(JSONSerializer.toJSON(menu));
+		String jsonstr= json.toString();
+		logger.debug("jsonstr 확인~ : "+jsonstr);
+
+
+		return jsonstr;
+	}
 	
 	
 }
