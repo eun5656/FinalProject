@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="store">
-<resultMap type="store" id="storeMap">
+	<resultMap type="store" id="storeMap">
+	</resultMap>
+	
+	<resultMap type="menu" id="menuMap">
+	</resultMap>
 
-</resultMap>
-<resultMap type="menu" id="menuMap">
-</resultMap>
+	<select id="selectOne" parameterType="int" resultMap="storeMap">
+		select * from store where store_pk = #{store_pk}
+	</select>
 
-<select id="selectOne" resultMap="storeMap" parameterType="int">
-	select * from store where store_pk = #{store_pk}
-</select>
+	<insert id="insertStore" parameterType="store">
+		insert into store(store_pk, member_pk, store_name, store_num, store_phone, store_address, store_ori_img, store_re_img)
+		values(store_seq.nextval, #{member_pk}, #{store_name}, #{store_num}, #{store_phone}, #{store_address}, #{store_ori_img}, #{store_re_img})
+	</insert>
+	
+	<select id="selectMenus" resultMap="menuMap" parameterType="int">
+		select * from menu where store_pk = #{store_pk}
+	</select>
 
- <select id="selectMenus" resultMap="menuMap" parameterType="int">
-	select * from menu where store_pk = #{store_pk}
-</select>
+	<delete id="deleteMenu" parameterType="string">
+		delete from menu where menu_pk=#{menu_pk}
+	</delete>
 
-<delete id="deleteMenu" parameterType="string">
-	delete from menu where menu_pk=#{menu_pk}
-</delete>
+	<select id="mainStoreList" resultMap="storeMap">
+	SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUNT FROM (SELECT C.STORE_PK, COUNT(REVIEW_PK)COUNT   FROM STORE C LEFT OUTER JOIN REVIEW S ON C.STORE_PK = S.STORE_PK GROUP BY C.STORE_PK ORDER BY COUNT(REVIEW_PK) DESC)) S WHERE S.STORE_PK = C.STORE_PK ORDER BY C.STORE_RANK desc
+	</select>
 
-<select id="mainStoreList" resultMap="storeMap">
-SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUNT FROM (SELECT C.STORE_PK, COUNT(REVIEW_PK)COUNT   FROM STORE C LEFT OUTER JOIN REVIEW S ON C.STORE_PK = S.STORE_PK GROUP BY C.STORE_PK ORDER BY COUNT(REVIEW_PK) DESC)) S WHERE S.STORE_PK = C.STORE_PK ORDER BY C.STORE_RANK desc
-</select><insert id="menuInsert" parameterType="menu" useGeneratedKeys="true" keyProperty="key">
- insert into menu values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
-</insert>
+	<insert id="menuInsert" parameterType="menu" useGeneratedKeys="true" keyProperty="key">
+		insert into menu values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
+	</insert>
 
 </mapper>

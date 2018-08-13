@@ -6,9 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml
-					 /WEB-INF/spring/security-context.xml</param-value>
-	
+		<param-value>
+			/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -22,8 +23,10 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml
-						/WEB-INF/spring/appServlet/aspect-context.xml</param-value>
+			<param-value>
+				/WEB-INF/spring/appServlet/servlet-context.xml
+				/WEB-INF/spring/appServlet/aspect-context.xml
+			</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -34,7 +37,6 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	
@@ -55,25 +57,17 @@
 		<filter-name>encodeFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
 	</filter-mapping>
-	
-	
-	
 	<error-page>
 		<error-code>404</error-code>
 		<location>/WEB-INF/views/common/error404.jsp</location>
 	</error-page>
-
 	<error-page>
 		<error-code>505</error-code>
 		<location>/WEB-INF/views/common/error505.jsp</location>
 	</error-page>
-
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/views/common/ExceptionError.jsp</location>
 	</error-page>
 	
-	
-	
-
 </web-app>

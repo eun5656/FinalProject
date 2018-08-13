@@ -2,21 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="member">
 
-   <resultMap type="member" id="memberMap">
-      <result column="member_pk" property="memberPk" javaType="int" />
-      <result column="member_id" property="memberId" javaType="String" />
-      <result column="member_pw" property="memberPw" javaType="String" />
-      <result column="member_name" property="memberName" javaType="String" />
-      <result column="member_phone" property="memberPhone" javaType="String" />
-      <result column="member_email" property="memberEmail" javaType="String" />
-      <result column="member_address" property="memberAddress" javaType="String" />
-      <result column="member_ori_img" property="memberOriImg" javaType="String" />
-      <result column="member_re_img" property="memberReImg" javaType="String" />
-      <result column="member_level" property="memberLevel" javaType="String" />
-   </resultMap>
+	<resultMap type="member" id="memberMap">
+	</resultMap>
 
-   <select id="selectOne" parameterType="string" resultMap="memberMap">
-      SELECT * FROM MEMBER WHERE MEMBER_ID=#{memberId}
-   </select>
+	<select id="selectOne" resultMap="memberMap" parameterType="string">
+		SELECT * FROM MEMBER WHERE MEMBER_ID=#{member_id}
+	</select>
+
+	<select id="selectIdCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID=#{member_id}
+	</select>
+
+	<select id="selectEmailCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_EMAIL=#{member_email} 
+	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		insert into member values(member_seq.nextval, #{member_id}, #{member_pw}, #{member_name}, #{member_phone}, #{member_email},
+		#{member_address}, #{member_ori_img}, #{member_re_img}, default)
+		<selectKey resultType="_int" order="AFTER" keyProperty="member_pk">
+			select member_seq.currval from dual
+		</selectKey>
+	</insert>
 
 </mapper>

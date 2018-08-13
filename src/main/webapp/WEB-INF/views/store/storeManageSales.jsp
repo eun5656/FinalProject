@@ -146,6 +146,7 @@ var store_pk="${store.store_pk}"
 			</div>
 </div>
 </div>
+</div>
 <div id="border">
 	<div id="line" class="two"></div>
 </div>
@@ -176,7 +177,8 @@ var store_pk="${store.store_pk}"
 	</div>
 </div>
 </div>
-
+<!-- wrapper 끝 -->
+</div>
 
 
 

@@ -4,31 +4,38 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring.member.model.vo.Member;
+import com.kh.spring.store.model.vo.Store;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	@Override
-	public Member loginCheck(SqlSessionTemplate sqlSession, String memberId) {
-		
-		return sqlSession.selectOne("member.selectOne",memberId);
-	}
-
-	/*@Override
-	public int insertMember(SqlSessionTemplate sqlSession, Member m) {
-		
-		return sqlSession.insert("member.insertMember",m);
-	}
-
-	@Override
-	public int updateMember(SqlSessionTemplate sqlSession, Member m) {
-		
-		return sqlSession.update("member.updateMember",m);
+	public Member loginCheck(SqlSessionTemplate sqlSession, String member_id) {
+		return sqlSession.selectOne("member.selectOne",member_id);
 	}
 	
 	@Override
-	public int duplicateIdCheck(SqlSessionTemplate sqlSession, String userId) {
-		
-		return sqlSession.selectOne("member.selectCheck",userId);
-	}*/
+	public int duplicateIdCheck(SqlSessionTemplate sqlSession, String member_id) {
+		return sqlSession.selectOne("member.selectIdCheck",member_id);
+	}
 
+	@Override
+	public int duplicateEmailCheck(SqlSessionTemplate sqlSession, String member_email) {
+		return sqlSession.selectOne("member.selectEmailCheck", member_email);
+	}
+	
+	@Override
+	public int insertMember(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.insert("member.insertMember", m);
+	}
+
+	@Override
+	public int duplicateMemberEmailCheck(SqlSessionTemplate sqlSession, String member_email) {
+		return sqlSession.selectOne("member.selectMemberEmailCheck", member_email);
+	}
+
+	@Override
+	public int insertStore(SqlSessionTemplate sqlSession, Store s) {
+		System.out.println(s);
+		return sqlSession.insert("store.insertStore", s);
+	}
 }

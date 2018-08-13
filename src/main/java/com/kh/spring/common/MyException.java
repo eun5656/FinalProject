@@ -1,7 +1,5 @@
 package com.kh.spring.common;
 
-import oracle.net.aso.f;
-
 public class MyException extends Exception {
 
 	public MyException(){

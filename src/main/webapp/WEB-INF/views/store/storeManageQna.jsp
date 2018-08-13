@@ -24,8 +24,7 @@ var store_pk="${store.store_pk}"
 <div>
 	<div id="wrapper">
 
-		<div id="left-side">
-
+<div id="left-side">
 <div id="fourth" class="active">
 	<div class="row">
 		<div class="col-12">
