@@ -11,46 +11,50 @@ $(function(){
 	});
 	// 메뉴 이동
 	$(".shop").click(function() {
-		$("#first").addClass("active");
-		$("#second").removeClass("active");
-		$("#third").removeClass("active");
-		$("#fourth").removeClass("active");
-		$("#line").addClass("one");
-		$("#line").removeClass("two");
-		$("#line").removeClass("three");
-		$("#line").removeClass("four");
+//		$("#first").addClass("active");
+//		$("#second").removeClass("active");
+//		$("#third").removeClass("active");
+//		$("#fourth").removeClass("active");
+//		$("#line").addClass("one");
+//		$("#line").removeClass("two");
+//		$("#line").removeClass("three");
+//		$("#line").removeClass("four");
+		location.href=path+"/store/storeManage.do?store_pk="+store_pk;
  	})
-	$(".map").click(function() {
-		$("#first").removeClass("active");
-		$("#second").addClass("active");
-		$("#third").removeClass("active");
-		$("#fourth").removeClass("active");
-		$("#line").addClass("two");
-		$("#line").removeClass("one");
-		$("#line").removeClass("three");
-		$("#line").removeClass("four");
+	$(".sales").click(function() {
+//		$("#first").removeClass("active");
+//		$("#second").addClass("active");
+//		$("#third").removeClass("active");
+//		$("#fourth").removeClass("active");
+//		$("#line").addClass("two");
+//		$("#line").removeClass("one");
+//		$("#line").removeClass("three");
+//		$("#line").removeClass("four");
+		location.href=path+"/store/storeManageSales.do?store_pk="+store_pk;
 	})
 
 	$(".reserve").click(function() {
-		$("#first").removeClass("active");
-		$("#second").removeClass("active");
-		$("#third").addClass("active");
-		$("#fourth").removeClass("active");
-		$("#line").addClass("three");
-		$("#line").removeClass("two");
-		$("#line").removeClass("one");
-		$("#line").removeClass("four");
+//		$("#first").removeClass("active");
+//		$("#second").removeClass("active");
+//		$("#third").addClass("active");
+//		$("#fourth").removeClass("active");
+//		$("#line").addClass("three");
+//		$("#line").removeClass("two");
+//		$("#line").removeClass("one");
+//		$("#line").removeClass("four");
+		location.href=path+"/store/storeManageReserve.do?store_pk="+store_pk;
 	})
 
 	$(".qna").click(function() {
-		$("#first").removeClass("active");
-		$("#second").removeClass("active");
-		$("#third").removeClass("active");
-		$("#fourth").addClass("active");
-		$("#line").addClass("four");
-		$("#line").removeClass("two");
-		$("#line").removeClass("three");
-		$("#line").removeClass("one");
+//		$("#first").removeClass("active");
+//		$("#second").removeClass("active");
+//		$("#third").removeClass("active");
+//		$("#fourth").addClass("active");
+//		$("#line").addClass("four");
+//		$("#line").removeClass("two");
+//		$("#line").removeClass("three");
+//		$("#line").removeClass("one");
+		location.href=path+"/store/storeManageQna.do?store_pk="+store_pk;
 	})
 	//메뉴이동 끝
 	//파일 삽입

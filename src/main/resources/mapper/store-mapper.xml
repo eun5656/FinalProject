@@ -24,7 +24,7 @@
 <select id="mainStoreList" resultMap="storeMap">
 SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUNT FROM (SELECT C.STORE_PK, COUNT(REVIEW_PK)COUNT   FROM STORE C LEFT OUTER JOIN REVIEW S ON C.STORE_PK = S.STORE_PK GROUP BY C.STORE_PK ORDER BY COUNT(REVIEW_PK) DESC)) S WHERE S.STORE_PK = C.STORE_PK ORDER BY C.STORE_RANK desc
 </select>
-<insert id="menuInsert" parameterType="menu"useGeneratedKeys="true" keyProperty="key">
+<insert id="menuInsert" parameterType="menu" useGeneratedKeys="true" keyProperty="key">
  insert into menu values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
 </insert>
 

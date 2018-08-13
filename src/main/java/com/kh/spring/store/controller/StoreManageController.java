@@ -60,6 +60,51 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return view;
 	}
 	
+	@RequestMapping("/store/storeManageSales.do")
+	public String storeManageSale(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeManageSales";
+		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+
+		System.out.println();
+		System.out.println("스토어 값 확인 : "+store);
+	
+		
+		model.addAttribute("store",store);
+		return view;
+	}
+	@RequestMapping("/store/storeManageReserve.do")
+	public String storeManageReserve(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeManageReserve";
+		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+		
+		
+	
+		System.out.println("스토어 값 확인 : "+store);
+		
+		model.addAttribute("store",store);
+		
+		return view;
+	}
+	@RequestMapping("/store/storeManageQna.do")
+	public String storeManageQna(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeManageQna";
+		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+	
+		System.out.println("스토어 값 확인 : "+store);
+		
+		model.addAttribute("store",store);
+		
+		return view;
+	}
 	@RequestMapping("/store/storeManage/menuInsert.do")
 	public String menuInsert(Menu menu, HttpServletRequest req) {
 		System.out.println("메뉴 삽입 접근완료");
