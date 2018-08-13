@@ -169,8 +169,7 @@
 
 #wrapper {
 	width: 100%;
-	max-height: 90%;
-	position: relative;
+	max-height: auto;
 	top: 0;
 	bottom: 0;
 	left: 0;
@@ -187,7 +186,6 @@
 	-webkit-box-pack: left;
 	-ms-flex-pack: left;
 	justify-content: left;
-	overflow: hidden;
 	padding-top: 10px;
 }
 
@@ -289,12 +287,12 @@
 
 #left-side {
 /* 	margin-top: 100px; */
-	margin: 70px;
+	margin: 20px;
 /* 	margin-right: 10px; */
 	height: auto;
-	width: 100%; 
-	overflow: hidden;
-	position: relative;
+	width: 100%;
+	overflow-x : hidden;
+	overflow:auto; 
 }
 
 #left-side #first, #left-side #second, #left-side #third, #left-side #fourth
@@ -510,8 +508,9 @@
 
 /* tab css*/
 .tabbable-panel {
-	border: 1px solid #eee;
 	padding: 10px;
+	overflow:auto;
+	overflow-x:hidden;
 }
 
 /* Default mode */

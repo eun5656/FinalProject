@@ -19,4 +19,6 @@ public interface StoreService {
 
 	int insertMenu(Menu menu, String store_pk);
 
+
+
 }

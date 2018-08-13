@@ -12,7 +12,7 @@
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- storeManage css -->
-<link href="${path }/resources/css/storeManage.css?ver=2"
+<link href="${path }/resources/css/storeManage.css?ver=3"
 	rel="stylesheet" />
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
@@ -95,7 +95,7 @@ var store_pk="${store.store_pk}"
 												class="img-responsive centerImg"
 												src="${path}/resources/images/plus.png" alt=""></a>
 										</div>
-									</div>
+									</div>	
 									<!-- 추가버튼 끝-->
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 										<div class="wh100">
@@ -107,7 +107,7 @@ var store_pk="${store.store_pk}"
 													<span class="glyphicon glyphicon-remove"></span> 삭제
 												</button>
 											</div>
-
+										
 											<img class="img-responsive radius14"
 												src="http://placehold.it/350x250" alt="">
 										</div>
@@ -195,8 +195,7 @@ var store_pk="${store.store_pk}"
 										</c:forEach>
 										<br> <br>
 										<ul class="menuInsertForm"></ul>
-										<button onclick="menuInsertForm()" class="btn-primary"
-											value="" style="float: center;">추가</button>
+										<button onclick="menuInsertForm()" class="btn-primary" value="" style="float: center;">추가</button>
 
 									</div>
 
