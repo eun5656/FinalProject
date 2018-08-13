@@ -22,11 +22,11 @@ var store_pk="${store.store_pk}"
 <!-- storeManage js -->
 <script src="${path }/resources/js/storeManage.js"></script>
 <div>
-	<div id="wrapper">
+<div id="wrapper">
 
-		<div id="left-side">
+<div id="left-side">
 			
-	<div id="third" class="active">
+<div id="third" class="active">
 
 		<div id='calendar'></div>
 		<div id='calendarModal' class="modal fade pop-up-1" tabindex="-1"
@@ -120,7 +120,7 @@ var store_pk="${store.store_pk}"
 		</div>
 		<!-- /.modal mixer image -->
 	</div>
-
+</div>
 </div>
 <div id="border">
 	<div id="line" class="three"></div>
