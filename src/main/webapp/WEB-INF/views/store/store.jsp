@@ -15,11 +15,8 @@
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
-<<<<<<< HEAD
-=======
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
->>>>>>> sungJin_ver1.5
 
 
 <script type="text/javascript">
@@ -386,7 +383,14 @@ var store_pk ="${store.store_pk}";
         		 	        cache: false,
         		 	        success: function (data) {
 								alert(data.review_value.review_pk);
-        		 	        	alert(data);
+							//var re_img;
+							/*re_img+=data.review_value.review_re_img;
+								    re_img+="'";
+        		 	        	alert(re_img);*/
+        		 	        	
+        		 	        	var re_img = new String(data.review_value.review_re_img);
+        		 	        	//re_img =String.valueOf(re_img);
+        		 				alert(re_img.toString());
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
 								 html2+="<div class='media-left'>";
@@ -410,7 +414,7 @@ var store_pk ="${store.store_pk}";
 								 html2+="</p>";
 								 html2+="<div class='reply-btn-positon'>";
 								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>답글</button>";
-								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+",'"+data.review_value.review_re_img+"')'>삭제</button>"
+								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+","+re_img+")'>삭제</button>";
 			               		 html2+="</div>";
 								 html2+="</div>";
 								 html2+="<div class='row'>";

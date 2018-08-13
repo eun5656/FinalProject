@@ -17,9 +17,6 @@ public interface StoreService {
 
 	List<Store> mainStoreList();
 
-<<<<<<< HEAD
 	int insertMenu(Menu menu, String store_pk);
-=======
->>>>>>> sungJin_ver1.5
 
 }
