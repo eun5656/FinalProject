@@ -120,7 +120,7 @@ var store_pk="${store.store_pk}"
 		</div>
 		<!-- /.modal mixer image -->
 	</div>
-</div>
+</div>	
 </div>
 <div id="border">
 	<div id="line" class="three"></div>

@@ -35,27 +35,22 @@
 		<constructor-arg index="0" ref="sqlSessionFactoryBean"/>
 	</bean>
 	
-	
-	
+	<!-- 메일보내기 -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
+		<property value="smtp.gmail.com" name="host"/>
+		<property value="587" name="port"/>
+		<property value="ppj1017@gmail.com" name="username"/>
+		<property value="ahfmrqhd1!a" name="password"/>
 		
-	<!-- 트랜잭션매니저 빈으로 등록하기 -->
-	<!-- <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="realDataSource"/>
-	</bean> -->
+		<!-- email 요청시는 SMTP -->
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
 	
-	<!-- 선언적 트랜잭션 등록 -->
-	<!-- <tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="select*" rollback-for="Exception" read-only="true"/>
-			<tx:method name="insert*" rollback-for="Exception"/>
-			<tx:method name="update*" rollback-for="Exception"/>
-			<tx:method name="delete*" rollback-for="Exception"/>
-		</tx:attributes>
-	</tx:advice> -->
-	
-	<!-- 트랜잭션AOP등록 -->
-	<!-- <aop:config proxy-target-class="true">
-		<aop:pointcut expression="execution(* com.kh.spring..*ServiceImpl.*(..))" id="serviceMethod"/>
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod" id="transactionAdvisor"/>
-	</aop:config> -->
 </beans>
