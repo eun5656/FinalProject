@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.spring.member.model.service.MemberService;
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
 import com.kh.spring.store.model.service.StoreService;
@@ -24,11 +28,13 @@ import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
+
+
+@SessionAttributes(value= {"memberLoggedIn"})
 @Controller
 public class StoreManageController {
 private Logger logger = Logger.getLogger(StoreController.class);
 	
-
 	@Autowired
 	private NailService Nailservice;
 
@@ -40,14 +46,16 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	
 	@RequestMapping("/store/storeManage.do")
 	public String store(
-			HttpServletRequest req, Model model
+			HttpServletRequest req, Model model,HttpSession session
 			) {
 		String view="store/storeManage";
-		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
-		Store store = service.selectOne(store_pk);
-		List<Nail> nails= Nailservice.nailListStore(store_pk);
-		List<Menu> menus = service.selectMenu(store_pk);
-		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+	
+		Store store = service.selectOne(member_pk);
+		
+		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
+		List<Menu> menus = service.selectMenu(store.getStore_pk());
+		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
 		
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);

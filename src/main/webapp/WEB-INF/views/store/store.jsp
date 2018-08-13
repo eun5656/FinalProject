@@ -12,7 +12,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- store css -->
 
-<link href="${path }/resources/css/store.css" rel="stylesheet" />
+<link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
 
@@ -61,8 +61,8 @@ var store_pk ="${store.store_pk}";
 				<marquee>공지사항입니다~~~~~~~~~~~~</marquee>
 			</div>
 			<!-- tab 화면 시작-->
-			<div class="row">
-				<div class="tabbable-panel">
+			<div class="row" >
+				<div class="tabbable-panel"> 
 					<div class="tabbable-line">
 						<ul class="nav nav-tabs ">
 							<li class="active"><a href="#tab_default_2"

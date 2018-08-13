@@ -20,4 +20,5 @@ public interface StoreDAO {
 	int menuInsert(SqlSessionTemplate sqlSession, Menu menu, String store_pk);
 
 
+
 }

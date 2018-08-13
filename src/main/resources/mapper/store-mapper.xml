@@ -8,7 +8,7 @@
 </resultMap>
 
 <select id="selectOne" resultMap="storeMap" parameterType="int">
-	select * from store where store_pk = #{store_pk}
+	select * from store where member_pk = #{member_pk}
 </select>
 
  <select id="selectMenus" resultMap="menuMap" parameterType="int">
@@ -26,5 +26,7 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
 <insert id="menuInsert" parameterType="menu" useGeneratedKeys="true" keyProperty="key">
  insert into menu values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
 </insert>
+
+
 
 </mapper>

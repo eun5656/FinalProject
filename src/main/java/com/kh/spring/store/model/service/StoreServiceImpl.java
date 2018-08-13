@@ -59,4 +59,5 @@ public class StoreServiceImpl implements StoreService {
 		return dao.menuInsert(sqlSession,menu,store_pk);
 	}
 
+
 }
