@@ -24,5 +24,22 @@ public class StoreReviewServiceImpl  implements StoreReviewService {
 		List<StoreReview> list=storeReviewDao.storeReviewList(sqlsession,store_pk);	
 		return list;
 	}
+	@Override
+	public int storeReviewInsert(StoreReview store_review) {
+		int result=storeReviewDao.storeReviewInsert(sqlsession,store_review);
+		return result;
+	}
+	@Override
+	public int storeReviewDelete(int review_pk) {
+		int result=storeReviewDao.storeReviewDelete(sqlsession,review_pk);
+		return result;
+	}
+	@Override
+	public int storeReviewReplyInsert(StoreReview store_review) {
+		int result=storeReviewDao.storeReviewReplyInsert(sqlsession,store_review);
+		return result;
+	}
+	
+	
 
 }

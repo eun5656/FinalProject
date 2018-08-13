@@ -10,5 +10,11 @@ public interface StoreReviewDao {
 
 	List<StoreReview> storeReviewList(SqlSessionTemplate sqlsession, int store_pk);
 
+	int storeReviewInsert(SqlSessionTemplate sqlsession, StoreReview store_review);
+
+	int storeReviewDelete(SqlSessionTemplate sqlsession, int review_pk);
+
+	int storeReviewReplyInsert(SqlSessionTemplate sqlsession, StoreReview store_review);
+
 
 }
