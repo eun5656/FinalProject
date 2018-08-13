@@ -15,7 +15,7 @@
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/shop.css" rel="stylesheet">
 
-<div class="container-fluid">
+<div class="container-fluid" " style="padding-top: 110px";>
 <section>
 
          <div class="row">
