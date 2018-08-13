@@ -8,4 +8,19 @@
 <select id="storeReviewList" resultMap="storeReviewMap">
 SELECT REVIEW_content, A.*FROM REVIEW A WHERE store_pk = #{store_pk} START WITH REVIEW_LEVEL=1 CONNECT BY PRIOR REVIEW_PK=REVIEW_REF ORDER SIBLINGS BY REVIEW_DATE ASC
 </select>
+
+<insert id="storeReviewInsert" parameterType="storeReview">
+	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{review_level},#{review_writer},#{review_content},null,SYSDATE,#{review_ori_img},#{review_re_img},#{review_star},#{member_pk},#{store_pk})
+		<selectKey keyProperty="review_pk" resultType="_int" order="AFTER">
+ 			SELECT REVIEW_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
+</insert>
+
+<insert id="storeReviewReplyInsert" parameterType="storeReview">
+	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{review_level},#{review_writer},#{review_content},#{review_pk},SYSDATE,null,null,null,#{member_pk},#{store_pk})
+</insert>
+
+<delete id="storeReviewDelete">
+	DELETE FROM REVIEW WHERE REVIEW_PK=#{review_pk}
+</delete>
 </mapper>

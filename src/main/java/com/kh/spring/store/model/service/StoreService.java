@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreService {
 
@@ -15,5 +16,6 @@ public interface StoreService {
 	List<Store> storeList();
 
 	List<Store> mainStoreList();
+
 
 }

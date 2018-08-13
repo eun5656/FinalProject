@@ -1,12 +1,15 @@
 package com.kh.spring.storeReview.controller;
 
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,84 +20,166 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.nail.model.service.NailService;
-import com.kh.spring.nail.model.vo.Nail;
 import com.kh.spring.store.controller.StoreController;
-import com.kh.spring.store.model.service.StoreService;
-import com.kh.spring.store.model.vo.Menu;
-import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
+
 
 @Controller
 public class StoreReviewController {
 
 	@Autowired
 	private StoreReviewService reviewService;
-	
-	@Autowired
-	private StoreService storeService;
 
 	@Autowired
 	private NailService nailService;
 	private Logger logger = Logger.getLogger(StoreController.class);
 
-
 	@RequestMapping("/storeReview/storeReviewList.do")
 	public String storeReviewList(int store_pk, Model model) {
-		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
+		List<StoreReview> reviews = reviewService.storeReviewList(store_pk);
 		return null;
 	}
-	
-	@RequestMapping(value="/storeReview/storeReviewInsert.do",produces = "application/text; charset=utf8",method = {RequestMethod.GET, RequestMethod.POST})
+
+	@RequestMapping(value = "/storeReview/storeReviewInsert.do", method = RequestMethod.POST, consumes = {
+			"multipart/form-data" }, produces = { "application/text; charset=utf8" })
 	@ResponseBody
-	public String storeReviewInsert(MultipartHttpServletRequest req, HttpServletRequest request)throws JsonProcessingException
-	{
-		
-		
-		
-			Iterator<String> itr =  req.getFileNames();
-
-		  MultipartFile files = req.getFile(itr.next());
-		  System.out.println(files);
-		return null;
-
-
-
+	public String storeReviewInsert( 
+		   	String member_pk, 
+			String store_pk, 
+			String review_pk,
+			String review_level, 
+			String review_date,
+			String review_content,
+			String review_writer,
+			String review_star,
 			
+			MultipartFile review_ori_img, HttpServletRequest request)
+			throws JsonProcessingException {
+
+		String renamedFileName = null;
+		String originalFileName = null;
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/storeReview");
+
+		File dir = new File(saveDir);
+		if (dir.exists() == false)
+			System.out.println(dir.mkdirs());// 폴더생성
+
+		if (!review_ori_img.isEmpty()) {
+			originalFileName = review_ori_img.getOriginalFilename();
+			String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSSS");
+			int rndNum = (int) (Math.random() * 1000);
+			renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
+			renamedFileName += "_" + rndNum + "." + ext;
+			try {
+				review_ori_img.transferTo(new File(saveDir + File.separator + renamedFileName));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		StoreReview store_review = new StoreReview();
+		System.out.println("storePK"+store_pk);
+		store_review.setMember_pk(Integer.parseInt(parsing(member_pk)));
+		store_review.setStore_pk(Integer.parseInt(parsing(store_pk)));
+		store_review.setReview_level(Integer.parseInt(parsing(review_level)));
+		store_review.setReview_date(parsing(review_date));
+		store_review.setReview_content(parsing(review_content));
+		store_review.setReview_writer(parsing(review_writer));
+		store_review.setReview_star(Integer.parseInt(parsing(review_star)));
+		store_review.setReview_ori_img(originalFileName);
+		store_review.setReview_re_img(renamedFileName);
 		
-		/*ObjectMapper mapper=new ObjectMapper();		
-		String jsonstr="";
-		String newFileName = null;
-		String fileName = null;
-		Map shopList=new HashMap();
-		Iterator<String> files = multi.getFileNames();
-        while(files.hasNext()){
-            String uploadFile = files.next();
-                         
-            MultipartFile mFile = multi.getFile(uploadFile);
-             fileName = mFile.getOriginalFilename();
-            System.out.println("실제 파일 이름 : " +fileName);
-            newFileName = System.currentTimeMillis()+"."
-                    +fileName.substring(fileName.lastIndexOf(".")+1);
-             
-           try {
-                mFile.transferTo(new File(path+newFileName));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println(fileName);
-        System.out.println(newFileName);/
+		int result = reviewService.storeReviewInsert(store_review);
+		//selectKey 는 객체안에 넣어서오기때문에 뺴내지않아도된다..
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonstr = "";
+
+		Map map = new HashMap();
+		map.put("review_value", store_review);
+		jsonstr = mapper.writeValueAsString(map); // javaScrpit객체로 쏴준다.
+		return jsonstr;
+
+	}
+
+	@RequestMapping(value = "/storeReview/storeReviewDelete.do", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String storeReviewDelete(@RequestParam(value = "review_pk") String review_pk,
+									@RequestParam(value = "review_re_img") String review_re_img,
+												HttpServletRequest request)
+			throws JsonProcessingException {
+		
+		int result =0;
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/storeReview");
+		String fileName=review_re_img;
+		System.out.println(fileName);
+		boolean flag=false;
+		if(fileName!=null && fileName.length()>0) {
+			File deleteFile=new File(saveDir+"/"+fileName);
+			flag=deleteFile.delete();
+			result= reviewService.storeReviewDelete(Integer.parseInt(review_pk));
+		}
+		
+		if(result>0){
+			flag=true;
+		}
+		String msg="삭제실패";	
+		if(result>0&&flag){
+			msg="삭제성공";
+		}
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonstr = "";
+		jsonstr = mapper.writeValueAsString(msg); // javaScrpit객체로 쏴준다.
+		return jsonstr;
+	}
 
 
+	@RequestMapping(value = "/storeReview/storeReviewReplyInsert.do", method = RequestMethod.POST, produces = {
+			"application/text; charset=utf8" })
+	@ResponseBody
+	public String storeReviewReplyInsert(String member_pk, 
+									   	String review_writer, 
+										String store_pk, 
+										String review_pk,
+										String review_level, 
+										String review_content, HttpServletRequest request) throws JsonProcessingException {
+		StoreReview store_review = new StoreReview();
+		store_review.setReview_pk(Integer.parseInt(review_pk));
+		store_review.setMember_pk(Integer.parseInt(member_pk));
+		store_review.setStore_pk(Integer.parseInt(store_pk));
+		store_review.setReview_level(Integer.parseInt(review_level));
+		store_review.setReview_content(review_content);
+		store_review.setReview_writer(review_writer);
+		System.out.println(store_review);
+		
+		int result = reviewService.storeReviewReplyInsert(store_review);
+		System.out.println(result);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonstr = "";
 
-		jsonstr=mapper.writeValueAsString(shopList);
-		return jsonstr;*/
+		Map map = new HashMap();
+		map.put("review_value", store_review);
+		jsonstr = mapper.writeValueAsString(map); // javaScrpit객체로 쏴준다.
+		
+		return jsonstr;
+
+	}
+	
+
+	private static String parsing(String value) {
+
+		int idx = value.indexOf(",");
+		String temp = value.substring(0, idx);
+		System.out.println(temp);
+
+		return temp;
 	}
 
 }

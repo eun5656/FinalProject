@@ -21,4 +21,32 @@ public class StoreReviewDaoImpl implements StoreReviewDao {
 		return sqlsession.selectList("storeReview.storeReviewList",store_pk);
 	}
 
+
+
+	@Override
+	public int storeReviewInsert(SqlSessionTemplate sqlsession, StoreReview store_review) {
+		// TODO Auto-generated method stub
+		return sqlsession.insert("storeReview.storeReviewInsert", store_review);
+	}
+
+	@Override
+	public int storeReviewReplyInsert(SqlSessionTemplate sqlsession, StoreReview store_review) {
+		// TODO Auto-generated method stub
+		return sqlsession.insert("storeReview.storeReviewReplyInsert", store_review);
+	}
+
+
+	@Override
+	public int storeReviewDelete(SqlSessionTemplate sqlsession, int review_pk) {
+		int reviewPk=sqlsession.insert("storeReview.storeReviewDelete", review_pk);
+		System.out.println(reviewPk);
+		return reviewPk;
+	}
+
+
+
+
+
+
+	
 }

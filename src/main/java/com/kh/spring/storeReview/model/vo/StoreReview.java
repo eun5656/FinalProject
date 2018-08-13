@@ -18,8 +18,8 @@ public class StoreReview implements Serializable{
 	private String review_ori_img;
 	private String review_re_img;
 	private int review_star;
-	private String member_pk;
-	private String store_pk;
+	private int member_pk;
+	private int store_pk;
 	
 	public StoreReview() {
 		// TODO Auto-generated constructor stub
@@ -27,8 +27,8 @@ public class StoreReview implements Serializable{
 	
 	
 	public StoreReview(int review_pk, int review_level, String review_writer, String review_content, int review_ref,
-			String review_date, String review_ori_img, String review_re_img, int review_star, String member_pk,
-			String store_pk) {
+			String review_date, String review_ori_img, String review_re_img, int review_star, int member_pk,
+			int store_pk) {
 		super();
 		this.review_pk = review_pk;
 		this.review_level = review_level;
@@ -99,16 +99,16 @@ public class StoreReview implements Serializable{
 	public void setReview_star(int review_star) {
 		this.review_star = review_star;
 	}
-	public String getMember_pk() {
+	public int getMember_pk() {
 		return member_pk;
 	}
-	public void setMember_pk(String member_pk) {
+	public void setMember_pk(int member_pk) {
 		this.member_pk = member_pk;
 	}
-	public String getStore_pk() {
+	public int getStore_pk() {
 		return store_pk;
 	}
-	public void setStore_pk(String store_pk) {
+	public void setStore_pk(int store_pk) {
 		this.store_pk = store_pk;
 	}
 	public static long getSerialversionuid() {

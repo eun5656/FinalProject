@@ -16,7 +16,7 @@
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script> 
+<script src="http://malsup.github.com/jquery.form.js"></script> 
 
 
 <script type="text/javascript">
@@ -178,27 +178,35 @@
 
 
 
-								<!-- 시작.. -->
+	<ul id='comment-main-'></ul>
 	<c:forEach var="review" items="${reviews }" varStatus="status" >
 	<!--<c:if test="${review.review_level==2 }"></c:if>-->
-	<ul id='comment-main' class="media comment-box level1">
+	<ul id='comment-main-${status.index}' class="media comment-box level1">
      <c:if test="${review.review_level==1}">
       <li>
         <div class="media-left">
+        <!-- 경로바꿔주기 -->
           <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
         </div>
         <div class="media-body">
-        <span><h5 class="media-heading">아이디       작성일</h5><span>
+      <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${review.review_writer}</div>
+                     			<div class="col-xs-9" style="text-align: right;"><c:out value="${review.review_date }"></c:out>
+								</div>
+							</div>
                   <div class="review_content">
                     <p>
                     <c:if test="${review.review_re_img != null}">
-                    <img class="review-img"alt="" src="${path}/resources/images/review_img/${review.review_re_img}">                
+                    <img class="review-img"alt="" src="${path}/resources/upload/storeReview/${review.review_re_img}">                
                     </c:if>
                     <c:out value="${review.review_content}"></c:out>
                     </p>
                  <div class="reply-btn-positon">
                    <!-- 점주만-->
-                    <button class='btn btn-light basic-btn btn-reply' type="button" value='${status.index }'>답글</button>
+						<button id="reply-btn-${status.index}" class='btn btn-light basic-btn btn-reply' value="1" type="button" onclick="fn_reply(${status.index },${review.review_pk},${review.store_pk})">답글</button>               		
+						<c:if test="${memberLoggedIn.memberPk== review.member_pk}">
+                 	 <button id='reply-del-btn-${status.index}'  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete(${status.index },${review.review_pk},"${review.review_re_img }")'>삭제</button>
+                 
+                 	</c:if>
                  </div>
                   </div>
                   <div class="row">
@@ -232,6 +240,8 @@
              
          
              	<ul class="media comment-box level2 comment-reply">
+             	<li></li>
+             	<c:if test="${review.review_level==2 !=null}"></c:if>
 					<c:forEach var="review2" items="${reviews }" varStatus="status1" >
                 <c:if test="${review2.review_level==2 && review2.review_ref==review.review_pk}">                     		
          		 <li>
@@ -239,14 +249,19 @@
                            <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                    </div>
                    <div class="media-body">
-                       <h5 class="media-heading">아이디       작성일</h5>
+                     <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${review2.review_writer}</div>
+                     			<div class="col-xs-9" style="text-align: right;"><c:out value="${review2.review_date }"></c:out>
+								</div>
+							</div>
                        <div class="review_content">
                		   <p>
                     <c:out value="${review2.review_content}"></c:out>
                     </p>
                       <div class="result-btn-positon">
-                      <button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
-                      <button id="delete-button" class='btn btn-light basic-btn btn-delete' type="button" onclick="">삭제</button>
+                     <c:if test="${memberLoggedIn.memberPk==review2.member_pk}">
+                     	<button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
+                 	 	<button  class='btn btn-light basic-btn btn-delete reply2-del-btn' type='button' value="${review2.review_pk }">삭제</button>
+                     </c:if>
                       </div>
                        </div>
                     </div>          
@@ -260,10 +275,10 @@
                   </ul>
                </c:forEach>
 
-               
+				<c:if test="${memberLoggedIn!=null}">               
 					<jsp:useBean id="currTime" class="java.util.Date" />
-                    <div id='' class="media comment-box insertComment">
-         			  <form id="review_insert" action="${path}/storeReview/storeReviewInsert.do" name="review_insert" method="post" enctype="multipart/form-data">
+                    <div id='insertComment' class="media comment-box insertComment"><!-- ? -->
+         			  <form id="review_insert"  name="review_insert" action=""  method="POST" enctype="multipart/form-data">
 						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
 						<input type="hidden" value="${memberLoggedIn.memberId }" name="review_writer"/>
                 		<input type="hidden" value="${store. store_pk  }" name="store_pk"/>
@@ -275,7 +290,7 @@
                  		</div>
                 		 <div class="media-body purple-border input_comment">
                      		<div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${memberLoggedIn.memberId}</div>
-                     			<div class="col-xs-9" style="text-align: right;"><fmt:formatDate value="${currTime}" pattern="yyyy년MM월dd일HH시mm분"/>
+                     			<div class="col-xs-9" style="text-align: right;"><fmt:formatDate value="${currTime}" pattern="yyyy-MM-dd HH:mm"/>
 								</div>
 							</div>
                      		<div class="form-group" style="margin-bottom:0px;">
@@ -317,65 +332,140 @@
                      <div class="btn btn-default image-preview-input basic-btn">
                          <span class="glyphicon glyphicon-folder-open"></span>
                          <span class="image-preview-input-title ">Browse</span>
-                         <input type="file" accept="image/png, image/jpeg, image/gif" name="review_ori_img"/> <!-- rename it -->
+                         <input type="file" accept="image/png, image/jpeg, image/gif" name="review_ori_img" id='review_ori_img'/> <!-- rename it -->
                      </div>
                  </span> </div>
 
-                       <button id="result-button" class='btn btn-light basic-btn btn-center' type="button">완료</button>
+                       <button id="result-button" class='btn btn-light basic-btn btn-center' type="submit">완료</button>
                        <button id="reset-button" class='btn btn-light basic-btn btn-center' type="reset">취소</button>
                      </div>
                  </div>
                 </div>
              </form>
            </div>
+           </c:if>
            
            <script type="text/javascript">
            $(function () {
-        	   $("#result-button").click(function() {
-        			          			   
-        		        var form = $('#review_insert')[0];
-              			var formData = new FormData(form);
-              			formData=$("input[name=review_ori_img]")[0].files[0];
-	      		        var review_value = { };
-        		        $.each($("form[name=review_insert]").serializeArray(), function() {
-        		        	review_value[this.name] = this.value;
-        		        });
-        		        review_value['review_ori_img']=$("input[name=review_ori_img]")[0].files[0];
-        		 		console.log(review_value);
-        		 		
-        		 		var jsonData = JSON.stringify(review_value);
-						console.log(jsonData);
-						
-						console.log(formData);
+        	   $("form[name=review_insert]").submit(function(e) {
+        		        e.preventDefault();        			  	 
+	
+	      			   var form = $('#review_insert')[0];
+	                    var formData = new FormData(form);
+	                    formData.append("member_pk",  $('input[name=member_pk]'));
+	                    formData.append("store_pk", $('input[name=store_pk]'));
+	                    formData.append("review_writer", $('input[name=review_writer]'));
+	                    formData.append("review_date", $('input[name=review_date]'));
+	                    formData.append("review_level",$('input[name=review_level]'));
+	                    formData.append("review_content", $('input[name=review_content]'));
+	                    formData.append("review_star", $('input[name=review_star]'));
+	                    formData.append("review_ori_img", $('input[name=review_ori_img]'));
+	                    
+	                    var insert_div=$(".insertComment");
+        		        
+	        		       var index= insert_div.prev().attr('id');
+	        		       index=parseInt( index.charAt(index.length - 1));
+	        		       if(isNaN(index)){
+	        		    	   index=0;
+	        		       }
+	        		       else{
+	        		       index=index+1;
+	        		       }
+	        		       console.log(index);
+						 
+        		 	$.ajax({
+        		 	        type: "POST",
+        		 	        enctype: 'multipart/form-data',
+        		 	        url: "${path}/storeReview/storeReviewInsert.do",
+        		 	        data: formData,
+							dataType: "json",
+        		 	        processData: false,
+        		 	        contentType: false,
+        		 	        cache: false,
+        		 	        success: function (data) {
+								alert(data.review_value.review_pk);
+        		 	        	alert(data);
+								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
+								 var html2="<li>";
+								 html2+="<div class='media-left'>";
+								 html2+="<img class='member_profile' src='${path}/images/member/${memberLoggedIn.memberReImg}'>";
+								 html2+="</div>";
+								 html2+="<div class='media-body'>";
+								 html2+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;''><div class='col-xs-3'>"+data.review_value.review_writer+"</div>";
+								 html2+="<div class='col-xs-9' style='text-align: right;''>";
+								 html2+= "<fmt:formatDate value='${currTime}' pattern='yyyy-MM-dd HH:mm:ss'/>"
+								 
+								 html2+="</div>";
+								 html2+="</div>";
+								 html2+="<div class='review_content'>";
+								 html2+=" <p>";
+								
+								 if(data.review_value.review_ori_img!=null){
+								 html2+="<img class='review-img'alt='' src='${path}/resources/upload/storeReview/"+data.review_value.review_re_img+"'>";
+								 }
+								 html2+=""+data.review_value.review_content+"";
+								
+								 html2+="</p>";
+								 html2+="<div class='reply-btn-positon'>";
+								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>답글</button>";
+								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+",'"+data.review_value.review_re_img+"')'>삭제</button>"
+			               		 html2+="</div>";
+								 html2+="</div>";
+								 html2+="<div class='row'>";
+								 html2+="<div class='col-sm-3' style='padding-top:10px;'>";
+								
+								 for (var i = 0; i < data.review_value.review_star; i++) {
+								 html2+=" <button type='button' class='btn btn-xs btn-warning' class='view_star'>";
+								 html2+="<i class='fa fa-star' aria-hidden='true'></i>";
+								 html2+="</button>";
+								}
+								 
+								 for (var i = 0; i <5-data.review_value.review_star; i++) {
+									 html2+=" <button type='button' class='btn btn-xs btn-default' class='view_star'>";
+									 html2+="<i class='fa fa-star' aria-hidden='true'></i>";
+									 html2+="</button>";
+								 }
+								 
+								 html2+="<span>"+data.review_value.review_star+"</span><small> / 5</small>";
+								 html2+="</div>";
+								 html2+="</div>";
+								 html2+="</div>";
+								 html2+="<br>";
+								 html2+="<br>";
+								 html2+="</li>";
+								
+								 html2+="<ul class='media comment-box level2 comment-reply'>";
+								 html2+="<li></li>";
+								 html2+="</ul>";
+								 
+								 insert_div.prev().after(html1);
+								 $("#comment-main-"+index).html(html2);
+								// fn_reply(index,review_pk,store_pk);
+			        	   		 $('#reset-button').trigger('click');
+			        	   		 $('#close-preview').trigger('click');
+			        	   		 $('.image-preview-clear').trigger('click');
+        		 	        },
+        		 	        error: function (e) {
+        		 	            console.log("ERROR : ", e);
+        		 	        }
 
-						
-        		 		$.ajax({
-        		            type : 'POST',
-        		            url : '${path}/storeReview/storeReviewInsert.do',
-        		            data : formData,
-        		            enctype: 'multipart/form-data',
-        		            async: false,
-        		            cache: false,
-        		            contentType: false,
-        		            processData: false,
-        		            dataType : 'json',
-        		            
-        		            error: function(xhr, status, error){
-        		                alert(error);
-        		            },
-        		            
-        		  
-        		       })	
-        		       $("form[name=review_insert]").submit();
-        		    
-        		       })		
-        		    })
+        		      	 })
+        		       });	
+        	   
+
+        	   $('#review_tab').one('click', function() {	
+        	   	$('.comment-reply').css('display','none');
+        	   });
+        	      
+        	   eventBind2();
+        		    });
            </script>
 							<br><br><br><br><br>
 							</div>
 							<!-- 3번째 탭 끝 -->
 							
-							 <script type="text/javascript">
+  <script type="text/javascript">
+  				//별점 쿼리
              $(function () {
               $(".btnrating").on('click',(function(e) {
 
@@ -415,19 +505,10 @@
                    });
 
                     $('.view_star').attr('disabled', true);
-
-
-                    
-                  
    });
-
-
-
-
-
-               </script>
-
-               <script type="text/javascript">
+     
+  				
+  				//미리보기 쿼리
                $(document).on('click', '#close-preview', function(){
             	   
   $('.image-preview').popover('hide');
@@ -488,38 +569,40 @@ $(function() {
   });
 });
 
-$(".btn-reply").on('click',function() {
- //$(this).parents('div').children(".level2").toggle();
-	 var index=$(this).attr('value');
-	 var div=$(this).parents('ul').children('ul').toggle();
-	
-	 
-		
-		
-		
+function fn_reply(index,review_pk,store_pk) {
 
-})
-
-$('#review_tab').one('click', function() {	
-	$('.comment-reply').css('display','none');
-
+	var memberLoggedIn= "${memberLoggedIn}";
+	var reply_btn=$("#reply-btn-"+index);
+	if(memberLoggedIn.length!=0){
+     if(reply_btn.val()=="1"){
 	 var li = $('<li></li>'); 
 	 var html='';
-		html+="<div id='' class='media comment-box insertComment'>";
-		html+="<form name='' action='' method='post'>";
+		html+="<div class='media comment-box insertComment'>";
+		html+="<form name='reply_insert"+index+"' action='#' method='post'>";
+		html+="<input type='hidden' value='${memberLoggedIn.memberPk }' name='member_pk'/>";
+		html+="<input type='hidden' value='${memberLoggedIn.memberId }' name='review_writer'/>";
+		html+="<input type='hidden' value='"+store_pk+"' name='store_pk'/>";
+		html+="<input type='hidden' value='"+review_pk+"' name='review_pk'/>";
+		html+="<input type='hidden' value='2' name='review_level'/>";
+		html+="<input type='hidden' value='"+index+"' name='index'/>";
 		html+="<div class='media-left'>";
-		html+="<img class='member_profile' src='${path}/resources/member_profile/{memberLogged.member_re_img}'>";
+		html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+	//	html+="<img class='member_profile' src='${path}/resources/member_profile/${memberLogged.memberReImg}'>";
+		//null일때 처리
 		html+="</div>";
 		html+="<div class='media-body purple-border input_comment'>";
-		html+=" <h5 class='media-heading'>아이디       작성일</h5>";
+		html+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;'><div class='col-xs-3'>${memberLoggedIn.memberId}</div>";
+	    html+="<div class='col-xs-9' style='text-align: right;'><fmt:formatDate value='${currTime}' pattern='yyyy-MM-dd HH:mm'/>";
+	    html+="</div>";	
+	    html+="</div>";	
 		html+="<div class='form-group' style='margin-bottom:0px;'>";
-		html+="<textarea class='form-control' id='' rows='3' placeholder='댓글을 작성하세요'></textarea>";
+		html+="<textarea name='review_content' class='form-control' id='' rows='3' placeholder='댓글을 작성하세요' required></textarea>";
 		html+="</div>";
 		html+="</div>";
 		html+="<div class='row'>";
 		html+="<div class='col-sm-4 col-sm-offset-8' style='text-align:right; padding-top:5px; left: 30px;'>";
-		html+="<button class='btn btn-light basic-btn btn-center' type='submit'>완료</button> ";
-		html+="<button class='btn btn-light basic-btn btn-center' type='reset'>취소</button>";
+		html+="<button class='btn btn-light basic-btn btn-center reply-sunmit' type='submit'>완료</button> ";
+		html+="<button id='reply-reset"+index+"' class='btn btn-light basic-btn btn-center reply-reset' type='reset'>취소</button>";
 		html+="</div>";
 		html+="</div>";
 		html+="</div>";
@@ -527,15 +610,109 @@ $('#review_tab').one('click', function() {
 		html+="</div>";
 		html+="</br>";
 		li.html(html);
+		reply_btn.parent().parent().parent().parent().next().append(li);
+   	    reply_btn.val('2');
+   		eventBind(index);
+      }
+	}
+     reply_btn.parents('ul').children('ul').toggle();
+}
+
+function fn_reply_delete(index,review_pk,review_re_img ){
+	console.log(review_re_img);
+    	reply_del_btn=$("#reply-del-btn-"+index);
+ 	   $.ajax({
+ 	        url: "${path}/storeReview/storeReviewDelete.do",
+			data:{review_pk:review_pk,review_re_img:review_re_img},
+			type: "post",
+			dataType: "json",
+ 	        success: function (data) {
+ 	        	$("#comment-main-"+index).remove();
+					//reply_del_btn.parent().parent().parent().parent().remove();
+ 	        	alert(data);
+ 	        },
+ 	        error: function (e) {
+ 	            console.log("ERROR : ", e);
+ 	        }
+      	 })
+}
+function eventBind2() {
+	$('.reply2-del-btn').on('click', function() {
+	//	$(this).parent().parent().parent().parent().remove();
+		console.log($(this).val());
+	 	   	var li=$(this).parent().parent().parent().parent();
 		
-		$('.level2').append(li);
-})
+		  $.ajax({
+	 	        url: "${path}/storeReview/storeReviewDelete.do",
+				data:{review_pk:$(this).val()},
+				type: "post",
+				dataType: "json",
+	 	        success: function (data) {
+	 	        li.remove(); 	        	
+	 	        alert(data);
+	 	        },
+	 	        error: function (e) {
+	 	            console.log("ERROR : ", e);
+	 	        }
+	      	 })
+	      	 
+	});
+}
 
-
-/*$('#review_tab').on('click', function() {	
-	$('.comment-reply').css('display','none');
-})*/
-               </script>
+function eventBind(index) {
+	$("form[name=reply_insert"+index+"]").submit(function(e) {
+	 	 e.preventDefault(); 
+		 var positon=$(this).parent().parent().prev();
+			// if(positon[0]==null){
+			//positon=$(this).parent().parent();
+	       //     console.log(positon);
+		 //}
+	 	 alert($(this).serialize());
+		 $.ajax({
+	 	        url: "${path}/storeReview/storeReviewReplyInsert.do",
+				data: $(this).serialize(),
+				type: "post",
+				dataType: "json",
+	 	        success: function (data) {
+	 	        	 var li = $('<li></li>'); 
+		 	       	 var html='';
+		 	       		html+="<div class='media-left'>";
+		 	     	  	html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+		 	   			//	html+="<img class='member_profile' src='${path}/resources/member_profile/${memberLogged.memberReImg}'>";
+		 	   			//null일때 처리
+		 	       		html+="</div>";
+		 	       		html+="<div class='media-body'>";
+		 	       		html+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;'><div class='col-xs-3'>"+data.review_value.review_writer+"</div>";
+						html+="<div class='col-xs-9' style='text-align: right;'><fmt:formatDate value='${currTime}' pattern='yyyy-MM-dd HH:mm:ss'/>";
+		 	       		html+="</div>";
+		 	       		html+="</div>";
+		 	       		html+="<div class='review_content'>";
+		 	       		html+="<p>";
+		 	       		html+=""+data.review_value.review_content+"";
+		 	       		html+="</p>";
+		 	       		html+="<div class='result-btn-positon'>";
+						if("${memberLoggedIn.memberPk}"==data.review_value.member_pk){
+		 	       		html+="<button class='btn btn-light basic-btn btn-update' type='button' onclick='''>수정</button>";
+		 	       		html+=" <button class='btn btn-light basic-btn btn-delete reply2-del-btn' type='button' value='"+data.review_value.review_pk+"'>삭제</button>";
+						}
+		 	       		html+="</div>";
+		 	       		html+="</div>";
+		 	       		html+="</div>";
+		 	       		html+=" <br>";
+		 	     	  	li.html(html);	
+			 	        positon.after(li);
+			 	        eventBind2();
+			 	        $("#reply-reset"+index).trigger('click');
+			 	      
+	 	        },
+	 	        error: function (e) {
+	 	            console.log("ERROR : ", e);
+	 	        }
+	      	 })	
+ });
+}
+	 
+     </script>
 						</div>
 						<!-- tab content 끝 -->
 					</div>
