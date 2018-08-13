@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreService {
 
@@ -16,6 +17,9 @@ public interface StoreService {
 
 	List<Store> mainStoreList();
 
+<<<<<<< HEAD
 	int insertMenu(Menu menu, String store_pk);
+=======
+>>>>>>> sungJin_ver1.5
 
 }

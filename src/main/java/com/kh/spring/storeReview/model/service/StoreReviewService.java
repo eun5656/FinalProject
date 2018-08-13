@@ -8,6 +8,13 @@ public interface StoreReviewService {
 
 	List<StoreReview> storeReviewList(int store_pk);
 
+	int storeReviewInsert(StoreReview store_review);
+
+	int storeReviewDelete(int review_pk);
+
+	int storeReviewReplyInsert(StoreReview store_review);
+
+
 	
 
 }
