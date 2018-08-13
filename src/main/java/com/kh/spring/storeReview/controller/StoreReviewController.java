@@ -110,13 +110,13 @@ public class StoreReviewController {
 	@RequestMapping(value = "/storeReview/storeReviewDelete.do", produces = "application/text; charset=utf8")
 	@ResponseBody
 	public String storeReviewDelete(@RequestParam(value = "review_pk") String review_pk,
-									@RequestParam(value = "review_re_img") String review_re_img,
 												HttpServletRequest request)
 			throws JsonProcessingException {
 		
 		int result =0;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/storeReview");
-		String fileName=review_re_img;
+		System.out.println(Integer.parseInt(review_pk));
+		String fileName=reviewService.selectReImg(Integer.parseInt(review_pk));
 		System.out.println(fileName);
 		boolean flag=false;
 		if(fileName!=null && fileName.length()>0) {
