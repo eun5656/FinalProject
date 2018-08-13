@@ -114,11 +114,11 @@
 						  
 						  $(".store_reservaiton").click(function() {
 							
-							  location.href="${path}/store/storeReserve.do?store_pk="+$(this).children("#store_pk").val(); //예약하기 바로갈수있는 로직으로..
+							  location.href="${path}/store/storeReserve.do?store_pk="+document.getElementById("store_pk").value; //예약하기 바로갈수있는 로직으로..
 						 })
 						 
 						  $(".store_review").click(function() {
-						   location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val(); 
+						   location.href="${path}/store/store.do?store_pk="+document.getElementById("store_pk").value; 
 						 })
 						  }
 				})
