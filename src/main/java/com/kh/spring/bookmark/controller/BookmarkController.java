@@ -1,7 +1,5 @@
 package com.kh.spring.bookmark.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,15 +49,15 @@ public class BookmarkController {
 		map.put("bookmark_check", jsonObject.get("bookmark_check"));
 		map.put("store_pk", jsonObject.get("store_pk"));
 
-		//그냥...해봤음....
+		//洹몃깷...�빐遊ㅼ쓬....
 		
 		int result=service.insertBookmark(map);
 		String msg;
 		if(result>0){
-			msg="북마크 등록완료";
+			msg="遺곷쭏�겕 �벑濡앹셿猷�";
 		}
 		else {
-			msg="북마크 등록실패";
+			msg="遺곷쭏�겕 �벑濡앹떎�뙣";
 
 		}
 		
@@ -92,10 +90,10 @@ public class BookmarkController {
 		int result=service.deleteBookmark(map);
 		String msg;
 		if(result>0){
-			msg="북마크 삭제완료";
+			msg="遺곷쭏�겕 �궘�젣�셿猷�";
 		}
 		else {
-			msg="북마크 삭제실패";
+			msg="遺곷쭏�겕 �궘�젣�떎�뙣";
 
 		}
 		
