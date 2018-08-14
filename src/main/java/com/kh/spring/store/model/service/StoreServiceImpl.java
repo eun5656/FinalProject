@@ -54,9 +54,9 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
-	public int insertMenu(Menu menu, String store_pk) {
+	public int insertMenu(Menu menu) {
 		
-		return dao.menuInsert(sqlSession,menu,store_pk);
+		return dao.menuInsert(sqlSession,menu);
 	}
 
 	@Override

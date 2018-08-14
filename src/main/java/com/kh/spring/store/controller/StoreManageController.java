@@ -121,9 +121,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	}
 	@RequestMapping("/store/storeManage/menuInsert.do")
 	public String menuInsert(Menu menu, HttpServletRequest req) {
-		System.out.println("메뉴 삽입 접근완료");
-		String store_pk=(String)req.getSession().getAttribute("store_pk");
-		int result = service.insertMenu(menu,store_pk);
+		System.out.println("메뉴 삽입 접근완료" + menu);
+		int result = service.insertMenu(menu);
 		if(result>0) {
 			System.out.println("삽입 완료");
 		}else {

@@ -130,16 +130,17 @@ $("#menuUpdate").click(function(){
 //메뉴 추가
 
 function menuInsertForm(){
-	 var li = $('<li></li>'); 
+	 var li = $('<div></div>'); 
 	 var html='';
 		html+='<form name ="menuInsert" method="post" action="'
 		html+=path;	
 		html+='/store/storeManage/menuInsert.do">';								;
 		html+='<input type="text" placeholder="메뉴 제목 입력" name="menu_name" class="form-control"/>';
-		html+='<input type="text" placeholder="정보 입력" name="menu_Info" class="form-control"/>';
+		html+='<input type="text" placeholder="정보 입력" name="menu_info" class="form-control"/>';
 		html+='<input type="number" placeholder="가격 입력" name="menu_price" class="form-control"/>';
 		html+='<select name="menu_check"><option value="손">손</option><option value="발">발</option></select>';
-		html+='<button type="submit" id ="menuInsert" class="btn-success"> 완료</button></form>';
+		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>'
+		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
 		li.html(html);
 		$('.menuInsertForm').append(li);
 	

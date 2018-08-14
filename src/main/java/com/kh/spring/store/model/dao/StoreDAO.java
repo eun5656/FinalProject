@@ -17,7 +17,7 @@ public interface StoreDAO {
 	int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk);
 	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
 
-	int menuInsert(SqlSessionTemplate sqlSession, Menu menu, String store_pk);
+	int menuInsert(SqlSessionTemplate sqlSession, Menu menu);
 
 	int menuUpdate(SqlSessionTemplate sqlSession, Menu menu);
 

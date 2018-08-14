@@ -18,7 +18,7 @@ public interface StoreService {
 
 	int deleteMenu(String menu_pk);
 	
-	int insertMenu(Menu menu, String store_pk);
+	int insertMenu(Menu menu);
 
 	int menuUpdate(Menu menu);
 

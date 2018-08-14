@@ -20,7 +20,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=3"></script>
+<script src="${path }/resources/js/storeManage.js?ver=2"></script>
 <div>
 	<div id="wrapper">
 
@@ -191,12 +191,12 @@ var store_pk="${store.store_pk}"
 											</select>
 											<button type="button" id="menuUpdate" class="btn-success">
 												수정</button>
-											<button id="menuDelete" class="btn-danger" value="${menu.menu_pk }" style="float: right;">삭제</button>
+											<button id="menuDelete" class="btn btn-danger" value="${menu.menu_pk }" style="float: right;">삭제</button>
 											</form>
 										</c:forEach>
 										<br> <br>
-										<ul class="menuInsertForm"></ul>
-										<button onclick="menuInsertForm()" class="btn-primary" value="" style="float: center;">추가</button>
+										<div class="menuInsertForm" style=""></div>
+										<button onclick="menuInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
 
 									</div>
 
