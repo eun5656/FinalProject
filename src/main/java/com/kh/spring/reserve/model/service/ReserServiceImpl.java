@@ -12,9 +12,8 @@ import com.kh.spring.store.controller.StoreController;
 public class ReserServiceImpl {
 	private Logger logger = Logger.getLogger(StoreController.class);
 
-
-	@Autowired
-	private ReserDao reserDao;
+	//@Autowired
+    //ReserDao reserDao;
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
