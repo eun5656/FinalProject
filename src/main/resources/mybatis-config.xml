@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+	<settings>
+      <setting value="NULL" name="jdbcTypeForNull"/>
+   </settings>
+   
 	<typeAliases>
 	
 		<typeAlias type="com.kh.spring.common.StringArrayTypeHandler" alias="stringArray"/> 
@@ -11,9 +15,9 @@
 		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
 		<typeAlias type="com.kh.spring.storeReview.model.vo.StoreReview" alias="storeReview"/>
 		<typeAlias type="com.kh.spring.bookmark.model.vo.Bookmark" alias="bookmark"/>
-		 <typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
+		<typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
 
-		 <typeAlias type="com.kh.spring.qna.model.vo.Qna" alias="qna"/>
+		<typeAlias type="com.kh.spring.qna.model.vo.Qna" alias="qna"/>
 		<typeAlias type="com.kh.spring.deal.model.vo.Deal" alias="deal"/>
 		<typeAlias type="com.kh.spring.deal.model.vo.DealImage" alias="dealImage"/>
 		<typeAlias type="com.kh.spring.customer.model.vo.Notice" alias="notice"/>

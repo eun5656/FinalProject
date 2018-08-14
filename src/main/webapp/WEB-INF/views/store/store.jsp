@@ -201,7 +201,7 @@ var store_pk ="${store.store_pk}";
                     </p>
                  <div class="reply-btn-positon">
                    <!-- 점주만-->
-						<button id="reply-btn-${status.index}" class='btn btn-light basic-btn btn-reply' value="1" type="button" onclick="fn_reply(${status.index },${review.review_pk},${review.store_pk})">답글</button>               		
+						<button id="reply-btn-${status.index}" class='btn btn-light basic-btn btn-reply' value="1" type="button" onclick="fn_reply(${status.index },${review.review_pk},${review.store_pk})">댓글</button>               		
 						<c:if test="${memberLoggedIn.memberPk== review.member_pk}">
                  	 <button id='reply-del-btn-${status.index}'  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete(${status.index },${review.review_pk})'>삭제</button>
                  
@@ -414,7 +414,7 @@ var store_pk ="${store.store_pk}";
 								
 								 html2+="</p>";
 								 html2+="<div class='reply-btn-positon'>";
-								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>답글</button>";
+								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>댓글</button>";
 								 html2+=" <button id='reply-del-btn-'"+index+"  class='btn btn-light basic-btn btn-delete' type='button' onclick='fn_reply_delete("+index+","+data.review_value.review_pk+")'>삭제</button>";
 			               		 html2+="</div>";
 								 html2+="</div>";

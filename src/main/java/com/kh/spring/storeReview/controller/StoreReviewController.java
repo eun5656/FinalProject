@@ -56,7 +56,7 @@ public class StoreReviewController {
 			String review_date,
 			String review_content,
 			String review_writer,
-			String review_star,
+			@RequestParam(value ="review_star",required=false,defaultValue="0") String review_star,
 			
 			MultipartFile review_ori_img, HttpServletRequest request)
 			throws JsonProcessingException {
@@ -91,10 +91,10 @@ public class StoreReviewController {
 		store_review.setReview_date(parsing(review_date));
 		store_review.setReview_content(parsing(review_content));
 		store_review.setReview_writer(parsing(review_writer));
-		store_review.setReview_star(Integer.parseInt(parsing(review_star)));
 		store_review.setReview_ori_img(originalFileName);
 		store_review.setReview_re_img(renamedFileName);
-		
+		System.out.println("ori"+originalFileName);
+		System.out.println("reviewStar"+review_star);
 		int result = reviewService.storeReviewInsert(store_review);
 		//selectKey 는 객체안에 넣어서오기때문에 뺴내지않아도된다..
 		ObjectMapper mapper = new ObjectMapper();
