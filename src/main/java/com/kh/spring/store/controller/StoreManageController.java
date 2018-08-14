@@ -151,13 +151,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return jsonstr;
 	}
 
-	@RequestMapping("/store/storeManage/menuUpdate.do")
+	@RequestMapping(value =  "/store/storeManage/menuUpdate.do",  produces = { "application/text; charset=utf8" })
 	@ResponseBody
 	public String menuUpdate(HttpServletRequest req,
 			Menu menu
 			) throws JsonProcessingException {
 		System.out.println("메뉴 수정 접근완료");
-
+		System.out.println(menu);
 		int result = service.menuUpdate(menu);
 		logger.debug("menuUpdate 확인~ : "+result);
 		JSONObject json=JSONObject.fromObject(JSONSerializer.toJSON(menu));

@@ -107,13 +107,16 @@ $("#menuDelete").click(function(){
 	});		
 $("#menuUpdate").click(function(){
 //	var queryString = $("form[name=QnaInsert]").serialize();
-	var queryString = $(this).closest("form").serialize();
+	var queryString = $(this).closest("form").serialize().replace(/%/g,'%25');;
+	queryString = decodeURIComponent(queryString);
+
 	console.log(queryString);
 	$.ajax({
 		type :'post',
-		url: path + 'store/storeManage/menuUpdate.do',
+		url: path+'/store/storeManage/menuUpdate.do',
 		data: queryString,
-		dataType : 'json',
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+		dataType: "text",
 		success : function(json){
 			alert(json);
 			location.reload();
@@ -129,7 +132,9 @@ $("#menuUpdate").click(function(){
 function menuInsertForm(){
 	 var li = $('<li></li>'); 
 	 var html='';
-		html+='<form name ="menuInsert" method="post" action="/store/storeManage/menuInsert.do">';								;
+		html+='<form name ="menuInsert" method="post" action="'
+		html+=path;	
+		html+='/store/storeManage/menuInsert.do">';								;
 		html+='<input type="text" placeholder="메뉴 제목 입력" name="menu_name" class="form-control"/>';
 		html+='<input type="text" placeholder="정보 입력" name="menu_Info" class="form-control"/>';
 		html+='<input type="number" placeholder="가격 입력" name="menu_price" class="form-control"/>';

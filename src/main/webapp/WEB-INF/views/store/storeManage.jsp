@@ -20,7 +20,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js"></script>
+<script src="${path }/resources/js/storeManage.js?ver=3"></script>
 <div>
 	<div id="wrapper">
 
