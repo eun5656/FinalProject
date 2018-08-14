@@ -40,6 +40,7 @@ public class MessageController {
 		return "message/sendForm";
 	}
 
+	
 	@RequestMapping("/message/receiveMessage.do")
 	public ModelAndView ReceiveMessage(String send_user,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,HttpSession session) {
 	
