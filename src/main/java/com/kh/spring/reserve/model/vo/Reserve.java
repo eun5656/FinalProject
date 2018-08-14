@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Reserve implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3449014036699805063L;
 	
 	private int reserve_pk;
