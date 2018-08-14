@@ -14,6 +14,7 @@ import com.kh.spring.store.model.vo.Store;
 public class ShopServiceImpl implements ShopService {
 	@Autowired 
 	ShopDao dao;
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
