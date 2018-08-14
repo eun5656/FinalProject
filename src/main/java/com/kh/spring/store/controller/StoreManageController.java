@@ -120,7 +120,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return view;
 	}
 	@RequestMapping("/store/storeManage/menuInsert.do")
-	public String menuInsert(Menu menu, HttpServletRequest req) {
+	public String menuInsert(Menu menu, HttpServletRequest req,Model model) {
 		System.out.println("메뉴 삽입 접근완료" + menu);
 		int result = service.insertMenu(menu);
 		if(result>0) {
@@ -130,7 +130,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		}
 		logger.debug(menu);//입력값 확인
 		
-		//Store store = service.selectOne(store_pk);
+		Store store = service.selectOne(menu.getStore_pk());
+		model.addAttribute("store", store);
 		return "/store/storeManage";
 	}
 	
