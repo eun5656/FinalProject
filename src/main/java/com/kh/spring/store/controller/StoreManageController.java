@@ -130,7 +130,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		}
 		logger.debug(menu);//입력값 확인
 		
-		return "/store/storeManage.do";
+		//Store store = service.selectOne(store_pk);
+		return "/store/storeManage";
 	}
 	
 	@RequestMapping("/store/storeManage/menuDelete.do")
