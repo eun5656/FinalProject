@@ -76,11 +76,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	
 	@RequestMapping("/store/storeManageSales.do")
 	public String storeManageSale(
-			HttpServletRequest req, Model model
+			HttpServletRequest req, Model model, HttpSession session
 			) {
-		String view="store/storeManageSales";
-		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
-		Store store = service.selectOne(store_pk);
+		String view="store/storeManageSales";	
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+	
+		Store store = service.selectOne(member_pk);
+		
 
 		System.out.println();
 		System.out.println("스토어 값 확인 : "+store);
@@ -91,11 +93,16 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	}
 	@RequestMapping("/store/storeManageReserve.do")
 	public String storeManageReserve(
-			HttpServletRequest req, Model model
+			HttpServletRequest req, Model model,HttpSession session
 			) {
 		String view="store/storeManageReserve";
-		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
-		Store store = service.selectOne(store_pk);
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+		
+		Store store = service.selectOne(member_pk);
+		
+//		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
+		List<Menu> menus = service.selectMenu(store.getStore_pk());
+
 		
 		
 	
@@ -107,11 +114,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	}
 	@RequestMapping("/store/storeManageQna.do")
 	public String storeManageQna(
-			HttpServletRequest req, Model model
+			HttpServletRequest req, Model model,HttpSession session
 			) {
 		String view="store/storeManageQna";
-		int store_pk = Integer.parseInt(req.getParameter("store_pk"));
-		Store store = service.selectOne(store_pk);
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+		
+		Store store = service.selectOne(member_pk);
+		
 	
 		System.out.println("스토어 값 확인 : "+store);
 		
@@ -131,7 +140,11 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		logger.debug(menu);//입력값 확인
 		
 		Store store = service.selectOne(menu.getStore_pk());
+		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
+		List<Menu> menus = service.selectMenu(store.getStore_pk());
 		model.addAttribute("store", store);
+		model.addAttribute("menus",menus);
+		model.addAttribute("nails",nails);
 		return "/store/storeManage";
 	}
 	
