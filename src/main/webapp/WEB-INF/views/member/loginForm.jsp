@@ -21,7 +21,7 @@
    <jsp:param value=" " name="pageTitle" />
 </jsp:include>
 
-<div class="limiter">
+<div class="limiter" style="padding-top: 100px;">
    <div class="container-login100">
       <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
          <form class="login100-form validate-form" method="post" action="${path }/member/Login.do">

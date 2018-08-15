@@ -14,7 +14,7 @@
 	}
 </style>
 
-<section>
+<section style="padding-top: 100px;">
     <div class="row">
 				<div class="col-12">
 					<h1 class="text-green mb-4 text-center">자주묻는질문</h1>

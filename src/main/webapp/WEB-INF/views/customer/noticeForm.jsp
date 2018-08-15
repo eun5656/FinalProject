@@ -15,7 +15,7 @@
 
 
 
-<section id="dealForm1">
+<section id="dealForm1" style="padding-top: 100px;">
 <div class="container">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">

@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="${path }/resources/css/joinSelect.css">
 
 
-        <div class="container">
+        <div class="container" style="padding-top: 100px;">
                 <div class="row" style="padding-left:50px;">
                     
                       <div class="col-xs-10">
