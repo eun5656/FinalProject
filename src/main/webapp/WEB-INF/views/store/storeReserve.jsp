@@ -665,7 +665,9 @@ var store_pk ="${store.store_pk}";
 												<tr >
 													<td colspan="7" style="text-align: center;">
 													<button id="result-reservaiton" type="button" class="btn btn-success" name="button" >확인</button>
+													<c:if test="${memberLoggedIn.memberLevel<=2}">
 													<button id="remove-reservaiton" type="button" class="btn btn-danger" name="button">삭제</button>
+													</c:if>
 													</td>
 												</tr>
 												
