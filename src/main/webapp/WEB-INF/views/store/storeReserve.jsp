@@ -13,6 +13,7 @@
 <!-- store css -->
 
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
+<link href="${path }/resources/css/storeReserve.css" rel="stylesheet" />
 <link href="${path }/resources/css/final_scheduler.css" rel="stylesheet" />
 <link href="${path }/resources/css/fullcalendar.min.css" rel="stylesheet" />
 <link href="${path }/resources/css/scheduler.min.css" rel="stylesheet" />
@@ -323,73 +324,76 @@ var store_pk ="${store.store_pk}";
 
         dayClick: function(date, jsEvent, view, resource) {
 
+        if(resource!=null){	
+        	  var checkHoliday = true;
+       		  console.log(resource.businessHours[1].dow[0])
+        	  console.log(resource.businessHours[2].dow[0])
 
-          var checkHoliday = true;
-          console.log(resource.businessHours[1].dow[0])
-          console.log(resource.businessHours[2].dow[0])
+        	  var mydateObj = new Date(date);
+        	  var chosenDay = mydateObj.getUTCDay();
 
-          var mydateObj = new Date(date);
-          var chosenDay = mydateObj.getUTCDay();
-
-          if (chosenDay == resource.businessHours[1].dow[0]) {
-            if (resource.businessHours[1].start.substr(0, 2) > date.format("HH") || resource.businessHours[1].end.substr(0, 2) <= date.format("HH")) {
-              checkHoliday = false;
-              console.log(checkHoliday)
-
-            }
-          }
-          if (chosenDay == resource.businessHours[2].dow[0]) {
-            if (resource.businessHours[2].start.substr(0, 2) > date.format("HH") || resource.businessHours[2].end.substr(0, 2) <= date.format("HH")) {
-              checkHoliday = false;
-              console.log(checkHoliday)
-
-            }
-          }
+        	  if (chosenDay == resource.businessHours[1].dow[0]) {
+            		if (resource.businessHours[1].start.substr(0, 2) > date.format("HH") || resource.businessHours[1].end.substr(0, 2) <= date.format("HH")) {
+              		checkHoliday = false;
+              		console.log(checkHoliday)
+            		}
+          		}
+          	 if (chosenDay == resource.businessHours[2].dow[0]) {
+            		if (resource.businessHours[2].start.substr(0, 2) > date.format("HH") || resource.businessHours[2].end.substr(0, 2) <= date.format("HH")) {
+              		checkHoliday = false;
+              		console.log(checkHoliday)
+           			 }
+         		 }
 
 
-          var check = true;
-          //휴무일. 특정 휴무일 (일로 받았을떄 처리)
-          for (var i = 0; i < businessHours1.length; i++) {
-            if (date.format('YYYY-MM-DD') == businessHours1[i].start || date.format('YYYY-MM-DD') == businessHours1[i].end) {
-              check = false; //휴무일.
-            }
-          }
-          if (check == true) {
-            var now = new Date
-            var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
-            console.log("now" + nowDate);
+      		    var check = true;
+          		//휴무일. 특정 휴무일 (일로 받았을떄 처리)
+         		 for (var i = 0; i < businessHours1.length; i++) {
+         			   if (date.format('YYYY-MM-DD') == businessHours1[i].start || date.format('YYYY-MM-DD') == businessHours1[i].end) {
+         			     check = false; //휴무일.
+        		    }
+        		  }
+       			   if (check == true) {
+      			      var now = new Date
+       				  var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
+         			   console.log("now" + nowDate);
 
 
-            var checkDate = new Date(date.format());
-            console.log("check" + checkDate);
+      		    	      var checkDate = new Date(date.format());
+        			    console.log("check" + checkDate);
 
-            /*1시간전 예약 못하게만들기*/
-            if (checkDate <= nowDate) { //&& flag == truenowDate
-              alert("예약시간이 아닙니다...");
-              check2 = false;
-              date=null;
-            } else if (checkHoliday == false) {
-              alert("영업시간이 아닙니다.");
-              date=null;
+        			    /*1시간전 예약 못하게만들기*/
+            			if (checkDate <= nowDate) { //&& flag == truenowDate
+              			alert("예약할 수 없는 시간입니다.");
+              			check2 = false;
+              			date=null;
+            			} 
+            			else if (checkHoliday == false) {
+              				alert("영업시간이 아닙니다.");
+              				date=null;
 
-            } else {
+            			} 
+            			else {
             
-             if("${memberLoggedIn}"!=null){
-              $('#calendarModal').modal();
-              $('#designer').html(resource.title);
-			  $('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
-             }
-             else{
-            	 alert('로그인해주세요')
-             }
-            }
-          } else {
-            console.log(i);
-            alert("휴무일입니다.");
-            date=null;
-
-          }
-           //x버튼 눌렀을떄 date 초기화
+      		  				if("${memberLoggedIn}".length >0){
+              				$('#calendarModal').modal();
+              				$('#designer').html(resource.title);
+			  				$('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
+      		  				}
+         				    else{
+         				    	alert('로그인을 해주세요');
+         				    	//로그인페이지로보내기.........할까말까
+             				}
+            			}
+          		} 
+           else {
+           			 console.log(i);
+            		 alert("휴무일입니다.");
+            		 date=null;
+         		 }
+        
+       			   
+       	    //x버튼 눌렀을떄 date 초기화
             $("#close-modal").on('click',function() {
              date=null;
             });
@@ -397,9 +401,8 @@ var store_pk ="${store.store_pk}";
               if(e.keyCode==27){
                 date=null;
               }
-            })
-
-
+            });
+        }
 
           $("#result-reservaiton").one('click', function() {
 
@@ -615,7 +618,7 @@ var store_pk ="${store.store_pk}";
 															<!--점주레벨이 아니면 disabled-->
 															<c:forEach var="menu" items="${menuList}">
 																<c:if test="${menu.menu_check eq '손'}">
-																<option>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
+																<option value="${menu.menu_pk}">${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
 																</c:if>
 															</c:forEach>
 															

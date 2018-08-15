@@ -82,63 +82,7 @@
 	-webkit-transform: translate3d(0, 0, 0);
 	transform: translate3d(0, 0, 0);
 }
-/* 달력 */
-#calendar {
-	max-width: 850px;
-	margin: 50px auto;
-	
-}
 
-/*custom*/
-.fc-highlight, .alert-info {
-	background: rgb(255, 252, 253);
-}
-
-.fc-day-number {
-	color: black;
-}
-
-/*.ui-timepicker-container {
-								      z-index: 1080 !important;
-								    }*/
-#reservaiton-form tr td {
-	border-top: 0px !important;
-}
-
-#reservaiton-form label {
-	padding-top: 5px;
-}
-
-#reserDate, #reserName {
-	text-align: left;
-	padding-top: 3px;
-	padding-left: 3px;
-	font-size: 12pt;
-}
-
-/*.fc-day-grid-container {
-								      pointer-events: none;
-								      cursor: default;
-								    }*/
-.fc-more {
-	pointer-events: visible;
-}
-
-.fc-day-header.fc-sun span {
-	color: red;
-}
-
-.fc-sun .fc-day-number {
-	color: red;
-}
-
-.fc-day-number {
-	color: rgb(57, 113, 205);
-}
-
-.fc-license-message {
-	display: none !important;
-}
 /* 기본 */
 .b_icon {
 	position: absolute;
