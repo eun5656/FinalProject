@@ -125,23 +125,80 @@ $("#menuUpdate").click(function(){
 			alert(error);
 		}
 	});
-	});	
 });
+	
+	//네일 선택
+	var main_nail_color_img=$("#main-nail-color").find("img");
+	var main_nail_color_button=$("#main-nail-color").find("button");
+	var main_nail_style_img=$("#main-nail-style").find("img");
+	var main_nail_style_button=$("#main-nail-style").find("button");
+	var main_nail_check_img=$("#main-check").find("img");
+	var main_nail_check_button=$("#main-check").find("button");
+	var selectbar=$("#select-nail-bar");
+
+	var selectAry = { 
+			nail_color: null,
+			nail_style: null,
+			nail_check: null
+			}
+
+		$(".nail-color").on("click", function(event) {															
+			var color = $(this).find("img").attr('src');
+			var value=$(this).attr('value');			
+			selectAry.nail_color=value;			
+			main_nail_color_img.attr('src', color);
+			main_nail_color_button.html(value);
+			});
+		
+
+		
+		$(".nail-check").on("click", function(event) {																					
+			var check = $(this).find("img").attr('src');
+			var value=$(this).attr('value');
+			selectAry.nail_check=value;
+			main_nail_check_img.attr('src', check);
+			main_nail_check_button.html(value);
+		
+		});
+		
+		$(".nail-style").on("click", function(event) {																					
+			var style = $(this).find("img").attr('src');
+			var value=$(this).attr('value');
+			selectAry.nail_style=value;
+			main_nail_style_img.addClass("w3-circle");
+			main_nail_style_img.attr('src', style);
+			main_nail_style_button.html(value);
+										
+			});
+		
+		
+		$("#reset-all").on("click", function() {
+			selectAry.nail_color=null;
+			selectAry.nail_check=null;
+			selectAry.nail_style=null;
+			main_nail_color_img.attr("src",path+"/resources/images/nails/all-color.jpg");
+			main_nail_color_button.html("전체");			
+			 main_nail_check_img.attr("src",path+"/resources/images/nails/nail-polish.png");
+			 main_nail_check_button.html("네일/페디");			
+			main_nail_style_img.removeClass("w3-circle");
+			main_nail_style_img.attr("src",path+"/resources/images/nails/plus_btn.png");
+			main_nail_style_button.html("전체옵션");
+			});
+	});	
+
 //메뉴 추가
 
 function menuInsertForm(){
 	 var li = $('<div></div>'); 
 	 var html='';
-		html+='<form name ="menuInsert" method="post" action="'
+		html+='<form name ="menuInsert" method="post" action="';
 		html+=path;	
-		html+='/store/storeManage/menuInsert.do">';								;
+		html+='/store/storeManage/menuInsert.do">';
 		html+='<input type="text" placeholder="메뉴 제목 입력" name="menu_name" class="form-control"/>';
 		html+='<input type="text" placeholder="정보 입력" name="menu_info" class="form-control"/>';
 		html+='<input type="number" placeholder="가격 입력" name="menu_price" class="form-control"/>';
 		html+='<select name="menu_check"><option value="손">손</option><option value="발">발</option></select>';
-		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>'
+		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
 		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
 		li.html(html);
-		$('.menuInsertForm').append(li);
-	
-};
+		$('.menuInsertForm').append(li);	};
