@@ -65,5 +65,11 @@ public class StoreServiceImpl implements StoreService {
 		return dao.menuUpdate(sqlSession, menu);
 	}
 
+	@Override
+	public List<Menu> menuList(int store_pk) {
+		// TODO Auto-generated method stub
+		return  dao.menuList(sqlSession, store_pk);
+	}
+
 
 }

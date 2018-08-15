@@ -22,6 +22,9 @@ public interface StoreService {
 
 	int menuUpdate(Menu menu);
 
+	List<Menu> menuList(int store_pk);
+
+
 
 
 }

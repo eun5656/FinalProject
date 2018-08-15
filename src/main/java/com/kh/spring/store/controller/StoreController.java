@@ -78,13 +78,13 @@ public class StoreController {
 		String view="store/storeReserve";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		Store store = service.selectOne(store_pk);
-		
-			
+		List<Menu> menuList=service.menuList(store_pk);
 		
 		System.out.println("스토어 값 확인 : "+store);
 		
 		model.addAttribute("store",store);
-		
+		model.addAttribute("menuList",menuList);
+
 		return view;
 	}
 	@RequestMapping("/store/storeContact.do")

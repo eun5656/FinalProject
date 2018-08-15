@@ -21,6 +21,9 @@ public interface StoreDAO {
 
 	int menuUpdate(SqlSessionTemplate sqlSession, Menu menu);
 
+	List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk);
+
+
 
 
 }
