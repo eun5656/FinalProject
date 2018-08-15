@@ -24,20 +24,7 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.spring" />
-	
-	<!-- 인터셉터 mapping! 객체등록 -->
-	<interceptors>
-		<!-- <interceptor> <mapping path="/**" /> <exclude-mapping path=""/> -->
-		<!-- 얘는 포함하지마라 not과 같다. <beans:bean id="loggerInterceptor" class="com.sung.spring.common.LoggerInterceptor" 
-			/> </interceptor> -->
-		<interceptor>
-			<mapping path="/bookmark/*" />
-			<beans:bean id="BookmarkCheckInterceptor" class="com.kh.spring.common.LogginCheckInterceptor" />
-		</interceptor>
 
-	</interceptors>
-	
-	
 
 	
 
