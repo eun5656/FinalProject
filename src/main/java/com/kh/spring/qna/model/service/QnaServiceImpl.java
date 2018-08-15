@@ -1,26 +1,26 @@
 package com.kh.spring.qna.model.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.qna.model.dao.QnaDAO;
-import com.kh.spring.qna.model.vo.Qna;
 
 @Service
 public class QnaServiceImpl implements QnaService {
-
 	
 	@Autowired
 	SqlSessionTemplate sqlSession;
 	
 	@Autowired
-	QnaDAO dao;
-	
+	private QnaDAO qnaDao;
+
 	@Override
-	public int InsertQna(Qna qna) {
+	public int insertQna(Map<String, Object> map) {
 		
-		return dao.insertQna(sqlSession,qna);
+		return qnaDao.insertQna(sqlSession, map);
 	}
 
 }

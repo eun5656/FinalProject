@@ -1,9 +1,9 @@
 package com.kh.spring.qna.model.service;
 
-import com.kh.spring.qna.model.vo.Qna;
+import java.util.Map;
 
 public interface QnaService {
-
-	int InsertQna(Qna qna);
+	
+	int insertQna(Map<String, Object> map);
 
 }

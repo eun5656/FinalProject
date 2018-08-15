@@ -1,11 +1,10 @@
 package com.kh.spring.qna.model.dao;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import java.util.Map;
 
-import com.kh.spring.qna.model.vo.Qna;
+import org.mybatis.spring.SqlSessionTemplate;
 
 public interface QnaDAO {
 
-	int insertQna(SqlSessionTemplate sqlSession, Qna qna);
-
+	int insertQna(SqlSessionTemplate sqlSession, Map<String, Object> map);
 }

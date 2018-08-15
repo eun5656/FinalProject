@@ -36,17 +36,58 @@ var store_pk ="${store.store_pk}";
 			</div>
 			<!--가게 Info 끝-->
 			<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
-				<form class="" action="/insertQna.do" method="post" name="QnaInsert">
+					<form class="form-horizontal" action="${path}/qna/storeQna.do?qna_writer=${memberLoggedIn.memberId}&store_pk=${store.store_pk}&member_pk=${memberLoggedIn.memberPk}" method="post">
 					<div class="form-group">
-						<label> 문의사항 : <input type="text" class="form-control"
-							placeholder="제목 입력" autofocus size="20" name ="qna_title"></label> <br>
-						<textarea name="qna_content" cols="40" rows="6"></textarea>
-						<button type="button" id="answer-submit" class="btn btn-default">전송!</button>
-						<input type="hidden" value="${store.store_pk }" name="store_pk"/>
-						<input type="hidden" value="${memberLoggedIn.memberPk }" name="member_pk"/>
-						<input type="hidden" value="${memberLoggedIn.memberId }" name="qna_writer"/>
+						<label for="" class="col-sm-3 control-label">제목 : </label>
+						<div class="col-sm-6">
+						<input type="text" class="form-control" id="qna_title" name="qna_title" placeholder="제목 입력" autofocus size="20">
+						</div>
 					</div>
+					
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">내 용: </label>
+						<div class="col-sm-6">
+							<textarea class="form-control" id="qna_content" name="qna_content" rows="10" style="resize: none;"></textarea>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<button type="submit"  class="btn btn-default center-block" value="${memberLoggedIn.memberId}" onclick="return fn_submit(${memberLoggedIn.memberId});">전송</button>
+					</div>
+					
 				</form>
+				
+				<script>
+				
+				function fn_submit(value) {
+					var qna_title = $("#qna_title").val();
+					var qna_content = $("#qna_content").val();
+					
+
+					qna_title = $.trim(qna_title);
+					qna_content = $.trim(qna_content);
+
+					if (qna_title.length == 0 || qna_title == null) {
+						alert("문의제목을 입력해주세요")
+						$("#qna_title").focus();
+						return false;
+					}
+					
+
+					if (qna_content.length == 0 || qna_content == null) {
+						alert("문의내용을 입력해주세요");
+						$("#qna_content").focus();
+						return false;
+					}
+				
+					if(value==null)
+					{
+						alert("로그인후 이용해주세요");
+						return false;
+					}
+				
+				}
+				</script>
 			</div>
 		</div>
 	</div>

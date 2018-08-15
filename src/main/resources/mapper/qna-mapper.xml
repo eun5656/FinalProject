@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="qna">  
-  
-  <insert id="insertQna" parameterType="qna">
-	insert into qna values (qna_seq.nextVal,#{qna_writer},'false',#{store_pk},#{member_pk},#{qna_title},#{qna_content},default,default,default,null)   	
-  </insert>
+  <insert id="insertQna"> insert into qna values(qna_SEQ.nextVal,#{qna_writer},default,#{store_pk},#{member_pk},#{qna_title},#{qna_content},sysdate,default,default,null) </insert>
+
+<resultMap id="qna" type="qna"/>
+
+<select id="selectList" parameterType="_int" resultMap="qna"> select * from qna where member_pk=#{member_pk} </select>
+
+<select id="selectCount" parameterType="_int" resultType="_int"> select count(*) from qna where member_pk=#{member_pk} </select>
   
 </mapper>

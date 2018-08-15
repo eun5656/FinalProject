@@ -15,8 +15,7 @@
          <ul class="nav nav-tabs">
           <li role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
-          <li role="presentation"><a href="${path}/mypage/mypageQNA.do">1대1문의</a></li>
-          <li role="presentation"><a href="${path}/mypage/mypageQNAList.do">문의내역</a></li>
+          <li role="presentation"><a href="${path}/mypage/mypageQNAList.do?member_pk=${memberLoggedIn.memberPk}">문의내역</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
           <li class="active" role="presentation"><a href="${path}/mypage/mypageDelete.do">탈퇴</a></li>
         </ul>
