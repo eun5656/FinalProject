@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="storeReserve">
+	<resultMap type="storeReserve" id="storeReserveMap">
+	
+	</resultMap>
+	
+	<insert id="storeReserveInsert" parameterType="storeReserve">
+	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{designer},#{menu_pk},#{reserve_status},SYSDATE,SYSDATE,SYSDATE)
+		<selectKey keyProperty="reserve_pk" resultType="_int" order="AFTER">
+ 			SELECT RESERVE_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
+	</insert>
+</mapper>

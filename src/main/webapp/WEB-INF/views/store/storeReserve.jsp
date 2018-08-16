@@ -409,12 +409,9 @@ var store_pk ="${store.store_pk}";
         	     var title = $('#reservation-userName').val();
                  var description = title + "-" +resource.title + "디자이너 님 예약-";
                  var id = $('#reservation-id').val();
-                 var choice1 = $('#choice1').val();
-                 var choice2 = $('#choice2').val();
+                 var choice1 = $('#choice1 option:selected').val();
+                 var choice2 = $('#choice2 option:selected').val();
               //   var choice_employee = $('#choice-employee').val();
-                 
-        	  
-        	  
         	  
         	  
             /*받아오기
@@ -436,36 +433,43 @@ var store_pk ="${store.store_pk}";
             reservaiton.push(aJson);
 
             /*30분 추가*/
-            console.log(reservaiton);
+            console.log("check"+choice2);
             var reser_end_time = Date.parse(date);
             //alert(javaScriptRelease + 1800000);
             reser_end_time += (1800000 * 2); //시간으로바꾸기
+      //      reser_end_time=new Date(reser_end_time);
 
-            /*화면에 등록시키기*/
-            $('#calendar').fullCalendar('renderEvent', {
-              title: title,
-              start: date, //specify start date
-              id: '10',
-              description: description,
-              resourceId: resource.id,
-              end: reser_end_time
-            });
-            console.log(date);
-            
-            $.ajax({
+          
+         	console.log(new Date(reser_end_time));
+          //  date+=date._i[5]+30;
+          //  console.log(new Date(date));
+            	var store_reserve = { 
+					    			member_pk: "${memberLoggedIn.memberPk}",
+            			 			member_name:"${memberLoggedIn.memberName}",
+					    			store_pk: store_pk,
+					    			menu_pk: choice2,
+					    			designer:resource.title, //pk로 던저줄지는 생각해봐야함..			
+					    			reserve_start_time:date,	 			
+					    			reserve_end_time:date 			
+									}
+
+		    	  var jsonData = JSON.stringify(store_reserve);
+  		     		 jQuery.ajaxSettings.traditional = true;
+			 $.ajax({
  	 	        type: "POST",
- 	 	        url: "${path}/storeReview/storeReviewInsert.do",
- 	 	        data: {member_id:"${memberLoggedIn.memberId}",
- 	 	        	   member_pk:"${memberLoggedIn.memberPk}",
- 	 	        	   store_pk:store_pk,
- 	 	        	   designer:resource.id,
- 	 	        	   menu_pk:choice2,
- 	 	        	   reserve_start_time:date,
- 	 	        	   reserve_end_time:end
- 	 	        	   },
+			 	url:"${path}/reserve/storeReserveInsert.do",
+ 	 	        data: {"store_reserve":jsonData},
  				dataType: "json",
  	 	        success: function (data) {
- 						
+ 	 	          /*화면에 등록시키기*/
+ 	 	            $('#calendar').fullCalendar('renderEvent', {
+ 	 	              title: title,
+ 	 	              start: date, //specify start date
+ 	 	              id: '10',//member_pk; 예약아이디로....
+ 	 	              description: description,
+ 	 	              resourceId: resource.id,
+ 	 	              end: reser_end_time
+ 	 	            });
  	 	        },
  	 	        error: function (e) {
  	 	            console.log("ERROR : ", e);
@@ -614,7 +618,7 @@ var store_pk ="${store.store_pk}";
 													</select></td>
 												
 													<td colspan="3" id="choice2" style="width: 172px;">
-														<select class="form-control input-sm"  name='choice2'>
+														<select  id='choice2' class="form-control input-sm"  name='choice2'>
 															<!--점주레벨이 아니면 disabled-->
 															<c:forEach var="menu" items="${menuList}">
 																<c:if test="${menu.menu_check eq '손'}">
@@ -626,11 +630,11 @@ var store_pk ="${store.store_pk}";
 													</td>
 													
 													<td  colspan="3" id="choice3"style="width: 172px; display: none;">
-														<select class="form-control input-sm"  name='choice2'>
+														<select id='choice2' class="form-control input-sm"  name='choice2'>
 															<!--점주레벨이 아니면 disabled-->
 															<c:forEach var="menu" items="${menuList}">
 																<c:if test="${menu.menu_check eq '발'}">
-																<option>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
+																<option value='${menu.menu_pk }'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
 																</c:if>
 															</c:forEach>
 															
