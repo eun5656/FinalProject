@@ -64,7 +64,11 @@ var store_pk ="${store.store_pk}";
       ];
 
 
-
+	var reserData=new Object();
+	reserData.id='';
+	reserData.resourceId='';
+	reserData.start='';
+	reserData.title='';
 
       /*변수 초기화*/
       var reservaiton = [{
@@ -164,7 +168,7 @@ var store_pk ="${store.store_pk}";
 
         {
           id: 'b',
-          title: '디자이너',
+          title: '디자이너1',
           eventColor: 'green',
           businessHours1: businessHours1,
           businessHours: [ // specify an array instead
@@ -189,7 +193,7 @@ var store_pk ="${store.store_pk}";
         },
         {
           id: 'c',
-          title: '디자이너',
+          title: '디자이너2',
           eventColor: 'orange',
           businessHours1: businessHours1,
           businessHours: [ // specify an array instead
@@ -236,7 +240,7 @@ var store_pk ="${store.store_pk}";
         displayEventTime: false,
 
 
-        editable: true, //드래그해서 움직이는것
+        //editable: true, //드래그해서 움직이는것
         eventLimit: true, // allow "more" link when too many events
         displayEventTime: true,
 
@@ -354,7 +358,7 @@ var store_pk ="${store.store_pk}";
         		    }
         		  }
        			   if (check == true) {
-      			      var now = new Date
+      			      var now = new Date;
        				  var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
          			   console.log("now" + nowDate);
 
@@ -410,18 +414,14 @@ var store_pk ="${store.store_pk}";
                  var description = title + "-" +resource.title + "디자이너 님 예약-";
                  var id = $('#reservation-id').val();
                  var choice1 = $('#choice1 option:selected').val();
-                 var choice2 = $('#choice2 option:selected').val();
-              //   var choice_employee = $('#choice-employee').val();
-        	  
-        	  
-            /*받아오기
-            var title = $('#reservation-userName').val();
-            var description = title + "-" + $('select[name=choice-employee]').val() + "디자이너 님 예약"
-            var id = $('#reservation-id').val();
-            var choice1 = $('#choice1').val();
-            var choice2 = $('#choice2').val();
-            var choice_employee = $('#choice-employee').val();
-
+                 var choice2;
+                 if(choice1=='손'){
+                  choice2 = $('#choice2 option:selected').val();
+                 }
+                 else{
+                	 choice2=$('#choice3 option:selected').val();
+                 }
+				alert(choice2);        
             //reservation 객체 추가로직
             var aJson = new Object();
             aJson.id = '8';
@@ -432,17 +432,17 @@ var store_pk ="${store.store_pk}";
             aJson.title = '홍성진님 예약'
             reservaiton.push(aJson);
 
-            /*30분 추가*/
+            /*30분 추가
             console.log("check"+choice2);
             var reser_end_time = Date.parse(date);
             //alert(javaScriptRelease + 1800000);
             reser_end_time += (1800000 * 2); //시간으로바꾸기
-      //      reser_end_time=new Date(reser_end_time);
+      		// reser_end_time=new Date(reser_end_time);*/
 
           
-         	console.log(new Date(reser_end_time));
-          //  date+=date._i[5]+30;
-          //  console.log(new Date(date));
+         		//console.log(new Date(reser_end_time));
+          		// date+=date._i[5]+30;
+          		// console.log(new Date(date));
             	var store_reserve = { 
 					    			member_pk: "${memberLoggedIn.memberPk}",
             			 			member_name:"${memberLoggedIn.memberName}",
@@ -455,21 +455,29 @@ var store_pk ="${store.store_pk}";
 
 		    	  var jsonData = JSON.stringify(store_reserve);
   		     		 jQuery.ajaxSettings.traditional = true;
-			 $.ajax({
- 	 	        type: "POST",
-			 	url:"${path}/reserve/storeReserveInsert.do",
- 	 	        data: {"store_reserve":jsonData},
- 				dataType: "json",
- 	 	        success: function (data) {
- 	 	          /*화면에 등록시키기*/
+		
+  		     $.ajax({
+ 	 	     	   type: "POST",
+			 		url:"${path}/reserve/storeReserveInsert.do",
+ 	 	        	data: {"store_reserve":jsonData},
+ 					dataType: "json",
+ 	 	        	success: function (data) {
+ 	 	        	//console.log(data.reserve.menu_pk);
+ 	 	        	alert(data.msg);
+ 	 	          
+ 	 	        	if(data.msg=="예약완료"){
+ 	 	        	/*화면에 등록시키기*/
+ 	 	        	console.log(description);
+ 	 	          
  	 	            $('#calendar').fullCalendar('renderEvent', {
- 	 	              title: title,
- 	 	              start: date, //specify start date
- 	 	              id: '10',//member_pk; 예약아이디로....
- 	 	              description: description,
- 	 	              resourceId: resource.id,
- 	 	              end: reser_end_time
+ 	 	          	  title: '${memberLoggedIn.memberName}',
+	 	              start: data.reserve.reserve_start_time, //specify start date
+	 	              id:  data.reserve.reserve_pk,  //예약아이디로....
+	 	              description: description,
+	 	              resourceId: resource.id,
+	 	              end: data.reserve.reserve_end_time
  	 	            });
+ 	 	        	}
  	 	        },
  	 	        error: function (e) {
  	 	            console.log("ERROR : ", e);
@@ -478,9 +486,6 @@ var store_pk ="${store.store_pk}";
  	      	 });
             
           });
-        //  date=null;
-
-
         },
 
 
@@ -617,7 +622,7 @@ var store_pk ="${store.store_pk}";
 															<option value="발">발</option>
 													</select></td>
 												
-													<td colspan="3" id="choice2" style="width: 172px;">
+													<td colspan="3" id="hand" style="width: 172px;">
 														<select  id='choice2' class="form-control input-sm"  name='choice2'>
 															<!--점주레벨이 아니면 disabled-->
 															<c:forEach var="menu" items="${menuList}">
@@ -629,8 +634,8 @@ var store_pk ="${store.store_pk}";
 														</select>
 													</td>
 													
-													<td  colspan="3" id="choice3"style="width: 172px; display: none;">
-														<select id='choice2' class="form-control input-sm"  name='choice2'>
+													<td  colspan="3" id="foot"style="width: 172px; display: none;">
+														<select id='choice3' class="form-control input-sm"  name='choice3'>
 															<!--점주레벨이 아니면 disabled-->
 															<c:forEach var="menu" items="${menuList}">
 																<c:if test="${menu.menu_check eq '발'}">
@@ -646,12 +651,12 @@ var store_pk ="${store.store_pk}";
 																		var check=$(this).val();
 																		console.log(check);
 																		if(check=='발'){
-																			$('#choice2').css("display", "none");  
-																			$('#choice3').css("display", "inline-block");  
+																			$('#hand').css("display", "none");  
+																			$('#foot').css("display", "inline-block");  
 																		}
 																		else{
-																			$('#choice2').css("display", "inline-block");  
-																			$('#choice3').css("display", "none");  
+																			$('#hand').css("display", "inline-block");  
+																			$('#foot').css("display", "none");  
 																		}
 																	});
 															</script>

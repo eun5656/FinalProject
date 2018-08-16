@@ -1,5 +1,8 @@
 package com.kh.spring.reserve.model.service;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,21 @@ public class ReserServiceImpl implements ReserService {
 		int reservce_pk=reserDao.storeReserveInsert(sqlSession,reserve);
 		return reservce_pk;
 	}
-	
+
+
+	@Override
+	public Reserve selectStoreReserve(Map check) {
+		Reserve reserve=reserDao.selectStoreReserve(sqlSession,check);
+		return reserve;
+	}
+
+
+	@Override
+	public List<Reserve> selectreserveList(int store_pk) {
+		List<Reserve> reserveList=reserDao.selectReserList(sqlSession,store_pk);
+		return reserveList;
+	}
+
+
 
 }

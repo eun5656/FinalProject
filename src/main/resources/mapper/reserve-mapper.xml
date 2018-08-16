@@ -6,9 +6,18 @@
 	</resultMap>
 	
 	<insert id="storeReserveInsert" parameterType="storeReserve">
-	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{designer},#{menu_pk},#{reserve_status},SYSDATE,SYSDATE,SYSDATE)
+	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{designer},#{menu_pk},#{reserve_status},#{reserve_start_time},#{reserve_end_time},SYSDATE)
 		<selectKey keyProperty="reserve_pk" resultType="_int" order="AFTER">
  			SELECT RESERVE_SEQ.CURRVAL FROM DUAL
  		</selectKey>
 	</insert>
+	
+	<select id="selectStoreReserve" parameterType="hashmap" resultType="storeReserve">
+		SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time=#{reserve_start_time} and designer=#{designer}
+	</select>
+	
+	<select id="selectReserList" parameterType="_int">
+			SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time=#{reserve_start_time} and designer=#{designer}
+	</select>
+
 </mapper>

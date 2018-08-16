@@ -7,7 +7,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +27,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.reserve.model.service.ReserService;
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
@@ -46,6 +50,9 @@ public class StoreController {
 	
 	@Autowired
 	private StoreReviewService reviewService;
+	
+	@Autowired
+	private ReserService reserService;
 	
 	
 	@RequestMapping("/store/store.do")
@@ -94,6 +101,9 @@ public class StoreController {
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);
+		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
+		System.out.println(reserveList);
+
 		
 		System.out.println("스토어 값 확인 : "+store);
 		
