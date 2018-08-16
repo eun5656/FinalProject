@@ -13,11 +13,11 @@
 	</insert>
 	
 	<select id="selectStoreReserve" parameterType="hashmap" resultType="storeReserve">
-		SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time=#{reserve_start_time} and designer=#{designer}
+		SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time =#{reserve_start_time} and designer=#{designer}
 	</select>
 	
-	<select id="selectReserList" parameterType="_int">
-			SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time=#{reserve_start_time} and designer=#{designer}
+	<select id="selectReserList" parameterType="_int" resultMap="storeReserveMap">
+			SELECT * FROM RESERVE WHERE store_pk=#{store_pk} 
 	</select>
 
 </mapper>

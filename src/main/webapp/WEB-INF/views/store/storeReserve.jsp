@@ -1,8 +1,11 @@
+<%@page import="com.kh.spring.reserve.model.vo.Reserve"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!-- 해더부분 -->
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="NailStore" name="pageTitle" />
@@ -10,6 +13,10 @@
 
 
 <c:set var="path" value="${pageContext.request.contextPath }" />
+<c:set var="Listlength" value="${fn:length(reserveList) }" />
+<%ArrayList<Reserve>reserves_list=(ArrayList<Reserve>)request.getAttribute("reserveList");
+ int reserveSize=reserves_list.size();%>
+
 <!-- store css -->
 
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
@@ -62,85 +69,23 @@ var store_pk ="${store.store_pk}";
         },
 
       ];
+      alert("${reserveList[1].reserve_pk}");
+      alert(<%=reserveSize%>);
 
-
-	var reserData=new Object();
-	reserData.id='';
-	reserData.resourceId='';
-	reserData.start='';
-	reserData.title='';
 
       /*변수 초기화*/
-      var reservaiton = [{
-          id: '1',
-          resourceId: 'a',
-          start: '2018-04-06',
-          end: '2018-04-08',
-          title: 'event 1'
-        },
-        {
-          id: '2',
-          resourceId: 'a',
-          start: '2018-04-07T09:00:00',
-          end: '2018-04-07T14:00:00',
-          title: 'event 2'
-        },
-        {
-          id: '3',
-          resourceId: 'b',
-          start: '2018-04-07T12:00:00',
-          end: '2018-04-08T06:00:00',
-          title: 'event 3'
-        },
-        {
-          id: '4',
-          resourceId: 'c',
-          start: '2018-04-07T07:30:00',
-          end: '2018-04-07T09:30:00',
-          title: 'event 4'
-        },
-        {
-          id: '5',
-          resourceId: 'd',
-          start: '2018-04-07T10:00:00',
-          end: '2018-04-07T15:00:00',
-          title: 'event 5'
-        },
-        {
-          id: '6',
-          resourceId: 'a',
-          start: '2018-07-24T10:00:00',
-          end: '2018-07-24T10:30:00',
-          color: 'rgb(49, 128, 208)',
-          title: '홍성진',
-          description: '- a 디자이너님 예약'
-        }, {
-          id: '7',
-          resourceId: 'b',
-          start: '2018-07-24T10:30:00',
-          end: '2018-07-24T11:00:00',
-          title: '홍성진',
-          description: '- a 디자이너님 예약'
-        },
-        {
-          id: '8',
-          resourceId: 'c',
-          start: '2018-07-24T11:30:00',
-          end: '2018-07-24T12:00:00',
-          title: '홍성진',
-          description: '- a 디자이너님 예약'
-        },
-        {
-          id: '9',
-          resourceId: 'c',
-          start: '2018-07-24T12:30:00',
-          end: '2018-07-24T13:00:00',
-          title: '홍성진',
-          description: '- a 디자이너님 예약'
+      var reservaiton = [
+    	  {
+          id: '',
+          resourceId: '',
+          start: '',
+          end: '',
+          title: '',
+          description: ''
 
         }
       ];
-
+      
       var employee = [{
           id: 'a',
           title: '원장님',
@@ -216,9 +161,25 @@ var store_pk ="${store.store_pk}";
           ]
         },
       ];
+		
+
+		
+		<c:forEach items="${reserveList}" var="reserve">
+
+		reservaiton.push({
+			id:"${reserve.reserve_pk}", 
+			resourceId:"a",
+			start:"${reserve.reserve_start_time}",
+			end:"${reserve.reserve_end_time}",
+			title:"홍성진",
+			description:"- ${reserve.designer} - 디자이너님 예약손님"
+        });
+		
+		</c:forEach>
 
 
-
+		
+      
       $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
 
@@ -247,7 +208,7 @@ var store_pk ="${store.store_pk}";
         navLinks: true, // can click day/week names to navigate views
         businessHours: false,
 
-
+        slotEventOverlap: false,
 
         lang: "ko",
 
@@ -308,6 +269,7 @@ var store_pk ="${store.store_pk}";
 
 
         /* hover시 예약내역보여주기*/
+        
         eventRender: function(eventObj, $el) {
           $el.popover({
             title: '예약내역',
@@ -319,13 +281,10 @@ var store_pk ="${store.store_pk}";
         },
 
 
+     
 
 
-
-
-
-		
-
+      
         dayClick: function(date, jsEvent, view, resource) {
 
         if(resource!=null){	
@@ -568,7 +527,7 @@ var store_pk ="${store.store_pk}";
   </script>
 <div>
 <div id="wrapper">
-
+	
 	<div id="left-side">
 		<div id="third" class="active">
         <div class="row" style="margin-top: 100px;">     

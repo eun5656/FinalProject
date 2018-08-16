@@ -102,6 +102,7 @@ public class StoreController {
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);
 		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
+		
 		System.out.println(reserveList);
 
 		
@@ -109,6 +110,7 @@ public class StoreController {
 		
 		model.addAttribute("store",store);
 		model.addAttribute("menuList",menuList);
+		model.addAttribute("reserveList",reserveList);
 
 		return view;
 	}
