@@ -23,4 +23,13 @@ public interface NailDao {
 
 	List<Nail> listNailStore(SqlSessionTemplate sqlSession, int store_pk);
 
+
+	int insertNail(SqlSessionTemplate sqlSession, Nail nail);
+
+
+	int updateNail(SqlSessionTemplate sqlSession, Nail nail);
+
+
+	int deleteNail(SqlSessionTemplate sqlSession, String nail_pk);
+
 }

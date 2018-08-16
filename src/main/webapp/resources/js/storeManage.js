@@ -142,9 +142,13 @@ $("#menuUpdate").click(function(){
 			nail_check: null
 			}
 
-		$(".nail-color").on("click", function(event) {															
+		$(".nail-color").on("click", function(event) {		
+			var main_nail_color_img=$(this).closest("#main-nail-color").find("img");
+			var main_nail_color_button=$(this).closest("#main-nail-color").find("button");					
+			var selectbar=$("#select-nail-bar");
 			var color = $(this).find("img").attr('src');
-			var value=$(this).attr('value');			
+			var value=$(this).attr('value');
+			$('#nail_color').val(value);
 			selectAry.nail_color=value;			
 			main_nail_color_img.attr('src', color);
 			main_nail_color_button.html(value);
@@ -152,18 +156,29 @@ $("#menuUpdate").click(function(){
 		
 
 		
-		$(".nail-check").on("click", function(event) {																					
+		$(".nail-check").on("click", function(event) {	
+			var main_nail_check_img=$(this).closest("#main-check").find("img");
+			var main_nail_check_button=$(this).closest("#main-check").find("button");
+			var check=$(this).closest("#main-check");
+			console.log(main_nail_check_img);
+			console.log($(this).closest("#main-check"));
+			console.log($(this).closest("#main-check").find("img"));
+			console.log(check.find('img'));
 			var check = $(this).find("img").attr('src');
 			var value=$(this).attr('value');
+			$('#nail_check').val(value);
 			selectAry.nail_check=value;
 			main_nail_check_img.attr('src', check);
 			main_nail_check_button.html(value);
 		
 		});
 		
-		$(".nail-style").on("click", function(event) {																					
+		$(".nail-style").on("click", function(event) {	
+			var main_nail_style_img=$(this).closest("#main-nail-style").find("img");
+			var main_nail_style_button=$(this).closest("#main-nail-style").find("button");
 			var style = $(this).find("img").attr('src');
 			var value=$(this).attr('value');
+			$('#nail_style').val(value);
 			selectAry.nail_style=value;
 			main_nail_style_img.addClass("w3-circle");
 			main_nail_style_img.attr('src', style);
@@ -184,6 +199,24 @@ $("#menuUpdate").click(function(){
 			main_nail_style_img.attr("src",path+"/resources/images/nails/plus_btn.png");
 			main_nail_style_button.html("전체옵션");
 			});
+		
+		//수정 모달에서 이미지값부여
+		
+		$("#nailDelete").on("click", function(){
+			var nail_pk=$(this).val();
+			 $.ajax({
+				 type :'post',
+					url: path+'/store/storeManage/nailDelete.do',
+					data: {'nail_pk':nail_pk},
+					dataType: "json",
+					success : function(json){
+						alert(json);
+						location.reload();
+					},
+					error : function(xhr, status, error){
+						alert(error);
+					}			 })
+		});
 	});	
 
 //메뉴 추가
@@ -194,9 +227,10 @@ function menuInsertForm(){
 		html+='<form name ="menuInsert" method="post" action="';
 		html+=path;	
 		html+='/store/storeManage/menuInsert.do">';
-		html+='<input type="text" placeholder="메뉴 제목 입력" name="menu_name" class="form-control"/>';
-		html+='<input type="text" placeholder="정보 입력" name="menu_info" class="form-control"/>';
-		html+='<input type="number" placeholder="가격 입력" name="menu_price" class="form-control"/>';
+		html+='<label for ="menu_name">제목 입력 : ';
+		html+='<input type="text" placeholder="메뉴 제목 입력" id="menu_name" name="menu_name" class="form-control"/></label>';
+		html+='<label for="menu_info">정보 입력: <input type="text" placeholder="정보 입력" id="menu_info" "name="menu_info" class="form-control"/></label>';
+		html+='<label name="menu_price">가격 입력: <input type="number" placeholder="가격 입력" id="menu_price" name="menu_price" class="form-control"/></label>';
 		html+='<select name="menu_check"><option value="손">손</option><option value="발">발</option></select>';
 		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
 		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';

@@ -140,7 +140,7 @@ var store_pk ="${store.store_pk}";
 															<img class="img-responsive radius14"
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
-													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check==1?'네일':'페디' }, 종류	 : ${nail.nail_style }</p>
+													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check }, 종류	 : ${nail.nail_style }</p>
 												</div>
 												<!-- Modal footer -->
 												<div class="modal-footer">

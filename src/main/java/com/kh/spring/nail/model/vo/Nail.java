@@ -11,6 +11,7 @@ public class Nail implements Serializable {
 
 	private int nail_pk;
 	private String nail_name;
+	private String nail_info;
 	private String nail_color;
 	private String nail_check;
 	private String nail_style;
@@ -42,7 +43,12 @@ public class Nail implements Serializable {
 	}
 
 
-
+	public String getNail_info() {
+		return nail_info;
+	}
+	public void setNail_info(String nail_info) {
+		this.nail_info = nail_info;
+	}
 	public int getNail_pk() {
 		return nail_pk;
 	}

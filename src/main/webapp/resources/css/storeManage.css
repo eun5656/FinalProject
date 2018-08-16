@@ -1,3 +1,8 @@
+ul > li {
+  display: inline-block;
+  } 
+/*   dropdown 가로 */
+
 .b_icon {
 	position: absolute;
 	width: 32px;
@@ -24,6 +29,9 @@
 
 .icon.active {
 	fill: #E74C3C;
+}
+.w3-dropdown-hover:first-child{
+	backgroud-color : white;
 }
 
 #wrapper {
@@ -157,8 +165,9 @@
 }
 
 #left-side {
-/* 	padding-top: 100px; */
  	padding: 20px; 
+ 	
+	padding-top: 80px;
 /* 	padding-right: 10px; */
 	height: auto%;
 	width: 100%;
@@ -243,7 +252,6 @@
 	border-radius: 14px;
 	width: 100%;
 	height: auto;
-	max-height: 250px;
 }
 
 .zindex {

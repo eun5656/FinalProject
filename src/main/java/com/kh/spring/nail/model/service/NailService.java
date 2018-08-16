@@ -17,4 +17,10 @@ public interface NailService {
 
 	List<Nail> nailListStore(int i);
 
+	int insertNail(Nail nail);
+	
+	int updateNail(Nail nail);
+
+	int nailDelete(String nail_pk);
+
 }
