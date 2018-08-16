@@ -102,8 +102,7 @@ public class StoreController {
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);
 		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
-		
-		System.out.println(reserveList);
+		System.out.println(reserveList.get(0).getMenu_pk());
 
 		
 		System.out.println("스토어 값 확인 : "+store);
