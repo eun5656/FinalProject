@@ -7,7 +7,7 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
-<section>
+<section id='mypage' style="padding-top: 100px;">
     <div class='container'>
       <div class="panel">
 

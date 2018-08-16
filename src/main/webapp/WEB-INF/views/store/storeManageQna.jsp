@@ -42,76 +42,26 @@ var store_pk="${store.store_pk}"
 								<a class="" role="button" data-toggle="collapse"
 									data-parent="#accordion" href="#collapseOne"
 									aria-expanded="true" aria-controls="collapseOne"> <i
-									class="fa fa-bars"></i>질문 1
+									class="fa fa-comment"></i>질문제목
 								</a>
 							</h4>
 						</div>
 						<div id="collapseOne" class="panel-collapse collapse in"
 							role="tabpanel" aria-labelledby="headingOne">
 							<div class="panel-body">
-								<p>질문 내용 !</p>
+								<div>
+									<label> 질문내용</label>
+								</div>
 								<form class="" action="/insertAnswer.html" method="post">
 									<div class="form-group">
-										<label> 답변 : <input type="text" class="form-control"
-											placeholder="답변 내용 입력"></label>
-										<button type="submit" name="answer-submit"
-											class="btn btn-default">전송!</button>
-									</div>
-								</form>
-
-							</div>
-						</div>
-					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingTwo">
-							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseTwo"
-									aria-expanded="false" aria-controls="collapseTwo"> <i
-									class="fa fa-link"></i>질문 2
-								</a>
-							</h4>
-						</div>
-						<div id="collapseTwo" class="panel-collapse collapse"
-							role="tabpanel" aria-labelledby="headingTwo">
-							<div class="panel-body">
-								<p>질문 내용 !</p>
-								<form class="" action="/insertAnswer.html" method="post">
-									<div class="form-group">
-										<label> 답변 : <input type="text" class="form-control"
-											placeholder="답변 내용 입력"></label>
-										<button type="submit" name="answer-submit"
-											class="btn btn-default">전송!</button>
+										<textarea class="form-control" id="sendContent" name="sendContent" rows="13" style="resize: none;"></textarea>
+											<button type="submit" id="sendBtn" name="sendBtn" class="btn btn-default center-block" onclick="return fn_submit();">전송</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingThree">
-							<h4 class="panel-title">
-								<a class="collapsed" role="button" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseThree"
-									aria-expanded="false" aria-controls="collapseThree"> <i
-									class="fa fa-comment"></i>질문 3
-								</a>
-							</h4>
-						</div>
-						<div id="collapseThree" class="panel-collapse collapse"
-							role="tabpanel" aria-labelledby="headingThree">
-							<div class="panel-body">
-								<p>질문 내용 !</p>
-								<form class="" action="/insertAnswer.html" method="post">
-									<div class="form-group">
-										<label> 답변 : <input type="text" class="form-control"
-											placeholder="답변 내용 입력"></label>
-										<button type="submit" name="answer-submit"
-											class="btn btn-default">전송!</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
+					
 				</div>
 			</div>
 		</div>
