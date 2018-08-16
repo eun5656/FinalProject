@@ -38,33 +38,33 @@ public class DealDAOImpl implements DealDAO{
 	}
 
 	@Override
-	public Deal selectOne(SqlSessionTemplate sqlSession, int dealPk) {
+	public Deal selectOne(SqlSessionTemplate sqlSession, int deal_pk) {
 		
-		return sqlSession.selectOne("deal.selectOne", dealPk);
+		return sqlSession.selectOne("deal.selectOne",deal_pk);
 	}
 
 	@Override
-	public List<DealImage> dealImageList(SqlSessionTemplate sqlSession, int dealPk) {
+	public List<DealImage> dealImageList(SqlSessionTemplate sqlSession, int deal_pk) {
 		
-		return sqlSession.selectList("deal.dealImageList", dealPk);
+		return sqlSession.selectList("deal.dealImageList", deal_pk);
 	}
 
 	@Override
-	public int deleteImg(SqlSessionTemplate sqlSession, int dealPk) {
+	public int deleteImg(SqlSessionTemplate sqlSession, int deal_pk) {
 		
-		return sqlSession.delete("deal.deleteImg", dealPk);
+		return sqlSession.delete("deal.deleteImg", deal_pk);
 	}
 
 	@Override
-	public int deleteDeal(SqlSessionTemplate sqlSession, int dealPk) {
+	public int deleteDeal(SqlSessionTemplate sqlSession, int deal_pk) {
 		
-		return sqlSession.delete("deal.deleteDeal",dealPk);
+		return sqlSession.delete("deal.deleteDeal",deal_pk);
 	}
 
 	@Override
-	public List<DealImage> selectDealImageList(SqlSessionTemplate sqlSession, int dealPk) {
+	public List<DealImage> selectDealImageList(SqlSessionTemplate sqlSession, int deal_pk) {
 		
-		return sqlSession.selectList("deal.selectDealImageList", dealPk);
+		return sqlSession.selectList("deal.selectDealImageList", deal_pk);
 	}
 
 	@Override

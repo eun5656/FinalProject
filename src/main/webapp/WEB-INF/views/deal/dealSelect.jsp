@@ -79,16 +79,16 @@
 
 						<div class="row1">
 							<div class="cell" data-title="번호">
-                 			 <a href="${path }/deal/dealView.do?dealPk=${deal.dealPk}">${deal.dealPk }</a>
+                 			 <a href="${path }/deal/dealView.do?dealPk=${deal.deal_pk}">${deal.deal_pk }</a>
 							</div>
 							<div class="cell" data-title="제목">
-								<a href="${path }/deal/dealView.do?dealPk=${deal.dealPk}">${deal.dealTitle }</a>
+								<a href="${path }/deal/dealView.do?dealPk=${deal.deal_pk}">${deal.deal_title }</a>
 							</div>
 							<div class="cell" data-title="작성자">
-								${deal.dealWriter }
+								${deal.deal_writer }
 							</div>
 							<div class="cell" data-title="조회수">
-								${deal.dealHits }
+								${deal.deal_hits }
              				 </div>
             
 						</div>

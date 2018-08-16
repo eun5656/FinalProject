@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dealReview">
+<resultMap type="com.kh.spring.dealReview.model.vo.DealReview" id="dealReviewMap">
+
+</resultMap>
+
+<select id="dealReviewList" resultMap="dealReviewMap" parameterType="_int">
+SELECT deal_REVIEW_content, A.* FROM deal_REVIEW A WHERE deal_pk = #{deal_pk} START WITH deal_REVIEW_LEVEL=1 CONNECT BY PRIOR deal_REVIEW_PK=deal_REVIEW_REF ORDER SIBLINGS BY deal_REVIEW_DATE ASC
+</select>
+
+<select id="selectReImg" resultType="string" parameterType="_int">
+	SELECT DEAL_REVIEW_RE_IMG FROM DEAL_REVIEW WHERE DEAL_REVIEW_PK=#{deal_review_pk}
+</select>
+
+<insert id="dealReviewInsert" parameterType="com.kh.spring.dealReview.model.vo.DealReview">
+	INSERT INTO DEAL_REVIEW VALUES(dealREVIEW_SEQ.NEXTVAL,#{deal_review_level},#{deal_review_writer},#{deal_review_content},null,SYSDATE,#{deal_review_ori_img, jdbcType=VARCHAR},#{deal_review_re_img,jdbcType=VARCHAR},#{member_pk},#{deal_pk})
+		<selectKey keyProperty="deal_review_pk" resultType="_int" order="AFTER">
+ 			SELECT dealREVIEW_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
+</insert>
+
+<insert id="dealReviewReplyInsert" parameterType="com.kh.spring.dealReview.model.vo.DealReview">
+	INSERT INTO DEAL_REVIEW VALUES(dealREVIEW_SEQ.NEXTVAL,#{deal_review_level},#{deal_review_writer},#{deal_review_content},#{deal_review_pk},SYSDATE,null,null,#{member_pk},#{deal_pk})
+</insert>
+
+
+<delete id="dealReviewDelete">
+	DELETE FROM deal_REVIEW WHERE deal_REVIEW_PK=#{deal_review_pk}
+</delete>
+
+
+
+</mapper>

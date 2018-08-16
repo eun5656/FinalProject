@@ -39,7 +39,7 @@
                             <div class="page-header">
                                     <h2> 게시판 수정하기</h2>
                             </div>
-                          <form id="articleForm" role="form" action="${path}/deal/dealUpdateEnd.do?dealPk=${deal.dealPk}" method="post">
+                          <form id="articleForm" role="form" action="${path}/deal/dealUpdateEnd.do?deal_pk=${deal.deal_pk}" method="post">
                        <br style="clear: both">
                        
                    <div class="form-group">
@@ -49,9 +49,9 @@
                          </div>
                     </div>
                       <div class="form-group">
-                   		 <label class="col-sm-2 control-label" for="dealWriter">작성자</label>
+                   		 <label class="col-sm-2 control-label" for="deal_writer">작성자</label>
                    		 <div class="col-sm-10">
-                         <input type="text" class="form-control" id="dealWriter" name="dealWriter" value="${memberLoggedIn.memberId }" readonly>
+                         <input type="text" class="form-control" id="deal_writer" name="deal_writer" value="${memberLoggedIn.memberId }" readonly>
                          </div>
                     </div>
                     
@@ -59,7 +59,7 @@
                     <div class="form-group">
                      <label class="col-sm-2 control-label" for="summernote">내용</label>
                      <div class="col-sm-10">
-                         <textarea class="form-control" id="summernote" name="content" placeholder="content" maxlength="140" rows="7">${deal.dealContent }</textarea>
+                         <textarea class="form-control" id="summernote" name="content" placeholder="content" maxlength="140" rows="7">${deal.deal_content }</textarea>
                           </div>
                     </div>
                      <div class="form-group">

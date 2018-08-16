@@ -29,6 +29,8 @@
   width: 960px;
   border-radius: 10px;
   overflow: hidden;
+  /*  */
+  margin-bottom:40px;
 }
 
 .table {
@@ -120,23 +122,23 @@
 
 .row1 .cell:nth-child(1) {
   width: 80px;
-  padding-left: 40px;
-  text-align:center;
+  padding-left: 30px;
+  text-align:left;
 }
 
 .row1 .cell:nth-child(2) {
   width: 350px;
-  text-align:center;
+  text-align:left;
 }
 
 .row1 .cell:nth-child(3) {
   width: 150px;
-  text-align:center;
+  text-align:left;
 }
 
 .row1 .cell:nth-child(4) {
   width: 190px;
-  text-align:center;
+  text-align:left;
 }
 
 
@@ -160,7 +162,7 @@
     padding-bottom: 18px;
     padding-top: 30px;
     padding-right: 15px;
-    padding-left: 40px;
+    padding-left: 10px;
     margin: 0;
   }
   

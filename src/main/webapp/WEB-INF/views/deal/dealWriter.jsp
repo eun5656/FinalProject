@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var='path' value="${pageContext.request.contextPath}" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
 
 
 
@@ -31,7 +32,7 @@
                             <div class="page-header">
                                     <h2> 게시판 글쓰기</h2>
                             </div>
-                          <form id="articleForm" role="form" action="${path}/deal/dealWriteEnd.do" method="post">
+                          <form id="articleForm" role="form" action="${path}/deal/dealWriteEnd.do?member_pk=${memberLoggedIn.memberPk}" method="post">
                        <br style="clear: both">
                        
                    <div class="form-group">
@@ -41,9 +42,9 @@
                          </div>
                     </div>
                       <div class="form-group">
-                   		 <label class="col-sm-2 control-label" for="dealWriter">작성자</label>
+                   		 <label class="col-sm-2 control-label" for="deal_writer">작성자</label>
                    		 <div class="col-sm-10">
-                         <input type="text" class="form-control" id="dealWriter" name="dealWriter" value="${memberLoggedIn.memberId }" readonly>
+                         <input type="text" class="form-control" id="deal_writer" name="deal_writer" value="${memberLoggedIn.memberId }" readonly>
                          </div>
                     </div>
                     

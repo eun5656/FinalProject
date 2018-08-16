@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="deal">
 	<resultMap type="deal" id="deal">
-		<result column="deal_pk" property="dealPk" />
+		<!-- <result column="deal_pk" property="dealPk" />
 		<result column="deal_title" property="dealTitle" />
 		<result column="deal_content" property="dealContent" />
 		<result column="deal_writer" property="dealWriter" />
 		<result column="deal_date" property="dealDate" />
 		<result column="deal_hits" property="dealHits" />
-		<result column="member_pk" property="memberPk" />
+		<result column="member_pk" property="memberPk" /> -->
 	</resultMap>
 	<resultMap type="dealImage" id="dealImage">
-		<result column="deal_pk" property="dealPk" />
+		<!-- <result column="deal_pk" property="dealPk" />
 		<result column="deal_ori_img" property="dealOriImg" />
-		<result column="deal_re_img" property="dealReImg" />
+		<result column="deal_re_img" property="dealReImg" /> -->
 	</resultMap>
 	
 	<insert id="insertDeal" parameterType="deal">
-		insert into deal values(deal_seq.nextval,#{dealTitle},#{dealContent},#{dealWriter},sysdate,'1','1')
-		<selectKey keyProperty="dealPk" resultType="Integer" order="AFTER">
+		insert into deal values(deal_seq.nextval,#{deal_title},#{deal_content},#{deal_writer},sysdate,'1',#{member_pk})
+		<selectKey keyProperty="deal_pk" resultType="Integer" order="AFTER">
  			select deal_seq.currval from dual
  		</selectKey>
 	</insert>
@@ -31,29 +31,29 @@
  	</select>
  	
 	<insert id="insertDealImage" parameterType="dealImage">
-		insert into deal_Img values(#{dealPk},#{dealOriImg},#{dealReImg})
+		insert into deal_Img values(#{deal_pk},#{deal_ori_img},#{deal_re_img})
 	</insert>
 	
 	<select id="selectOne" resultMap="deal" parameterType="_int">
-		select * from deal where deal_pk=#{dealPk}
+		select * from deal where deal_pk=#{deal_pk}
 	</select>
 	<select id="dealImageList" resultMap="dealImage">
-	 select * from deal_img where deal_pk=#{dealPk}
+	 select * from deal_img where deal_pk=#{deal_pk}
 	</select>
 	
 	<!--이미지 명 지우기  -->
 	<delete id="deleteImg">
-		delete from deal_img where deal_pk=#{dealPk}
+		delete from deal_img where deal_pk=#{deal_pk}
 	</delete>
 	<!--딜 지우기 -->
 	<delete id="deleteDeal">
-		delete from deal where deal_pk=#{dealPk}
+		delete from deal where deal_pk=#{deal_pk}
 	</delete>
 	<select id="selectDealImageList" parameterType="_int" resultMap="dealImage">
-		select * from deal_img where deal_pk=#{dealPk}	
+		select * from deal_img where deal_pk=#{deal_pk}	
 	</select>
 	<update id="updateDeal" parameterType="deal">
-		update deal set deal_title=#{dealTitle}, deal_content=#{dealContent} where deal_pk=#{dealPk}	
+		update deal set deal_title=#{deal_title}, deal_content=#{deal_content} where deal_pk=#{deal_pk}	
 	</update>
 	
 	<update id="updateDealImage" parameterType="dealImage">

@@ -23,24 +23,24 @@ public class DealServiceImpl implements DealService{
 	DealDAO dealDAO;
 	
 	@Override
-	public int insertDeal(String subject, String content, String dealWriter,List<String> imageList) {
+	public int insertDeal(String subject, String content, String deal_writer,List<String> imageList,int member_pk) {
 		
 		int result=0;
 		
 			Deal deal=new Deal();
-			deal.setDealTitle(subject);
-			deal.setDealContent(content);
-			deal.setDealWriter(dealWriter);
-			
+			deal.setDeal_title(subject);
+			deal.setDeal_content(content);
+			deal.setDeal_writer(deal_writer);
+			deal.setMember_pk(member_pk);
 			
 			result=dealDAO.insertDeal(sqlSession,deal);
 			
 			if(imageList!=null) {
 				for(String a: imageList) {
 					DealImage dealImage=new DealImage();
-					dealImage.setDealPk(deal.getDealPk());
-					dealImage.setDealOriImg(a);
-					dealImage.setDealReImg(a);
+					dealImage.setDeal_pk(deal.getDeal_pk());
+					dealImage.setDeal_ori_img(a);
+					dealImage.setDeal_re_img(a);
 					result=dealDAO.insertDealImage(sqlSession,dealImage);
 					
 				}
@@ -66,56 +66,56 @@ public class DealServiceImpl implements DealService{
 	}
 
 	@Override
-	public Deal selectOne(int dealPk) {
+	public Deal selectOne(int deal_pk) {
 		
-		return dealDAO.selectOne(sqlSession,dealPk);
+		return dealDAO.selectOne(sqlSession,deal_pk);
 	}
 
 	@Override
-	public List<DealImage> dealImageList(int dealPk) {
+	public List<DealImage> dealImageList(int deal_pk) {
 		
-		return dealDAO.dealImageList(sqlSession, dealPk);
+		return dealDAO.dealImageList(sqlSession, deal_pk);
 	}
 
 	@Override
-	public int deleteImg(int dealPk) {
+	public int deleteImg(int deal_pk) {
 		
-		return dealDAO.deleteImg(sqlSession, dealPk);
+		return dealDAO.deleteImg(sqlSession, deal_pk);
 	}
 
 	@Override
-	public int deleteDeal(int dealPk) {
+	public int deleteDeal(int deal_pk) {
 		
-		return dealDAO.deleteDeal(sqlSession, dealPk);
+		return dealDAO.deleteDeal(sqlSession, deal_pk);
 	}
 
 	@Override
-	public List<DealImage> selectDealImageList(int dealPk) {
+	public List<DealImage> selectDealImageList(int deal_pk) {
 		
-		return dealDAO.selectDealImageList(sqlSession, dealPk);
+		return dealDAO.selectDealImageList(sqlSession, deal_pk);
 	}
 
 	@Override
-	public int updateDeal(int dealPk,String subject, String content, String dealWriter, List<String> imageList) {
+	public int updateDeal(int deal_pk,String subject, String content, String deal_writer, List<String> imageList) {
 		int result=0;
 		
 		Deal deal=new Deal();
-		deal.setDealPk(dealPk);
-		deal.setDealTitle(subject);
-		deal.setDealContent(content);
+		deal.setDeal_pk(deal_pk);
+		deal.setDeal_title(subject);
+		deal.setDeal_content(content);
 	
 		result= dealDAO.updateDeal(sqlSession, deal);
 		
-		
-		int result1=dealDAO.deleteImg(sqlSession, dealPk);
+		//�씠�쟾 �씠誘몄� �떎吏��슦湲�
+		int result1=dealDAO.deleteImg(sqlSession, deal_pk);
 		
 
 		if(imageList!=null&&result1>0) {
 			for(String a: imageList) {
 				DealImage dealImage=new DealImage();
-				dealImage.setDealPk(deal.getDealPk());
-				dealImage.setDealOriImg(a);
-				dealImage.setDealReImg(a);
+				dealImage.setDeal_pk(deal.getDeal_pk());
+				dealImage.setDeal_ori_img(a);
+				dealImage.setDeal_re_img(a);
 				result=dealDAO.insertDealImage(sqlSession,dealImage);
 				
 			}
