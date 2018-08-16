@@ -11,25 +11,24 @@ public class Reserve implements Serializable{
 	private int store_pk;
 	private String designer;
 	private int menu_pk;
-	private String reserve_atatus;
+	private String reserve_status;
 	private String reserve_start_time;
 	private String reserve_end_time;
 	private String reserve_apply_date;
 	
-	
 	public Reserve() {
 		// TODO Auto-generated constructor stub
 	}
-	 
 	
-	public Reserve(int reserve_pk, int member_pk, int store_pk, String designer, int menu_pk, String reserve_atatus,
+	
+	public Reserve(int reserve_pk, int member_pk, int store_pk, String designer, int menu_pk, String reserve_status,
 			String reserve_start_time, String reserve_end_time, String reserve_apply_date) {
 		this.reserve_pk = reserve_pk;
 		this.member_pk = member_pk;
 		this.store_pk = store_pk;
 		this.designer = designer;
 		this.menu_pk = menu_pk;
-		this.reserve_atatus = reserve_atatus;
+		this.reserve_status = reserve_status;
 		this.reserve_start_time = reserve_start_time;
 		this.reserve_end_time = reserve_end_time;
 		this.reserve_apply_date = reserve_apply_date;
@@ -66,11 +65,11 @@ public class Reserve implements Serializable{
 	public void setMenu_pk(int menu_pk) {
 		this.menu_pk = menu_pk;
 	}
-	public String getReserve_atatus() {
-		return reserve_atatus;
+	public String getReserve_status() {
+		return reserve_status;
 	}
-	public void setReserve_atatus(String reserve_atatus) {
-		this.reserve_atatus = reserve_atatus;
+	public void setReserve_status(String reserve_status) {
+		this.reserve_status = reserve_status;
 	}
 	public String getReserve_start_time() {
 		return reserve_start_time;
@@ -96,11 +95,10 @@ public class Reserve implements Serializable{
 	@Override
 	public String toString() {
 		return "Reserve [reserve_pk=" + reserve_pk + ", member_pk=" + member_pk + ", store_pk=" + store_pk
-				+ ", designer=" + designer + ", menu_pk=" + menu_pk + ", reserve_atatus=" + reserve_atatus
+				+ ", designer=" + designer + ", menu_pk=" + menu_pk + ", reserve_status=" + reserve_status
 				+ ", reserve_start_time=" + reserve_start_time + ", reserve_end_time=" + reserve_end_time
 				+ ", reserve_apply_date=" + reserve_apply_date + "]";
 	}
 	
-	
-	
+		
 }

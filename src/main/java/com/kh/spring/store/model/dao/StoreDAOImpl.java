@@ -46,6 +46,12 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.update("store.menuUpdate", menu);
 	}
 
+	@Override
+	public List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk) {
+		return sqlSession.selectList("store.selectMenus", store_pk);
+	}
+
+
 
 
 
