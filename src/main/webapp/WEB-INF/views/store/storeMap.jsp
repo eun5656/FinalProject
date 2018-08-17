@@ -15,8 +15,6 @@
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
-
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
  var latitude = ${store.store_latitude };
@@ -25,7 +23,9 @@ var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 </script>
 <script src="${path }/resources/js/store.js?ver=3"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script type="text/javascript">
+$(function(){
 var mapCanvas = document.getElementById("map");
 	var mapOptions = {
 		center : new google.maps.LatLng(latitude, longitude),
@@ -41,6 +41,7 @@ var mapCanvas = document.getElementById("map");
         position: latlng,
         map: map
       });
+})
     </script>
 <div>
 <div id="wrapper">
