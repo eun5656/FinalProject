@@ -56,11 +56,11 @@ var store_pk ="${store.store_pk}";
 					<p>장소 : ${store. store_address }</p>
 					<p>Tel. ${store. store_phone }</p>
 					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
-					<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>
+					<p>${store.store_info }</p>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 20px;">
-				<marquee>공지사항입니다~~~~~~~~~~~~</marquee>
+				<marquee>${store.store_notice }</marquee>
 			</div>
 			<!-- tab 화면 시작-->
 			<div class="row" >
@@ -130,7 +130,7 @@ var store_pk ="${store.store_pk}";
 
 												<!-- Modal Header -->
 												<div class="modal-header">
-													<h4 class="modal-title">시술정보 상세</h4>
+													<h4 class="modal-title">${nail.nail_name }</h4>
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 												</div>
 
@@ -140,8 +140,9 @@ var store_pk ="${store.store_pk}";
 															<img class="img-responsive radius14"
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
+													<p>네일 정보 : ${nail.nail_info }</p>
 													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check }, 종류	 : ${nail.nail_style }</p>
-												</div>
+												</div> 
 												<!-- Modal footer -->
 												<div class="modal-footer">
 												</div>

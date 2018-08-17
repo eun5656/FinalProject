@@ -13,6 +13,7 @@
 		<typeAlias type="com.kh.spring.nail.model.vo.Nail" alias="nail"/> 
 
 		<typeAlias type="com.kh.spring.store.model.vo.Store" alias="store"/>
+		<typeAlias type="com.kh.spring.store.model.vo.Store_time" alias="store_time"/>
 		<typeAlias type="com.kh.spring.storeReview.model.vo.StoreReview" alias="storeReview"/>
 		<typeAlias type="com.kh.spring.bookmark.model.vo.Bookmark" alias="bookmark"/>
 		<typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>

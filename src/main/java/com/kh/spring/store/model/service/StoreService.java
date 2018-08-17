@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.store.model.vo.Store_time;
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreService {
@@ -22,6 +23,12 @@ public interface StoreService {
 
 	int menuUpdate(Menu menu);
 
+	int updateStore(Store store);
 
+	int updateStore_time(Store_time store_time);
+
+	Store_time selectTime(int store_pk);
+
+	
 
 }

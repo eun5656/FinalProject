@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.kh.spring.store.model.dao.StoreDAO;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.store.model.vo.Store_time;
 
 @Service
 public class StoreServiceImpl implements StoreService {
@@ -63,6 +64,24 @@ public class StoreServiceImpl implements StoreService {
 	public int menuUpdate(Menu menu) {
 		
 		return dao.menuUpdate(sqlSession, menu);
+	}
+
+	@Override
+	public int updateStore(Store store) {
+		// TODO Auto-generated method stub
+		return dao.updateStore(sqlSession, store);
+	}
+
+	@Override
+	public int updateStore_time(Store_time store_time) {
+		// TODO Auto-generated method stub
+		return dao.updateStore_time(sqlSession, store_time);
+	}
+
+	@Override
+	public Store_time selectTime(int store_pk) {
+		// TODO Auto-generated method stub
+		return dao.selectTime(sqlSession, store_pk);
 	}
 
 

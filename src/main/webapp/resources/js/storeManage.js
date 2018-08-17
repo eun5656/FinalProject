@@ -136,20 +136,12 @@ $("#menuUpdate").click(function(){
 	var main_nail_check_button=$("#main-check").find("button");
 	var selectbar=$("#select-nail-bar");
 
-	var selectAry = { 
-			nail_color: null,
-			nail_style: null,
-			nail_check: null
-			}
-
 		$(".nail-color").on("click", function(event) {		
-			var main_nail_color_img=$(this).closest("#main-nail-color").find("img");
-			var main_nail_color_button=$(this).closest("#main-nail-color").find("button");					
-			var selectbar=$("#select-nail-bar");
+			var main_nail_color_img=$(this).closest(".w3-dropdown-hover").find("#main-nail-color").find("img");
+			var main_nail_color_button=$(this).closest(".w3-dropdown-hover").find("#main-nail-color").find("button");					
 			var color = $(this).find("img").attr('src');
 			var value=$(this).attr('value');
-			$('#nail_color').val(value);
-			selectAry.nail_color=value;			
+			$(this).closest(".modal-body").find('#nail_color').val(value);
 			main_nail_color_img.attr('src', color);
 			main_nail_color_button.html(value);
 			});
@@ -157,44 +149,32 @@ $("#menuUpdate").click(function(){
 
 		
 		$(".nail-check").on("click", function(event) {	
-			var main_nail_check_img=$(this).closest("#main-check").find("img");
-			var main_nail_check_button=$(this).closest("#main-check").find("button");
-			var check=$(this).closest("#main-check");
-			console.log(main_nail_check_img);
-			console.log($(this).closest("#main-check"));
-			console.log($(this).closest("#main-check").find("img"));
-			console.log(check.find('img'));
+			var main_nail_check_img=$(this).closest(".w3-dropdown-hover").find("#main-check").find("img");
+			var main_nail_check_button=$(this).closest(".w3-dropdown-hover").find("#main-check").find("button");
 			var check = $(this).find("img").attr('src');
 			var value=$(this).attr('value');
-			$('#nail_check').val(value);
-			selectAry.nail_check=value;
+			$(this).closest(".modal-body").find('#nail_check').val(value);
 			main_nail_check_img.attr('src', check);
 			main_nail_check_button.html(value);
-		
-		});
+			});
 		
 		$(".nail-style").on("click", function(event) {	
-			var main_nail_style_img=$(this).closest("#main-nail-style").find("img");
-			var main_nail_style_button=$(this).closest("#main-nail-style").find("button");
+			var main_nail_style_img=$(this).closest(".w3-dropdown-hover").find("#main-nail-style").find("img");
+			var main_nail_style_button=$(this).closest(".w3-dropdown-hover").find("#main-nail-style").find("button");
 			var style = $(this).find("img").attr('src');
 			var value=$(this).attr('value');
-			$('#nail_style').val(value);
-			selectAry.nail_style=value;
+			$(this).closest(".modal-body").find('#nail_style').val(value);
 			main_nail_style_img.addClass("w3-circle");
 			main_nail_style_img.attr('src', style);
 			main_nail_style_button.html(value);
-										
 			});
 		
 		
 		$("#reset-all").on("click", function() {
-			selectAry.nail_color=null;
-			selectAry.nail_check=null;
-			selectAry.nail_style=null;
 			main_nail_color_img.attr("src",path+"/resources/images/nails/all-color.jpg");
 			main_nail_color_button.html("전체");			
-			 main_nail_check_img.attr("src",path+"/resources/images/nails/nail-polish.png");
-			 main_nail_check_button.html("네일/페디");			
+			main_nail_check_img.attr("src",path+"/resources/images/nails/nail-polish.png");
+			main_nail_check_button.html("네일/페디");			
 			main_nail_style_img.removeClass("w3-circle");
 			main_nail_style_img.attr("src",path+"/resources/images/nails/plus_btn.png");
 			main_nail_style_button.html("전체옵션");
@@ -202,15 +182,15 @@ $("#menuUpdate").click(function(){
 		
 		//수정 모달에서 이미지값부여
 		
-		$("#nailDelete").on("click", function(){
+		$(".nailDelete").on("click", function(){
 			var nail_pk=$(this).val();
+			console.log(nail_pk);
 			 $.ajax({
 				 type :'post',
 					url: path+'/store/storeManage/nailDelete.do',
 					data: {'nail_pk':nail_pk},
 					dataType: "json",
 					success : function(json){
-						alert(json);
 						location.reload();
 					},
 					error : function(xhr, status, error){

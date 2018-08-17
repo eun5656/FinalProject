@@ -20,14 +20,15 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=2"></script>
+<script src="${path }/resources/js/storeManage.js?ver=24"></script>
 <div>
 	<div id="wrapper">
 
 		<div id="left-side">
 
 			<div id="first active">
-
+				<form action="${path }/store/storeManage/storeUpdate.do" method="post" name="storeUpdate" 
+				enctype="multipart/form-data">>
 				<div class="row">
 
 					<!-- 가게 이미지 시작 -->
@@ -45,9 +46,11 @@ var store_pk="${store.store_pk}"
 									</button> <!-- image-preview-input -->
 									<div class="btn btn-default image-preview-input">
 										<span class="glyphicon glyphicon-folder-open"></span> <span
-											class="image-preview-input-title">Browse</span> <input
+											class="image-preview-input-title">Browse</span> 
+											<input
 											type="file" accept="image/png, image/jpeg, image/gif"
 											name="input-file-preview" />
+											<input type="hidden" name="StoreOldImg" value="${store.store_re_img }"/>
 										<!-- rename it -->
 									</div>
 								</span>
@@ -60,22 +63,40 @@ var store_pk="${store.store_pk}"
 					</div>
 					<!--가게 이미지 끝-->
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-						<label> 가게 이름 : <input type="text" class="form-control"
-							value="가게이름"></label> <label>주소 : <input type="text"
-							name="address" class="form-control"
+						<label> 가게 이름 : <input type="text"  name ="store_name" class="form-control"
+							value="${store.store_name }"></label>
+							<label>주소 : <input type="text"
+							name="store_address" class="form-control"
 							value="${store.store_address}">
-						</label> <label>연락처 : <input type="text" name="phone"
+						</label> 
+						<label>연락처 : <input type="text" name="store_phone"
 							class="form-control" value="${store.store_phone}">
-						</label> <label>휴일 : <input type="text" name="holiday"
-							class="form-control"
+						</label> 
+						<label>휴일 : <input type="text" name="store_holiday" class="form-control"
 							value="${store.store_holiday!=null?'<%=store.getStore_holiday()%>':'연중무휴'}">
-							<br>
 						</label>
+						<label>카카오톡 : <input type="text" name="store_kakao" class="form-control" value="${store.store_kakao}"> 
+						</label> 
+						<label>인스타그램 : <input type="text" name="store_instagram" class="form-control" value="${store.store_instagram}">
+						</label> 
+						<label>가게 정보: <input type="text" name="store_info" class="form-control" value="${store.store_info}"
+						size="80">
+						</label>
+						<div> 
+						 <input type="text" name="store_pk" class="form-control" value="${store.store_pk}"/>
+						<a href="#TimeModal" data-toggle="modal"> 
+						<img src="${path}/resources/images/time.png" alt=""></a>
+							영업 시간 설정</div>
+						
+
 					</div>
 				</div>
 				<div class="row" style="margin-top: 20px;">
-					<input type="text" class="form-control" value="공지 사항 입력 ">
+					<input type="text" name="store_notice" class="form-control" value="${store.store_notice }">
+					<button type="submit" class="btn btn-primary">스토어 수정</button>
 				</div>
+				</form>
+<!-- 				store update form end -->
 				<div class="row">
 					<div class="tabbable-panel">
 						<div class="tabbable-line">
@@ -108,7 +129,7 @@ var store_pk="${store.store_pk}"
 												<button type="button" class="btn btn-default">
 													<span class="glyphicon glyphicon-pencil"></span> 수정
 												</button></a>
-												<button type="button" class="btn btn-default" id="nailDelete" value="${nail.nail_pk }">
+												<button type="button" class="btn btn-default nailDelete" id="nailDelete" value="${nail.nail_pk }">
 													<span class="glyphicon glyphicon-remove"></span> 삭제
 												</button>
 											</div>
@@ -135,7 +156,7 @@ var store_pk="${store.store_pk}"
 												<!-- Modal body -->
 												<div class="modal-body">
 													<form name="nailInsert" method="post"
-														action="${path }/store/storeManage/nailCRUD.do"
+														action="${path }/store/storeManage/nailInsert.do"
 														enctype="multipart/form-data">
 														<div class="animatepop">
 															<div class="input-group image-preview zindex bottom">
@@ -195,7 +216,7 @@ var store_pk="${store.store_pk}"
 														</div>
 
 														<!--nail 선택-->
-														<div class="w3-dropdown-hover">
+														<div class="w3-dropdown-hover color">
 															<div id="main-nail-color"
 																class="w3-border w3-hover-border-pale-red  w3-round"
 																style="padding-left: 10px;" value="색상">
@@ -288,7 +309,7 @@ var store_pk="${store.store_pk}"
                   </ul>
                </div>
             </div>
-            <div class="w3-dropdown-hover">
+            <div class="w3-dropdown-hover nail">
                <div id="main-check" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left: 10px;" value="">
                   <img src="${path }/resources/images/nails/nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20">
                   <button class="select-menu w3-button w3-round w3-hover-white">네일/패디</button>
@@ -304,7 +325,7 @@ var store_pk="${store.store_pk}"
                   </div>
                </div>
             </div>
-            <div class="w3-dropdown-hover">
+            <div class="w3-dropdown-hover option">
                <div id="main-nail-style" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left: 10px;" value="전체옵션">
                   <img src="${path }/resources/images/nails/plus_btn.png" alt="Cinque Terre" width="20" height="20">
                   <button class="select-menu w3-button w3-round w3-hover-white">전체옵션</button>
@@ -385,8 +406,8 @@ var store_pk="${store.store_pk}"
 
 												<!-- Modal body -->
 												<div class="modal-body">
-													<form name="nailInsert" method="post"
-														action="${path }/store/storeManage/nailCRUD.do"
+													<form name="nailUpdate" method="post"
+														action="${path }/store/storeManage/nailUpdate.do"
 														enctype="multipart/form-data">
 														<div class="animatepop">
 															<div class="input-group image-preview zindex bottom">
@@ -410,10 +431,19 @@ var store_pk="${store.store_pk}"
 																		<input type="hidden" name="store_pk"
 																			value="${store.store_pk }"> <input
 																			type="hidden" id="nail_color" name="nail_color"
-																			value=""> <input type="hidden"
-																			id="nail_style" name="nail_style" value=""> <input
+																			value="${nail.nail_color }"> 
+																			<input type="hidden"
+																			id="nail_style" name="nail_style" value="
+																			${nail.nail_style }"> 
+																			<input
 																			type="hidden" id="nail_check" name="nail_check"
-																			value="">
+																			value="${nail.nail_check }">
+																			 <input
+																			type="hidden" id="oldImage" name="oldImage"
+																			value="${nail.nail_re_img}">
+																			<input
+																			type="hidden" id="nail_pk" name="nail_pk"
+																			value="${nail.nail_pk}">
 																	</div>
 																</span>
 
@@ -422,7 +452,6 @@ var store_pk="${store.store_pk}"
 
 															<img class="img-responsive radius14"
 																src="${path }/resources/images/nails/${nail.nail_re_img}" alt="">
-
 														</div>
 														<label>시술이름 입력 <input type="text" name="nail_name"
 															value="${nail.nail_name }"></label> <label>시술정보 입력 <input
@@ -446,7 +475,7 @@ var store_pk="${store.store_pk}"
 														</div>
 
 														<!--nail 선택-->
-														<div class="w3-dropdown-hover">
+														<div class="w3-dropdown-hover color">
 															<div id="main-nail-color"
 																class="w3-border w3-hover-border-pale-red  w3-round"
 																style="padding-left: 10px;" value="색상">
@@ -539,7 +568,7 @@ var store_pk="${store.store_pk}"
                   </ul>
                </div>
             </div>
-            <div class="w3-dropdown-hover">
+            <div class="w3-dropdown-hover nail">
                <div id="main-check" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left: 10px;" value="${nail.nail_check }">
                   <img src="${path }/resources/images/nails/nail-polish.png" class="w3-circle" alt="Cinque Terre" width="20" height="20">
                   <button class="select-menu w3-button w3-round w3-hover-white">${nail.nail_check }</button>
@@ -555,7 +584,7 @@ var store_pk="${store.store_pk}"
                   </div>
                </div>
             </div>
-            <div class="w3-dropdown-hover">
+            <div class="w3-dropdown-hover option">
                <div id="main-nail-style" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left: 10px;" value="전체옵션">
                   <img src="${path }/resources/images/nails/plus_btn.png" alt="Cinque Terre" width="20" height="20">
                   <button class="select-menu w3-button w3-round w3-hover-white">${nail.nail_style }</button>
@@ -703,7 +732,53 @@ var store_pk="${store.store_pk}"
 	</div>
 </div>
 </div>
+<!-- Modal -->
+<div id="TimeModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">스토어 타임 설정</h4>
+      </div>
+      <div class="modal-body">
+      <form action="${path }/store/storeManage/store_timeUpdate.do">
+    <label>평일 오픈 시간: <input type="time"
+							name="store_open_time" class="form-control"
+							value="${store_time.store_open_time}">
+	</label>
+	    <label>평일 마감 시간: <input type="time"
+							name="store_close_time" class="form-control"
+							value="${store_tiem.store_close_time}">
+						</label>
+						    <label>주말 오픈 시간: <input type="time"
+							name="store_weekend_open" class="form-control"
+							value="${store_time.store_weekend_open}">
+						</label>
+						    <label>주말 마감 시간 : <input type="time"
+							name="store_weekend_close" class="form-control"
+							value="${store_time.store_weekend_close}">
+						</label>			
+						    <label>예약 오픈 시간 : <input type="time"
+							name="store_reserve_time" class="form-control"
+							value="${store_time.store_reserve_time}">
+						</label>	
+						    <label>예약 마감 시간 : <input type="time"
+							name="store_reserve_end_time" class="form-control"
+							value="${store_time.store_reserve_end_time}">
+						</label>	
+						<input type="hidden" name ="store_pko" value="${store.store_pk }"/>		
+						<button type="submit" class="btn btn-primary">전송</button>
+						</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
