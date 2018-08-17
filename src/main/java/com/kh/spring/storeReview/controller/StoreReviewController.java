@@ -122,8 +122,8 @@ public class StoreReviewController {
 		if(fileName!=null && fileName.length()>0) {
 			File deleteFile=new File(saveDir+"/"+fileName);
 			flag=deleteFile.delete();
-			result= reviewService.storeReviewDelete(Integer.parseInt(review_pk));
 		}
+		result= reviewService.storeReviewDelete(Integer.parseInt(review_pk));
 		
 		if(result>0){
 			flag=true;
