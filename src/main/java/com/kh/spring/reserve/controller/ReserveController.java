@@ -55,10 +55,12 @@ public class ReserveController {
 		
 		
 		int member_pk = Integer.parseInt(jsonObject.getString("member_pk"));
-		int menu_pk = Integer.parseInt(jsonObject.getString("menu_pk"));
-		//String member_name = String.valueOf(jsonObject.get("member_name"));
+		String member_name = String.valueOf(jsonObject.get("member_name"));
 		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
-		String designer = String.valueOf(jsonObject.get("designer"));
+		int menu_pk = Integer.parseInt(jsonObject.getString("menu_pk"));
+		String designer_name = String.valueOf(jsonObject.get("designer_name"));
+		String designer_id =String.valueOf(jsonObject.get("designer_id"));
+		System.out.println("designer_id"+designer_id);
 		String reserve_start_time = String.valueOf(jsonObject.get("reserve_start_time"));
 		
 		//T 제거
@@ -96,10 +98,9 @@ public class ReserveController {
 				logger.debug(reserve_start_time);
 				logger.debug(reserve_end_time);
 				logger.debug(check_date);
-				
 				Map check=new HashMap();
 				check.put("store_pk",store_pk);
-				check.put("designer", designer);
+				check.put("designer", designer_name);
 				check.put("reserve_start_time", check_date);
 			//	check.put("reserve_end_time", reserve_end_time);
 			    reserve = service.selectStoreReserve(check);
@@ -108,12 +109,15 @@ public class ReserveController {
 				if (reserve == null) {
 					reserve=new Reserve();
 					reserve.setMember_pk(member_pk);
-					reserve.setDesigner(designer);
+					reserve.setMember_name(member_name);
+					reserve.setStore_pk(store_pk);
 					reserve.setMenu_pk(menu_pk);
+					reserve.setDesigner_id(designer_id);
+					reserve.setDesigner_name(designer_name);
 					reserve.setReserve_start_time(reserve_start_time);
 					reserve.setReserve_end_time(reserve_end_time);
 					reserve.setReserve_status("대기");
-					reserve.setStore_pk(store_pk);
+					System.out.println(reserve);
 					int result = service.storeReserveInsert(reserve);
 					System.out.println("result"+result);
 					if(result>0) {
