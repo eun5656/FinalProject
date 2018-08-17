@@ -69,9 +69,7 @@ var store_pk ="${store.store_pk}";
         },
 
       ];
-      alert("${reserveList[1].reserve_pk}");
-      alert(<%=reserveSize%>);
-
+      
 
       /*변수 초기화*/
       var reservaiton = [
@@ -164,22 +162,23 @@ var store_pk ="${store.store_pk}";
 		
 
 		
-		<c:forEach items="${reserveList}" var="reserve">
+	
+      <c:forEach items="${reserveList}" var="reserve">
 
 		reservaiton.push({
 			id:"${reserve.reserve_pk}", 
-			resourceId:"a",
+			resourceId:"${reserve.designer_id}",
 			start:"${reserve.reserve_start_time}",
 			end:"${reserve.reserve_end_time}",
-			title:"홍성진",
-			description:"- ${reserve.designer} - 디자이너님 예약손님"
+			title:"${reserve.member_name}",
+			description:"- ${reserve.designer_name} - 디자이너님 예약손님"
         });
-		
 		</c:forEach>
-
-
 		
       
+		
+		
+		
       $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
 
@@ -375,39 +374,18 @@ var store_pk ="${store.store_pk}";
                  var choice1 = $('#choice1 option:selected').val();
                  var choice2;
                  if(choice1=='손'){
-                  choice2 = $('#choice2 option:selected').val();
+                  choice2= $('#choice2 option:selected').val();
                  }
                  else{
                 	 choice2=$('#choice3 option:selected').val();
                  }
-				alert(choice2);        
-            //reservation 객체 추가로직
-            var aJson = new Object();
-            aJson.id = '8';
-            aJson.resourceId = 'a';
-            aJson.start = '2018-07-28T13:15:00';
-            aJson.end = '2018-07-28T15:15:00';
-            aJson.color = 'rgb(49, 128, 208)';
-            aJson.title = '홍성진님 예약'
-            reservaiton.push(aJson);
-
-            /*30분 추가
-            console.log("check"+choice2);
-            var reser_end_time = Date.parse(date);
-            //alert(javaScriptRelease + 1800000);
-            reser_end_time += (1800000 * 2); //시간으로바꾸기
-      		// reser_end_time=new Date(reser_end_time);*/
-
-          
-         		//console.log(new Date(reser_end_time));
-          		// date+=date._i[5]+30;
-          		// console.log(new Date(date));
             	var store_reserve = { 
 					    			member_pk: "${memberLoggedIn.memberPk}",
             			 			member_name:"${memberLoggedIn.memberName}",
 					    			store_pk: store_pk,
 					    			menu_pk: choice2,
-					    			designer:resource.title, //pk로 던저줄지는 생각해봐야함..			
+					    			designer_name:resource.title, //pk로 던저줄지는 생각해봐야함..	
+					    			designer_id:resource.id, 	
 					    			reserve_start_time:date,	 			
 					    			reserve_end_time:date 			
 									}
@@ -433,7 +411,7 @@ var store_pk ="${store.store_pk}";
 	 	              start: data.reserve.reserve_start_time, //specify start date
 	 	              id:  data.reserve.reserve_pk,  //예약아이디로....
 	 	              description: description,
-	 	              resourceId: resource.id,
+	 	              resourceId: data.reserve.designer_id,
 	 	              end: data.reserve.reserve_end_time
  	 	            });
  	 	        	}
@@ -565,10 +543,6 @@ var store_pk ="${store.store_pk}";
 													<td colspan="1"><label for="sel1">예약일시 :</label></td>
 													<td colspan="4">
 														<p id="reserDate" class="member_info" style=" padding-left: 0px;"></p> <!--<input type="type" id="reservation-timepicker" class="timepicker form-control input-sm" name="reservation-timepicker" style="width:130px;" />-->
-														<input type="hidden" id="reservation-userName"
-														name="reservation-userName" value="홍성진" /> <input
-														type="hidden" id="reservation-id" name="reservation-id"
-														value="10" />
 													</td>
 												</tr>
 

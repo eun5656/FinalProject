@@ -51,6 +51,7 @@ public class MemberController {
 				msg="로그인성공";
 				
 				model.addAttribute("memberLoggedIn",m);
+				
 			}
 			else {
 				msg="비밀번호가 일치하지 않습니다.";
