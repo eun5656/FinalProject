@@ -162,7 +162,8 @@ var store_pk ="${store.store_pk}";
 		
 
 		
-		<c:forEach items="${reserveList}" var="reserve">
+	
+      <c:forEach items="${reserveList}" var="reserve">
 
 		reservaiton.push({
 			id:"${reserve.reserve_pk}", 
@@ -175,6 +176,9 @@ var store_pk ="${store.store_pk}";
 		</c:forEach>
 		
       
+		
+		
+		
       $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
 
