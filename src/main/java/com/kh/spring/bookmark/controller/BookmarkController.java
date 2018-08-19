@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.bookmark.model.service.BookmarkService;
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.nail.controller.NailController;
 import com.kh.spring.nail.model.service.NailService;
 
@@ -43,30 +44,33 @@ public class BookmarkController {
 		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
 		String bookmark_check=String.valueOf(jsonObject.get("bookmark_check"));
 		
+		Bookmark bookmark=new Bookmark();
+		bookmark.setNail_pk(nail_pk);
+		bookmark.setMember_pk(member_pk);
+		bookmark.setBookmark_check(bookmark_check);
+		bookmark.setStore_pk(store_pk);
 		
-		Map map=new HashMap();
+		/*Map map=new HashMap();
 
 		map.put("nail_pk", nail_pk);
 		map.put("member_pk", jsonObject.get("member_pk"));
 		map.put("bookmark_check", jsonObject.get("bookmark_check"));
-		map.put("store_pk", jsonObject.get("store_pk"));
+		map.put("store_pk", jsonObject.get("store_pk"));*/
 
 		//그냥...해봤음....
 		
-		int result=service.insertBookmark(map);
-		String msg;
+		int result=service.insertBookmark(bookmark);
 		if(result>0){
-			msg="북마크 등록완료";
+			result=bookmark.getBookmark_pk();
 		}
 		else {
-			msg="북마크 등록실패";
-
+			result=0;
 		}
 		
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
-		jsonstr=mapper.writeValueAsString(msg);
+		jsonstr=mapper.writeValueAsString(result);
 		
 		return jsonstr;
 	}
