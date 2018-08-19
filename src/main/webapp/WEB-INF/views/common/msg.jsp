@@ -19,7 +19,6 @@
 		else{
 			location.href="${path}/${loc}";
 		}
-		
 			alert('${msg}');
 		</script>
 	</head>
