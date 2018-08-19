@@ -29,5 +29,10 @@ public class MypageServiceImpl implements MypageService {
 	public int selectCount(int member_pk) {
 		return mypageDAO.selectCount(sqlSession,member_pk);
 	}
+
+	@Override
+	public Qna selectOne(int qna_pk) {
+		return mypageDAO.selectOne(sqlSession,qna_pk);
+	}
 	
 }

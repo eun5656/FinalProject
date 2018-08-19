@@ -9,4 +9,18 @@
 
 <select id="selectCount" parameterType="_int" resultType="_int"> select count(*) from qna where member_pk=#{member_pk} </select>
   
+<select id="selectQnaList" parameterType="_int" resultMap="qna">
+ select * from qna where store_pk=#{store_pk} and answer_check='답변대기'
+</select>  
+
+<select id="qnaSelectCount" resultType='_int' parameterType="_int">
+	select count(*) from qna where store_pk=#{store_pk}
+</select>
+
+<update id="updateQna" parameterType="qna"> 
+	update qna set answer_check='답변완료',answer_content=#{answer_content}, answer_date=sysdate where qna_pk=#{qna_pk}
+</update>
+
+<select resultType="qna" id="selectOneContent">select * from qna where qna_pk=#{qna_pk} </select>
+
 </mapper>

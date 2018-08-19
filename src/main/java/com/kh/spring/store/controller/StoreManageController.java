@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.spring.customer.model.vo.Notice;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
@@ -112,22 +115,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		
 		return view;
 	}
-	@RequestMapping("/store/storeManageQna.do")
-	public String storeManageQna(
-			HttpServletRequest req, Model model,HttpSession session
-			) {
-		String view="store/storeManageQna";
-		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
-		
-		Store store = service.selectOne(member_pk);
-		
 	
-		System.out.println("스토어 값 확인 : "+store);
-		
-		model.addAttribute("store",store);
-		
-		return view;
-	}
+	
 	@RequestMapping("/store/storeManage/menuInsert.do")
 	public String menuInsert(Menu menu, HttpServletRequest req,Model model) {
 		System.out.println("메뉴 삽입 접근완료" + menu);

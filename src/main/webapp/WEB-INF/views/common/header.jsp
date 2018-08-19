@@ -92,7 +92,7 @@
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
                 <li><a href="${path}/message/sendMessage.do">쪽지쓰기</a></li>
-                <li><a href="${path}/message/receiveMessage.do">쪽지함</a></li>
+                <li><a href="${path}/message/receiveMessage.do?send_user=${memberLoggedIn.memberId}">쪽지함</a></li>
               </ul>
             </li>
             </c:if>

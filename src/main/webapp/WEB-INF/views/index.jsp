@@ -8,7 +8,7 @@
 
 
 <jsp:include page="/WEB-INF/views/common/header.jsp">
-	<jsp:param value="Home Spring" name="pageTitle"/>
+   <jsp:param value="Home Spring" name="pageTitle"/>
 </jsp:include>
 
 <c:set var='path' value="${pageContext.request.contextPath}"/> 
@@ -200,7 +200,7 @@
 
   <div id="select-nail-bar" class="w3-bar" style="text-align:center;">
 
-	<!-- 지우면 꺠짐 hiddien으로 해놨음 -->
+   <!-- 지우면 꺠짐 hiddien으로 해놨음 -->
     <div id="first-dropdown" class="w3-dropdown-hover">
       <button class="w3-button">Dropdown</button>
       <div class="w3-dropdown-content w3-card-4">
@@ -258,7 +258,7 @@
           </li>
           <li class="nail-color" value="블루">
             <a>
-              <div style="text-align:center"><img src="	" class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
+              <div style="text-align:center"><img src="   " class="w3-circle" alt="Cinque Terre" width="30" height="30"></div>
               블루
             </a>
           </li>
@@ -333,7 +333,7 @@
         
           <div  class="nail-check" style="text-align:left; padding-left: 10px;" value="페디"><img src="${path }/resources/images/nails/footprint.png" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round">페디</button></div>
       </div>
-	</div>	
+   </div>   
 
 
     <div class="w3-dropdown-hover">
@@ -390,384 +390,384 @@
 
     </div>
 
-				 
-	 <button id="reset-all" class="w3-bar-item w3-button w3-border w3-hover-border-pale-red  w3-round w3-large" style="height: 40px;"><i class="fa fa-refresh"></i>
-</button>	
+             
+    <button id="reset-all" class="w3-bar-item w3-button w3-border w3-hover-border-pale-red  w3-round w3-large" style="height: 40px;"><i class="fa fa-refresh"></i>
+</button>   
   </div>
   
  <script type="text/javascript">
-				$(function () {
-					var main_nail_color_img=$("#main-nail-color").find("img");
-					var main_nail_color_button=$("#main-nail-color").find("button");
-					
-					var main_nail_style_img=$("#main-nail-style").find("img");
-					var main_nail_style_button=$("#main-nail-style").find("button");
-					
-					var main_nail_check_img=$("#main-check").find("img");
-					var main_nail_check_button=$("#main-check").find("button");
-				
-					var selectbar=$("#select-nail-bar");
-					
-					var selectAry = { 
-							nail_color: null,
-							nail_style: null,
-							nail_check: null
-							}
-					
-						$(".nail-color").on("click", function(event) {															
-							var color = $(this).find("img").attr('src');
-							var value=$(this).attr('value');
-							
-							selectAry.nail_color=value;
-							
-							main_nail_color_img.attr('src', color);
-							main_nail_color_button.html(value);
-						
-	
-							$.ajax({
-							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,  nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
-								type: "post",
-								dataType: "json",
-								success: function(data){
-								$("#nail-list *").remove();
-									
-								 var html1="<div id='nail-list'><div>";
-								 var html2="";
-								 
-									for (var i = 0; i < data.list.length; i++) {
-											     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
-								}
-								 console.log(html2);
-								 selectbar.after(html1);
-								 $("#nail-list").html(html2);
-								 eventBind()
-							},
-								error: function(jpxhr,textStatus,errormsg) {
-									console.log("ajax전송실패");
-									console.log(jpxhr);
-									console.log(textStatus);
-									console.log(errormsg);
-								}
-							})
-								
-						});
-						
-					
-						
-						$(".nail-check").on("click", function(event) {																					
-							var check = $(this).find("img").attr('src');
-							var value=$(this).attr('value');
-						
-							selectAry.nail_check=value;
+            $(function () {
+               var main_nail_color_img=$("#main-nail-color").find("img");
+               var main_nail_color_button=$("#main-nail-color").find("button");
+               
+               var main_nail_style_img=$("#main-nail-style").find("img");
+               var main_nail_style_button=$("#main-nail-style").find("button");
+               
+               var main_nail_check_img=$("#main-check").find("img");
+               var main_nail_check_button=$("#main-check").find("button");
+            
+               var selectbar=$("#select-nail-bar");
+               
+               var selectAry = { 
+                     nail_color: null,
+                     nail_style: null,
+                     nail_check: null
+                     }
+               
+                  $(".nail-color").on("click", function(event) {                                             
+                     var color = $(this).find("img").attr('src');
+                     var value=$(this).attr('value');
+                     
+                     selectAry.nail_color=value;
+                     
+                     main_nail_color_img.attr('src', color);
+                     main_nail_color_button.html(value);
+                  
+   
+                     $.ajax({
+                         url:"${path}/nail/selectNailColor.do",
+                        data:{nail_color:selectAry.nail_color,  nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                        $("#nail-list *").remove();
+                           
+                         var html1="<div id='nail-list'><div>";
+                         var html2="";
+                         
+                           for (var i = 0; i < data.list.length; i++) {
+                                      html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+                                      html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+                                      html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+                                      html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+                                      html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+                                      html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+                                      //구현되면 나머지도 member_pk,bookmark_pk 추가
+                                      html2+="<div class='hovereffect'>";
+                                     html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+                                     html2+="<div class='overlay'>";
+                                     html2+="<p>";
+                                     html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+                                     html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+                                     html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
+                                     html2+="</p>";
+                                     html2+="</div></div></div>";
+                        }
+                         console.log(html2);
+                         selectbar.after(html1);
+                         $("#nail-list").html(html2);
+                         eventBind()
+                     },
+                        error: function(jpxhr,textStatus,errormsg) {
+                           console.log("ajax전송실패");
+                           console.log(jpxhr);
+                           console.log(textStatus);
+                           console.log(errormsg);
+                        }
+                     })
+                        
+                  });
+                  
+               
+                  
+                  $(".nail-check").on("click", function(event) {                                                               
+                     var check = $(this).find("img").attr('src');
+                     var value=$(this).attr('value');
+                  
+                     selectAry.nail_check=value;
 
-							main_nail_check_img.attr('src', check);
-							main_nail_check_button.html(value);
-							
-							$.ajax({
-							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
-								type: "post",
-								dataType: "json",
-								success: function(data){
-									$("#nail-list *").remove();
-									
-									 var html1="<div id='nail-list'><div>";
-									 var html2="";
-									 
-										for (var i = 0; i < data.list.length; i++) {
-												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											     html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-											
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
-									}
-									 selectbar.after(html1);
-									 $("#nail-list").html(html2);							
-									 eventBind()
+                     main_nail_check_img.attr('src', check);
+                     main_nail_check_button.html(value);
+                     
+                     $.ajax({
+                         url:"${path}/nail/selectNailColor.do",
+                        data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                           $("#nail-list *").remove();
+                           
+                            var html1="<div id='nail-list'><div>";
+                            var html2="";
+                            
+                              for (var i = 0; i < data.list.length; i++) {
+                                     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+                                      html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+                                      html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+                                      html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+                                      html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+                                      html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+                                      //구현되면 나머지도 member_pk,bookmark_pk 추가
+                                 
+                                      html2+="<div class='hovereffect'>";
+                                     html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+                                     html2+="<div class='overlay'>";
+                                     html2+="<p>";
+                                     html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+                                     html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+                                     html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
+                                     html2+="</p>";
+                                     html2+="</div></div></div>";
+                           }
+                            selectbar.after(html1);
+                            $("#nail-list").html(html2);                     
+                            eventBind()
 
-								},
-								error: function(jpxhr,textStatus,errormsg) {
-									console.log("ajax전송실패");
-									console.log(jpxhr);
-									console.log(textStatus);
-									console.log(errormsg);
-								}
-							})
-							
-							
-							
-						});
-						
-						$(".nail-style").on("click", function(event) {																					
-							var style = $(this).find("img").attr('src');
-							var value=$(this).attr('value');
-							
+                        },
+                        error: function(jpxhr,textStatus,errormsg) {
+                           console.log("ajax전송실패");
+                           console.log(jpxhr);
+                           console.log(textStatus);
+                           console.log(errormsg);
+                        }
+                     })
+                     
+                     
+                     
+                  });
+                  
+                  $(".nail-style").on("click", function(event) {                                                               
+                     var style = $(this).find("img").attr('src');
+                     var value=$(this).attr('value');
+                     
 
-							selectAry.nail_style=value;
-							main_nail_style_img.addClass("w3-circle");
-							main_nail_style_img.attr('src', style);
-							main_nail_style_button.html(value);
-														
-							$.ajax({
-							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
-								type: "post",
-								dataType: "json",
-								success: function(data){
-									$("#nail-list *").remove();
-									
-									 var html1="<div id='nail-list'><div>";
-									 var html2="";
-									 
-										for (var i = 0; i < data.list.length; i++) {
-											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-										 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-										 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-										 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-										 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-										 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-										 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-										 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
-									}
-										console.log(html2);
-									 selectbar.after(html1);
-									 $("#nail-list").html(html2);
-										eventBind()
-										
-											
-								
+                     selectAry.nail_style=value;
+                     main_nail_style_img.addClass("w3-circle");
+                     main_nail_style_img.attr('src', style);
+                     main_nail_style_button.html(value);
+                                          
+                     $.ajax({
+                         url:"${path}/nail/selectNailColor.do",
+                        data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                           $("#nail-list *").remove();
+                           
+                            var html1="<div id='nail-list'><div>";
+                            var html2="";
+                            
+                              for (var i = 0; i < data.list.length; i++) {
+                                  html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+                                   html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+                                   html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+                                   html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+                                   html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+                                   html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+                                   //구현되면 나머지도 member_pk,bookmark_pk 추가
+                                   html2+="<div class='hovereffect'>";
+                                     html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+                                     html2+="<div class='overlay'>";
+                                     html2+="<p>";
+                                     html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+                                     html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+                                     html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
+                                     html2+="</p>";
+                                     html2+="</div></div></div>";
+                           }
+                              console.log(html2);
+                            selectbar.after(html1);
+                            $("#nail-list").html(html2);
+                              eventBind()
+                              
+                                 
+                        
 
-								},
-								error: function(jpxhr,textStatus,errormsg) {
-									console.log("ajax전송실패");
-									console.log(jpxhr);
-									console.log(textStatus);
-									console.log(errormsg);
-								}
-							})
-							
-						});
-						
-						
-						$("#reset-all").on("click", function() {
-							selectAry.nail_color=null;
-							selectAry.nail_check=null;
-							selectAry.nail_style=null;
+                        },
+                        error: function(jpxhr,textStatus,errormsg) {
+                           console.log("ajax전송실패");
+                           console.log(jpxhr);
+                           console.log(textStatus);
+                           console.log(errormsg);
+                        }
+                     })
+                     
+                  });
+                  
+                  
+                  $("#reset-all").on("click", function() {
+                     selectAry.nail_color=null;
+                     selectAry.nail_check=null;
+                     selectAry.nail_style=null;
 
-							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
-							main_nail_color_button.html("전체");
-							
-							 main_nail_check_img.attr("src","${path }/resources/images/nails/nail-polish.png");
-							 main_nail_check_button.html("네일/페디");
-							
-							main_nail_style_img.removeClass("w3-circle");
-							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
-							main_nail_style_button.html("전체옵션");
+                     main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
+                     main_nail_color_button.html("전체");
+                     
+                      main_nail_check_img.attr("src","${path }/resources/images/nails/nail-polish.png");
+                      main_nail_check_button.html("네일/페디");
+                     
+                     main_nail_style_img.removeClass("w3-circle");
+                     main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
+                     main_nail_style_button.html("전체옵션");
 
-							
-							$.ajax({
-							 	url:"${path}/nail/selectNailreset.do",
-								data:{reset:"reset"},
-								type: "post",
-								dataType: "json",
-								success: function(data){
-									$("#nail-list *").remove();
-									
-									 var html1="<div id='nail-list'><div>";
-									 var html2="";
-									 
-										for (var i = 0; i < data.list.length; i++) {
-											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-											
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
-												 
-												 
-												 
-									}
-										console.log(html2);
-									 selectbar.after(html1);
-									 $("#nail-list").html(html2);
-									 eventBind();
-								},
-								error: function(jpxhr,textStatus,errormsg) {
-									console.log("ajax전송실패");
-									console.log(jpxhr);
-									console.log(textStatus);
-									console.log(errormsg);
-								}
-							})	
-							
-						})
-											
-						  $('.good-btn').on("click", function() {
-						      $(this).toggleClass("selected");
-						    })
-						    
-						    
-						     $(".store_img").click(function(){
-						    	location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
-						    });
-						  
-						  $(".store_reservaiton").click(function() {
-							  alert("예약");
-							//  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
-						 })
-						 
-						  $(".store_review").click(function() {
-							  alert("리뷰");
-						  //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
-						 })
-						 
-						 
-					eventBind();
-				})
-				function eventBind(){
-					    $(".b_icon").click(function() {					    	
-					    	var memberLoggedIn= "${memberLoggedIn}";
-					    	if(memberLoggedIn.length!=0){
-					    
-					    	var temp=$(this);
-					    	var bookmark_val = { 
-					    			nail_pk: temp.nextAll("[name='nail_pk']").val(),
-					    			member_pk: temp.nextAll("[name='member_pk']").val(),
-					    			store_pk: temp.nextAll("[name='store_pk']").val(),
-					    			bookmark_check:null 			
-									}
-						
-					    
-					    
-					    	
-					    	if (temp.attr("alt")=='false') 
-					    	{	
-					    		bookmark_val.bookmark_check="ture";
-					    		//var nail_pk=temp.next().val();					    		
-					    		//var member_pk=temp.next().next().val();
-					    	  var jsonData = JSON.stringify(bookmark_val);
-			    		      jQuery.ajaxSettings.traditional = true;
-					    		///*json 객체로 바로넘기기					    							    		
-					    		    $.ajax({
-								 	url:"${path}/bookmark/insertBookmark.do",
-									data:{"bookmark_val":jsonData},
-									type: "post",
-									dataType: "json",
-									success: function(data){
-			    		  		    alert(data);
-										temp.attr("alt","true");
-						    			temp.attr("src","/spring/resources/icons/love_filled.svg");
-										},
-									error: function(jpxhr,textStatus,errormsg) {
-										console.log("ajax전송실패");
-										console.log(jpxhr);
-										console.log(textStatus);
-										console.log(errormsg);
-									}
-								})	
-					    		
-					    	} 
-					    	else {
-					    		
-					    		//bookmark_val.bookmark_check="false";
-					    		//var nail_pk=temp.next().val();					    		
-					    		//var member_pk=temp.next().next().val();\ss
-					    		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
-					    		var member_pk=temp.nextAll("[name='member_pk']").val()
-				    		    $.ajax({
-							 	url:"${path}/bookmark/deleteBookmark.do",
-								data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
-								type: "post",
-								dataType: "json",
-								
-								success: function(data){
-			    		  		    alert(data);
-									temp.attr("alt","false");
-						    		temp.attr("src","/spring/resources/icons/love_blank.svg");
-									},
-								error: function(jpxhr,textStatus,errormsg) {
-									console.log("ajax전송실패");
-									console.log(jpxhr);
-									console.log(textStatus);
-									console.log(errormsg);
-								}
-							})	
-							
-					    		
-					    	}
-							
-					    	}
-							else{
-								alert("로그인해주세요");
-							}
-					    });
-				}
-				/*
-				$("h2").on("click", "p.test", function(){
-  				  alert($(this).text());
-				});
-				*/
-			
-					</script>
+                     
+                     $.ajax({
+                         url:"${path}/nail/selectNailreset.do",
+                        data:{reset:"reset"},
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                           $("#nail-list *").remove();
+                           
+                            var html1="<div id='nail-list'><div>";
+                            var html2="";
+                            
+                              for (var i = 0; i < data.list.length; i++) {
+                                      html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
+                                      html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
+                                      html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+                                      html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+                                      html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+                                      html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
+                                      //구현되면 나머지도 member_pk,bookmark_pk 추가
+                                 
+                                      html2+="<div class='hovereffect'>";
+                                     html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+                                     html2+="<div class='overlay'>";
+                                     html2+="<p>";
+                                     html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
+                                     html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
+                                     html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
+                                     html2+="</p>";
+                                     html2+="</div></div></div>";
+                                     
+                                     
+                                     
+                           }
+                              console.log(html2);
+                            selectbar.after(html1);
+                            $("#nail-list").html(html2);
+                            eventBind();
+                        },
+                        error: function(jpxhr,textStatus,errormsg) {
+                           console.log("ajax전송실패");
+                           console.log(jpxhr);
+                           console.log(textStatus);
+                           console.log(errormsg);
+                        }
+                     })   
+                     
+                  })
+                                 
+                    $('.good-btn').on("click", function() {
+                        $(this).toggleClass("selected");
+                      })
+                      
+                      
+                       $(".store_img").click(function(){
+                         location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
+                      });
+                    
+                    $(".store_reservaiton").click(function() {
+                       alert("예약");
+                     //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+                   })
+                   
+                    $(".store_review").click(function() {
+                       alert("리뷰");
+                    //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
+                   })
+                   
+                   
+               eventBind();
+            })
+            function eventBind(){
+                   $(".b_icon").click(function() {                      
+                      var memberLoggedIn= "${memberLoggedIn}";
+                      if(memberLoggedIn.length!=0){
+                   
+                      var temp=$(this);
+                      var bookmark_val = { 
+                            nail_pk: temp.nextAll("[name='nail_pk']").val(),
+                            member_pk: temp.nextAll("[name='member_pk']").val(),
+                            store_pk: temp.nextAll("[name='store_pk']").val(),
+                            bookmark_check:null          
+                           }
+                  
+                   
+                   
+                      
+                      if (temp.attr("alt")=='false') 
+                      {   
+                         bookmark_val.bookmark_check="ture";
+                         //var nail_pk=temp.next().val();                         
+                         //var member_pk=temp.next().next().val();
+                        var jsonData = JSON.stringify(bookmark_val);
+                         jQuery.ajaxSettings.traditional = true;
+                         ///*json 객체로 바로넘기기                                                  
+                             $.ajax({
+                            url:"${path}/bookmark/insertBookmark.do",
+                           data:{"bookmark_val":jsonData},
+                           type: "post",
+                           dataType: "json",
+                           success: function(data){
+                               alert(data);
+                              temp.attr("alt","true");
+                               temp.attr("src","/spring/resources/icons/love_filled.svg");
+                              },
+                           error: function(jpxhr,textStatus,errormsg) {
+                              console.log("ajax전송실패");
+                              console.log(jpxhr);
+                              console.log(textStatus);
+                              console.log(errormsg);
+                           }
+                        })   
+                         
+                      } 
+                      else {
+                         
+                         //bookmark_val.bookmark_check="false";
+                         //var nail_pk=temp.next().val();                         
+                         //var member_pk=temp.next().next().val();\ss
+                         var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+                         var member_pk=temp.nextAll("[name='member_pk']").val()
+                          $.ajax({
+                         url:"${path}/bookmark/deleteBookmark.do",
+                        data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+                        type: "post",
+                        dataType: "json",
+                        
+                        success: function(data){
+                               alert(data);
+                           temp.attr("alt","false");
+                            temp.attr("src","/spring/resources/icons/love_blank.svg");
+                           },
+                        error: function(jpxhr,textStatus,errormsg) {
+                           console.log("ajax전송실패");
+                           console.log(jpxhr);
+                           console.log(textStatus);
+                           console.log(errormsg);
+                        }
+                     })   
+                     
+                         
+                      }
+                     
+                      }
+                     else{
+                        alert("로그인해주세요");
+                     }
+                   });
+            }
+            /*
+            $("h2").on("click", "p.test", function(){
+                alert($(this).text());
+            });
+            */
+         
+               </script>
 
 
-<div id="nail-list">	
+<div id="nail-list">   
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
  <div  class="cover-card col-sm-${col_i[status.index]}">
- 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
- 	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
-		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
-		<input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
-		<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
-		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
-		<!-- 내일 ajax모두에 추가해주기...졸려 -->
+    <img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
+    <!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
+      <input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
+      <input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
+      <input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
+      <input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
+      <!-- 내일 ajax모두에 추가해주기...졸려 -->
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">
       <img id='nail-img1' class="img-responsive nail-main-images" src="${path }/resources/images/nails/${nail.nail_re_img}" >
@@ -786,8 +786,8 @@
 </div>
 
  
-					
-					
+               
+               
 
   </div>
   </div>

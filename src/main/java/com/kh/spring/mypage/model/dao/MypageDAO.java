@@ -11,4 +11,6 @@ public interface MypageDAO {
 	List<Qna> selectList(SqlSessionTemplate sqlSession,int member_pk,int cPage, int numPerPage);
 
 	int selectCount(SqlSessionTemplate sqlSession,int member_pk);
+	
+	Qna selectOne(SqlSessionTemplate sqlSession,int qna_pk);
 }

@@ -15,7 +15,7 @@ import com.kh.spring.store.model.vo.Store;
 public class StoreServiceImpl implements StoreService {
 
 	@Autowired
-	private StoreDAO dao;
+	StoreDAO dao;
 	
 	private Logger logger=LoggerFactory.getLogger(StoreServiceImpl.class);
 	

@@ -12,4 +12,6 @@ public interface MypageService {
 	List<Qna> selectList(int member_pk,int cPage, int numPerPage);
 	
 	int selectCount(int member_pk);
+	
+	Qna selectOne(int qna_pk);
 }

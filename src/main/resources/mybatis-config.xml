@@ -16,7 +16,7 @@
 		<typeAlias type="com.kh.spring.storeReview.model.vo.StoreReview" alias="storeReview"/>
 		<typeAlias type="com.kh.spring.bookmark.model.vo.Bookmark" alias="bookmark"/>
 		<typeAlias type="com.kh.spring.store.model.vo.Menu" alias="menu"/>
-
+		<typeAlias alias="message" type="com.kh.spring.message.model.vo.Message"/>
 		<typeAlias type="com.kh.spring.qna.model.vo.Qna" alias="qna"/>
 		<typeAlias type="com.kh.spring.deal.model.vo.Deal" alias="deal"/>
 		<typeAlias type="com.kh.spring.deal.model.vo.DealImage" alias="dealImage"/>

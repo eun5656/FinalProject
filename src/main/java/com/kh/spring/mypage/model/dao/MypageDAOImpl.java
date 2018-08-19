@@ -23,4 +23,9 @@ public class MypageDAOImpl implements MypageDAO {
 		return sqlSession.selectOne("qna.selectCount",member_pk);
 	}
 
+	@Override
+	public Qna selectOne(SqlSessionTemplate sqlSession, int qna_pk) {
+		return sqlSession.selectOne("qna.selectOneContent",qna_pk);
+	}
+
 }
