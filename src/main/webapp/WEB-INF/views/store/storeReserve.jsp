@@ -533,7 +533,7 @@ var store_pk ="${store.store_pk}";
 												<tr>
 													<td colspan="1"><label for="sel1">예약자 :</label></td>
 													<td colspan="4">
-														<p id="reserName" class="member_info" style=" padding-left: 0px;">${memberLoggedIn.memberName }</p> <!---->
+														<p id="reserName" class="member_info" style=" padding-left: 0px;">${memberLoggedIn.memberName }</p>
 													</td>
 												</tr>
 											</thead>
