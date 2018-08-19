@@ -6,8 +6,11 @@
 	</resultMap>
 	
 
- <insert id="insertBookmark" parameterType="hashmap">
+ <insert id="insertBookmark" parameterType="bookmark">
 	insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check})
+	<selectKey keyProperty="bookmark_pk" resultType="_int" order="AFTER">
+ 			SELECT bookmark_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
  </insert>
  
  <delete id="deleteBookmark" parameterType="hashmap">

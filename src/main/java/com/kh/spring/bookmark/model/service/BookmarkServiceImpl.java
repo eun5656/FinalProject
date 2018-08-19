@@ -19,8 +19,8 @@ public class BookmarkServiceImpl implements BookmarkService {
 	SqlSessionTemplate sqlSession;
 
 	@Override
-	public int insertBookmark(Map map) {
-		int result=dao.insertBookmark(map,sqlSession);
+	public int insertBookmark(Bookmark bookmark) {
+		int result=dao.insertBookmark(bookmark,sqlSession);
 		return result;
 	}
 

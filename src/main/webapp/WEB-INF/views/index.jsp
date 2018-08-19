@@ -18,12 +18,7 @@
   
   <style>
 </style>
-<script type="text/javascript">
-	$(function() {
-		alert("${bookmarkList}");
-		alert("${memberLoggedIn}");
-	})
-</script>
+
 
 <div class="container-fluid" style="padding-top: 80px;">
 
@@ -706,9 +701,10 @@
 									type: "post",
 									dataType: "json",
 									success: function(data){
-			    		  		    alert(data);
+			    		  		   		alert("등록완료");
 										temp.attr("alt","true");
 						    			temp.attr("src","/spring/resources/icons/love_filled.svg");
+						    			temp.nextAll('.bookmark_pk').attr('value',data);
 										},
 									error: function(jpxhr,textStatus,errormsg) {
 										console.log("ajax전송실패");
@@ -733,9 +729,10 @@
 								dataType: "json",
 								
 								success: function(data){
-			    		  		    alert(data);
+			    		  		    alert("삭제완료");
 									temp.attr("alt","false");
 						    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+					    			temp.nextAll('.bookmark_pk').attr('value','');
 									},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -754,12 +751,6 @@
 							}
 					    });
 				}
-				/*
-				$("h2").on("click", "p.test", function(){
-  				  alert($(this).text());
-				});
-				*/
-			
 					</script>
 
 
@@ -767,16 +758,23 @@
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
  <div  class="cover-card col-sm-${col_i[status.index]}">
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
- 	
+ 			
+					<jsp:useBean id="check_bookmark" class="java.lang.String" />
+					<c:set var="check_bookmark" value="false"/>
+ 			
  			<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
 				<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nail.nail_pk}">
+ 					<c:set var="check_bookmark" value="true"/>
  					<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
 					<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
 				</c:if>
-				<c:if test=""></c:if>
 			</c:forEach>
+		
+			<c:if test="${check_bookmark eq 'false'}">
+	  			<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
+ 				<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+			</c:if>
 			
-	 <!--   <img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
 		<input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
 		<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >

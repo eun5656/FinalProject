@@ -13,7 +13,6 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script>
 		if("${member_pk}">0){
-			alert("${member_pk}");
 			location.href="${path}/${loc}?member_pk=${member_pk}";
 		}
 		else{

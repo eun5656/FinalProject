@@ -14,8 +14,8 @@ public class BookmarkDaoImpl implements BookmarkDao{
 	
 
 	@Override
-	public int insertBookmark(Map map, SqlSessionTemplate sqlSession) {
-		int result=sqlSession.insert("bookmark.insertBookmark",map);
+	public int insertBookmark(Bookmark bookmark, SqlSessionTemplate sqlSession) {
+		int result=sqlSession.insert("bookmark.insertBookmark",bookmark);
 		return result;
 	}
 

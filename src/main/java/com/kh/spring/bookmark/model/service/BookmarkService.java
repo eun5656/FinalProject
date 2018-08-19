@@ -9,7 +9,7 @@ public interface BookmarkService {
 
 
 
-	int insertBookmark(Map map);
+	int insertBookmark(Bookmark bookmark);
 
 	int deleteBookmark(Map map);
 
