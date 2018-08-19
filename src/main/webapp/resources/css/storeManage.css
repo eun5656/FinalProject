@@ -62,9 +62,9 @@ ul > li {
 	height: 100%;
 	width: 19%;
 	margin-left: 5px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+/* 	display: -webkit-box; */
+/* 	display: -ms-flexbox; */
+/* 	display: flex; */
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -318,7 +318,9 @@ ul > li {
 
 @media ( max-width : 768px) {
 	#right-side {
-		display: none;
+		top:50px;
+		right:0px;
+		position: fixed;
 	}
 	#wrapper {
 		width: 100%;

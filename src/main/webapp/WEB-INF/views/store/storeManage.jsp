@@ -12,24 +12,26 @@
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- storeManage css -->
-<link href="${path }/resources/css/storeManage.css?ver=3"
+<link href="${path }/resources/css/storeManage.css?ver=6"
 	rel="stylesheet" />
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
 var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=26"></script>
-<div>
-	<div id="wrapper">
+<script src="${path }/resources/js/storeManage.js?ver=32"></script>
 
-		<div id="left-side">
+<div>
+	<div id="wrapper" class="wrappercheck">
+
+		<div id="left-side" class="leftcheck">
 
 			<div id="first active">
 				<form action="${path }/store/storeManage/storeUpdate.do" method="post" name="storeUpdate" 
 				enctype="multipart/form-data">>
-				<div class="row">
+				<div  >
 
 					<!-- 가게 이미지 시작 -->
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
@@ -62,13 +64,19 @@ var store_pk="${store.store_pk}"
 						</div>
 					</div>
 					<!--가게 이미지 끝-->
+					
 					<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 						<label> 가게 이름 : <input type="text"  name ="store_name" class="form-control"
 							value="${store.store_name }"></label>
-							<label>주소 : <input type="text"
-							name="store_address" class="form-control"
-							value="${store.store_address}">
-						</label> 
+							
+						<br>
+<!--                <label>우편번호<input type="text" class="form-control" id="post" placeholder="우편번호" required></label>  -->
+               
+            	<label>주소<input type="text" class="form-control" id="store_address" name="store_address" placeholder="주소" value="${store.store_address }"></label>
+               <label>상세주소<input type="text" class="form-control" id="store_address_detail" placeholder="상세주소" name="store_address_detail"value="${store.store_address_detail }"></label>
+                 <input type="button" class="btn btn-warning" onclick="Postcode()" value="주소찾기">
+           <br>
+					
 						<label>연락처 : <input type="text" name="store_phone"
 							class="form-control" value="${store.store_phone}">
 						</label> 
@@ -82,6 +90,7 @@ var store_pk="${store.store_pk}"
 						<label>가게 정보: <input type="text" name="store_info" class="form-control" value="${store.store_info}"
 						size="80">
 						</label>
+					
 						<div> 
 						 <input type="hidden" name="store_pk" class="form-control" value="${store.store_pk}"/>
 						<a href="#TimeModal" data-toggle="modal"> 
@@ -91,13 +100,13 @@ var store_pk="${store.store_pk}"
 
 					</div>
 				</div>
-				<div class="row" style="margin-top: 20px;">
+				<div   style="margin-top: 20px;">
 					<input type="text" name="store_notice" class="form-control" value="${store.store_notice }">
 					<button type="submit" class="btn btn-primary">스토어 수정</button>
 				</div>
 				</form>
 <!-- 				store update form end -->
-				<div class="row">
+				<div  >
 					<div class="tabbable-panel">
 						<div class="tabbable-line">
 							<ul class="nav nav-tabs ">
@@ -702,31 +711,35 @@ var store_pk="${store.store_pk}"
 
 <!-- first 끝 -->
 </div>
+
 <div id="border">
 	<div id="line" class="one"></div>
 </div>
+
 <div id="right-side">
 	<div style="position: fixed;">
 		<ul>
-			<li class="shop active">
+			<li class="shop active ">
 				<div class="icon active">
 					<img src="${path }/resources/icons/shop.svg" alt="">
-				</div> Shop
+				</div> <span class="right"> Shop</span>
 			</li>
-			<li class="sales">
+			<li class="sales ">
 				<div class="icon">
 					<img src="${path }/resources/icons/paper.svg" alt="">
-				</div> 매출관리
+				</div> <span class="right"> 매출관리</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
 					<img src="${path }/resources/icons/calander.svg" alt="">
-				</div> Reserve(예약)
+				</div>
+				<span class="right"> Reserve(예약)</span>
 			</li>
 			<li class="qna">
 				<div class="icon">
 					<img src="${path }/resources/icons/customer.svg" alt="">
-				</div> QnA(문의)
+				</div> 
+				<span class="right"> QnA(문의)</span>
 			</li>
 		</ul>
 	</div>

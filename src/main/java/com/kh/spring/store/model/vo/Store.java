@@ -27,7 +27,18 @@ public class Store implements Serializable {
 	private String store_kakao;
 	private String store_instagram;
 	private String store_notice;
+	private String store_address_detail;
 	
+	public String getStore_address_detail() {
+		return store_address_detail;
+	}
+
+
+	public void setStore_address_detail(String store_address_detail) {
+		this.store_address_detail = store_address_detail;
+	}
+
+
 	public String getStore_notice() {
 		return store_notice;
 	}

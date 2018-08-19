@@ -12,7 +12,7 @@
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- storeManage css -->
-<link href="${path }/resources/css/storeManage.css?ver=2"
+<link href="${path }/resources/css/storeManage.css?ver=3"
 	rel="stylesheet" />
 <script type="text/javascript">
 // 외부 js 에서 쓰이는 변수 setting
@@ -20,7 +20,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js"></script>
+<script src="${path }/resources/js/storeManage.js?ver=3"></script>
 <div>
 	<div id="wrapper">
 

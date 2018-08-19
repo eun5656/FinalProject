@@ -53,9 +53,10 @@ var store_pk ="${store.store_pk}";
 				<!--가게 이미지 끝-->
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
-					<p>장소 : ${store. store_address }</p>
+					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
 					<p>Tel. ${store. store_phone }</p>
-					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
+					<p>휴일 : ${store.store_holiday }</p>
+					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
 					<p>${store.store_info }</p>
 				</div>
 			</div>
