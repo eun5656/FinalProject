@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="storeReserve">
+
 	<resultMap type="storeReserve" id="storeReserveMap">
-	
+		 
 	</resultMap>
 	
 	<insert id="storeReserveInsert" parameterType="storeReserve">
@@ -19,5 +20,10 @@
 	<select id="selectReserList" parameterType="_int" resultMap="storeReserveMap">
 			SELECT * FROM RESERVE WHERE store_pk=#{store_pk} 
 	</select>
+	
+	<select id="mypageReserveList" parameterType="_int" resultMap="storeReserveMap">
+		select * from store s join reserve r on (s.store_pk=r.store_pk) where r.member_pk=#{memberPk}
+	</select>
 
+	<select id="reserveCount" parameterType="_int" resultType="_int"> select count(*) from reserve where member_pk=#{memberPk} </select>
 </mapper>

@@ -18,6 +18,10 @@ public class Reserve implements Serializable{
 	private String reserve_end_time;
 	private String reserve_apply_date;
 	
+	private String store_name;
+	private String store_phone;
+	private String store_re_img;
+	
 	public Reserve() {
 		// TODO Auto-generated constructor stub
 	}
@@ -110,13 +114,43 @@ public class Reserve implements Serializable{
 		this.reserve_apply_date = reserve_apply_date;
 	}
 
+	public String getStore_name() {
+		return store_name;
+	}
+
+	public void setStore_name(String store_name) {
+		this.store_name = store_name;
+	}
+
+	public String getStore_phone() {
+		return store_phone;
+	}
+
+	public void setStore_phone(String store_phone) {
+		this.store_phone = store_phone;
+	}
+
+	public String getStore_re_img() {
+		return store_re_img;
+	}
+
+	public void setStore_re_img(String store_re_img) {
+		this.store_re_img = store_re_img;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "Reserve [reserve_pk=" + reserve_pk + ", member_pk=" + member_pk + ", member_name=" + member_name
 				+ ", store_pk=" + store_pk + ", designer_name=" + designer_name + ", designer_id=" + designer_id
 				+ ", menu_pk=" + menu_pk + ", reserve_status=" + reserve_status + ", reserve_start_time="
 				+ reserve_start_time + ", reserve_end_time=" + reserve_end_time + ", reserve_apply_date="
-				+ reserve_apply_date + "]";
+				+ reserve_apply_date + ", store_name=" + store_name + ", store_phone=" + store_phone + ", store_re_img="
+				+ store_re_img + "]";
 	}
-	
+
+		
 }
