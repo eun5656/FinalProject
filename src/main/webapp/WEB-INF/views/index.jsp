@@ -426,7 +426,7 @@
 	
 							$.ajax({
 							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,  nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+								data:{nail_color:selectAry.nail_color,  nail_style:selectAry.nail_style, nail_check:selectAry.nail_check,memberPk:"${memberLoggedIn.memberPk}"},
 								type: "post",
 								dataType: "json",
 								success: function(data){
@@ -436,22 +436,35 @@
 								 var html2="";
 								 
 									for (var i = 0; i < data.list.length; i++) {
-											     html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
+										html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+										var mark_check=false;
+										if(data.bookmarkList!=null){
+										for (var j = 0; j < data.bookmarkList.length; j++) {
+											if(data.bookmarkList[j].member_pk=="${memberLoggedIn.memberPk}" &&  data.bookmarkList[j].nail_pk == data.list[i].NAIL_PK){
+												mark_check=true;
+												html2 += "<img src='${path }/resources/icons/love_filled.svg' alt='true' class='b_icon zindex' id='b_icon'>"
+												html2 += "<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='"+data.bookmarkList[j].bookmark_pk+"'>";
+											}
+										}
+										}
+										
+										if(!mark_check){
+										html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
+										html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
+										}
+										
+										html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+										html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+										html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+										html2 += "<div class='hovereffect'>";
+										html2 += "<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+										html2 += "<div class='overlay'>";
+										html2 += "<p>";
+										html2 += "<h2>"+ data.list[i].NAIL_NAME+"</h2>";
+										html2 += "<a href='#'>"+ data.list[i].NAIL_STYLE+ "</a><br><br><br><br>";
+										html2 += "<a href='${path}/store/store.do?store_pk="+ data.list[i].STORE_PK+ "'>점포로 이동</a>";
+										html2 += "</p>";
+										html2 += "</div></div></div>";
 								}
 								 console.log(html2);
 								 selectbar.after(html1);
@@ -480,8 +493,9 @@
 							main_nail_check_button.html(value);
 							
 							$.ajax({
+								
 							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check,memberPk:"${memberLoggedIn.memberPk}"},
 								type: "post",
 								dataType: "json",
 								success: function(data){
@@ -491,23 +505,35 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-												 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											     html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											var mark_check=false;
+											if(data.bookmarkList!=null){
+											for (var j = 0; j < data.bookmarkList.length; j++) {
+												if(data.bookmarkList[j].member_pk=="${memberLoggedIn.memberPk}" &&  data.bookmarkList[j].nail_pk == data.list[i].NAIL_PK){
+													mark_check=true;
+													html2 += "<img src='${path }/resources/icons/love_filled.svg' alt='true' class='b_icon zindex' id='b_icon'>"
+													html2 += "<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='"+data.bookmarkList[j].bookmark_pk+"'>";
+												}
+											}
+											}
 											
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
+											if(!mark_check){
+											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
+											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
+											}
+											
+											html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+											html2 += "<div class='hovereffect'>";
+											html2 += "<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+											html2 += "<div class='overlay'>";
+											html2 += "<p>";
+											html2 += "<h2>"+ data.list[i].NAIL_NAME+"</h2>";
+											html2 += "<a href='#'>"+ data.list[i].NAIL_STYLE+ "</a><br><br><br><br>";
+											html2 += "<a href='${path}/store/store.do?store_pk="+ data.list[i].STORE_PK+ "'>점포로 이동</a>";
+											html2 += "</p>";
+											html2 += "</div></div></div>";
 									}
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);							
@@ -538,7 +564,7 @@
 														
 							$.ajax({
 							 	url:"${path}/nail/selectNailColor.do",
-								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check},
+								data:{nail_color:selectAry.nail_color,nail_style:selectAry.nail_style, nail_check:selectAry.nail_check,memberPk:"${memberLoggedIn.memberPk}"},
 								type: "post",
 								dataType: "json",
 								success: function(data){
@@ -548,22 +574,35 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-										 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-										 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-										 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-										 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-										 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-										 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-										 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											var mark_check=false;
+											if(data.bookmarkList!=null){
+											for (var j = 0; j < data.bookmarkList.length; j++) {
+												if(data.bookmarkList[j].member_pk=="${memberLoggedIn.memberPk}" &&  data.bookmarkList[j].nail_pk == data.list[i].NAIL_PK){
+													mark_check=true;
+													html2 += "<img src='${path }/resources/icons/love_filled.svg' alt='true' class='b_icon zindex' id='b_icon'>"
+													html2 += "<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='"+data.bookmarkList[j].bookmark_pk+"'>";
+												}
+											}
+											}
+											
+											if(!mark_check){
+											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
+											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
+											}
+											
+											html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+											html2 += "<div class='hovereffect'>";
+											html2 += "<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+											html2 += "<div class='overlay'>";
+											html2 += "<p>";
+											html2 += "<h2>"+ data.list[i].NAIL_NAME+"</h2>";
+											html2 += "<a href='#'>"+ data.list[i].NAIL_STYLE+ "</a><br><br><br><br>";
+											html2 += "<a href='${path}/store/store.do?store_pk="+ data.list[i].STORE_PK+ "'>점포로 이동</a>";
+											html2 += "</p>";
+											html2 += "</div></div></div>";
 									}
 										console.log(html2);
 									 selectbar.after(html1);
@@ -603,7 +642,7 @@
 							
 							$.ajax({
 							 	url:"${path}/nail/selectNailreset.do",
-								data:{reset:"reset"},
+								data:{reset:"reset",memberPk:"${memberLoggedIn.memberPk}"},
 								type: "post",
 								dataType: "json",
 								success: function(data){
@@ -613,26 +652,33 @@
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											 	 html2+="<div class='cover-card col-sm-"+data.col_i[i]+"'>";
-											 	 html2+="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex'id='b_icon'>" 
-											 	 html2+="<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
-											 	 html2+="<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
-											 	 html2+="<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
-											 	 html2+="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='1' >";
-											 	 //구현되면 나머지도 member_pk,bookmark_pk 추가
-											
-											 	 html2+="<div class='hovereffect'>";
-												 html2+="<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
-												 html2+="<div class='overlay'>";
-												 html2+="<p>";
-												 html2+="<h2>"+data.list[i].NAIL_NAME+"</h2>";
-												 html2+="<a href='#'>"+data.list[i].NAIL_STYLE+"</a><br><br><br><br>";
-												 html2+="<a href='${path}/store/store.do?store_pk="+data.list[i].STORE_PK+"'>점포로 이동</a>";
-												 html2+="</p>";
-												 html2+="</div></div></div>";
-												 
-												 
-												 
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											var mark_check=false;
+											if(data.bookmarkList!=null){
+											for (var j = 0; j < data.bookmarkList.length; j++) {
+												if(data.bookmarkList[j].member_pk=="${memberLoggedIn.memberPk}" &&  data.bookmarkList[j].nail_pk == data.list[i].NAIL_PK){
+													mark_check=true;
+													html2 += "<img src='${path }/resources/icons/love_filled.svg' alt='true' class='b_icon zindex' id='b_icon'>"
+													html2 += "<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='"+data.bookmarkList[j].bookmark_pk+"'>";
+												}
+											}
+											}
+											if(!mark_check){
+											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
+											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
+											}
+											html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
+											html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
+											html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
+											html2 += "<div class='hovereffect'>";
+											html2 += "<img id='nail-img1' class='img-responsive nail-main-images' src='${path }/resources/images/nails/"+data.list[i].NAIL_RE_IMG+"'>";
+											html2 += "<div class='overlay'>";
+											html2 += "<p>";
+											html2 += "<h2>"+ data.list[i].NAIL_NAME+"</h2>";
+											html2 += "<a href='#'>"+ data.list[i].NAIL_STYLE+ "</a><br><br><br><br>";
+											html2 += "<a href='${path}/store/store.do?store_pk="+ data.list[i].STORE_PK+ "'>점포로 이동</a>";
+											html2 += "</p>";
+											html2 += "</div></div></div>";
 									}
 										console.log(html2);
 									 selectbar.after(html1);
