@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="message">
-  <select id="selectCheck" parameterType="string" resultType="_int">
-  	select count(*) from member where memberId=#{memberId}
-  </select> 
+   <select resultType="_int" parameterType="string" id="selectCheck">select count(*) from member where member_id=#{receive_user} </select>
+
+<insert id="insertMsg">insert into message values(message_SEQ.nextVal,#{member_pk},#{send_user},#{receive_user},#{send_content},sysdate,default) </insert>
+
+<resultMap id="message" type="message"/>
+
+<select parameterType="String" id="selectList" resultMap="message"> select * from message where send_user=#{send_user} </select>
+
+<select parameterType="String" id="selectList2" resultMap="message"> select * from message where receive_user=#{receive_user} </select>
+
+<select resultType="message" id="selectOne">select * from message where message_pk=#{message_pk} </select>
+
+<update parameterType="_int" id="update">update message set send_read_check='읽음' where message_pk=#{message_pk} </update>
+
+<delete parameterType="_int" id="delete">delete from message where message_pk=#{message_pk} </delete>
+
+<select resultType="_int" parameterType="String" id="selectCount">select count(*) from message where send_user=#{send_user} </select>
+
+<select resultType="_int" parameterType="String" id="selectCount2">select count(*) from message where receive_user=#{receive_user} </select> 
 </mapper>

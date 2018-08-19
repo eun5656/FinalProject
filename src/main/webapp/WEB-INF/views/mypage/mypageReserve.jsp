@@ -13,7 +13,7 @@
       <div class="panel">
 
         <ul class="nav nav-tabs">
-          <li class="active" role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
+          <li class="active" role="presentation"><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">예약현황</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageQNAList.do?member_pk=${memberLoggedIn.memberPk}">문의내역</a></li>
           <li class="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
@@ -31,35 +31,37 @@
                   <thead>
                       <tr>
                           <th>네일샵</th>
-                          <th>예약날짜</th>
+                          <th class="text-center">예약날짜</th>
                           <th class="text-center">예약상태</th>
                           <th class="text-center">전화번호</th>
-                          <th> </th>
+                          <th> </th>
                       </tr>
                   </thead>
                   <tbody>
+                  <c:forEach  var='m' items='${list}' varStatus="vs">
                       <tr>
                           <td class="col-sm-8 col-md-6">
                           <div class="media">
-                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
-                                  <h4 class="media-heading"><a href="#">nailshop name</a></h4>
+                                  <h4 class="media-heading"><a href="#">${m.store_name}</a></h4>
                               </div>
                           </div></td>
                           <td class="col-sm-1 col-md-1" style="text-align: center">
-                          <strong>날짜</strong>
+                          <strong>${m.reserve_start_time }</strong>
                           </td>
-                          <td class="col-sm-1 col-md-1 text-center"><strong>완료</strong></td>
-                          <td class="col-sm-1 col-md-1 text-center"><strong>02586945987</strong></td>
+                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.reserve_status}</strong></td>
+                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>
                           <td class="col-sm-1 col-md-1">
                           <button type="button" class="btn btn-danger">
                               <span class="glyphicon glyphicon-remove"></span> 예약취소
                           </button></td>
                       </tr>
-
+					</c:forEach>
                   </tbody>
 
               </table>
+              <div class="row1 text-center" id="paging">${pageBar}</div>
           </div>
       </div>
   </div>
