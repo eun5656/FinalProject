@@ -18,6 +18,12 @@
   
   <style>
 </style>
+<script type="text/javascript">
+	$(function() {
+		alert("${bookmarkList}");
+		alert("${memberLoggedIn}");
+	})
+</script>
 
 <div class="container-fluid" style="padding-top: 80px;">
 
@@ -760,12 +766,22 @@
 <div id="nail-list">	
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
  <div  class="cover-card col-sm-${col_i[status.index]}">
- 	<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
+ 	
+ 			<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
+				<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nail.nail_pk}">
+ 					<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
+					<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+				</c:if>
+				<c:if test=""></c:if>
+			</c:forEach>
+			
+	 <!--   <img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon"> --> 
 		<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
 		<input class="store_pk" name="store_pk" type="hidden" value="${nail.store_pk}" >
 		<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
-		<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="1" >
+			
+			
 		<!-- 내일 ajax모두에 추가해주기...졸려 -->
     <!--<div class="cover-card col-sm-4">-->
     <div class="hovereffect">

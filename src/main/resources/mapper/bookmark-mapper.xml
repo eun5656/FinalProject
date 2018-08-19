@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="bookmark">
+
+<resultMap type="bookmark" id="bookmarkMap">
+	</resultMap>
+	
+
  <insert id="insertBookmark" parameterType="hashmap">
 	insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check})
  </insert>
@@ -8,4 +13,9 @@
  <delete id="deleteBookmark" parameterType="hashmap">
  	delete from bookmark where member_pk=#{member_pk} and bookmark_pk=#{bookmark_pk}
  </delete>
+ 
+ <select id="selectBookMarkList" resultMap="bookmarkMap" parameterType="_int">
+		select * from bookmark where member_pk = #{memberPk}
+		</select>
+		
 </mapper>
