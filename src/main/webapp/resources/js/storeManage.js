@@ -92,7 +92,7 @@ $(function(){
 	//파일 삽입 끝
 
 	//메뉴 삭제
-$("#menuDelete").click(function(){
+$(".menuDelete").click(function(){
 	var menu_pk = this.value;
 		$.ajax({
 			url: path+"/store/storeManage/menuDelete.do",
@@ -105,7 +105,7 @@ $("#menuDelete").click(function(){
 			}
 		});
 	});		
-$("#menuUpdate").click(function(){
+$(".menuUpdate").click(function(){
 //	var queryString = $("form[name=QnaInsert]").serialize();
 	var queryString = $(this).closest("form").serialize().replace(/%/g,'%25');;
 	queryString = decodeURIComponent(queryString);
@@ -211,7 +211,7 @@ function menuInsertForm(){
 		html+='<input type="text" placeholder="메뉴 제목 입력" id="menu_name" name="menu_name" class="form-control"/></label>';
 		html+='<label for="menu_info">정보 입력: <input type="text" placeholder="정보 입력" id="menu_info" "name="menu_info" class="form-control"/></label>';
 		html+='<label name="menu_price">가격 입력: <input type="number" placeholder="가격 입력" id="menu_price" name="menu_price" class="form-control"/></label>';
-		html+='<select name="menu_check"><option value="손">손</option><option value="발">발</option></select>';
+		html+='<select name="menu_check"><option value="네일">네일</option><option value="페디">페디</option></select>';
 		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
 		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
 		li.html(html);

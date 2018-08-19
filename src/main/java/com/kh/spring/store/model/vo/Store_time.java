@@ -1,5 +1,7 @@
 package com.kh.spring.store.model.vo;
 
+import java.text.SimpleDateFormat;
+
 public class Store_time {
 
 	private int store_pk;
@@ -9,6 +11,32 @@ public class Store_time {
 	private String store_reserve_end_time;
 	private String store_weekend_open;
 	private String store_weekend_close;
+	
+	public Store_time addDate(Store_time st) {
+		String add= "00/01/01";
+		
+		st.setStore_close_time(add + st.getStore_close_time());
+		st.setStore_open_time(add + st.getStore_open_time());
+		st.setStore_reserve_end_time(add + st.getStore_reserve_end_time());
+		st.setStore_reserve_time(add + st.getStore_reserve_time());
+		st.setStore_weekend_open(add + st.getStore_weekend_open());
+		st.setStore_weekend_close(add + st.getStore_weekend_close());
+		
+		return st;
+		
+	}
+	public Store_time deleteDate(Store_time st) {
+		String add= "2000-01-01 ";
+		
+		st.setStore_close_time(st.getStore_close_time().replaceAll(add, ""));
+		st.setStore_open_time(st.getStore_open_time().replaceAll(add, ""));
+		st.setStore_reserve_end_time(st.getStore_reserve_end_time().replaceAll(add, ""));
+		st.setStore_reserve_time(st.getStore_reserve_time().replaceAll(add, ""));
+		st.setStore_weekend_open(st.getStore_weekend_open().replaceAll(add, ""));
+		st.setStore_weekend_close(st.getStore_weekend_close().replaceAll(add, ""));
+		return st;
+		
+	}
 	
 	public Store_time()
 	{

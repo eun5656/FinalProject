@@ -66,21 +66,21 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
 	
 		Store store = service.selectOne(member_pk);
-		Store_time store_time= service.selectTime(store.getStore_pk());
+		Store_time st = service.selectTime(store.getStore_pk());
+		st = st.deleteDate(st);
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
-		
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);
 		System.out.println("Nail 값 확인 : "+nails);
-		System.out.println("시간 확인  : "+ store_time);
+		System.out.println("시간 확인  : "+ st);
 		System.out.println(reviews.get(1));
 		model.addAttribute("store",store);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
-		model.addAttribute("store_time", store_time);
+		model.addAttribute("store_time", st);
 		return view;
 	}
 	
@@ -155,6 +155,11 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store", store);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
+		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
+		Store_time st = service.selectTime(store.getStore_pk());
+		st = st.deleteDate(st);
+		model.addAttribute("reviews",reviews);
+		model.addAttribute("store_time",st);
 		return "/store/storeManage";
 	}
 	
@@ -247,6 +252,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		Store_time st = service.selectTime(store.getStore_pk());
+		st = st.deleteDate(st);
+		model.addAttribute("store_time",st);
 		return "/store/storeManage";
 	}
 	@RequestMapping(value="/store/storeManage/nailUpdate.do", method = RequestMethod.POST, consumes = {
@@ -268,10 +276,10 @@ private Logger logger = Logger.getLogger(StoreController.class);
 			System.out.println(dir.mkdirs());// 폴더생성
 		if (!img.isEmpty()) {
 			//기존 파일 삭제 
-
+			System.out.println("이미지 변경");
 			  File file = new File(saveDir+File.separator+oldImage);
 		         
-		        if( file.exists() ){
+		        if(file.exists()){
 		            if(file.delete()){
 		                System.out.println("파일삭제 성공");
 		            }else{
@@ -296,6 +304,12 @@ private Logger logger = Logger.getLogger(StoreController.class);
 			System.out.println("이미지 삽입 확인" + nail);
 //			이미지 존재시에 오리지널 네임 만들어줌
 			}
+		else {
+			Nail temp= Nailservice.selectNailOne(nail.getNail_pk());
+			System.out.println("select nail 값 확인" +  temp);
+			nail.setNail_ori_img(temp.getNail_ori_img());
+			nail.setNail_re_img(temp.getNail_re_img());
+		}
 		int result = Nailservice.updateNail(nail);
 		if(result>0) {
 			System.out.println("Update 입력 성공"+nail);
@@ -307,11 +321,15 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
-		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
+		
 		model.addAttribute("store",store);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
+		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
+		Store_time st = service.selectTime(store.getStore_pk());
 		model.addAttribute("reviews",reviews);
+		st = st.deleteDate(st);
+		model.addAttribute("store_time",st);
 		return "/store/storeManage";
 		}
 
@@ -381,6 +399,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		st = st.deleteDate(st);
 		model.addAttribute("store_time",st);
 
 		return "/store/storeManage";
@@ -392,10 +411,11 @@ private Logger logger = Logger.getLogger(StoreController.class);
 //		logger.debug("jsonstr 확인~ : "+jsonstr);
 		int store_pk = Integer.parseInt(store_pko);
 		store_time.setStore_pk(store_pk);
+		store_time =store_time.addDate(store_time);
 		int result = service.updateStore_time(store_time);
-		System.out.println("결과값 확인  :  " + result);
 		Store store = service.selectOne(store_pk);
 		Store_time st = service.selectTime(store_pk);
+		st = st.deleteDate(st);
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());

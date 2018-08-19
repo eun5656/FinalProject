@@ -20,7 +20,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=24"></script>
+<script src="${path }/resources/js/storeManage.js?ver=26"></script>
 <div>
 	<div id="wrapper">
 
@@ -73,7 +73,7 @@ var store_pk="${store.store_pk}"
 							class="form-control" value="${store.store_phone}">
 						</label> 
 						<label>휴일 : <input type="text" name="store_holiday" class="form-control"
-							value="${store.store_holiday!=null?'<%=store.getStore_holiday()%>':'연중무휴'}">
+							value="${store.store_holiday}">
 						</label>
 						<label>카카오톡 : <input type="text" name="store_kakao" class="form-control" value="${store.store_kakao}"> 
 						</label> 
@@ -83,7 +83,7 @@ var store_pk="${store.store_pk}"
 						size="80">
 						</label>
 						<div> 
-						 <input type="text" name="store_pk" class="form-control" value="${store.store_pk}"/>
+						 <input type="hidden" name="store_pk" class="form-control" value="${store.store_pk}"/>
 						<a href="#TimeModal" data-toggle="modal"> 
 						<img src="${path}/resources/images/time.png" alt=""></a>
 							영업 시간 설정</div>
@@ -677,9 +677,9 @@ var store_pk="${store.store_pk}"
 												<option value="네일"<c:if test="${menu.menu_check eq '네일'}">selected</c:if>>네일</option>
 												<option value="페디"<c:if test="${menu.menu_check eq '페디'}">selected</c:if>>페디</option>
 											</select>
-											<button type="button" id="menuUpdate" class="btn-success btn">
+											<button type="button" id="menuUpdate" class="btn-success btn menuUpdate">
 												수정</button>
-											<button id="menuDelete" class="btn btn-danger" value="${menu.menu_pk }">삭제</button>
+											<button id="menuDelete" class="btn btn-danger menuDelete" value="${menu.menu_pk }">삭제</button>
 											</form>
 											<hr>
 										</c:forEach>
@@ -750,7 +750,7 @@ var store_pk="${store.store_pk}"
 	</label>
 	    <label>평일 마감 시간: <input type="time"
 							name="store_close_time" class="form-control"
-							value="${store_tiem.store_close_time}">
+							value="${store_time.store_close_time}">
 						</label>
 						    <label>주말 오픈 시간: <input type="time"
 							name="store_weekend_open" class="form-control"

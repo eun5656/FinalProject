@@ -32,4 +32,7 @@ public interface NailDao {
 
 	int deleteNail(SqlSessionTemplate sqlSession, String nail_pk);
 
+
+	Nail selctNailOne(SqlSessionTemplate sqlSession, int nail_pk);
+
 }

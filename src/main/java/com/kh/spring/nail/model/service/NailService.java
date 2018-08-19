@@ -23,4 +23,6 @@ public interface NailService {
 
 	int nailDelete(String nail_pk);
 
+	Nail selectNailOne(int nail_pk);
+
 }

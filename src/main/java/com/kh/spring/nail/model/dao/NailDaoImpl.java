@@ -54,6 +54,12 @@ public class NailDaoImpl implements NailDao {
 		return sqlSession.delete("nail.deleteNail", nail_pk);
 	}
 
+	@Override
+	public Nail selctNailOne(SqlSessionTemplate sqlSession, int nail_pk) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("nail.selectNailOne", nail_pk);
+	}
+
 
 
 

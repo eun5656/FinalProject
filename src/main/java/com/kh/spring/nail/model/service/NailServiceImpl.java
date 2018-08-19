@@ -91,5 +91,14 @@ public class NailServiceImpl implements NailService{
 
 
 
+	@Override
+	public Nail selectNailOne(int nail_pk) {
+		
+		return dao.selctNailOne(sqlSession,nail_pk);
+				
+	}
+
+
+
 	
 }

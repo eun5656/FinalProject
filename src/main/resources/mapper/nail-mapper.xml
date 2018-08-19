@@ -74,4 +74,7 @@
 		delete from nail where nail_pk=#{nail_pk}
 	</delete>
 		
+	<select id="selectNailOne" parameterType="int" resultMap="selectAll">
+		select * from nail where nail_pk = #{nail_pk}
+	</select>	
 </mapper>
