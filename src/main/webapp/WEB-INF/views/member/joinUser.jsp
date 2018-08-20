@@ -127,7 +127,6 @@
 		});
 	});
 </script>
-
 <div class="container">
 	<div class="row">
 		<h1>
@@ -397,7 +396,7 @@
 						<label class="col-sm-3 control-label" for="inputName">이름</label>
 						<div class="col-sm-6">
 							<input class="form-control" id="memberName" type="text" placeholder="이름" name="memberName" />
-								<input class="form-control" id="memberLevel" type="hidden" name="memberLevel" value='3' />
+							<input class="form-control" id="memberLevel" type="hidden" name="memberLevel" value='3' />
 						</div>
 					</div>
 					<div class="form-group">
@@ -425,7 +424,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="inputEmail">이메일</label>
 						<div class="col-sm-6">
-							<input id="JHCheck" type="email" class="form-control" name="memberEmail" placeholder="abc@efg.com" required>
+							<input id="JHCheck" type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="abc@efg.com" required>
 							<p id="emailCheckText"></p>
 						</div>
 						<div class="col-sm-3">
@@ -518,19 +517,21 @@
  			}
  		}
  		return true;
- 		$.ajax({
- 			url:"${path}/member/JHcheckEmail.do",
- 			data:{memberEmail:$('#memberEmail').val()},
- 			success:function(data) {
- 				if(data == 'true') {
- 					alert("사용가능한 이메일입니다.");
- 				} else {
- 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
- 					$("#JHCheck").val("");
- 					$("#JHCheck").focus();
- 				}
- 			}
- 		})
+ 		function fn_emailcheck() {
+ 			$.ajax({
+ 	 			url:"${path}/member/JHcheckEmail.do",
+ 	 			data:{memberEmail:$('#memberEmail').val()},
+ 	 			success:function(data) {
+ 	 				if(data == 'true') {
+ 	 					alert("사용가능한 이메일입니다.");
+ 	 				} else {
+ 	 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
+ 	 					$("#JHCheck").val("");
+ 	 					$("#JHCheck").focus();
+ 	 				}
+ 	 			}
+ 	 		})
+ 		};
  	});
  	function emailRequest() {
  		var nowemail = $('#JHCheck').val();

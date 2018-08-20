@@ -129,7 +129,6 @@
 		});
 	});
 </script>
-
 <div class="container">
 	<div class="row">
 		<h1>
@@ -438,24 +437,6 @@
 							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" onclick="emailRequest();" value="이메일 인증">
 						</div>
 					</div>
-					<!-- <div class="form-group">
-						<label class="col-sm-3 control-label" for="inputimage">프로필 사진</label>
-						<div class="col-sm-6">
-							<div class="input-group image-preview">
-								<input type="text" class="form-control image-preview-filename" name="upload_file" disabled="disabled">
-								<span class="input-group-btn">
-									<button type="button" class="btn btn-default image-preview-clear" style="display: none;">
-										<span class="glyphicon glyphicon-remove"></span>Clear
-									</button>
-									<div class="btn btn-default image-preview-input">
-										<span class="glyphicon glyphicon-folder-open"></span>
-										<span class="image-preview-input-title">Browse</span>
-										<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" />
-									</div>
-								</span>
-							</div>
-						</div>
-					</div> -->
 					<br>
 					<button class="btn btn-primary nextBtn btn-lg pull-right" type="button">다음</button>
 				</div>
@@ -526,52 +507,6 @@
 	</form>
 </div>
 <script>
-/* $(function () {
-	$("form[name=profile_insert]").submit(function(e) {
-		e.preventDefault();
-		var form = $('#profile_insert')[0];
-		var formData = new FormData(form);
-        formData.append("memberPk",  $('input[name=memberPk]'));
-        formData.append("store_pk", $('input[name=store_pk]'));
-        formData.append("memberPw", $('input[name=memberPw2]'));
-        formData.append("memberName", $('input[name=memberName]'));
-        formData.append("memberPhone",$('input[name=memberPhone]'));
-        formData.append("memberAddress", $('input[name=memberAddress]'));
-        formData.append("memberEmail", $('input[name=memberEmail]'));
-        formData.append("store_name", $('input[name=store_name]'));
-        formData.append("store_num", $('input[name=store_num]'));
-        formData.append("store_phone", $('input[name=store_phone]'));
-        formData.append("shopAddress1", $('input[name=shopAddress1]'));
-        formData.append("input-file-preview", $('input[name=input-file-preview]'));
-        
-		var insert_div=$(".insertComment");
-		var index= insert_div.prev().attr('id');
-        index=parseInt( index.charAt(index.length - 1));
-        if(isNaN(index)) {
-        	index=0;
-        } else {
-        	index=index+1;
-        }
-        console.log(index);
-         
-        $.ajax({
-        	type: "POST",
-            enctype: 'multipart/form-data',
-            url: "${path}/member/memberEnrollEnd.do",
-            data: formData,
-            dataType: "json",
-            processData: false,
-            contentType: false,
-            cache: false,
-            success: function (data) {
-      
-            },
-            error: function (e) {
-            	console.log("ERROR : ", e);
-            }
-
-        })
-	});    */
 //주소찾기 스크립트
 	function Postcode() {
 	    new daum.Postcode({
@@ -589,7 +524,6 @@
 	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
 	                fullAddr = data.jibunAddress;
 	            }
-
 	            // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
 	            if(data.userSelectedType === 'R') {
 	                //법정동명이 있을 경우 추가한다.
@@ -675,15 +609,12 @@
 	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
 	            var fullAddr = ''; // 최종 주소 변수
 	            var extraAddr = ''; // 조합형 주소 변수
-
 	            // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
 	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
 	                fullAddr = data.roadAddress;
-
 	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
 	                fullAddr = data.jibunAddress;
 	            }
-
 	            // 사용자가 선택한 주소가 도로명 타입일때 조합한다.
 	            if(data.userSelectedType === 'R'){
 	                //법정동명이 있을 경우 추가한다.
@@ -697,11 +628,9 @@
 	                // 조합형주소의 유무에 따라 양쪽에 괄호를 추가하여 최종 주소를 만든다.
 	                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 	            }
-
 	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	            document.getElementById('shopAddress').value = data.zonecode; //5자리 새우편번호 사용
 	            document.getElementById('shopAddress1').value = fullAddr;
-
 	            // 커서를 상세주소 필드로 이동한다.
 	            document.getElementById('memberAddressDetail1').focus();
 	        }
@@ -831,5 +760,4 @@
 	    }
 	}	
 </script>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

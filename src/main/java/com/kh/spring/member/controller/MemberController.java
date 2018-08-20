@@ -27,8 +27,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.kh.spring.bookmark.model.service.BookmarkService;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
@@ -37,11 +35,11 @@ import com.kh.spring.store.model.vo.Store;
 @Controller
 public class MemberController {
 
+	String user = "jazzhong5@gmail.com"; // gmail 계정
+	String password = "1zjvldndb"; // 패스워드
+
 	@Autowired
 	private MemberService service;
-	
-//	@Autowired
-//	private BookmarkService bookmarkService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -52,44 +50,35 @@ public class MemberController {
 	public String MemberLogin() {
 		return "member/loginForm";
 	}
-	
+
 	// 로그인 로직
 	@RequestMapping("/member/Login.do")
-	public String memberLogin(String memberId, String memberPw, Model model)
-	{
+	public String memberLogin(String memberId, String memberPw, Model model) {
 		logger.debug("로그인메소드호출");
 		Member m = service.loginCheck(memberId);
-	
-		//응답페이지 작성
-		String msg="";
-		String loc="/";
-		String view="/common/msg";
-		
+
+		// 응답페이지 작성
+		String msg = "";
+		String loc = "/";
+		String view = "/common/msg";
+
 		System.out.println(bcryptPasswordEncoder.encode(memberPw));
 
-		if(m!=null)
-		{
-			if(bcryptPasswordEncoder.matches(memberPw, m.getMemberPw()))
-			{
-				msg="로그인성공";
-				model.addAttribute("memberLoggedIn",m);
-				//List list = bookmarkService.selectBookmark(m.getMemberPk())
-				//model.addAttribute("bookmarkList", list);
-			}
-			else {
+		if (m != null) {
+			if (bcryptPasswordEncoder.matches(memberPw, m.getMemberPw())) {
+				msg = "로그인성공";
+				model.addAttribute("memberLoggedIn", m);
+			} else {
 				msg = "비밀번호가 일치하지 않습니다.";
-				loc = "${path}/member/loginForm";
 			}
-		}
-		else {
+		} else {
 			msg = "없는 아이디입니다.";
-			loc = "${path}/member/loginForm";
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
 		return view;
 	}
-	
+
 	// 로그아웃
 	@RequestMapping("/member/Logout.do")
 	public String logout(SessionStatus sessionStatus) {
@@ -121,7 +110,6 @@ public class MemberController {
 		response.getWriter().print(check);
 	}
 
-	// 이메일전송
 	@RequestMapping("/member/emailEnd.do")
 	public String emailResponse(String memberEmail, Model model) {
 		Properties prop = new Properties();
@@ -137,6 +125,7 @@ public class MemberController {
 			}
 		});
 		int ra = 0;
+
 		try {
 			MimeMessage message = new MimeMessage(session);
 			message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
@@ -156,7 +145,6 @@ public class MemberController {
 			Transport.send(message); //// 전송
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		model.addAttribute("ra", ra);
@@ -194,14 +182,14 @@ public class MemberController {
 		System.out.println("회원가입(개인)을 실행함");
 		String msg = "";
 		String loc = "";
-		s.setStore_address(request.getParameter("shopAddress1")+request.getParameter("shopAddressDetail"));//기본주소
-		
+		s.setStore_address(request.getParameter("shopAddress1") + request.getParameter("shopAddressDetail"));// 기본주소
+
 		boolean checkid = service.duplicateIdCheck(m.getMemberId()) == 0 ? true : false;
 		boolean checkemail = service.duplicateEmailCheck(m.getMemberEmail()) == 0 ? true : false;
 
 		if (!checkid) {
 			msg = "해당 아이디는 이미 존재합니다.";
-			model.addAttribute("msg", msg); 
+			model.addAttribute("msg", msg);
 			model.addAttribute("loc", loc);
 			return "common/msg";
 		}
@@ -211,7 +199,7 @@ public class MemberController {
 			model.addAttribute("loc", loc);
 			return "common/msg";
 		}
-		
+
 		String oldpw = m.getMemberPw();
 
 		System.out.println("암호화 전 : " + oldpw);
@@ -229,7 +217,7 @@ public class MemberController {
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
-		
+
 		if (!uploadFile.isEmpty()) {
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
@@ -243,7 +231,7 @@ public class MemberController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-				
+
 			// DB에 저장할 첨부파일에 대한 정보
 			m.setMemberOriImg(originalFileName);
 			System.out.println(originalFileName);
@@ -252,19 +240,16 @@ public class MemberController {
 
 		int result = 0;
 		System.out.println("store DB야 나와라 :" + s);
-		
-		if(m.getMemberLevel().equals("3")) 
-		{
+
+		if (m.getMemberLevel().equals("3")) {
 			result = service.insertMember(m);
-		} 
-		else
-		{
+		} else {
 			result = service.insertMember(m);
 			Member member = service.loginCheck(m.getMemberId());
 			s.setMember_pk(member.getMemberPk());
 			result = service.insertStore(s);
 		}
-		
+
 		if (result > 0) {
 			msg = "회원가입성공!";
 		} else {
@@ -275,5 +260,5 @@ public class MemberController {
 
 		return "common/msg";
 	}
-	
+
 }

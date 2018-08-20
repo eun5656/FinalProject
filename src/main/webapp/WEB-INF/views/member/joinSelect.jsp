@@ -33,7 +33,6 @@
 					<p>사용자 회원가입 페이지로 이동합니다.각종 네일 정보 및 이벤트에 참여하실 수 있습니다.</p>
 				</div>
 			</div>
-
 			<div class="box" style="text-align: center">
 				<a href="${path}/member/JoinShop.do">
 					<div class="icon">

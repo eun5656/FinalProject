@@ -12,36 +12,36 @@
 <script>
 	function check() {
 		var form = document.authenform;
-		var authNum = ${ra};
-		//var check = "";
+		var eMailNum = ${ra};
 
-		if (!form.authnum.value) {
+		if (!form.authNum.value) {
 			alert("인증번호를 입력하세요.");
 			return false;
 		}
-		if (form.authnum.value != authNum) {
+		if (form.authNum.value != eMailNum) {
 			alert("틀린 인증번호입니다. 인증번호를 다시입력해주세요.");
 			form.authnum.value = "";
 			return false;
 		}
-		if (form.authnum.value == authNum) {
+		if (form.authNum.value == eMailNum) {
 			alert("인증완료");
+			self.close();
 			$("#successEmail", opener.document).css("display", "block");
 			$("#emailAuther", opener.document).css("display", 'none');
 			$('#JHCheck', opener.document).attr("readonly", true);
-			self.close();
 		}
 	}
 </script>
-<center>
-	<br /> <br />
-	<h5>인증 번호 4자리를 입력하세요</h5>
-	<div class="container">
-		<form method="post" name="authenform" onsubmit="return check();">
-			<input type="text" name="authNum"> <br /><br />
-			<input type="submit" class="btn btn-default" value="확인">
-		</form>
-	</div>
-</center>
+<body>
+	<center>
+		<br /><br />
+		<h5>인증 번호 4자리를 입력하세요</h5>
+		<div class="container">
+			<form method="post" name="authenform" onsubmit="return check();">
+				<input type="text" name="authNum"><br /><br />
+				<input type="submit" class="btn btn-default" value="확인">
+			</form>
+		</div>
+	</center>
 </body>
 </html>
