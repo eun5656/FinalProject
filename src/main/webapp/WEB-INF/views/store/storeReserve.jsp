@@ -318,7 +318,7 @@ var store_pk ="${store.store_pk}";
                        check = false; //휴무일.
                   }
                 }
-                   if (check == true) {
+               if (check == true) {
                      var now = new Date;
                      var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
                      console.log("now" + nowDate);
@@ -336,26 +336,24 @@ var store_pk ="${store.store_pk}";
                      else if (checkHoliday == false) {
                           alert("영업시간이 아닙니다.");
                           date=null;
-
                      }
                      
                      else {
-            
                           if("${memberLoggedIn}".length >0){
-                          $('#calendarModal').modal();
-                          $('#designer').html(resource.title);
-                       $('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
+                       	  	 $('#calendarModal').modal();
+                         	 $('#designer').html(resource.title);
+                      		 $('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
                           }
                          else{
                             alert('로그인을 해주세요');
                             //로그인페이지로보내기.........할까말까
                          }
                      }
-                } 
+                }
            else {
                      console.log(i);
-                   alert("휴무일입니다.");
-                   date=null;
+                  	 alert("휴무일입니다.");
+                     date=null;
                 }
                    
                alert(date);
