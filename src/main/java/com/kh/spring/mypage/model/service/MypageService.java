@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.qna.model.vo.Qna;
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 
 
@@ -19,4 +20,10 @@ public interface MypageService {
 	List<Reserve> mypageReserveList(int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(int memberPk);
+	
+	Payment mypagePayment(int reserve_pk);
+	
+	int paymentUpdate(int payment_pk);
+	
+
 }

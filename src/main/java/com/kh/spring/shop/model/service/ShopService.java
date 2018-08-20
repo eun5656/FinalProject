@@ -17,4 +17,5 @@ public interface ShopService {
 
 	List<Store> bookmarkSortShopList();
 
+	List<Store> searchShopList(String searchLocation);
 }

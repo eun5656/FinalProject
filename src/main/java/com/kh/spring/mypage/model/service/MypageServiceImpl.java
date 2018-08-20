@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.mypage.model.dao.MypageDAO;
 import com.kh.spring.qna.model.vo.Qna;
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 
 @Service
@@ -47,5 +48,19 @@ public class MypageServiceImpl implements MypageService {
 		
 		return mypageDAO.reserveCount(sqlSession,memberPk);
 	}
+
+	@Override
+	public Payment mypagePayment(int reserve_pk) {
+		
+		return mypageDAO.mypagePayment(sqlSession, reserve_pk);
+	}
+
+	@Override
+	public int paymentUpdate(int payment_pk) {
+		
+		return mypageDAO.paymentUpdate(sqlSession, payment_pk);
+	}
+
+
 	
 }

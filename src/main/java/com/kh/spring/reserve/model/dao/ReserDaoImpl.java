@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.controller.StoreController;
 
@@ -30,6 +31,13 @@ public class ReserDaoImpl implements ReserDao {
 	@Override
 	public List<Reserve> selectReserList(SqlSessionTemplate sqlSession, int store_pk) {
 		return sqlSession.selectList("storeReserve.selectReserList",store_pk);
+	}
+
+
+	@Override
+	public int paymentInsert(SqlSessionTemplate sqlSession, Payment payment) {
+		
+		return sqlSession.insert("storeReserve.paymentInsert", payment);
 	}
 
 

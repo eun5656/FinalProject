@@ -18,4 +18,5 @@ public interface ShopDao {
 
 	List<Store> bookmarkSortShopList(SqlSessionTemplate sqlSession);
 
+	List<Store> searchShopList(SqlSessionTemplate sqlSession, String searchLocation);
 }

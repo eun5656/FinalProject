@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.reserve.model.dao.ReserDao;
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.controller.StoreController;
 
@@ -39,6 +40,13 @@ public class ReserServiceImpl implements ReserService {
 	public List<Reserve> selectreserveList(int store_pk) {
 		List<Reserve> reserveList=reserDao.selectReserList(sqlSession,store_pk);
 		return reserveList;
+	}
+
+
+	@Override
+	public int paymentInsert(Payment payment) {
+		
+		return reserDao.paymentInsert(sqlSession, payment);
 	}
 
 

@@ -21,6 +21,52 @@
   <link href="${path }/resources/css/navbar.css" rel="stylesheet"/>
    
 </head>
+<style>
+/*@ 미디어 : Navbar 축소시 줄내림 현상 방지 (max-width: 값을 변경해서 줄내림 현상 방지할수 있음*/
+
+/*@비회원 메인화면*/
+
+@media (max-width:1080px) {
+  .navbar-header {
+    float: none;
+  }
+  
+  .navbar-left, .navbar-right {
+    float: none !important;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+  .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+  }
+  .navbar-nav>li {
+    float: none;
+  }
+  .navbar-nav>li>a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .collapse.in {
+    display: block !important;
+  }
+}
+
+
+</style>
+
 
 <body>
 
@@ -63,7 +109,8 @@
          </li>
         </ul>
 
-          <form class="navbar-form navbar-left">
+      
+          <form class="navbar-form navbar-left" action="${path }/shop/searchLocation.do" method="post">
           <!--   <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
@@ -72,8 +119,8 @@
          --> 
          
            <div class="input-group col-md-12">
-            <input type="text" class=" input-sm  search-query form-control" placeholder="Search" />
-            <span class="input-group-btn"><button class="btn btn-danger input-sm" type="button">
+            <input type="text" class=" input-sm  search-query form-control" id="searchLocation" name="searchLocation" placeholder="지역명으로 검색해주세요." />
+            <span class="input-group-btn"><button class="btn btn-danger input-sm" type="submit">
                                             <span class=" glyphicon glyphicon-search"></span>
             </button>
             </span>
@@ -140,7 +187,7 @@
             </li>
            </c:if>
            
-           <c:if test="${memberLoggedIn.memberLevel.equals('1') }">
+            <c:if test="${memberLoggedIn.memberLevel.equals('1') }">
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
@@ -149,7 +196,8 @@
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
-                <li><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">마이페이지</a></li>
+              	<li><a href="${path}/manager/manageList.do">관리자 페이지</a></li>
+                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
                 <li><a href="${path}/member/Logout.do">로그아웃</a></li>
               </ul>
             </li>

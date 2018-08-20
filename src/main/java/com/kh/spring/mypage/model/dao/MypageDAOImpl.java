@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.kh.spring.qna.model.vo.Qna;
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 
 @Repository
@@ -41,5 +42,19 @@ public class MypageDAOImpl implements MypageDAO {
 		
 		return sqlSession.selectOne("storeReserve.reserveCount", memberPk);
 	}
+
+	@Override
+	public Payment mypagePayment(SqlSessionTemplate sqlSession, int reserve_pk) {
+		
+		return sqlSession.selectOne("storeReserve.paymentOne", reserve_pk);
+	}
+
+	@Override
+	public int paymentUpdate(SqlSessionTemplate sqlSession, int payment_pk) {
+		
+		return sqlSession.update("storeReserve.paymentUpdate", payment_pk);
+	}
+
+
 
 }

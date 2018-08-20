@@ -40,8 +40,8 @@
                   </div>
                   <input type="hidden" name="search_param" value="all" id="search_param">         
                   <input type="text" class="form-control" id="searchOption" name="searchOption" placeholder="검색">
-                  <span class="input-group-btn">
-                      <button class="btn btn-default" type="button" style="height:34px;"><span class="glyphicon glyphicon-search"></span></button>
+                   <span class="input-group-btn">
+                      <button class="btn btn-default" type="submit" style="height:34px;" onclick="return fn_select();"><span class="glyphicon glyphicon-search"></span></button>
                   </span>
               </div>
          
@@ -100,14 +100,28 @@
 					</div>
 				
       </div>
+      <c:if test="${memberLoggedIn!=null }">
       <div class="row1 text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealForm.do'">글 등록</button>
       </div>
+      </c:if>
     
       <div class="row1 text-center" id="paging">
         ${pageBar}
       </div>
-     
+      <script>
+		function fn_select(){
+			
+			
+			if($("#searchOption").val().length==0&&$("#searchOption").val("")){
+				alert("검색어를 입력해주세요.");
+				return false;
+				
+			}
+			return true;
+		}
+		</script>
+		
 		
 		
 		

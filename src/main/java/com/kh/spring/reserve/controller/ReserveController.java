@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.reserve.model.service.ReserService;
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.controller.StoreController;
 
@@ -64,7 +65,7 @@ public class ReserveController {
 		/* 예약 들어있는지 확인 */
 
 		// 예약 실제 로직~
-		String msg = "예약시간이 중복됩니다";
+		String msg ="예약시간이 중복됩니다";
 		Reserve reserve;
 		Map map = new HashMap();
 		try {
@@ -95,7 +96,7 @@ public class ReserveController {
 			check.put("reserve_start_time", check_date);
 			// check.put("reserve_end_time", reserve_end_time);
 			reserve = service.selectStoreReserve(check);*/
-			// 객체에 값넣기
+			//객체에 값넣기
 			//System.out.println(reserve);
 			//if (reserve == null) {
 			
@@ -112,12 +113,36 @@ public class ReserveController {
 				System.out.println(reserve);
 				int result = service.storeReserveInsert(reserve);
 				System.out.println("result" + result);
+				
+				
+				if(result>0) {
+				String jsonStr2 = request.getParameter("store_payment");
+				
+				JSONObject jsonObject2 = JSONObject.fromObject(jsonStr2);
+			
+				int member_pk1 = Integer.parseInt(jsonObject2.getString("member_pk"));
+				String member_name1 = String.valueOf(jsonObject2.get("member_name"));
+				int store_pk1 = Integer.parseInt(jsonObject2.getString("store_pk"));
+				String payment_num=String.valueOf(jsonObject2.get("merchant_uid1"));	
+				Payment payment=new Payment();
+				payment.setMember_name(member_name1);
+				payment.setMember_pk(member_pk1);
+				payment.setPayment_check("결제완료");
+				payment.setStore_pk(store_pk1);
+				payment.setPayment_num(payment_num);
+				payment.setReserve_pk(reserve.getReserve_pk());
+      		  
+				result=service.paymentInsert(payment);
+				}
+				
+				
+				
 				if (result > 0) {
 					map.put("reserve", reserve);
 					msg = "예약완료";
 				}
 		//	}
-			// 보내고 예약 pk받아오기~ 객체 자체를 쏴줄꺼임
+				// 보내고 예약 pk받아오기~ 객체 자체를 쏴줄꺼임
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

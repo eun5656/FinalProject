@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 
 public interface ReserDao {
@@ -15,5 +16,5 @@ public interface ReserDao {
 
 	List<Reserve> selectReserList(SqlSessionTemplate sqlSession, int store_pk);
 
-
+	int paymentInsert(SqlSessionTemplate sqlSession,Payment payment);
 }
