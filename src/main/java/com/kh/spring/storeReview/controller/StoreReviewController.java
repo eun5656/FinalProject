@@ -91,6 +91,7 @@ public class StoreReviewController {
 		store_review.setReview_date(parsing(review_date));
 		store_review.setReview_content(parsing(review_content));
 		store_review.setReview_writer(parsing(review_writer));
+		store_review.setReview_star(Integer.parseInt(parsing(review_star)));
 		store_review.setReview_ori_img(originalFileName);
 		store_review.setReview_re_img(renamedFileName);
 		System.out.println("ori"+originalFileName);
