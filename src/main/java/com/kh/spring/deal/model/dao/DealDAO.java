@@ -15,11 +15,11 @@ public interface DealDAO {
 	List<Deal> selectDealList(SqlSessionTemplate sqlSession, int cPage, int numPerPage);
 	int selectCount(SqlSessionTemplate sqlSession);
 	int insertDealImage(SqlSessionTemplate sqlSession, DealImage dealImage);
-	Deal selectOne(SqlSessionTemplate sqlSession, int dealPk);
-	List<DealImage> dealImageList(SqlSessionTemplate sqlSession, int dealPk);
-	int deleteImg(SqlSessionTemplate sqlSession, int dealPk);
-	int deleteDeal(SqlSessionTemplate sqlSession, int dealPk);
-	List<DealImage> selectDealImageList(SqlSessionTemplate sqlSession, int dealPk);
+	Deal selectOne(SqlSessionTemplate sqlSession, int deal_pk);
+	List<DealImage> dealImageList(SqlSessionTemplate sqlSession, int deal_pk);
+	int deleteImg(SqlSessionTemplate sqlSession, int deal_pk);
+	int deleteDeal(SqlSessionTemplate sqlSession, int deal_pk);
+	List<DealImage> selectDealImageList(SqlSessionTemplate sqlSession, int deal_pk);
 	int updateDeal(SqlSessionTemplate sqlSession,Deal deal);
 	List<Deal> searchList(SqlSessionTemplate sqlSession,Map<String, String> search, int cPage, int numPerPage);
 	int searchSelectCount(SqlSessionTemplate sqlSession,Map<String, String> search);

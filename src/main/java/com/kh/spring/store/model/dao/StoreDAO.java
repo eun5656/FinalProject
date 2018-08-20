@@ -27,6 +27,9 @@ public interface StoreDAO {
 	int updateStore_time(SqlSessionTemplate sqlSession, Store_time store_time);
 
 	Store_time selectTime(SqlSessionTemplate sqlSession, int store_pk);
+	List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk);
+
+
 
 
 

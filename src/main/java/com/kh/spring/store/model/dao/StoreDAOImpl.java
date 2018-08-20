@@ -48,6 +48,7 @@ public class StoreDAOImpl implements StoreDAO {
 	}
 
 	@Override
+
 	public int updateStore(SqlSessionTemplate sqlSession, Store store) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("store.storeUpdate", store);
@@ -64,6 +65,12 @@ public class StoreDAOImpl implements StoreDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("store.store_timeSelect", store_pk);
 	}
+
+	public List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk) {
+		return sqlSession.selectList("store.selectMenus", store_pk);
+	}
+
+
 
 
 

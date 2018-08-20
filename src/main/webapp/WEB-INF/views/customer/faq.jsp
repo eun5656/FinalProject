@@ -14,7 +14,7 @@
 	}
 </style>
 
-<section>
+<section style="padding-top: 100px;">
     <div class="row">
 				<div class="col-12">
 					<h1 class="text-green mb-4 text-center">자주묻는질문</h1>
@@ -69,17 +69,17 @@
             </div>
             </div>
         </div>
-    </div>
-  
-  			
-    	 <div class="row text-right" id="btn-enroll">
+         <div class="row text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/faqForm.do'">글 등록</button>
       	</div>
       	 <div class="row text-center" id="paging">
         ${pageBar}
      	 </div>
      
+    </div>
+  
+  			
+    	
    
-</div>
   </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

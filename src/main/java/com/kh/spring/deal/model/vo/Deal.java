@@ -1,106 +1,114 @@
 package com.kh.spring.deal.model.vo;
 
+import java.util.Date;
+
 public class Deal {
-	private int dealPk;
-	private String dealTitle;
-	private String dealContent;
-	private String dealWriter;
-	private String dealDate;
-	private int dealHits;
-	private int memberPk;
+	private int deal_pk;
+	private String deal_title;
+	private String deal_content;
+	private String deal_writer;
+	private Date deal_date;
+	private int deal_hits;
+	private int member_pk;
 	
 	
 	public Deal() {}
 
 
-	public Deal(int dealPk, String dealTitle, String dealContent, String dealWriter, String dealDate, int dealHits,
-			int memberPk) {
+	public Deal(int deal_pk, String deal_title, String deal_content, String deal_writer, Date deal_date,
+			int deal_hits, int member_pk) {
 		super();
-		this.dealPk = dealPk;
-		this.dealTitle = dealTitle;
-		this.dealContent = dealContent;
-		this.dealWriter = dealWriter;
-		this.dealDate = dealDate;
-		this.dealHits = dealHits;
-		this.memberPk = memberPk;
+		this.deal_pk = deal_pk;
+		this.deal_title = deal_title;
+		this.deal_content = deal_content;
+		this.deal_writer = deal_writer;
+		this.deal_date = deal_date;
+		this.deal_hits = deal_hits;
+		this.member_pk = member_pk;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Deal [dealPk=" + dealPk + ", dealTitle=" + dealTitle + ", dealContent=" + dealContent + ", dealWriter="
-				+ dealWriter + ", dealDate=" + dealDate + ", dealHits=" + dealHits + ", memberPk=" + memberPk + "]";
+		return "Deal [deal_pk=" + deal_pk + ", deal_title=" + deal_title + ", deal_content=" + deal_content
+				+ ", deal_writer=" + deal_writer + ", deal_date=" + deal_date + ", deal_hits=" + deal_hits
+				+ ", member_pk=" + member_pk + "]";
 	}
 
 
-	public int getDealPk() {
-		return dealPk;
+	public int getDeal_pk() {
+		return deal_pk;
 	}
 
 
-	public void setDealPk(int dealPk) {
-		this.dealPk = dealPk;
+	public void setDeal_pk(int deal_pk) {
+		this.deal_pk = deal_pk;
 	}
 
 
-	public String getDealTitle() {
-		return dealTitle;
+	public String getDeal_title() {
+		return deal_title;
 	}
 
 
-	public void setDealTitle(String dealTitle) {
-		this.dealTitle = dealTitle;
+	public void setDeal_title(String deal_title) {
+		this.deal_title = deal_title;
 	}
 
 
-	public String getDealContent() {
-		return dealContent;
+	public String getDeal_content() {
+		return deal_content;
 	}
 
 
-	public void setDealContent(String dealContent) {
-		this.dealContent = dealContent;
+	public void setDeal_content(String deal_content) {
+		this.deal_content = deal_content;
 	}
 
 
-	public String getDealWriter() {
-		return dealWriter;
+	public String getDeal_writer() {
+		return deal_writer;
 	}
 
 
-	public void setDealWriter(String dealWriter) {
-		this.dealWriter = dealWriter;
+	public void setDeal_writer(String deal_writer) {
+		this.deal_writer = deal_writer;
 	}
 
 
-	public String getDealDate() {
-		return dealDate;
+	public Date getDeal_date() {
+		return deal_date;
 	}
 
 
-	public void setDealDate(String dealDate) {
-		this.dealDate = dealDate;
+	public void setDeal_date(Date deal_date) {
+		this.deal_date = deal_date;
 	}
 
 
-	public int getDealHits() {
-		return dealHits;
+	public int getDeal_hits() {
+		return deal_hits;
 	}
 
 
-	public void setDealHits(int dealHits) {
-		this.dealHits = dealHits;
+	public void setDeal_hits(int deal_hits) {
+		this.deal_hits = deal_hits;
 	}
 
 
-	public int getMemberPk() {
-		return memberPk;
+	public int getMember_pk() {
+		return member_pk;
 	}
 
 
-	public void setMemberPk(int memberPk) {
-		this.memberPk = memberPk;
+	public void setMember_pk(int member_pk) {
+		this.member_pk = member_pk;
 	}
+
+	
+	
+
+
 	
 	
 	

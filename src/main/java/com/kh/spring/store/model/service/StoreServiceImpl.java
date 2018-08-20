@@ -67,6 +67,7 @@ public class StoreServiceImpl implements StoreService {
 	}
 
 	@Override
+
 	public int updateStore(Store store) {
 		// TODO Auto-generated method stub
 		return dao.updateStore(sqlSession, store);
@@ -82,6 +83,11 @@ public class StoreServiceImpl implements StoreService {
 	public Store_time selectTime(int store_pk) {
 		// TODO Auto-generated method stub
 		return dao.selectTime(sqlSession, store_pk);
+
+	public List<Menu> menuList(int store_pk) {
+		// TODO Auto-generated method stub
+		return  dao.menuList(sqlSession, store_pk);
+
 	}
 
 

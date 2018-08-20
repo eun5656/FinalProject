@@ -9,15 +9,15 @@ import com.kh.spring.deal.model.vo.DealImage;
 
 
 public interface DealService {
-	int insertDeal(String subject, String content,String dealWriter,List<String> imageList);
+	int insertDeal(String subject, String content,String deal_writer,List<String> imageList,int member_pk);
     List<Deal> selectDealList(int cPage, int numPerPage);
     int selectCount();
-    Deal selectOne(int dealPk);
-    List<DealImage> dealImageList(int dealPk);
-    int deleteImg(int dealPk);
-    int deleteDeal(int dealPk);
-    List<DealImage> selectDealImageList(int dealPk);
-    int updateDeal(int dealPk,String subject, String content, String dealWriter,List<String> imageList);
+    Deal selectOne(int deal_pk);
+    List<DealImage> dealImageList(int deal_pk);
+    int deleteImg(int deal_pk);
+    int deleteDeal(int deal_pk);
+    List<DealImage> selectDealImageList(int deal_pk);
+    int updateDeal(int deal_pk,String subject, String content, String deal_writer,List<String> imageList);
     List<Deal> searchList(int cPage, int numPerPage,Map<String, String> search);
     int searchSelectCount(Map<String, String> search);
 

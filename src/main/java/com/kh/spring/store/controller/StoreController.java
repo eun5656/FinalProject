@@ -1,22 +1,41 @@
 package com.kh.spring.store.controller;
 
+import java.io.File;
+//import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.reserve.model.service.ReserService;
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
+
+import net.sf.json.JSONObject;
 
 @Controller
 public class StoreController {
@@ -31,6 +50,9 @@ public class StoreController {
 	
 	@Autowired
 	private StoreReviewService reviewService;
+	
+	@Autowired
+	private ReserService reserService;
 	
 	
 	@RequestMapping("/store/store.do")
@@ -77,13 +99,18 @@ public class StoreController {
 		String view="store/storeReserve";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		Store store = service.selectOne(store_pk);
-		
-			
+		List<Menu> menuList=service.menuList(store_pk);
+		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
+		//System.out.println(reserveList.get(0).getMenu_pk());
+		System.out.println(reserveList);
+
 		
 		System.out.println("스토어 값 확인 : "+store);
 		
 		model.addAttribute("store",store);
-		
+		model.addAttribute("menuList",menuList);
+		model.addAttribute("reserveList",reserveList);
+
 		return view;
 	}
 	@RequestMapping("/store/storeContact.do")
@@ -100,6 +127,10 @@ public class StoreController {
 		
 		return view;
 	}
+	
+
+		
+
 
 	
 	

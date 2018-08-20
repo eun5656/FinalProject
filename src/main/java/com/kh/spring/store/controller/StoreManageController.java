@@ -130,22 +130,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		
 		return view;
 	}
-	@RequestMapping("/store/storeManageQna.do")
-	public String storeManageQna(
-			HttpServletRequest req, Model model,HttpSession session
-			) {
-		String view="store/storeManageQna";
-		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
-		
-		Store store = service.selectOne(member_pk);
-		
 	
-		System.out.println("스토어 값 확인 : "+store);
-		
-		model.addAttribute("store",store);
-		
-		return view;
-	}
 	@RequestMapping("/store/storeManage/menuInsert.do")
 	public String menuInsert(Menu menu, HttpServletRequest req,Model model) {
 		System.out.println("메뉴 삽입 접근완료" + menu);

@@ -126,7 +126,7 @@
 
 
 
-<div class="container">
+<div class="container" style="padding-top: 100px;">
         <div class="row">
                 <h1>회원가입<small>점주</small></h1>
             </div>

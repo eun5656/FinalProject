@@ -24,7 +24,13 @@ public interface StoreService {
 
 	int menuUpdate(Menu menu);
 
+
 	int updateStore(Store store);
+
+	List<Menu> menuList(int store_pk);
+
+
+
 
 	int updateStore_time(Store_time store_time);
 

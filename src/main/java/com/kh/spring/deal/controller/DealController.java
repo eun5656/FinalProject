@@ -24,6 +24,8 @@ import com.kh.spring.deal.model.service.DealService;
 import com.kh.spring.deal.model.vo.Deal;
 import com.kh.spring.deal.model.vo.DealImage;
 
+import com.kh.spring.dealReview.model.service.DealReviewService;
+import com.kh.spring.dealReview.model.vo.DealReview;
 
 @Controller
 public class DealController {
@@ -31,6 +33,8 @@ public class DealController {
 	@Autowired
 	private DealService service;
 	
+	@Autowired
+	private DealReviewService reviewService;
 	
 	@RequestMapping("/deal/dealList.do")
 	public ModelAndView dealList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage){
@@ -105,7 +109,7 @@ public class DealController {
 	
 	
 	@RequestMapping("/deal/dealWriteEnd.do")
-	public ModelAndView dealWriteEnd(String subject, String content,String dealWriter, HttpServletRequest request) {
+	public ModelAndView dealWriteEnd(String subject, String content,String deal_writer, int member_pk,HttpServletRequest request) {
 		
 		//받아온 값 확인
 		System.out.println("제목 :"+subject);
@@ -135,10 +139,6 @@ public class DealController {
 		}
 		
 		
-		for(String a: imageList) {
-			System.out.println("이미지 명 : "+a);
-		}
-	
 		//옮길 주소
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
 		
@@ -173,11 +173,19 @@ public class DealController {
 		}
 		
 		
+		
+		
+		
+		
 
-		//예시
+		//불러올 장소 바꾸기
 		String content1=content.replace("/spring/resources/images/test/", "/spring/resources/images/deal/");
 		System.out.println(content1);
-		int result=service.insertDeal(subject,content1,dealWriter,imageList);
+	
+	
+		
+		
+		int result=service.insertDeal(subject,content1,deal_writer,imageList,member_pk);
 		
 		
 		ModelAndView mv= new ModelAndView();
@@ -195,14 +203,26 @@ public class DealController {
 		return mv;
 	}
 	
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/deal/dealView.do")
-	public ModelAndView dealView(int dealPk) {
+	public ModelAndView dealView(int deal_pk) {
 		ModelAndView mv=new ModelAndView();
 		
 		
 		
-		Deal deal=service.selectOne(dealPk);
+		Deal deal=service.selectOne(deal_pk);
 		
+		
+		List<DealReview> dealreviews=reviewService.dealReviewList(deal_pk);
+		
+		
+		
+		mv.addObject("dealreviews", dealreviews);
 		mv.addObject("deal", deal);
 		mv.setViewName("/deal/dealView");
 		
@@ -214,25 +234,25 @@ public class DealController {
 	
 	
 	@RequestMapping("/deal/dealDelete.do")
-	public ModelAndView dealDelete(int dealPk, HttpServletRequest request) {
+	public ModelAndView dealDelete(int deal_pk, HttpServletRequest request) {
 		ModelAndView mv= new ModelAndView();
 		
 		
 		
 		
-		List<DealImage> list=service.dealImageList(dealPk);
+		List<DealImage> list=service.dealImageList(deal_pk);
 		System.out.println("사이즈가 뭐니"+list.size());
 		//이미지 이름 저장 리스트
 		List<String> listImgName=new ArrayList<String>();
 		
 		
 		for(DealImage a: list) {
-			listImgName.add(a.getDealOriImg());
-			System.out.println(a.getDealOriImg());
+			listImgName.add(a.getDeal_ori_img());
+			System.out.println(a.getDeal_ori_img());
 		}
 		System.out.println("나오니 사이즈가 뭐니"+listImgName.size());
 		//이미지 명 삭제
-		int result=service.deleteDeal(dealPk);
+		int result=service.deleteDeal(deal_pk);
 		
 		//파일위치
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
@@ -266,9 +286,9 @@ public class DealController {
 	}
 	
 	@RequestMapping("/deal/dealUpdate.do")
-	public ModelAndView dealUpdate(int dealPk) {
+	public ModelAndView dealUpdate(int deal_pk) {
 		ModelAndView mv= new ModelAndView();
-		Deal deal=service.selectOne(dealPk);
+		Deal deal=service.selectOne(deal_pk);
 		mv.addObject("deal",deal);
 		mv.setViewName("/deal/dealUpdate");
 		
@@ -277,7 +297,7 @@ public class DealController {
 	
 	
 	@RequestMapping("/deal/dealUpdateEnd.do")
-	public ModelAndView dealUpdateEnd(String subject, String content,String dealWriter,int dealPk, HttpServletRequest request) {
+	public ModelAndView dealUpdateEnd(String subject, String content,String deal_writer,int deal_pk, HttpServletRequest request) {
 				//받아온 값 확인
 				System.out.println("제목 :"+subject);
 				System.out.println("내용 : "+content);
@@ -336,9 +356,9 @@ public class DealController {
 				
 				
 				//저장되어 있던 이미지 명 가져오기
-				List<DealImage> saveImage=service.selectDealImageList(dealPk);
+				List<DealImage> saveImage=service.selectDealImageList(deal_pk);
 				for(DealImage a: saveImage) {
-					System.out.println("이미지 명 저장저장 : "+a.getDealOriImg());
+					System.out.println("이미지 명 저장저장 : "+a.getDeal_ori_img());
 				}
 				
 				
@@ -349,9 +369,9 @@ public class DealController {
 				
 				//지울 파일명 가져오기
 				for(int i=0;i<saveImage.size();i++) {
-					boolean check=imageList.contains(saveImage.get(i).getDealOriImg());
+					boolean check=imageList.contains(saveImage.get(i).getDeal_ori_img());
 					if(!check) {
-						deleteImage.add(saveImage.get(i).getDealOriImg());
+						deleteImage.add(saveImage.get(i).getDeal_ori_img());
 					}
 				}
 				
@@ -411,7 +431,7 @@ public class DealController {
 				
 				System.out.println("내용 뽑아온거 확인하기"+content1);
 				//DB 업데이트 해주기
-				int result=service.updateDeal(dealPk,subject,content1,dealWriter,imageList);
+				int result=service.updateDeal(deal_pk,subject,content1,deal_writer,imageList);
 				
 				
 				ModelAndView mv= new ModelAndView();
