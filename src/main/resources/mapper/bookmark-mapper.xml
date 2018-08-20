@@ -1,41 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="bookmark">
+  <resultMap id="bookmarkMap" type="bookmark"> </resultMap>
 
-<resultMap type="bookmark" id="bookmarkMap">
-<<<<<<< HEAD
-   </resultMap>
-   
 
- <insert id="insertBookmark" parameterType="bookmark">
-   insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check})
-   <selectKey keyProperty="bookmark_pk" resultType="_int" order="AFTER">
-          SELECT bookmark_SEQ.CURRVAL FROM DUAL
-       </selectKey>
-=======
-	</resultMap>
-	
+<insert id="insertBookmark" parameterType="bookmark">
+insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check}) 
+<selectKey order="AFTER" resultType="_int" keyProperty="bookmark_pk">SELECT bookmark_SEQ.CURRVAL FROM DUAL </selectKey>
 
- <insert id="insertBookmark" parameterType="bookmark">
-	insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check})
-	<selectKey keyProperty="bookmark_pk" resultType="_int" order="AFTER">
- 			SELECT bookmark_SEQ.CURRVAL FROM DUAL
- 		</selectKey>
->>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
- </insert>
- 
- <delete id="deleteBookmark" parameterType="hashmap">
-    delete from bookmark where member_pk=#{member_pk} and bookmark_pk=#{bookmark_pk}
- </delete>
- 
- <select id="selectBookMarkList" resultMap="bookmarkMap" parameterType="_int">
-<<<<<<< HEAD
-      select * from bookmark where member_pk = #{memberPk}
-      </select>
-      
-=======
-		select * from bookmark where member_pk = #{memberPk}
-		</select>
-		
->>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
+</insert>
+
+<delete id="deleteBookmark" parameterType="hashmap">delete from bookmark where member_pk=#{member_pk} and bookmark_pk=#{bookmark_pk} </delete>
+
+<select id="selectBookMarkList" parameterType="_int" resultMap="bookmarkMap">select * from bookmark where member_pk = #{memberPk} </select>
+
 </mapper>

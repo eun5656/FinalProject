@@ -11,37 +11,20 @@ import com.kh.spring.bookmark.model.vo.Bookmark;
 @Repository
 public class BookmarkDaoImpl implements BookmarkDao{
 
-   
+	
 
-   @Override
-   public int insertBookmark(Bookmark bookmark, SqlSessionTemplate sqlSession) {
-      int result=sqlSession.insert("bookmark.insertBookmark",bookmark);
-      return result;
-   }
-
-<<<<<<< HEAD
-   @Override
-   public int deleteBookmark(Map map, SqlSessionTemplate sqlSession) {
-      int result=sqlSession.insert("bookmark.deleteBookmark",map);
-      return result;
-   }
-=======
 	@Override
 	public int insertBookmark(Bookmark bookmark, SqlSessionTemplate sqlSession) {
 		int result=sqlSession.insert("bookmark.insertBookmark",bookmark);
 		return result;
 	}
->>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
 
-   @Override
-   public List<Bookmark> selectBookMarkList(int memberPk, SqlSessionTemplate sqlSession) {
-      // TODO Auto-generated method stub
-      return sqlSession.selectList("bookmark.selectBookMarkList", memberPk);
-   }
+	@Override
+	public int deleteBookmark(Map map, SqlSessionTemplate sqlSession) {
+		int result=sqlSession.insert("bookmark.deleteBookmark",map);
+		return result;
+	}
 
-<<<<<<< HEAD
-   
-=======
 	@Override
 	public List<Bookmark> selectBookMarkList(int memberPk, SqlSessionTemplate sqlSession) {
 		// TODO Auto-generated method stub
@@ -49,9 +32,8 @@ public class BookmarkDaoImpl implements BookmarkDao{
 	}
 
 	
->>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
 
 
-   
+	
 
 }

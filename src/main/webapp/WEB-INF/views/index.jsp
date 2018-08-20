@@ -488,6 +488,7 @@
 							var value=$(this).attr('value');
 						
 							selectAry.nail_check=value;
+
 							main_nail_check_img.attr('src', check);
 							main_nail_check_button.html(value);
 							
@@ -515,21 +516,12 @@
 												}
 											}
 											}
-<<<<<<< HEAD
 											
 											if(!mark_check){
 											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
 											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
 											}
 											
-=======
-											
-											if(!mark_check){
-											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
-											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
-											}
-											
->>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
 											html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 											html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
 											html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";
@@ -546,6 +538,7 @@
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);							
 									 eventBind()
+
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -563,6 +556,7 @@
 							var style = $(this).find("img").attr('src');
 							var value=$(this).attr('value');
 							
+
 							selectAry.nail_style=value;
 							main_nail_style_img.addClass("w3-circle");
 							main_nail_style_img.attr('src', style);
@@ -617,6 +611,7 @@
 										
 											
 								
+
 								},
 								error: function(jpxhr,textStatus,errormsg) {
 									console.log("ajax전송실패");
@@ -633,6 +628,7 @@
 							selectAry.nail_color=null;
 							selectAry.nail_check=null;
 							selectAry.nail_style=null;
+
 							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
 							main_nail_color_button.html("전체");
 							
@@ -642,6 +638,7 @@
 							main_nail_style_img.removeClass("w3-circle");
 							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
+
 							
 							$.ajax({
 							 	url:"${path}/nail/selectNailreset.do",
