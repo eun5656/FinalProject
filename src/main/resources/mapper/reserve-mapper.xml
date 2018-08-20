@@ -12,8 +12,8 @@
  		</selectKey>
 	</insert>
 	
-	<select id="selectStoreReserve" parameterType="hashmap" resultType="storeReserve">
-		SELECT * FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time =#{reserve_start_time} and designer_name=#{designer}
+	<select id="selectStoreReserve" parameterType="hashmap" resultType="_int">
+		SELECT COUNT(*) FROM RESERVE WHERE store_pk=#{store_pk} and reserve_start_time =#{reserve_start_time} and designer_id=#{designer}
 	</select>
 	
 	<select id="selectReserList" parameterType="_int" resultMap="storeReserveMap">

@@ -11,7 +11,7 @@ public interface ReserDao {
 
 	int storeReserveInsert(SqlSessionTemplate sqlSession, Reserve reserve);
 
-	Reserve selectStoreReserve(SqlSessionTemplate sqlSession, Map check);
+	int selectStoreReserve(SqlSessionTemplate sqlSession, Map check);
 
 	List<Reserve> selectReserList(SqlSessionTemplate sqlSession, int store_pk);
 

@@ -9,7 +9,7 @@ public interface ReserService {
 
 	int storeReserveInsert(Reserve reserve);
 
-	Reserve selectStoreReserve(Map check);
+	int selectStoreReserve(Map check);
 
 	List<Reserve> selectreserveList(int store_pk);
 
