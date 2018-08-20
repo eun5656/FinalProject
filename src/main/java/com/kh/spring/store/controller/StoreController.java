@@ -13,6 +13,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.spring.bookmark.model.service.BookmarkService;
+import com.kh.spring.bookmark.model.vo.Bookmark;
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
 import com.kh.spring.reserve.model.service.ReserService;
@@ -36,7 +41,7 @@ import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
 import net.sf.json.JSONObject;
-
+@SessionAttributes(value= {"memberLoggedIn"})
 @Controller
 public class StoreController {
 
@@ -44,6 +49,9 @@ public class StoreController {
 	
 	@Autowired 
 	private StoreService service;
+	
+	@Autowired 
+	private BookmarkService bookmarkService;
 	
 	@Autowired
 	private NailService Nailservice;
@@ -57,7 +65,7 @@ public class StoreController {
 	
 	@RequestMapping("/store/store.do")
 	public String store(
-			HttpServletRequest req, Model model
+			HttpServletRequest req, Model model, HttpSession session
 			) {
 		String view="store/store";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
@@ -74,6 +82,19 @@ public class StoreController {
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		List<Bookmark> bookmarkList = null;
+		if(session.getAttribute("memberLoggedIn")!=null) {
+			int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+			if(member_pk>0){
+				bookmarkList=bookmarkService.selectBookMarkList(member_pk);
+				System.out.println(bookmarkList);
+				model.addAttribute("boomarkList",bookmarkList);
+				}
+		}
+		
+		
+		
+	
 		return view;
 	}
 	@RequestMapping("/store/storeMap.do")

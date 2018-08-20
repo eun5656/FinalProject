@@ -12,7 +12,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- store css -->
 
-<link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
+<link href="${path }/resources/css/store.css?ver=3" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
@@ -36,10 +36,7 @@ var holiday ="${store.store_holiday}";
 			<div class="row">
 
 				<!-- 가게 이미지 시작 -->
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
-					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"
-						id="b_icon">
-					
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">					
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
 							src="${path }/resources/images/nail_store/${store.store_re_img }" alt="출력 실팽">
@@ -103,10 +100,109 @@ var holiday ="${store.store_holiday}";
 										</c:when>
 									</c:choose>	
 										<c:forEach var='i' begin='${status.index }' end="${status.index +2 }">
+										
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
+										
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;height:250px;">
-												<div class="hovereffect">
 												
+<!-- 										bookmark start		 -->
+											<jsp:useBean id="check_bookmark" class="java.lang.String" />
+									<c:set var="check_bookmark" value="false"/>
+ 			
+ 							<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
+							<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nails[i].nail_pk}">
+ 								<c:set var="check_bookmark" value="true"/>
+ 								<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
+							<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+						</c:if>
+							</c:forEach>
+					
+								<c:if test="${check_bookmark eq 'false'}">
+	  						<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
+ 						<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+							</c:if>
+							<input class="nail_pk" name="nail_pk" type="hidden" value="${nails[i].nail_pk}" >
+							<input class="store_pk" name="store_pk" type="hidden" value="${store.store_pk}" >
+							<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
+<!-- 							bookmarkend -->
+<script type="text/javascript">
+$(".b_icon").click(function() {					    	
+	var memberLoggedIn= "${memberLoggedIn}";
+	if(memberLoggedIn.length!=0){
+
+	var temp=$(this);
+	var bookmark_val = { 
+			nail_pk: temp.nextAll("[name='nail_pk']").val(),
+			member_pk: temp.nextAll("[name='member_pk']").val(),
+			store_pk: temp.nextAll("[name='store_pk']").val(),
+			bookmark_check:null 			
+			}
+
+	
+	if (temp.attr("alt")=='false') 
+	{	
+		bookmark_val.bookmark_check="ture";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();
+	  var jsonData = JSON.stringify(bookmark_val);
+      jQuery.ajaxSettings.traditional = true;
+		///*json 객체로 바로넘기기					    							    		
+		    $.ajax({
+		 	url:"${path}/bookmark/insertBookmark.do",
+			data:{"bookmark_val":jsonData},
+			type: "post",
+			dataType: "json",
+			success: function(data){
+  		   		alert("등록완료");
+				temp.attr("alt","true");
+    			temp.attr("src","/spring/resources/icons/love_filled.svg");
+    			temp.nextAll('.bookmark_pk').attr('value',data);
+				},
+			error: function(jpxhr,textStatus,errormsg) {
+				console.log("ajax전송실패");
+				console.log(jpxhr);
+				console.log(textStatus);
+				console.log(errormsg);
+			}
+		})	
+		
+	} 
+	else {
+		
+		//bookmark_val.bookmark_check="false";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();\ss
+		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+		var member_pk=temp.nextAll("[name='member_pk']").val()
+	    $.ajax({
+	 	url:"${path}/bookmark/deleteBookmark.do",
+		data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+		type: "post",
+		dataType: "json",
+		
+		success: function(data){
+  		    alert("삭제완료");
+			temp.attr("alt","false");
+    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+			temp.nextAll('.bookmark_pk').attr('value','');
+			},
+		error: function(jpxhr,textStatus,errormsg) {
+			console.log("ajax전송실패");
+			console.log(jpxhr);
+			console.log(textStatus);
+			console.log(errormsg);
+		}
+	})	
+	
+		
+	}
+	
+	}
+	else{
+		alert("로그인해주세요");
+	}
+});</script>
+												<div class="hovereffect">
 													<img class="img-responsive radius14 smail-carousel"
 														src="${path }/resources/images/nails/${nails[i].nail_re_img}" alt="">
 													<div class="overlay">
