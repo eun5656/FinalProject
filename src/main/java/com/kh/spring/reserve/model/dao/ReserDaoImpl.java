@@ -21,7 +21,7 @@ public class ReserDaoImpl implements ReserDao {
 
 
 	@Override
-	public Reserve selectStoreReserve(SqlSessionTemplate sqlSession, Map check) {
+	public int selectStoreReserve(SqlSessionTemplate sqlSession, Map check) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("storeReserve.selectStoreReserve",check);
 	}

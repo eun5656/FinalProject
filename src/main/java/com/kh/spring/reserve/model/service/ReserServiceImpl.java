@@ -30,9 +30,8 @@ public class ReserServiceImpl implements ReserService {
 
 
 	@Override
-	public Reserve selectStoreReserve(Map check) {
-		Reserve reserve=reserDao.selectStoreReserve(sqlSession,check);
-		return reserve;
+	public int selectStoreReserve(Map check) {
+		return reserDao.selectStoreReserve(sqlSession,check);
 	}
 
 

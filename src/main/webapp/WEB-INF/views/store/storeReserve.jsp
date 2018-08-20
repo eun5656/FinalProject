@@ -13,10 +13,6 @@
 
 
 <c:set var="path" value="${pageContext.request.contextPath }" />
-<c:set var="Listlength" value="${fn:length(reserveList) }" />
-<%ArrayList<Reserve>reserves_list=(ArrayList<Reserve>)request.getAttribute("reserveList");
- int reserveSize=reserves_list.size();%>
-
 <!-- store css -->
 
 <link href="${path }/resources/css/store.css" rel="stylesheet" />
@@ -289,6 +285,23 @@ var store_pk ="${store.store_pk}";
 
       
         dayClick: function(date, jsEvent, view, resource) {
+        	
+        	
+        	console.log(date._i);
+        	console.log(jsEvent);
+        	console.log(view);
+        	console.log(resource);
+        	//resource.title
+        	
+                       
+                        console.log("message"+message);
+                        console.log("reserveCheck"+reserveCheck);
+        	
+        	
+        	
+        	
+        	
+        	
      	   if(resource!=null){   
            	  var checkHoliday = true;
                	console.log(resource.businessHours[1].dow[0])
@@ -339,15 +352,49 @@ var store_pk ="${store.store_pk}";
                      }
                      
                      else {
-                          if("${memberLoggedIn}".length >0){
-                       	  	 $('#calendarModal').modal();
-                         	 $('#designer').html(resource.title);
-                      		 $('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
-                          }
-                         else{
-                            alert('로그인을 해주세요');
-                            //로그인페이지로보내기.........할까말까
-                         }
+                         	 if("${memberLoggedIn}".length >0){
+                         		 
+                         		var start_time=date.format("YYYY-MM-DD HH:mm:ss");
+                            	var reserveCheck = {
+                            			 reserve_start_time: start_time,
+                            			 store_pk:store_pk,
+                            			 designer_id: resource.id
+                               		}
+                            	var reserveCheck = JSON.stringify(reserveCheck);
+                            	var message='';
+                                        $.ajax({
+                                           type: "POST",
+                                           url:"${path}/reserve/storeReserveCheck.do",
+                                           data: {"reserveCheck":reserveCheck},
+                                           dataType: "json",
+                                           success: function (data) {
+                                              		message=data.msg;
+                                                	reserveCheck=data.result;
+                                                	if(reserveCheck==0){
+                                                		 $('#calendarModal').modal();
+                                                 		 $('#designer').html(resource.title);
+                                              			 $('#reserDate').html(date.format('YYYY년MM월DD일 HH시mm분'));
+                                                	}
+                                                	else{
+                                                		alert(message);
+                                                	}
+                                           		},
+                                          	    error: function (e) {
+                                                console.log("ERROR : ", e);
+                                             }
+                                          });
+                       	  	 }
+                         
+                        	 else{
+                        			 if(reserveCheck>0){
+                        		 	    alert(message);
+                        	 		 }
+                        			 else{
+	                            		alert('로그인을 해주세요');
+	                                    //로그인페이지로보내기.........할까말까
+
+                        			 }
+                        	 }
                      }
                 }
            else {
@@ -356,7 +403,6 @@ var store_pk ="${store.store_pk}";
                      date=null;
                 }
                    
-               alert(date);
         
                    
               //x버튼 눌렀을떄 date 초기화
@@ -371,7 +417,8 @@ var store_pk ="${store.store_pk}";
               }
             });
         }
-
+		
+     	   
         
         
           $("#result-reservaiton").one('click', function() {
@@ -422,7 +469,11 @@ var store_pk ="${store.store_pk}";
              			  var jsonData2 = JSON.stringify(store_payment);
                    			   jQuery.ajaxSettings.traditional = true;
                    			   
-                    
+                   			   
+                   			   
+                   			   
+               
+                   			   
                	 IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
