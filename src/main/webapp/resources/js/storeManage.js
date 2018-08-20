@@ -144,6 +144,40 @@ $(".menuUpdate").click(function(){
 		}
 	});
 });
+	$(".designerDelete").click(function(){
+		var designer_pk = this.value;
+			$.ajax({
+				url: path+"/store/storeManage/designerDelete.do",
+				data:{'designer_pk':designer_pk},
+				success:function(data){
+					alert("디자이너 삭제 완료"+data);
+					location.href=path+"/store/storeManage.do"
+				},
+				error:function(jqXHR, textStatus, errorThrown){
+				}
+			});
+	});
+	$(".designerUpdate").click(function(){
+//		var queryString = $("form[name=QnaInsert]").serialize();
+		var queryString = $(this).closest("form").serialize().replace(/%/g,'%25');;
+		queryString = decodeURIComponent(queryString);
+
+		console.log(queryString);
+		$.ajax({
+			type :'post',
+			url: path+'/store/storeManage/designerUpdate.do',
+			data: queryString,
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+			dataType: "text",
+			success : function(json){
+				alert(json);
+				location.reload();
+			},
+			error : function(xhr, status, error){
+				alert(error);
+			}
+		});
+});
 	
 	//네일 선택
 	var main_nail_color_img=$("#main-nail-color").find("img");
@@ -235,6 +269,19 @@ function menuInsertForm(){
 		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
 		li.html(html);
 		$('.menuInsertForm').append(li);	};
+
+		function designerInsertForm(){
+			 var li = $('<div></div>'); 
+			 var html='';
+				html+='<form name ="designerInsert" method="post" action="';
+				html+=path;	
+				html+='/store/storeManage/designerInsert.do">';
+				html+='<label for ="designer_name">디자이너 이름 입력 : ';
+				html+='<input type="text" placeholder="디자이너 이름 입력" id="designer_name" name="designer_name" class="form-control"/></label>';
+				html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
+				html+='<button type="submit" id ="designerInsert" class="btn btn-success"> 완료</button></form>';
+				li.html(html);
+				$('.designerInsertForm').append(li);	};		
 		
 		//주소 찾기
 		function Postcode() {
@@ -269,7 +316,7 @@ function menuInsertForm(){
 		                fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : '');
 		            }
 
-		            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		            // 우편번호와 주소 정보를 해당 필드에 넣는다.F
 //		            document.getElementById('post').value = data.zonecode; //5자리 새우편번호 사용
 		            document.getElementById('store_address').value = fullAddr;
 

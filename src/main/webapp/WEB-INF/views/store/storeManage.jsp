@@ -21,7 +21,7 @@ var store_pk="${store.store_pk}"
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=32"></script>
+<script src="${path }/resources/js/storeManage.js?ver=35"></script>
 
 <div>
 	<div id="wrapper" class="wrappercheck">
@@ -80,8 +80,18 @@ var store_pk="${store.store_pk}"
 						<label>연락처 : <input type="text" name="store_phone"
 							class="form-control" value="${store.store_phone}">
 						</label> 
-						<label>휴일 : <input type="text" name="store_holiday" class="form-control"
-							value="${store.store_holiday}">
+						<label>휴일 :							
+<select name="store_holiday" class="form-control">
+<option value="">   </option>
+  <option value="0">일요일</option>
+  <option value="1">월요일</option>
+  <option value="2">화요일</option>
+  <option value="3">수요일</option>
+   <option value="4">목요일</option>
+    <option value="5">금요일</option>
+     <option value="6">토요일</option>
+</select>
+  
 						</label>
 						<label>카카오톡 : <input type="text" name="store_kakao" class="form-control" value="${store.store_kakao}"> 
 						</label> 
@@ -114,6 +124,7 @@ var store_pk="${store.store_pk}"
 									data-toggle="tab"> 가격 </a></li>
 								<li><a href="#tab_default_1" data-toggle="tab"> 시술정보 </a></li>
 								<li><a href="#tab_default_3" data-toggle="tab"> 리뷰 </a></li>
+									<li><a href="#tab_default_4" data-toggle="tab"> 디자이너 </a></li>
 							</ul>
 							<div class="tab-content">
 								<!-- tab1 시작 -->
@@ -189,8 +200,8 @@ var store_pk="${store.store_pk}"
 																		<input type="hidden" name="store_pk"
 																			value="${store.store_pk }"> <input
 																			type="hidden" id="nail_color" name="nail_color"
-																			value=""> <input type="hidden"
-																			id="nail_style" name="nail_style" value=""> <input
+																			value=""> 
+																			<input type="hidden" id="nail_style" name="nail_style" value=""> <input
 																			type="hidden" id="nail_check" name="nail_check"
 																			value="">
 																	</div>
@@ -701,6 +712,27 @@ var store_pk="${store.store_pk}"
 								</div>
 								<div class="tab-pane" id="tab_default_3"></div>
 								<!-- 3번째 탭 끝 -->
+									<div class="tab-pane" id="tab_default_4">
+		<p>**최대 3명까지만 입력 가능합니다.**</p>
+									<c:forEach var="designer" items="${designers }" varStatus="status" >
+											<form name="designerUpdate${status.count }" method="post" action="/">
+											<input type="hidden" name="designer_pk" value="${designer.designer_pk }"/>
+											<label for ="designer_name">디자이너 이름 수정 : 
+											<input type="text" placeholder="디자이너 이름 입력" name="designer_name"  id="designer_name"
+												class="form-control" value="${designer.designer_name }"/></label>
+											<button type="button" id="designerUpdate" class="btn-success btn designerUpdate">
+												수정</button>
+											<button type="button" id="designerDelete" class="btn btn-danger designerDelete" value="${designer.designer_pk }">삭제</button>
+											</form>
+											<hr>
+										</c:forEach>
+								<div class="designerInsertForm" style=""></div>
+										<button onclick="designerInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
+								
+									
+									
+									</div>
+<!-- 									4번째 탭 끝 -->
 							</div>
 							<!-- tab content 끝 -->
 						</div>

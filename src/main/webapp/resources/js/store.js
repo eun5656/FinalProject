@@ -2,6 +2,12 @@
 // 구글맵 세팅
 //js 파일은 읽은 뒤에 바인딩 되기 때문에 onLoad로 설정해주어야 바인딩이 제대로 된
 $(function() {
+	var holidaycheck ="#"+holiday;
+	 $(holidaycheck).removeAttr("style","display:none;");
+	 
+	//휴일 선택
+	
+	
 	
 $(window).resize(function() {
 	if ($(window).width() < 768) {
@@ -133,5 +139,6 @@ $('#answer-submit').click(
 			})
 			
 		});
+
 
 });

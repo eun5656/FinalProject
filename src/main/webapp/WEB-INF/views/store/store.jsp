@@ -23,8 +23,9 @@
 // 외부 js 에서 쓰이는 변수 setting
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
+var holiday ="${store.store_holiday}";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=5"></script>
 <div>
 <div id="wrapper">
 
@@ -55,7 +56,15 @@ var store_pk ="${store.store_pk}";
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
 					<p>Tel. ${store. store_phone }</p>
-					<p>휴일 : ${store.store_holiday }</p>
+					<p>휴일 : 
+  	<div class="holiday" id= "0" style="display:none;">일요일</div>
+ 	 <div class="holiday" id= "1"  style="display:none;">월요일</div>
+ 	 <div class="holiday" id= "2"  style="display:none;">화요일</div>
+ 	 <div class="holiday" id= "3"  style="display:none;">수요일</div>
+ 	  <div class="holiday" id= "4" style="display:none;">목요일</div>
+ 	   <div class="holiday" id= "5" style="display:none;">금요일</div>
+  	   <div class="holiday" id= "6" style="display:none;">토요일</div>
+</p>
 					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
 					<p>${store.store_info }</p>
 				</div>

@@ -32,7 +32,7 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
 </update>
 
 <update id="storeUpdate" parameterType="store">
- update store set store_name=#{store_name}, store_address=#{store_address}, store_phone=#{store_phone}, store_holiday=#{store_holiday}, store_latitude=#{store_latitude},store_longitude=#{store_longitude},store_ori_img=#{store_ori_img},store_re_img=#{store_re_img},store_info=#{store_info},store_kakao=#{store_kakao},store_instagram=#{store_instagram} where store_pk=#{store_pk}
+ update store set store_name=#{store_name}, store_address=#{store_address},store_address_detail=#{store_address_detail}, store_phone=#{store_phone}, store_holiday=#{store_holiday},store_ori_img=#{store_ori_img},store_re_img=#{store_re_img},store_info=#{store_info},store_kakao=#{store_kakao},store_instagram=#{store_instagram},store_notice=#{store_notice} where store_pk=#{store_pk}
 </update>
 
 <update id="store_timeUpdate" parameterType="store_time">

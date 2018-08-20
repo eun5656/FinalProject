@@ -2,6 +2,7 @@ package com.kh.spring.store.model.service;
 
 import java.util.List;
 
+import com.kh.spring.designer.model.vo.designer;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.store.model.vo.Store_time;

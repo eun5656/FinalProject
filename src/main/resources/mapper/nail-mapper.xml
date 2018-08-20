@@ -67,7 +67,7 @@
 	</insert>
 		
 	<update id="updateNail" parameterType="nail" >
-	update nail set nail_name=#{nail_name}, nail_info=#{nail_info}, nail_color=#{nail_color}, nail_check=#{nail_check}, nail_style=#{nail_style}, nail_ori_img=#{nail_ori_img}, nail_re_img=#{nail_re_img} where nail_pk=#{nail_pk}
+	update nail set nail_name=#{nail_name}, nail_info=#{nail_info}, nail_color=#{nail_color}, nail_check=#{nail_check},nail_style=#{nail_style}, nail_ori_img=#{nail_ori_img}, nail_re_img=#{nail_re_img} where nail_pk=#{nail_pk}
 	</update>	
 	
 	<delete id="deleteNail" parameterType="string">
