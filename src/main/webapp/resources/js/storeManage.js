@@ -117,7 +117,7 @@ $(".menuDelete").click(function(){
 			data:{'menu_pk':menu_pk},
 			success:function(data){
 				alert("메뉴 삭제 완료"+data);
-				location.reload();
+				location.href=path+"/store/storeManage.do"
 			},
 			error:function(jqXHR, textStatus, errorThrown){
 			}
@@ -137,7 +137,7 @@ $(".menuUpdate").click(function(){
 		dataType: "text",
 		success : function(json){
 			alert(json);
-			location.reload();
+			location.href=path+"/store/storeManage.do"
 		},
 		error : function(xhr, status, error){
 			alert(error);
@@ -171,7 +171,7 @@ $(".menuUpdate").click(function(){
 			dataType: "text",
 			success : function(json){
 				alert(json);
-				location.reload();
+				location.href=path+"/store/storeManage.do"
 			},
 			error : function(xhr, status, error){
 				alert(error);

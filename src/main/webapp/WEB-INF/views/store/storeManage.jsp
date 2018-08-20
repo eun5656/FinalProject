@@ -21,7 +21,7 @@ var store_pk="${store.store_pk}"
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=35"></script>
+<script src="${path }/resources/js/storeManage.js?ver=36"></script>
 
 <div>
 	<div id="wrapper" class="wrappercheck">
@@ -723,6 +723,7 @@ var store_pk="${store.store_pk}"
 											<button type="button" id="designerUpdate" class="btn-success btn designerUpdate">
 												수정</button>
 											<button type="button" id="designerDelete" class="btn btn-danger designerDelete" value="${designer.designer_pk }">삭제</button>
+											<input type="hidden" value ="${designer.designer_id }" name="designer_id"/>
 											</form>
 											<hr>
 										</c:forEach>

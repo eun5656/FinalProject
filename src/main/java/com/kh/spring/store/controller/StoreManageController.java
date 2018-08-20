@@ -475,21 +475,21 @@ private Logger logger = Logger.getLogger(StoreController.class);
 			int result = designerservice.insertdesigner(designer);
 		}
 		else if(size==1) {
-			if(!designersCheck.get(0).getDesigner_id().equals('a'))					
+			if(!designersCheck.get(0).getDesigner_id().equals("a"))					
 			{designer.setDesigner_id("b");			}
-			else if(!designersCheck.get(0).getDesigner_id().equals('b'))					
+			else if(!designersCheck.get(0).getDesigner_id().equals("b"))					
 			{designer.setDesigner_id("a");}
-			else if(designersCheck.get(0).getDesigner_id().equals('c'))
+			else if(designersCheck.get(0).getDesigner_id().equals("c"))
 			{designer.setDesigner_id("a");}
 			int result = designerservice.insertdesigner(designer);
 		}else if(size==2) {
-			if(designersCheck.get(0).getDesigner_id().equals('a') && designersCheck.get(1).getDesigner_id().equals('b')) {
+			if(designersCheck.get(0).getDesigner_id().equals("a") && designersCheck.get(1).getDesigner_id().equals("b")) {
 				designer.setDesigner_id("c");}
-			else if(designersCheck.get(0).getDesigner_id().equals('b')&&designersCheck.get(1).getDesigner_id().equals('a')) {
+			else if(designersCheck.get(0).getDesigner_id().equals("b")&&designersCheck.get(1).getDesigner_id().equals("a")) {
 				designer.setDesigner_id("c");}
-			else if(designersCheck.get(0).getDesigner_id().equals('c')&&designersCheck.get(1).getDesigner_id().equals('a')) {
+			else if(designersCheck.get(0).getDesigner_id().equals("c")&&designersCheck.get(1).getDesigner_id().equals("a")) {
 				designer.setDesigner_id("b");}
-			else if(designersCheck.get(0).getDesigner_id().equals('a')&&designersCheck.get(1).getDesigner_id().equals('c')) {
+			else if(designersCheck.get(0).getDesigner_id().equals("a")&&designersCheck.get(1).getDesigner_id().equals("c")) {
 				designer.setDesigner_id("b");}
 			else {
 				designer.setDesigner_id("a");
