@@ -1,17 +1,23 @@
 package com.kh.spring.qna.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.spring.common.page.PageCreateDeal;
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.service.QnaService;
+import com.kh.spring.qna.model.vo.Qna;
 
 @Controller
 public class QnaController {
@@ -48,5 +54,61 @@ public class QnaController {
 	
 		return mv; 
 	}
-
+	
+	
+	@RequestMapping("/store/storeManageQna.do")
+	public ModelAndView storeManageQna(int store_pk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage) 
+	{
+		ModelAndView mv=new ModelAndView();
+		int numPerPage=10;
+		List<Qna> list=qnaService.selectQnaList(store_pk,cPage,numPerPage);
+		
+		int totalCount=qnaService.qnaSelectCount(store_pk);
+		
+		String heading="heading";
+		String collapse="collapse";
+		
+		
+		String pageBar=new PageCreateDeal().getPageBar(cPage,numPerPage,totalCount,"storeManageQna.do");
+		
+		mv.addObject("collapse", collapse);
+		mv.addObject("haeding", heading);
+		mv.addObject("pageBar", pageBar);
+		mv.addObject("list",list);
+		mv.addObject("cPage", cPage);
+		mv.addObject("totalCount", totalCount);
+		mv.setViewName("store/storeManageQna");
+		
+		return mv;
+	}
+	
+	@RequestMapping("/qna/answer.do")
+	public ModelAndView qnaAnswer(String qna_pk, String answer_content)
+	{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		Map<String, Object> map=new HashMap();
+		
+		map.put("qna_pk", Integer.parseInt(qna_pk));
+		map.put("answer_content", answer_content);
+		
+		int result=qnaService.updateQna(map);
+		
+		String msg="";
+        String loc="";
+        if(result>0) {
+           msg="답변 성공";
+        }else {
+           msg="답변 실패";
+        }
+        
+        mv.addObject("msg",msg);
+        mv.addObject("loc", "/");
+        mv.setViewName("common/msg");
+		
+		return mv;
+	}
+	
+	
 }

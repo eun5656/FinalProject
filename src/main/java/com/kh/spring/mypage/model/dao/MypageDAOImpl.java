@@ -25,6 +25,12 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 
 	@Override
+	public Qna selectOne(SqlSessionTemplate sqlSession, int qna_pk) {
+		return sqlSession.selectOne("qna.selectOneContent",qna_pk);
+	}
+
+
+	@Override
 	public List<Reserve> mypageReserveList(SqlSessionTemplate sqlSession, int memberPk,int cPage, int numPerPage) {
 		RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
 		return sqlSession.selectList("storeReserve.mypageReserveList", memberPk,rb);

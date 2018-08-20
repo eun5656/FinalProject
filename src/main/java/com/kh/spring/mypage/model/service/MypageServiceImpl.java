@@ -32,6 +32,11 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
+	public Qna selectOne(int qna_pk) {
+		return mypageDAO.selectOne(sqlSession,qna_pk);
+	}
+
+	@Override
 	public List<Reserve> mypageReserveList(int memberPk,int cPage, int numPerPage) {
 		
 		return mypageDAO.mypageReserveList(sqlSession, memberPk,cPage,numPerPage);

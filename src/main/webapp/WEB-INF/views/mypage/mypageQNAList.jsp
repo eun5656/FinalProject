@@ -8,11 +8,13 @@
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
 
+
+
 <section id='mypage' style="padding-top: 100px;">	
 	<div class='container'>
 		<div class='panel'>
 			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">예약현황</a></li>
+				<li role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
 				<li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
 				<li class="active" role="presentation"><a href="${path}/mypage/mypageQNAList.do?member_pk=${memberLoggedIn.memberPk}">문의내역</a></li>
 				<li role="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
@@ -30,7 +32,7 @@
 							<th>글 제목</th>
 							<th>날짜</th>
 							<th>답장여부</th>
-							<th>삭제</th>
+							<!-- <th>삭제</th> -->
 						</tr>
 				
 				
@@ -38,16 +40,18 @@
 						<tr>
 							<td></td>
 							<td>${vs.count}</td>
-							<td>${m.qna_title }</td>
-							<td>${m.qna_date }</td>
-							<th>${m.answer_check}</th>
-							<th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.qna_pk})" value="${m.qna_pk}">삭제</i></button></th>
+							<td><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.qna_title }</td>
+							<td><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.qna_date }</td>
+							<th><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.answer_check}</th>
+							<%-- <th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.qna_pk})" value="${m.qna_pk}">삭제</i></button></th> --%>
 						</tr>
 					</c:forEach>
 				</table>
-
-				<div class="row1 text-center" id="paging">${pageBar}</div>
-
+				
+				  <div class="row1 text-center" id="paging">
+        ${pageBar}
+      </div>
+     
 			</div>	
 		</div>
 	</div>

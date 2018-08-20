@@ -19,88 +19,115 @@
 var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
+
 <!-- storeManage js -->
 <script src="${path }/resources/js/storeManage.js"></script>
 <div>
 	<div id="wrapper">
-
-<div id="left-side">
-<div id="fourth" class="active">
-	<div class="row">
-		<div class="col-12">
-			<h1 class="text-green mb-4 text-center">문의사항</h1>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-				<div class="panel-group" id="accordion" role="tablist"
-					aria-multiselectable="true">
-					<div class="panel panel-default">
-						<div class="panel-heading" role="tab" id="headingOne">
-							<h4 class="panel-title">
-								<a class="" role="button" data-toggle="collapse"
-									data-parent="#accordion" href="#collapseOne"
-									aria-expanded="true" aria-controls="collapseOne"> <i
-									class="fa fa-comment"></i>질문제목
-								</a>
-							</h4>
+		<div id="left-side">
+			<div id="fourth" class="active">
+				<div class="row">
+				<c:if test="${not empty list }">
+					<div class="col-12">
+						<h1 class="text-green mb-4 text-center">질문내역</h1>
+					</div>
+					</c:if>
+					<c:if test="${empty list }">
+						<div class="col-12">
+							<h1 class="text-green mb-4 text-center">질문내역이 없어요</h1>
 						</div>
-						<div id="collapseOne" class="panel-collapse collapse in"
-							role="tabpanel" aria-labelledby="headingOne">
-							<div class="panel-body">
-								<div>
-									<label> 질문내용</label>
-								</div>
-								<form class="" action="/insertAnswer.html" method="post">
-									<div class="form-group">
-										<textarea class="form-control" id="sendContent" name="sendContent" rows="13" style="resize: none;"></textarea>
-											<button type="submit" id="sendBtn" name="sendBtn" class="btn btn-default center-block" onclick="return fn_submit();">전송</button>
+					</c:if>
+				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+							<div class="panel-group" id="accordion" role="tablist"
+								aria-multiselectable="true">
+								<c:if test="${not empty list }">
+								<c:forEach var='qna' items='${list}' varStatus="vs">
+									<div class="panel panel-default">
+										<div class="panel-heading" role="tab"
+											id="${heading}${vs.index}">
+											<h4 class="panel-title">
+												<a class="" role="button" data-toggle="collapse"
+													data-parent="#accordion" href="#${collapse}${vs.index}"
+													aria-expanded='<c:if test="${vs.index==0 }">true</c:if><c:if test="${vs.index!=0 }">false</c:if>'
+													aria-controls="${collapse}${vs.index}"> <i
+													class="fa fa-comment"></i>Q${vs.count} ${qna.qna_title }
+												</a>
+											</h4>
+										</div>
+										<div id="${collapse}${vs.index}"
+											class="panel-collapse collapse <c:if test="${vs.index==0}">in</c:if>" role="tabpanel"
+											aria-labelledby="${heading}${vs.index}">
+											<div class="panel-body">
+												<div class="container">
+														
+													<div class="row">
+
+														<div class="col-sm-4 col-md-4">
+															<p contenteditable="contenteditable">질문내용:
+																${qna.qna_content } <br><fmt:formatDate value="${qna.qna_date}"
+															pattern="yyyy/MM/dd HH:mm" /></p>
+															<div class="panel panel-default">
+																<div class="panel-body" id="resizable">
+																	<form accept-charset="UTF-8" action="${path}/qna/answer.do?qna_pk=${qna.qna_pk}" method="POST">
+																		<textarea id="fullfilled" class="form-control counted"
+																			id="answer_content" name="answer_content"
+																			placeholder="답변" rows="5"
+																			style="margin-bottom: 10px;"></textarea>
+																		<button class="btn btn-danger" type="submit" value="${qna.qna_pk}" onclick="return fn_submit(${qna.qna_pk});">전송</button>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
-								</form>
+								</c:forEach>
+								</c:if>
+								
 							</div>
 						</div>
 					</div>
-					
 				</div>
+				<div class="row text-center" id="paging">${pageBar}</div>
+
+			</div>
+		</div>
+		<div id="border">
+			<div id="line" class="two"></div>
+		</div>
+		<div id="right-side">
+			<div style="position: fixed;">
+				<ul>
+					<li class="shop active">
+						<div class="icon active">
+							<img src="${path }/resources/icons/shop.svg" alt="">
+						</div> Shop
+					</li>
+					<li class="sales">
+						<div class="icon">
+							<img src="${path }/resources/icons/paper.svg" alt="">
+						</div> 매출관리
+					</li>
+					<li class="reserve">
+						<div class="icon">
+							<img src="${path }/resources/icons/calander.svg" alt="">
+						</div> Reserve(예약)
+					</li>
+					<li class="qna">
+						<div class="icon">
+							<img src="${path }/resources/icons/customer.svg" alt="">
+						</div> QnA(문의)
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
-
-
-</div>
-</div>
-<div id="border">
-	<div id="line" class="two"></div>
-</div>
-<div id="right-side">
-	<div style="position: fixed;">
-		<ul>
-			<li class="shop active">
-				<div class="icon active">
-					<img src="${path }/resources/icons/shop.svg" alt="">
-				</div> Shop
-			</li>
-			<li class="sales">
-				<div class="icon">
-					<img src="${path }/resources/icons/paper.svg" alt="">
-				</div> 매출관리
-			</li>
-			<li class="reserve">
-				<div class="icon">
-					<img src="${path }/resources/icons/calander.svg" alt="">
-				</div> Reserve(예약)
-			</li>
-			<li class="qna">
-				<div class="icon">
-					<img src="${path }/resources/icons/customer.svg" alt="">
-				</div> QnA(문의)
-			</li>
-		</ul>
-	</div>
-</div>
-</div> 
-<!-- wrapper 끝 -->
+	<!-- wrapper 끝 -->
 
 </div>
 

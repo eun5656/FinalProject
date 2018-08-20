@@ -63,17 +63,14 @@ var store_pk ="${store.store_pk}";
 					var qna_title = $("#qna_title").val();
 					var qna_content = $("#qna_content").val();
 					
-
 					qna_title = $.trim(qna_title);
 					qna_content = $.trim(qna_content);
-
 					if (qna_title.length == 0 || qna_title == null) {
 						alert("문의제목을 입력해주세요")
 						$("#qna_title").focus();
 						return false;
 					}
 					
-
 					if (qna_content.length == 0 || qna_content == null) {
 						alert("문의내용을 입력해주세요");
 						$("#qna_content").focus();

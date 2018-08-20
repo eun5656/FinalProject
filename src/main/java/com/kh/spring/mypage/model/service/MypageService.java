@@ -14,6 +14,8 @@ public interface MypageService {
 	
 	int selectCount(int member_pk);
 	
+	Qna selectOne(int qna_pk);
+	
 	List<Reserve> mypageReserveList(int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(int memberPk);

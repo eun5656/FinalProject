@@ -13,6 +13,8 @@ public interface MypageDAO {
 
 	int selectCount(SqlSessionTemplate sqlSession,int member_pk);
 	
+	Qna selectOne(SqlSessionTemplate sqlSession,int qna_pk);
+	
 	List<Reserve> mypageReserveList(SqlSessionTemplate sqlSession, int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(SqlSessionTemplate sqlSession, int memberPk);

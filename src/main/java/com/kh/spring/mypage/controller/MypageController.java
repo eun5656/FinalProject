@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -68,6 +69,16 @@ public class MypageController {
 		mv.setViewName("mypage/mypageQNAList");
 		
 		return mv;
+	}
+	
+	@RequestMapping("/mypage/mypageQNAListContent.do")
+	public String mypageQNAListContent(String qna_pk,Model model) {
+		
+		
+		model.addAttribute("qna", mypageService.selectOne(Integer.parseInt(qna_pk)));
+		
+		
+		return "mypage/mypageQNAListContent";
 	}
 	
 	@RequestMapping("/mypage/mypageMessage.do")
