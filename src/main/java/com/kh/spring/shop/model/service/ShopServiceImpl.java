@@ -48,6 +48,24 @@ public class ShopServiceImpl implements ShopService {
 		return list;
 	}
 
+	@Override
+	public List<Store> shopRankReviewCount() {
+		List<Store> list = dao.shopRankReviewCount(sqlSession);
+		return list;
+	}
+
+	@Override
+	public List<Store> shopReviewCount() {
+		List<Store> list = dao.shopReviewCount(sqlSession);
+		return list;
+	}
+
+	@Override
+	public List<Store> shopBasicReviewCount() {
+		List<Store> list = dao.shopBasicReviewCount(sqlSession);
+		return list;
+	}
+
 	
 
 }

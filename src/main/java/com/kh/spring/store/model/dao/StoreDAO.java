@@ -26,6 +26,10 @@ public interface StoreDAO {
 
 	int storeStarUpdate(SqlSessionTemplate sqlSession, Map updateStar);
 
+	int selectStoreStar(SqlSessionTemplate sqlSession, int store_pk);
+
+	List<Store> storeReviewCount(SqlSessionTemplate sqlSession);
+
 
 
 

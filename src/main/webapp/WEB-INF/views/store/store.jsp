@@ -14,6 +14,7 @@
 
 <link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
+ <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
 <!-- store js -->
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
@@ -36,8 +37,7 @@ var store_pk ="${store.store_pk}";
 
 				<!-- 가게 이미지 시작 -->
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
-					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"
-						id="b_icon">
+					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex" id="b_icon">
 					
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
@@ -54,6 +54,18 @@ var store_pk ="${store.store_pk}";
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }</p>
+          			  <p> <c:forEach begin="1" end="${store_star}">
+          				  <i class="price-text-color fa fa-star"></i>
+           				  </c:forEach>
+           				  <c:forEach begin="1" end="${5-store_star}">
+             			  <i class=" fa fa-star"></i>
+         				  </c:forEach>    
+             		  </p>
+          				  
+          			  
+          			  
+          			  
+          			  
 					<p>Tel. ${store. store_phone }</p>
 					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
 					<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>

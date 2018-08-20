@@ -78,6 +78,18 @@ public class StoreServiceImpl implements StoreService {
 		return  dao.storeStarUpdate(sqlSession, updateStar);
 	}
 
+	@Override
+	public int selectStoreStar(int store_pk) {
+		// TODO Auto-generated method stub
+		return dao.selectStoreStar(sqlSession, store_pk);
+	}
+
+	@Override
+	public List<Store> storeReviewCount() {
+		// TODO Auto-generated method stub
+		return dao.storeReviewCount(sqlSession);
+	}
+
 
 	
 

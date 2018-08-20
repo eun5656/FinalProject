@@ -58,6 +58,20 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.update("store.storeStarUpdate", updateStar);
 	}
 
+	@Override
+	public int selectStoreStar(SqlSessionTemplate sqlSession, int store_pk) {
+		Integer result=sqlSession.selectOne("store.selectStoreStar", store_pk);
+		if(result==null){
+			result=0;
+		}
+		return result;
+	}
+
+	@Override
+	public List<Store> storeReviewCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("store.storeReviewCount");
+	}
+
 
 	
 

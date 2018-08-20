@@ -18,4 +18,10 @@ public interface ShopDao {
 
 	List<Store> bookmarkSortShopList(SqlSessionTemplate sqlSession);
 
+	List<Store> shopRankReviewCount(SqlSessionTemplate sqlSession);
+
+	List<Store> shopReviewCount(SqlSessionTemplate sqlSession);
+
+	List<Store> shopBasicReviewCount(SqlSessionTemplate sqlSession);
+
 }

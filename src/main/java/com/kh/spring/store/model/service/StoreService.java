@@ -27,6 +27,10 @@ public interface StoreService {
 
 	int storeStarUpdate(Map updateStar);
 
+	int selectStoreStar(int store_pk);
+
+	List<Store> storeReviewCount();
+
 
 
 

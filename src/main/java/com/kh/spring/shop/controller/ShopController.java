@@ -16,6 +16,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.shop.model.service.ShopService;
 import com.kh.spring.store.controller.StoreController;
+import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Store;
 
 @Controller
@@ -29,6 +30,18 @@ public class ShopController {
 	@RequestMapping("/shop/shop.do")
 	public String basicShopList(Model model){
 		List<Store> shopList =service.basicShopList();
+		List<Store> review_sum =service.shopBasicReviewCount();
+		if(review_sum!=null) {
+		for (int i = 0; i < shopList.size(); i++) {
+			int count=shopList.get(i).getStore_review_count();
+			int sum=review_sum.get(i).getStore_review_count();
+			int avg=(int) Math.round((double)sum/count);//올림 처리..할수있음..
+			System.out.println(avg);
+			shopList.get(i).setStore_rank(avg);
+			}
+		}
+		
+		
 		model.addAttribute("shopList", shopList);
 		String view="shop/shop";
 		return view;
@@ -39,20 +52,34 @@ public class ShopController {
 	public String SortShopList(String sortValue)throws JsonProcessingException
 	{
 
-List<Store> list;
+		List<Store> list;
+		List<Store> review_sum;
+
 		if (sortValue.equals("review")) {
 			list=service.reviewSortShopList();
+			review_sum =service.shopReviewCount();
 		}
 		else if (sortValue.equals("rank")) {
 			list=service.rankSortShopList();
-
-		}else if (sortValue.equals("bookmark")) {
-			list=service.bookmarkSortShopList();
+			review_sum =service.shopRankReviewCount();
 
 		}
 		else {
 			list=service.basicShopList();
+			review_sum =service.shopBasicReviewCount();
 		}
+		
+		if(review_sum!=null) {
+		for (int i = 0; i < list.size(); i++) {
+			int count=list.get(i).getStore_review_count();
+			int sum=review_sum.get(i).getStore_review_count();
+			int avg=(int) Math.round((double)sum/count);//올림 처리..할수있음..
+			System.out.println(avg);
+			list.get(i).setStore_rank(avg);
+			}
+		}
+		
+		
 		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr="";
 		

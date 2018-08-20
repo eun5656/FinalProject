@@ -59,4 +59,31 @@ public class ShopDaoImpl implements ShopDao {
 		return list;
 	}
 
+
+
+
+	@Override
+	public List<Store> shopRankReviewCount(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.shopRankReviewCount");
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<Store> shopReviewCount(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.shopReviewCount");
+		return list;
+	}
+
+
+
+
+	@Override
+	public List<Store> shopBasicReviewCount(SqlSessionTemplate sqlSession) {
+		List<Store> list=sqlSession.selectList("shop.shopBasicReviewCount");
+		return list;
+	}
+
 }

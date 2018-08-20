@@ -17,4 +17,10 @@ public interface ShopService {
 
 	List<Store> bookmarkSortShopList();
 
+	List<Store> shopRankReviewCount();
+
+	List<Store> shopReviewCount();
+
+	List<Store> shopBasicReviewCount();
+
 }

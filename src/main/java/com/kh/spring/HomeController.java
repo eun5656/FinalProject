@@ -26,6 +26,7 @@ import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.shop.model.service.ShopService;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Store;
 
@@ -42,6 +43,8 @@ public class HomeController {
 	private StoreService storeService;
 	@Autowired 
 	private BookmarkService bookmarkService;
+	@Autowired 
+	private ShopService shopService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView home(Locale locale,HttpServletRequest request) {
@@ -52,7 +55,21 @@ public class HomeController {
 		if(request.getParameter("member_pk") != null) {
 		 member_pk=Integer.parseInt(request.getParameter("member_pk"));
 		}
-		List<Store> storelist =storeService.mainStoreList();
+		List<Store> storelist =storeService.mainStoreList();	
+		List<Store> review_count =shopService.shopRankReviewCount();
+		if(review_count!=null) {
+		for (int i = 0; i < storelist.size(); i++) {
+			int count=storelist.get(i).getStore_review_count();
+			int sum=review_count.get(i).getStore_review_count();
+			int avg=(int) Math.round((double)sum/count);//올림 처리..할수있음..
+			storelist.get(i).setStore_rank(avg);
+			}
+		}
+		
+		
+		
+		
+		
 		List<Nail> naillist = nailService.nailList();
 		List<Integer> col_i = new ArrayList<Integer>();
 		List<Bookmark> bookmarkList = null;
