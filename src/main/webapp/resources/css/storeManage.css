@@ -1,3 +1,8 @@
+ul > li {
+  display: inline-block;
+  } 
+/*   dropdown 가로 */
+
 .b_icon {
 	position: absolute;
 	width: 32px;
@@ -24,6 +29,9 @@
 
 .icon.active {
 	fill: #E74C3C;
+}
+.w3-dropdown-hover:first-child{
+	backgroud-color : white;
 }
 
 #wrapper {
@@ -54,9 +62,9 @@
 	height: 100%;
 	width: 19%;
 	margin-left: 5px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+/* 	display: -webkit-box; */
+/* 	display: -ms-flexbox; */
+/* 	display: flex; */
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -157,8 +165,9 @@
 }
 
 #left-side {
-/* 	padding-top: 100px; */
  	padding: 20px; 
+ 	
+	padding-top: 80px;
 /* 	padding-right: 10px; */
 	height: auto%;
 	width: 100%;
@@ -243,7 +252,6 @@
 	border-radius: 14px;
 	width: 100%;
 	height: auto;
-	max-height: 250px;
 }
 
 .zindex {
@@ -310,7 +318,9 @@
 
 @media ( max-width : 768px) {
 	#right-side {
-		display: none;
+		top:50px;
+		right:0px;
+		position: fixed;
 	}
 	#wrapper {
 		width: 100%;

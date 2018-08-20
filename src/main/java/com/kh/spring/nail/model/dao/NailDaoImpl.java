@@ -36,6 +36,30 @@ public class NailDaoImpl implements NailDao {
 		return sqlSession.selectList("nail.listNailStore", store_pk);
 	}
 
+	@Override
+	public int insertNail(SqlSessionTemplate sqlSession, Nail nail) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("nail.insertNail", nail);
+	}
+
+	@Override
+	public int updateNail(SqlSessionTemplate sqlSession, Nail nail) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("nail.updateNail", nail);
+	}
+
+	@Override
+	public int deleteNail(SqlSessionTemplate sqlSession, String nail_pk) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete("nail.deleteNail", nail_pk);
+	}
+
+	@Override
+	public Nail selctNailOne(SqlSessionTemplate sqlSession, int nail_pk) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("nail.selectNailOne", nail_pk);
+	}
+
 
 
 

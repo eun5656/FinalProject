@@ -58,5 +58,47 @@ public class NailServiceImpl implements NailService{
 
 
 
+
+
+
+	@Override
+	public int insertNail(Nail nail) {
+		
+		return dao.insertNail(sqlSession,nail);
+	}
+
+
+
+
+
+
+	@Override
+	public int updateNail(Nail nail) {
+	
+		return dao.updateNail(sqlSession,nail);
+	}
+
+
+
+
+
+
+	@Override
+	public int nailDelete(String nail_pk) {
+		// TODO Auto-generated method stub
+		return dao.deleteNail(sqlSession,nail_pk);
+	}
+
+
+
+	@Override
+	public Nail selectNailOne(int nail_pk) {
+		
+		return dao.selctNailOne(sqlSession,nail_pk);
+				
+	}
+
+
+
 	
 }

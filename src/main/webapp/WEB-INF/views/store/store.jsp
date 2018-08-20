@@ -23,8 +23,9 @@
 // 외부 js 에서 쓰이는 변수 setting
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
+var holiday ="${store.store_holiday}";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=5"></script>
 <div>
 <div id="wrapper">
 
@@ -53,14 +54,23 @@ var store_pk ="${store.store_pk}";
 				<!--가게 이미지 끝-->
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
-					<p>장소 : ${store. store_address }</p>
+					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
 					<p>Tel. ${store. store_phone }</p>
-					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
-					<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>
+					<p>휴일 : 
+  	<div class="holiday" id= "0" style="display:none;">일요일</div>
+ 	 <div class="holiday" id= "1"  style="display:none;">월요일</div>
+ 	 <div class="holiday" id= "2"  style="display:none;">화요일</div>
+ 	 <div class="holiday" id= "3"  style="display:none;">수요일</div>
+ 	  <div class="holiday" id= "4" style="display:none;">목요일</div>
+ 	   <div class="holiday" id= "5" style="display:none;">금요일</div>
+  	   <div class="holiday" id= "6" style="display:none;">토요일</div>
+</p>
+					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
+					<p>${store.store_info }</p>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 20px;">
-				<marquee>공지사항입니다~~~~~~~~~~~~</marquee>
+				<marquee>${store.store_notice }</marquee>
 			</div>
 			<!-- tab 화면 시작-->
 			<div class="row" >
@@ -130,7 +140,7 @@ var store_pk ="${store.store_pk}";
 
 												<!-- Modal Header -->
 												<div class="modal-header">
-													<h4 class="modal-title">시술정보 상세</h4>
+													<h4 class="modal-title">${nail.nail_name }</h4>
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 												</div>
 
@@ -140,8 +150,9 @@ var store_pk ="${store.store_pk}";
 															<img class="img-responsive radius14"
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
-													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check==1?'네일':'페디' }, 종류	 : ${nail.nail_style }</p>
-												</div>
+													<p>네일 정보 : ${nail.nail_info }</p>
+													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check }, 종류	 : ${nail.nail_style }</p>
+												</div> 
 												<!-- Modal footer -->
 												<div class="modal-footer">
 												</div>

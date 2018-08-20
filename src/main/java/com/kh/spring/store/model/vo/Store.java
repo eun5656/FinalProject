@@ -8,7 +8,6 @@ public class Store implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5180233677245625610L;
-			
 	
 	private int store_pk;
 	private int member_pk;
@@ -27,7 +26,29 @@ public class Store implements Serializable {
 	private String store_info;
 	private String store_kakao;
 	private String store_instagram;
+	private String store_notice;
+	private String store_address_detail;
 	
+	public String getStore_address_detail() {
+		return store_address_detail;
+	}
+
+
+	public void setStore_address_detail(String store_address_detail) {
+		this.store_address_detail = store_address_detail;
+	}
+
+
+	public String getStore_notice() {
+		return store_notice;
+	}
+
+
+	public void setStore_notice(String store_notice) {
+		this.store_notice = store_notice;
+	}
+
+
 	public Store(int store_pk, int member_pk, String store_num, String store_name, String store_address,
 			String store_phone, String store_holiday, String store_latitude, String store_longitude,
 			String store_designer, int store_rank, String store_ori_img, String store_re_img, int store_review_count,

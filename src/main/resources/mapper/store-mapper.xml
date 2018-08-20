@@ -31,4 +31,15 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
  update menu set menu_name=#{menu_name}, menu_info=#{menu_info}, menu_price=#{menu_price}, menu_check=#{menu_check} where menu_pk=#{menu_pk}
 </update>
 
+<update id="storeUpdate" parameterType="store">
+ update store set store_name=#{store_name}, store_address=#{store_address},store_address_detail=#{store_address_detail}, store_phone=#{store_phone}, store_holiday=#{store_holiday},store_ori_img=#{store_ori_img},store_re_img=#{store_re_img},store_info=#{store_info},store_kakao=#{store_kakao},store_instagram=#{store_instagram},store_notice=#{store_notice} where store_pk=#{store_pk}
+</update>
+
+<update id="store_timeUpdate" parameterType="store_time">
+ update store_time set store_open_time=#{store_open_time},store_close_time=#{store_close_time},store_reserve_time=#{store_reserve_time},store_reserve_end_time=#{store_reserve_end_time},store_weekend_open=#{store_weekend_open},store_weekend_close=#{store_weekend_open} where store_pk=#{store_pk}
+</update>
+
+<select id="store_timeSelect" parameterType="int" resultType="store_time">
+select * from store_time where store_pk = #{store_pk}
+</select>
 </mapper>

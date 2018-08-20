@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="designer">
+	<resultMap type="designer" id="designerMap">
+	</resultMap>
+<select id="selectdesigner" parameterType="int" resultMap="designerMap">
+select * from designer where store_pk =#{store_pk}
+</select>
+<update id="updatedesigner" parameterType="designer">
+update designer set designer_name=#{designer_name},designer_id=#{designer_id} where designer_pk=#{designer_pk}
+</update>
+<delete id="deletedesigner" parameterType="string">
+delete from designer where designer_pk=#{designer_pk}
+</delete>
+<insert id="insertdesigner" parameterType="designer">
+insert into designer values(designer_seq.nextval,#{designer_id},#{designer_name},#{store_pk})
+</insert>
+</mapper>

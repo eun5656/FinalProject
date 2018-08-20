@@ -62,4 +62,19 @@
 		select * from nail where store_pk = #{store_pk}
 		</select>
 	
+	<insert id="insertNail" parameterType="nail" useGeneratedKeys="true" keyProperty="key" >
+	insert into nail values(nail_seq.nextVal,#{nail_name},#{nail_info},#{nail_color},#{nail_check},#{nail_style},#{store_pk},#{nail_ori_img},#{nail_re_img})
+	</insert>
+		
+	<update id="updateNail" parameterType="nail" >
+	update nail set nail_name=#{nail_name}, nail_info=#{nail_info}, nail_color=#{nail_color}, nail_check=#{nail_check},nail_style=#{nail_style}, nail_ori_img=#{nail_ori_img}, nail_re_img=#{nail_re_img} where nail_pk=#{nail_pk}
+	</update>	
+	
+	<delete id="deleteNail" parameterType="string">
+		delete from nail where nail_pk=#{nail_pk}
+	</delete>
+		
+	<select id="selectNailOne" parameterType="int" resultMap="selectAll">
+		select * from nail where nail_pk = #{nail_pk}
+	</select>	
 </mapper>
