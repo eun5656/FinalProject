@@ -25,12 +25,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.store.controller.StoreController;
+import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
 
 @Controller
 public class StoreReviewController {
+	
+	//@Autowired
+	//private StoreService storeService;
 
 	@Autowired
 	private StoreReviewService reviewService;
@@ -98,6 +102,7 @@ public class StoreReviewController {
 		System.out.println("reviewStar"+review_star);
 		int result = reviewService.storeReviewInsert(store_review);
 		//selectKey 는 객체안에 넣어서오기때문에 뺴내지않아도된다..
+		
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonstr = "";
 
