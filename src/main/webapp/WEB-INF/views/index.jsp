@@ -515,12 +515,21 @@
 												}
 											}
 											}
+<<<<<<< HEAD
 											
 											if(!mark_check){
 											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
 											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
 											}
 											
+=======
+											
+											if(!mark_check){
+											html2 +="<img src='${path }/resources/icons/love_blank.svg' alt='false' class='b_icon zindex' id='b_icon'>";
+											html2 +="<input class='bookmark_pk' name='bookmark_pk' type='hidden' value='${bookmark.bookmark_pk}'>";
+											}
+											
+>>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
 											html2 += "<input class='nail_pk' name='nail_pk' type='hidden' value='"+data.list[i].NAIL_PK+"'>";
 											html2 += "<input class='store_pk' name='store_pk' type='hidden' value='"+data.list[i].STORE_PK+"'>";
 											html2 += "<input class='member_pk' name='member_pk' type='hidden' value='${memberLoggedIn.memberPk}' >";

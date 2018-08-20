@@ -3,6 +3,7 @@
 <mapper namespace="bookmark">
 
 <resultMap type="bookmark" id="bookmarkMap">
+<<<<<<< HEAD
    </resultMap>
    
 
@@ -11,6 +12,16 @@
    <selectKey keyProperty="bookmark_pk" resultType="_int" order="AFTER">
           SELECT bookmark_SEQ.CURRVAL FROM DUAL
        </selectKey>
+=======
+	</resultMap>
+	
+
+ <insert id="insertBookmark" parameterType="bookmark">
+	insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail_pk},#{bookmark_check})
+	<selectKey keyProperty="bookmark_pk" resultType="_int" order="AFTER">
+ 			SELECT bookmark_SEQ.CURRVAL FROM DUAL
+ 		</selectKey>
+>>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
  </insert>
  
  <delete id="deleteBookmark" parameterType="hashmap">
@@ -18,7 +29,13 @@
  </delete>
  
  <select id="selectBookMarkList" resultMap="bookmarkMap" parameterType="_int">
+<<<<<<< HEAD
       select * from bookmark where member_pk = #{memberPk}
       </select>
       
+=======
+		select * from bookmark where member_pk = #{memberPk}
+		</select>
+		
+>>>>>>> 7d369371dcd8e3285d706615c4b1758e91f9860b
 </mapper>
