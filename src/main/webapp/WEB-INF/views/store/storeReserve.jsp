@@ -672,7 +672,7 @@ var store_pk ="${store.store_pk}";
                                           <select  id='choice2' class="form-control input-sm"  name='choice2'>
                                              <!--점주레벨이 아니면 disabled-->
                                              <c:forEach var="menu" items="${menuList}">
-                                                <c:if test="${menu.menu_check eq '손'}">
+                                                <c:if test="${menu.menu_check eq '네일'}">
                                                 <option value="${menu.menu_pk},${menu.menu_price}">${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
                                                 
                                                 </c:if>
@@ -685,7 +685,7 @@ var store_pk ="${store.store_pk}";
                                           <select id='choice3' class="form-control input-sm"  name='choice3'>
                                              <!--점주레벨이 아니면 disabled-->
                                              <c:forEach var="menu" items="${menuList}">
-                                                <c:if test="${menu.menu_check eq '발'}">
+                                                <c:if test="${menu.menu_check eq '페디'}">
                                                 <option value='${menu.menu_pk }'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
                                                 </c:if>
                                              </c:forEach>
