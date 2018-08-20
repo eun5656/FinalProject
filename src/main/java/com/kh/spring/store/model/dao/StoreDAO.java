@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -22,6 +23,10 @@ public interface StoreDAO {
 	int menuUpdate(SqlSessionTemplate sqlSession, Menu menu);
 
 	List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk);
+
+	int storeStarUpdate(SqlSessionTemplate sqlSession, Map updateStar);
+
+
 
 
 

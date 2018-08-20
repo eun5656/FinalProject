@@ -31,4 +31,8 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
  update menu set menu_name=#{menu_name}, menu_info=#{menu_info}, menu_price=#{menu_price}, menu_check=#{menu_check} where menu_pk=#{menu_pk}
 </update>
 
+<update id="storeStarUpdate" parameterType="hashmap">
+	 update store set store_rank = #{review_star} where store_pk = #{store_pk}
+</update>
+
 </mapper>

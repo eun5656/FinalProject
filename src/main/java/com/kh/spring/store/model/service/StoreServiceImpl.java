@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -71,5 +72,13 @@ public class StoreServiceImpl implements StoreService {
 		return  dao.menuList(sqlSession, store_pk);
 	}
 
+	@Override
+	public int storeStarUpdate(Map updateStar) {
+		// TODO Auto-generated method stub
+		return  dao.storeStarUpdate(sqlSession, updateStar);
+	}
+
+
+	
 
 }
