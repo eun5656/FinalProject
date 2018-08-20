@@ -34,12 +34,6 @@ public class ReserveController {
 	ReserService service;
 	
 	
-	
-	
-	
-	
-	
-	
 
 	@RequestMapping(value = "/reserve/storeReserveInsert.do", method = RequestMethod.POST, produces = {
 			"application/text; charset=utf8" })
@@ -49,6 +43,8 @@ public class ReserveController {
 	
 		//ajax 받기
 		String jsonStr = request.getParameter("store_reserve");
+		//String jsonStr2 = request.getParameter("store_payment");
+		//System.out.println(jsonStr2);
 		
 		//json객체로변환
 		JSONObject jsonObject = JSONObject.fromObject(jsonStr);
@@ -73,7 +69,7 @@ public class ReserveController {
 		
 		
 		//예약 실제 로직~
-		String msg="예약시간이 중복됩니다.";
+		String msg="예약시간이 중복됩니다";
 		Reserve reserve;
 		Map map=new HashMap();
 			try {

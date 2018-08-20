@@ -190,6 +190,10 @@ var store_pk ="${store.store_pk}";
       $('#calendar').fullCalendar({
         themeSystem: 'bootstrap3',
 
+        
+        //시작 페이지
+  		defaultView: 'month',
+  		
         //// uncomment this line to hide the all-day slot
         allDaySlot: false,
 
@@ -205,7 +209,7 @@ var store_pk ="${store.store_pk}";
         events: reservaiton,
 
         //이벤트에 시각까지 보여주기
-        displayEventTime: false,
+        displayEventTime: true,
 
 
         //editable: true, //드래그해서 움직이는것
@@ -247,13 +251,10 @@ var store_pk ="${store.store_pk}";
             duration: {
               days: 3
             },
-
             type: 'agenda',
-
             // views that are more than a day will NOT do this behavior by default
             // so, we need to explicitly enable it
             groupByResource: true
-
             //// uncomment this line to group by day FIRST with resources underneath
             //groupByDateAndResource: true
           },
@@ -276,7 +277,6 @@ var store_pk ="${store.store_pk}";
 
 
         /* hover시 예약내역보여주기*/
-        
         eventRender: function(eventObj, $el) {
           $el.popover({
             title: '예약내역',
@@ -287,20 +287,15 @@ var store_pk ="${store.store_pk}";
           });
         },
 
-
-     
-
-
       
         dayClick: function(date, jsEvent, view, resource) {
+     	   if(resource!=null){   
+           	  var checkHoliday = true;
+               	console.log(resource.businessHours[1].dow[0])
+             	console.log(resource.businessHours[2].dow[0])
 
-        if(resource!=null){   
-             var checkHoliday = true;
-               console.log(resource.businessHours[1].dow[0])
-             console.log(resource.businessHours[2].dow[0])
-
-             var mydateObj = new Date(date);
-             var chosenDay = mydateObj.getUTCDay();
+             	var mydateObj = new Date(date);
+             	var chosenDay = mydateObj.getUTCDay();
 
              if (chosenDay == resource.businessHours[1].dow[0]) {
                   if (resource.businessHours[1].start.substr(0, 2) > date.format("HH") || resource.businessHours[1].end.substr(0, 2) <= date.format("HH")) {
@@ -329,7 +324,7 @@ var store_pk ="${store.store_pk}";
                      console.log("now" + nowDate);
 
 
-                         var checkDate = new Date(date.format());
+                     var checkDate = new Date(date.format());
                      console.log("check" + checkDate);
 
                      /*1시간전 예약 못하게만들기*/
@@ -342,7 +337,8 @@ var store_pk ="${store.store_pk}";
                           alert("영업시간이 아닙니다.");
                           date=null;
 
-                     } 
+                     }
+                     
                      else {
             
                           if("${memberLoggedIn}".length >0){
@@ -361,6 +357,8 @@ var store_pk ="${store.store_pk}";
                    alert("휴무일입니다.");
                    date=null;
                 }
+                   
+               alert(date);
         
                    
               //x버튼 눌렀을떄 date 초기화
@@ -398,10 +396,12 @@ var store_pk ="${store.store_pk}";
                  
                  //가격가져오기
                  choice2 = choice2.split(',');
-                 choice2=choice2[0];
                  var menu_price=choice2[1];
-
-             	  var store_reserve = { 
+                 console.log(menu_price);
+                 choice2=choice2[0];
+               		//console.log(choice2);
+               		
+               		 var store_reserve = { 
                            	  member_pk: "${memberLoggedIn.memberPk}",
                               member_name:"${memberLoggedIn.memberName}",
                           	  store_pk: store_pk,
@@ -411,39 +411,47 @@ var store_pk ="${store.store_pk}";
                               reserve_start_time:date,             
                               reserve_end_time:date          
                            }
-
-               var jsonData = JSON.stringify(store_reserve);
-                    jQuery.ajaxSettings.traditional = true;
-      
+                        
+                         var store_payment = {
+                        		  member_pk: "${memberLoggedIn.memberPk}",
+                                  member_name:"${memberLoggedIn.memberName}",
+                              	  store_pk: store_pk,
+                        		  merchant_uid1:'merchant_' + new Date().getTime(),
+                        		}
+             	  
+	
+             			  var jsonData = JSON.stringify(store_reserve);
+             			  var jsonData2 = JSON.stringify(store_payment);
+                   			   jQuery.ajaxSettings.traditional = true;
+                   			   
                     
-                    
-                    
-               /* IMP.request_pay({
+               	 IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
-                       merchant_uid : 'merchant_' + new Date().getTime(),
-                       name : '주문명:결제테스트',
-                       amount :menu_price,
+                       merchant_uid : store_payment.merchant_uid1,
+                       name : '주문명:결제테스트',//메뉴이름
+                       amount :100,
+                      // amount :100,
                        buyer_email : "${memberLoggedIn.memberEmail}",
                        buyer_name : "${memberLoggedIn.memberName}",
                        buyer_tel : "${memberLoggedIn.memberPhone}",
                        buyer_addr : "${memberLoggedIn.memberAddress}",
                       
                        m_redirect_url : 'https://www.yourdomain.com/payments/complete'
-                   }, function(rsp) {
+                   }, 
+                      function(rsp) {
                        if ( rsp.success ) {
                            var msg = '결제가 완료되었습니다.';
                            msg += '고유ID : ' + rsp.imp_uid;
                            msg += '상점 거래ID : ' + rsp.merchant_uid;
                            msg += '결제 금액 : ' + rsp.paid_amount;
-                           msg += '카드 승인번호 : ' + rsp.apply_num;*/
+                           msg += '카드 승인번호 : ' + rsp.apply_num;
+                           
                         //성공시에 디비에 인서트함   
-                        
-                        
                         $.ajax({
                             type: "POST",
                         	url:"${path}/reserve/storeReserveInsert.do",
-                          	data: {"store_reserve":jsonData},
+                          	data: {"store_reserve":jsonData,"store_payment":jsonData2},
                             dataType: "json",
                             success: function (data) {
                            //console.log(data.reserve.menu_pk);
@@ -451,20 +459,25 @@ var store_pk ="${store.store_pk}";
                           
                            if(data.msg=="예약완료"){
                            /*화면에 등록시키기*/
-                           console.log(description);
-                            $('#calendar').fullCalendar('renderEvent', {
-                             title: title,
-                             start: data.reserve.reserve_start_time, //specify start date
-                             id:  data.reserve.reserve_pk,  //예약아이디로....
-                             description: description,
-                             resourceId: data.reserve.designer_id,
-                             end: data.reserve.reserve_end_time,
-                             member_name:data.reserve.member_name,
-                             reserve_start_time:data.reserve.reserve_start_time,
-                             reserve_end_time:data.reserve.reserve_end_time,
-                             designer_name:data.reserve.designer_name,
-                             menu_pk:data.reserve.menu_pk
+                           //console.log(description);
+                            	$('#calendar').fullCalendar('renderEvent', {
+                             	title: title,
+                             	start: data.reserve.reserve_start_time, //specify start date
+                             	id:  data.reserve.reserve_pk,  //예약아이디로....
+                             	description: description,
+                             	resourceId: data.reserve.designer_id,
+                             	end: data.reserve.reserve_end_time,
+                             	member_name:data.reserve.member_name,
+                             	reserve_start_time:data.reserve.reserve_start_time,
+                             	reserve_end_time:data.reserve.reserve_end_time,
+                             	designer_name:data.reserve.designer_name,
+                             	menu_pk:data.reserve.menu_pk
                             });
+                            $('#close-modal-btn').trigger('click');
+                           }
+                           else{
+                        	   
+                        	   
                            }
                         },
                         error: function (e) {
@@ -472,19 +485,18 @@ var store_pk ="${store.store_pk}";
                         }
 
                       });
-                     /*  } else {
+                     	  } else {
                            var msg = '결제에 실패하였습니다.';
                            msg += '에러내용 : ' + rsp.error_msg;
                            $('#close-modal-btn').trigger('click');
                        }
                        alert(msg);
-                   });    */
+                   });    
           });
         },
 
 
         eventClick: function(calEvent, jsEvent, view) {
-        	if("${memberLoggedIn.memberLevel}"<=2){
           
           	$('#reserName').html(calEvent.member_name);
           	$('#reserDate').html(calEvent.reserve_start_time+" ~ "+calEvent.reserve_end_time);
@@ -507,18 +519,9 @@ var store_pk ="${store.store_pk}";
         	$("#choice2").parent().css('padding-top','13px');
           	$("#designer").html(calEvent.designer_name);
           	$("#payment").remove();
-        	 // alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-
-      		//$('#choice1').val(calEvent.choice1).prop("selected", true);;
-        	//$('#choice2').option(calEvent.choice2).attr("selected", "selected");
-         	// $('#choice_employee').val(calEvent.choice_employee).attr("selected", "selected");
-
-       		  var modal_view= $('#calendarModal').modal();
+          	$("#result-reservaiton").remove();
+        	var modal_view= $('#calendarModal').modal();
     
-        	 calEvent=null;
-         	 /*alert('Event: ' + calEvent.start.format());
-         	 alert('View: ' + view.name);*/
-          
           
           $('#remove-reservaiton').one('click', function() {
             var check1 = confirm("삭제하시겠습니까?")
@@ -528,13 +531,12 @@ var store_pk ="${store.store_pk}";
             }
           })
         }
-        }
       });
       
-      $('#close-modal-btn').on('click', function() {
-      	location.reload();
-      });
-      $(document).keyup(function(e) {
+    	$('#close-modal-btn').on('click', function() {
+      		location.reload();
+     	 });
+    	  $(document).keyup(function(e) {
               if(e.keyCode==27){
                 	location.reload();
               }
@@ -685,15 +687,9 @@ var store_pk ="${store.store_pk}";
                                     <tr >
                                        <td colspan="7" style="text-align: center;">
                                        <button id="result-reservaiton" type="button" class="btn btn-success" name="button" >확인</button>
-                                       <c:if test="${memberLoggedIn.memberLevel<=2}">
-                                       <button id="remove-reservaiton" type="button" class="btn btn-danger" name="button">삭제</button>
-                                       </c:if>
+                                       <button style="display: none" id="remove-reservaiton" type="button" class="btn btn-danger" name="button">삭제</button>
                                        </td>
                                     </tr>
-                                    
-                                    
-                                    
-                                    
                               </tbody>
                               </table>
                            </div>
