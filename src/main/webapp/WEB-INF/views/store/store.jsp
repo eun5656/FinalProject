@@ -12,7 +12,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- store css -->
 
-<link href="${path }/resources/css/store.css?ver=3" rel="stylesheet" />
+<link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
  <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
 <!-- store js -->
@@ -24,9 +24,8 @@
 // 외부 js 에서 쓰이는 변수 setting
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
-var holiday ="${store.store_holiday}";
 </script>
-<script src="${path }/resources/js/store.js?ver=6"></script>
+<script src="${path }/resources/js/store.js?ver=3"></script>
 <div>
 <div id="wrapper">
 
@@ -37,7 +36,6 @@ var holiday ="${store.store_holiday}";
 			<div class="row">
 
 				<!-- 가게 이미지 시작 -->
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">					
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex" id="b_icon">
 					
@@ -55,7 +53,6 @@ var holiday ="${store.store_holiday}";
 				<!--가게 이미지 끝-->
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
-					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
 					<p>장소 : ${store. store_address }</p>
           			  <p> <c:forEach begin="1" end="${store_star}">
           				  <i class="price-text-color fa fa-star"></i>
@@ -70,21 +67,12 @@ var holiday ="${store.store_holiday}";
           			  
           			  
 					<p>Tel. ${store. store_phone }</p>
-					<p>휴일 : 
-  	<span class="holiday" id= "0" style="display:none;">일요일</span>
- 	 <span class="holiday" id= "1"  style="display:none;">월요일</span>
- 	 <span class="holiday" id= "2"  style="display:none;">화요일</span>
- 	 <span class="holiday" id= "3"  style="display:none;">수요일</span>
- 	  <span class="holiday" id= "4" style="display:none;">목요일</span>
- 	   <span class="holiday" id= "5" style="display:none;">금요일</span>
-  	   <span class="holiday" id= "6" style="display:none;">토요일</span>
-					</p>
-					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
-					<p>${store.store_info }</p>
+					<p>평일 10:00 - 21:00 토요일 11:00 - 21:00 일요일 11:00 - 20:00</p>
+					<p>속눈썹 연장, 왁싱, 스킨/바디케어, 주차, 무선 인터넷, 애완동물 동반</p>
 				</div>
 			</div>
 			<div class="row" style="margin-top: 20px;">
-				<marquee>${store.store_notice }</marquee>
+				<marquee>공지사항입니다~~~~~~~~~~~~</marquee>
 			</div>
 			<!-- tab 화면 시작-->
 			<div class="row" >
@@ -116,34 +104,11 @@ var holiday ="${store.store_holiday}";
 										<div class="item">
 										</c:when>
 									</c:choose>	
-										<c:forEach var='i'	 begin='${status.index }' end="${status.index +2 }">
-										
+										<c:forEach var='i' begin='${status.index }' end="${status.index +2 }">
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
-										
 											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;height:250px;">
-												
-<!-- 										bookmark start		 -->
-											<jsp:useBean id="check_bookmark" class="java.lang.String" />
-									<c:set var="check_bookmark" value="false"/>
- 			
- 							<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
-							<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nails[i].nail_pk}">
- 								<c:set var="check_bookmark" value="true"/>
- 								<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
-							<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
-						</c:if>
-							</c:forEach>
-					
-								<c:if test="${check_bookmark eq 'false'}">
-	  						<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
- 						<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
-							</c:if>
-							<input class="nail_pk" name="nail_pk" type="hidden" value="${nails[i].nail_pk}" >
-							<input class="store_pk" name="store_pk" type="hidden" value="${store.store_pk}" >
-							<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
-<!-- 							bookmarkend -->
-
 												<div class="hovereffect">
+												
 													<img class="img-responsive radius14 smail-carousel"
 														src="${path }/resources/images/nails/${nails[i].nail_re_img}" alt="">
 													<div class="overlay">
@@ -177,7 +142,7 @@ var holiday ="${store.store_holiday}";
 
 												<!-- Modal Header -->
 												<div class="modal-header">
-													<h4 class="modal-title">${nail.nail_name }</h4>
+													<h4 class="modal-title">시술정보 상세</h4>
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
 												</div>
 
@@ -187,9 +152,8 @@ var holiday ="${store.store_holiday}";
 															<img class="img-responsive radius14"
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
-													<p>네일 정보 : ${nail.nail_info }</p>
-													<p>네일 색상 : ${nail.nail_color },  타입   :  ${nail.nail_check },  종류  :  ${nail.nail_style }</p>
-												</div> 
+													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check==1?'네일':'페디' }, 종류	 : ${nail.nail_style }</p>
+												</div>
 												<!-- Modal footer -->
 												<div class="modal-footer">
 												</div>
@@ -810,79 +774,6 @@ function eventBind(index) {
 	</div>
 </div>
 </div>
-<script type="text/javascript">
-$(".b_icon").click(function() {					    	
-	var memberLoggedIn= "${memberLoggedIn}";
-	if(memberLoggedIn.length!=0){
 
-	var temp=$(this);
-	var bookmark_val = { 
-			nail_pk: temp.nextAll("[name='nail_pk']").val(),
-			member_pk: temp.nextAll("[name='member_pk']").val(),
-			store_pk: temp.nextAll("[name='store_pk']").val(),
-			bookmark_check:null 			
-			}
-
-	
-	if (temp.attr("alt")=='false') 
-	{	
-		bookmark_val.bookmark_check="true";
-		//var nail_pk=temp.next().val();					    		
-		//var member_pk=temp.next().next().val();
-	  var jsonData = JSON.stringify(bookmark_val);
-      jQuery.ajaxSettings.traditional = true;
-		///*json 객체로 바로넘기기					    							    		
-		    $.ajax({
-		 	url:"${path}/bookmark/insertBookmark.do",
-			data:{"bookmark_val":jsonData},
-			type: "post",
-			dataType: "json",
-			success: function(data){
-  		   		alert("등록완료");
-				temp.attr("alt","true");
-    			temp.attr("src","/spring/resources/icons/love_filled.svg");
-    			temp.nextAll('.bookmark_pk').attr('value',data);
-				},
-			error: function(jpxhr,textStatus,errormsg) {
-				console.log("ajax전송실패");
-				console.log(jpxhr);
-				console.log(textStatus);
-				console.log(errormsg);
-			}
-		})	
-		
-	} 
-	else {
-		
-		//bookmark_val.bookmark_check="false";
-		//var nail_pk=temp.next().val();					    		
-		//var member_pk=temp.next().next().val();\ss
-		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
-		var member_pk=temp.nextAll("[name='member_pk']").val()
-	    $.ajax({
-	 	url:"${path}/bookmark/deleteBookmark.do",
-		data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
-		type: "post",
-		dataType: "json",
-		
-		success: function(data){
-  		    alert("삭제완료");
-			temp.attr("alt","false");
-    		temp.attr("src","/spring/resources/icons/love_blank.svg");
-			temp.nextAll('.bookmark_pk').attr('value','');
-			},
-		error: function(jpxhr,textStatus,errormsg) {
-			console.log("ajax전송실패");
-			console.log(jpxhr);
-			console.log(textStatus);
-			console.log(errormsg);
-		}
-	})	
-	}	
-	}
-	else{
-		alert("로그인해주세요");
-	}
-})</script>
 <!-- 푸터부분 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
