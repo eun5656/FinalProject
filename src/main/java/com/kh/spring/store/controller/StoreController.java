@@ -37,6 +37,7 @@ import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
+import com.kh.spring.store.model.vo.Store_time;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
@@ -76,6 +77,7 @@ public class StoreController {
 		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
 		int store_star=service.selectStoreStar(store_pk);
 			
+		Store_time store_time = service.selectTime(store_pk);
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);
 		System.out.println("Nail 값 확인 : "+nails);
@@ -85,13 +87,16 @@ public class StoreController {
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		store_time = store_time.deleteDate(store_time);
+		System.out.println(store_time);
+		model.addAttribute("store_time",store_time);
 		List<Bookmark> bookmarkList = null;
 		if(session.getAttribute("memberLoggedIn")!=null) {
 			int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
 			if(member_pk>0){
 				bookmarkList=bookmarkService.selectBookMarkList(member_pk);
 				System.out.println(bookmarkList);
-				model.addAttribute("boomarkList",bookmarkList);
+				model.addAttribute("bookmarkList",bookmarkList);
 				}
 		}
 		
