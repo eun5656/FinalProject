@@ -6,7 +6,6 @@
 </resultMap>
 <resultMap type="menu" id="menuMap">
 </resultMap>
-
 <select id="selectOne" resultMap="storeMap" parameterType="int">
 	select * from store where member_pk = #{member_pk}
 </select>
