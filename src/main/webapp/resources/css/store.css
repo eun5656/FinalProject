@@ -151,6 +151,7 @@
 }
 #right-side ul{
 	padding-left: 2px;
+	float:right;
 }
 #right-side ul li {
 	padding-top: 10px;
@@ -164,6 +165,7 @@
 	cursor: pointer;
 	-webkit-transition: all .2s ease-out;
 	transition: all .2s ease-out;
+	
 }
 
 #right-side ul li:hover {
@@ -186,7 +188,7 @@
 
 #border {
 	height: 288px;
-	width: 1px;
+	width: 0px;
 	background-color: rgba(51, 51, 51, 0.2);
 }
 

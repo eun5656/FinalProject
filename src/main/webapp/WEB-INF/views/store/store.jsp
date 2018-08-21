@@ -808,10 +808,11 @@ function eventBind(index) {
 		</div>
 <!-- first End -->
 </div>
-<div id="border">
-	<div id="line" class="one"></div>
+<div id="border" >
+	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-<div id="right-side">
+<div id="right-side" style="display:inherit;">
+
 	<div style="position: fixed;">
 		<ul>
 			<li class="shop active">
@@ -836,6 +837,7 @@ function eventBind(index) {
 			</li>
 		</ul>
 	</div>
+	
 </div>
 </div>
 <script type="text/javascript">

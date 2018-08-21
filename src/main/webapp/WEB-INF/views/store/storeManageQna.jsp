@@ -97,10 +97,11 @@ var store_pk="${store.store_pk}"
 
 			</div>
 		</div>
-		<div id="border">
-			<div id="line" class="two"></div>
-		</div>
+	
 		<div id="right-side">
+			<div id="border">
+			<div id="line" class="four" style="position:fixed;"></div>
+		</div>
 			<div style="position: fixed;">
 				<ul>
 					<li class="shop active">

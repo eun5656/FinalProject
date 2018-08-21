@@ -744,14 +744,12 @@ var store_pk="${store.store_pk}"
 
 <!-- first 끝 -->
 </div>
-
+<div id="right-side" >
 <div id="border">
-	<div id="line" class="one"></div>
+	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-
-<div id="right-side">
 	<div style="position: fixed;">
-		<ul>
+			<ul>
 			<li class="shop active ">
 				<div class="icon active">
 					<img src="${path }/resources/icons/shop.svg" alt="">

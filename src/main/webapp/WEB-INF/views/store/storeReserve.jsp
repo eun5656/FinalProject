@@ -757,7 +757,7 @@ var store_pk ="${store.store_pk}";
 </div>   
 <!-- leftEnd -->
 <div id="border">
-   <div id="line" class="three"></div>
+   <div id="line" class="three" style="position:fixed;"></div>
 </div>
 <div id="right-side">
    <div style="position: fixed;">
