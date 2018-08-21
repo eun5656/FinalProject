@@ -117,7 +117,7 @@ public class MemberController {
 		
 		response.getWriter().print(check);
 		System.out.println(check +"check 확인");
-//		return check;
+
 	}
 
 	@RequestMapping("/member/emailEnd.do")
