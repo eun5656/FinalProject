@@ -83,6 +83,8 @@ public class StoreController {
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		store_time = store_time.deleteDate(store_time);
+		System.out.println(store_time);
 		model.addAttribute("store_time",store_time);
 		List<Bookmark> bookmarkList = null;
 		if(session.getAttribute("memberLoggedIn")!=null) {
