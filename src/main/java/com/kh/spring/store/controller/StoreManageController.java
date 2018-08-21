@@ -467,17 +467,19 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		List<designer> designersCheck = designerservice.selectdesigner(store.getStore_pk());
 		int size = designersCheck.size();
 		System.out.println("디자이너 삽입 접근완료" + designer);
-		
-		
+		System.out.println(size+"디자이너 크기 확인");
+		System.out.println(designersCheck.toString());
+		System.out.println(designersCheck.get(0).getDesigner_id());
 //디자이너 아이디 검증
 		if(size==0) {
 			designer.setDesigner_id("a");
 			int result = designerservice.insertdesigner(designer);
 		}
 		else if(size==1) {
-			if(!designersCheck.get(0).getDesigner_id().equals("a"))					
-			{designer.setDesigner_id("b");			}
-			else if(!designersCheck.get(0).getDesigner_id().equals("b"))					
+			if(designersCheck.get(0).getDesigner_id().equals("a"))					
+			{designer.setDesigner_id("b");			
+			}
+			else if(designersCheck.get(0).getDesigner_id().equals("b"))					
 			{designer.setDesigner_id("a");}
 			else if(designersCheck.get(0).getDesigner_id().equals("c"))
 			{designer.setDesigner_id("a");}
