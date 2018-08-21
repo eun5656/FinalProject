@@ -12,7 +12,7 @@
 	<div class='container'>
 		<div class="panel">
 			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="${path}/mypage/mypage.do">예약현황</a></li>
+				<li role="presentation"><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">예약현황</a></li>
 				<li role="presentation"><a href="${path}/mypage/mypageBookmark.do?member_pk=${memberLoggedIn.memberPk}">즐겨찾기</a></li>
 				<li role="presentation"><a href="${path}/mypage/mypageQNAList.do?member_pk=${memberLoggedIn.memberPk}">1:1문의내역</a></li>
 				<li role="presentation"><a href="${path}/mypage/mypageUpdate.do">회원정보수정</a></li>
