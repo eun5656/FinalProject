@@ -51,7 +51,7 @@
                          
                        </div>
              
-  					
+  					 <c:if test="${memberLoggedIn.memberLevel==1 }">
                        <div class="row text-right">
                             <div class="btn-group">
   								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/noticeUpdate.do?noticePk=${notice.noticePk}'">수정</button>
@@ -59,7 +59,7 @@
   			
   							</div>
   							</div>
-  			
+  					</c:if>
                        
                         </div>
                     </div>
@@ -72,11 +72,11 @@
             </div>
         </div>
     </div>
-    
+     <c:if test="${memberLoggedIn.memberLevel==1 }">
     	 <div class="row text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/noticeForm.do'">글 등록</button>
       	</div>
-   
+   </c:if>
       <div class="row text-center" id="paging">
         ${pageBar}
       </div>

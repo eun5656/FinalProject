@@ -4,7 +4,7 @@
 	<resultMap type="storeReserve" id="storeReserveMap">
 		 
 	</resultMap>
-	
+
 	<insert id="storeReserveInsert" parameterType="storeReserve">
 	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{member_name},#{store_pk},#{designer_name},#{designer_id},#{menu_pk},#{reserve_status},#{reserve_start_time},#{reserve_end_time},SYSDATE)
 		<selectKey keyProperty="reserve_pk" resultType="_int" order="AFTER">
@@ -25,5 +25,23 @@
 	</select>
 
 	<select id="reserveCount" parameterType="_int" resultType="_int"> select count(*) from reserve where member_pk=#{memberPk} </select>
-
+	
+	<insert id="paymentInsert" parameterType="com.kh.spring.reserve.model.vo.Payment">
+		INSERT INTO PAYMENT VALUES(payment_SEQ.NEXTVAL,#{payment_num},#{member_pk},#{member_name},#{store_pk},#{payment_check},#{reserve_pk})
+	</insert>
+	
+	<select id="paymentOne" parameterType="_int" resultType="com.kh.spring.reserve.model.vo.Payment">
+		select * from payment where reserve_pk=#{reserve_pk}
+	</select>
+	
+	<update id="paymentUpdate" parameterType="int">
+	  update payment set payment_check='결제 취소 요청' where payment_pk=#{payment_pk}
+	</update>
+	
+	<select id="paymentList" resultType="com.kh.spring.reserve.model.vo.Payment">
+		select * from payment order by payment_pk desc
+	</select>
+	<select id="paymentCount" resultType="int">
+		select count(*) from payment
+	</select>
 </mapper>

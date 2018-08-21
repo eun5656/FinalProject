@@ -36,7 +36,7 @@ public class BookmarkController {
 	@ResponseBody
 	public String insertBookmark( HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
 	{
-		
+		System.out.println("접근완료");
 		String jsonStr = request.getParameter("bookmark_val");
 		JSONObject jsonObject = JSONObject.fromObject(jsonStr);
 		int nail_pk = Integer.parseInt(jsonObject.getString("nail_pk"));
@@ -49,7 +49,7 @@ public class BookmarkController {
 		bookmark.setMember_pk(member_pk);
 		bookmark.setBookmark_check(bookmark_check);
 		bookmark.setStore_pk(store_pk);
-		
+		System.out.println(bookmark);
 		/*Map map=new HashMap();
 
 		map.put("nail_pk", nail_pk);
@@ -66,7 +66,7 @@ public class BookmarkController {
 		else {
 			result=0;
 		}
-		
+		System.out.println("결과 확인 " +result);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";

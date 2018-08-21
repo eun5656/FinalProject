@@ -11,7 +11,7 @@
   <section id='mypage' style="padding-top: 100px;">
     <div class='container'>
       <div class="panel">
-
+		<div class="panel-heading">
         <ul class="nav nav-tabs">
           <li class="active" role="presentation"><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">예약현황</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageBookmark.do">즐겨찾기</a></li>
@@ -19,12 +19,12 @@
           <li class="presentation"><a href="${path}/mypage/mypageChange.do">회원정보수정</a></li>
           <li role="presentation"><a href="${path}/mypage/mypageDelete.do">탈퇴</a></li>
         </ul>
-
+		</div>
         <div class="panel-body">
           <div class="page-header">
             <h2>예약현황</h2>
           </div>
-          <div class="container">
+          
       <div class="row">
           <div class="col-sm-12 col-md-10 col-md-offset-1">
               <table class="table table-hover">
@@ -40,31 +40,52 @@
                   <tbody>
                   <c:forEach  var='m' items='${list}' varStatus="vs">
                       <tr>
-                          <td class="col-sm-8 col-md-6">
+                          <td class="col-sm-6 col-md-6">
                           <div class="media">
                               <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
                                   <h4 class="media-heading"><a href="#">${m.store_name}</a></h4>
                               </div>
-                          </div></td>
+                          </div>
+                          </td>
                           <td class="col-sm-1 col-md-1" style="text-align: center">
                           <strong>${m.reserve_start_time }</strong>
                           </td>
-                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.reserve_status}</strong></td>
+                          <td class="col-sm-2 col-md-2 text-center"><strong>${m.reserve_status}</strong></td>
                           <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>
                           <td class="col-sm-1 col-md-1">
-                          <button type="button" class="btn btn-danger">
-                              <span class="glyphicon glyphicon-remove"></span> 예약취소
-                          </button></td>
+                        	<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${m.reserve_pk});" >결제 내역</button>
+                          </td>
+                          <script>
+                          function fn_payment(m){
+                        	  var reserve_pk=m;
+                          
+                        	  $.ajax({
+                        		  type: "POST",
+                                  url:"${path}/mypage/mypagePayment.do",
+                                  data: {"reserve_pk":reserve_pk},
+                                  success: function (data) { 
+                        	  			$('#myModal').html(data);
+                        	  			$("#myModal").modal('show');
+                        	  			
+                                  }
+                        	  });
+                          }
+                          </script>
+                        
                       </tr>
 					</c:forEach>
                   </tbody>
-
+				  		
+                           <!-- Modal -->
+  								<div class="modal fade" id="myModal" role="dialog">
+   								
+  								</div>
               </table>
               <div class="row1 text-center" id="paging">${pageBar}</div>
           </div>
       </div>
-  </div>
+ 
 
         </div>
       </div>

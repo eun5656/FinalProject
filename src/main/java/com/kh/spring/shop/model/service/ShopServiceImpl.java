@@ -48,6 +48,10 @@ public class ShopServiceImpl implements ShopService {
 		return list;
 	}
 
-	
+	@Override
+	public List<Store> searchShopList(String searchLocation) {
+		
+		return dao.searchShopList(sqlSession, searchLocation);
+	}
 
 }

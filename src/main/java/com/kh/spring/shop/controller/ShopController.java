@@ -66,7 +66,14 @@ List<Store> list;
 	}
 	
 
-	
+	@RequestMapping("/shop/searchLocation.do")
+	public String searchLocation(String searchLocation,Model model) {
+		List<Store> shopList =service.searchShopList(searchLocation);
+		model.addAttribute("shopList", shopList);
+		String view="shop/shop";
+		return view;
+		
+	}
 	
 
 }

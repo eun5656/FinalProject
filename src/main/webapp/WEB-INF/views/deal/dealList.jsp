@@ -105,10 +105,12 @@
 					</div>
 				
       </div>
+      
+      <c:if test="${memberLoggedIn!=null }">
       <div class="row1 text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealForm.do'">글 등록</button>
       </div>
-    
+      </c:if>
       <div class="row1 text-center" id="paging">
         ${pageBar}
       </div>

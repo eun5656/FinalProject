@@ -49,14 +49,14 @@
                         	<div class="col-xs-1"></div>
                         
                        </div>
-                       
+                        <c:if test="${memberLoggedIn.memberLevel==1 }">
                        <div class="row text-right">
                             <div class="btn-group">
   								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/faqUpdate.do?faqPk=${faq.faqPk}'">수정</button>
   								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/faqDelete.do?faqPk=${faq.faqPk}'">삭제</button>
   							</div>
   							</div>
-  		
+  						</c:if>
   		
                        
                         </div>
@@ -69,9 +69,11 @@
             </div>
             </div>
         </div>
+         <c:if test="${memberLoggedIn.memberLevel==1 }">
          <div class="row text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/faqForm.do'">글 등록</button>
       	</div>
+      	</c:if>
       	 <div class="row text-center" id="paging">
         ${pageBar}
      	 </div>

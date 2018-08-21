@@ -42,4 +42,14 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
 <select id="store_timeSelect" parameterType="int" resultType="store_time">
 select * from store_time where store_pk = #{store_pk}
 </select>
+
+<select id="manageStoreList" resultMap="storeMap">
+	select * from store order by store_pk desc
+</select>
+<select id="manageSelectCount" resultType="_int">
+	select count(*) from store
+</select>
+<select id="selectManage" resultMap="storeMap" parameterType="int">
+	select * from store where store_pk=#{store_pk}
+</select>
 </mapper>

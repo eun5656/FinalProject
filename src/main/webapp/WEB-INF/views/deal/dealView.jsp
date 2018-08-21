@@ -39,18 +39,22 @@ var deal_pk ="${deal.deal_pk}";
 		<div class="col-xs-10">
 		
 		<div class="panel panel-default">
-			<div class="panel-heading deal-title">
-			
-				<h3 style="padding-left:15px;">${deal.deal_title }</h3>
-			</div>
+	
 			<div class="panel-body">
+				<div class="row" >
+					<h4 style="padding-left:35px;">${deal.deal_title } | <거래게시판></h4>
+				</div>
+				<hr>
+				
+			
 				<div class="row text-right">
-					<div class="col-sm-1"></div>
-					<div class="col-sm-8"></div>
-					<div class="col-sm-2"> <fmt:formatDate value="${deal.deal_date}" pattern="yyyy/MM/dd HH:mm"/></div>
+					<div class="col-sm-2"><p><span> 작성자 : ${deal.deal_writer }</span></p></div>
+					<div class="col-sm-6"></div>
+					<div class="col-sm-3">작성일자 : <fmt:formatDate value="${deal.deal_date}" pattern="yyyy/MM/dd HH:mm"/></div>
 					<div class="col-sm-1"></div>	
 					 
 				</div>
+				<br>
 				<div class="row">
 					<div class="col-sm-1"></div>
 					<div class="col-sm-10">${deal.deal_content }</div>
@@ -60,11 +64,14 @@ var deal_pk ="${deal.deal_pk}";
 		  			<div class="col-sm-1"></div>
 					<div class="col-sm-7"></div>
 					<div class="col-sm-3"> 
-					  	
+					  	<br>
           				<div class="btn-group">
  							<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealList.do'">목록</button>
+ 							
+ 						<c:if test="${memberLoggedIn.memberId eq deal.deal_writer }">
   							<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealUpdate.do?deal_pk=${deal.deal_pk}'">수정</button>
   							<button type="button" class="btn btn-primary" onclick='fn_delete()'>삭제</button>
+  						</c:if>
   				<script>
   				function fn_delete(){
   					var check=confirm("거래글을 삭제하시겠습니까?");
