@@ -12,6 +12,7 @@ import com.kh.spring.reserve.model.dao.ReserDao;
 import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.controller.StoreController;
+import com.kh.spring.store.model.vo.Store_time;
 
 @Service
 public class ReserServiceImpl implements ReserService {
@@ -47,6 +48,12 @@ public class ReserServiceImpl implements ReserService {
 	public int paymentInsert(Payment payment) {
 		
 		return reserDao.paymentInsert(sqlSession, payment);
+	}
+
+
+	@Override
+	public Store_time selectStoreTime(int store_pk) {
+		return reserDao.selectStoreTime(sqlSession, store_pk);
 	}
 
 

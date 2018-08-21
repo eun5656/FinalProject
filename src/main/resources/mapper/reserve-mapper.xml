@@ -4,6 +4,7 @@
 	<resultMap type="storeReserve" id="storeReserveMap">
 		 
 	</resultMap>
+	<resultMap type="store_time" id="storeTimeMap"></resultMap>
 
 	<insert id="storeReserveInsert" parameterType="storeReserve">
 	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{member_name},#{store_pk},#{designer_name},#{designer_id},#{menu_pk},#{reserve_status},#{reserve_start_time},#{reserve_end_time},SYSDATE)
@@ -43,5 +44,8 @@
 	</select>
 	<select id="paymentCount" resultType="int">
 		select count(*) from payment
+	</select>
+	<select id="selectStoreTime" resultMap="storeTimeMap" parameterType="_int">
+		select * from store_time where store_pk=#{store_pk}
 	</select>
 </mapper>

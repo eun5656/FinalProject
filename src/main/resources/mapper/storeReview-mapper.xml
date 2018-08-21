@@ -6,7 +6,8 @@
 </resultMap>
 
 <select id="storeReviewList" resultMap="storeReviewMap">
-SELECT REVIEW_content, A.*FROM REVIEW A WHERE store_pk = #{store_pk} START WITH REVIEW_LEVEL=1 CONNECT BY PRIOR REVIEW_PK=REVIEW_REF ORDER SIBLINGS BY REVIEW_DATE ASC
+SELECT REVIEW_content, A.* ,B.member_re_Img FROM REVIEW A inner join member B on a.member_pk=B.member_pk WHERE store_pk = #{store_pk} START WITH REVIEW_LEVEL=1 CONNECT BY PRIOR REVIEW_PK=REVIEW_REF ORDER SIBLINGS BY REVIEW_DATE ASC
+
 </select>
 
 <select id="selectReImg" resultType="string" parameterType="_int">

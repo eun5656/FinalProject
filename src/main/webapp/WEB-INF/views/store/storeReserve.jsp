@@ -48,8 +48,9 @@ var store_pk ="${store.store_pk}";
   <script>
     $(function() {
       //영업시작시간~~
-      var min = '10:00:00';
-      var max = '23:00:00';
+
+      var min = "${store_open_time}";
+      var max = "${store_close_time}";
       var reserDate;
       var startTime;
       var endTime;
@@ -89,24 +90,23 @@ var store_pk ="${store.store_pk}";
           title: '원장님',
           eventColor: 'blue',
           businessHours1: businessHours1,
-          businessHours: [ // specify an array instead
+         /* businessHours: [ // specify an array instead
             {
               dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: '08:00', // 8am
-              end: '23:00' // 6pm
+              start: min, // 8am
+              end: max // 6pm
             },
-
             {
               dow: [6], // Thursday, Friday
-              start: '11:00', // 10am
-              end: '21:00' // 4pm
+              start: "${store_weekend_open}", // 10am
+              end: "${store_weekend_close}" // 4pm
             },
             {
               dow: [0], // Thursday, Friday
-              start: '11:00', // 10am
-              end: '21:00' // 4pm
+              start: "${store_weekend_open}", // 10am
+              end: "${store_weekend_close}" // 4pm
             }
-          ]
+          ]*/
         },
 
         {
@@ -114,24 +114,24 @@ var store_pk ="${store.store_pk}";
           title: '디자이너1',
           eventColor: 'green',
           businessHours1: businessHours1,
-          businessHours: [ // specify an array instead
+         /* businessHours: [ 
             {
-              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: '08:00', // 8am
-              end: '23:00' // 6pm
+              dow: [1, 2, 3, 4, 5], 
+              start: min, // 8am
+              end: max // 6pm
             },
 
             {
               dow: [6], // Thursday, Friday
-              start: '11:00', // 10am
-              end: '21:00' // 4pm
+              start: "${store_weekend_open}", 
+              end: "${store_weekend_close}"
             },
             {
               dow: [0], // Thursday, Friday
-              start: '11:00', // 10am
-              end: '21:00' // 4pm
+              start: "${store_weekend_open}", 
+              end: "${store_weekend_close}" 
             }
-          ]
+          ]*/
 
         },
         {
@@ -139,24 +139,24 @@ var store_pk ="${store.store_pk}";
           title: '디자이너2',
           eventColor: 'orange',
           businessHours1: businessHours1,
-          businessHours: [ // specify an array instead
+         /* businessHours: [ // specify an array instead
             {
               dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: '08:00', // 8am
-              end: '23:00' // 6pm
+              start: min, 
+              end: max 
             },
 
             {
               dow: [6], //
-              start: '11:00',
-              end: '21:00'
+              start: "${store_weekend_open}",
+              end: "${store_weekend_close}" 
             },
             {
               dow: [0], //
-              start: '11:00',
-              end: '21:00'
+              start: "${store_weekend_open}", 
+              end: "${store_weekend_close}" 
             }
-          ]
+          ]*/
         },
       ];
       
@@ -224,14 +224,26 @@ var store_pk ="${store.store_pk}";
         slotLabelInterval: 60,
         slotLabelFormat: 'a HH :mm ',
 
-        /*점포 휴무일
-        businessHours: {
-          // days of week. an array of zero-based day of week integers (0=Sunday)
-          dow: [1, 2, 3, 4], // Monday - Thursday
-
-          start: '10:00', // a start time (10am in this example)
-          end: '18:00', // an end time (6pm in this example)
-        },*/
+   
+      
+  		 businessHours:  [ // specify an array instead
+              {
+                dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+                start: min, 
+                end: max 
+              },
+              {
+                dow: [6], //
+                start: "${store_weekend_open}",
+                end: "${store_weekend_close}" 
+              },
+              {
+                dow: [0], //
+                start: "${store_weekend_open}", 
+                end: "${store_weekend_close}" 
+              }
+            ],
+        
 
 
 
@@ -623,8 +635,8 @@ var store_pk ="${store.store_pk}";
    <div id="left-side">
       <div id="third" class="active">
         <div class="row" style="margin-top: 100px;">
-            <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name}점포 "/>예약페이지</strong>
-            <strong style="font-size:20pt; color:rgb(71, 51, 51)"><i class="fa fa-angellist"></i>예약페이지</strong>
+            <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
+            <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
       </div>  
          <div id='calendar' style="margin-top: 20px;"></div>
          <div id='calendarModal' class="modal fade pop-up-1" tabindex="-1"
