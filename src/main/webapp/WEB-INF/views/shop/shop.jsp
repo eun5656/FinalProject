@@ -14,7 +14,7 @@
  <link href="${path }/resources/css/carousel.css" rel="stylesheet">
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/shop.css" rel="stylesheet">
-
+<!-- 주석 -->
 <div class="container-fluid" " style="padding-top: 110px";>
 <section>
 
