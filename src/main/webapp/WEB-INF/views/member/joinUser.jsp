@@ -12,25 +12,6 @@
 
 <link rel="stylesheet" type="text/css" href="${path }/resources/css/joinShop.css">
 <script>
-	var checkTest = false;
-	function fn_enroll_validate() {
-		var check1_1 = $("input:checkbox[id='check1_1']").is(":checked");
-		var check1_2 = $("input:checkbox[id='check1_2']").is(":checked");
-		var check1_3 = $("input:checkbox[id='check1_3']").is(":checked");
-		var check2 = $("input:checkbox[id='check2']").is(":checked");
-
-		if (check1_1 == false || check1_2 == false) {
-			alert("필수 이용약관을 체크 하세요.");
-			$("input:checkbox[id='check1_1']").focus();
-			checkTest = true;
-			return false;
-		} else {
-			$('#nextbtn').val("Next");
-			return true;
-		}
-	}
-</script>
-<script>
 	$(document).ready(function() {
 		var navListItems = $('div.setup-panel div a'), allWells = $('.setup-content'), allNextBtn = $('.nextBtn');
 		allWells.hide();
@@ -360,7 +341,7 @@
 							</div>
 						</div>
 					</div>
-					<button class="btn btn-primary nextBtn btn-lg pull-right" type="button">다음</button>
+					<button class="btn btn-primary nextBtn btn-lg pull-right" type="button" onclick="fn_enroll_validate()">다음</button>
 				</div>
 			</div>
 		</div>
@@ -450,7 +431,7 @@
 						</div>
 					</div>
 					<br>
-					<button class="btn btn-primary nextBtn btn-lg pull-right" type="submit" onclick="fn_enroll_validate()">회원가입</button>
+					<button class="btn btn-primary nextBtn btn-lg pull-right" type="submit" onclick="fn_submit_validate()">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -589,6 +570,12 @@
 		}
 	}
 	//submit할시 이용약관 확인 펑션
+	function fn_submit_validate(){
+		if($("#JHCheck").attr("readonly")==null){
+			alert("이메일 인증을 해주세요");
+			return false;}
+		return true;
+	};
 	function fn_enroll_validate() {
 		var check1_1 = $("input:checkbox[id='check1_1']").is(":checked");
 		var check1_2 = $("input:checkbox[id='check1_2']").is(":checked");
@@ -597,13 +584,12 @@
 		if (check1_1 == false || check1_2 == false) {
 			alert("필수 이용약관을 체크 하세요.");
 			$("input:checkbox[id='check1_1']").focus();
+			checkTest = true;
 			return false;
+		} else {
+			$('#nextbtn').val("Next");
+			return true;
 		}
-		if($("#JHCheck").attr("readonly")!=null){
-			alert("이메일 인증을 해주세요");
-			return false
-		}
-		return true;
 	}
 	//아이디 중복검사
 	$(function() {
