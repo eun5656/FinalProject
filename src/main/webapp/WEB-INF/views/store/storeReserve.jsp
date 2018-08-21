@@ -84,13 +84,7 @@ var store_pk ="${store.store_pk}";
 
         }
       ];
-      
-      var employee = [{
-          id: 'a',
-          title: '원장님',
-          eventColor: 'blue',
-          businessHours1: businessHours1,
-         /* businessHours: [ // specify an array instead
+   	 var  businessHours2= [ // specify an array instead
             {
               dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
               start: min, // 8am
@@ -106,62 +100,43 @@ var store_pk ="${store.store_pk}";
               start: "${store_weekend_open}", // 10am
               end: "${store_weekend_close}" // 4pm
             }
-          ]*/
-        },
-
-        {
-          id: 'b',
-          title: '디자이너1',
-          eventColor: 'green',
-          businessHours1: businessHours1,
-         /* businessHours: [ 
-            {
-              dow: [1, 2, 3, 4, 5], 
-              start: min, // 8am
-              end: max // 6pm
-            },
-
-            {
-              dow: [6], // Thursday, Friday
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}"
-            },
-            {
-              dow: [0], // Thursday, Friday
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}" 
-            }
-          ]*/
-
-        },
-        {
-          id: 'c',
-          title: '디자이너2',
+          ];
+      
+       employee = [{
+          id: '${designerList[0].designer_id}',
+          title: '${designerList[0].designer_name}',
           eventColor: 'orange',
           businessHours1: businessHours1,
-         /* businessHours: [ // specify an array instead
-            {
-              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: min, 
-              end: max 
-            },
-
-            {
-              dow: [6], //
-              start: "${store_weekend_open}",
-              end: "${store_weekend_close}" 
-            },
-            {
-              dow: [0], //
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}" 
-            }
-          ]*/
-        },
+          businessHours: businessHours2,
+        }
       ];
       
-
       
+      <c:forEach items="${designerList}" var="designer" begin='1'>
+      employee.push({
+    	  id: '${designer.designer_id}',
+          title: '${designer.designer_name}',
+          eventColor: 'green',
+          businessHours1: businessHours1,
+  		  businessHours:businessHours2
+      });
+    </c:forEach>
+   
+   	 if('${designerList}'=='[]'){
+   		 employee = [{
+            id: 'a',
+            title: '원장',
+            eventColor: 'orange',
+            businessHours1: businessHours1,
+            businessHours: businessHours2,
+          }
+        ];
+   	 }
+   	 
+   	 if(employee[2]!=null){
+   	  employee[2].eventColor='blue';
+     }
+   	 
    
       <c:forEach items="${reserveList}" var="reserve">
      	 reservaiton.push({
@@ -178,6 +153,7 @@ var store_pk ="${store.store_pk}";
          	 menu_pk:"${reserve.menu_pk}"
         });
       </c:forEach>
+     
       
       
       
@@ -486,7 +462,7 @@ var store_pk ="${store.store_pk}";
                    			   
                
                    			   
-               	 IMP.request_pay({
+               IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
                        merchant_uid : store_payment.merchant_uid1,
@@ -546,13 +522,13 @@ var store_pk ="${store.store_pk}";
                         }
 
                       });
-                     	  } else {
+                       } else {
                            var msg = '결제에 실패하였습니다.';
                            msg += '에러내용 : ' + rsp.error_msg;
                            $('#close-modal-btn').trigger('click');
                        }
                        alert(msg);
-                   });    
+                   });   
           });
         },
 
