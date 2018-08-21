@@ -125,83 +125,7 @@ var holiday ="${store.store_holiday}";
 							<input class="store_pk" name="store_pk" type="hidden" value="${store.store_pk}" >
 							<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
 <!-- 							bookmarkend -->
-<script type="text/javascript">
-$(".b_icon").click(function() {					    	
-	var memberLoggedIn= "${memberLoggedIn}";
-	if(memberLoggedIn.length!=0){
 
-	var temp=$(this);
-	var bookmark_val = { 
-			nail_pk: temp.nextAll("[name='nail_pk']").val(),
-			member_pk: temp.nextAll("[name='member_pk']").val(),
-			store_pk: temp.nextAll("[name='store_pk']").val(),
-			bookmark_check:null 			
-			}
-
-	
-	if (temp.attr("alt")=='false') 
-	{	
-		bookmark_val.bookmark_check="ture";
-		//var nail_pk=temp.next().val();					    		
-		//var member_pk=temp.next().next().val();
-	  var jsonData = JSON.stringify(bookmark_val);
-      jQuery.ajaxSettings.traditional = true;
-		///*json 객체로 바로넘기기					    							    		
-		    $.ajax({
-		 	url:"${path}/bookmark/insertBookmark.do",
-			data:{"bookmark_val":jsonData},
-			type: "post",
-			dataType: "json",
-			success: function(data){
-  		   		alert("등록완료");
-				temp.attr("alt","true");
-    			temp.attr("src","/spring/resources/icons/love_filled.svg");
-    			temp.nextAll('.bookmark_pk').attr('value',data);
-				},
-			error: function(jpxhr,textStatus,errormsg) {
-				console.log("ajax전송실패");
-				console.log(jpxhr);
-				console.log(textStatus);
-				console.log(errormsg);
-			}
-		})	
-		
-	} 
-	else {
-		
-		//bookmark_val.bookmark_check="false";
-		//var nail_pk=temp.next().val();					    		
-		//var member_pk=temp.next().next().val();\ss
-		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
-		var member_pk=temp.nextAll("[name='member_pk']").val()
-	    $.ajax({
-	 	url:"${path}/bookmark/deleteBookmark.do",
-		data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
-		type: "post",
-		dataType: "json",
-		
-		success: function(data){
-  		    alert("삭제완료");
-			temp.attr("alt","false");
-    		temp.attr("src","/spring/resources/icons/love_blank.svg");
-			temp.nextAll('.bookmark_pk').attr('value','');
-			},
-		error: function(jpxhr,textStatus,errormsg) {
-			console.log("ajax전송실패");
-			console.log(jpxhr);
-			console.log(textStatus);
-			console.log(errormsg);
-		}
-	})	
-	
-		
-	}
-	
-	}
-	else{
-		alert("로그인해주세요");
-	}
-});</script>
 												<div class="hovereffect">
 													<img class="img-responsive radius14 smail-carousel"
 														src="${path }/resources/images/nails/${nails[i].nail_re_img}" alt="">
@@ -869,6 +793,82 @@ function eventBind(index) {
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+$(".b_icon").click(function() {					    	
+	var memberLoggedIn= "${memberLoggedIn}";
+	if(memberLoggedIn.length!=0){
 
+	var temp=$(this);
+	var bookmark_val = { 
+			nail_pk: temp.nextAll("[name='nail_pk']").val(),
+			member_pk: temp.nextAll("[name='member_pk']").val(),
+			store_pk: temp.nextAll("[name='store_pk']").val(),
+			bookmark_check:null 			
+			}
+
+	
+	if (temp.attr("alt")=='false') 
+	{	
+		bookmark_val.bookmark_check="ture";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();
+	  var jsonData = JSON.stringify(bookmark_val);
+      jQuery.ajaxSettings.traditional = true;
+		///*json 객체로 바로넘기기					    							    		
+		    $.ajax({
+		 	url:"${path}/bookmark/insertBookmark.do",
+			data:{"bookmark_val":jsonData},
+			type: "post",
+			dataType: "json",
+			success: function(data){
+  		   		alert("등록완료");
+				temp.attr("alt","true");
+    			temp.attr("src","/spring/resources/icons/love_filled.svg");
+    			temp.nextAll('.bookmark_pk').attr('value',data);
+				},
+			error: function(jpxhr,textStatus,errormsg) {
+				console.log("ajax전송실패");
+				console.log(jpxhr);
+				console.log(textStatus);
+				console.log(errormsg);
+			}
+		})	
+		
+	} 
+	else {
+		
+		//bookmark_val.bookmark_check="false";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();\ss
+		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+		var member_pk=temp.nextAll("[name='member_pk']").val()
+	    $.ajax({
+	 	url:"${path}/bookmark/deleteBookmark.do",
+		data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+		type: "post",
+		dataType: "json",
+		
+		success: function(data){
+  		    alert("삭제완료");
+			temp.attr("alt","false");
+    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+			temp.nextAll('.bookmark_pk').attr('value','');
+			},
+		error: function(jpxhr,textStatus,errormsg) {
+			console.log("ajax전송실패");
+			console.log(jpxhr);
+			console.log(textStatus);
+			console.log(errormsg);
+		}
+	})	
+	
+		
+	}
+	
+	}
+	else{
+		alert("로그인해주세요");
+	}
+});</script>
 <!-- 푸터부분 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
