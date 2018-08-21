@@ -450,7 +450,7 @@
 						</div>
 					</div>
 					<br>
-					<button class="btn btn-primary nextBtn btn-lg pull-right" type="submit">회원가입</button>
+					<button class="btn btn-primary nextBtn btn-lg pull-right" type="submit" onclick="fn_enroll_validate()">회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -598,6 +598,10 @@
 			alert("필수 이용약관을 체크 하세요.");
 			$("input:checkbox[id='check1_1']").focus();
 			return false;
+		}
+		if($("#JHCheck").attr("readonly")!=null){
+			alert("이메일 인증을 해주세요");
+			return false
 		}
 		return true;
 	}
