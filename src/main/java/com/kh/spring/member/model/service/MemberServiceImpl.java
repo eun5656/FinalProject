@@ -1,5 +1,7 @@
 package com.kh.spring.member.model.service;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +54,13 @@ public class MemberServiceImpl implements MemberService {
 	public int insertStore(Store s) {
 		return memberDAO.insertStore(sqlSession, s);
 	}
+
+	@Override
+	public int checkPw(String memberEmail) {
+		
+		return memberDAO.checkPw(sqlSession,memberEmail);
+	}
+
+	
 	
 }

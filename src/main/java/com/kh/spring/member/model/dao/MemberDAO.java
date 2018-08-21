@@ -1,5 +1,7 @@
 package com.kh.spring.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.kh.spring.member.model.vo.Member;
@@ -20,5 +22,7 @@ public interface MemberDAO {
 	int duplicateMemberEmailCheck(SqlSessionTemplate sqlSession, String memberEmail);
 
 	int insertStore(SqlSessionTemplate sqlSession, Store s);
-
+	
+	int checkPw(SqlSessionTemplate sqlSession, String memberEmail);
+	
 }

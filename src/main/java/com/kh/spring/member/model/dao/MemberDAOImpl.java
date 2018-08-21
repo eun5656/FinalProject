@@ -1,5 +1,7 @@
 package com.kh.spring.member.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -43,4 +45,13 @@ public class MemberDAOImpl implements MemberDAO {
 	public int insertStore(SqlSessionTemplate sqlSession, Store s) {
 		return sqlSession.insert("store.insertStore", s);
 	}
+	
+
+	@Override
+	public int checkPw(SqlSessionTemplate sqlSession,String memberEmail) {
+		
+		return sqlSession.update("member.updatePw", memberEmail);
+	}
+
+	
 }

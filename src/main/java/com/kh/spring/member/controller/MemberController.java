@@ -5,11 +5,15 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
@@ -29,6 +33,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
@@ -268,5 +274,70 @@ public class MemberController {
 
 		return "common/msg";
 	}
+	
+	@RequestMapping("/member/findId.do")
+	public String FindId(String memberName, String memberEmail) {
+		
+		System.out.println(memberName);
+		System.out.println(memberEmail);
+		
+		return "member/loginForm";
+	}
+	
 
+	@RequestMapping("/member/findPw.do")
+	public ModelAndView FindPw(String memberEmail,ModelAndView mv) {
+		
+		int result = service.checkPw(memberEmail);
+		
+		String view = "/";
+		String msg = "";
+		String loc = "/";
+		
+		if(result>0) {
+			
+			Properties prop = new Properties();
+			prop.put("mail.smtp.host", "smtp.gmail.com");
+			prop.put("mail.smtp.port", 465);
+			prop.put("mail.smtp.auth", "true");
+			prop.put("mail.smtp.ssl.enable", "true");
+			prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+			Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication("ppj1017@gmail.com", "ahfmrqhd1!a");
+				}
+			});
+			int ra = 0;
+
+			try {
+				MimeMessage message = new MimeMessage(session);
+				message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+				// 수신자메일주소
+				message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
+				// Subject
+				message.setSubject("오늘네일 메일 인증"); // 메일 제목을 입력
+				
+				message.setText("비밀번호가 1234로 초기화되었습니다. 로그인 후 마이페이지-비밀번호 변경에서 비밀번호 변경 할 수 있습니다."); // 메일 내용을 입력
+				// send the message
+				Transport.send(message); //// 전송
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			view = "common/msg";
+			msg = "귀하의 메일로 임시 비밀번호를 보냈습니다. ";
+			
+		}else {
+			view = "member/loginForm";	
+			msg = "입력하신 정보가 일치하지 않습니다.";
+			
+		}
+		
+		mv.addObject("msg",msg);
+		mv.setViewName(view);
+		
+		return mv;
+	}
 }

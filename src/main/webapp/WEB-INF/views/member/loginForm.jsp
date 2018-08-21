@@ -21,6 +21,7 @@
 	<jsp:param value="로그인" name="pageTitle" />
 </jsp:include>
 
+
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
@@ -39,14 +40,99 @@
 				<br>
 				<div class="container-login100-form-btn m-t-20">
 					<button class="login100-form-btn" type="submit">로그인</button>
+					
 				</div>
-				<div class="text-center p-t-45 p-b-4">
-					<a href="#" class="txt2 hov1">아이디/비밀번호 찾기</a>
+				<div class="container-login100-form-btn m-t-20">
+					<a href="#" data-target="#idModal" data-toggle="modal">아이디찾기/</a>
+					<a href="#" data-target="#pwdModal" data-toggle="modal">비밀번호찾기</a>
 				</div>
+				
 			</form>
 		</div>
 	</div>
 </div>
+
+<!--modal-->
+<div id="idModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">아이디찾기</h1>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                          
+                            <div class="panel-body">
+                               	<form action="${path }/member/findId.do" method="post">
+                               		<div class="form-group">
+                                        <input class="form-control input-lg" placeholder="이름" name="memberName" required>
+                                    </div>
+                               	 	<div class="form-group">
+                                        <input class="form-control input-lg" placeholder="E-mail Address" name="memberEmail" type="email">
+                                    </div>
+                                    <input class="login100-form-btn" value="아이디찾기" type="submit">
+                               	</form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+
+<!--modal-->
+<div id="pwdModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">비밀번호찾기</h1>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                          
+                            <div class="panel-body">
+                               	<form action="${path }/member/findPw.do" method="post">
+                               	 	<div class="form-group">
+                                        <input class="form-control input-lg" placeholder="E-mail Address" name="memberEmail" type="email">
+                                    </div>
+                                    <input class="login100-form-btn" value="Send My Password" type="submit">
+                               	</form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+
+<style>
+.guide{
+display: none;
+}
+</style>
+
 
 <script src="${path }/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="${path }/resources/vendor/animsition/js/animsition.min.js"></script>
