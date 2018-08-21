@@ -1,7 +1,5 @@
 package com.kh.spring.store.model.vo;
 
-import java.text.SimpleDateFormat;
-
 public class Store_time {
 
 	private int store_pk;
