@@ -49,11 +49,21 @@ var store_pk ="${store.store_pk}";
     $(function() {
       //영업시작시간~~
 
-      var min = "${store_open_time}";
-      var max = "${store_close_time}";
-      var reserDate;
-      var startTime;
-      var endTime;
+      var store_open_time = "${store_open_time}";
+      var store_close_time = "${store_close_time}";
+      var store_weekend_open = "${store_weekend_open}";
+      var store_weekend_close = "${store_weekend_close}";
+      
+      
+     if(store_weekend_open==''|| store_weekend_open==''){
+    	  store_open_time='10:00:00';
+    	  store_close_time='23:00:00';
+      }
+      if(store_weekend_open==''||store_weekend_open==''){
+    	 alert('gu');
+    	 store_weekend_open='09:00:00';
+    	 store_weekend_close='18:00:00';
+      }
 
 
 
@@ -81,24 +91,23 @@ var store_pk ="${store.store_pk}";
           end: '',
           title: '',
           description: ''
-
         }
       ];
    	 var  businessHours2= [ // specify an array instead
             {
               dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: min, // 8am
-              end: max // 6pm
+              start: store_open_time, // 8am
+              end: store_close_time // 6pm
             },
             {
               dow: [6], // Thursday, Friday
-              start: "${store_weekend_open}", // 10am
-              end: "${store_weekend_close}" // 4pm
+              start: store_weekend_open, // 10am
+              end: store_weekend_close // 4pm
             },
             {
               dow: [0], // Thursday, Friday
-              start: "${store_weekend_open}", // 10am
-              end: "${store_weekend_close}" // 4pm
+              start: store_weekend_open, // 10am
+              end: store_weekend_close // 4pm
             }
           ];
       
@@ -171,8 +180,8 @@ var store_pk ="${store.store_pk}";
 
         //설정
         //영업 시작, 종료시간
-        minTime: min,
-        maxTime: max,
+        minTime: store_open_time,
+        maxTime: store_close_time,
 
         //디자이너 추가
         resources: employee,
@@ -202,10 +211,10 @@ var store_pk ="${store.store_pk}";
 
    
       
-  		 businessHours:  [ // specify an array instead
+  		 /*businessHours:  [ // specify an array instead 지워도되는지 체크
               {
                 dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-                start: min, 
+                start: store_weekend_open}, 
                 end: max 
               },
               {
@@ -218,7 +227,7 @@ var store_pk ="${store.store_pk}";
                 start: "${store_weekend_open}", 
                 end: "${store_weekend_close}" 
               }
-            ],
+            ],*/
         
 
 

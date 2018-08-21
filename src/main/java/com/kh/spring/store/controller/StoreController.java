@@ -77,9 +77,11 @@ public class StoreController {
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
+		if(store_time!=null) {
 		store_time = store_time.deleteDate(store_time);
 		System.out.println(store_time);
 		model.addAttribute("store_time",store_time);
+		}
 		List<Bookmark> bookmarkList = null;
 		if(session.getAttribute("memberLoggedIn")!=null) {
 			int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
@@ -115,7 +117,9 @@ public class StoreController {
 		List<designer> designerList=desigenrService.selectdesigner(store_pk);
 		System.out.println(designerList);
 		Store_time storeTime=reserService.selectStoreTime(store_pk);
-		storeTime=storeTime.deleteDate(storeTime);
+		if(storeTime!=null) {
+			storeTime=storeTime.deleteDate(storeTime);
+		}
 		System.out.println(storeTime);
 		
 		
@@ -125,10 +129,13 @@ public class StoreController {
 		model.addAttribute("menuList",menuList);
 		model.addAttribute("reserveList",reserveList);
 		model.addAttribute("designerList",designerList);
-		model.addAttribute("store_open_time",String.valueOf(storeTime.getStore_open_time()));
-		model.addAttribute("store_close_time",String.valueOf(storeTime.getStore_close_time()));
-		model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
-		model.addAttribute("store_weekend_close",String.valueOf(storeTime.getStore_weekend_close()));
+		if(storeTime!=null){
+			model.addAttribute("store_open_time",String.valueOf(storeTime.getStore_open_time()));
+			model.addAttribute("store_close_time",String.valueOf(storeTime.getStore_close_time()));
+			model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
+			model.addAttribute("store_weekend_close",String.valueOf(storeTime.getStore_weekend_close()));
+		}
+	
 
 		return view;
 	}
