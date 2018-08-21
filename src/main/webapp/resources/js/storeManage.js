@@ -48,7 +48,7 @@ $(function(){
 //		$("#line").removeClass("one");
 //		$("#line").removeClass("three");
 //		$("#line").removeClass("four");
-		location.href=path+"/store/storeManageSales.do?store_pk="+store_pk;
+		location.href=path+"/store/storeManageReserveList.do?store_pk="+store_pk;
 	})
 
 	$(".reserve").click(function() {

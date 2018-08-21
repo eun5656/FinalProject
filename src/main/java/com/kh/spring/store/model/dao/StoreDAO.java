@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.store.model.vo.Store_time;
@@ -36,10 +37,10 @@ public interface StoreDAO {
 
 	List<Store> storeReviewCount(SqlSessionTemplate sqlSession);
 
+	List<Reserve> manageReserveList(SqlSessionTemplate sqlSession, Reserve reserve,int cPage,int numPerPage);
 
 
-
-
+	int reserveCount(SqlSessionTemplate sqlSession,int store_pk);
 
 
 }

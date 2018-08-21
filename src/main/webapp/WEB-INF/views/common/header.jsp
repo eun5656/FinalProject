@@ -26,7 +26,7 @@
 
 /*@비회원 메인화면*/
 
-@media (max-width:1080px) {
+@media (max-width:1240px) {
   .navbar-header {
     float: none;
   }
@@ -71,7 +71,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-icon-top navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-icon-top navbar-default">
   
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
