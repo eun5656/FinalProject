@@ -25,8 +25,14 @@
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 var holiday ="${store.store_holiday}";
+$(function() {
+	var holidaycheck ="#"+holiday;
+	 $(holidaycheck).removeAttr("style","display:none;");
+	 console.log(holidaycheck);
+	//휴일 선택
+});
 </script>
-<script src="${path }/resources/js/store.js?ver=6"></script>
+<script src="${path }/resources/js/store.js?ver=8"></script>
 <div>
 <div id="wrapper">
 
@@ -906,6 +912,7 @@ $(".b_icon").click(function() {
 	else{
 		alert("로그인해주세요");
 	}
-})</script>
+});
+</script>
 <!-- 푸터부분 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

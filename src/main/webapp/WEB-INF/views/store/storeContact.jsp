@@ -22,7 +22,7 @@
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=8"></script>
 <div>
 <div id="wrapper">
 	<div id="left-side">

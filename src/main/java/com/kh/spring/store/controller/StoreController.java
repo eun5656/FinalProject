@@ -1,18 +1,9 @@
 package com.kh.spring.store.controller;
 
-import java.io.File;
 //import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -20,13 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.bookmark.model.service.BookmarkService;
 import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.vo.Member;
@@ -40,8 +26,6 @@ import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.store.model.vo.Store_time;
 import com.kh.spring.storeReview.model.service.StoreReviewService;
 import com.kh.spring.storeReview.model.vo.StoreReview;
-
-import net.sf.json.JSONObject;
 @SessionAttributes(value= {"memberLoggedIn"})
 @Controller
 public class StoreController {
@@ -75,8 +59,7 @@ public class StoreController {
 		List<Menu> menus = service.selectMenu(store_pk);
 		List<Nail> nails= Nailservice.nailListStore(store_pk);
 		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
-		int store_star=service.selectStoreStar(store_pk);
-			
+		int store_star=service.selectStoreStar(store_pk);			
 		Store_time store_time = service.selectTime(store_pk);
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);
@@ -99,10 +82,6 @@ public class StoreController {
 				model.addAttribute("bookmarkList",bookmarkList);
 				}
 		}
-		
-		
-		
-	
 		model.addAttribute("store_star",store_star);
 		return view;
 	}
@@ -113,13 +92,8 @@ public class StoreController {
 		String view="store/storeMap";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		Store store = service.selectOne(store_pk);
-		
-			
-		
 		System.out.println("스토어 값 확인 : "+store);
-		
-		model.addAttribute("store",store);
-		
+		model.addAttribute("store",store);		
 		return view;
 	}
 	@RequestMapping("/store/storeReserve.do")
@@ -132,15 +106,11 @@ public class StoreController {
 		List<Menu> menuList=service.menuList(store_pk);
 		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
 		//System.out.println(reserveList.get(0).getMenu_pk());
-		System.out.println(reserveList);
-
-		
-		System.out.println("스토어 값 확인 : "+store);
-		
+		System.out.println(reserveList);		
+		System.out.println("스토어 값 확인 : "+store);		
 		model.addAttribute("store",store);
 		model.addAttribute("menuList",menuList);
 		model.addAttribute("reserveList",reserveList);
-
 		return view;
 	}
 	@RequestMapping("/store/storeContact.do")
@@ -149,21 +119,10 @@ public class StoreController {
 			) {
 		String view="store/storeContact";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
-		Store store = service.selectOne(store_pk);
-		
-		System.out.println("스토어 값 확인 : "+store);
-		
-		model.addAttribute("store",store);
-		
+		Store store = service.selectOne(store_pk);		
+		System.out.println("스토어 값 확인 : "+store);		
+		model.addAttribute("store",store);		
 		return view;
 	}
-	
-
 		
-
-
-	
-	
-	
-	
 }

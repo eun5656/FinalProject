@@ -38,7 +38,7 @@ margin-right: 40px;
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=8"></script>
 <script src="${path }/resources/js/moment.min.js"></script>
 <script src="${path }/resources/js/fullcalendar.min.js"></script>
 <script src="${path }/resources/js/gcal.min.js"></script>

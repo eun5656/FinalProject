@@ -22,7 +22,7 @@ var store_pk ="${store.store_pk}";
 var store_name = "${store.store_name}";
 var address = "${store.store_address}";
 </script>
-<script src="${path }/resources/js/store.js?ver=3"></script>
+<script src="${path }/resources/js/store.js?ver=8"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script type="text/javascript">
 $(function(){
@@ -32,24 +32,26 @@ var mapCanvas = document.getElementById("map");
 		zoom : 17
 	};
     var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow;
+    var infowindow = new google.maps.InfoWindow({
+        content: address
+    });
 	var map = new google.maps.Map(mapCanvas, mapOptions);
-    var marker = null;
-
     geocoder.geocode( { 'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             map.setCenter(results[0].geometry.location);
-            marker = new google.maps.Marker({
-                            map: map,
-                            // icon: image, // 마커로 사용할 이미지(변수)
-                            title: store_name, // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-                            position: results[0].geometry.location
-
-                        });
+            var marker = new google.maps.Marker({
+                map: map,
+                // icon: image, // 마커로 사용할 이미지(변수)
+    			title: store_name,
+                position: results[0].geometry.location
+            });
+          	marker.setMap(map);
 var LatLng = ""+ results[0].geometry.location;
-}  infowindow.open(map, marker); // 마커에 정보표시
-
-
+} 
+      
+      marker.addListener('click', function() {
+    	    infowindow.open(map, marker);//마커에정보표시
+    	  });
 });
 })
     </script>
