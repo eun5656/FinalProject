@@ -515,14 +515,11 @@
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
  			}
- 		}
- 		return true;
- 		function fn_emailcheck() {
  			$.ajax({
  	 			url:"${path}/member/JHcheckEmail.do",
  	 			data:{memberEmail:$('#memberEmail').val()},
  	 			success:function(data) {
- 	 				if(data == 'true') {
+ 	 				if(data == 'false') {
  	 					alert("사용가능한 이메일입니다.");
  	 				} else {
  	 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
@@ -531,7 +528,23 @@
  	 				}
  	 			}
  	 		})
- 		};
+ 		}
+ 		return true;
+//  		function fn_emailcheck() {
+//  			$.ajax({
+//  	 			url:"${path}/member/JHcheckEmail.do",
+//  	 			data:{memberEmail:$('#memberEmail').val()},
+//  	 			success:function(data) {
+//  	 				if(data == 'true') {
+//  	 					alert("사용가능한 이메일입니다.");
+//  	 				} else {
+//  	 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
+//  	 					$("#JHCheck").val("");
+//  	 					$("#JHCheck").focus();
+//  	 				}
+//  	 			}
+//  	 		})
+//  		};
  	});
  	function emailRequest() {
  		var nowemail = $('#JHCheck').val();

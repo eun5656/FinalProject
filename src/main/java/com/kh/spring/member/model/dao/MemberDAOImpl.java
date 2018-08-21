@@ -36,7 +36,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int duplicateMemberEmailCheck(SqlSessionTemplate sqlSession, String memberEmail) {
-		return sqlSession.selectOne("member.selectMemberEmailCheck", memberEmail);
+		return sqlSession.selectOne("member.selectEmailCheck", memberEmail);
 	}
 
 	@Override

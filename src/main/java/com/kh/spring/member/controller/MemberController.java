@@ -114,8 +114,10 @@ public class MemberController {
 	public void membercheckEmail(String memberEmail, HttpServletResponse response) throws Exception {
 
 		boolean check = service.duplicateMemberEmailCheck(memberEmail) == 0 ? true : false;
-
+		
 		response.getWriter().print(check);
+		System.out.println(check +"check 확인");
+//		return check;
 	}
 
 	@RequestMapping("/member/emailEnd.do")
