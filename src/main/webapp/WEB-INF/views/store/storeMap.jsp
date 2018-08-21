@@ -66,6 +66,7 @@ var LatLng = ""+ results[0].geometry.location;
 			<div class="NailStoreMap animatepop" id="map">
 			</div>
 			<div class="addrText animatepop">
+			<br>
 				<p>${store.store_address }</P>
 			</div>
 		</div>
