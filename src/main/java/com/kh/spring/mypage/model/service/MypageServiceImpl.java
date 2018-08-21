@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.member.model.dao.MemberDAO;
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.mypage.model.dao.MypageDAO;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Reserve;
@@ -46,6 +47,38 @@ public class MypageServiceImpl implements MypageService {
 	public int reserveCount(int memberPk) {
 		
 		return mypageDAO.reserveCount(sqlSession,memberPk);
+	}
+	
+
+
+	@Override
+	public Member loginCheck(String memberId) {
+		return mypageDAO.loginCheck(sqlSession, memberId);
+	}
+
+	@Override
+	public String findCheck(int memberPk) {
+		return mypageDAO.findCheck(sqlSession, memberPk);
+	}
+
+	@Override
+	public int delete(int memberPk) {
+		return mypageDAO.delete(sqlSession, memberPk);
+	}
+
+	@Override
+	public String duplicatePwCheck(int parseInt) {
+		return mypageDAO.duplicatePwCheck(sqlSession, parseInt);
+	}
+
+	@Override
+	public int mypagePwUpdate(Member member) {
+		return mypageDAO.mypagePwUpdate(sqlSession, member);
+	}
+
+	@Override
+	public int mypageUpdate(Member m) {
+		return mypageDAO.mypageUpdate(sqlSession, m);
 	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Reserve;
 
@@ -19,4 +20,16 @@ public interface MypageService {
 	List<Reserve> mypageReserveList(int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(int memberPk);
+	
+	Member loginCheck(String memberId);
+	
+	int delete(int memberPk);
+
+	String findCheck(int memberPk);
+
+	String duplicatePwCheck(int parseInt);
+
+	int mypagePwUpdate(Member member);
+
+	int mypageUpdate(Member m);
 }

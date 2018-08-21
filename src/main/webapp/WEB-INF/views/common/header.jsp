@@ -105,7 +105,7 @@
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
                 <li><a href="${path}/member/memberLogin.do">로그인</a></li>
-                <li><a href="${path}/member/memberJoin.do">회원가입</a></li>
+                <li><a href="${path}/member/joinSelect.do">회원가입</a></li>
               </ul>
             </li>
             </c:if>

@@ -15,8 +15,45 @@
       <result column="member_level" property="memberLevel" javaType="String" />
    </resultMap>
 
-   <select id="selectOne" parameterType="string" resultMap="memberMap">
-      SELECT * FROM MEMBER WHERE MEMBER_ID=#{memberId}
-   </select>
+   
+	<select id="selectOne" parameterType="string" resultMap="memberMap">
+		SELECT * FROM MEMBER WHERE MEMBER_ID=#{memberId}
+	</select>
+	
+	<select id="selectPwCheck" parameterType="_int" resultType="string">
+		select member_pw from member where member_pk = #{memberPk}
+	</select>
+
+	<select id="selectIdCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_ID=#{memberId}
+	</select>
+
+	<select id="selectEmailCheck" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER WHERE MEMBER_EMAIL=#{memberEmail}
+	</select>
+
+	<insert id="insertMember" parameterType="member">
+		insert into member values(member_seq.nextval, #{memberId},	#{memberPw}, #{memberName}, #{memberPhone},	#{memberEmail}, 
+		#{memberAddress}, #{memberOriImg}, #{memberReImg}, #{memberLevel})
+		<selectKey resultType="_int" keyProperty="memberPk" order="AFTER">select member_seq.currval from dual </selectKey>
+	</insert>
+
+	<select id="selectTwo" parameterType="_int" resultType="string">
+		select member_pw from member where member_pk = #{memberPk}
+	</select>
+
+	<delete id="deleteMember" parameterType="_int">
+		delete from member where member_pk = #{memberPk}
+	</delete>
+	
+	<update id="mypagePwUpdate" parameterType="member">
+		update member set member_pw = #{memberPw} where member_pk=#{memberPk}
+	</update>
+	
+	<update id="mypageUpdate" parameterType="member">
+		update member set member_phone = #{memberPhone}, member_email = #{memberEmail}, member_address = #{memberAddress}, 
+		member_re_img = #{memberReImg} where member_pk = #{memberPk}
+	</update>
+
 
 </mapper>

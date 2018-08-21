@@ -110,7 +110,7 @@
       <div class="info">
         <div class="row">
           <div class="price col-sm-6">
-            <h5 style="margin-bottom:7px;">1위  :<c:out value="${store.store_name}"/> 샵</h5>
+            <h5 style="margin-bottom:7px;"><c:out value="${status.index+1}"/>위  :<c:out value="${store.store_name}"/> 샵</h5>
             <h6 class=""><c:out value="주소 : ${store.store_address}"/></h6>
           </div>
           
@@ -161,7 +161,7 @@
       <div class="info">
         <div class="row">
           <div class="price col-sm-6">
-            <h5 style="margin-bottom:7px;">1위  :<c:out value="${store.store_name}"/> 샵</h5>
+            <h5 style="margin-bottom:7px;"><c:out value="${status.index}"/>위  :<c:out value="${store.store_name}"/> 샵</h5>
             <h6 class=""><c:out value="주소 : ${store.store_address}"/></h6>
           </div>
           
@@ -177,10 +177,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;" onclick="move_reservaiton('$(store.store_pk)')"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button class="btn btn-info store_review" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button class="btn btn-info store_review" style="width:90%;" onclick="move_review('$(store.store_pk)')"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
@@ -704,15 +704,14 @@
 						    	location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
 						    });
 						  
-						  $(".store_reservaiton").click(function() {
-							  alert("예약");
-							//  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
-						 })
 						 
-						  $(".store_review").click(function() {
-							  alert("리뷰");
-						  //  location.href="${path}/store/store.do"; //예약하기 바로갈수있는 로직으로..
-						 })
+						 function move_reservaiton(store_pk) {
+						 }
+						  
+						  function move_review(store_pk) {
+								
+						  }
+						 
 						 
 						 
 					eventBind();
@@ -796,6 +795,7 @@
 								alert("로그인해주세요");
 							}
 					    });
+					    
 				}
 					</script>
 

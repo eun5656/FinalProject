@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Reserve;
 
@@ -18,4 +19,17 @@ public interface MypageDAO {
 	List<Reserve> mypageReserveList(SqlSessionTemplate sqlSession, int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(SqlSessionTemplate sqlSession, int memberPk);
+
+	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
+
+	
+	int delete(SqlSessionTemplate sqlSession, int memberPk);
+
+	String findCheck(SqlSessionTemplate sqlSession, int memberPk);
+
+	String duplicatePwCheck(SqlSessionTemplate sqlSession, int parseInt);
+
+	int mypagePwUpdate(SqlSessionTemplate sqlSession, Member member);
+
+	int mypageUpdate(SqlSessionTemplate sqlSession, Member m);
 }
