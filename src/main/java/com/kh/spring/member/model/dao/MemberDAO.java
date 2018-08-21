@@ -8,6 +8,8 @@ public interface MemberDAO {
 	
 	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
 	
+	int countMessage(SqlSessionTemplate sqlSession);
+	
 	/*int insertMember(SqlSessionTemplate sqlSession,Member m);
 
 	int updateMember(SqlSessionTemplate sqlSession, Member m);

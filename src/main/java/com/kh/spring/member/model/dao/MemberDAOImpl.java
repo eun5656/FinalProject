@@ -13,6 +13,12 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.selectOne",memberId);
 	}
 
+	@Override
+	public int countMessage(SqlSessionTemplate sqlSession) {
+		
+		return sqlSession.selectOne("message.countMessage");
+	}
+
 	/*@Override
 	public int insertMember(SqlSessionTemplate sqlSession, Member m) {
 		

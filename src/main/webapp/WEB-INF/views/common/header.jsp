@@ -5,6 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
   <c:set var='path' value="${pageContext.request.contextPath}"/>
   <%request.setCharacterEncoding("UTF-8"); %>
+  
 <!DOCTYPE >
 <html>
 <head>
@@ -87,7 +88,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-envelope-o">
-                <span class="badge badge-danger">11</span></i>Messages
+                <span class="badge badge-danger"></span></i>Messages
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">

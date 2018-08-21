@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Reserve;
 
@@ -19,4 +20,8 @@ public interface MypageService {
 	List<Reserve> mypageReserveList(int memberPk,int cPage, int numPerPage);
 	
 	int reserveCount(int memberPk);
+	
+	List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/);
+	
+	//int bookmarkCount(int member_pk);
 }

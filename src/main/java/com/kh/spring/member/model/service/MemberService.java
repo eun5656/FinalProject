@@ -6,6 +6,7 @@ public interface MemberService {
 	
 	Member loginCheck(String memberId);
 	
+	int countMessage();
 	/*int insertMember(Member m);
 	
 	int updateMember(Member m);

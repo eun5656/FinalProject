@@ -20,4 +20,9 @@
 <select resultType="_int" parameterType="String" id="selectCount">select count(*) from message where send_user=#{send_user} </select>
 
 <select resultType="_int" parameterType="String" id="selectCount2">select count(*) from message where receive_user=#{receive_user} </select> 
+
+<select id="countMessage" resultType="_int">
+	select count(*) from member me join message ms on (me.member_pk=ms.member_pk) where ms.send_read_check='읽지않음'
+</select>
+
 </mapper>

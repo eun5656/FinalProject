@@ -2,6 +2,8 @@ package com.kh.spring.member.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,15 +34,13 @@ public class MemberController {
 	private Logger logger = Logger.getLogger(MemberController.class);
 	
 	@RequestMapping("/member/Login.do")
-	public String memberLogin(String memberId, String memberPw, Model model)
+	public String memberLogin(String memberId, String memberPw, Model model,HttpSession session)
 	{
 		logger.debug("로그인메소드호출");
-		//System.out.println(memberId);
-		//System.out.println(memberPw);
+		
 		Member m = service.loginCheck(memberId);
 		
-		//logger.debug("로그인객체"+m);
-	
+		int count = service.countMessage();
 		//응답페이지 작성
 		String msg="";
 		String loc="/";
@@ -54,7 +54,13 @@ public class MemberController {
 			
 			if(bcryptPasswordEncoder.matches(memberPw, m.getMemberPw()))
 			{
-				msg="로그인성공";
+				if(count>0) {
+					msg="새로운 쪽지가 도착했습니다.";
+				}
+				else {
+					msg="로그인 성공";
+				}
+				
 				
 				model.addAttribute("memberLoggedIn",m);
 				
@@ -70,6 +76,8 @@ public class MemberController {
 		model.addAttribute("member_pk",m.getMemberPk());
 		model.addAttribute("msg",msg);
 		model.addAttribute("loc",loc);
+		
+		
 		return view;
 	}
 	

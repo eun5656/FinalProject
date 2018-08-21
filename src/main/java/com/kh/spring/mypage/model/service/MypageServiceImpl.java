@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.mypage.model.dao.MypageDAO;
 import com.kh.spring.qna.model.vo.Qna;
@@ -47,5 +48,17 @@ public class MypageServiceImpl implements MypageService {
 		
 		return mypageDAO.reserveCount(sqlSession,memberPk);
 	}
-	
+
+	@Override
+	public List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/) {
+		
+		return mypageDAO.mypageBookmarkList(sqlSession,member_pk/*,cPage,numPerPage*/);
+	}
+
+	/*@Override
+	public int bookmarkCount(int member_pk) {
+		
+		return mypageDAO.bookmarkCount(sqlSession,member_pk);
+	}
+	*/
 }

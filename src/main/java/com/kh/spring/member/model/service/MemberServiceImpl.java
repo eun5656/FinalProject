@@ -21,6 +21,12 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDAO.loginCheck(sqlSession, memberId);
 	}
+
+	@Override
+	public int countMessage() {
+		
+		return memberDAO.countMessage(sqlSession);
+	}
 	
 	
 	/*@Override
