@@ -107,14 +107,12 @@ public class StoreController {
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);
 		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
-<<<<<<< HEAD
 		//System.out.println(reserveList.get(0).getMenu_pk());
 		System.out.println(reserveList);		
 		System.out.println("스토어 값 확인 : "+store);		
 		model.addAttribute("store",store);
 		model.addAttribute("menuList",menuList);
 		model.addAttribute("reserveList",reserveList);
-=======
 		Store_time storeTime=reserService.selectStoreTime(store_pk);
 		storeTime=storeTime.deleteDate(storeTime);
 		System.out.println(storeTime);
@@ -130,7 +128,6 @@ public class StoreController {
 		model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
 		model.addAttribute("store_weekend_close",String.valueOf(storeTime.getStore_weekend_close()));
 
->>>>>>> sungJin_ver_2.6
 		return view;
 	}
 	@RequestMapping("/store/storeContact.do")
