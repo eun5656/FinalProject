@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kh.spring.bookmark.model.service.BookmarkService;
 import com.kh.spring.bookmark.model.vo.Bookmark;
+import com.kh.spring.designer.model.service.designerService;
+import com.kh.spring.designer.model.vo.designer;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
@@ -47,6 +49,9 @@ public class StoreController {
 	
 	@Autowired
 	private ReserService reserService;
+	
+	@Autowired
+	private designerService desigenrService;
 	
 	
 	@RequestMapping("/store/store.do")
@@ -107,12 +112,8 @@ public class StoreController {
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);
 		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
-		//System.out.println(reserveList.get(0).getMenu_pk());
-		System.out.println(reserveList);		
-		System.out.println("스토어 값 확인 : "+store);		
-		model.addAttribute("store",store);
-		model.addAttribute("menuList",menuList);
-		model.addAttribute("reserveList",reserveList);
+		List<designer> designerList=desigenrService.selectdesigner(store_pk);
+		System.out.println(designerList);
 		Store_time storeTime=reserService.selectStoreTime(store_pk);
 		storeTime=storeTime.deleteDate(storeTime);
 		System.out.println(storeTime);
@@ -123,6 +124,7 @@ public class StoreController {
 		model.addAttribute("store",store);
 		model.addAttribute("menuList",menuList);
 		model.addAttribute("reserveList",reserveList);
+		model.addAttribute("designerList",designerList);
 		model.addAttribute("store_open_time",String.valueOf(storeTime.getStore_open_time()));
 		model.addAttribute("store_close_time",String.valueOf(storeTime.getStore_close_time()));
 		model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
