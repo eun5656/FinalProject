@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.message.model.dao.MessageDAO;
 import com.kh.spring.message.model.vo.Message;
 
@@ -18,6 +19,9 @@ public class MessageServiceImpl implements MessageService {
 	@Autowired
 	MessageDAO messageDAO;
 
+	@Autowired
+	MemberDAO memberDAO;
+	
 	@Override
 	public int CheckId(String receive_user) {
 		
@@ -70,5 +74,6 @@ public class MessageServiceImpl implements MessageService {
 		
 		return  messageDAO.selectCount2(sqlSession,receive_user);
 	}
+
 
 }

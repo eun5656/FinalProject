@@ -31,9 +31,8 @@ public class MessageController {
 	@Autowired
 	private MessageService messageService;
 	
-	
 	@Autowired
-	private MemberService memberService;
+	private MemberService service;
 	
 	@RequestMapping("/message/sendMessage.do")
 	public String SendMessage() {
@@ -131,27 +130,28 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/receiveContent.do")
-	public String ReadCheck(@RequestParam("message_pk" ) int message_pk, Model model) {
+	public String ReadCheck(@RequestParam("message_pk" ) int message_pk, Model model,HttpSession session) {
 	
 		int result = messageService.update(message_pk);
-		
+		int count = service.countMessage();
 		model.addAttribute("msg", messageService.selectOne(message_pk));
-		
+		session.setAttribute("count", count);
 		return "message/receiveContent2";
 	}
 	
 	@RequestMapping("/message/deleteMessage.do")
-	public ModelAndView sendMessageDelete(int message_pk, ModelAndView mv) {
+	public ModelAndView sendMessageDelete(int message_pk, ModelAndView mv,HttpSession session) {
 		
 		int result = messageService.delete(message_pk);
 		
-		System.out.println("result값:"+result);
+		int count = service.countMessage();
+		
 		Map map = new HashMap();
 		
 		map.put("result", result);
 		
 		mv.addAllObjects(map);
-		
+		session.setAttribute("count", count);
 		mv.setViewName("jsonView");
 	
 		return mv;

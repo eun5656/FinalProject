@@ -24,4 +24,6 @@ public interface MessageService {
 	int update(int message_pk);
 	
 	int delete(int message_pk);
+	
+
 }

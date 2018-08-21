@@ -134,7 +134,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-envelope-o">
-                <span class="badge badge-danger"></span>${count}</i>Messages
+                <span class="badge badge-danger">${count}</span></i>Messages
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">

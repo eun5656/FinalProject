@@ -15,6 +15,8 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -53,7 +55,7 @@ public class MemberController {
 
 	// 로그인 로직
 	@RequestMapping("/member/Login.do")
-	public String memberLogin(String memberId, String memberPw, Model model) {
+	public String memberLogin(String memberId, String memberPw, Model model, HttpSession session) {
 		logger.debug("로그인메소드호출");
 		Member m = service.loginCheck(memberId);
 		int count = service.countMessage();
@@ -81,6 +83,7 @@ public class MemberController {
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
+		session.setAttribute("count",count);
 		return view;
 	}
 

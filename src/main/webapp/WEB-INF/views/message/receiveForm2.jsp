@@ -60,6 +60,7 @@ function fn_refuse(value){
 							<th>번호</th>
 							<th>보낸이</th>
 							<th>쪽지내용</th>
+							<th>읽음여부</th>
 							<th>날짜</th>
 							<th>삭제</th>
 						</tr>
@@ -71,8 +72,9 @@ function fn_refuse(value){
 							<td>${vs.count}</td>
 							<td>${m.send_user }</td>
 							<td><a href="${path}/message/receiveContent.do?message_pk=${m.message_pk}">${m.send_content }</td>
+							<td>${m.send_read_check}</th>
 							<td>${m.send_date}</td>
-							<th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></th>
+							<td><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></td>
 						</tr>
 					</c:forEach>
 				

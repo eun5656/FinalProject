@@ -75,8 +75,8 @@ function fn_refuse(value){
 							<td>${m.receive_user }</td>
 							<td>${m.send_content }</td>
 							<td>${m.send_date}</td>
-							<th>${m.send_read_check}</th>
-							<th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></th>
+							<td>${m.send_read_check}</td>
+							<td><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></td>
 						</tr>
 					</c:forEach>
 				</table>
