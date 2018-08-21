@@ -13,4 +13,7 @@ public interface ManageService {
 	List<Payment> paymentList(int cPage, int numPerPage);
 	
 	int paymentCount();
+	
+	int paymentUpdateCheck(int payment_pk);
+	int reserveDelete(int reserve_pk);
 }

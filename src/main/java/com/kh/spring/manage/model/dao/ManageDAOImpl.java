@@ -43,4 +43,16 @@ public class ManageDAOImpl implements ManageDAO{
 		return sqlSession.selectOne("storeReserve.paymentCount");
 	}
 
+	@Override
+	public int paymentUpdateCheck(SqlSessionTemplate sqlSession, int payment_pk) {
+		
+		return sqlSession.update("storeReserve.paymentUpdateCheck", payment_pk);
+	}
+
+	@Override
+	public int reserveDelete(SqlSessionTemplate sqlSession, int reserve_pk) {
+		
+		return sqlSession.delete("storeReserve.reserveDelete", reserve_pk);
+	}
+
 }

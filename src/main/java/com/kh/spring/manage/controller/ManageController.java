@@ -100,9 +100,25 @@ public class ManageController {
 	}
 	
 	@RequestMapping("/manager/managePaymentUpdate.do")
-	public ModelAndView paymentUpdate(String payment_pk) {
+	public ModelAndView paymentUpdate(String payment_pk, String reserve_pk) {
 		ModelAndView mv= new ModelAndView();
 		
+		int payment_pk1=Integer.parseInt(payment_pk);	
+		int reserve_pk1=Integer.parseInt(reserve_pk);
+		
+		int result=service.paymentUpdateCheck(payment_pk1);
+		String loc="/manager/managePayment.do";
+		String msg="결제 내역 취소 실패";
+		
+		
+		if(result>0) {
+			result=service.reserveDelete(reserve_pk1);
+			
+			msg="예약 내용 삭제 성공";
+		}
+		mv.addObject("msg", msg);
+		mv.addObject("loc", loc);
+		mv.setViewName("/common/msg");
 		
 		return mv;
 	}

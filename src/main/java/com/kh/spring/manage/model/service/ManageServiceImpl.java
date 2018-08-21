@@ -50,5 +50,17 @@ public class ManageServiceImpl implements ManageService{
 		
 		return manageDao.paymentCount(sqlSession);
 	}
+
+	@Override
+	public int paymentUpdateCheck(int payment_pk) {
+		
+		return manageDao.paymentUpdateCheck(sqlSession,payment_pk);
+	}
+
+	@Override
+	public int reserveDelete(int reserve_pk) {
+		
+		return manageDao.reserveDelete(sqlSession, reserve_pk);
+	}
 	
 }

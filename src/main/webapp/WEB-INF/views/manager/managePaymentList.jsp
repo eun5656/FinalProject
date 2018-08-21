@@ -61,9 +61,28 @@
 					<td><strong>${payment.member_name }</strong></td>
 					<td><strong>${payment.payment_check }</strong></td>
 					<td>
-					<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${payment.payment_pk });" >취소 승인</button>
+					<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${payment.payment_pk },${payment.reserve_pk });" >취소 승인</button>
 					</td>
 				</tr>
+					<script>
+		function fn_payment(m,p){
+			alert(m);
+			var payment_pk=m;
+			var reserve_pk=p;
+			
+			var check=confirm("결제 취소를 승인합니다.");
+			
+			if(check){
+				location.href='${path}/manager/managePaymentUpdate.do?payment_pk='+payment_pk+"&reserve_pk="+reserve_pk;
+			}
+			
+			
+		}
+	</script>
+
+					
+				
+				
 			</c:forEach>
 			</c:if>
 						
@@ -77,22 +96,9 @@
 		</div> 	 
     
 	</div>
-	<script>
-		function fn_payment(p){
-			
-			var check=confirm("결제 취소를 승인합니다.");
-			
-			if(check){
-				location.href='${path}/manager/managePaymentUpdate.do?payment_pk=p';
-			}
-			
-			
-		}
-	</script>
+
 
 </section>
-
-
 
 
 

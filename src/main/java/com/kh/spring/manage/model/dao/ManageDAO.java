@@ -16,4 +16,7 @@ public interface ManageDAO {
 	
 	int paymentCount(SqlSessionTemplate sqlSession);
 	
+	int paymentUpdateCheck(SqlSessionTemplate sqlSession,int payment_pk);
+	int reserveDelete(SqlSessionTemplate sqlSession,int reserve_pk);
+	
 }
