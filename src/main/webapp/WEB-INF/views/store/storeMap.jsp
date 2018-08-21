@@ -73,10 +73,11 @@ var LatLng = ""+ results[0].geometry.location;
 		
 
 </div>
+
+<div id="right-side">
 <div id="border">
 	<div id="line" class="two" style="position:fixed;"></div>
 </div>
-<div id="right-side">
 	<div style="position: fixed;">
 		<ul>
 			<li class="shop ">

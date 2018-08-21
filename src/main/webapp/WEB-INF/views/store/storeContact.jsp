@@ -89,10 +89,11 @@ var store_pk ="${store.store_pk}";
 		</div>
 	</div>
 	</div>
+
+<div id="right-side">
 <div id="border">
 	<div id="line" class="four" style="position:fixed;"></div>
 </div>
-<div id="right-side">
 	<div style="position: fixed;">
 		<ul>
 			<li class="shop ">
