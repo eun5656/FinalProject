@@ -519,7 +519,7 @@
  	 			url:"${path}/member/JHcheckEmail.do",
  	 			data:{memberEmail:$('#memberEmail').val()},
  	 			success:function(data) {
- 	 				if(data == 'false') {
+ 	 				if(data == 'true') {
  	 					alert("사용가능한 이메일입니다.");
  	 				} else {
  	 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
