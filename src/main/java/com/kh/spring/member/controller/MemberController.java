@@ -56,7 +56,7 @@ public class MemberController {
 	public String memberLogin(String memberId, String memberPw, Model model) {
 		logger.debug("로그인메소드호출");
 		Member m = service.loginCheck(memberId);
-
+		int count = service.countMessage();
 		// 응답페이지 작성
 		String msg = "";
 		String loc = "/";
@@ -66,7 +66,12 @@ public class MemberController {
 
 		if (m != null) {
 			if (bcryptPasswordEncoder.matches(memberPw, m.getMemberPw())) {
-				msg = "로그인성공";
+				if(count>0) {
+					msg="새로운 쪽지가 도착했습니다.";
+				}
+				else {
+					msg="로그인 성공";
+				}
 				model.addAttribute("memberLoggedIn", m);
 			} else {
 				msg = "비밀번호가 일치하지 않습니다.";

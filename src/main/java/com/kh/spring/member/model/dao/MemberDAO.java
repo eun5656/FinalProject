@@ -8,6 +8,8 @@ import com.kh.spring.store.model.vo.Store;
 public interface MemberDAO {
 	
 	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
+	
+	int countMessage(SqlSessionTemplate sqlSession);
 
 	int duplicateIdCheck(SqlSessionTemplate sqlSession, String memberId);
 

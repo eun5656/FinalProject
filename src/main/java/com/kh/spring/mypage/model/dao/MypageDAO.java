@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Payment;
@@ -37,4 +38,8 @@ public interface MypageDAO {
 	int mypagePwUpdate(SqlSessionTemplate sqlSession, Member member);
 
 	int mypageUpdate(SqlSessionTemplate sqlSession, Member m);
+	
+	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk/*,int cPage, int numPerPage*/);
+	
+	//int bookmarkCount(SqlSessionTemplate sqlSession, int member_pk);
 }

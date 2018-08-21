@@ -23,6 +23,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
+	public int countMessage() {
+		
+		return memberDAO.countMessage(sqlSession);
+	}
+	
+	@Override
 	public int duplicateIdCheck(String memberId) {		
 		return memberDAO.duplicateIdCheck(sqlSession, memberId);
 	}
