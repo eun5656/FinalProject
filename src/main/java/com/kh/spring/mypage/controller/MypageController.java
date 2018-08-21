@@ -27,12 +27,13 @@ public class MypageController {
 	private MypageService mypageService;
 	
 	@RequestMapping("/mypage/mypage.do")
-	public ModelAndView mypage1(int memberPk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,HttpSession session) {
+	public ModelAndView mypage1(String memberPk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		int numPerPage=10;
-		List<Reserve> list = mypageService.mypageReserveList(memberPk,cPage,numPerPage);
+		int memberPk1=Integer.parseInt(memberPk);
+		List<Reserve> list = mypageService.mypageReserveList(memberPk1,cPage,numPerPage);
 		
-		int totalCount=mypageService.reserveCount(memberPk);
+		int totalCount=mypageService.reserveCount(memberPk1);
 		
 		String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"mypage.do?memberPk="+((Member)session.getAttribute("memberLoggedIn")).getMemberPk());
 		
