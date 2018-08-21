@@ -18,4 +18,10 @@ public interface ShopService {
 	List<Store> bookmarkSortShopList();
 
 	List<Store> searchShopList(String searchLocation);
+	List<Store> shopRankReviewCount();
+
+	List<Store> shopReviewCount();
+
+	List<Store> shopBasicReviewCount();
+
 }

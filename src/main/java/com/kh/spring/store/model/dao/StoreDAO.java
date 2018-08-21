@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -28,6 +29,14 @@ public interface StoreDAO {
 
 	Store_time selectTime(SqlSessionTemplate sqlSession, int store_pk);
 	List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk);
+
+	int storeStarUpdate(SqlSessionTemplate sqlSession, Map updateStar);
+
+	int selectStoreStar(SqlSessionTemplate sqlSession, int store_pk);
+
+	List<Store> storeReviewCount(SqlSessionTemplate sqlSession);
+
+
 
 
 

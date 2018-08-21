@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.kh.spring.designer.model.vo.designer;
 import com.kh.spring.store.model.vo.Menu;
@@ -28,6 +29,14 @@ public interface StoreService {
 	int updateStore(Store store);
 
 	List<Menu> menuList(int store_pk);
+
+	int storeStarUpdate(Map updateStar);
+
+	int selectStoreStar(int store_pk);
+
+	List<Store> storeReviewCount();
+
+
 
 
 

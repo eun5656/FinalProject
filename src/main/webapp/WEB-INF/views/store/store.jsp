@@ -14,6 +14,7 @@
 
 <link href="${path }/resources/css/store.css?ver=3" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
+ <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
 <!-- store js -->
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script> 
@@ -37,6 +38,9 @@ var holiday ="${store.store_holiday}";
 
 				<!-- 가게 이미지 시작 -->
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">					
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
+					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex" id="b_icon">
+					
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
 							src="${path }/resources/images/nail_store/${store.store_re_img }" alt="출력 실팽">
@@ -52,6 +56,19 @@ var holiday ="${store.store_holiday}";
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
+					<p>장소 : ${store. store_address }</p>
+          			  <p> <c:forEach begin="1" end="${store_star}">
+          				  <i class="price-text-color fa fa-star"></i>
+           				  </c:forEach>
+           				  <c:forEach begin="1" end="${5-store_star}">
+             			  <i class=" fa fa-star"></i>
+         				  </c:forEach>    
+             		  </p>
+          				  
+          			  
+          			  
+          			  
+          			  
 					<p>Tel. ${store. store_phone }</p>
 					<p>휴일 : 
   	<div class="holiday" id= "0" style="display:none;">일요일</div>

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
@@ -41,6 +42,36 @@ public class MypageDAOImpl implements MypageDAO {
 	public int reserveCount(SqlSessionTemplate sqlSession, int memberPk) {
 		
 		return sqlSession.selectOne("storeReserve.reserveCount", memberPk);
+	}
+	
+	@Override
+	public Member loginCheck(SqlSessionTemplate sqlSession, String memberId) {
+		return sqlSession.selectOne("member.selectOne", memberId);
+	}
+	
+	@Override
+	public String findCheck(SqlSessionTemplate sqlSession, int memberPk) {
+		return sqlSession.selectOne("member.selectTwo", memberPk);
+	}
+
+	@Override
+	public int delete(SqlSessionTemplate sqlSession, int memberPk) {
+		return sqlSession.delete("member.deleteMember", memberPk);
+	}
+
+	@Override
+	public String duplicatePwCheck(SqlSessionTemplate sqlSession, int parseInt) {
+		return sqlSession.selectOne("member.selectPwCheck",parseInt);
+	}
+	
+	@Override
+	public int mypagePwUpdate(SqlSessionTemplate sqlSession, Member member) {
+		return sqlSession.update("member.mypagePwUpdate",member);
+	}
+
+	@Override
+	public int mypageUpdate(SqlSessionTemplate sqlSession, Member m) {
+		return sqlSession.update("member.mypageUpdate", m);
 	}
 
 	@Override

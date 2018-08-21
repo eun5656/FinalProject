@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -70,9 +71,28 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.selectList("store.selectMenus", store_pk);
 	}
 
+	@Override
+	public int storeStarUpdate(SqlSessionTemplate sqlSession, Map updateStar) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("store.storeStarUpdate", updateStar);
+	}
+
+	@Override
+	public int selectStoreStar(SqlSessionTemplate sqlSession, int store_pk) {
+		Integer result=sqlSession.selectOne("store.selectStoreStar", store_pk);
+		if(result==null){
+			result=0;
+		}
+		return result;
+	}
+
+	@Override
+	public List<Store> storeReviewCount(SqlSessionTemplate sqlSession) {
+		return sqlSession.selectList("store.storeReviewCount");
+	}
 
 
-
+	
 
 
 

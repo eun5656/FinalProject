@@ -74,10 +74,13 @@ public class StoreController {
 		List<Menu> menus = service.selectMenu(store_pk);
 		List<Nail> nails= Nailservice.nailListStore(store_pk);
 		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
+		int store_star=service.selectStoreStar(store_pk);
 			
 		System.out.println("메뉴 값 확인 : "+ menus);
 		System.out.println("스토어 값 확인 : "+store);
 		System.out.println("Nail 값 확인 : "+nails);
+		System.out.println("Nail 값 확인 : "+store_star);
+		//System.out.println(reviews.get(1));
 		model.addAttribute("store",store);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
@@ -95,6 +98,7 @@ public class StoreController {
 		
 		
 	
+		model.addAttribute("store_star",store_star);
 		return view;
 	}
 	@RequestMapping("/store/storeMap.do")

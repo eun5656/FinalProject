@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.member.model.vo.Member;
+import com.kh.spring.store.model.vo.Store;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -17,29 +18,33 @@ public class MemberServiceImpl implements MemberService {
 	MemberDAO memberDAO;
 
 	@Override
-	public Member loginCheck(String memberId) {
-		
+	public Member loginCheck(String memberId) {		
 		return memberDAO.loginCheck(sqlSession, memberId);
 	}
 	
+	@Override
+	public int duplicateIdCheck(String memberId) {		
+		return memberDAO.duplicateIdCheck(sqlSession, memberId);
+	}
+
+	@Override
+	public int duplicateEmailCheck(String memberEmail) {
+		return memberDAO.duplicateEmailCheck(sqlSession, memberEmail);
+	}
 	
-	/*@Override
-	public int insertMember(Member m) {
-		
+	@Override
+	public int insertMember(Member m) {		
 		return memberDAO.insertMember(sqlSession, m);
 	}
 
 	@Override
-	public int updateMember(Member m) {
-		
-		return memberDAO.updateMember(sqlSession, m);
+	public int duplicateMemberEmailCheck(String memberEmail) {
+		return memberDAO.duplicateMemberEmailCheck(sqlSession, memberEmail);
 	}
 
 	@Override
-	public int duplicateIdCheck(String userId) {
-		
-		return memberDAO.duplicateIdCheck(sqlSession, userId);
-	}*/
-	
+	public int insertStore(Store s) {
+		return memberDAO.insertStore(sqlSession, s);
+	}
 	
 }

@@ -26,7 +26,6 @@
           </div>
         </div>
         
-        
          <div id="sort_list" class="row">
         <div class="col-xs-9">
         

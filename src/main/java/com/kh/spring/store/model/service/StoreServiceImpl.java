@@ -1,6 +1,7 @@
 package com.kh.spring.store.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -90,5 +91,25 @@ public class StoreServiceImpl implements StoreService {
 
 	}
 
+	@Override
+	public int storeStarUpdate(Map updateStar) {
+		// TODO Auto-generated method stub
+		return  dao.storeStarUpdate(sqlSession, updateStar);
+	}
+
+	@Override
+	public int selectStoreStar(int store_pk) {
+		// TODO Auto-generated method stub
+		return dao.selectStoreStar(sqlSession, store_pk);
+	}
+
+	@Override
+	public List<Store> storeReviewCount() {
+		// TODO Auto-generated method stub
+		return dao.storeReviewCount(sqlSession);
+	}
+
+
+	
 
 }
