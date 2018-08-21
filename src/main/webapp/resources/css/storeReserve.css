@@ -4,11 +4,11 @@
 }
 /*custom*/
 .fc-past {
-	background: rgb(255, 249, 249);
+	background: rgb(242, 242, 242);
 }
 
 .fc-highlight, .alert-info, .fc-today {
-	background: rgba(246, 252, 241, 0.96);
+	background: rgb(237, 255, 238);
 }
 
 .fc-day-number {

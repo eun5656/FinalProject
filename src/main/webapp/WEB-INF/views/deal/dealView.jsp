@@ -66,11 +66,11 @@ var deal_pk ="${deal.deal_pk}";
 					<div class="col-sm-3"> 
 					  	<br>
           				<div class="btn-group">
- 							<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealList.do'">목록</button>
+ 							<button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealList.do'">목록</button>
  							
  						<c:if test="${memberLoggedIn.memberId eq deal.deal_writer }">
-  							<button type="button" class="btn btn-primary" onclick="location.href='${path}/deal/dealUpdate.do?deal_pk=${deal.deal_pk}'">수정</button>
-  							<button type="button" class="btn btn-primary" onclick='fn_delete()'>삭제</button>
+  							<button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealUpdate.do?deal_pk=${deal.deal_pk}'">수정</button>
+  							<button type="button" class="btn btn-warning" onclick='fn_delete()'>삭제</button>
   						</c:if>
   				<script>
   				function fn_delete(){

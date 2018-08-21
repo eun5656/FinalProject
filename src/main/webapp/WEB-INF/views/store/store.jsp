@@ -85,6 +85,7 @@ $(function() {
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
+					<p>장소 : ${store. store_address }</p>
           			  <p> <c:forEach begin="1" end="${store_star}">
           				  <i class="price-text-color fa fa-star"></i>
            				  </c:forEach>
@@ -260,8 +261,13 @@ $(function() {
      <c:if test="${review.review_level==1}">
       <li>
         <div class="media-left">
-        <!-- 경로바꿔주기 -->
-          <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        		<c:if test="${review.member_re_img==null}">
+                    <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+				</c:if>
+                   			
+                <c:if test="${review.member_re_img!=null}">
+                    <img class="member_profile" src="${path}/resources/upload/member/${review.member_re_img}">
+			    </c:if>
         </div>
         <div class="media-body">
       <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${review.review_writer}</div>
@@ -270,9 +276,8 @@ $(function() {
 							</div>
                   <div class="review_content">
                     <p>
-                    <c:if test="${review.review_re_img != null}">
-                    <img class="review-img"alt="" src="${path}/resources/upload/storeReview/${review.review_re_img}">                
-                    </c:if>
+                    
+                    	
                     <c:out value="${review.review_content}"></c:out>
                     </p>
                  <div class="reply-btn-positon">
@@ -316,12 +321,18 @@ $(function() {
          
              	<ul class="media comment-box level2 comment-reply">
              	<li></li>
-             	<c:if test="${review.review_level==2 !=null}"></c:if>
+             	<c:if test="${review.review_level==2}"></c:if>
 					<c:forEach var="review2" items="${reviews }" varStatus="status1" >
                 <c:if test="${review2.review_level==2 && review2.review_ref==review.review_pk}">                     		
          		 <li>
                    <div class="media-left">
-                           <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                   			<c:if test="${review.member_re_img==null}">
+                    			<img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+							</c:if>
+                   			
+               				<c:if test="${review.member_re_img!=null}">
+               	     			<img class="member_profile" src="${path}/resources/upload/member/${review.member_re_img}">
+			    			</c:if>
                    </div>
                    <div class="media-body">
                      <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${review2.review_writer}</div>
@@ -361,7 +372,14 @@ $(function() {
                 	    <input type="hidden" value="1" name="review_level"/>
                 	
                 		 <div class="media-left">
-                         <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+							<c:if test="${memberLoggedIn.memberReImg==null}">
+                              <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                   			</c:if>
+                   			
+                   			<c:if test="${memberLoggedIn.memberReImg!=null}">
+                   			  <img class="member_profile" src="${path}/resources/upload/member/${memberLoggedIn.memberReImg}">
+							</c:if>
+
                  		</div>
                 		 <div class="media-body purple-border input_comment">
                      		<div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${memberLoggedIn.memberId}</div>
@@ -369,7 +387,7 @@ $(function() {
 								</div>
 							</div>
                      		<div class="form-group" style="margin-bottom:0px;">
-                        		 <textarea class="form-control" id="" rows="3" name="review_content" required=" 	"></textarea>
+                        		 <textarea class="form-control" id="" rows="3" name="review_content" required="required" autofocus="autofocus"></textarea>
                      		</div>
                  <div class="row" style="margin-right:0px;">
                      <div class="col-sm-5">
@@ -471,7 +489,12 @@ $(function() {
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
 								 html2+="<div class='media-left'>";
-								 html2+="<img class='member_profile' src='${path}/images/member/${memberLoggedIn.memberReImg}'>";
+								 if("${memberLoggedIn.memberReImg}".length>0){
+								 html2+="<img class='member_profile' src='${path}/resources/upload/member/${memberLoggedIn.memberReImg}'>";
+								 }
+								 else{
+								 html2+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+								 }
 								 html2+="</div>";
 								 html2+="<div class='media-body'>";
 								 html2+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;''><div class='col-xs-3'>"+data.review_value.review_writer+"</div>";
@@ -669,9 +692,12 @@ function fn_reply(index,review_pk,store_pk) {
 		html+="<input type='hidden' value='2' name='review_level'/>";
 		html+="<input type='hidden' value='"+index+"' name='index'/>";
 		html+="<div class='media-left'>";
-		html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
-	//	html+="<img class='member_profile' src='${path}/resources/member_profile/${memberLogged.memberReImg}'>";
-		//null일때 처리
+		if("${memberLoggedIn.memberReImg}".length>0){
+		html+="<img class='member_profile' src='${path}/resources/upload/member/${memberLoggedIn.memberReImg}'>";
+		}
+		else{
+	    html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+		}
 		html+="</div>";
 		html+="<div class='media-body purple-border input_comment'>";
 		html+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;'><div class='col-xs-3'>${memberLoggedIn.memberId}</div>";
@@ -759,9 +785,12 @@ function eventBind(index) {
 	 	        	 var li = $('<li></li>'); 
 		 	       	 var html='';
 		 	       		html+="<div class='media-left'>";
-		 	     	  	html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
-		 	   			//	html+="<img class='member_profile' src='${path}/resources/member_profile/${memberLogged.memberReImg}'>";
-		 	   			//null일때 처리
+		 	     	    if("${memberLoggedIn.memberReImg}".length>0){
+		 	     		html+="<img class='member_profile' src='${path}/resources/upload/member/${memberLoggedIn.memberReImg}'>";
+		 	     		}
+		 	     		else{
+		 	     	    html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+		 	     		}
 		 	       		html+="</div>";
 		 	       		html+="<div class='media-body'>";
 		 	       		html+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;'><div class='col-xs-3'>"+data.review_value.review_writer+"</div>";
