@@ -469,7 +469,6 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		System.out.println("디자이너 삽입 접근완료" + designer);
 		System.out.println(size+"디자이너 크기 확인");
 		System.out.println(designersCheck.toString());
-		System.out.println(designersCheck.get(0).getDesigner_id());
 //디자이너 아이디 검증
 		if(size==0) {
 			designer.setDesigner_id("a");
