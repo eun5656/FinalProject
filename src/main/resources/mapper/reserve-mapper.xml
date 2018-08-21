@@ -4,6 +4,7 @@
 	<resultMap type="storeReserve" id="storeReserveMap">
 		 
 	</resultMap>
+	<resultMap type="store_time" id="storeTimeMap"></resultMap>
 
 	<insert id="storeReserveInsert" parameterType="storeReserve">
 	INSERT INTO RESERVE VALUES(RESERVE_SEQ.NEXTVAL,#{member_pk},#{member_name},#{store_pk},#{designer_name},#{designer_id},#{menu_pk},#{reserve_status},#{reserve_start_time},#{reserve_end_time},SYSDATE)
@@ -44,10 +45,16 @@
 	<select id="paymentCount" resultType="int">
 		select count(*) from payment
 	</select>
+<<<<<<< HEAD
 	<update id="paymentUpdateCheck" parameterType="int">
 		update payment set payment_check='결제 취소 승인' where payment_pk=#{payment_pk}
 	</update>
 	<delete id="reserveDelete" parameterType="int">
 		delete from reserve where reserve_pk=#{reserve_pk}
 	</delete>
+=======
+	<select id="selectStoreTime" resultMap="storeTimeMap" parameterType="_int">
+		select * from store_time where store_pk=#{store_pk}
+	</select>
+>>>>>>> sungJin_ver_2.6
 </mapper>

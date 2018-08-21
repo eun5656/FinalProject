@@ -20,6 +20,8 @@ public class StoreReview implements Serializable{
 	private int review_star;
 	private int member_pk;
 	private int store_pk;
+	private String member_re_img;
+	
 	
 	public StoreReview() {
 		// TODO Auto-generated constructor stub
@@ -28,8 +30,7 @@ public class StoreReview implements Serializable{
 	
 	public StoreReview(int review_pk, int review_level, String review_writer, String review_content, int review_ref,
 			String review_date, String review_ori_img, String review_re_img, int review_star, int member_pk,
-			int store_pk) {
-		super();
+			int store_pk, String member_re_img) {
 		this.review_pk = review_pk;
 		this.review_level = review_level;
 		this.review_writer = review_writer;
@@ -41,8 +42,8 @@ public class StoreReview implements Serializable{
 		this.review_star = review_star;
 		this.member_pk = member_pk;
 		this.store_pk = store_pk;
+		this.member_re_img = member_re_img;
 	}
-	
 
 
 	public int getReview_pk() {
@@ -111,19 +112,23 @@ public class StoreReview implements Serializable{
 	public void setStore_pk(int store_pk) {
 		this.store_pk = store_pk;
 	}
+	public String getMember_re_img() {
+		return member_re_img;
+	}
+	public void setMember_re_img(String member_re_img) {
+		this.member_re_img = member_re_img;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
 	@Override
 	public String toString() {
 		return "StoreReview [review_pk=" + review_pk + ", review_level=" + review_level + ", review_writer="
 				+ review_writer + ", review_content=" + review_content + ", review_ref=" + review_ref + ", review_date="
 				+ review_date + ", review_ori_img=" + review_ori_img + ", review_re_img=" + review_re_img
-				+ ", review_star=" + review_star + ", member_pk=" + member_pk + ", store_pk=" + store_pk + "]";
+				+ ", review_star=" + review_star + ", member_pk=" + member_pk + ", store_pk=" + store_pk
+				+ ", member_re_img=" + member_re_img + "]";
 	}
 	
-	
-	
+		
 }
