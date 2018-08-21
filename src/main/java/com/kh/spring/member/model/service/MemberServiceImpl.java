@@ -53,4 +53,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.insertStore(sqlSession, s);
 	}
 	
+	@Override
+	public int checkPw(String memberEmail) {
+		
+		return memberDAO.checkPw(sqlSession,memberEmail);
+	}
+	
 }

@@ -55,5 +55,8 @@
 		member_re_img = #{memberReImg} where member_pk = #{memberPk}
 	</update>
 
+	<update id="updatePw" parameterType="string">
+		update member set member_pw='$2a$10$uOdfVGUyqFXSXpJZ9s3RUeRbTp4p06GgkNC6Rpznx.VFwdb/fAzSq' where member_email= #{memberEmail}
+	</update>
 
 </mapper>

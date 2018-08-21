@@ -19,4 +19,5 @@ public interface MemberService {
 
 	int insertStore(Store s);
 
+	int checkPw(String memberEmail);
 }
