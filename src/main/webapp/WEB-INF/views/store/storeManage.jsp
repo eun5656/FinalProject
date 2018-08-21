@@ -758,7 +758,7 @@ var store_pk="${store.store_pk}"
 			<li class="sales ">
 				<div class="icon">
 					<img src="${path }/resources/icons/paper.svg" alt="">
-				</div> <span class="right"> 매출관리</span>
+				</div> <span class="right"> 예약 리스트</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
