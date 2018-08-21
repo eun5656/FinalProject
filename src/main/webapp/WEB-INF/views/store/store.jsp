@@ -61,7 +61,7 @@ var holiday ="${store.store_holiday}";
  	  <div class="holiday" id= "4" style="display:none;">목요일</div>
  	   <div class="holiday" id= "5" style="display:none;">금요일</div>
   	   <div class="holiday" id= "6" style="display:none;">토요일</div>
-</p>
+					</p>
 					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
 					<p>${store.store_info }</p>
 				</div>
@@ -171,7 +171,7 @@ var holiday ="${store.store_holiday}";
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
 													<p>네일 정보 : ${nail.nail_info }</p>
-													<p>네일 색상 : ${nail.nail_color }, 타입 : ${nail.nail_check }, 종류	 : ${nail.nail_style }</p>
+													<p>네일 색상 : ${nail.nail_color },  타입   :  ${nail.nail_check },  종류  :  ${nail.nail_style }</p>
 												</div> 
 												<!-- Modal footer -->
 												<div class="modal-footer">
@@ -869,6 +869,6 @@ $(".b_icon").click(function() {
 	else{
 		alert("로그인해주세요");
 	}
-});</script>
+})</script>
 <!-- 푸터부분 -->
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />
