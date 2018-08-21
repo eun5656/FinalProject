@@ -101,10 +101,6 @@ public class MypageController {
 		return "mypage/mypageQNAListContent";
 	}
 	
-	@RequestMapping("/mypage/mypageMessage.do")
-	public String mypage4() {
-		return "mypage/mypageMessage";
-	}
 	
 	  // 비밀번호변경
 	   @RequestMapping("/mypage/mypagePwchange.do")
@@ -241,23 +237,14 @@ public class MypageController {
 	   }
 
 	
-	@RequestMapping("/mypage/mypageDelete.do")
-	public String mypage6() {
-		return "mypage/mypageDelete";
-	}
-	
 	@RequestMapping("/mypage/mypagePayment.do")
 	public ModelAndView mypagePayment(String reserve_pk) {
 		int reserve_pk1=Integer.parseInt(reserve_pk);
-		
 		Payment payment=mypageService.mypagePayment(reserve_pk1);
 		System.out.println(payment);
 		ModelAndView mv= new ModelAndView();
 		mv.addObject("payment", payment);
 		mv.setViewName("/mypage/mypageModal");
-		
-	
-				
 		return mv;
 	}
 	
