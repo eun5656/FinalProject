@@ -54,4 +54,11 @@
 	<select id="selectStoreTime" resultMap="storeTimeMap" parameterType="_int">
 		select * from store_time where store_pk=#{store_pk}
 	</select>
+	
+		<select id="manageReserveList" resultMap="storeReserveMap" parameterType="com.kh.spring.reserve.model.vo.Reserve">
+		select * from store s join reserve r on (s.store_pk=r.store_pk) where r.store_pk=#{store_pk}  
+	</select>
+	<select id="reserveCount1" parameterType="int" resultType="int">
+	 	select count(*) from reserve where store_pk=#{store_pk}
+	</select>
 </mapper>

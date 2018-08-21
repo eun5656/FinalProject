@@ -8,6 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.dao.StoreDAO;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
@@ -107,6 +109,18 @@ public class StoreServiceImpl implements StoreService {
 	public List<Store> storeReviewCount() {
 		// TODO Auto-generated method stub
 		return dao.storeReviewCount(sqlSession);
+	}
+
+	@Override
+	public List<Reserve> manageReserveList(Reserve reserve, int cPage, int numPerPage) {
+		
+		return dao.manageReserveList(sqlSession, reserve, cPage, numPerPage);
+	}
+
+	@Override
+	public int reserveCount(int store_pk) {
+		
+		return dao.reserveCount(sqlSession, store_pk);
 	}
 
 

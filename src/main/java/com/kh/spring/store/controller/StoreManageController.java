@@ -26,12 +26,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kh.spring.common.page.PageCreate;
 import com.kh.spring.designer.model.service.designerService;
 import com.kh.spring.designer.model.vo.designer;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
@@ -109,27 +111,34 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store",store);
 		return view;
 	}
-	@RequestMapping("/store/storeManageReserve.do")
-	public String storeManageReserve(
-			HttpServletRequest req, Model model,HttpSession session
-			) {
-		String view="store/storeManageReserve";
-		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
-		
-		Store store = service.selectOne(member_pk);
-		
-//		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
-		List<Menu> menus = service.selectMenu(store.getStore_pk());
-
-		
-		
 	
-		System.out.println("스토어 값 확인 : "+store);
+	
+	@RequestMapping("/store/storeManageReserveList.do")
+	public String storeManageSale(String store_pk,
+			HttpServletRequest req, Model model, HttpSession session,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage
+			) {
+		String view="store/storeManageReserveList";	
+		int numPerPage=10;
+		int store_pk1=Integer.parseInt(store_pk);
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
+		Reserve reserve=new Reserve();
+		reserve.setMember_pk(member_pk);
+		reserve.setStore_pk(store_pk1);
 		
-		model.addAttribute("store",store);
+		List<Reserve> list = service.manageReserveList(reserve,cPage,numPerPage);
 		
+		int totalCount=service.reserveCount(store_pk1);
+		
+		String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"storeManageReserveList.do?store_pk="+store_pk1);
+		
+		model.addAttribute("pageBar", pageBar);
+		model.addAttribute("list", list);
+		model.addAttribute("cPage", cPage);
+		model.addAttribute("totalCount", totalCount);
+	
 		return view;
 	}
+	
 	
 	@RequestMapping("/store/storeManage/menuInsert.do")
 	public String menuInsert(Menu menu, HttpServletRequest req,Model model) {

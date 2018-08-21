@@ -3,9 +3,11 @@ package com.kh.spring.store.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 /*import com.kh.spring.storeReview.model.vo.StoreReview;*/
@@ -91,6 +93,19 @@ public class StoreDAOImpl implements StoreDAO {
 		return sqlSession.selectList("store.storeReviewCount");
 	}
 
+	@Override
+	public List<Reserve> manageReserveList(SqlSessionTemplate sqlSession, Reserve reserve, int cPage, int numPerPage) {
+		RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
+	      
+		return sqlSession.selectList("storeReserve.manageReserveList", reserve,rb);
+		
+	}
+
+	@Override
+	public int reserveCount(SqlSessionTemplate sqlSession, int store_pk) {
+		
+		return sqlSession.selectOne("storeReserve.reserveCount1", store_pk);
+	}
 
 	
 

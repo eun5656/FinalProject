@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.kh.spring.designer.model.vo.designer;
+import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
 import com.kh.spring.store.model.vo.Store_time;
@@ -45,6 +46,7 @@ public interface StoreService {
 
 	Store_time selectTime(int store_pk);
 
-	
+	List<Reserve> manageReserveList(Reserve reserve,int cPage,int numPerPage);
+	int reserveCount(int store_pk);
 
 }
