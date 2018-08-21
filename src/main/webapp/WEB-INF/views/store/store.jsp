@@ -25,7 +25,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 var holiday ="${store.store_holiday}";
 </script>
-<script src="${path }/resources/js/store.js?ver=5"></script>
+<script src="${path }/resources/js/store.js?ver=6"></script>
 <div>
 <div id="wrapper">
 
@@ -54,13 +54,13 @@ var holiday ="${store.store_holiday}";
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
 					<p>Tel. ${store. store_phone }</p>
 					<p>휴일 : 
-  	<div class="holiday" id= "0" style="display:none;">일요일</div>
- 	 <div class="holiday" id= "1"  style="display:none;">월요일</div>
- 	 <div class="holiday" id= "2"  style="display:none;">화요일</div>
- 	 <div class="holiday" id= "3"  style="display:none;">수요일</div>
- 	  <div class="holiday" id= "4" style="display:none;">목요일</div>
- 	   <div class="holiday" id= "5" style="display:none;">금요일</div>
-  	   <div class="holiday" id= "6" style="display:none;">토요일</div>
+  	<span class="holiday" id= "0" style="display:none;">일요일</span>
+ 	 <span class="holiday" id= "1"  style="display:none;">월요일</span>
+ 	 <span class="holiday" id= "2"  style="display:none;">화요일</span>
+ 	 <span class="holiday" id= "3"  style="display:none;">수요일</span>
+ 	  <span class="holiday" id= "4" style="display:none;">목요일</span>
+ 	   <span class="holiday" id= "5" style="display:none;">금요일</span>
+  	   <span class="holiday" id= "6" style="display:none;">토요일</span>
 					</p>
 					<p>평일 ${store_time.store_open_time } - ${store_time.store_close_time } 주말 ${store_time.store_weekend_open } -  ${store_time.store_weekend_close }</p>
 					<p>${store.store_info }</p>
@@ -99,7 +99,7 @@ var holiday ="${store.store_holiday}";
 										<div class="item">
 										</c:when>
 									</c:choose>	
-										<c:forEach var='i' begin='${status.index }' end="${status.index +2 }">
+										<c:forEach var='i'	 begin='${status.index }' end="${status.index +2 }">
 										
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
 										
@@ -809,7 +809,7 @@ $(".b_icon").click(function() {
 	
 	if (temp.attr("alt")=='false') 
 	{	
-		bookmark_val.bookmark_check="ture";
+		bookmark_val.bookmark_check="true";
 		//var nail_pk=temp.next().val();					    		
 		//var member_pk=temp.next().next().val();
 	  var jsonData = JSON.stringify(bookmark_val);
@@ -861,10 +861,7 @@ $(".b_icon").click(function() {
 			console.log(errormsg);
 		}
 	})	
-	
-		
-	}
-	
+	}	
 	}
 	else{
 		alert("로그인해주세요");

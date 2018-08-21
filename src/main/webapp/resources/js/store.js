@@ -4,7 +4,7 @@
 $(function() {
 	var holidaycheck ="#"+holiday;
 	 $(holidaycheck).removeAttr("style","display:none;");
-	 
+	 console.log(holidaycheck);
 	//휴일 선택
 	
 	
