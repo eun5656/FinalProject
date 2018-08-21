@@ -197,7 +197,7 @@
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
               	<li><a href="${path}/manager/manageList.do">관리자 페이지</a></li>
-                <li><a href="${path}/mypage/mypage.do">마이페이지</a></li>
+                <li><a href="${path}/mypage/mypage.do?memberPk=${memberLoggedIn.memberPk}">마이페이지</a></li>
                 <li><a href="${path}/member/Logout.do">로그아웃</a></li>
               </ul>
             </li>
