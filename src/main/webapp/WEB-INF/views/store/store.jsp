@@ -85,10 +85,7 @@ $(function() {
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
-<<<<<<< HEAD
-=======
 					<p>장소 : ${store. store_address }</p>
->>>>>>> sungJin_ver_2.6
           			  <p> <c:forEach begin="1" end="${store_star}">
           				  <i class="price-text-color fa fa-star"></i>
            				  </c:forEach>
