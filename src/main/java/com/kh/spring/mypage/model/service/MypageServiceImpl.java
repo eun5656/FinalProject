@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.mypage.model.dao.MypageDAO;
@@ -62,10 +63,6 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.paymentUpdate(sqlSession, payment_pk);
 	}
 
-
-	
-
-
 	@Override
 	public Member loginCheck(String memberId) {
 		return mypageDAO.loginCheck(sqlSession, memberId);
@@ -95,5 +92,18 @@ public class MypageServiceImpl implements MypageService {
 	public int mypageUpdate(Member m) {
 		return mypageDAO.mypageUpdate(sqlSession, m);
 	}
+	
+	@Override
+	public List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/) {
+		
+		return mypageDAO.mypageBookmarkList(sqlSession,member_pk/*,cPage,numPerPage*/);
+	}
+
+	/*@Override
+	public int bookmarkCount(int member_pk) {
+		
+		return mypageDAO.bookmarkCount(sqlSession,member_pk);
+	}
+	*/
 	
 }

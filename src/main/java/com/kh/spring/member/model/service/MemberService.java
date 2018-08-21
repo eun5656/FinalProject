@@ -6,6 +6,8 @@ import com.kh.spring.store.model.vo.Store;
 public interface MemberService {
 	
 	Member loginCheck(String memberId);
+	
+	int countMessage();
 
 	int duplicateIdCheck(String memberId);
 

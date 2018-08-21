@@ -126,10 +126,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;" value="${store.store_pk}"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button class="btn btn-info store_review" style="width:90%;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button class="btn btn-info store_review" style="width:90%;" value="${store.store_pk}"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
@@ -177,10 +177,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;" onclick="move_reservaiton('$(store.store_pk)')"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"  value="${store.store_pk}"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button class="btn btn-info store_review" style="width:90%;" onclick="move_review('$(store.store_pk)')"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
+            <button class="btn btn-info store_review" style="width:90%;" value="${store.store_pk}"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${store.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
@@ -794,6 +794,13 @@
 							else{
 								alert("로그인해주세요");
 							}
+					    });
+					    
+					    $('.store_reservaiton').on('click', function() {
+					    	location.href="${path}/store/storeReserve.do?store_pk="+$(this).attr('value');
+					    });
+					    $('.store_review').on('click', function() {
+					    	location.href="${path}/store/storeReserve.do?store_pk="+$(this).attr('value');
 					    });
 					    
 				}

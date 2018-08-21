@@ -14,4 +14,11 @@ insert into bookmark values(bookmark_SEQ.NEXTVAL,#{member_pk},#{store_pk},#{nail
 
 <select id="selectBookMarkList" parameterType="_int" resultMap="bookmarkMap">select * from bookmark where member_pk = #{memberPk} </select>
 
+<select id="mypageBookmarkList" parameterType="_int" resultMap="bookmarkMap">
+	select * from nail n join bookmark b on (n.nail_pk=b.nail_pk) where b.member_pk=#{member_pk}
+</select>
+
+<!-- <select id="bookmarkCount" parameterType="_int" resultType="_int"> 
+	select count(*) from bookmark where member_pk=#{memberPk} 
+</select> -->
 </mapper>

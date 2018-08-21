@@ -622,7 +622,8 @@ var store_pk ="${store.store_pk}";
    
    <div id="left-side">
       <div id="third" class="active">
-        <div class="row" style="margin-top: 100px;">     
+        <div class="row" style="margin-top: 100px;">
+            <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name}점포 "/>예약페이지</strong>
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><i class="fa fa-angellist"></i>예약페이지</strong>
       </div>  
          <div id='calendar' style="margin-top: 20px;"></div>

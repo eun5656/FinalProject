@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.common.page.PageCreate;
 import com.kh.spring.member.controller.MemberController;
 import com.kh.spring.member.model.vo.Member;
@@ -65,10 +66,22 @@ public class MypageController {
 	}
 	
 	@RequestMapping("/mypage/mypageBookmark.do")
-	public String mypage2() {
-		return "mypage/mypageBookmark";
+	public ModelAndView mypage2(int member_pk/*@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,HttpSession session*/) {
+		ModelAndView mv = new ModelAndView();
+		//int numPerPage=4;
+		List<Bookmark> list = mypageService.mypageBookmarkList(member_pk/*,cPage,numPerPage*/);
+		//int totalCount=mypageService.bookmarkCount(member_pk);
+		
+		//String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"mypage.do?memberPk="+((Member)session.getAttribute("memberLoggedIn")).getMemberPk());
+		
+		//mv.addObject("pageBar", pageBar);
+		mv.addObject("list", list);
+		//mv.addObject("cPage", cPage);
+		//mv.addObject("totalCount", totalCount);
+		mv.setViewName("mypage/mypageBookmark");
+	
+		return mv;
 	}
-
 	@RequestMapping("/mypage/mypageQNAList.do")
 	public ModelAndView mypage3(int member_pk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,HttpSession session) {
 		ModelAndView mv = new ModelAndView();
