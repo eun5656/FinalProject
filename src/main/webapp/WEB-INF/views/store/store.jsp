@@ -39,45 +39,17 @@ var store_pk ="${store.store_pk}";
 					<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"
 						id="b_icon">
 					
-				<!-- 가게 이미지 시작 -->					
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">		
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
 							src="${path }/resources/images/nail_store/${store.store_re_img }" alt="출력 실팽">
 						<div class="overlay">
 							<h2>${store. store_name }</h2>
 							<p>
-								<a href="#storeModal" data-toggle="modal">크게 보기</a>
+								<a href="#">크게 보기</a>
 							</p>
 						</div>
 					</div>
 				</div>
-				<!-- Modal start -->
-											<div class="modal fade" id="storeModal">
-										<div class="modal-dialog">
-											<div class="modal-content">
-
-												<!-- Modal Header -->
-												<div class="modal-header">
-													<h4 class="modal-title">${store. store_name }</h4>
-													<button type="button" class="close" data-dismiss="modal">&times;</button>
-												</div>
-
-												<!-- Modal body -->
-												<div class="modal-body">
-													<div>
-															<img class="img-responsive radius14" style="width:500px;"
-															src="${path }/resources/images/nail_store/${store.store_re_img }" alt="스토어 사진">
-													</div>
-												</div> 
-												<!-- Modal footer -->
-												<div class="modal-footer">
-												</div>
-
-											</div>
-										</div>
-									</div>
-									<!-- Modal End -->
 				<!--가게 이미지 끝-->
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
