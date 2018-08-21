@@ -147,7 +147,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
-                <img class="img-circle" src="${path }/resources/images/image-8.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
@@ -162,7 +162,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
                 <span>${memberLoggedIn.memberName }님</span>
-                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="${path }/resources/upload/member/${memberLoggedIn.memberReImg}" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
@@ -177,7 +177,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
                 <span>${memberLoggedIn.memberName }점주님</span>
-                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="${path }/resources/upload/member/${memberLoggedIn.memberReImg}" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
@@ -192,7 +192,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <!--<i class="fa fa-user-circle-o"></i>-->
                 <span>${memberLoggedIn.memberName }관리자님</span>
-                <img class="img-circle" src="${path }/resources/images/image-7.jpg" alt="" style="width:50px; height:50px;">
+                <img class="img-circle" src="${path }/resources/upload/member/${memberLoggedIn.memberReImg}" alt="" style="width:50px; height:50px;">
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" style="border-radius:3px; border-color:white">
