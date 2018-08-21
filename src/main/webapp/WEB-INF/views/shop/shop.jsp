@@ -36,7 +36,6 @@
           <option value="basic">전체</option>
           <option value="review">리뷰순(갯수)</option>
           <option value="rank">평점 순</option>
-          <option value="bookmark">즐겨찾기 순</option>
           </select>
           </form>
       </div>
