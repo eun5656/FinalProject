@@ -20,6 +20,10 @@ public interface MemberDAO {
 	int duplicateMemberEmailCheck(SqlSessionTemplate sqlSession, String memberEmail);
 
 	int insertStore(SqlSessionTemplate sqlSession, Store s);
+	
+	String findId(SqlSessionTemplate sqlSession, String memberEmail);
+	
+	int checkId(SqlSessionTemplate sqlSession,String memberEmail);
 
 	int checkPw(SqlSessionTemplate sqlSession, String memberEmail);
 }

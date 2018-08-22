@@ -18,6 +18,10 @@ public interface MemberService {
 	int duplicateMemberEmailCheck(String memberEmail);
 
 	int insertStore(Store s);
+	
+	String findId(String memberEmail);
 
+	int checkId(String memberEmail);
+	
 	int checkPw(String memberEmail);
 }

@@ -68,13 +68,10 @@
                           
                             <div class="panel-body">
                                	<form action="${path }/member/findId.do" method="post">
-                               		<div class="form-group">
-                                        <input class="form-control input-lg" placeholder="이름" name="memberName" required>
-                                    </div>
                                	 	<div class="form-group">
                                         <input class="form-control input-lg" placeholder="E-mail Address" name="memberEmail" type="email">
                                     </div>
-                                    <input class="login100-form-btn" value="아이디찾기" type="submit">
+                                    <input class="login100-form-btn" value="Send My ID" type="submit">
                                	</form>
                             </div>
                         </div>
@@ -126,13 +123,6 @@
   </div>
   </div>
 </div>
-
-<style>
-.guide{
-display: none;
-}
-</style>
-
 
 <script src="${path }/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="${path }/resources/vendor/animsition/js/animsition.min.js"></script>
