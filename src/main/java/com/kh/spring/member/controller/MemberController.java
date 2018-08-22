@@ -274,14 +274,14 @@ public class MemberController {
 		return "common/msg";
 	}
 	
-	@RequestMapping("/member/findId.do")
-	public String FindId(String memberName, String memberEmail) {
-		
-		System.out.println(memberName);
-		System.out.println(memberEmail);
-		
-		return "member/loginForm";
-	}
+//	@RequestMapping("/member/findId.do")
+//	public String FindId(String memberName, String memberEmail) {
+//		
+//		System.out.println(memberName);
+//		System.out.println(memberEmail);
+//		
+//		return "member/loginForm";
+//	}
 	
 
 	@RequestMapping("/member/findPw.do")
