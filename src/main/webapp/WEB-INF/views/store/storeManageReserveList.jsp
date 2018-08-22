@@ -25,12 +25,16 @@ var store_pk="${store.store_pk}"
 	<div id="wrapper">
 
 <div id="left-side">
+
+
 			<div id="second" class="active">
 				
-    <div class='container'>
+
+    <div style="width:100%;height:auto;">
       <div class="panel">
 		
         <div class="panel-body">
+     
           <div class="page-header">
             <h2>예약현황</h2>
           </div>
@@ -68,28 +72,23 @@ var store_pk="${store.store_pk}"
 					</c:forEach>
                   </tbody>
 				  		
-                           <!-- Modal -->
-  								<div class="modal fade" id="myModal" role="dialog">
+<!--                            Modal -->
+<!--   								<div class="modal fade" id="myModal" role="dialog"> -->
    								
-  								</div>
+<!--   								</div> -->
               </table>
-              <div class="row1 text-center" id="paging">${pageBar}</div>
-          </div>
-      </div>
- 
 
+          </div>
+ <!--           row end -->
+      </div>
+ <!-- panel-body end -->
         </div>
+    <!--     pannel end -->
       </div>
     </div>
-  
-<!-- 				추가하는 부분 -->
-				
-				
-				
-				
-				
+  	
+<!-- 			second end -->
 			</div>
-
 </div>
 
 
