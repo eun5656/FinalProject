@@ -21,5 +21,9 @@ public interface MemberDAO {
 
 	int insertStore(SqlSessionTemplate sqlSession, Store s);
 
+	String findId(SqlSessionTemplate sqlSession, String memberEmail);
+	
+	int checkId(SqlSessionTemplate sqlSession,String memberEmail);
+
 	int checkPw(SqlSessionTemplate sqlSession, String memberEmail);
 }

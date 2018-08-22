@@ -19,5 +19,9 @@ public interface MemberService {
 
 	int insertStore(Store s);
 
+	String findId(String memberEmail);
+
+	int checkId(String memberEmail);
+	
 	int checkPw(String memberEmail);
 }

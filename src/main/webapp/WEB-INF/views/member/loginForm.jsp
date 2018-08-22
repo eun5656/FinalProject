@@ -68,13 +68,10 @@
                           
                             <div class="panel-body">
                                	<form action="${path }/member/findId.do" method="post">
-                               		<div class="form-group">
-                                        <input class="form-control input-lg" placeholder="이름" name="memberName" required>
-                                    </div>
                                	 	<div class="form-group">
                                         <input class="form-control input-lg" placeholder="E-mail Address" name="memberEmail" type="email">
                                     </div>
-                                    <input class="login100-form-btn" value="아이디찾기" type="submit">
+                                    <input class="login100-form-btn" value="Send My ID" type="submit">
                                	</form>
                             </div>
                         </div>

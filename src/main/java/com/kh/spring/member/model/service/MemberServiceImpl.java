@@ -58,5 +58,17 @@ public class MemberServiceImpl implements MemberService {
 		
 		return memberDAO.checkPw(sqlSession,memberEmail);
 	}
+
+	@Override
+	public String findId(String memberEmail) {
+		
+		return memberDAO.findId(sqlSession,memberEmail);
+	}
+
+	@Override
+	public int checkId(String memberEmail) {
+		
+		return memberDAO.checkId(sqlSession, memberEmail);
+	}
 	
 }
