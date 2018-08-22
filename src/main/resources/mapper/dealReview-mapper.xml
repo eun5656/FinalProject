@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dealReview">
-<resultMap type="com.kh.spring.dealReview.model.vo.DealReview" id="dealReviewMap">
+<resultMap type="dealReivew" id="dealReviewMap">
 
 </resultMap>
 
 <select id="dealReviewList" resultMap="dealReviewMap" parameterType="_int">
-SELECT deal_REVIEW_content, A.* FROM deal_REVIEW A WHERE deal_pk = #{deal_pk} START WITH deal_REVIEW_LEVEL=1 CONNECT BY PRIOR deal_REVIEW_PK=deal_REVIEW_REF ORDER SIBLINGS BY deal_REVIEW_DATE ASC
+SELECT deal_REVIEW_content, A.*, B.member_re_img FROM deal_REVIEW A inner join member B on A.member_pk=B.member_pk WHERE deal_pk = #{deal_pk} START WITH deal_REVIEW_LEVEL=1 CONNECT BY PRIOR deal_REVIEW_PK=deal_REVIEW_REF ORDER SIBLINGS BY deal_REVIEW_DATE ASC
 </select>
 
 <select id="selectReImg" resultType="string" parameterType="_int">

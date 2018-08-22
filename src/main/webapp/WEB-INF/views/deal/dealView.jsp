@@ -119,8 +119,13 @@ var deal_pk ="${deal.deal_pk}";
      <c:if test="${dealreview.deal_review_level==1}">
       <li>
         <div class="media-left">
-        <!-- 경로바꿔주기 -->
-          <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+        <c:if test="${dealreview.member_re_img==null}">
+                    <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+				</c:if>
+                   			
+                <c:if test="${dealreview.member_re_img!=null}">
+                    <img class="member_profile" src="${path}/resources/upload/member/${review.member_re_img}">
+			    </c:if>
         </div>
         <div class="media-body">
       <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${dealreview.deal_review_writer}</div>
@@ -168,7 +173,13 @@ var deal_pk ="${deal.deal_pk}";
                 <c:if test="${dealreview2.deal_review_level==2 && dealreview2.deal_review_ref==dealreview.deal_review_pk}">                     		
          		 <li>
                    <div class="media-left">
-                           <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                           <c:if test="${dealreview.member_re_img==null}">
+                    			<img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+							</c:if>
+                   			
+               				<c:if test="${dealreview.member_re_img!=null}">
+               	     			<img class="member_profile" src="${path}/resources/upload/member/${review.member_re_img}">
+			    			</c:if>
                    </div>
                    <div class="media-body">
                      <div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${dealreview2.deal_review_writer}</div>
@@ -211,7 +222,13 @@ var deal_pk ="${deal.deal_pk}";
                 	    <input type="hidden" value="1" name="deal_review_level"/>
                 	
                 		 <div class="media-left">
-                         <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                        <c:if test="${memberLoggedIn.memberReImg==null}">
+                              <img class="member_profile" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                   			</c:if>
+                   			
+                   			<c:if test="${memberLoggedIn.memberReImg!=null}">
+                   			  <img class="member_profile" src="${path}/resources/upload/member/${memberLoggedIn.memberReImg}">
+							</c:if>
                  		</div>
                 		 <div class="media-body purple-border input_comment">
                      		<div class="media-heading row" style="margin-right: 0px;margin-left: 0px; font-size: 13pt;"><div class="col-xs-3">${memberLoggedIn.memberId}</div>
@@ -306,7 +323,12 @@ var deal_pk ="${deal.deal_pk}";
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
 								 html2+="<div class='media-left'>";
-								 html2+="<img class='member_profile' src='${path}/images/member/${memberLoggedIn.memberReImg}'>";
+								 if("${memberLoggedIn.memberReImg}".length>0){
+									 html2+="<img class='member_profile' src='${path}/resources/upload/member/${memberLoggedIn.memberReImg}'>";
+									 }
+									 else{
+									 html2+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+								}
 								 html2+="</div>";
 								 html2+="<div class='media-body'>";
 								 html2+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;''><div class='col-xs-3'>"+data.dealreview_value.deal_review_writer+"</div>";
@@ -449,9 +471,12 @@ if(memberLoggedIn.length!=0){
 	html+="<input type='hidden' value='2' name='deal_review_level'/>";
 	html+="<input type='hidden' value='"+index+"' name='index'/>";
 	html+="<div class='media-left'>";
-	html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
-//	html+="<img class='member_profile' src='${path}/resources/member_profile/${memberLogged.memberReImg}'>";
-	//null일때 처리
+	if("${memberLoggedIn.memberReImg}".length>0){
+		html+="<img class='member_profile' src='${path}/resources/upload/member/${memberLoggedIn.memberReImg}'>";
+		}
+		else{
+	    html+="<img class='member_profile' src='https://ssl.gstatic.com/accounts/ui/avatar_2x.png'>";
+		}
 	html+="</div>";
 	html+="<div class='media-body purple-border input_comment'>";
 	html+="<div class='media-heading row' style='margin-right: 0px;margin-left: 0px; font-size: 13pt;'><div class='col-xs-3'>${memberLoggedIn.memberId}</div>";

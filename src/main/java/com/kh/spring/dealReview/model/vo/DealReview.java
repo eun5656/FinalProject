@@ -20,12 +20,13 @@ public class DealReview implements Serializable{
 	private String deal_review_re_img;
 	private int member_pk;
 	private int deal_pk;
+	private String member_re_img;
 	
 	public DealReview() {}
 
 	public DealReview(int deal_review_pk, int deal_review_level, String deal_review_writer, String deal_review_content,
 			int deal_review_ref, String deal_review_date, String deal_review_ori_img, String deal_review_re_img,
-			int member_pk, int deal_pk) {
+			int member_pk, int deal_pk, String member_re_img) {
 		super();
 		this.deal_review_pk = deal_review_pk;
 		this.deal_review_level = deal_review_level;
@@ -37,6 +38,7 @@ public class DealReview implements Serializable{
 		this.deal_review_re_img = deal_review_re_img;
 		this.member_pk = member_pk;
 		this.deal_pk = deal_pk;
+		this.member_re_img = member_re_img;
 	}
 
 	@Override
@@ -45,7 +47,7 @@ public class DealReview implements Serializable{
 				+ ", deal_review_writer=" + deal_review_writer + ", deal_review_content=" + deal_review_content
 				+ ", deal_review_ref=" + deal_review_ref + ", deal_review_date=" + deal_review_date
 				+ ", deal_review_ori_img=" + deal_review_ori_img + ", deal_review_re_img=" + deal_review_re_img
-				+ ", member_pk=" + member_pk + ", deal_pk=" + deal_pk + "]";
+				+ ", member_pk=" + member_pk + ", deal_pk=" + deal_pk + ", member_re_img=" + member_re_img + "]";
 	}
 
 	public int getDeal_review_pk() {
@@ -128,10 +130,18 @@ public class DealReview implements Serializable{
 		this.deal_pk = deal_pk;
 	}
 
+	public String getMember_re_img() {
+		return member_re_img;
+	}
+
+	public void setMember_re_img(String member_re_img) {
+		this.member_re_img = member_re_img;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	
 	
 	
