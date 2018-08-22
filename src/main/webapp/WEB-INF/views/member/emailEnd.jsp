@@ -25,10 +25,10 @@
 		}
 		if (form.authNum.value == eMailNum) {
 			alert("인증완료");
+			self.close();
 			$("#successEmail", opener.document).css("display", "block");
 			$("#emailAuther", opener.document).css("display", 'none');
 			$('#JHCheck', opener.document).attr("readonly", true);
-			self.close();
 		}
 	}
 </script>
