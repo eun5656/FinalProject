@@ -19,6 +19,10 @@
 var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 var holiday="${store.store_holiday}"
+	$(function(){
+		//holiday value
+		$("#store_holiday").val(holiday).prop("selected",true);
+	});	
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->

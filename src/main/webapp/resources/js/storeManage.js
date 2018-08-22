@@ -1,10 +1,5 @@
 //
 $(function(){	
-	//holiday value
-	$("#store_holiday").val(holiday).prop("selected",true);
-	
-	
-	
 	
 	//반응형 적용
 	if ($(window).width() < 768) {

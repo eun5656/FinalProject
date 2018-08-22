@@ -20,13 +20,12 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=5"></script>
-
-	
+<script src="${path }/resources/js/storeManage.js?ver=8"></script>
 
 
-
-    <div style="width: 80%;position: absolute;height: 100%;top: 40px;left: 50px;">
+<div id="wrapper">
+<div id="left-side">
+    <div style="width: 80%;height: 100%;position: absolute;top: 40px;left: 50px;">
       <div class="panel">
 		
         <div class="panel-body">
@@ -78,11 +77,14 @@ var store_pk="${store.store_pk}"
     <!--     pannel end -->
       </div>
 <!--     </div> -->
-<%--   	<div class="row text-center" id="paging">${pageBar}</div> --%>
+
+
+<%--   	<div class="text-center" id="paging">${pageBar}</div> --%>
+
+
 <!-- 			second end -->
 			</div>
-
-
+</div>
 
 <div id="right-side">
 <div id="border">
@@ -114,6 +116,7 @@ var store_pk="${store.store_pk}"
 	</div>
 </div>
 <!-- wrapper 끝 -->
+</div>
 
 
 
