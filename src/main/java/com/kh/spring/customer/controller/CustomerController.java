@@ -23,7 +23,7 @@ public class CustomerController {
 	private CustomerService service;
 	
 	
-	//傍瘤荤亲
+	//瓿奠靷暛
 	@RequestMapping("/customer/notice.do")
 	public ModelAndView NoticeList(@RequestParam(value="cPage",required=false,defaultValue="1") int cPage)
 	{
@@ -108,9 +108,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="磊林汞绰龙巩 累己 己傍";
+			msg="鞛愳＜氍浑姅歆堧 鞛戩劚 靹标车";
 		}else {
-			msg="磊林汞绰龙巩 累己 角菩";
+			msg="鞛愳＜氍浑姅歆堧 鞛戩劚 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/faq.do" );
@@ -133,9 +133,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="傍瘤荤亲 累己 己傍";
+			msg="瓿奠靷暛 鞛戩劚 靹标车";
 		}else {
-			msg="傍瘤荤亲 累己 角菩";
+			msg="瓿奠靷暛 鞛戩劚 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/notice.do" );
@@ -159,9 +159,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="傍瘤荤亲 昏力 己傍";
+			msg="瓿奠靷暛 靷牅 靹标车";
 		}else {
-			msg="傍瘤荤亲 昏力 角菩";
+			msg="瓿奠靷暛 靷牅 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/notice.do" );
@@ -180,9 +180,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="磊林汞绰龙巩 昏力 己傍";
+			msg="鞛愳＜氍浑姅歆堧 靷牅 靹标车";
 		}else {
-			msg="磊林汞绰龙巩 昏力 角菩";
+			msg="鞛愳＜氍浑姅歆堧 靷牅 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/faq.do" );
@@ -224,9 +224,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="磊林汞绰龙巩 荐沥 己傍";
+			msg="鞛愳＜氍浑姅歆堧 靾橃爼 靹标车";
 		}else {
-			msg="磊林汞绰龙巩 荐沥 角菩";
+			msg="鞛愳＜氍浑姅歆堧 靾橃爼 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/faq.do");
@@ -252,9 +252,9 @@ public class CustomerController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="傍瘤荤亲 荐沥 己傍";
+			msg="瓿奠靷暛 靾橃爼 靹标车";
 		}else {
-			msg="傍瘤荤亲 荐沥 角菩";
+			msg="瓿奠靷暛 靾橃爼 鞁ろ尐";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/customer/notice.do");

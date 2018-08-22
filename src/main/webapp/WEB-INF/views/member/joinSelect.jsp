@@ -20,8 +20,8 @@
 		<div class="col-xs-2"></div>
 	</div>
 	<div class="row">
-		<div class="col"></div>
-		<div class="col-5">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8">
 			<div class="box" style="text-align: center">
 				<a href="${path}/member/JoinUser.do">
 					<div class="icon text-center">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col"></div>
+		<div class="col-sm-2"></div>
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

@@ -49,11 +49,21 @@ var store_pk ="${store.store_pk}";
     $(function() {
       //영업시작시간~~
 
-      var min = "${store_open_time}";
-      var max = "${store_close_time}";
-      var reserDate;
-      var startTime;
-      var endTime;
+      var store_open_time = "${store_open_time}";
+      var store_close_time = "${store_close_time}";
+      var store_weekend_open = "${store_weekend_open}";
+      var store_weekend_close = "${store_weekend_close}";
+      
+      
+     if(store_weekend_open==''|| store_weekend_open==''){
+    	  store_open_time='10:00:00';
+    	  store_close_time='23:00:00';
+      }
+      if(store_weekend_open==''||store_weekend_open==''){
+    	 alert('gu');
+    	 store_weekend_open='09:00:00';
+    	 store_weekend_close='18:00:00';
+      }
 
 
 
@@ -81,87 +91,61 @@ var store_pk ="${store.store_pk}";
           end: '',
           title: '',
           description: ''
-
+        }
+      ];
+   	 var  businessHours2= [ // specify an array instead
+            {
+              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
+              start: store_open_time, // 8am
+              end: store_close_time // 6pm
+            },
+            {
+              dow: [6], // Thursday, Friday
+              start: store_weekend_open, // 10am
+              end: store_weekend_close // 4pm
+            },
+            {
+              dow: [0], // Thursday, Friday
+              start: store_weekend_open, // 10am
+              end: store_weekend_close // 4pm
+            }
+          ];
+      
+       employee = [{
+          id: '${designerList[0].designer_id}',
+          title: '${designerList[0].designer_name}',
+          eventColor: 'orange',
+          businessHours1: businessHours1,
+          businessHours: businessHours2,
         }
       ];
       
-      var employee = [{
-          id: 'a',
-          title: '원장님',
-          eventColor: 'blue',
-          businessHours1: businessHours1,
-         /* businessHours: [ // specify an array instead
-            {
-              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: min, // 8am
-              end: max // 6pm
-            },
-            {
-              dow: [6], // Thursday, Friday
-              start: "${store_weekend_open}", // 10am
-              end: "${store_weekend_close}" // 4pm
-            },
-            {
-              dow: [0], // Thursday, Friday
-              start: "${store_weekend_open}", // 10am
-              end: "${store_weekend_close}" // 4pm
-            }
-          ]*/
-        },
-
-        {
-          id: 'b',
-          title: '디자이너1',
+      
+      <c:forEach items="${designerList}" var="designer" begin='1'>
+      employee.push({
+    	  id: '${designer.designer_id}',
+          title: '${designer.designer_name}',
           eventColor: 'green',
           businessHours1: businessHours1,
-         /* businessHours: [ 
-            {
-              dow: [1, 2, 3, 4, 5], 
-              start: min, // 8am
-              end: max // 6pm
-            },
-
-            {
-              dow: [6], // Thursday, Friday
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}"
-            },
-            {
-              dow: [0], // Thursday, Friday
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}" 
-            }
-          ]*/
-
-        },
-        {
-          id: 'c',
-          title: '디자이너2',
-          eventColor: 'orange',
-          businessHours1: businessHours1,
-         /* businessHours: [ // specify an array instead
-            {
-              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: min, 
-              end: max 
-            },
-
-            {
-              dow: [6], //
-              start: "${store_weekend_open}",
-              end: "${store_weekend_close}" 
-            },
-            {
-              dow: [0], //
-              start: "${store_weekend_open}", 
-              end: "${store_weekend_close}" 
-            }
-          ]*/
-        },
-      ];
-      
-
-      
+  		  businessHours:businessHours2
+      });
+    </c:forEach>
+   
+   	 if('${designerList}'=='[]'){
+   		 employee = [{
+            id: 'a',
+            title: '원장',
+            eventColor: 'orange',
+            businessHours1: businessHours1,
+            businessHours: businessHours2,
+          }
+        ];
+   	 }
+   	 
+   	 if(employee[2]!=null){
+   	  employee[2].eventColor='blue';
+     }
+   	 
    
       <c:forEach items="${reserveList}" var="reserve">
      	 reservaiton.push({
@@ -178,6 +162,7 @@ var store_pk ="${store.store_pk}";
          	 menu_pk:"${reserve.menu_pk}"
         });
       </c:forEach>
+     
       
       
       
@@ -195,8 +180,8 @@ var store_pk ="${store.store_pk}";
 
         //설정
         //영업 시작, 종료시간
-        minTime: min,
-        maxTime: max,
+        minTime: store_open_time,
+        maxTime: store_close_time,
 
         //디자이너 추가
         resources: employee,
@@ -226,10 +211,10 @@ var store_pk ="${store.store_pk}";
 
    
       
-  		 businessHours:  [ // specify an array instead
+  		 /*businessHours:  [ // specify an array instead 지워도되는지 체크
               {
                 dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-                start: min, 
+                start: store_weekend_open}, 
                 end: max 
               },
               {
@@ -242,7 +227,7 @@ var store_pk ="${store.store_pk}";
                 start: "${store_weekend_open}", 
                 end: "${store_weekend_close}" 
               }
-            ],
+            ],*/
         
 
 
@@ -486,7 +471,7 @@ var store_pk ="${store.store_pk}";
                    			   
                
                    			   
-               	 IMP.request_pay({
+               IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
                        merchant_uid : store_payment.merchant_uid1,
@@ -546,13 +531,13 @@ var store_pk ="${store.store_pk}";
                         }
 
                       });
-                     	  } else {
+                       } else {
                            var msg = '결제에 실패하였습니다.';
                            msg += '에러내용 : ' + rsp.error_msg;
                            $('#close-modal-btn').trigger('click');
                        }
                        alert(msg);
-                   });    
+                   });   
           });
         },
 

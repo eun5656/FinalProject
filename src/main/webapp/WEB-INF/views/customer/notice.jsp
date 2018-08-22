@@ -54,8 +54,8 @@
   					 <c:if test="${memberLoggedIn.memberLevel==1 }">
                        <div class="row text-right">
                             <div class="btn-group">
-  								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/noticeUpdate.do?noticePk=${notice.noticePk}'">수정</button>
-  								<button type="button" class="btn btn-primary" onclick="location.href='${path}/customer/noticeDelete.do?noticePk=${notice.noticePk}'">삭제</button>
+  								<button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/noticeUpdate.do?noticePk=${notice.noticePk}'">수정</button>
+  								<button type="button" class="btn btn-warning" onclick="location.href='${path}/customer/noticeDelete.do?noticePk=${notice.noticePk}'">삭제</button>
   			
   							</div>
   							</div>
