@@ -71,4 +71,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return sqlSession.update("customer.updateFaq", faq);
 	}
 
+	@Override
+	public FAQ selectFAQOne(SqlSessionTemplate sqlSession, int faqPk) {
+		
+		return sqlSession.selectOne("customer.selectFAQOne", faqPk);
+	}
+
+	@Override
+	public Notice selectNoticeOne(SqlSessionTemplate sqlSession, int noticePk) {
+		
+		return sqlSession.selectOne("customer.selectNoticeOne", noticePk);
+	}
+
 }

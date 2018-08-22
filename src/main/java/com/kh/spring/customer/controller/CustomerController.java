@@ -194,7 +194,8 @@ public class CustomerController {
 	@RequestMapping("/customer/faqUpdate.do")
 	public ModelAndView updateFaq(int faqPk) {
 		ModelAndView mv= new ModelAndView();
-		mv.addObject("faqPk", faqPk );
+		FAQ faq=service.selectFAQOne(faqPk);
+		mv.addObject("faq", faq );
 		mv.setViewName("customer/faqUpdate");
 		return mv;
 	}
@@ -203,7 +204,8 @@ public class CustomerController {
 	public ModelAndView updateNotice(int noticePk) {
 		
 		ModelAndView mv= new ModelAndView();
-		mv.addObject("noticePk", noticePk );
+		Notice notice=service.selectNoticeOne(noticePk);
+		mv.addObject("notice", notice );
 		mv.setViewName("customer/noticeUpdate");
 		
 		return mv;

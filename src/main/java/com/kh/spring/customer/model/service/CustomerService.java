@@ -16,4 +16,7 @@ public interface CustomerService {
 	int deleteNotice(int noticePk);
 	int updateNotice(Notice notice);
 	int updateFaq(FAQ faq);
+	
+	FAQ selectFAQOne(int faqPk);
+	Notice selectNoticeOne(int noticePk);
 }

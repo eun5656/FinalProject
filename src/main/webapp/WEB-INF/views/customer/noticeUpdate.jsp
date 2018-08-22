@@ -39,13 +39,13 @@
                             <div class="page-header">
                                     <h2> 공지사항 수정하기</h2>
                             </div>
-                          <form id="articleForm" role="form" action="${path}/customer/noticeUpdateEnd.do?noticePk=${noticePk}" method="post">
+                          <form id="articleForm" role="form" action="${path}/customer/noticeUpdateEnd.do?noticePk=${notice.noticePk}" method="post">
                        <br style="clear: both">
                        
                    <div class="form-group">
                    		 <label class="col-sm-2 control-label" for="noticeTitle">제목</label>
                    		 <div class="col-sm-10">
-                         <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" placeholder="제목을 입력하세요." required>
+                         <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${notice.noticeTitle }" required>
                          </div>
                     </div>
                       <div class="form-group">
@@ -59,7 +59,7 @@
                     <div class="form-group">
                      <label class="col-sm-2 control-label" for="summernote">내용</label>
                      <div class="col-sm-10">
-                         <textarea class="form-control" id="summernote" name="noticeContent" placeholder="" maxlength="140" rows="7"></textarea>
+                         <textarea class="form-control" id="summernote" name="noticeContent" placeholder="" maxlength="140" rows="7" required>${notice.noticeContent }</textarea>
                           </div>
                     </div>
                      <div class="form-group">

@@ -75,6 +75,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public int updateFaq(FAQ faq) {
 		return customerDao.updateFaq(sqlSession, faq);
 	}
+
+	@Override
+	public FAQ selectFAQOne(int faqPk) {
+		
+		return customerDao.selectFAQOne(sqlSession, faqPk);
+	}
+
+	@Override
+	public Notice selectNoticeOne(int noticePk) {
+		
+		return customerDao.selectNoticeOne(sqlSession, noticePk);
+	}
 	
 
 }

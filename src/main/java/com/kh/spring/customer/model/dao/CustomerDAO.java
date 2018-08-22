@@ -18,4 +18,6 @@ public interface CustomerDAO {
 	int deleteNotice(SqlSessionTemplate sqlSession,int noticePk);
 	int updateNotice(SqlSessionTemplate sqlSession,Notice notice);
 	int updateFaq(SqlSessionTemplate sqlSession,FAQ faq);
+	FAQ selectFAQOne(SqlSessionTemplate sqlSession,int faqPk);
+	Notice selectNoticeOne(SqlSessionTemplate sqlSession,int noticePk);
 }

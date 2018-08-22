@@ -39,13 +39,13 @@
                             <div class="page-header">
                                     <h2> 자주묻는질문 수정</h2>
                             </div>
-                          <form id="articleForm" role="form" action="${path}/customer/faqUpdateEnd.do?faqPk=${faqPk}" method="post">
+                          <form id="articleForm" role="form" action="${path}/customer/faqUpdateEnd.do?faqPk=${faq.faqPk}" method="post">
                        <br style="clear: both">
                        
                    <div class="form-group">
                    		 <label class="col-sm-2 control-label" for="subject">제목</label>
                    		 <div class="col-sm-10">
-                         <input type="text" class="form-control" id="faqTitle" name="faqTitle" placeholder="제목을 입력하세요." required>
+                         <input type="text" class="form-control" id="faqTitle" name="faqTitle" value="${faq.faqTitle}" required>
                          </div>
                     </div>
                       <div class="form-group">
@@ -59,7 +59,7 @@
                     <div class="form-group">
                      <label class="col-sm-2 control-label" for="summernote">내용</label>
                      <div class="col-sm-10">
-                         <textarea class="form-control" id="summernote" name="faqContent" placeholder="" maxlength="140" rows="7"></textarea>
+                         <textarea class="form-control" id="summernote" name="faqContent" placeholder="" maxlength="140" rows="7" required>${faq.faqContent}</textarea>
                           </div>
                     </div>
                      <div class="form-group">

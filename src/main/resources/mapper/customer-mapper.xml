@@ -46,4 +46,10 @@
 	<update id="updateFaq" parameterType="faq">
 		update faq set faq_title=#{faqTitle},faq_content=#{faqContent} where faq_pk=#{faqPk}
 	</update>
+	<select id="selectFAQOne" parameterType="int" resultMap="faq">
+		select * from faq where faq_pk=#{faqPk}
+	</select>
+	<select id="selectNoticeOne" parameterType="int" resultMap="notice">
+		select * from notice where notice_pk=#{noticePk}
+	</select>
 </mapper>

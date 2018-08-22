@@ -9,9 +9,10 @@
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
 <style>
-	.row{
-		padding:30px;
-	}
+#btn-enroll{
+padding-top:40px;
+}
+
 </style>
 
 <section style="padding-top: 100px;">
@@ -40,9 +41,6 @@
                     </div>
                     <div id="${collapse}${vs.index}" class="panel-collapse collapse <c:if test="${vs.index==0 }">in</c:if>" role="tabpanel" aria-labelledby="${heading}${vs.index}">
                         <div class="panel-body">
-                         <div class="row text-right">
-                        <fmt:formatDate value="${faq.faqDate}" pattern="yyyy/MM/dd HH:mm"/>
-                        </div>
                         <div class="row">
                         	<div class="col-xs-1"></div>
                         	<div class="col-xs-10"> ${faq.faqContent }</div>
