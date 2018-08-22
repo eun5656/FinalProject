@@ -60,7 +60,7 @@ var store_pk ="${store.store_pk}";
     	  store_close_time='23:00:00';
       }
       if(store_weekend_open==''||store_weekend_open==''){
-    	 alert('gu');
+    	 //alert('gu');
     	 store_weekend_open='09:00:00';
     	 store_weekend_close='18:00:00';
       }
@@ -94,22 +94,44 @@ var store_pk ="${store.store_pk}";
         }
       ];
    	 var  businessHours2= [ // specify an array instead
+   		    //12345 따로해서 입력하게하자...
             {
-              dow: [1, 2, 3, 4, 5], 
-              start: store_open_time, 
-              end: store_close_time 
+                dow: [1], 
+                start: store_open_time, 
+                end: store_close_time 
+            {
+                dow: [2], 
+                start: store_open_time, 
+                end: store_close_time 
             },
             {
-              dow: [6], 
-              start: '09:00:00', 	//바꾸기
-              end: '09:00:00'
+                dow: [3], 
+                start: store_open_time, 
+                end: store_close_time 
             },
             {
-              dow: [0],
-              start: store_weekend_open,  
-              end: store_weekend_close 
+                dow: [4], 
+                start: store_open_time, 
+                end: store_close_time 
+            },
+            {
+                dow: [5], 
+                start: store_open_time, 	
+                end: store_close_time
+            },
+            {
+                dow: [6], 
+                start: store_weekend_open, 	
+                end: store_weekend_close
+            },
+            {
+                dow: [0],
+                start: store_weekend_open,  
+                end: store_weekend_close 
             }
           ];
+   	 
+   	 
    	//businessHours2[1]='';
    	 console.log();
    	 console.log();
