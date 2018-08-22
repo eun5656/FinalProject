@@ -3,10 +3,12 @@ package com.kh.spring.bookmark.controller;
 import static org.hamcrest.CoreMatchers.instanceOf;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +36,7 @@ public class BookmarkController {
 	
 	@RequestMapping(value="/bookmark/insertBookmark.do", produces="application/text; charset=utf-8")
 	@ResponseBody
-	public String insertBookmark( HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
+	public String insertBookmark( HttpServletRequest request, HttpServletResponse response, HttpSession session)throws JsonProcessingException
 	{
 		System.out.println("접근완료");
 		String jsonStr = request.getParameter("bookmark_val");
@@ -43,6 +45,9 @@ public class BookmarkController {
 		int member_pk = Integer.parseInt(jsonObject.getString("member_pk"));
 		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
 		String bookmark_check=String.valueOf(jsonObject.get("bookmark_check"));
+		List<Bookmark> bookmarks=service.selectBookMarkList(member_pk);
+		session.setAttribute("bookmarkList",bookmarks);
+
 		
 		Bookmark bookmark=new Bookmark();
 		bookmark.setNail_pk(nail_pk);
@@ -77,13 +82,13 @@ public class BookmarkController {
 	
 	@RequestMapping(value="/bookmark/deleteBookmark.do", produces="application/text; charset=utf-8")
 	@ResponseBody
-	public String deleteBookmark(String bookmark_pk,String member_pk, HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
+	public String deleteBookmark(String bookmark_pk,String member_pk, HttpServletRequest request, HttpServletResponse response, HttpSession session)throws JsonProcessingException
 	{
 		
 		System.out.println(bookmark_pk);
 		System.out.println(member_pk);
-		/*String jsonStr ="";
-		JSONObject jsonObject = JSONObject.fromObject(jsonStr);*/
+		List<Bookmark> bookmarks=service.selectBookMarkList(Integer.parseInt(member_pk));
+		session.setAttribute("bookmarkList",bookmarks);
 		
 		
 		Map map=new HashMap();

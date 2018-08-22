@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -31,6 +32,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.kh.spring.bookmark.model.service.BookmarkService;
+import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
@@ -44,6 +47,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private BookmarkService bookmarkService;
 
 	@Autowired
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
@@ -83,9 +89,12 @@ public class MemberController {
 		} else {
 			msg = "없는 아이디입니다.";
 		}
+		List<Bookmark> bookmarks=bookmarkService.selectBookMarkList(m.getMemberPk());
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
 		session.setAttribute("count",count);
+		session.setAttribute("bookmarkList",bookmarks);
+
 		return view;
 	}
 

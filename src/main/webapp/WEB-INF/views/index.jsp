@@ -397,6 +397,14 @@
   
  <script type="text/javascript">
 				$(function () {
+					
+					
+					
+					
+					
+					
+					
+					console.log("${bookmarkList}");
 					var main_nail_color_img=$("#main-nail-color").find("img");
 					var main_nail_color_button=$("#main-nail-color").find("button");
 					
