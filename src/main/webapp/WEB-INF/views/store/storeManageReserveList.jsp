@@ -20,17 +20,17 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=3"></script>
+<script src="${path }/resources/js/storeManage.js?ver=5"></script>
 
-	<div id="wrapper">
+	
 
-<div id="left-side">
-			<div id="second" class="active">
-				
-    <div class='container'>
+
+
+    <div style="width: 80%;position: absolute;height: 100%;top: 40px;left: 50px;">
       <div class="panel">
 		
         <div class="panel-body">
+     
           <div class="page-header">
             <h2>예약현황</h2>
           </div>
@@ -68,29 +68,20 @@ var store_pk="${store.store_pk}"
 					</c:forEach>
                   </tbody>
 				  		
-                           <!-- Modal -->
-  								<div class="modal fade" id="myModal" role="dialog">
-   								
-  								</div>
-              </table>
-              <div class="row1 text-center" id="paging">${pageBar}</div>
-          </div>
-      </div>
- 
+                              </table>
 
-        </div>
+          </div>
+ <!--           row end -->
       </div>
-    </div>
-  
-<!-- 				추가하는 부분 -->
-				
-				
-				
-				
-				
+ <!-- panel-body end -->
+        </div>
+    <!--     pannel end -->
+      </div>
+<!--     </div> -->
+<%--   	<div class="row text-center" id="paging">${pageBar}</div> --%>
+<!-- 			second end -->
 			</div>
 
-</div>
 
 
 <div id="right-side">
@@ -121,7 +112,6 @@ var store_pk="${store.store_pk}"
 			</li>
 		</ul>
 	</div>
-</div>
 </div>
 <!-- wrapper 끝 -->
 

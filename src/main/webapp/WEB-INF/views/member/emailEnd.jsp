@@ -29,6 +29,7 @@
 			$("#successEmail", opener.document).css("display", "block");
 			$("#emailAuther", opener.document).css("display", 'none');
 			$('#JHCheck', opener.document).attr("readonly", true);
+
 		}
 	}
 </script>
