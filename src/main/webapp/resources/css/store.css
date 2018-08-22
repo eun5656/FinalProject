@@ -395,9 +395,6 @@ position :fixed	;
 
 
 @media ( max-width : 768px) {
-	#right-side {
-		display: none;
-	}
 	#wrapper {
 		width: 100%;
 	}

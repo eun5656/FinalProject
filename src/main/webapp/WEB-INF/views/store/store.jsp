@@ -12,7 +12,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- store css -->
 
-<link href="${path }/resources/css/store.css?ver=3" rel="stylesheet" />
+<link href="${path }/resources/css/store.css?ver=5" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
  <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
 <!-- store js -->
@@ -38,8 +38,8 @@ $(function() {
 	
 });
 </script>
-<script src="${path }/resources/js/store.js?ver=8"></script>
-<div>
+<script src="${path }/resources/js/store.js?ver=10"></script>
+
 <div id="wrapper">
 
 	<div id="left-side">
@@ -91,7 +91,6 @@ $(function() {
 				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
-					<p>장소 : ${store. store_address }</p>
           			  <p> <c:forEach begin="1" end="${store_star}">
           				  <i class="price-text-color fa fa-star"></i>
            				  </c:forEach>
@@ -848,32 +847,35 @@ function eventBind(index) {
 <div id="border" >
 	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-	<div style="position: fixed;">
-		<ul>
-			<li class="shop active">
+<div style="position: fixed;">
+			<ul>
+			<li class="shop active ">
 				<div class="icon active">
 					<img src="${path }/resources/icons/shop.svg" alt="">
-				</div> Shop
+				</div> <span class="right"> Shop</span>
 			</li>
-			<li class="map">
+			<li class="map ">
 				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> Map
+				</div> <span class="right"> 예약 리스트</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
 					<img src="${path }/resources/icons/calander.svg" alt="">
-				</div> Reserve
+				</div>
+				<span class="right"> Reserve(예약)</span>
 			</li>
 			<li class="qna">
 				<div class="icon">
 					<img src="${path }/resources/icons/customer.svg" alt="">
-				</div> Contact
+				</div> 
+				<span class="right"> QnA(문의)</span>
 			</li>
 		</ul>
 	</div>
 	
 </div>
+
 </div>
 <script type="text/javascript">
 $(".b_icon").click(function() {					    	

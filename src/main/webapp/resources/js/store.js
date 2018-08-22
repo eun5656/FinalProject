@@ -4,19 +4,32 @@
 $(function() {
 
 	
-	
-$(window).resize(function() {
+	//반응형 적용
 	if ($(window).width() < 768) {
-		$(".shop").addClass("active");
-		$(".map").removeClass("active");
-		$(".reserve").removeClass("active");
-		$(".qna").removeClass("active");
-		$("#line").addClass("one");
-		$("#line").removeClass("two");
-		$("#line").removeClass("three");
-		$("#line").removeClass("four");
+		$(".wrappercheck").removeAttr("id","wrapper");
+		$("#leftcheck").removeAttr("id","left-side");
+//		$("#right-side").removeAttr("id","right-side");
+		$("#border").attr("style","display:none;");
+		$('.right').attr("style","display:none;");
 	}
-});
+	$(window).resize(function() {
+		if ($(window).width() < 768) {
+		$(".wrappercheck").removeAttr("id","wrapper");
+		$("#leftcheck").removeAttr("id","left-side");
+//		$("#right-side").removeAttr("id","right-side");
+		$("#border").attr("style","display:none;");
+		$('.right').attr("style","display:none;");
+
+		}
+		
+		if ($(window).width() > 768) {
+			$(".wrappercheck").attr("id","wrapper");
+			$(".leftcheck").attr("id","left-side");
+//			$("#right-side").attr("id","right-side");
+			$("#border").removeAttr("style","display:none;");
+			$('.right').removeAttr("style","display:none;");
+			}
+	});
 // 메뉴 이동
 $(".shop").click(function() {
 //	$(".shop").addClass("active");
