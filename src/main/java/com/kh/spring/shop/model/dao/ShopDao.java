@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.model.vo.Store;
 
 public interface ShopDao {
@@ -18,7 +19,7 @@ public interface ShopDao {
 
 	List<Store> bookmarkSortShopList(SqlSessionTemplate sqlSession);
 
-	List<Store> searchShopList(SqlSessionTemplate sqlSession, String searchLocation);
+	List<Store> searchShopList(SqlSessionTemplate sqlSession, Search search);
 	List<Store> shopRankReviewCount(SqlSessionTemplate sqlSession);
 
 	List<Store> shopReviewCount(SqlSessionTemplate sqlSession);

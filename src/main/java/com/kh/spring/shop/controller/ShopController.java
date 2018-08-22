@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.shop.model.service.ShopService;
+import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.controller.StoreController;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Store;
@@ -94,8 +95,12 @@ public class ShopController {
 	
 
 	@RequestMapping("/shop/searchLocation.do")
-	public String searchLocation(String searchLocation,Model model) {
-		List<Store> shopList =service.searchShopList(searchLocation);
+	public String searchLocation(String searchType,String searchLocation,Model model) {
+		Search search=new Search(searchType, searchLocation);
+		
+		
+		List<Store> shopList =service.searchShopList(search);
+		
 		model.addAttribute("shopList", shopList);
 		String view="shop/shop";
 		return view;
