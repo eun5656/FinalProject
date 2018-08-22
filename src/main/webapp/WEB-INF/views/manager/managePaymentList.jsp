@@ -46,6 +46,7 @@
 					<th>번호</th>
 					<th>결제 고유 번호</th>
 					<th>결제자</th>
+					<th>결제금액</th>
 					<th>결제 상태</th>
 					
 				</tr>
@@ -59,6 +60,7 @@
 					<td><strong>${payment.payment_pk }</strong></td>
 					<td><strong>${payment.payment_num }</strong></td>
 					<td><strong>${payment.member_name }</strong></td>
+					<td><strong>${payment.payment_price }</strong></td>
 					<td><strong>${payment.payment_check }</strong></td>
 					<td>
 					<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${payment.payment_pk },${payment.reserve_pk });" >취소 승인</button>

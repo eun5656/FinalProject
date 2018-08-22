@@ -28,7 +28,7 @@
 	<select id="reserveCount" parameterType="_int" resultType="_int"> select count(*) from reserve where member_pk=#{memberPk} </select>
 	
 	<insert id="paymentInsert" parameterType="com.kh.spring.reserve.model.vo.Payment">
-		INSERT INTO PAYMENT VALUES(payment_SEQ.NEXTVAL,#{payment_num},#{member_pk},#{member_name},#{store_pk},#{payment_check},#{reserve_pk})
+		INSERT INTO PAYMENT VALUES(payment_SEQ.NEXTVAL,#{payment_num},#{member_pk},#{member_name},#{store_pk},#{payment_check},#{reserve_pk},sysdate,#{payment_price})
 	</insert>
 	
 	<select id="paymentOne" parameterType="_int" resultType="com.kh.spring.reserve.model.vo.Payment">

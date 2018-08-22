@@ -49,8 +49,12 @@
                               </div>
                           </div>
                           </td>
-                          <td class="col-sm-1 col-md-1" style="text-align: center">
-                          <strong>${m.reserve_start_time }</strong>
+                          <td class="col-sm-2 col-md-2" style="text-align: center">
+                      
+							   
+                          <strong> <fmt:parseDate value="${m.reserve_start_time }" var="reserveDate"  pattern="yyyy-MM-dd HH:mm:ss"/>
+                          			<fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd HH:mm"/>
+                          </strong>
                           </td>
                           <td class="col-sm-2 col-md-2 text-center"><strong>${m.reserve_status}</strong></td>
                           <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>

@@ -500,6 +500,7 @@ var store_pk ="${store.store_pk}";
                                   member_name:"${memberLoggedIn.memberName}",
                               	  store_pk: store_pk,
                         		  merchant_uid1:'merchant_' + new Date().getTime(),
+                        		  payment_price:menu_price
                         		}
              	  
 	

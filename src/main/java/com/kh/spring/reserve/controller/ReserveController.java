@@ -123,13 +123,15 @@ public class ReserveController {
 				int member_pk1 = Integer.parseInt(jsonObject2.getString("member_pk"));
 				String member_name1 = String.valueOf(jsonObject2.get("member_name"));
 				int store_pk1 = Integer.parseInt(jsonObject2.getString("store_pk"));
-				String payment_num=String.valueOf(jsonObject2.get("merchant_uid1"));	
+				String payment_num=String.valueOf(jsonObject2.get("merchant_uid1"));
+				int payment_price=Integer.parseInt(jsonObject2.getString("payment_price"));
 				Payment payment=new Payment();
 				payment.setMember_name(member_name1);
 				payment.setMember_pk(member_pk1);
 				payment.setPayment_check("결제완료");
 				payment.setStore_pk(store_pk1);
 				payment.setPayment_num(payment_num);
+				payment.setPayment_price(payment_price);
 				payment.setReserve_pk(reserve.getReserve_pk());
       		  
 				result=service.paymentInsert(payment);
