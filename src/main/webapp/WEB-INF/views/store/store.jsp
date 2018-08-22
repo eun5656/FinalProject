@@ -38,7 +38,7 @@ $(function() {
 	
 });
 </script>
-<script src="${path }/resources/js/store.js?ver=10"></script>
+<script src="${path }/resources/js/store.js?ver=11"></script>
 
 <div id="wrapper">
 
@@ -138,7 +138,7 @@ $(function() {
 							<!-- tab1 시작 -->
 							<div class="tab-pane" id="tab_default_1">
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
-									<div class="carousel-inner" >
+									<div class="carousel-inner carouselCheck" >
 									<c:forEach var="nail" items="${nails }" varStatus="status" step='3'>
 									<c:choose>
 										<c:when test="${status.count eq 1}">									
@@ -152,7 +152,7 @@ $(function() {
 										
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
 										
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop" style="margin-top: 10px;height:250px;">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animatepop" style="margin-top: 10px;height:250px;">
 												
 <!-- 										bookmark start		 -->
 											<jsp:useBean id="check_bookmark" class="java.lang.String" />
@@ -216,6 +216,25 @@ $(function() {
 												<!-- Modal body -->
 												<div class="modal-body">
 													<div class="wh100">
+													<!-- bookmark start		 -->
+									<c:set var="check_bookmark" value="false"/>
+ 			
+ 							<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
+							<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nail.nail_pk}">
+ 								<c:set var="check_bookmark" value="true"/>
+ 								<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
+							<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+						</c:if>
+							</c:forEach>
+					
+								<c:if test="${check_bookmark eq 'false'}">
+	  						<img src="${path }/resources/icons/love_blank.svg" alt="false" class="b_icon zindex"id="b_icon">
+ 						<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
+							</c:if>
+							<input class="nail_pk" name="nail_pk" type="hidden" value="${nail.nail_pk}" >
+							<input class="store_pk" name="store_pk" type="hidden" value="${store.store_pk}" >
+							<input class="member_pk" name="member_pk" type="hidden" value="${memberLoggedIn.memberPk}" >
+<!-- 							bookmarkend -->
 															<img class="img-responsive radius14"
 															src="${path }/resources/images/nails/${nail.nail_re_img}" alt="네일 사진">
 													</div>
@@ -894,6 +913,7 @@ $(".b_icon").click(function() {
 		//var nail_pk=temp.next().val();					    		
 		//var member_pk=temp.next().next().val();
 	  var jsonData = JSON.stringify(bookmark_val);
+	  console.log(jsonData);
       jQuery.ajaxSettings.traditional = true;
 		///*json 객체로 바로넘기기					    							    		
 		    $.ajax({

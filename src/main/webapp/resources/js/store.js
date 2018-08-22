@@ -19,7 +19,7 @@ $(function() {
 //		$("#right-side").removeAttr("id","right-side");
 		$("#border").attr("style","display:none;");
 		$('.right').attr("style","display:none;");
-
+		$('.carouselCheck').removeClass("carousel-inner");
 		}
 		
 		if ($(window).width() > 768) {
@@ -28,6 +28,7 @@ $(function() {
 //			$("#right-side").attr("id","right-side");
 			$("#border").removeAttr("style","display:none;");
 			$('.right').removeAttr("style","display:none;");
+			$('.carouselCheck').addClass("carousel-inner");
 			}
 	});
 // 메뉴 이동
