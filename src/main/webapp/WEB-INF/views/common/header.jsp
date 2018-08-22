@@ -111,15 +111,15 @@
 
       
           <form class="navbar-form navbar-left" action="${path }/shop/searchLocation.do" method="post">
-          	 <div class="form-group col-md-4">
-            <select class="form-control" name="searchType" style="height:34px;">
+          	 <div class="form-group col-sm-4" style="padding-left:0px;padding-right:0px">
+            <select class="form-control" name="searchType" style='padding-right:10px;height:34px;'>
               <option value="location">지역명</option>
               <option value="storeName">상호명</option>
             </select>
           	</div>
-         
-           <div class="input-group col-md-8">
-            <input type="text" class=" input-sm  search-query form-control" id="searchLocation" name="searchLocation" placeholder="지역명/상호명으로 검색해주세요." required style="height:34px;"/>
+      
+           <div class="input-group col-sm-8" style="padding-left:0px;">
+            <input type="text" class=" input-sm  search-query form-control" id="searchLocation" name="searchLocation" placeholder=" 지역명/상호명으로 검색해주세요." required style="height:34px; "/>
             <span class="input-group-btn"><button class="btn btn-danger input-sm" type="submit" style="height:34px;">
                                             <span class=" glyphicon glyphicon-search"></span>
             </button>
