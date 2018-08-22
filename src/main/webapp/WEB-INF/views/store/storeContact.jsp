@@ -26,7 +26,7 @@ var store_pk ="${store.store_pk}";
 <div>
 <div id="wrapper">
 	<div id="left-side">
-	<div id="fourth" class="active">
+	
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 				<h3>Nail Shop ${store.store_name }</h3>
@@ -88,8 +88,7 @@ var store_pk ="${store.store_pk}";
 			</div>
 		</div>
 	</div>
-	</div>
-
+<!-- left end -->
 <div id="right-side">
 <div id="border" >
 	<div id="line" class="one" style="position:fixed;"></div>

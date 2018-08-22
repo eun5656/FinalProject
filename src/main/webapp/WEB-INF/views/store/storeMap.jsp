@@ -12,7 +12,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- store css -->
 
-<link href="${path }/resources/css/store.css" rel="stylesheet" />
+<link href="${path }/resources/css/store.css?ver=2" rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <!-- store js -->
 <script type="text/javascript">
@@ -61,17 +61,17 @@ var LatLng = ""+ results[0].geometry.location;
 	<div id="left-side">
 
 
-		<div id="second" class="active">
-
+		
 			<div class="NailStoreMap animatepop" id="map">
 			</div>
 			<div class="addrText animatepop">
 			<br>
 				<p>${store.store_address }</P>
 			</div>
-		</div>
+		
 		
 
+<!-- left end -->
 </div>
 <div id="right-side">
 <div id="border" >

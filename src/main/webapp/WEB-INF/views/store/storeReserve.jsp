@@ -659,8 +659,8 @@ var store_pk ="${store.store_pk}";
 <div id="wrapper">
    
    <div id="left-side">
-      <div id="third" class="active">
-        <div class="row" style="margin-top: 100px;">
+   
+        <div style="margin-top: 30px;">
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
             <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
       </div>  
@@ -791,7 +791,7 @@ var store_pk ="${store.store_pk}";
          </div>
          <!-- /.modal mixer image -->
       </div>
-   </div>
+ 
 </div>   
 <!-- leftEnd -->
 <div id="right-side">

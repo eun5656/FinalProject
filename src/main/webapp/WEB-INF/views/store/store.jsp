@@ -44,12 +44,10 @@ $(function() {
 
 	<div id="left-side">
 
-		<div id="first" class="active">
-
-			<div class="row">
+		<div class="row">
 
 				<!-- 가게 이미지 시작 -->					
-				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">		
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animatepop">		
 					<div class="hovereffect">
 						<img class="img-responsive radius14"
 							src="${path }/resources/images/nail_store/${store.store_re_img }" alt="출력 실팽">
@@ -88,7 +86,7 @@ $(function() {
 									</div>
 									<!-- Modal End -->
 				<!--가게 이미지 끝-->
-				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
 					<h3>${store. store_name }</h3>
 					<p>장소 : ${store. store_address }${store.store_address_detail }</p>
           			  <p> <c:forEach begin="1" end="${store_star}">
@@ -121,7 +119,7 @@ $(function() {
 				<marquee>${store.store_notice }</marquee>
 			</div>
 			<!-- tab 화면 시작-->
-			<div class="row" >
+			<div>
 				<div class="tabbable-panel"> 
 					<div class="tabbable-line">
 						<ul class="nav nav-tabs ">
@@ -839,10 +837,9 @@ function eventBind(index) {
 			</div>
 			<!-- row 끝 -->
 
-		</div>
-<!-- first End -->
+	
 </div>
-
+<!-- left end -->
 <div id="right-side">
 <div id="border" >
 	<div id="line" class="one" style="position:fixed;"></div>
