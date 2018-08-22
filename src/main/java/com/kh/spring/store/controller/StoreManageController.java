@@ -33,6 +33,7 @@ import com.kh.spring.member.model.service.MemberService;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.nail.model.service.NailService;
 import com.kh.spring.nail.model.vo.Nail;
+import com.kh.spring.reserve.model.service.ReserService;
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.service.StoreService;
 import com.kh.spring.store.model.vo.Menu;
@@ -64,6 +65,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	
 	@Autowired
 	private StoreReviewService reviewService;
+	
+	@Autowired
+	private ReserService reserService;
 	
 	@RequestMapping("/store/storeManage.do")
 	public String store(
@@ -524,4 +528,40 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		return "/store/storeManage";
 	}
+	
+	@RequestMapping("/store/storeManageReserve.do")
+	public String storeManageReserve(
+			HttpServletRequest req, Model model
+			) {
+		String view="store/storeReserve";
+		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
+		Store store = service.selectOne(store_pk);
+		List<Menu> menuList=service.menuList(store_pk);
+		List<Reserve> reserveList=reserService.selectreserveList(store_pk);
+		List<designer> designerList=designerservice.selectdesigner(store_pk);
+		System.out.println(designerList);
+		Store_time storeTime=reserService.selectStoreTime(store_pk);
+		if(storeTime!=null) {
+			storeTime=storeTime.deleteDate(storeTime);
+		}
+		System.out.println(storeTime);
+		
+		
+		
+		System.out.println("스토어 값 확인 : "+store);
+		model.addAttribute("store",store);
+		model.addAttribute("menuList",menuList);
+		model.addAttribute("reserveList",reserveList);
+		model.addAttribute("designerList",designerList);
+		if(storeTime!=null){
+			model.addAttribute("store_open_time",String.valueOf(storeTime.getStore_open_time()));
+			model.addAttribute("store_close_time",String.valueOf(storeTime.getStore_close_time()));
+			model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
+			model.addAttribute("store_weekend_close",String.valueOf(storeTime.getStore_weekend_close()));
+		}
+	
+
+		return view;
+	}
+	
 }
