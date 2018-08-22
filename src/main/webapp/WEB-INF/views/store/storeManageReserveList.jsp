@@ -20,7 +20,7 @@ var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
 </script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=3"></script>
+<script src="${path }/resources/js/storeManage.js?ver=5"></script>
 
 	<div id="wrapper">
 
@@ -30,7 +30,7 @@ var store_pk="${store.store_pk}"
 			<div id="second" class="active">
 				
 
-    <div style="width:100%;height:auto;">
+    <div style="width: 80%;position: absolute;height: auto;top: 40px;left: 50px;">
       <div class="panel">
 		
         <div class="panel-body">
@@ -85,8 +85,8 @@ var store_pk="${store.store_pk}"
         </div>
     <!--     pannel end -->
       </div>
-    </div>
-  	
+<!--     </div> -->
+<%--   	<div class="row text-center" id="paging">${pageBar}</div> --%>
 <!-- 			second end -->
 			</div>
 </div>

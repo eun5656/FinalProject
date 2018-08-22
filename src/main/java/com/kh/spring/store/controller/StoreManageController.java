@@ -106,12 +106,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
 	
 		Store store = service.selectOne(member_pk);
-		
-
 		System.out.println();
 		System.out.println("스토어 값 확인 : "+store);
-	
-		
 		model.addAttribute("store",store);
 		return view;
 	}
@@ -135,6 +131,10 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		
 		String pageBar=new PageCreate().getPageBar(cPage,numPerPage,totalCount,"storeManageReserveList.do?store_pk="+store_pk1);
 		
+		Store store = service.selectOne(member_pk);
+		System.out.println();
+		System.out.println("스토어 값 확인 : "+store);
+		model.addAttribute("store",store);
 		model.addAttribute("pageBar", pageBar);
 		model.addAttribute("list", list);
 		model.addAttribute("cPage", cPage);
@@ -364,18 +364,18 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return jsonstr;
 	}
 	@RequestMapping(value =  "/store/storeManage/storeUpdate.do")
-	public String nailDelete(Model model,
+	public String storeUpdate(Model model,
 			Store store,	
 			@RequestParam("input-file-preview") MultipartFile img, HttpSession session
-			, String StoreOldImg) {
-		
+			) {
+		System.out.println(img+" 이미지 확인해보자  \n\n\n\\n\n\n\n\n\\n\n\n\\n\n\n\\");
 	String renamedFileName = null;
 	String originalFileName = null;
 	String saveDir = session.getServletContext().getRealPath("/resources/images/");
 	if (!img.isEmpty()) {
 		//기존 파일 삭제 
 
-		  File file = new File(saveDir+File.separator+StoreOldImg);
+		  File file = new File(saveDir+File.separator+store.getStore_re_img());
 	         
 	        if( file.exists() ){
 	            if(file.delete()){
@@ -401,6 +401,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		store.setStore_re_img(renamedFileName);
 		System.out.println("이미지 삽입 확인" + store);
 //		이미지 존재시에 오리지널 네임 만들어줌
+		}else {
+			Store temp = service.selectOne(store.getStore_pk());
 		}
 		int result = service.updateStore(store);
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());

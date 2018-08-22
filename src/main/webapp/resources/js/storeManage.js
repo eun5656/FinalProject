@@ -1,6 +1,12 @@
 //
 $(function(){	
-	var path="/spring";
+	//holiday value
+	$("#store_holiday").val(holiday).prop("selected",true);
+	
+	
+	
+	
+	//반응형 적용
 	if ($(window).width() < 768) {
 		$(".wrappercheck").removeAttr("id","wrapper");
 		$("#leftcheck").removeAttr("id","left-side");

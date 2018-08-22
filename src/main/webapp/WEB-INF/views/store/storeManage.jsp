@@ -18,10 +18,11 @@
 // 외부 js 에서 쓰이는 변수 setting
 var path = "${pageContext.request.contextPath }";
 var store_pk="${store.store_pk}"
+var holiday="${store.store_holiday}"
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=36"></script>
+<script src="${path }/resources/js/storeManage.js?ver=37"></script>
 
 <div>
 	<div id="wrapper" class="wrappercheck">
@@ -52,7 +53,8 @@ var store_pk="${store.store_pk}"
 											<input
 											type="file" accept="image/png, image/jpeg, image/gif"
 											name="input-file-preview" />
-											<input type="hidden" name="StoreOldImg" value="${store.store_re_img }"/>
+											<input type="hidden" name="store_re_img" value="${store.store_re_img }"/>>
+											<input type="hidden" name="store_ori_img" value="${store.store_ori_img }"/>
 										<!-- rename it -->
 									</div>
 								</span>
@@ -81,7 +83,7 @@ var store_pk="${store.store_pk}"
 							class="form-control" value="${store.store_phone}">
 						</label> 
 						<label>휴일 :							
-<select name="store_holiday" class="form-control">
+<select name="store_holiday" class="form-control" id="store_holiday">
 <option value="">   </option>
   <option value="0">일요일</option>
   <option value="1">월요일</option>

@@ -4,26 +4,34 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kh.spring.common.page.PageCreateDeal;
+
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.service.QnaService;
 import com.kh.spring.qna.model.vo.Qna;
+import com.kh.spring.store.model.service.StoreService;
+import com.kh.spring.store.model.vo.Store;
+
+@SessionAttributes(value= {"memberLoggedIn"})
 
 @Controller
 public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@Autowired
+	private StoreService service;
 	
 	@RequestMapping("/qna/storeQna.do")
 	public ModelAndView storeQna(String qna_writer, int store_pk, int member_pk, String qna_title, String qna_content)
@@ -57,8 +65,10 @@ public class QnaController {
 	
 	
 	@RequestMapping("/store/storeManageQna.do")
-	public ModelAndView storeManageQna(int store_pk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage) 
+	public ModelAndView storeManageQna(int store_pk,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage,
+			HttpSession session) 
 	{
+		
 		ModelAndView mv=new ModelAndView();
 		int numPerPage=10;
 		List<Qna> list=qnaService.selectQnaList(store_pk,cPage,numPerPage);
@@ -68,9 +78,12 @@ public class QnaController {
 		String heading="heading";
 		String collapse="collapse";
 		
-		
+		int member_pk = ((Member)session.getAttribute("memberLoggedIn")).getMemberPk();
 		String pageBar=new PageCreateDeal().getPageBar(cPage,numPerPage,totalCount,"storeManageQna.do");
-		
+		Store store = service.selectOne(member_pk);
+		System.out.println();
+		System.out.println("스토어 값 확인 : "+store);
+		mv.addObject("store",store);
 		mv.addObject("collapse", collapse);
 		mv.addObject("haeding", heading);
 		mv.addObject("pageBar", pageBar);
