@@ -78,8 +78,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	
 		Store store = service.selectOne(member_pk);
 		Store_time st = service.selectTime(store.getStore_pk());
+<<<<<<< HEAD
 		if(st!=null) {
 		st = st.deleteDate(st);
+=======
+		if(st!=null){
+			st = st.deleteDate(st);
+>>>>>>> sungJin_ver_3.0
 		}
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
@@ -165,7 +170,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("nails",nails);
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
 		Store_time st = service.selectTime(store.getStore_pk());
-		st = st.deleteDate(st);
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
 		model.addAttribute("reviews",reviews);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
@@ -263,7 +270,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
 		Store_time st = service.selectTime(store.getStore_pk());
-		st = st.deleteDate(st);
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
@@ -340,7 +349,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
 		Store_time st = service.selectTime(store.getStore_pk());
 		model.addAttribute("reviews",reviews);
-		st = st.deleteDate(st);
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
@@ -415,7 +426,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
 		model.addAttribute("reviews",reviews);
-		st = st.deleteDate(st);
+		if(st!=null) {
+			st = st.deleteDate(st);
+		}
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
@@ -432,7 +445,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		int result = service.updateStore_time(store_time);
 		Store store = service.selectOne(store_pk);
 		Store_time st = service.selectTime(store_pk);
-		st = st.deleteDate(st);
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
@@ -527,7 +542,9 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("nails",nails);
 		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
 		Store_time st = service.selectTime(store.getStore_pk());
-		st = st.deleteDate(st);
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
 		model.addAttribute("reviews",reviews);
 		model.addAttribute("store_time",st);
 		return "/store/storeManage";

@@ -60,6 +60,12 @@ public class StoreController {
 			) {
 		String view="store/store";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
+		String flag=req.getParameter("flag");
+		if(flag!=null){
+			model.addAttribute("flag",flag);
+		}
+		System.out.println("flag"+flag);
+		
 		logger.debug(store_pk + "끝");
 		Store store = service.selectOne(store_pk);
 		List<Menu> menus = service.selectMenu(store_pk);
