@@ -49,4 +49,16 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return sqlSession.update("member.updatePw", memberEmail);
 	}
+
+	@Override
+	public String findId(SqlSessionTemplate sqlSession, String memberEmail) {
+		
+		return sqlSession.selectOne("member.selectId", memberEmail);
+	}
+
+	@Override
+	public int checkId(SqlSessionTemplate sqlSession, String memberEmail) {
+		
+		return sqlSession.selectOne("member.checkId", memberEmail);
+	}
 }
