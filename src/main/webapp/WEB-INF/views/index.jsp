@@ -703,17 +703,6 @@
 						     $(".store_img").click(function(){
 						    	location.href="${path}/store/store.do?store_pk="+$(this).children("#store_pk").val();
 						    });
-						  
-						 
-						 function move_reservaiton(store_pk) {
-						 }
-						  
-						  function move_review(store_pk) {
-								
-						  }
-						 
-						 
-						 
 					eventBind();
 				})
 				function eventBind(){
@@ -800,7 +789,7 @@
 					    	location.href="${path}/store/storeReserve.do?store_pk="+$(this).attr('value');
 					    });
 					    $('.store_review').on('click', function() {
-					    	location.href="${path}/store/store.do?store_pk="+$(this).attr('value');
+					    	location.href="${path}/store/store.do?store_pk="+$(this).attr('value')+"&flag=true";
 					    });
 					    
 				}

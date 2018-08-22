@@ -25,11 +25,17 @@
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 var holiday ="${store.store_holiday}";
+var flag="${flag}";
 $(function() {
 	var holidaycheck ="#"+holiday;
 	 $(holidaycheck).removeAttr("style","display:none;");
 	 console.log(holidaycheck);
 	//휴일 선택
+	console.log(flag);
+	if(flag=='true'){
+		$('#review_tab').trigger('click');
+	}
+	
 });
 </script>
 <script src="${path }/resources/js/store.js?ver=8"></script>
