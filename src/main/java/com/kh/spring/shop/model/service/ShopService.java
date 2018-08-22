@@ -2,6 +2,7 @@ package com.kh.spring.shop.model.service;
 
 import java.util.List;
 
+import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.model.vo.Store;
 
 public interface ShopService {
@@ -17,7 +18,7 @@ public interface ShopService {
 
 	List<Store> bookmarkSortShopList();
 
-	List<Store> searchShopList(String searchLocation);
+	List<Store> searchShopList(Search search);
 	List<Store> shopRankReviewCount();
 
 	List<Store> shopReviewCount();

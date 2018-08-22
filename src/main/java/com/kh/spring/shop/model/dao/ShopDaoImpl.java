@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.controller.StoreController;
 import com.kh.spring.store.model.vo.Store;
 
@@ -60,9 +61,9 @@ public class ShopDaoImpl implements ShopDao {
 	}
 	
 	@Override
-	public List<Store> searchShopList(SqlSessionTemplate sqlSession, String searchLocation) {
+	public List<Store> searchShopList(SqlSessionTemplate sqlSession, Search search) {
 		
-		return sqlSession.selectList("shop.searchShopList", searchLocation);
+		return sqlSession.selectList("shop.searchShopList", search);
 	}
 
 

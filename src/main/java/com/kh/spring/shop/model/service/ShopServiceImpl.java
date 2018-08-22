@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kh.spring.shop.model.dao.ShopDao;
+import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.model.vo.Store;
 
 @Service
@@ -49,9 +50,9 @@ public class ShopServiceImpl implements ShopService {
 	}
 
 	@Override
-	public List<Store> searchShopList(String searchLocation) {
+	public List<Store> searchShopList(Search search) {
 		
-		return dao.searchShopList(sqlSession, searchLocation);
+		return dao.searchShopList(sqlSession,search);
 	}
 	public List<Store> shopRankReviewCount() {
 		List<Store> list = dao.shopRankReviewCount(sqlSession);
