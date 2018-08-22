@@ -60,6 +60,11 @@ select * from store_time where store_pk = #{store_pk}
 	 update store set store_rank = #{review_star} where store_pk = #{store_pk}
 </update>
 
+   <insert id="insertStore" parameterType="store">
+      insert into store(store_pk, memberPk, store_name, store_num, store_phone, store_address, store_ori_img, store_re_img)
+      values(store_seq.nextval, #{memberPk}, #{store_name}, #{store_num}, #{store_phone}, #{store_address}, #{store_ori_img}, #{store_re_img})
+   </insert>
+
 
 
 
