@@ -38,7 +38,8 @@ margin-right: 40px;
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 </script>
-<script src="${path }/resources/js/store.js?ver=8"></script>
+<!-- store js -->
+<script src="${path }/resources/js/store.js?ver=9"></script>
 <script src="${path }/resources/js/moment.min.js"></script>
 <script src="${path }/resources/js/fullcalendar.min.js"></script>
 <script src="${path }/resources/js/gcal.min.js"></script>
@@ -793,35 +794,37 @@ var store_pk ="${store.store_pk}";
    </div>
 </div>   
 <!-- leftEnd -->
-
 <div id="right-side">
-<div id="border">
-   <div id="line" class="three" style="position:fixed;"></div>
+<div id="border" >
+	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-   <div style="position: fixed;">
-      <ul>
-         <li class="shop ">
-            <div class="icon ">
-               <img src="${path }/resources/icons/shop.svg" alt="">
-            </div> Shop
-         </li>
-         <li class="map">
-            <div class="icon">
-               <img src="${path }/resources/icons/map.svg" alt="">
-            </div> Map
-         </li>
-         <li class="reserve active">
-            <div class="icon  active">
-               <img src="${path }/resources/icons/calander.svg" alt="">
-            </div> Reserve
-         </li>
-         <li class="qna">
-            <div class="icon">
-               <img src="${path }/resources/icons/customer.svg" alt="">
-            </div> Contact
-         </li>
-      </ul>
-   </div>
+<div style="position: fixed;">
+			<ul>
+			<li class="shop active ">
+				<div class="icon active">
+					<img src="${path }/resources/icons/shop.svg" alt="">
+				</div> <span class="right"> Shop</span>
+			</li>
+			<li class="map ">
+				<div class="icon">
+					<img src="${path }/resources/icons/map.svg" alt="">
+				</div> <span class="right"> 예약 리스트</span>
+			</li>
+			<li class="reserve">
+				<div class="icon">
+					<img src="${path }/resources/icons/calander.svg" alt="">
+				</div>
+				<span class="right"> Reserve(예약)</span>
+			</li>
+			<li class="qna">
+				<div class="icon">
+					<img src="${path }/resources/icons/customer.svg" alt="">
+				</div> 
+				<span class="right"> QnA(문의)</span>
+			</li>
+		</ul>
+	</div>
+	
 </div>
 </div>
 <!-- wrapper End -->

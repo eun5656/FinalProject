@@ -22,7 +22,7 @@ var store_pk ="${store.store_pk}";
 var store_name = "${store.store_name}";
 var address = "${store.store_address}";
 </script>
-<script src="${path }/resources/js/store.js?ver=8"></script>
+<script src="${path }/resources/js/store.js?ver=9"></script>
 <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDmfjiMcgfcCVI6QKs42Kk4AvHUVdOQtso"></script>
 <script type="text/javascript">
 $(function(){
@@ -73,35 +73,37 @@ var LatLng = ""+ results[0].geometry.location;
 		
 
 </div>
-
 <div id="right-side">
-<div id="border">
-	<div id="line" class="two" style="position:fixed;"></div>
+<div id="border" >
+	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-	<div style="position: fixed;">
-		<ul>
-			<li class="shop ">
-				<div class="icon ">
+<div style="position: fixed;">
+			<ul>
+			<li class="shop active ">
+				<div class="icon active">
 					<img src="${path }/resources/icons/shop.svg" alt="">
-				</div> Shop
+				</div> <span class="right"> Shop</span>
 			</li>
-			<li class="map active">
-				<div class="icon active" >
+			<li class="map ">
+				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> Map
+				</div> <span class="right"> 예약 리스트</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
 					<img src="${path }/resources/icons/calander.svg" alt="">
-				</div> Reserve
+				</div>
+				<span class="right"> Reserve(예약)</span>
 			</li>
 			<li class="qna">
 				<div class="icon">
 					<img src="${path }/resources/icons/customer.svg" alt="">
-				</div> Contact
+				</div> 
+				<span class="right"> QnA(문의)</span>
 			</li>
 		</ul>
 	</div>
+	
 </div>
 </div>
 </div>
