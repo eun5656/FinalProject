@@ -78,13 +78,8 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	
 		Store store = service.selectOne(member_pk);
 		Store_time st = service.selectTime(store.getStore_pk());
-<<<<<<< HEAD
 		if(st!=null) {
 		st = st.deleteDate(st);
-=======
-		if(st!=null){
-			st = st.deleteDate(st);
->>>>>>> sungJin_ver_3.0
 		}
 		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
 		List<Menu> menus = service.selectMenu(store.getStore_pk());
