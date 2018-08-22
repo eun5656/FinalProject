@@ -93,12 +93,19 @@ var store_pk ="${store.store_pk}";
           description: ''
         }
       ];
+      console.log('${store}');
    	 var  businessHours2= [ // specify an array instead
    		    //12345 따로해서 입력하게하자...
+   		    {
+                dow: [0],
+                start: store_weekend_open,  
+                end: store_weekend_close 
+            },
             {
                 dow: [1], 
                 start: store_open_time, 
                 end: store_close_time 
+            },
             {
                 dow: [2], 
                 start: store_open_time, 
@@ -123,13 +130,17 @@ var store_pk ="${store.store_pk}";
                 dow: [6], 
                 start: store_weekend_open, 	
                 end: store_weekend_close
-            },
-            {
-                dow: [0],
-                start: store_weekend_open,  
-                end: store_weekend_close 
             }
+          
           ];
+   	 
+   	var store_holiday="${store.store_holiday}";
+	 	if(store_holiday!=''){
+	 	console.log(businessHours2[store_holiday].start);
+	 	businessHours2[store_holiday].start='09:00:00';
+	 	businessHours2[store_holiday].end='09:01:00';
+	 	console.log(businessHours2[store_holiday]);
+	 	}
    	 
    	 
    	//businessHours2[1]='';
@@ -370,6 +381,9 @@ var store_pk ="${store.store_pk}";
                        date=null;
                      } 
                      else if (checkHoliday == false) {
+                    	 
+                    	 
+                    	 
                           alert("영업시간이 아닙니다.");
                           date=null;
                      }

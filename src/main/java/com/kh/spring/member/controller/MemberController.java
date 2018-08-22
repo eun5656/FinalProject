@@ -264,7 +264,7 @@ public class MemberController {
 
 		if (result > 0) {
 			msg = "회원가입성공!";
-			loc = "member/loginForm";
+			loc = "/";
 		} else {
 			msg = "회원가입실패!";
 		}
