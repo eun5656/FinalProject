@@ -22,15 +22,11 @@ var store_pk="${store.store_pk}"
 <!-- storeManage js -->
 <script src="${path }/resources/js/storeManage.js?ver=5"></script>
 
-	<div id="wrapper">
-
-<div id="left-side">
+	
 
 
-			<div id="second" class="active">
-				
 
-    <div style="width: 80%;position: absolute;height: auto;top: 40px;left: 50px;">
+    <div style="width: 80%;position: absolute;height: 100%;top: 40px;left: 50px;">
       <div class="panel">
 		
         <div class="panel-body">
@@ -72,11 +68,7 @@ var store_pk="${store.store_pk}"
 					</c:forEach>
                   </tbody>
 				  		
-<!--                            Modal -->
-<!--   								<div class="modal fade" id="myModal" role="dialog"> -->
-   								
-<!--   								</div> -->
-              </table>
+                              </table>
 
           </div>
  <!--           row end -->
@@ -89,7 +81,7 @@ var store_pk="${store.store_pk}"
 <%--   	<div class="row text-center" id="paging">${pageBar}</div> --%>
 <!-- 			second end -->
 			</div>
-</div>
+
 
 
 <div id="right-side">
@@ -120,7 +112,6 @@ var store_pk="${store.store_pk}"
 			</li>
 		</ul>
 	</div>
-</div>
 </div>
 <!-- wrapper 끝 -->
 
