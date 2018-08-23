@@ -94,7 +94,6 @@ var store_pk ="${store.store_pk}";
           description: ''
         }
       ];
-      console.log('${store}');
    	 var  businessHours2= [ // specify an array instead
    		    //12345 따로해서 입력하게하자...
    		    {
@@ -135,19 +134,31 @@ var store_pk ="${store.store_pk}";
           
           ];
    	 
-   	var store_holiday="${store.store_holiday}";
-	 	if(store_holiday!=''){
-	 	console.log(businessHours2[store_holiday].start);
-	 	businessHours2[store_holiday].start='09:00:00';
-	 	businessHours2[store_holiday].end='09:01:00';
-	 	console.log(businessHours2[store_holiday]);
-	 	}
-   	 
-   	 
-   	//businessHours2[1]='';
-   	 console.log();
-   	 console.log();
-   	 console.log();
+   var store_holiday="${store.store_holiday}";
+   	if(store_holiday=='0'){
+ 		holiday='일';
+ 	}
+ 	else if(store_holiday=='1'){
+ 		holiday='월';
+ 	}
+	else if(store_holiday=='2'){
+ 		holiday='화';
+ 	}
+	else if(store_holiday=='3'){
+ 		holiday='수';
+ 	}
+	else if(store_holiday=='4'){
+ 		holiday='목';
+ 	}
+	else if(store_holiday=='5'){
+ 		holiday='금';
+ 	}
+	else if(store_holiday=='6'){
+ 		holiday='토';
+ 	}
+	else{
+ 		holiday='일';
+ 	}
       
        employee = [{
           id: '${designerList[0].designer_id}',
@@ -322,12 +333,11 @@ var store_pk ="${store.store_pk}";
         dayClick: function(date, jsEvent, view, resource) {
         	
         	
-        	console.log(date._i);
+        	console.log();
         	console.log(jsEvent);
         	console.log(view);
         	console.log(resource);
         	//resource.title
-        	
                        
                         console.log("message"+message);
                         console.log("reserveCheck"+reserveCheck);
@@ -390,7 +400,9 @@ var store_pk ="${store.store_pk}";
                      }
                      
                      else {
-                         	 if("${memberLoggedIn}".length >0){
+                    	console.log();
+                    	 	
+                         	 if("${memberLoggedIn}".length >0 && holiday!=date.format('dd')){
                          		 
                          		var start_time=date.format("YYYY-MM-DD HH:mm:ss");
                             	var reserveCheck = {
@@ -427,6 +439,10 @@ var store_pk ="${store.store_pk}";
                         			 if(reserveCheck>0){
                         		 	    alert(message);
                         	 		 }
+                        			 
+                        			 if(holiday==date.format('dd')){
+                             	 		alert('휴무일입니다.');
+                             	 	}
                         			 else{
 	                            		alert('로그인을 해주세요');
 	                                    //로그인페이지로보내기.........할까말까
@@ -500,7 +516,6 @@ var store_pk ="${store.store_pk}";
                                   member_name:"${memberLoggedIn.memberName}",
                               	  store_pk: store_pk,
                         		  merchant_uid1:'merchant_' + new Date().getTime(),
-                        		  payment_price:menu_price
                         		}
              	  
 	
@@ -660,8 +675,8 @@ var store_pk ="${store.store_pk}";
 <div id="wrapper">
    
    <div id="left-side">
-   
-        <div style="margin-top: 30px;">
+      <div id="third" class="active">
+        <div class="row" style="margin-top: 100px;">
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
             <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
       </div>  
@@ -686,7 +701,7 @@ var store_pk ="${store.store_pk}";
                                     <tr>
                                        <td colspan="1"><label for="sel1">예약자 :</label></td>
                                        <td colspan="4">
-                                          <p id="reserName" class="member_info" style=" padding-left: 0px;">홍성진</p> <!---->
+                                          <p id="reserName" class="member_info" style=" padding-left: 0px;">${memberLoggedIn.memberName }</p> <!---->
                                        </td>
                                     </tr>
                                  </thead>
@@ -704,8 +719,8 @@ var store_pk ="${store.store_pk}";
                                        <td colspan="1" style="width: 72">
                                        <select class="form-control input-sm" id="choice1" name='choice1'>
                                              <!--점주레벨이 아니면 disabled-->
-                                             <option value="손"  selected="selected">손</option>
-                                             <option value="발">발</option>
+                                             <option value="네일"  selected="selected">페디</option>
+                                             <option value="페디">페디</option>
                                        </select></td>
                                     
                                        <td colspan="3" id="hand" style="width: 172px;">
@@ -792,7 +807,7 @@ var store_pk ="${store.store_pk}";
          </div>
          <!-- /.modal mixer image -->
       </div>
- 
+   </div>
 </div>   
 <!-- leftEnd -->
 <div id="right-side">
