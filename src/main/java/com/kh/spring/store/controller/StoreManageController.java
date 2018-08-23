@@ -379,7 +379,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		System.out.println(img+" 이미지 확인해보자  \n\n\n\\n\n\n\n\n\\n\n\n\\n\n\n\\");
 	String renamedFileName = null;
 	String originalFileName = null;
-	String saveDir = session.getServletContext().getRealPath("/resources/images/");
+	String saveDir = session.getServletContext().getRealPath("/resources/images/nail_store/");
 	if (!img.isEmpty()) {
 		//기존 파일 삭제 
 

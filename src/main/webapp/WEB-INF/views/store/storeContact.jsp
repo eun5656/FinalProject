@@ -27,7 +27,7 @@ var store_pk ="${store.store_pk}";
 <div id="wrapper">
 	<div id="left-side">
 	
-		<div class="row">
+		<div class="row" style="padding-left:50px;">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">
 				<h3>Nail Shop ${store.store_name }</h3>
 				<p>Nail Shop Tel ${store.store_phone }</p>
@@ -91,7 +91,7 @@ var store_pk ="${store.store_pk}";
 <!-- left end -->
 <div id="right-side">
 <div id="border" >
-	<div id="line" class="one" style="position:fixed;"></div>
+	<div id="line" class="four" style="position:fixed;"></div>
 </div>
 <div style="position: fixed;">
 			<ul>
@@ -103,7 +103,7 @@ var store_pk ="${store.store_pk}";
 			<li class="map ">
 				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> <span class="right"> 예약 리스트</span>
+				</div> <span class="right"> Map</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">

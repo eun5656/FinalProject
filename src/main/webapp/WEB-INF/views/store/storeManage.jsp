@@ -35,8 +35,8 @@ var holiday="${store.store_holiday}"
 
 			<div id="first active">
 				<form action="${path }/store/storeManage/storeUpdate.do" method="post" name="storeUpdate" 
-				enctype="multipart/form-data">>
-				<div  >
+				enctype="multipart/form-data">
+				<div>
 
 					<!-- 가게 이미지 시작 -->
 					<div class="col-lg-4 col-md-4 col-sm-4 col-xs-10 animatepop">

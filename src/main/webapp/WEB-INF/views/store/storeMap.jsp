@@ -64,7 +64,7 @@ var LatLng = ""+ results[0].geometry.location;
 		
 			<div class="NailStoreMap animatepop" id="map">
 			</div>
-			<div class="addrText animatepop">
+			<div class="addrText animatepop" style="width:70%;">
 			<br>
 				<p>${store.store_address }</P>
 			</div>
@@ -75,7 +75,7 @@ var LatLng = ""+ results[0].geometry.location;
 </div>
 <div id="right-side">
 <div id="border" >
-	<div id="line" class="one" style="position:fixed;"></div>
+	<div id="line" class="two" style="position:fixed;"></div>
 </div>
 <div style="position: fixed;">
 			<ul>
@@ -87,7 +87,7 @@ var LatLng = ""+ results[0].geometry.location;
 			<li class="map ">
 				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> <span class="right"> 예약 리스트</span>
+				</div> <span class="right"> Map</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">

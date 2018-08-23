@@ -139,7 +139,7 @@ $(function() {
 							<!-- tab1 시작 -->
 							<div class="tab-pane" id="tab_default_1">
 								<div class="carousel slide multi-item-carousel" id="theCarousel">
-									<div class="carousel-inner carouselCheck" >
+									<div class="carousel-inner carouselCheck">
 									<c:forEach var="nail" items="${nails }" varStatus="status" step='3'>
 									<c:choose>
 										<c:when test="${status.count eq 1}">									
@@ -153,7 +153,7 @@ $(function() {
 										
 										<a href="#NailModal${nails[i].nail_pk }" data-toggle="modal">
 										
-											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animatepop" style="margin-top: 10px;height:250px;">
+											<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 animatepop" style="margin-top: 10px; height:350px;">
 												
 <!-- 										bookmark start		 -->
 											<jsp:useBean id="check_bookmark" class="java.lang.String" />
@@ -162,7 +162,7 @@ $(function() {
  							<c:forEach  var="bookmark" items="${bookmarkList}" varStatus="status">
 							<c:if test="${bookmark.member_pk == memberLoggedIn.memberPk && bookmark.nail_pk == nails[i].nail_pk}">
  								<c:set var="check_bookmark" value="true"/>
- 								<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon">
+ 								<img src="${path }/resources/icons/love_filled.svg" alt="true" class="b_icon zindex"id="b_icon" style="max-height:400px;">
 							<input class="bookmark_pk" name="bookmark_pk" type="hidden" value="${bookmark.bookmark_pk}" >
 						</c:if>
 							</c:forEach>
@@ -872,7 +872,7 @@ function eventBind(index) {
 			<li class="map ">
 				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> <span class="right"> 예약 리스트</span>
+				</div> <span class="right"> Map</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
