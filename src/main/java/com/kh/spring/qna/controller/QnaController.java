@@ -123,5 +123,21 @@ public class QnaController {
 		return mv;
 	}
 	
+	@RequestMapping("/qna/deleteQna.do")
+	public ModelAndView sendMessageDelete(int qna_pk, int memberPk,ModelAndView mv,HttpSession session) {
+		
+		Map map = new HashMap();
+		map.put("qna_pk", qna_pk);
+		map.put("memberPk", memberPk);
+		
+		int result = qnaService.delete(map);
+		
+		System.out.println("reusltrkqtqt"+result);
+		mv.addObject("result",result);
+		mv.setViewName("jsonView");
+	
+		return mv;
+	}
+	
 	
 }

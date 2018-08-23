@@ -17,4 +17,6 @@ public interface QnaDAO {
 	
 	int updateQna(SqlSessionTemplate sqlSession, Map<String, Object> map);
 	
+	int delete(SqlSessionTemplate sqlSession,Map<String, String> map);
+	
 }

@@ -22,5 +22,8 @@
 </update>
 
 <select resultType="qna" id="selectOneContent">select * from qna where qna_pk=#{qna_pk} </select>
-  
+
+<delete id="deleteQna" parameterType="qna">
+ delete from qna where qna_pk=${qna_pk} and member_pk=#{memberPk}
+</delete>  
 </mapper>

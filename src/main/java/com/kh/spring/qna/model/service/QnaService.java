@@ -15,4 +15,6 @@ public interface QnaService {
 	
 	int updateQna(Map<String, Object> map);
 	
+	int delete(Map<String, String> map);
+	
 }
