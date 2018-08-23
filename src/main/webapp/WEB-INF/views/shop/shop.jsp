@@ -78,10 +78,10 @@
 									  html2+="</div>";					
 									  html2+="<div class='separator clear-left'>";					
 									  html2+="<p class='btn-add'>";					
-									  html2+="<button class='btn btn-warning store_reservaiton' style='width:90%;  z-index: 10;  '><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
+									  html2+="<button class='btn btn-warning store_reservaiton' style='width:90%;  z-index: 10;' value='"+data.shopList[i].store_pk+"'><span class='glyphicon glyphicon-time'></span>예약하기</button>";					
 									  html2+="</p>";					
 									  html2+="<p class='btn-details'>";
-									  html2+="<button class='btn btn-info store_review' style='width:90%; z-index: 10;'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
+									  html2+="<button class='btn btn-info store_review' style='width:90%; z-index: 10;' value='"+data.shopList[i].store_pk+"'><span class='glyphicon glyphicon-comment'></span> 리뷰&nbsp;&nbsp;"+data.shopList[i].store_review_count+"개</button>";   
 									  html2+="</div>";  
 									  html2+="<div class='clearfix'>";
 									  html2+="</div>";
@@ -112,11 +112,11 @@
 						  
 						  $(".store_reservaiton").click(function() {
 							
-							  location.href="${path}/store/storeReserve.do?store_pk="+document.getElementById("store_pk").value; //예약하기 바로갈수있는 로직으로..
+							  location.href="${path}/store/storeReserve.do?store_pk="+$(this).attr('value'); //예약하기 바로갈수있는 로직으로..
 						 })
 						 
 						  $(".store_review").click(function() {
-						   location.href="${path}/store/store.do?store_pk="+document.getElementById("store_pk").value; 
+						   location.href="${path}/store/store.do?store_pk="+$(this).attr('value')+"&flag=true"; 
 						 })
 						  }
 				})
@@ -152,10 +152,10 @@
     <div class="separator clear-left">
           <p class="btn-add" style=""> 
 
-            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-time"></span>예약하기</button>
+            <button class="btn btn-warning store_reservaiton" style="width:90%; z-index: 10;" value="${shop.store_pk }"><span class="glyphicon glyphicon-time"></span>예약하기</button>
           </p>
           <p class="btn-details">
-            <button  class="btn btn-info store_review" style="width:90%; z-index: 10;"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${shop.store_review_count}"/>개</button>
+            <button  class="btn btn-info store_review" style="width:90%; z-index: 10;" value="${shop.store_pk }"><span class="glyphicon glyphicon-comment"></span> 리뷰&nbsp;&nbsp;<c:out value="${shop.store_review_count}"/>개</button>
         </div>
         <div class="clearfix">
         </div>
