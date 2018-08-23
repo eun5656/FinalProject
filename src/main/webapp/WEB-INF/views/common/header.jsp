@@ -82,7 +82,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-          <a class="navbar-brand" href="${path}">로고~~</a>
+          <a class="navbar-brand" href="${path}">Today's Nail</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -141,6 +141,14 @@
                 <li><a href="${path}/message/sendMessage.do">쪽지쓰기</a></li>
                 <li><a href="${path}/message/receiveMessage.do?send_user=${memberLoggedIn.memberId}">쪽지함</a></li>
               </ul>
+            </li>
+            </c:if>
+            <c:if test="${memberLoggedIn!=null }">
+            <li class="dropdown">
+              <a href="${path}/mypage/mypageBookmark.do?member_pk=${memberLoggedIn.memberPk}">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>Bookmark
+              </a>
+              
             </li>
             </c:if>
             <c:if test="${memberLoggedIn==null }">
