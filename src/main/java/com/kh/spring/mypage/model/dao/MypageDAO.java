@@ -28,7 +28,6 @@ public interface MypageDAO {
 
 	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
 
-	
 	int delete(SqlSessionTemplate sqlSession, int memberPk);
 
 	String findCheck(SqlSessionTemplate sqlSession, int memberPk);
@@ -39,7 +38,8 @@ public interface MypageDAO {
 
 	int mypageUpdate(SqlSessionTemplate sqlSession, Member m);
 	
-	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk/*,int cPage, int numPerPage*/);
+	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk);
+
+	String findImg(SqlSessionTemplate sqlSession, String memberOriImg);
 	
-	//int bookmarkCount(SqlSessionTemplate sqlSession, int member_pk);
 }

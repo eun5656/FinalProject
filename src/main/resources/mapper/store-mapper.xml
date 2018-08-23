@@ -1,71 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="store">
-<resultMap type="store" id="storeMap">
+	<resultMap type="store" id="storeMap">
 
-</resultMap>
-<resultMap type="menu" id="menuMap">
-</resultMap>
+	</resultMap>
+	<resultMap type="menu" id="menuMap">
+	</resultMap>
 
-<select id="selectOne" resultMap="storeMap" parameterType="int">
-	select * from store where member_pk = #{member_pk}
-</select>
+	<select id="selectOne" resultMap="storeMap" parameterType="int">
+		select * from store where member_pk = #{member_pk}
+	</select>
 
- <select id="selectMenus" resultMap="menuMap" parameterType="int">
-	select * from menu where store_pk = #{store_pk}
-</select>
+	<select id="selectMenus" resultMap="menuMap" parameterType="int">
+		select * from menu where store_pk = #{store_pk}
+	</select>
 
-<delete id="deleteMenu" parameterType="string">
-	delete from menu where menu_pk=#{menu_pk}
-</delete>
+	<delete id="deleteMenu" parameterType="string">
+		delete from menu where menu_pk=#{menu_pk}
+	</delete>
 
-<select id="mainStoreList" resultMap="storeMap">
-SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUNT FROM (SELECT C.STORE_PK, COUNT(REVIEW_PK)COUNT   FROM STORE C LEFT OUTER JOIN REVIEW S ON C.STORE_PK = S.STORE_PK GROUP BY C.STORE_PK ORDER BY COUNT(REVIEW_PK) DESC)) S WHERE S.STORE_PK = C.STORE_PK ORDER BY C.STORE_RANK desc
-</select>
+	<select id="mainStoreList" resultMap="storeMap">
+		SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT
+		STORE_REVIEW_COUNT FROM (SELECT C.STORE_PK, COUNT(REVIEW_PK)COUNT FROM
+		STORE C LEFT OUTER JOIN REVIEW S ON C.STORE_PK = S.STORE_PK GROUP BY
+		C.STORE_PK ORDER BY COUNT(REVIEW_PK) DESC)) S WHERE S.STORE_PK =
+		C.STORE_PK ORDER BY C.STORE_RANK desc
+	</select>
 
-<insert id="menuInsert" parameterType="menu" useGeneratedKeys="true" keyProperty="key">
- insert into menu values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
-</insert>
+	<insert id="menuInsert" parameterType="menu"
+		useGeneratedKeys="true" keyProperty="key">
+		insert into menu
+		values(menu_seq.nextVal,#{menu_name},#{menu_info},#{menu_price},#{menu_check},#{store_pk})
+	</insert>
 
-<select id="selectStoreStar" parameterType="_int" resultType="_int">
-	select AVG(review_star) from review where store_pk =#{store_pk}
-</select>
+	<select id="selectStoreStar" parameterType="_int"
+		resultType="_int">
+		select AVG(review_star) from review where store_pk =#{store_pk}
+	</select>
 
-<update id="menuUpdate" parameterType="menu">
- update menu set menu_name=#{menu_name}, menu_info=#{menu_info}, menu_price=#{menu_price}, menu_check=#{menu_check} where menu_pk=#{menu_pk}
-</update>
+	<update id="menuUpdate" parameterType="menu">
+		update menu set menu_name=#{menu_name}, menu_info=#{menu_info},
+		menu_price=#{menu_price}, menu_check=#{menu_check} where
+		menu_pk=#{menu_pk}
+	</update>
 
-<update id="storeUpdate" parameterType="store">
- update store set store_name=#{store_name}, store_address=#{store_address},store_address_detail=#{store_address_detail}, store_phone=#{store_phone}, store_holiday=#{store_holiday},store_ori_img=#{store_ori_img},store_re_img=#{store_re_img},store_info=#{store_info},store_kakao=#{store_kakao},store_instagram=#{store_instagram},store_notice=#{store_notice} where store_pk=#{store_pk}
-</update>
+	<update id="storeUpdate" parameterType="store">
+		update store set store_name=#{store_name},
+		store_address=#{store_address},store_address_detail=#{store_address_detail},
+		store_phone=#{store_phone},
+		store_holiday=#{store_holiday},store_ori_img=#{store_ori_img},store_re_img=#{store_re_img},store_info=#{store_info},store_kakao=#{store_kakao},store_instagram=#{store_instagram},store_notice=#{store_notice}
+		where store_pk=#{store_pk}
+	</update>
 
-<update id="store_timeUpdate" parameterType="store_time">
- update store_time set store_open_time=#{store_open_time},store_close_time=#{store_close_time},store_reserve_time=#{store_reserve_time},store_reserve_end_time=#{store_reserve_end_time},store_weekend_open=#{store_weekend_open},store_weekend_close=#{store_weekend_open} where store_pk=#{store_pk}
-</update>
+	<update id="store_timeUpdate" parameterType="store_time">
+		update store_time set
+		store_open_time=#{store_open_time},store_close_time=#{store_close_time},store_reserve_time=#{store_reserve_time},store_reserve_end_time=#{store_reserve_end_time},store_weekend_open=#{store_weekend_open},store_weekend_close=#{store_weekend_open}
+		where store_pk=#{store_pk}
+	</update>
 
-<select id="store_timeSelect" parameterType="int" resultType="store_time">
-select * from store_time where store_pk = #{store_pk}
-</select>
+	<select id="store_timeSelect" parameterType="int"
+		resultType="store_time">
+		select * from store_time where store_pk = #{store_pk}
+	</select>
 
-<select id="manageStoreList" resultMap="storeMap">
-	select * from store order by store_pk desc
-</select>
-<select id="manageSelectCount" resultType="_int">
-	select count(*) from store
-</select>
-<select id="selectManage" resultMap="storeMap" parameterType="int">
-	select * from store where store_pk=#{store_pk}
-</select>
-<update id="storeStarUpdate" parameterType="hashmap">
-	 update store set store_rank = #{review_star} where store_pk = #{store_pk}
-</update>
+	<select id="manageStoreList" resultMap="storeMap">
+		select * from store order by store_pk desc
+	</select>
+	<select id="manageSelectCount" resultType="_int">
+		select count(*) from store
+	</select>
+	<select id="selectManage" resultMap="storeMap"
+		parameterType="int">
+		select * from store where store_pk=#{store_pk}
+	</select>
+	<update id="storeStarUpdate" parameterType="hashmap">
+		update store set store_rank = #{review_star} where store_pk = #{store_pk}
+	</update>
 
-   <insert id="insertStore" parameterType="store">
-      insert into store(store_pk, memberPk, store_name, store_num, store_phone, store_address, store_ori_img, store_re_img)
-      values(store_seq.nextval, #{memberPk}, #{store_name}, #{store_num}, #{store_phone}, #{store_address}, #{store_ori_img}, #{store_re_img})
-   </insert>
-
-
-
+	<insert id="insertStore" parameterType="store">
+		insert into store(store_pk, member_pk, store_name, store_num, store_phone,
+		store_address, store_ori_img, store_re_img)
+		values(store_seq.nextval, #{member_pk}, #{store_name}, #{store_num}, #{store_phone},
+		#{store_address}, #{store_ori_img}, #{store_re_img})
+	</insert>
 
 </mapper>

@@ -88,18 +88,13 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 	
 	@Override
-	public List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk/*,int cPage, int numPerPage*/) {
-		//RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
-		return sqlSession.selectList("bookmark.mypageBookmarkList", member_pk/*,rb*/);
+	public List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk) {
+		return sqlSession.selectList("bookmark.mypageBookmarkList", member_pk);
 	}
 
-/*	@Override
-	public int bookmarkCount(SqlSessionTemplate sqlSession, int member_pk) {
-		
-		return sqlSession.selectOne("bookmark.bookmarkCount", member_pk);
+	@Override
+	public String findImg(SqlSessionTemplate sqlSession, String memberOriImg) {
+		return sqlSession.selectOne("member.findImg", memberOriImg);
 	}
-*/
-
-
-
+	
 }

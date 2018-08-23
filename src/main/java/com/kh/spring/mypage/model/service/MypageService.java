@@ -40,7 +40,8 @@ public interface MypageService {
 
 	int mypageUpdate(Member m);
 	
-	List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/);
+	List<Bookmark> mypageBookmarkList(int member_pk);
+
+	String findImg(String memberOriImg);
 	
-	//int bookmarkCount(int member_pk);
 }

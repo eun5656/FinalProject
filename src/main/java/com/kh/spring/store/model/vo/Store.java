@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 public class Store implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -5180233677245625610L;
 	
 	private int store_pk;

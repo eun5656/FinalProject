@@ -153,18 +153,25 @@ public class MypageController {
 	// 회원정보수정 완료 로직
 	@RequestMapping(value = "/mypage/mypageUpdateEnd.do", method = RequestMethod.POST)
 	public String mypageUpdateEnd(Member m, Model model,
-			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile,
+			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile, String memberOriImg,
 			HttpServletRequest request) {
 		String msg = "수정 실패";
 		String loc = "/";
 		System.out.println("멤버 확인" + m.getMemberId());
-		int result = mypageService.mypageUpdate(m);
-
+		
+		boolean flag = false;
+		
 		// 파일 업로드
 		// 저장위치 지정
-		String renamedFileName = null;
+		String renamedFileName = m.getMemberReImg();
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		String oriRenameFile = mypageService.findImg(memberOriImg);
+		
+		if(oriRenameFile != null) {
+	        File deleteFile=new File(saveDir+"/"+oriRenameFile);
+	        flag=deleteFile.delete();
+	      }
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
@@ -183,12 +190,13 @@ public class MypageController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 			// DB에 저장할 첨부파일에 대한 정보
 			m.setMemberOriImg(originalFileName);
 			m.setMemberReImg(renamedFileName);
 		}
 
+		int result = mypageService.mypageUpdate(m);
+		
 		if (result > 0) {
 			msg = "수정 성공";
 			loc = "/";

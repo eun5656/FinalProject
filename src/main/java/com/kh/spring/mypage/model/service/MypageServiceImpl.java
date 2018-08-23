@@ -94,16 +94,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
-	public List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/) {
-		
-		return mypageDAO.mypageBookmarkList(sqlSession,member_pk/*,cPage,numPerPage*/);
+	public List<Bookmark> mypageBookmarkList(int member_pk) {
+		return mypageDAO.mypageBookmarkList(sqlSession,member_pk);
 	}
 
-	/*@Override
-	public int bookmarkCount(int member_pk) {
-		
-		return mypageDAO.bookmarkCount(sqlSession,member_pk);
+	@Override
+	public String findImg(String memberOriImg) {
+		return mypageDAO.findImg(sqlSession, memberOriImg);
 	}
-	*/
-	
+
 }
