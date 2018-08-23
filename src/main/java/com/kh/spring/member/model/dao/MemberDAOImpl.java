@@ -14,9 +14,9 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	
 	@Override
-	public int countMessage(SqlSessionTemplate sqlSession) {
+	public int countMessage(SqlSessionTemplate sqlSession,String memberId) {
 		
-		return sqlSession.selectOne("message.countMessage");
+		return sqlSession.selectOne("message.countMessage",memberId);
 	}
 	
 	@Override

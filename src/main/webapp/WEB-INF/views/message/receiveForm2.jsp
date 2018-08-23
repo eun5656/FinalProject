@@ -11,7 +11,7 @@
 function fn_refuse(value){
 	
 	 $.ajax({
-		url:"${pageContext.request.contextPath}/message/deleteMessage.do",
+		url:"${pageContext.request.contextPath}/message/deleteMessage.do?memberId=${memberLoggedIn.memberId}",
 		dataType:"json",
 		data:{message_pk:value},
 	
@@ -71,7 +71,7 @@ function fn_refuse(value){
 							<td></td>
 							<td>${vs.count}</td>
 							<td>${m.send_user }</td>
-							<td><a href="${path}/message/receiveContent.do?message_pk=${m.message_pk}">${m.send_content }</td>
+							<td><a href="${path}/message/receiveContent.do?message_pk=${m.message_pk}&memberId=${memberLoggedIn.memberId}">${m.send_content }</td>
 							<td>${m.send_read_check}</th>
 							<td>${m.send_date}</td>
 							<td><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.message_pk})" value="${m.message_pk}">삭제</i></button></td>
