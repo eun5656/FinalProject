@@ -34,6 +34,7 @@ $(function() {
 	console.log(flag);
 	if(flag=='true'){
 		$('#review_tab').trigger('click');
+		$('.level2').hide();
 	}
 	
 });
