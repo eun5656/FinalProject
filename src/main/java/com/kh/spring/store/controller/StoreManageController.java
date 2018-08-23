@@ -549,7 +549,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	public String storeManageReserve(
 			HttpServletRequest req, Model model
 			) {
-		String view="store/storeReserve";
+		String view="store/storeManageReserve";
 		int store_pk = Integer.parseInt((String)req.getParameter("store_pk"));
 		Store store = service.selectOne(store_pk);
 		List<Menu> menuList=service.menuList(store_pk);

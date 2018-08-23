@@ -38,7 +38,7 @@ margin-right: 40px;
 var path = "${pageContext.request.contextPath }";
 var store_pk ="${store.store_pk}";
 </script>
-<script src="${path }/resources/js/store.js?ver=8"></script>
+<script src="${path }/resources/js/storeManage.js?ver=8"></script>
 <script src="${path }/resources/js/moment.min.js"></script>
 <script src="${path }/resources/js/fullcalendar.min.js"></script>
 <script src="${path }/resources/js/gcal.min.js"></script>
@@ -608,6 +608,22 @@ var store_pk ="${store.store_pk}";
         autoclose: true
 
       });*/
+      
+  	// 메뉴 이동
+  	$(".shop").click(function() {
+  		location.href=path+"/store/storeManage.do?store_pk="+store_pk;
+   	})
+  	$(".sales").click(function() {
+  		location.href=path+"/store/storeManageReserveList.do?store_pk="+store_pk;
+  	})
+
+  	$(".reserve").click(function() {
+  		location.href=path+"/store/storeManageReserve.do?store_pk="+store_pk;
+  	})
+
+  	$(".qna").click(function() {
+  		location.href=path+"/store/storeManageQna.do?store_pk="+store_pk;
+  	})
 
 
 

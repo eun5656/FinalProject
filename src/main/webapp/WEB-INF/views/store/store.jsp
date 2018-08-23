@@ -368,7 +368,6 @@ $(function() {
                     </p>
                       <div class="result-btn-positon">
                      <c:if test="${memberLoggedIn.memberPk==review2.member_pk}">
-                     	<button class='btn btn-light basic-btn btn-update' type="button" onclick="">수정</button>
                  	 	<button  class='btn btn-light basic-btn btn-delete reply2-del-btn' type='button' value="${review2.review_pk }">삭제</button>
                      </c:if>
                       </div>
@@ -826,7 +825,6 @@ function eventBind(index) {
 		 	       		html+="</p>";
 		 	       		html+="<div class='result-btn-positon'>";
 						if("${memberLoggedIn.memberPk}"==data.review_value.member_pk){
-		 	       		html+="<button class='btn btn-light basic-btn btn-update' type='button' onclick='''>수정</button>";
 		 	       		html+=" <button class='btn btn-light basic-btn btn-delete reply2-del-btn' type='button' value='"+data.review_value.review_pk+"'>삭제</button>";
 						}
 		 	       		html+="</div>";

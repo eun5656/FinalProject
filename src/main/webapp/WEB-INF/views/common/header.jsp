@@ -58,10 +58,16 @@
   .navbar-nav>li>a {
     padding-top: 10px;
     padding-bottom: 10px;
+    
   }
   .collapse.in {
     display: block !important;
   }
+  
+  
+   #bs-example-navbar-collapse-1{
+  font-size:15pt;
+ } 
 }
 
 
@@ -120,7 +126,7 @@
       
            <div class="input-group col-sm-8" style="padding-left:0px;">
             <input type="text" class=" input-sm  search-query form-control" id="searchLocation" name="searchLocation" placeholder=" 지역명/상호명으로 검색해주세요." required style="height:34px; "/>
-            <span class="input-group-btn"><button class="btn btn-danger input-sm" type="submit" style="height:34px;">
+            <span class="input-group-btn"><button class="btn btn-danger input-lg" type="submit" style="height:34px;">
                                             <span class=" glyphicon glyphicon-search"></span>
             </button>
             </span>
