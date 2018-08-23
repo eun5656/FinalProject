@@ -33,6 +33,12 @@ public class QnaDAOImpl implements QnaDAO {
 	public int updateQna(SqlSessionTemplate sqlSession, Map<String, Object> map) {
 		return sqlSession.update("qna.updateQna", map);
 	}
+	
+	@Override
+	public int delete(SqlSessionTemplate sqlSession, Map<String, String> map) {
+		
+		return sqlSession.delete("qna.deleteQna", map);
+	}
 
 	
 }

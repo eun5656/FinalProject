@@ -8,7 +8,41 @@
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
 
-
+<script>
+function fn_refuse(value){
+	
+	 $.ajax({
+		url:"${pageContext.request.contextPath}/qna/deleteQna.do?memberPk=${memberLoggedIn.memberPk}",
+		dataType:"json",
+		data:{qna_pk:value},
+	
+		success :function(data)
+		{
+			if(data.result==1)
+			{
+				alert("삭제완료");
+			    location.reload();
+				
+			}
+			else
+			{
+				
+				alert("삭제못함");
+			}
+		},
+		error:function(jpxhr, textStatus,errormsg)
+		{
+			console.log("ajax전송실패");
+			console.log(jpxhr);
+			console.log(textStatus);
+			console.log(errormsg);
+		}
+	}); 
+	
+	
+	
+}
+</script>
 
 <section id='mypage' style="padding-top: 100px;">	
 	<div class='container'>
@@ -33,7 +67,7 @@
 							<th>글 제목</th>
 							<th>날짜</th>
 							<th>답장여부</th>
-							<!-- <th>삭제</th> -->
+							<th>삭제</th>
 						</tr>
 				
 				
@@ -44,7 +78,7 @@
 							<td><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.qna_title }</td>
 							<td><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.qna_date }</td>
 							<th><a href="${path}/mypage/mypageQNAListContent.do?qna_pk=${m.qna_pk}">${m.answer_check}</th>
-							<%-- <th><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.qna_pk})" value="${m.qna_pk}">삭제</i></button></th> --%>
+							<td><button class="btn btn-danger" type="button" onclick="fn_refuse(${m.qna_pk})" value="${m.qna_pk}">삭제</i></button></td>
 						</tr>
 					</c:forEach>
 				</table>

@@ -42,5 +42,11 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.updateQna(sqlSession, map);
 	}
 
+	@Override
+	public int delete(Map<String, String> map) {
+		
+		return qnaDao.delete(sqlSession,map);
+	}
+
 	
 }
