@@ -1,27 +1,21 @@
 package com.kh.spring.bookmark.controller;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kh.spring.bookmark.model.service.BookmarkService;
 import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.nail.controller.NailController;
 import com.kh.spring.nail.model.service.NailService;
-
 import net.sf.json.JSONObject;
 
 @Controller
@@ -36,7 +30,7 @@ public class BookmarkController {
 	@ResponseBody
 	public String insertBookmark( HttpServletRequest request, HttpServletResponse response)throws JsonProcessingException
 	{
-		System.out.println("접근완료");
+		System.out.println("�젒洹쇱셿猷�");
 		String jsonStr = request.getParameter("bookmark_val");
 		JSONObject jsonObject = JSONObject.fromObject(jsonStr);
 		int nail_pk = Integer.parseInt(jsonObject.getString("nail_pk"));
@@ -57,7 +51,7 @@ public class BookmarkController {
 		map.put("bookmark_check", jsonObject.get("bookmark_check"));
 		map.put("store_pk", jsonObject.get("store_pk"));*/
 
-		//그냥...해봤음....
+		//洹몃깷...�빐遊ㅼ쓬....
 		
 		int result=service.insertBookmark(bookmark);
 		if(result>0){
@@ -66,7 +60,7 @@ public class BookmarkController {
 		else {
 			result=0;
 		}
-		System.out.println("결과 확인 " +result);
+		System.out.println("寃곌낵 �솗�씤 " +result);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
@@ -96,10 +90,10 @@ public class BookmarkController {
 		int result=service.deleteBookmark(map);
 		String msg;
 		if(result>0){
-			msg="북마크 삭제완료";
+			msg="遺곷쭏�겕 �궘�젣�셿猷�";
 		}
 		else {
-			msg="북마크 삭제실패";
+			msg="遺곷쭏�겕 �궘�젣�떎�뙣";
 
 		}
 		

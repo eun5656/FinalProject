@@ -31,6 +31,7 @@
 						<label class="col-sm-3 control-label" for="memberId">아이디</label>
 						<div class="col-sm-6">
 							<input class="form-control" id="memberPk" name="memberPk" type="hidden" value="${memberLoggedIn.memberPk }" required="required">
+							<input class="form-control" id="memberLevel" name="memberLevel" type="hidden" value="${memberLoggedIn.memberLevel }">
 							<input class="form-control" id="memberId" name="memberId" type="text" value="${memberLoggedIn.memberId }" title="아이디는 변경하실 수 없습니다." readonly>
 						</div>
 					</div>
@@ -43,13 +44,13 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="memberPhone">휴대폰번호</label>
 						<div class="col-sm-6">
-							<input class="form-control" id="memberPhone" name="memberPhone" type="text" placeholder="- 없이 입력해 주세요">
+							<input class="form-control" id="memberPhone" name="memberPhone" type="text" placeholder="- 없이 입력해 주세요"  value="${memberLoggedIn.memberPhone }">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="memberEmail">이메일</label>
 						<div class="col-sm-6">
-							<input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해 주세요" />
+							<input type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="이메일을 입력해 주세요"  value="${memberLoggedIn.memberEmail }"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -64,7 +65,7 @@
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="memberAddress"></label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="도로명 주소" required>
+							<input type="text" class="form-control" id="memberAddress" name="memberAddress" placeholder="도로명 주소" value="${memberLoggedIn.memberAddress }" required>
 							<input type="text" class="form-control" id="memberAddressDetail" placeholder="상세주소">
 						</div>
 					</div>
@@ -72,7 +73,7 @@
 						<label class="col-sm-3 control-label" for="inputimage">프로필사진</label>
 						<div class="col-sm-6">
 							<div class="input-group image-preview">
-								<input type="text" class="form-control image-preview-filename" name="upload_file" disabled="disabled" >
+								<input type="text" class="form-control image-preview-filename" name="upload_file" disabled="disabled" value="${memberLoggedIn.memberOriImg }">
 								<span class="input-group-btn">
 									<button type="button" class="btn btn-default image-preview-clear" style="display: none;">
 										<span class="glyphicon glyphicon-remove"></span>Clear
@@ -80,7 +81,8 @@
 									<div class="btn btn-default image-preview-input">
 										<span class="glyphicon glyphicon-folder-open"></span>
 										<span class="image-preview-input-title">Browse</span>
-										<input type="file" accept="image/png, image/jpeg, image/gif" src="${path}/resources/upload/member/20180817_093114851_740.jpg" name="input-file-preview" />
+										<input type="file" accept="image/png, image/jpeg, image/gif" src="${path}/resources/upload/member/${memberLoggedIn.memberReImg }" name="input-file-preview" />
+										<input type="hidden"  name="memberReImg" value="${memberLoggedIn.memberReImg }" />
 									</div>
 								</span>
 							</div>

@@ -114,12 +114,9 @@ public class MemberController {
 	@RequestMapping("/member/JHcheckEmail.do")
 	@ResponseBody
 	public void membercheckEmail(String memberEmail, HttpServletResponse response) throws Exception {
-
 		boolean check = service.duplicateMemberEmailCheck(memberEmail) == 0 ? true : false;
-		
 		response.getWriter().print(check);
 		System.out.println(check +"check 확인");
-
 	}
 
 	@RequestMapping("/member/emailEnd.do")
@@ -133,14 +130,14 @@ public class MemberController {
 
 		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("ppj1017@gmail.com", "ahfmrqhd1!a");
+				return new PasswordAuthentication(user, password);
 			}
 		});
 		int ra = 0;
 
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+			message.setFrom(new InternetAddress(user, MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
 			// 수신자메일주소
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 			// Subject
@@ -152,7 +149,8 @@ public class MemberController {
 					break;
 				}
 			}
-			message.setText("인증번호[" + ra + "]"); // 메일 내용을 입력
+			message.setText("안녕하세요. 오늘네일입니다.");
+			message.setText("회원가입 인증번호 입니다. 인증번호[" + ra + "]"); // 메일 내용을 입력
 			// send the message
 			Transport.send(message); //// 전송
 
@@ -352,14 +350,14 @@ public class MemberController {
 
 			Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("ppj1017@gmail.com", "ahfmrqhd1!a");
+					return new PasswordAuthentication(user, password);
 				}
 			});
 			int ra = 0;
 
 			try {
 				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+				message.setFrom(new InternetAddress(user, MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
 				// 수신자메일주소
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 				// Subject
