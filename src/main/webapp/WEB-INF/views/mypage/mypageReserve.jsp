@@ -32,6 +32,7 @@
                   <thead>
                       <tr>
                           <th>네일샵</th>
+                          <th class="text-center">예약내역</th>
                           <th class="text-center">예약날짜</th>
                           <th class="text-center">예약상태</th>
                           <th class="text-center">전화번호</th>
@@ -41,7 +42,7 @@
                   <tbody>
                   <c:forEach  var='m' items='${list}' varStatus="vs">
                       <tr>
-                          <td class="col-sm-6 col-md-6">
+                          <td class="col-sm-3 col-md-3">
                           <div class="media">
                               <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
@@ -49,6 +50,10 @@
                               </div>
                           </div>
                           </td>
+                          <td class="col-sm-3 col-md-3">
+                          <strong>[${m.menu_name}]${m.menu_info}</strong>
+                          </td>
+                          
                           <td class="col-sm-2 col-md-2" style="text-align: center">
                       
 							   

@@ -22,7 +22,7 @@
 	</select>
 	
 	<select id="mypageReserveList" parameterType="_int" resultMap="storeReserveMap">
-		select * from store s join reserve r on (s.store_pk=r.store_pk) where r.member_pk=#{memberPk}
+		select * from store s join (select r.*,m.menu_name,m.menu_info from reserve r join menu m on(r.menu_pk=m.menu_pk)) K on (s.store_pk=K.store_pk) where K.member_pk=#{member_pk}
 	</select>
 
 	<select id="reserveCount" parameterType="_int" resultType="_int"> select count(*) from reserve where member_pk=#{memberPk} </select>
