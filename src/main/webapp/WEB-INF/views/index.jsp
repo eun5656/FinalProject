@@ -14,9 +14,25 @@
  <link href="${path }/resources/css/carousel.css" rel="stylesheet">
   <link href="${path }/resources/css/smallcarousel.css" rel="stylesheet">
   <link href="${path }/resources/css/naillist.css" rel="stylesheet">
+  <link href="${path }/resources/css/animate.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
   
-  
-  <style>
+ 
+ <style>
+h2,h3{
+font-family: 'Coiny', cursive;
+}
+header.carousel-inner.item active{
+height:100vh;
+}
+.carousel-caption{
+padding-bottom:150px;
+}
+.carousel-caption h2{
+	font-size:50px;
+	text-transform:uppercase;
+}
 </style>
 
 
@@ -34,10 +50,10 @@
 
           <div class="carousel-inner" role="listbox">
             <div class="item active">
-              <img src="${path }/resources/images\slide-4-1-1920x780.jpg" alt="Image">
+              <img src="${path }/resources/images\mainnail.png" alt="Image">
               <div class="carousel-caption">
-                <h3>Sell $</h3>
-                <p>Money Money.</p>
+                <h2 class="animated bounceInRight">Today's Nail</h2>
+                <h3 class="animated bounceInLeft">여러 네일샵의 네일 스타일을 비교하여 원하는 네일샵에서 예약을 할 수 있습니다.</h3>
               </div>
             </div>
 
