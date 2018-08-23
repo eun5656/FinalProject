@@ -40,7 +40,7 @@ padding-top:40px;
                             </a>
                         </h4>
                     </div>
-                    <div id="${collapse}${vs.index}" class="panel-collapse collapse <c:if test="${vs.index==0 }">in</c:if>" role="tabpanel" aria-labelledby="${heading}${vs.index}">
+                    <div id="${collapse}${vs.index}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="${heading}${vs.index}">
                         <div class="panel-body">
                         
                         <div class="row">

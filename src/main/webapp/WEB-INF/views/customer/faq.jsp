@@ -35,15 +35,15 @@ padding-top:40px;
                     <div class="panel-heading" role="tab" id="${heading}${vs.index}">
                         <h4 class="panel-title">
                             <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#${collapse}${vs.index}" aria-expanded='<c:if test="${vs.index==0 }">true</c:if><c:if test="${vs.index!=0 }">false</c:if>' aria-controls="${collapse}${vs.index}">
-                                <i class="fa fa-bars"></i>${faq.faqTitle }
+                               <span style="color: #de4d4e;font-size: 14px;font-weight: bolder;">Q.</span> ${faq.faqTitle }
                             </a>
                         </h4>
                     </div>
-                    <div id="${collapse}${vs.index}" class="panel-collapse collapse <c:if test="${vs.index==0 }">in</c:if>" role="tabpanel" aria-labelledby="${heading}${vs.index}">
+                    <div id="${collapse}${vs.index}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="${heading}${vs.index}">
                         <div class="panel-body">
                         <div class="row">
                         	<div class="col-xs-1"></div>
-                        	<div class="col-xs-10"> ${faq.faqContent }</div>
+                        	<div class="col-xs-10"><span style="color: #de4d4e;font-size: 14px;font-weight: bolder;">A.</span> ${faq.faqContent }</div>
                         	<div class="col-xs-1"></div>
                         
                        </div>
