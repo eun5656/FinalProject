@@ -715,12 +715,13 @@ var store_pk ="${store.store_pk}";
                                     </tr>
 
                                     <tr>
+                                    
                                        <td colspan="1"><label for="sel1">시술선택 :</label></td>
                                        <td colspan="1" style="width: 72">
-                                       <select class="form-control input-sm" id="choice1" name='choice1'>
+                                        <select class="form-control input-sm" id="choice1" name='choice1'>
                                              <!--점주레벨이 아니면 disabled-->
-                                             <option value="네일"  selected="selected">네일</option>
-                                             <option value="페디">페디</option>
+                                             <option value="손"  selected="selected">손</option>
+                                             <option value="발">발</option>
                                        </select></td>
                                     
                                        <td colspan="3" id="hand" style="width: 172px;">
