@@ -83,17 +83,16 @@ public class MemberController {
 					msg="로그인 성공";
 				}
 				model.addAttribute("memberLoggedIn", m);
+				session.setAttribute("bookmarkList",bookmarkService.selectBookMarkList(m.getMemberPk()));
 			} else {
 				msg = "비밀번호가 일치하지 않습니다.";
 			}
 		} else {
 			msg = "없는 아이디입니다.";
 		}
-		List<Bookmark> bookmarks=bookmarkService.selectBookMarkList(m.getMemberPk());
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
 		session.setAttribute("count",count);
-		session.setAttribute("bookmarkList",bookmarks);
 
 		return view;
 	}
