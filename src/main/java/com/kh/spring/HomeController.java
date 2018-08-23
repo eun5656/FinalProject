@@ -51,10 +51,6 @@ public class HomeController {
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-		int member_pk = 0;
-		if(request.getParameter("member_pk") != null) {
-		 member_pk=Integer.parseInt(request.getParameter("member_pk"));
-		}
 		List<Store> storelist =storeService.mainStoreList();	
 		List<Store> review_count =shopService.shopRankReviewCount();
 		if(review_count!=null) {
@@ -72,12 +68,6 @@ public class HomeController {
 		
 		List<Nail> naillist = nailService.nailList();
 		List<Integer> col_i = new ArrayList<Integer>();
-		List<Bookmark> bookmarkList = null;
-	
-		if(member_pk>0){
-		bookmarkList=bookmarkService.selectBookMarkList(member_pk);
-		System.out.println(bookmarkList);
-		}
 
 		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
 		int k=0;
@@ -94,8 +84,6 @@ public class HomeController {
 		logger.info("storelist"+storelist);
 		mv.addObject("nailist", naillist);
 		mv.addObject("col_i", col_i);
-		mv.addObject("bookmarkList",bookmarkList);
-
 		mv.setViewName("index");
 		return mv;
 	}

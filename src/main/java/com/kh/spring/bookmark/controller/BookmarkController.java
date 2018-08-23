@@ -45,8 +45,7 @@ public class BookmarkController {
 		int member_pk = Integer.parseInt(jsonObject.getString("member_pk"));
 		int store_pk = Integer.parseInt(jsonObject.getString("store_pk"));
 		String bookmark_check=String.valueOf(jsonObject.get("bookmark_check"));
-		List<Bookmark> bookmarks=service.selectBookMarkList(member_pk);
-		session.setAttribute("bookmarkList",bookmarks);
+		
 
 		
 		Bookmark bookmark=new Bookmark();
@@ -55,14 +54,6 @@ public class BookmarkController {
 		bookmark.setBookmark_check(bookmark_check);
 		bookmark.setStore_pk(store_pk);
 		System.out.println(bookmark);
-		/*Map map=new HashMap();
-
-		map.put("nail_pk", nail_pk);
-		map.put("member_pk", jsonObject.get("member_pk"));
-		map.put("bookmark_check", jsonObject.get("bookmark_check"));
-		map.put("store_pk", jsonObject.get("store_pk"));*/
-
-		//그냥...해봤음....
 		
 		int result=service.insertBookmark(bookmark);
 		if(result>0){
@@ -72,7 +63,10 @@ public class BookmarkController {
 			result=0;
 		}
 		System.out.println("결과 확인 " +result);
-		
+
+		List<Bookmark> bookmarks=service.selectBookMarkList(member_pk);
+		System.out.println("bookmarks"+bookmarks);
+		session.setAttribute("bookmarkList",bookmarks);
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
 		jsonstr=mapper.writeValueAsString(result);
@@ -87,8 +81,7 @@ public class BookmarkController {
 		
 		System.out.println(bookmark_pk);
 		System.out.println(member_pk);
-		List<Bookmark> bookmarks=service.selectBookMarkList(Integer.parseInt(member_pk));
-		session.setAttribute("bookmarkList",bookmarks);
+	
 		
 		
 		Map map=new HashMap();
@@ -107,6 +100,8 @@ public class BookmarkController {
 			msg="북마크 삭제실패";
 
 		}
+		List<Bookmark> bookmarks=service.selectBookMarkList(Integer.parseInt(member_pk));
+		session.setAttribute("bookmarkList",bookmarks);
 		
 		ObjectMapper mapper=new ObjectMapper();
 		String jsonstr="";
