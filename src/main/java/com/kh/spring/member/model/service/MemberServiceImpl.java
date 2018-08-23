@@ -23,9 +23,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public int countMessage() {
+	public int countMessage(String memberId) {
 		
-		return memberDAO.countMessage(sqlSession);
+		return memberDAO.countMessage(sqlSession,memberId);
 	}
 	
 	@Override

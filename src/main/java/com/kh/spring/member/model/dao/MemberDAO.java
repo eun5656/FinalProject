@@ -9,7 +9,7 @@ public interface MemberDAO {
 	
 	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
 	
-	int countMessage(SqlSessionTemplate sqlSession);
+	int countMessage(SqlSessionTemplate sqlSession,String memberId);
 
 	int duplicateIdCheck(SqlSessionTemplate sqlSession, String memberId);
 

@@ -8,7 +8,7 @@
 	<jsp:param value=" " name="pageTitle" />
 </jsp:include>
 
-<section style="padding-top: 100px;">	
+<section>	
 	<div class='container'>
 		<div class='panel'>
 			<ul class="nav nav-tabs">

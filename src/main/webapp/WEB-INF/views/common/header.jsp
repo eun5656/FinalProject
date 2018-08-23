@@ -82,7 +82,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-          <a class="navbar-brand" href="${path}">로고~~</a>
+          <a class="navbar-brand" href="${path}"><strong>Today's Nail<strong></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -143,6 +143,16 @@
               </ul>
             </li>
             </c:if>
+              
+          <c:if test="${memberLoggedIn!=null }">
+            <li class="dropdown">
+              <a href="${path}/mypage/mypageBookmark.do?member_pk=${memberLoggedIn.memberPk}">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>Bookmark
+              </a>
+              
+            </li>
+            </c:if>
+            
             <c:if test="${memberLoggedIn==null }">
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -133,9 +133,10 @@ public class MessageController {
 	public String ReadCheck(@RequestParam("message_pk" ) int message_pk, Model model,HttpSession session) {
 	
 		int result = messageService.update(message_pk);
-		int count = service.countMessage();
+		
+		//int count = service.countMessage(memberId);
 		model.addAttribute("msg", messageService.selectOne(message_pk));
-		session.setAttribute("count", count);
+		//session.setAttribute("count", count);
 		return "message/receiveContent2";
 	}
 	
@@ -144,14 +145,14 @@ public class MessageController {
 		
 		int result = messageService.delete(message_pk);
 		
-		int count = service.countMessage();
+		//int count = service.countMessage();
 		
 		Map map = new HashMap();
 		
 		map.put("result", result);
 		
 		mv.addAllObjects(map);
-		session.setAttribute("count", count);
+		//session.setAttribute("count", count);
 		mv.setViewName("jsonView");
 	
 		return mv;

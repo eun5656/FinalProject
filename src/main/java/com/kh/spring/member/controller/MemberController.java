@@ -60,7 +60,7 @@ public class MemberController {
 	public String memberLogin(String memberId, String memberPw, Model model, HttpSession session) {
 		logger.debug("로그인메소드호출");
 		Member m = service.loginCheck(memberId);
-		int count = service.countMessage();
+		int count = service.countMessage(memberId);
 		// 응답페이지 작성
 		String msg = "";
 		String loc = "/";
