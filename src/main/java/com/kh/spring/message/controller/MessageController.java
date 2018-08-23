@@ -130,21 +130,21 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/message/receiveContent.do")
-	public String ReadCheck(@RequestParam("message_pk" ) int message_pk, Model model,HttpSession session) {
+	public String ReadCheck(@RequestParam("message_pk" ) int message_pk, String memberId,Model model,HttpSession session) {
 	
 		int result = messageService.update(message_pk);
-		int count = service.countMessage();
+		int count = service.countMessage(memberId);
 		model.addAttribute("msg", messageService.selectOne(message_pk));
 		session.setAttribute("count", count);
 		return "message/receiveContent2";
 	}
 	
 	@RequestMapping("/message/deleteMessage.do")
-	public ModelAndView sendMessageDelete(int message_pk, ModelAndView mv,HttpSession session) {
+	public ModelAndView sendMessageDelete(int message_pk, String memberId,ModelAndView mv,HttpSession session) {
 		
 		int result = messageService.delete(message_pk);
 		
-		int count = service.countMessage();
+		int count = service.countMessage(memberId);
 		
 		Map map = new HashMap();
 		

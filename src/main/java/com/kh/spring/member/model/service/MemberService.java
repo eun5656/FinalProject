@@ -7,7 +7,7 @@ public interface MemberService {
 	
 	Member loginCheck(String memberId);
 	
-	int countMessage();
+	int countMessage(String memberId);
 
 	int duplicateIdCheck(String memberId);
 
