@@ -64,7 +64,7 @@
                           <td class="col-sm-2 col-md-2 text-center"><strong>${m.reserve_status}</strong></td>
                           <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>
                           <td class="col-sm-1 col-md-1">
-                        	<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${m.reserve_pk});" >결제 내역</button>
+                        	<button type="button" class="btn btn-info btn-sm" onclick="fn_payment(${m.reserve_pk});" >결제 내역</button>
                           </td>
                           <script>
                           function fn_payment(m){

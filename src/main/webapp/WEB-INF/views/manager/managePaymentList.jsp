@@ -63,7 +63,9 @@
 					<td><strong>${payment.payment_price }</strong></td>
 					<td><strong>${payment.payment_check }</strong></td>
 					<td>
-					<button type="button" class="btn btn-info btn-lg" onclick="fn_payment(${payment.payment_pk },${payment.reserve_pk });" >취소 승인</button>
+					<c:if test="${payment.payment_check eq '결제 취소 요청' }">
+					<button type="button" class="btn btn-info btn-sm" onclick="fn_payment(${payment.payment_pk },${payment.reserve_pk });" >취소 승인</button>
+					</c:if>
 					</td>
 				</tr>
 					<script>
