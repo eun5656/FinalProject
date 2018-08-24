@@ -21,7 +21,7 @@
          <div class="row">
           <div class="col-md-12">
             <span>
-              <strong style="font-size:20pt; color:rgb(71, 51, 51)"><i class="fa fa-angellist"></i>점포상세검색</strong><span>
+              <strong style="font-size:20pt; color:rgb(71, 51, 51)"><i class="fa fa-sliders"></i>&nbsp;점포상세검색</strong><span>
             <hr id="custom-hr">
           </div>
         </div>
