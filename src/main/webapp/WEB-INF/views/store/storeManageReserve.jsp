@@ -45,7 +45,7 @@ var store_pk ="${store.store_pk}";
 <script src="${path }/resources/js/scheduler.min.js"></script>
 <script src="${path }/resources/js/ko.js"></script>
 
-  <script>
+ <script>
     $(function() {
       //영업시작시간~~
 
@@ -60,7 +60,6 @@ var store_pk ="${store.store_pk}";
     	  store_close_time='23:00:00';
       }
       if(store_weekend_open==''||store_weekend_open==''){
-    	 alert('gu');
     	 store_weekend_open='09:00:00';
     	 store_weekend_close='18:00:00';
       }
@@ -94,22 +93,70 @@ var store_pk ="${store.store_pk}";
         }
       ];
    	 var  businessHours2= [ // specify an array instead
-            {
-              dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-              start: store_open_time, // 8am
-              end: store_close_time // 6pm
+   		    //12345 따로해서 입력하게하자...
+   		    {
+                dow: [0],
+                start: store_weekend_open,  
+                end: store_weekend_close 
             },
             {
-              dow: [6], // Thursday, Friday
-              start: store_weekend_open, // 10am
-              end: store_weekend_close // 4pm
+                dow: [1], 
+                start: store_open_time, 
+                end: store_close_time 
             },
             {
-              dow: [0], // Thursday, Friday
-              start: store_weekend_open, // 10am
-              end: store_weekend_close // 4pm
+                dow: [2], 
+                start: store_open_time, 
+                end: store_close_time 
+            },
+            {
+                dow: [3], 
+                start: store_open_time, 
+                end: store_close_time 
+            },
+            {
+                dow: [4], 
+                start: store_open_time, 
+                end: store_close_time 
+            },
+            {
+                dow: [5], 
+                start: store_open_time, 	
+                end: store_close_time
+            },
+            {
+                dow: [6], 
+                start: store_weekend_open, 	
+                end: store_weekend_close
             }
+          
           ];
+   	 
+   var store_holiday="${store.store_holiday}";
+   	if(store_holiday=='0'){
+ 		holiday='일';
+ 	}
+ 	else if(store_holiday=='1'){
+ 		holiday='월';
+ 	}
+	else if(store_holiday=='2'){
+ 		holiday='화';
+ 	}
+	else if(store_holiday=='3'){
+ 		holiday='수';
+ 	}
+	else if(store_holiday=='4'){
+ 		holiday='목';
+ 	}
+	else if(store_holiday=='5'){
+ 		holiday='금';
+ 	}
+	else if(store_holiday=='6'){
+ 		holiday='토';
+ 	}
+	else{
+ 		holiday='일';
+ 	}
       
        employee = [{
           id: '${designerList[0].designer_id}',
@@ -209,30 +256,6 @@ var store_pk ="${store.store_pk}";
         slotLabelInterval: 60,
         slotLabelFormat: 'a HH :mm ',
 
-   
-      
-  		 /*businessHours:  [ // specify an array instead 지워도되는지 체크
-              {
-                dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-                start: store_weekend_open}, 
-                end: max 
-              },
-              {
-                dow: [6], //
-                start: "${store_weekend_open}",
-                end: "${store_weekend_close}" 
-              },
-              {
-                dow: [0], //
-                start: "${store_weekend_open}", 
-                end: "${store_weekend_close}" 
-              }
-            ],*/
-        
-
-
-
-
         header: {
           left: 'prev,next',
           center: 'title',
@@ -282,44 +305,24 @@ var store_pk ="${store.store_pk}";
 
       
         dayClick: function(date, jsEvent, view, resource) {
-        	
-        	
-        	console.log(date._i);
-        	console.log(jsEvent);
-        	console.log(view);
-        	console.log(resource);
-        	//resource.title
-        	
-                       
-                        console.log("message"+message);
-                        console.log("reserveCheck"+reserveCheck);
-        	
-        	
-        	
-        	
-        	
-        	
-     	   if(resource!=null){   
+
+        	if(resource!=null){   
            	  var checkHoliday = true;
-               	console.log(resource.businessHours[1].dow[0])
-             	console.log(resource.businessHours[2].dow[0])
-
-             	var mydateObj = new Date(date);
-             	var chosenDay = mydateObj.getUTCDay();
-
+              var chosenDay = new Date(date).getUTCDay();
+			
+              /*특정일 입력받을수 있음*/
              if (chosenDay == resource.businessHours[1].dow[0]) {
                   if (resource.businessHours[1].start.substr(0, 2) > date.format("HH") || resource.businessHours[1].end.substr(0, 2) <= date.format("HH")) {
-                    checkHoliday = false;
-                    console.log(checkHoliday)
+                	  checkHoliday = false;
                   }
                 }
-              if (chosenDay == resource.businessHours[2].dow[0]) {
-                  if (resource.businessHours[2].start.substr(0, 2) > date.format("HH") || resource.businessHours[2].end.substr(0, 2) <= date.format("HH")) {
-                    checkHoliday = false;
-                    console.log(checkHoliday)
+             /*주말시간 바로던지기*/
+             if (chosenDay == 0 ||chosenDay==6) {
+                    if (resource.businessHours[0].start.substr(0, 2) > date.format("HH") || resource.businessHours[0].end.substr(0, 2) <= date.format("HH")) {
+                      checkHoliday = false;
                      }
-                }
-
+                  }
+                
 
                 var check = true;
                 //휴무일. 특정 휴무일 (일로 받았을떄 처리)
@@ -331,25 +334,27 @@ var store_pk ="${store.store_pk}";
                if (check == true) {
                      var now = new Date;
                      var nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours() + 1);
-                     console.log("now" + nowDate);
-
-
                      var checkDate = new Date(date.format());
-                     console.log("check" + checkDate);
 
                      /*1시간전 예약 못하게만들기*/
-                     if (checkDate <= nowDate) { //&& flag == truenowDate
+                     if (checkDate <= nowDate ) { //&& flag == truenowDate
                        alert("예약할 수 없는 시간입니다.");
                        check2 = false;
                        date=null;
-                     } 
+                     }
+                    
                      else if (checkHoliday == false) {
                           alert("영업시간이 아닙니다.");
                           date=null;
                      }
-                     
+                     else if(checkDate.getHours()+1 ==store_close_time.substr(0, 2) ){
+                    	 alert('마감1시간전입니다.'); //평일 1시간전
+                     } 
+                     else if(checkDate.getHours()+1 ==store_weekend_close.substr(0, 2)){
+                    	 alert('마감1시간전입니다.'); //주말 1시간전
+                     } 
                      else {
-                         	 if("${memberLoggedIn}".length >0){
+                         	 if("${memberLoggedIn}".length >0 && holiday!=date.format('dd')){
                          		 
                          		var start_time=date.format("YYYY-MM-DD HH:mm:ss");
                             	var reserveCheck = {
@@ -381,15 +386,15 @@ var store_pk ="${store.store_pk}";
                                              }
                                           });
                        	  	 }
-                         
                         	 else{
                         			 if(reserveCheck>0){
                         		 	    alert(message);
                         	 		 }
+                        			 if(holiday==date.format('dd')){
+                             	 		alert('휴무일입니다.');
+                             	 	}
                         			 else{
 	                            		alert('로그인을 해주세요');
-	                                    //로그인페이지로보내기.........할까말까
-
                         			 }
                         	 }
                      }
@@ -399,14 +404,9 @@ var store_pk ="${store.store_pk}";
                   	 alert("휴무일입니다.");
                      date=null;
                 }
-                   
-        
-                   
               //x버튼 눌렀을떄 date 초기화
             $("#close-modal").on('click',function() {
              date=null;
-            //location.reload();
-           // $('.reserve').trigger('click');
             });
             $(document).keyup(function(e) {
               if(e.keyCode==27){
@@ -414,16 +414,13 @@ var store_pk ="${store.store_pk}";
               }
             });
         }
-		
-     	   
-        
         
           $("#result-reservaiton").one('click', function() {
            
              var IMP = window.IMP; // 생략가능
              IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
           
-                var payCheck=$('#choice4 option:selected').val();
+                 var payCheck=$('#choice4 option:selected').val();
                  var title ="-${memberLoggedIn.memberName}- 님 예약완료";
                  var description ="-${memberLoggedIn.memberName}- 님 예약완료";;
                  var id = $('#reservation-id').val();
@@ -436,9 +433,14 @@ var store_pk ="${store.store_pk}";
                     choice2=$('#choice3 option:selected').val();
                  }
                  
+                 var pay_full_name;
+                 value='${menu.menu_pk },${menu.menu_price},${menu.menu_name },${menu.menu_info}'
                  //가격가져오기
                  choice2 = choice2.split(',');
                  var menu_price=choice2[1];
+                 
+                 pay_full_name=choice2[2]+':'+choice2[3];
+                 console.log(menu_price);
                  console.log(menu_price);
                  choice2=choice2[0];
                		//console.log(choice2);
@@ -459,24 +461,18 @@ var store_pk ="${store.store_pk}";
                                   member_name:"${memberLoggedIn.memberName}",
                               	  store_pk: store_pk,
                         		  merchant_uid1:'merchant_' + new Date().getTime(),
+                        		  payment_price:menu_price
                         		}
-             	  
-	
              			  var jsonData = JSON.stringify(store_reserve);
              			  var jsonData2 = JSON.stringify(store_payment);
                    			   jQuery.ajaxSettings.traditional = true;
-                   			   
-                   			   
-                   			   
-                   			   
-               
                    			   
                IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
                        merchant_uid : store_payment.merchant_uid1,
-                       name : '주문명:결제테스트',//메뉴이름
-                       amount :100,
+                       name :pay_full_name,//메뉴이름
+                       amount :100,		//가격 원래가격으로 바꿔주기
                       // amount :100,
                        buyer_email : "${memberLoggedIn.memberEmail}",
                        buyer_name : "${memberLoggedIn.memberName}",
@@ -500,12 +496,10 @@ var store_pk ="${store.store_pk}";
                           	data: {"store_reserve":jsonData,"store_payment":jsonData2},
                             dataType: "json",
                             success: function (data) {
-                           //console.log(data.reserve.menu_pk);
                            alert(data.msg);
                           
                            if(data.msg=="예약완료"){
                            /*화면에 등록시키기*/
-                           //console.log(description);
                             	$('#calendar').fullCalendar('renderEvent', {
                              	title: title,
                              	start: data.reserve.reserve_start_time, //specify start date
@@ -520,10 +514,6 @@ var store_pk ="${store.store_pk}";
                              	menu_pk:data.reserve.menu_pk
                             });
                             $('#close-modal-btn').trigger('click');
-                           }
-                           else{
-                        	   
-                        	   
                            }
                         },
                         error: function (e) {
@@ -608,22 +598,6 @@ var store_pk ="${store.store_pk}";
         autoclose: true
 
       });*/
-      
-  	// 메뉴 이동
-  	$(".shop").click(function() {
-  		location.href=path+"/store/storeManage.do?store_pk="+store_pk;
-   	})
-  	$(".sales").click(function() {
-  		location.href=path+"/store/storeManageReserveList.do?store_pk="+store_pk;
-  	})
-
-  	$(".reserve").click(function() {
-  		location.href=path+"/store/storeManageReserve.do?store_pk="+store_pk;
-  	})
-
-  	$(".qna").click(function() {
-  		location.href=path+"/store/storeManageQna.do?store_pk="+store_pk;
-  	})
 
 
 
@@ -660,7 +634,7 @@ var store_pk ="${store.store_pk}";
                                     <tr>
                                        <td colspan="1"><label for="sel1">예약자 :</label></td>
                                        <td colspan="4">
-                                          <p id="reserName" class="member_info" style=" padding-left: 0px;">홍성진</p> <!---->
+                                          <p id="reserName" class="member_info" style=" padding-left: 0px;">${memberLoggedIn.memberName }</p> <!---->
                                        </td>
                                     </tr>
                                  </thead>
@@ -674,9 +648,10 @@ var store_pk ="${store.store_pk}";
                                     </tr>
 
                                     <tr>
+                                    
                                        <td colspan="1"><label for="sel1">시술선택 :</label></td>
                                        <td colspan="1" style="width: 72">
-                                       <select class="form-control input-sm" id="choice1" name='choice1'>
+                                        <select class="form-control input-sm" id="choice1" name='choice1'>
                                              <!--점주레벨이 아니면 disabled-->
                                              <option value="손"  selected="selected">손</option>
                                              <option value="발">발</option>
@@ -687,7 +662,7 @@ var store_pk ="${store.store_pk}";
                                              <!--점주레벨이 아니면 disabled-->
                                              <c:forEach var="menu" items="${menuList}">
                                                 <c:if test="${menu.menu_check eq '네일'}">
-                                                <option value="${menu.menu_pk},${menu.menu_price}">${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
+                                                <option value='${menu.menu_pk },${menu.menu_price},${menu.menu_name },${menu.menu_info}'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
                                                 
                                                 </c:if>
                                              </c:forEach>
@@ -700,7 +675,7 @@ var store_pk ="${store.store_pk}";
                                              <!--점주레벨이 아니면 disabled-->
                                              <c:forEach var="menu" items="${menuList}">
                                                 <c:if test="${menu.menu_check eq '페디'}">
-                                                <option value='${menu.menu_pk }'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
+                                                <option value='${menu.menu_pk },${menu.menu_price},${menu.menu_name },${menu.menu_info}'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
                                                 </c:if>
                                              </c:forEach>
                                              
@@ -769,35 +744,37 @@ var store_pk ="${store.store_pk}";
    </div>
 </div>   
 <!-- leftEnd -->
-
 <div id="right-side">
-<div id="border">
-   <div id="line" class="three" style="position:fixed;"></div>
+<div id="border" >
+	<div id="line" class="one" style="position:fixed;"></div>
 </div>
-   <div style="position: fixed;">
-      <ul>
-         <li class="shop ">
-            <div class="icon ">
-               <img src="${path }/resources/icons/shop.svg" alt="">
-            </div> Shop
-         </li>
-         <li class="map">
-            <div class="icon">
-               <img src="${path }/resources/icons/map.svg" alt="">
-            </div> Map
-         </li>
-         <li class="reserve active">
-            <div class="icon  active">
-               <img src="${path }/resources/icons/calander.svg" alt="">
-            </div> Reserve
-         </li>
-         <li class="qna">
-            <div class="icon">
-               <img src="${path }/resources/icons/customer.svg" alt="">
-            </div> Contact
-         </li>
-      </ul>
-   </div>
+<div style="position: fixed;">
+			<ul>
+			<li class="shop active ">
+				<div class="icon active">
+					<img src="${path }/resources/icons/shop.svg" alt="">
+				</div> <span class="right"> Shop</span>
+			</li>
+			<li class="map ">
+				<div class="icon">
+					<img src="${path }/resources/icons/map.svg" alt="">
+				</div> <span class="right"> Map</span>
+			</li>
+			<li class="reserve">
+				<div class="icon">
+					<img src="${path }/resources/icons/calander.svg" alt="">
+				</div>
+				<span class="right"> Reserve(예약)</span>
+			</li>
+			<li class="qna">
+				<div class="icon">
+					<img src="${path }/resources/icons/customer.svg" alt="">
+				</div> 
+				<span class="right"> QnA(문의)</span>
+			</li>
+		</ul>
+	</div>
+	
 </div>
 </div>
 <!-- wrapper End -->
