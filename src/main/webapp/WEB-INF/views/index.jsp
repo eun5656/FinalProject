@@ -231,7 +231,7 @@ padding-bottom:150px;
     <!--nail 선택-->
     <div class="w3-dropdown-hover" >
       <div id="main-nail-color" class="w3-border w3-hover-border-pale-red  w3-round" style="padding-left:10px;" value="전체">
-        <img src="${path }/resources/images/nails/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
+        <img src="${path }/resources/images/indexImg/all-color.jpg" class="w3-circle" alt="Cinque Terre" width="20" height="20"><button class="select-menu w3-button w3-round w3-hover-white">전체</button></div>
       <div  class="w3-dropdown-content w3-card-12 w3-border w3-round" style="z-index: 999">
           <!--media로 조정해주기 default는 height 3.5%-->
                   <ul id="dropdown-menu">
