@@ -17,22 +17,28 @@
   <link href="${path }/resources/css/animate.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Jua" rel="stylesheet">
  
  <style>
-h2,h3{
+h1{
 font-family: 'Coiny', cursive;
+}
+h3{
+font-family: 'Jua', sans-serif;
+font-family: 'Black Han Sans', sans-serif;
 }
 header.carousel-inner.item active{
 height:100vh;
 }
-.carousel-caption{
-padding-bottom:150px;
+.carousel-caption {
+padding-bottom:140px;
 }
-.carousel-caption h2{
+
+.carousel-caption h1{
 	font-size:50px;
 	text-transform:uppercase;
 }
+
 </style>
 
 
@@ -45,6 +51,7 @@ padding-bottom:150px;
           <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
+        	
           </ol>
 
 
@@ -52,19 +59,29 @@ padding-bottom:150px;
             <div class="item active">
               <img src="${path }/resources/images\mainnail.png" alt="Image">
               <div class="carousel-caption">
-                <h2 class="animated bounceInRight">Today's Nail</h2>
-                <h3 class="animated bounceInLeft">여러 네일샵의 네일 스타일을 비교하여 원하는 네일샵에서 예약을 할 수 있습니다.</h3>
+                <h1 class="animated bounceInRight">Today's Nail</h1>
+                <h3 class="animated bounceInLeft">많은 네일/패디 스타일을 한 눈에 볼 수 있습니다.</h3>
+                <h3 class="animated bounceInLeft">여러 네일샵 비교 후 나만의 스타일을 찾아 예약하세요.</h3>
               </div>
             </div>
 
-            <div class="item">
-              <img src="${path }/resources/images\slide-4-1-1920x780.jpg" alt="Image">
+          <div class="item">
+              <img src="${path }/resources/images\mainnail2.png" alt="Image">
               <div class="carousel-caption">
-                <h3>More Sell $</h3>
-                <p>Lorem ipsum...</p>
+              	<div class="row" style="text-align: justify ;">
+              	<div class="col-sm-4" style="padding-left: 10px; color:black;">
+                <h1 class="heading-decorate fadeInup animated" style="text-align: left;">Today's Nail</h1>
+                <h3 class="animated bounceInLeft">네일 재료 더이상 버리지마세요</h3>
+                <h3 class="animated bounceInLeft">market을 통해 거래를 해보세요</h3>
+                </div>
+               
+                
+                </div>
               </div>
             </div>
           </div>
+          
+          
 
           <script type="text/javascript">
             $(document).ready(function() {
