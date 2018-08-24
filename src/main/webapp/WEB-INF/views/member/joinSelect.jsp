@@ -21,7 +21,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-2"></div>
-		<div class="col-sm-8">
+		<div class="col-sm-8" style="padding-left: 50px;">
 			<div class="box" style="text-align: center">
 				<a href="${path}/member/JoinUser.do">
 					<div class="icon text-center">
