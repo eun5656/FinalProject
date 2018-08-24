@@ -72,8 +72,7 @@ public class MemberController {
 			if (bcryptPasswordEncoder.matches(memberPw, m.getMemberPw())) {
 				if(count>0) {
 					msg="새로운 쪽지가 도착했습니다.";
-				}
-				else {
+				} else {
 					msg="로그인 성공";
 				}
 				model.addAttribute("memberLoggedIn", m);
@@ -189,7 +188,7 @@ public class MemberController {
 		return "member/joinShop";
 	}
 
-	// 일반회원가입완료 로직
+	// 회원가입완료 로직
 	@RequestMapping(value = "/member/memberEnrollEnd.do", method = RequestMethod.POST)
 	public String joinMemberEnd(Member m, Store s, Model model,
 			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile, HttpServletRequest request) {
@@ -263,7 +262,6 @@ public class MemberController {
 			s.setMember_pk(member.getMemberPk());
 			result = service.insertStore(s);
 		}
-
 		if (result > 0) {
 			msg = "회원가입성공!";
 			loc = "/";

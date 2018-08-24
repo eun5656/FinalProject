@@ -1,10 +1,9 @@
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var='path' value="${pageContext.request.contextPath}" />
-
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
 <link rel="stylesheet" type="text/css" href="${path }/resources/css/util.css">
 <link rel="stylesheet" type="text/css" href="${path }/resources/css/main.css">
@@ -20,7 +19,6 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp">
 	<jsp:param value="로그인" name="pageTitle" />
 </jsp:include>
-
 
 <div class="limiter">
 	<div class="container-login100">
@@ -40,13 +38,11 @@
 				<br>
 				<div class="container-login100-form-btn m-t-20">
 					<button class="login100-form-btn" type="submit">로그인</button>
-					
 				</div>
 				<div class="container-login100-form-btn m-t-20">
 					<a href="#" data-target="#idModal" data-toggle="modal">아이디찾기/</a>
 					<a href="#" data-target="#pwdModal" data-toggle="modal">비밀번호찾기</a>
 				</div>
-				
 			</form>
 		</div>
 	</div>
@@ -65,7 +61,6 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
-                          
                             <div class="panel-body">
                                	<form action="${path }/member/findId.do" method="post">
                                	 	<div class="form-group">
@@ -117,7 +112,7 @@
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          	ㅋ<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
 		  </div>	
       </div>
   </div>
@@ -130,7 +125,6 @@ display: none;
 }
 </style>
 
-
 <script src="${path }/resources/vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="${path }/resources/vendor/animsition/js/animsition.min.js"></script>
 <script src="${path }/resources/vendor/bootstrap/js/popper.js"></script>
@@ -140,5 +134,4 @@ display: none;
 <script src="${path }/resources/vendor/daterangepicker/daterangepicker.js"></script>
 <script src="${path }/resources/vendor/countdowntime/countdowntime.js"></script>
 <script src="${path }/resources/js/main.js"></script>
-
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

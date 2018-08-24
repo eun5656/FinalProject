@@ -47,7 +47,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<span><strong style="font-size: 20pt; color: rgb(71, 51, 51)">
-					<i class="fa fa-angellist"></i>이달의 추천 네일</strong><span>
+					<i class="fa fa-angellist"></i>이달의 추천 네일</strong></span>
 					<hr id="custom-hr">
 				</div>
 				<div class="col-xs-12" style="">
@@ -444,7 +444,7 @@
 								console.log(jpxhr);
 								console.log(textStatus);
 								console.log(errormsg);
-							})
+							}
 						});
 					$(".nail-style").on("click", function(event) {
 						var style = $(this).find("img").attr('src');

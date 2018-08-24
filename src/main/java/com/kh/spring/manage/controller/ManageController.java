@@ -46,10 +46,8 @@ public class ManageController {
 		List<Store> list=service.storeList(cPage,numPerPage);
 		
 		int totalCount=service.selectCount();
-
 		
 		String pageBar=new PageCreateDeal().getPageBar(cPage,numPerPage,totalCount,"manageList.do");
-		
 		
 		mv.addObject("pageBar", pageBar);
 		mv.addObject("list",list);
@@ -70,7 +68,6 @@ public class ManageController {
 		List<Menu> menus = storeService.selectMenu(store_pk);
 		List<StoreReview>reviews=reviewService.storeReviewList(store_pk);
 		
-	
 		mv.addObject("store",store);
 		mv.addObject("menus",menus);
 		mv.addObject("nails",nails);
@@ -109,7 +106,6 @@ public class ManageController {
 		int result=service.paymentUpdateCheck(payment_pk1);
 		String loc="/manager/managePayment.do";
 		String msg="결제 내역 취소 실패";
-		
 		
 		if(result>0) {
 			result=service.reserveDelete(reserve_pk1);

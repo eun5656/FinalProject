@@ -61,7 +61,6 @@
 			$('.image-preview').popover('hide');
 		});
 	});
-
 	$(function() {
 		// Create the close button
 		var closebtn = $('<button/>', {
@@ -107,11 +106,8 @@
 			reader.readAsDataURL(file);
 		});
 	});
-	
 	//이메일에 쓸거임
-	var checkEm=false;
-	
-	
+	var checkEm = false;
 </script>
 <div class="container">
 	<div class="row">
@@ -407,6 +403,7 @@
 							<input type="text" class="form-control" id="memberAddressDetail" placeholder="상세주소">
 						</div>
 					</div>
+					<!-- 이메일 추가 내용 -->
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="inputEmail">이메일</label>
 						<div class="col-sm-6">
@@ -416,11 +413,8 @@
 						<div class="col-sm-3">
 							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" value="이메일 인증" style="display: none;">
 						</div>
-						
-						
-                          
-						
 					</div>
+					<!-- 여기까지이메일 -->
 					<div class="form-group">
 						<label class="col-sm-3 control-label" for="inputimage">프로필사진</label>
 						<div class="col-sm-6">
@@ -446,9 +440,8 @@
 		</div>
 	</form>
 </div>
- <!-- Modal -->
+ 								<!-- Modal(귀한녀석..멋있다.) -->
   								<div class="modal fade" id="myModal" role="dialog">
-   								
   								</div>
 <script>
 //주소찾기 스크립트
@@ -489,105 +482,65 @@
 	}
 </script>
 
-
-
-
-
-
-
+<!-- 소중한 이메일 -->
 <script>
 	$("#JHCheck").keyup(function() {
 		$('#emailCheck').show();
 	})
-
 	$("#emailCheck").click(function() {
 		//check 변수로 이메일 인증 여부를 체크한다.(true일시 성공/false 실패)
-		
-		
 		//이메일 인풋창 입력값
 		var email=$("#JHCheck").val();
-		
 		var com=".com";
 		var cokr=".co.kr";
 		var net=".net";
-		
-		
  		if(email.length !=0) {
- 			
  			if(email.match(/([!,#,$,%,^,&,*,?,~,-])/)) {
  				$('#emailCheckText').html("유효하지 않은 이메일입니다. ('@'를 제외한 특수문자가 존재합니다.)");
 					$('#emailCheckText').css("color","red");
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
- 				
-
- 			}else if(email.includes("@")&&(email.includes(com)||email.includes(cokr)||email.includes(net))) {
- 				
+ 			} else if(email.includes("@")&&(email.includes(com)||email.includes(cokr)||email.includes(net))) {
  				$.ajax({
  	 	 			url:"${path}/member/JHcheckEmail.do",
  	 	 			data:{memberEmail:email},
  	 	 			success:function(data) {
- 	 	 				
- 	 	 			 	if(data != 'true')  {
-	 	 					$('#emailCheckText').html("해당 이메일은 이미 사용중입니다.");
+ 	 	 				if(data != 'true')  {
+ 	 	 					$('#emailCheckText').html("해당 이메일은 이미 사용중입니다.");
  	 	 					$('#emailCheckText').css("color","red");
 	 	 					$("#JHCheck").val("");
 	 	 					$("#JHCheck").focus();
-	 	 					
-	 	 				}
- 	 	 				else if(data == 'true') {
+ 	 	 				} else if(data == 'true') {
  	 	 					$('#emailCheckText').html("사용가능한 이메일입니다.");
  	 	 					$('#emailCheckText').css("color","green");
- 	 	 					
- 	 	 					
- 	 	 				 		var nowemail = $('#JHCheck').val();
+ 	 	 				 	var nowemail = $('#JHCheck').val();
  	 	 				 		/* var url="${pageContext.request.contextPath }/member/emailEnd.do?memberEmail="+nowemail;
  	 	 				 		var title="emailAuther";
  	 	 				 		var status="left=500px, top=100px, width=600px, height=200px";
  	 	 				 		var popup=window.open(url,title,status); */
- 	 	 				 	
- 	 	 				 	 
- 	                        	  $.ajax({
- 	                        		  type: "POST",
- 	                                  url:"${path}/member/emailEnd.do",
- 	                                  data: {"memberEmail":nowemail},
- 	                                  success: function (data) { 
- 	                        	  			$('#myModal').html(data);
- 	                        	  			$("#myModal").modal('show');
- 	                        	  			
- 	                                  }
- 	                        	  });
+							$.ajax({
+								type: "POST",
+								url:"${path}/member/emailEnd.do",
+ 	                            data: {"memberEmail" : nowemail},
+ 	                            success: function (data) {
+ 	                            	$('#myModal').html(data);
+ 	                        	  	$("#myModal").modal('show');
+ 	                            }
+							});
  	 	 				 		$("#JHCheck").focus();
  	 	 						console.log(checkEm);
- 	 	 					
  	 	 				}
  	 	 			}
- 	 	 		})
- 				
- 				
- 			}else{
+ 				})
+ 			} else {
  				$('#emailCheckText').html("유효하지 않은 이메일입니다. 다시 입력해주세요.");
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
- 				
- 				
  			}
- 			
- 			
- 		}else{
+ 		} else {
  			alert("이메일을 입력해주세요.");
- 		
  		}
- 		
-
  	});
-	
-	
-
-		
-		
-	
- 	
  	function emailcheck() {
  		if($('#successEmail').css("display") == 'none') {
  			alert("이메일을 인증해주세요.");
@@ -596,11 +549,6 @@
  		return true;
  	}
 </script>
-
-
-
-
-
 
 <script>
 	/* 모두 선택/해제 펑션 */
@@ -639,7 +587,6 @@
 		return false;
 		}
 	};
-	
 	//체크 박스 
 	function fn_enroll_validate() {
 		var check1_1 = $("input:checkbox[id='check1_1']").is(":checked");
@@ -668,16 +615,13 @@
 	                var num = id.search(/[0-9]/g);
 	                var eng = id.search(/[a-z]/ig);
 	                var spe = id.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-	                
 	                if(id.length!=0&&data=='true') {
 	                	if((id.search(/\s/) != -1)||(id.length < 6 || id.length > 12)||(num < 0 || eng < 0 || spe > 0)) {
 	                		$("#idCheck").html("아이디는 영문,숫자조합의 6~12자리의 조합(특수문자제외)");
 	                        $("#idCheck").css("color","red");
 	                        $("#memberId").val("");
 	                        $("#memberId").focus();
-	                    }
-	                	else
-	                	{
+	                    } else {
 	                		$("#idCheck").css("color","pink");
 	                        $("#idCheck").html("해당 아이디는 사용이 가능합니다.");
 	                    }
@@ -698,7 +642,6 @@
 	 	var num = pw.search(/[0-9]/g);
 	 	var eng = pw.search(/[a-z]/ig);
 	 	var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi); 
-
 		if(pw.length!=0&&(pw.search(/\s/) != -1)) {
 			$("#pwCheck").html("비밀번호는 공백없이 입력하세요.");
 	        $("#pwCheck").css("color","red");
