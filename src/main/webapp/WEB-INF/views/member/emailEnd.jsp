@@ -34,7 +34,7 @@
 	}
 </script>
 
-<div class="modal-dialog">
+<div class="modal-dialog modal-sm">
     
       						
      								 <div class="modal-content">
@@ -43,13 +43,20 @@
           										<h4 class="modal-title">이메일 인증</h4>
         							</div>
         							<div class="modal-body">
+        							<div class="form-group row">
           								<form method="post" name="authenform" >
-											<input type="text" name="authNum">
+          								    <div class="col-xs-8">
+											<input class="form-control" type="text" name="authNum">
+          								    </div>
+          								    <div class="col-xs-4">
 											<input type="button" class="btn btn-danger" onclick="return check();" value="인증">
+          								    </div>
 										</form>
+        							</div>
        								 </div>
        						
    										 </div> 
+   										 </div>
 
 
 

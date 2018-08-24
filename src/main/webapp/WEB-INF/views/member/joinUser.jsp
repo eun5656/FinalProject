@@ -411,11 +411,10 @@
 						<label class="col-sm-3 control-label" for="inputEmail">이메일</label>
 						<div class="col-sm-6">
 							<input id="JHCheck" type="email" class="form-control" id="memberEmail" name="memberEmail" placeholder="abc@efg.com" required>
-							<p id="emailCheckText"></p>
+							<p id="emailCheckText" class="help-block"> </p>
 						</div>
 						<div class="col-sm-3">
-							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" value="이메일 인증">
-							
+							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" value="이메일 인증" style="display: none;">
 						</div>
 						
 						
@@ -497,6 +496,10 @@
 
 
 <script>
+	$("#JHCheck").keyup(function() {
+		$('#emailCheck').show();
+	})
+
 	$("#emailCheck").click(function() {
 		//check 변수로 이메일 인증 여부를 체크한다.(true일시 성공/false 실패)
 		
@@ -513,6 +516,7 @@
  			
  			if(email.match(/([!,#,$,%,^,&,*,?,~,-])/)) {
  				$('#emailCheckText').html("유효하지 않은 이메일입니다. ('@'를 제외한 특수문자가 존재합니다.)");
+					$('#emailCheckText').css("color","red");
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
  				
@@ -526,12 +530,14 @@
  	 	 				
  	 	 			 	if(data != 'true')  {
 	 	 					$('#emailCheckText').html("해당 이메일은 이미 사용중입니다.");
+ 	 	 					$('#emailCheckText').css("color","red");
 	 	 					$("#JHCheck").val("");
 	 	 					$("#JHCheck").focus();
 	 	 					
 	 	 				}
  	 	 				else if(data == 'true') {
  	 	 					$('#emailCheckText').html("사용가능한 이메일입니다.");
+ 	 	 					$('#emailCheckText').css("color","green");
  	 	 					
  	 	 					
  	 	 				 		var nowemail = $('#JHCheck').val();
