@@ -114,6 +114,10 @@ public class MemberController {
 	@RequestMapping("/member/JHcheckEmail.do")
 	@ResponseBody
 	public void membercheckEmail(String memberEmail, HttpServletResponse response) throws Exception {
+		//0이면 중복안됨 true 아니면 중복됨 false
+		System.out.println(memberEmail);
+		int result=service.duplicateMemberEmailCheck(memberEmail);
+		System.out.println(result);
 		boolean check = service.duplicateMemberEmailCheck(memberEmail) == 0 ? true : false;
 		response.getWriter().print(check);
 		System.out.println(check +"check 확인");
