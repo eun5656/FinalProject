@@ -826,7 +826,7 @@ var store_pk ="${store.store_pk}";
 			<li class="map ">
 				<div class="icon">
 					<img src="${path }/resources/icons/map.svg" alt="">
-				</div> <span class="right"> 예약 리스트</span>
+				</div> <span class="right"> Map</span>
 			</li>
 			<li class="reserve">
 				<div class="icon">
