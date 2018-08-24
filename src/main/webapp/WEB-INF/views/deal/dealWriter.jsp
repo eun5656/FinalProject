@@ -6,19 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var='path' value="${pageContext.request.contextPath}" />
 <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
-
-
-
-<div class="container">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
-            <div class="panel">
-            
-            
-   <script type="text/javascript">
-     
-   </script>
-				<style>
+<style>
 	
 					.form-control{
 						margin-bottom:20px;
@@ -26,7 +14,17 @@
 					#submit{
 						margin-top:20px;
 					}
-				</style>
+					
+					.container{
+						margin-top:100px;
+					}
+</style>
+
+
+<div class="container">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="panel">
 
                     <div class="panel-body">
                             <div class="page-header">

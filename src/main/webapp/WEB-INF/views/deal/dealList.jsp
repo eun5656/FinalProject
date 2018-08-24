@@ -45,7 +45,7 @@
                   <input type="hidden" name="search_param" value="all" id="search_param">         
                   <input type="text" class="form-control" name="searchOption" id="searchOption" placeholder="검색" required>
                   <span class="input-group-btn">
-                      <button class="btn btn-default" type="submit" style="height:34px;" onclick="return fn_select();"><span class="glyphicon glyphicon-search"></span></button>
+                      <button class="btn btn-danger" type="submit" style="height:34px;" onclick="return fn_select();"><span class="glyphicon glyphicon-search"></span></button>
                   </span>
               </div>
          
