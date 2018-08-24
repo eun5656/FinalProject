@@ -61,7 +61,6 @@ var store_pk ="${store.store_pk}";
     	  store_close_time='23:00:00';
       }
       if(store_weekend_open==''||store_weekend_open==''){
-    	 //alert('gu');
     	 store_weekend_open='09:00:00';
     	 store_weekend_close='18:00:00';
       }
@@ -258,30 +257,6 @@ var store_pk ="${store.store_pk}";
         slotLabelInterval: 60,
         slotLabelFormat: 'a HH :mm ',
 
-   
-      
-  		 /*businessHours:  [ // specify an array instead 지워도되는지 체크
-              {
-                dow: [1, 2, 3, 4, 5], // Monday, Tuesday, Wednesday
-                start: store_weekend_open}, 
-                end: max 
-              },
-              {
-                dow: [6], //
-                start: "${store_weekend_open}",
-                end: "${store_weekend_close}" 
-              },
-              {
-                dow: [0], //
-                start: "${store_weekend_open}", 
-                end: "${store_weekend_close}" 
-              }
-            ],*/
-        
-
-
-
-
         header: {
           left: 'prev,next',
           center: 'title',
@@ -331,28 +306,11 @@ var store_pk ="${store.store_pk}";
 
       
         dayClick: function(date, jsEvent, view, resource) {
-        	
-        	
-        	console.log();
-        	console.log(jsEvent);
-        	console.log(view);
-        	console.log(resource);
-        	//resource.title
-                       
-                        console.log("message"+message);
-                        console.log("reserveCheck"+reserveCheck);
-        	
-        	
-        	
-        	
-        	
-        	
-     	   if(resource!=null){   
-           	  var checkHoliday = true;
-               	//console.log(resource.businessHours[1].dow[0])
-             	//console.log(resource.businessHours[2].dow[0])
 
-             	var mydateObj = new Date(date);
+        	if(resource!=null){   
+           	  var checkHoliday = true;
+
+           	  var mydateObj = new Date(date);
              	var chosenDay = mydateObj.getUTCDay();
 
              if (chosenDay == resource.businessHours[1].dow[0]) {
@@ -367,7 +325,6 @@ var store_pk ="${store.store_pk}";
                     console.log(checkHoliday)
                      }
                 }
-
 
                 var check = true;
                 //휴무일. 특정 휴무일 (일로 받았을떄 처리)
@@ -392,13 +349,9 @@ var store_pk ="${store.store_pk}";
                        date=null;
                      } 
                      else if (checkHoliday == false) {
-                    	 
-                    	 
-                    	 
                           alert("영업시간이 아닙니다.");
                           date=null;
                      }
-                     
                      else {
                     	console.log();
                     	 	
@@ -434,19 +387,15 @@ var store_pk ="${store.store_pk}";
                                              }
                                           });
                        	  	 }
-                         
                         	 else{
                         			 if(reserveCheck>0){
                         		 	    alert(message);
                         	 		 }
-                        			 
                         			 if(holiday==date.format('dd')){
                              	 		alert('휴무일입니다.');
                              	 	}
                         			 else{
 	                            		alert('로그인을 해주세요');
-	                                    //로그인페이지로보내기.........할까말까
-
                         			 }
                         	 }
                      }
@@ -456,14 +405,9 @@ var store_pk ="${store.store_pk}";
                   	 alert("휴무일입니다.");
                      date=null;
                 }
-                   
-        
-                   
               //x버튼 눌렀을떄 date 초기화
             $("#close-modal").on('click',function() {
              date=null;
-            //location.reload();
-           // $('.reserve').trigger('click');
             });
             $(document).keyup(function(e) {
               if(e.keyCode==27){
@@ -471,16 +415,13 @@ var store_pk ="${store.store_pk}";
               }
             });
         }
-		
-     	   
-        
         
           $("#result-reservaiton").one('click', function() {
            
              var IMP = window.IMP; // 생략가능
              IMP.init('iamport'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
           
-                var payCheck=$('#choice4 option:selected').val();
+                 var payCheck=$('#choice4 option:selected').val();
                  var title ="-${memberLoggedIn.memberName}- 님 예약완료";
                  var description ="-${memberLoggedIn.memberName}- 님 예약완료";;
                  var id = $('#reservation-id').val();
@@ -493,9 +434,13 @@ var store_pk ="${store.store_pk}";
                     choice2=$('#choice3 option:selected').val();
                  }
                  
+                 var pay_full_name;
+                 
                  //가격가져오기
                  choice2 = choice2.split(',');
                  var menu_price=choice2[1];
+                 pay_full_name=choice2[2];
+
                  console.log(menu_price);
                  choice2=choice2[0];
                		//console.log(choice2);
@@ -518,23 +463,16 @@ var store_pk ="${store.store_pk}";
                         		  merchant_uid1:'merchant_' + new Date().getTime(),
                         		  payment_price:menu_price
                         		}
-             	  
-	
              			  var jsonData = JSON.stringify(store_reserve);
              			  var jsonData2 = JSON.stringify(store_payment);
                    			   jQuery.ajaxSettings.traditional = true;
-                   			   
-                   			   
-                   			   
-                   			   
-               
                    			   
                IMP.request_pay({
                        pg : 'inicis', // version 1.1.0부터 지원.
                        pay_method : payCheck,
                        merchant_uid : store_payment.merchant_uid1,
                        name : '주문명:결제테스트',//메뉴이름
-                       amount :100,
+                       amount :100,		//가격 원래가격으로 바꿔주기
                       // amount :100,
                        buyer_email : "${memberLoggedIn.memberEmail}",
                        buyer_name : "${memberLoggedIn.memberName}",
@@ -743,7 +681,7 @@ var store_pk ="${store.store_pk}";
                                              <!--점주레벨이 아니면 disabled-->
                                              <c:forEach var="menu" items="${menuList}">
                                                 <c:if test="${menu.menu_check eq '페디'}">
-                                                <option value='${menu.menu_pk }'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
+                                                <option value='${menu.menu_pk },${menu.menu_price}'>${menu.menu_name}(${menu.menu_info})&nbsp;&nbsp;${menu.menu_price} 원</option>
                                                 </c:if>
                                              </c:forEach>
                                              

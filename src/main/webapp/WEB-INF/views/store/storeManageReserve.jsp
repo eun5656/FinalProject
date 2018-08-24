@@ -60,7 +60,6 @@ var store_pk ="${store.store_pk}";
     	  store_close_time='23:00:00';
       }
       if(store_weekend_open==''||store_weekend_open==''){
-    	 alert('gu');
     	 store_weekend_open='09:00:00';
     	 store_weekend_close='18:00:00';
       }
