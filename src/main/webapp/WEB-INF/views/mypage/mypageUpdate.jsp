@@ -83,6 +83,7 @@
 										<span class="image-preview-input-title">Browse</span>
 										<input type="file" accept="image/png, image/jpeg, image/gif" src="${path}/resources/upload/member/${memberLoggedIn.memberReImg }" name="input-file-preview" />
 										<input type="hidden"  name="memberOriImg" value="${memberLoggedIn.memberOriImg }" />
+										<input type="hidden"  name="memberReImg" value="${memberLoggedIn.memberReImg }" />
 									</div>
 								</span>
 							</div>

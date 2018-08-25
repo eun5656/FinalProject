@@ -166,6 +166,7 @@ public class MypageController {
 		// 파일 업로드
 		// 저장위치 지정
 		String renamedFileName = m.getMemberReImg();
+		System.out.println("reimge"+renamedFileName);
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
 
@@ -198,7 +199,6 @@ public class MypageController {
 			m.setMemberOriImg(originalFileName);
 			m.setMemberReImg(renamedFileName);
 		}
-
 		int result = mypageService.mypageUpdate(m);
 		
 		if (result > 0) {
