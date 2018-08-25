@@ -32,6 +32,7 @@ public class ShopController {
 	public String basicShopList(Model model){
 		List<Store> shopList =service.basicShopList();
 		List<Store> review_sum =service.shopBasicReviewCount();
+		
 		if(review_sum!=null) {
 		for (int i = 0; i < shopList.size(); i++) {
 			int count=shopList.get(i).getStore_review_count();
@@ -41,6 +42,8 @@ public class ShopController {
 			shopList.get(i).setStore_rank(avg);
 			}
 		}
+		
+		
 		for (int i = 0; i < shopList.size(); i++) {
 			System.out.println(shopList.get(i));
 		}

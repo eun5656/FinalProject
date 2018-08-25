@@ -73,10 +73,10 @@ public class NailController {
 		}
 		
 		if(nail_check.equals("네일")){	
-			nail_check="1";
+			nail_check="네일";
 		}
 		else if (nail_check.equals("페디")) {
-			nail_check="2";
+			nail_check="페디";
 
 		}
 		else {
@@ -117,8 +117,8 @@ public class NailController {
 		int k=0;
 		for (int i = 0; i < list.size(); i++) {
 			col_i.add(col1[k]);	
-			if(i%9==0){
-				k=0;
+			if(k==13){
+				k=-1;
 			}
 			k++;
 		}
@@ -157,8 +157,8 @@ public class NailController {
 		int k=0;
 		for (int i = 0; i < list.size(); i++) {
 			col_i.add(col1[k]);	
-			if(i%9==0){
-				k=0;
+			if(k==13){
+				k=-1;
 			}
 			k++;
 		}

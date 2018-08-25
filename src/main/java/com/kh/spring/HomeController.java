@@ -53,6 +53,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		List<Store> storelist =storeService.mainStoreList();	
 		List<Store> review_count =shopService.shopRankReviewCount();
+		//System.out.println("shopRankReviewCount"+review_count);
 		if(review_count!=null) {
 		for (int i = 0; i < storelist.size(); i++) {
 			int count=storelist.get(i).getStore_review_count();
@@ -69,12 +70,12 @@ public class HomeController {
 		List<Nail> naillist = nailService.nailList();
 		List<Integer> col_i = new ArrayList<Integer>();
 
-		int [] col1 = { 4,2,3,3,3,4,3,2,2,6,4,5,3,4 };
+		int [] col1 = { 4,2,3,3, 3,4,3,2, 2,6,4, 5,3,4 };
 		int k=0;
 		for (int i = 0; i < naillist.size(); i++) {
 			col_i.add(col1[k]);	
-			if(i%9==0){
-				k=0;
+			if(k==13){
+				k=-1;
 			}
 			k++;
 		}

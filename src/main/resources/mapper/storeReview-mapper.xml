@@ -24,7 +24,7 @@ SELECT REVIEW_content, A.* ,B.member_re_Img FROM REVIEW A inner join member B on
 </insert>
 
 <insert id="storeReviewReplyInsert" parameterType="storeReview">
-	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{review_level},#{review_writer},#{review_content},#{review_pk},SYSDATE,null,null,null,#{member_pk},#{store_pk})
+	INSERT INTO REVIEW VALUES(REVIEW_SEQ.NEXTVAL,#{review_level},#{review_writer},#{review_content},#{review_pk},SYSDATE,null,null,2.5,#{member_pk},#{store_pk})
 </insert>
 
 <delete id="storeReviewDelete">

@@ -138,16 +138,14 @@
             <h5 style="margin-bottom:7px;"><c:out value="${shop.store_name}"/> 샵</h5>
             <h6 class=""><c:out value="주소 : ${shop.store_address}"/></h6>
           </div>
-                 
           
           <div class="rating col-xs-6" style="text-align: right;">
-          <c:forEach begin="1" end="5" varStatus="status">
-            <c:choose>
-            <c:when test="${status.index }< ${shop.store_rank }">
-             <i class="price-text-color fa fa-star"></i></c:when>
-            <c:otherwise> <i class=" fa fa-star"></i></c:otherwise>
-            </c:choose>
-           </c:forEach>    
+          <c:forEach begin="1" end="${shop.store_rank}">
+            <i class="price-text-color fa fa-star"></i>
+            </c:forEach>
+            <c:forEach begin="1" end="${5-shop.store_rank}">
+              <i class=" fa fa-star"></i>
+           </c:forEach>       
           </div>
         </div>
     <div class="separator clear-left">

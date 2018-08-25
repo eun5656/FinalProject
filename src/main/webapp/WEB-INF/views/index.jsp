@@ -38,6 +38,15 @@ padding-bottom:140px;
 	font-size:50px;
 	text-transform:uppercase;
 }
+.more-list{
+	display: none;
+}
+#more-btn{
+	background: rgb(255, 235, 235) !important; 
+	color: rgb(164, 64, 64); 
+	margin-top: 15px; 
+	margin-bottom: 15px;
+}
 
 </style>
 
@@ -448,7 +457,7 @@ padding-bottom:140px;
 								 var html2="";
 								 
 									for (var i = 0; i < data.list.length; i++) {
-										html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+										html2 += "<div class='cover-card col-sm-"+data.col_i[i]+" more-list'>";		
 										var mark_check=false;
 										if(data.bookmarkList!=null){
 										for (var j = 0; j < data.bookmarkList.length; j++) {
@@ -517,7 +526,7 @@ padding-bottom:140px;
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+" more-list'>";		
 											var mark_check=false;
 											if(data.bookmarkList!=null){
 											for (var j = 0; j < data.bookmarkList.length; j++) {
@@ -586,7 +595,7 @@ padding-bottom:140px;
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+" more-list'>";		
 											var mark_check=false;
 											if(data.bookmarkList!=null){
 											for (var j = 0; j < data.bookmarkList.length; j++) {
@@ -641,14 +650,14 @@ padding-bottom:140px;
 							selectAry.nail_check=null;
 							selectAry.nail_style=null;
 
-							main_nail_color_img.attr("src","${path }/resources/images/nails/all-color.jpg");
+							main_nail_color_img.attr("src","${path }/resources/images/indexImg/all-color.jpg");
 							main_nail_color_button.html("전체");
-							
-							 main_nail_check_img.attr("src","${path }/resources/images/nails/nail-polish.png");
+							///spring/resources/images/indexImg/all-color.jpg
+							 main_nail_check_img.attr("src","${path }/resources/images/indexImg/nail-polish.png");
 							 main_nail_check_button.html("네일/페디");
 							
 							main_nail_style_img.removeClass("w3-circle");
-							main_nail_style_img.attr("src","${path }/resources/images/nails/plus_btn.png");
+							main_nail_style_img.attr("src","${path }/resources/images/indexImg/plus_btn.png");
 							main_nail_style_button.html("전체옵션");
 
 							
@@ -664,7 +673,7 @@ padding-bottom:140px;
 									 var html2="";
 									 
 										for (var i = 0; i < data.list.length; i++) {
-											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+"'>";		
+											html2 += "<div class='cover-card col-sm-"+data.col_i[i]+" more-list'>";		
 											var mark_check=false;
 											if(data.bookmarkList!=null){
 											for (var j = 0; j < data.bookmarkList.length; j++) {
@@ -804,13 +813,26 @@ padding-bottom:140px;
 					    	location.href="${path}/store/store.do?store_pk="+$(this).attr('value')+"&flag=true";
 					    });
 					    
+					    $(function(){
+					         $(".more-list").slice(0, 14).show(); // 최초 10개 선택
+					         $("#more-btn").click(function(e){ // Load More를 위한 클릭 이벤트e
+					         e.preventDefault();
+					         $(".more-list:hidden").slice(0, 14).show(); // 숨김 설정된 다음 10개를 선택하여 표시
+					         
+					          if($(".more-list:hidden").length == 0){ // 숨겨진 DIV가 있는지 체크
+					        	  //alert();
+					         } 
+					         
+					         });
+					      });
+					    
 				}
 					</script>
 
 
 <div id="nail-list">	
  <c:forEach  items="${nailist}" var="nail" varStatus="status">
- <div  class="cover-card col-sm-${col_i[status.index]}">
+ <div  class="cover-card col-sm-${col_i[status.index]} more-list" style="display: none">
  	<!-- 여기서 onload 됬을떄 alt값을 check해서 정해줘야한다.ㄴ --> 
  			
 					<jsp:useBean id="check_bookmark" class="java.lang.String" />
@@ -857,6 +879,9 @@ padding-bottom:140px;
 					
 
   </div>
+<div class="row" style="text-align: center;">
+	<button id='more-btn' class="btn btn-light basic-btn btn-reply btn-lg">더보기</button>
+</div>
   </div>
   </div>
   </div>
