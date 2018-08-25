@@ -226,11 +226,19 @@ public class MemberController {
 		String renamedFileName = null;
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		String saveDirStore = request.getSession().getServletContext().getRealPath("/resources/images/nail_store");
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
-
+		
+		//스토어 사진 폴더 생성
+		if (m.getMemberLevel().equals("2")) {
+			File dirStore = new File(saveDirStore);
+			if (dirStore.exists() == false)
+				System.out.println(dir.mkdirs()); // 폴더 생성	
+		}
+		
 		if (!uploadFile.isEmpty()) {
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
@@ -241,15 +249,45 @@ public class MemberController {
 			renamedFileName += "_" + rndNum + "." + ext;
 			try {
 				uploadFile.transferTo(new File(saveDir + File.separator + renamedFileName));
+	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
+	
+			
 			// DB에 저장할 첨부파일에 대한 정보
 			m.setMemberOriImg(originalFileName);
 			System.out.println(originalFileName);
 			m.setMemberReImg(renamedFileName);
+
+			/*if (m.getMemberLevel().equals("2")) {
+				MultipartFile uploadFile2=uploadFile;
+				originalFileName = uploadFile2.getOriginalFilename();
+				// 확장자 구하기
+				ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+				sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSS");
+				rndNum = (int) (Math.random() * 1000);
+				renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
+				renamedFileName += "_" + rndNum + "." + ext;
+				try {
+				uploadFile2.transferTo(new File(saveDirStore + File.separator + renamedFileName));
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+		
+				
+				s.setStore_ori_img(originalFileName);
+				s.setStore_re_img(renamedFileName);
+				
+			}
+			
+			*/
+	
+		
 		}
+
+		
 
 		int result = 0;
 		System.out.println("store DB야 나와라 :" + s);
@@ -257,6 +295,7 @@ public class MemberController {
 		if (m.getMemberLevel().equals("3")) {
 			result = service.insertMember(m);
 		} else {
+			
 			result = service.insertMember(m);
 			Member member = service.loginCheck(m.getMemberId());
 			s.setMember_pk(member.getMemberPk());

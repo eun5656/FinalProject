@@ -128,6 +128,9 @@
 			reader.readAsDataURL(file);
 		});
 	});
+	
+	//이메일에 쓸거임
+	var checkEm = false;
 </script>
 <div class="container">
 	<div class="row" style="padding-top : 50px;">
@@ -434,7 +437,7 @@
 							<p id="emailCheckText"></p>
 						</div>
 						<div class="col-sm-3">
-							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" onclick="emailRequest();" value="이메일 인증">
+							<input type="button" class="btn btn-warning" id="emailCheck" name="emailCheck" value="이메일 인증" style="display: none;">
 						</div>
 					</div>
 					<br>
@@ -493,7 +496,7 @@
 									<div class="btn btn-default image-preview-input">
 										<span class="glyphicon glyphicon-folder-open"></span>
 										<span class="image-preview-input-title">Browse</span>
-										<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview" required/>
+										<input type="file" accept="image/png, image/jpeg, image/gif" name="input-file-preview"/>
 									</div>
 								</span>
 							</div>
@@ -506,6 +509,10 @@
 		</div>
 	</form>
 </div>
+
+								<!-- Modal(귀한녀석..멋있다.) -->
+  								<div class="modal fade" id="myModal" role="dialog">
+  								</div>	
 <script>
 //주소찾기 스크립트
 	function Postcode() {
@@ -546,52 +553,72 @@
 	    }).open();
 	}
 </script>
+
+
+
+
+
+
+<!-- 소중한 이메일 -->
 <script>
-	$("#JHCheck").blur(function() {
+	$("#JHCheck").keyup(function() {
+		$('#emailCheck').show();
+	})
+	$("#emailCheck").click(function() {
+		//check 변수로 이메일 인증 여부를 체크한다.(true일시 성공/false 실패)
+		//이메일 인풋창 입력값
 		var email=$("#JHCheck").val();
- 		if(email.length!=0) {
- 			if(email.match(/([@])/)) {
- 				if($('#successEmail').css("display")=="none") {
- 					$("#emailAuther").css("display","block");
- 				} else {
- 					$("#emailAuther").css("display","none");
- 				}
- 			}
- 			else if(email.match(/([!,#,$,%,^,&,*,?,~,-])/)) {
- 				alert("온전하지 못한 이메일입니다. ('@'를 제외한 특수문자가 존재합니다.)");
+		var com=".com";
+		var cokr=".co.kr";
+		var net=".net";
+ 		if(email.length !=0) {
+ 			if(email.match(/([!,#,$,%,^,&,*,?,~,-])/)) {
+ 				$('#emailCheckText').html("유효하지 않은 이메일입니다. ('@'를 제외한 특수문자가 존재합니다.)");
+					$('#emailCheckText').css("color","red");
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
- 				return false;
+ 			} else if(email.includes("@")&&(email.includes(com)||email.includes(cokr)||email.includes(net))) {
+ 				$.ajax({
+ 	 	 			url:"${path}/member/JHcheckEmail.do",
+ 	 	 			data:{memberEmail:email},
+ 	 	 			success:function(data) {
+ 	 	 				if(data != 'true')  {
+ 	 	 					$('#emailCheckText').html("해당 이메일은 이미 사용중입니다.");
+ 	 	 					$('#emailCheckText').css("color","red");
+	 	 					$("#JHCheck").val("");
+	 	 					$("#JHCheck").focus();
+ 	 	 				} else if(data == 'true') {
+ 	 	 					$('#emailCheckText').html("사용가능한 이메일입니다.");
+ 	 	 					$('#emailCheckText').css("color","green");
+ 	 	 				 	var nowemail = $('#JHCheck').val();
+ 	 	 				 		/* var url="${pageContext.request.contextPath }/member/emailEnd.do?memberEmail="+nowemail;
+ 	 	 				 		var title="emailAuther";
+ 	 	 				 		var status="left=500px, top=100px, width=600px, height=200px";
+ 	 	 				 		var popup=window.open(url,title,status); */
+							$.ajax({
+								type: "POST",
+								url:"${path}/member/emailEnd.do",
+ 	                            data: {"memberEmail" : nowemail},
+ 	                            success: function (data) {
+ 	                            	$('#myModal').html(data);
+ 	                        	  	$("#myModal").modal('show');
+ 	                            }
+							});
+ 	 	 				 		$("#JHCheck").focus();
+ 	 	 						console.log(checkEm);
+ 	 	 				}
+ 	 	 			}
+ 				})
  			} else {
- 				alert("온전하지 못한 이메일입니다. 다시 한 번 입력해주세요.");
+ 				$('#emailCheckText').html("유효하지 않은 이메일입니다. 다시 입력해주세요.");
  				$("#JHCheck").val("");
  				$("#JHCheck").focus();
  			}
+ 		} else {
+ 			alert("이메일을 입력해주세요.");
  		}
- 		return true;
- 		$.ajax({
- 			url:"${path}/member/JHcheckEmail.do",
- 			data:{memberEmail:$('#memberEmail').val()},
- 			success:function(data) {
- 				if(data == 'true') {
- 					alert("사용가능한 이메일입니다.");
- 				} else {
- 					alert("이메일이 중복되었습니다. 다른 이메일을 입력해주세요.");
- 					$("#JHCheck").val("");
- 					$("#JHCheck").focus();
- 				}
- 			}
- 		})
  	});
- 	function emailRequest() {
- 		var nowemail = $('#JHCheck').val();
- 		var url="${pageContext.request.contextPath }/member/emailEnd.do?memberEmail="+nowemail;
- 		var title="emailAuther";
- 		var status="left=500px, top=100px, width=600px, height=200px";
- 		var popup=window.open(url,title,status);
- 	}
  	function emailcheck() {
- 		
  		if($('#successEmail').css("display") == 'none') {
  			alert("이메일을 인증해주세요.");
  			return false;
@@ -599,6 +626,9 @@
  		return true;
  	}
 </script>
+
+
+
 <script>
 //주소찾기 스크립트(샵원장)
 	function Postcode1() {
@@ -637,6 +667,10 @@
 	    }).open();
 	}
 </script>
+
+
+
+
 <script>
 	/* 모두 선택/해제 펑션 */
 	function check_all() {
