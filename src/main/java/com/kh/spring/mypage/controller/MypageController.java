@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -164,20 +166,23 @@ public class MypageController {
 		// 파일 업로드
 		// 저장위치 지정
 		String renamedFileName = m.getMemberReImg();
+		System.out.println("reimge"+renamedFileName);
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		String oriRenameFile = mypageService.findImg(memberOriImg);
-		
-		if(oriRenameFile != null) {
-	        File deleteFile=new File(saveDir+"/"+oriRenameFile);
-	        flag=deleteFile.delete();
-	      }
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
 
 		if (!uploadFile.isEmpty()) {
+			
+			/*기존파일 삭제로직~*/
+			Map map=new HashMap();
+			map.put("memberPk", m.getMemberPk());
+			map.put("memberOriImg", memberOriImg);
+			flag=new File(saveDir+"/"+ mypageService.findReimg(map)).delete();
+			
+			/*새로운파일등록*/
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
 			String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
@@ -194,7 +199,6 @@ public class MypageController {
 			m.setMemberOriImg(originalFileName);
 			m.setMemberReImg(renamedFileName);
 		}
-
 		int result = mypageService.mypageUpdate(m);
 		
 		if (result > 0) {
