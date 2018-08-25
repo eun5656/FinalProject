@@ -1,6 +1,7 @@
 package com.kh.spring.mypage.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
@@ -40,6 +41,6 @@ public interface MypageDAO {
 	
 	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk);
 
-	String findImg(SqlSessionTemplate sqlSession, String memberOriImg);
+	String findReimg(SqlSessionTemplate sqlSession, Map map);
 	
 }

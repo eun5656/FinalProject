@@ -51,7 +51,7 @@
 	
 	<update id="mypageUpdate" parameterType="member">
 		update member set member_phone = #{memberPhone}, member_email = #{memberEmail}, member_address = #{memberAddress}, 
-		member_re_img = #{memberReImg} where member_pk = #{memberPk}
+		member_ori_img=#{memberOriImg}, member_re_img = #{memberReImg} where member_pk = #{memberPk}
 	</update>
 
 	<update id="updatePw" parameterType="string">
@@ -67,7 +67,10 @@
 	</select>
 	
 	<select id="findImg" parameterType="member" resultType="string">
-		select member_ori_img from member where member_ori_img = #{memberOriImg}
+		select member_re_img from member where member_ori_img = #{memberOriImg}
+	</select>
+	<select id="findReimg" resultType="string">
+		select member_re_img from member where member_ori_img = #{memberOriImg} and member_pk=#{memberPk}
 	</select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.kh.spring.mypage.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,8 +100,9 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public String findImg(String memberOriImg) {
-		return mypageDAO.findImg(sqlSession, memberOriImg);
+	public String findReimg(Map map) {
+		// TODO Auto-generated method stub
+		return mypageDAO.findReimg(sqlSession, map);
 	}
 
 }

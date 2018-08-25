@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -166,18 +168,20 @@ public class MypageController {
 		String renamedFileName = m.getMemberReImg();
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
-		String oriRenameFile = mypageService.findImg(memberOriImg);
-		
-		if(oriRenameFile != null) {
-	        File deleteFile=new File(saveDir+"/"+oriRenameFile);
-	        flag=deleteFile.delete();
-	      }
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
 
 		if (!uploadFile.isEmpty()) {
+			
+			/*기존파일 삭제로직~*/
+			Map map=new HashMap();
+			map.put("memberPk", m.getMemberPk());
+			map.put("memberOriImg", memberOriImg);
+			flag=new File(saveDir+"/"+ mypageService.findReimg(map)).delete();
+			
+			/*새로운파일등록*/
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
 			String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
