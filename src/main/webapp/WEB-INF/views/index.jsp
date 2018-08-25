@@ -51,7 +51,7 @@ padding-bottom:140px;
 </style>
 
 
-<div class="container-fluid" style="padding-top: 10px;">
+<div class="container-fluid" style="padding-top: 20px;">
 
     <div class="row">
       <div class="col-xs-12">
