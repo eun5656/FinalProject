@@ -30,7 +30,7 @@
           
               <div class="row">
               <c:forEach  var='m' items='${list}' varStatus="vs">
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                   <div class="box">
                   <div class="imgbox">
                       <img src="${path}/resources/images/nails/${m.nail_re_img}" class="img-responsive">
@@ -70,8 +70,8 @@ section
 .box
 {
     position: relative;
-    width: 100%;
-    height: 200px;
+    width: 80%;
+    height: 180px;
     overflow: hidden;
     border-radius: 10px;
     background: #000;
