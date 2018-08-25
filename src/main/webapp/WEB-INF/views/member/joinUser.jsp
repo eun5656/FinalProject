@@ -110,7 +110,7 @@
 	var checkEm = false;
 </script>
 <div class="container">
-	<div class="row">
+	<div class="row" style="padding-top : 10px;">
 		<h1>
 			회원가입<small>사용자</small>
 		</h1>
