@@ -27,8 +27,8 @@
 					</div>
 				</a>
 				<div class="content">
-					<h3>사용자</h3>
-					<p>사용자 회원가입 페이지로 이동합니다.</p>
+					<h3>일반회원</h3>
+					<p>일반회원 회원가입 페이지로 이동합니다.</p>
 				</div>
 			</div>
 			<div class="box" style="text-align: center">
@@ -38,8 +38,8 @@
 					</div>
 				</a>
 				<div class="content">
-					<h3>점주</h3>
-					<p>점주 회원가입 페이지로 이동합니다.</p>
+					<h3>샵원장</h3>
+					<p>샵원장 회원가입 페이지로 이동합니다.</p>
 				</div>
 			</div>
 		</div>

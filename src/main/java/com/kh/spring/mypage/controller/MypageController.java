@@ -184,6 +184,7 @@ public class MypageController {
 			
 			/*새로운파일등록*/
 			originalFileName = uploadFile.getOriginalFilename();
+			
 			// 확장자 구하기
 			String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSS");

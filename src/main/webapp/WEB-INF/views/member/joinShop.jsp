@@ -130,9 +130,9 @@
 	});
 </script>
 <div class="container">
-	<div class="row">
+	<div class="row" style="padding-top : 50px;">
 		<h1>
-			회원가입<small>점주</small>
+			회원가입<small>샵원장</small>
 		</h1>
 	</div>
 	<hr>
