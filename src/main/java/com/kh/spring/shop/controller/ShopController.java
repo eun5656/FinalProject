@@ -41,7 +41,9 @@ public class ShopController {
 			shopList.get(i).setStore_rank(avg);
 			}
 		}
-		
+		for (int i = 0; i < shopList.size(); i++) {
+			System.out.println(shopList.get(i));
+		}
 		
 		model.addAttribute("shopList", shopList);
 		String view="shop/shop";

@@ -16,8 +16,6 @@ public class Store implements Serializable {
 	private String store_address;
 	private String store_phone;
 	private String store_holiday;
-	private String store_latitude;
-	private String store_longitude;
 	private String store_designer;
 	private int store_rank;
 	private String store_ori_img;
@@ -50,7 +48,7 @@ public class Store implements Serializable {
 
 
 	public Store(int store_pk, int member_pk, String store_num, String store_name, String store_address,
-			String store_phone, String store_holiday, String store_latitude, String store_longitude,
+			String store_phone, String store_holiday,
 			String store_designer, int store_rank, String store_ori_img, String store_re_img, int store_review_count,
 			String store_info, String store_kakao, String store_instagram) {
 		super();
@@ -61,8 +59,6 @@ public class Store implements Serializable {
 		this.store_address = store_address;
 		this.store_phone = store_phone;
 		this.store_holiday = store_holiday;
-		this.store_latitude = store_latitude;
-		this.store_longitude = store_longitude;
 		this.store_designer = store_designer;
 		this.store_rank = store_rank;
 		this.store_ori_img = store_ori_img;
@@ -110,7 +106,7 @@ public class Store implements Serializable {
 
 
 	public Store(int store_pk, int member_pk, String store_num, String store_name, String store_address,
-			String store_phone, String store_holiday, String store_latitude, String store_longitude,
+			String store_phone, String store_holiday,
 			String store_designer, int store_rank, String store_ori_img, String store_re_img, int store_review_count) {
 		super();
 		this.store_pk = store_pk;
@@ -120,8 +116,6 @@ public class Store implements Serializable {
 		this.store_address = store_address;
 		this.store_phone = store_phone;
 		this.store_holiday = store_holiday;
-		this.store_latitude = store_latitude;
-		this.store_longitude = store_longitude;
 		this.store_designer = store_designer;
 		this.store_rank = store_rank;
 		this.store_ori_img = store_ori_img;
@@ -200,26 +194,6 @@ public class Store implements Serializable {
 	}
 
 
-	public String getStore_latitude() {
-		return store_latitude;
-	}
-
-
-	public void setStore_latitude(String store_latitude) {
-		this.store_latitude = store_latitude;
-	}
-
-
-	public String getStore_longitude() {
-		return store_longitude;
-	}
-
-
-	public void setStore_longitude(String store_longitude) {
-		this.store_longitude = store_longitude;
-	}
-
-
 	public String getStore_designer() {
 		return store_designer;
 	}
@@ -274,7 +248,7 @@ public class Store implements Serializable {
 	public String toString() {
 		return "Store [store_pk=" + store_pk + ", member_pk=" + member_pk + ", store_num=" + store_num + ", store_name="
 				+ store_name + ", store_address=" + store_address + ", store_phone=" + store_phone + ", store_holiday="
-				+ store_holiday + ", store_latitude=" + store_latitude + ", store_longitude=" + store_longitude
+				+ store_holiday
 				+ ", store_designer=" + store_designer + ", store_rank=" + store_rank + ", store_ori_img="
 				+ store_ori_img + ", store_re_img=" + store_re_img + ", store_review_count=" + store_review_count
 				+ ", store_info=" + store_info + ", store_kakao=" + store_kakao + ", store_instagram=" + store_instagram

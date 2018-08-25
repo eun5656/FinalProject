@@ -141,11 +141,12 @@
                  
           
           <div class="rating col-xs-6" style="text-align: right;">
-          <c:forEach begin="1" end="${shop.store_rank}">
-            <i class="price-text-color fa fa-star"></i>
-            </c:forEach>
-            <c:forEach begin="1" end="${5-shop.store_rank}">
-              <i class=" fa fa-star"></i>
+          <c:forEach begin="1" end="5" varStatus="status">
+            <c:choose>
+            <c:when test="${status.index }< ${shop.store_rank }">
+             <i class="price-text-color fa fa-star"></i></c:when>
+            <c:otherwise> <i class=" fa fa-star"></i></c:otherwise>
+            </c:choose>
            </c:forEach>    
           </div>
         </div>

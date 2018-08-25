@@ -66,7 +66,7 @@ var holiday="${store.store_holiday}"
 							<!-- /input-group image-preview [TO HERE]-->
 
 							<img class="img-responsive radius14"
-								src="${path }/resources/images/${store.store_re_img }" alt="">
+								src="${path }/resources/images/nail_store/${store.store_re_img }" alt="">
 						</div>
 					</div>
 					<!--가게 이미지 끝-->
