@@ -787,7 +787,7 @@ var holiday="${store.store_holiday}"
               	
              
          
-             	<ul class="media comment-box level2 comment-reply">
+             	<ul class="media comment-box level2 comment-reply" style="display: none;">
              	<li></li>
              	<c:if test="${review.review_level==2}"></c:if>
 					<c:forEach var="review2" items="${reviews }" varStatus="status1" >
