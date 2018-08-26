@@ -953,9 +953,8 @@ $(".b_icon").click(function() {
 			console.log(textStatus);
 			console.log(errormsg);
 		}
-	});	
+	})	
 	}	
-	}
 	else{
 		alert("로그인해주세요");
 	}
