@@ -63,21 +63,10 @@
                           </div>
                     </div>
                      <div class="form-group">
-                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right" onclick="return content_check()">작성 완료</button>
+                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right">작성 완료</button>
                      </div>
                   </form>
-						<script>
-					faqContent=$('#summernote').val();
-					function content_check(){
-						if(faqContent.length==0){
-							alert("내용을 입력해주세요.");
-							return false;
-						}
-						return true;
-					}
-					 
-					 </script>
-				
+					
 
 
                       <script>
