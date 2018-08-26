@@ -16,33 +16,48 @@
 
 		if (!form.authNum.value) {
 			alert("인증번호를 입력하세요.");
-			return false;
+		
 		}
 		if (form.authNum.value != eMailNum) {
 			alert("틀린 인증번호입니다. 인증번호를 다시입력해주세요.");
 			form.authnum.value = "";
-			return false;
+			
 		}
 		if (form.authNum.value == eMailNum) {
 			alert("인증완료");
-			self.close();
-			$("#successEmail", opener.document).css("display", "block");
-			$("#emailAuther", opener.document).css("display", 'none');
-			$('#JHCheck', opener.document).attr("readonly", true);
-
+			checkEm=true;
+			
+			console.log("과연"+checkEm);
+			$("#myModal").modal('hide');
+			
 		}
 	}
 </script>
-<body>
-	<center>
-		<br /><br />
-		<h5>인증 번호 4자리를 입력하세요</h5>
-		<div class="container">
-			<form method="post" name="authenform" onsubmit="return check();">
-				<input type="text" name="authNum"><br /><br />
-				<input type="submit" class="btn btn-default" value="확인">
-			</form>
-		</div>
-	</center>
-</body>
+
+<div class="modal-dialog modal-sm">
+    
+      						
+     								 <div class="modal-content">
+       									 <div class="modal-header">
+        									  <button type="button" class="close" data-dismiss="modal">&times;</button>
+          										<h4 class="modal-title">이메일 인증</h4>
+        							</div>
+        							<div class="modal-body">
+        							<div class="form-group row">
+          								<form method="post" name="authenform" >
+          								    <div class="col-xs-8">
+											<input class="form-control" type="text" name="authNum">
+          								    </div>
+          								    <div class="col-xs-4">
+											<input type="button" class="btn btn-danger" onclick="return check();" value="인증">
+          								    </div>
+										</form>
+        							</div>
+       								 </div>
+       						
+   										 </div> 
+   										 </div>
+
+
+
 </html>

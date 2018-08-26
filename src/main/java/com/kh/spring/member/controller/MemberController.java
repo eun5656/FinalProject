@@ -3,6 +3,7 @@ package com.kh.spring.member.controller;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -106,6 +107,7 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
+	
 
 	// 아이디 중복체크
 	@RequestMapping("/member/checkIdDuplicate.do")
@@ -195,7 +197,8 @@ public class MemberController {
 		return "member/joinShop";
 	}
 
-	// 일반회원가입완료 로직
+	
+	//회원가입로직
 	@RequestMapping(value = "/member/memberEnrollEnd.do", method = RequestMethod.POST)
 	public String joinMemberEnd(Member m, Store s, Model model,
 			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile, HttpServletRequest request) {
@@ -233,11 +236,20 @@ public class MemberController {
 		String renamedFileName = null;
 		String originalFileName = null;
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+		String saveDirStore = request.getSession().getServletContext().getRealPath("/resources/images/nail_store");
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
-
+		
+		//스토어 사진 폴더 생성
+		if (m.getMemberLevel().equals("2")) {
+			File dirStore = new File(saveDirStore);
+			if (dirStore.exists() == false)
+				System.out.println(dir.mkdirs()); // 폴더 생성	
+		}
+		
+		File f=null;
 		if (!uploadFile.isEmpty()) {
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
@@ -247,16 +259,38 @@ public class MemberController {
 			renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
 			renamedFileName += "_" + rndNum + "." + ext;
 			try {
-				uploadFile.transferTo(new File(saveDir + File.separator + renamedFileName));
+				f=new File(saveDir + File.separator + renamedFileName);
+				uploadFile.transferTo(f);
+	
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
+	
+			
 			// DB에 저장할 첨부파일에 대한 정보
 			m.setMemberOriImg(originalFileName);
 			System.out.println(originalFileName);
 			m.setMemberReImg(renamedFileName);
+			
+			if (m.getMemberLevel().equals("2")) {
+				try {
+					Files.copy(f.toPath(), new File(saveDirStore + File.separator + renamedFileName).toPath());
+					System.out.println("파일복사성공");
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+				}
+			
+				
+				
+				s.setStore_ori_img(originalFileName);
+				s.setStore_re_img(renamedFileName);
+			}
+	
+		
 		}
+
+		
 
 		int result = 0;
 		System.out.println("store DB야 나와라 :" + s);
@@ -264,12 +298,12 @@ public class MemberController {
 		if (m.getMemberLevel().equals("3")) {
 			result = service.insertMember(m);
 		} else {
+			
 			result = service.insertMember(m);
 			Member member = service.loginCheck(m.getMemberId());
 			s.setMember_pk(member.getMemberPk());
 			result = service.insertStore(s);
 		}
-
 		if (result > 0) {
 			msg = "회원가입성공!";
 			loc = "/";

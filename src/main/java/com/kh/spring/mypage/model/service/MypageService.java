@@ -1,6 +1,7 @@
 package com.kh.spring.mypage.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -42,5 +43,6 @@ public interface MypageService {
 	
 	List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/);
 	
+	String findReimg(Map map);
 	//int bookmarkCount(int member_pk);
 }
