@@ -59,14 +59,24 @@
                     <div class="form-group">
                      <label class="col-sm-2 control-label" for="summernote">내용</label>
                      <div class="col-sm-10">
-                         <textarea class="form-control" id="summernote" name="content" placeholder="content" maxlength="140" rows="7">${deal.deal_content }</textarea>
+                         <textarea class="form-control" id="summernote" name="content" placeholder="content" maxlength="140" rows="7" required>${deal.deal_content }</textarea>
                           </div>
                     </div>
                      <div class="form-group">
-                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right">작성 완료</button>
+                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right" onclick="return content_check()">작성 완료</button>
                      </div>
                   </form>
-					
+					 <script>
+					dealContent=$('#summernote').val();
+					function content_check(){
+						if(dealContent.length==0){
+							alert("내용을 입력해주세요.");
+							return false;
+						}
+						return true;
+					}
+					 
+					 </script>
 
 
                       <script>
@@ -77,18 +87,15 @@
                                 
                                 toolbar: [
                                     // [groupName, [list of button]]
-                                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                                    ['fontsize', ['fontsize']],
-                                    ['color', ['color']],
-                                    ['para', ['ul', 'ol', 'paragraph']],
-                                    ['height', ['height']],
-                                  	['picture',['picture']],
-                                  	['table', ['table']],
-                                  	['hr', ['hr']],
-                                  	['fullscreen',['fullscreen']],
-                                  	['help',['help']]
-                                    ],
+                                	   ['style', ['bold', 'italic', 'underline', 'clear']],
+                                       ['font', ['strikethrough', 'superscript', 'subscript']],
+                                       ['para', ['ul', 'ol']],
+                                       ['picture',['picture']],
+                                     	['hr', ['hr']],
+                                     	['fullscreen',['fullscreen']],
+                                     	['help',['help']]
+                                       ],
+                                	
                                 	
                                 tabsize: 2,
                                 height: 300,
@@ -122,7 +129,7 @@
                                success : function(filename) { // 처리가 성공할 경우
                                  
                                 //확인용   
-                               alert(filename);
+                              /*  alert(filename); */
                                   $(el).summernote('editor.insertImage',"${path}/resources/images/test/"+filename);
                                  
                                   

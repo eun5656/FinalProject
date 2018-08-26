@@ -36,9 +36,7 @@
                   <div class="input-group-btn search-panel">
                      	<select name="selectOption" title="" class="btn btn-default" style="width:90px;height:34px;">
 					<option selected="" value="1">제목</option>
-					<option value="2">내용</option>
 					<option value="3">작성자</option>
-					<option value="4">제목+내용</option>
 				
 				</select>
                   </div>
