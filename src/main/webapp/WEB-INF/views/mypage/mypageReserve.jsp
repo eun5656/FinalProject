@@ -44,9 +44,9 @@
                       <tr>
                           <td class="col-sm-3 col-md-3">
                           <div class="media">
-                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
+                              <a class="thumbnail pull-left" href="${path }/store/store.do?store_pk=${m.store_pk}"> <img class="media-object" src="${path}/resources/images/nail_store/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
-                                  <h4 class="media-heading"><a href="#">${m.store_name}</a></h4>
+                                  <h4 class="media-heading"><a href="${path }/store/store.do?store_pk=${m.store_pk}">${m.store_name}</a></h4>
                               </div>
                           </div>
                           </td>

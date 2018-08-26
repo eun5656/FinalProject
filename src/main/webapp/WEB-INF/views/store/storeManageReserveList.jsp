@@ -51,7 +51,7 @@ var store_pk="${store.store_pk}"
                       <tr>
                           <td class="col-sm-6 col-md-6">
                           <div class="media">
-                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
+                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/nail_store/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
                                   <h4 class="media-heading"><a href="#">${m.store_name}</a></h4>
                               </div>
