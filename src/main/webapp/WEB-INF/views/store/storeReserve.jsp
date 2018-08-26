@@ -94,7 +94,6 @@ var store_pk ="${store.store_pk}";
         }
       ];
    	 var  businessHours2= [ // specify an array instead
-   		    //12345 따로해서 입력하게하자...
    		    {
                 dow: [0],
                 start: store_weekend_open,  
@@ -610,7 +609,7 @@ var store_pk ="${store.store_pk}";
    
    <div id="left-side">
       <div id="third" class="active">
-        <div class="row" style="margin-top: 100px;">
+        <div class="row">
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
             <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
       </div>  
