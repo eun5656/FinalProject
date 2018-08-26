@@ -141,7 +141,7 @@ public class StoreReviewController {
 			flag=true;
 		}
 		String msg="삭제실패";	
-		if(result>0&&flag){
+		if(result>0||flag){
 			msg="삭제성공";
 		}
 		
