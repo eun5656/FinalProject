@@ -1,8 +1,13 @@
 package com.kh.spring.member.controller;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -239,6 +244,7 @@ public class MemberController {
 				System.out.println(dir.mkdirs()); // 폴더 생성	
 		}
 		
+		File f=null;
 		if (!uploadFile.isEmpty()) {
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
@@ -248,7 +254,8 @@ public class MemberController {
 			renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
 			renamedFileName += "_" + rndNum + "." + ext;
 			try {
-				uploadFile.transferTo(new File(saveDir + File.separator + renamedFileName));
+				f=new File(saveDir + File.separator + renamedFileName);
+				uploadFile.transferTo(f);
 	
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -259,30 +266,21 @@ public class MemberController {
 			m.setMemberOriImg(originalFileName);
 			System.out.println(originalFileName);
 			m.setMemberReImg(renamedFileName);
-
-			/*if (m.getMemberLevel().equals("2")) {
-				MultipartFile uploadFile2=uploadFile;
-				originalFileName = uploadFile2.getOriginalFilename();
-				// 확장자 구하기
-				ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-				sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSS");
-				rndNum = (int) (Math.random() * 1000);
-				renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
-				renamedFileName += "_" + rndNum + "." + ext;
+			
+			if (m.getMemberLevel().equals("2")) {
 				try {
-				uploadFile2.transferTo(new File(saveDirStore + File.separator + renamedFileName));
-
+					Files.copy(f.toPath(), new File(saveDirStore + File.separator + renamedFileName).toPath());
+					System.out.println("파일복사성공");
 				} catch (IOException e) {
+					
 					e.printStackTrace();
 				}
-		
+			
+				
 				
 				s.setStore_ori_img(originalFileName);
 				s.setStore_re_img(renamedFileName);
-				
 			}
-			
-			*/
 	
 		
 		}
