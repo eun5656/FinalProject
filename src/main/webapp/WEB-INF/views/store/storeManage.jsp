@@ -12,7 +12,7 @@
 </jsp:include>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!-- storeManage css -->
-<link href="${path }/resources/css/storeManage.css?ver=7"
+<link href="${path }/resources/css/storeManage.css?ver=8"
 	rel="stylesheet" />
 <link href="${path }/resources/css/review.css" rel="stylesheet" />
 <script type="text/javascript">
@@ -27,7 +27,7 @@ var holiday="${store.store_holiday}"
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=37"></script>
+<script src="${path }/resources/js/storeManage.js?ver=38"></script>
 
 <div>
 	<div id="wrapper" class="wrappercheck">
@@ -1006,7 +1006,7 @@ var holiday="${store.store_holiday}"
 										<button onclick="designerInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
 									</div>
 <!-- 									4번째 탭 끝 -->
-<div class="tab-pane active" id="tab_default_5">
+								<div class="tab-pane active" id="tab_default_5">
 									<div style="width: 80%;">
 										<h3 style="margin-left: 30px;">휴일 설정</h3>
 										<hr style="margin-left: 30px;">
@@ -1027,9 +1027,7 @@ var holiday="${store.store_holiday}"
 										<br> <br>
 										<div class="holidayInsertForm" style=""></div>
 										<button onclick="holidayInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
-
 									</div>
-
 								</div>
 <!-- 								5번째 tab 끝 -->
 							</div>

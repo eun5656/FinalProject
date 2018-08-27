@@ -36,18 +36,12 @@ ul > li {
 
 #wrapper {
 	width: 100%;
-/* 	height: auto; */
-/* 	position: relative; */
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
 	margin: auto;
 	background-color: #fff;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
+	display:  grid;
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
@@ -70,6 +64,8 @@ ul > li {
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
 	justify-content: center;
+	position: absolute;
+	right:0px;
 	float: right;
 
 }
@@ -168,14 +164,13 @@ ul > li {
 
 #left-side {
  	padding: 20px; 
- 	
 	padding-top: 0px;
 /* 	padding-right: 10px; */
-	height: auto%;
-	width: 100%;
+	height: 100%;
+	width: 80%;
 	overflow:auto;
 	overflow-x: hidden;
-	position: static;
+	position: relative;
 }
 
 #left-side #first, #left-side #second, #left-side #third, #left-side #fourth,
