@@ -143,14 +143,14 @@ public class MemberController {
 
 		Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("ppj1017@gmail.com", "ahfmrqhd1!a");
+				return new PasswordAuthentication(user, password);
 			}
 		});
 		int ra = 0;
 
 		try {
 			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+			message.setFrom(new InternetAddress(user, MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
 			// 수신자메일주소
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 			// Subject
