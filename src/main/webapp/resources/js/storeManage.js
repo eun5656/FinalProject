@@ -178,11 +178,12 @@ $(".menuUpdate").click(function(){
 				alert(error);
 			}
 		});
+	});
 		$(".holidayDelete").click(function(){
 			var holidayOld = this.value;
 				$.ajax({
 					url: path+"/store/storeManage/holidayDelete.do",
-					data:{'holiday':holidayOld},
+					data:{'holiday':holidayOld,'store_pk':store_pk},
 					success:function(data){
 						alert("휴일 삭제 완료"+data);
 						location.href=path+"/store/storeManage.do"
@@ -204,7 +205,6 @@ $(".menuUpdate").click(function(){
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
 				dataType: "text",
 				success : function(json){
-					alert(json);
 					location.href=path+"/store/storeManage.do"
 				},
 				error : function(xhr, status, error){
@@ -288,48 +288,54 @@ $(".menuUpdate").click(function(){
 
 //메뉴 추가
 
-function menuInsertForm(){
-	 var li = $('<div></div>'); 
-	 var html='';
-		html+='<form name ="menuInsert" method="post" action="';
-		html+=path;	
-		html+='/store/storeManage/menuInsert.do">';
-		html+='<label for ="menu_name">제목 입력 : ';
-		html+='<input type="text" placeholder="메뉴 제목 입력" id="menu_name" name="menu_name" class="form-control"/></label>';
-		html+='<label for="menu_info">정보 입력: <input type="text" placeholder="정보 입력" id="menu_info" "name="menu_info" class="form-control"/></label>';
-		html+='<label name="menu_price">가격 입력: <input type="number" placeholder="가격 입력" id="menu_price" name="menu_price" class="form-control"/></label>';
-		html+='<select name="menu_check"><option value="네일">네일</option><option value="페디">페디</option></select>';
-		html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
-		html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
+	function menuInsertForm() {
+		var li = $('<div></div>');
+		var html = '';
+		html += '<form name ="menuInsert" method="post" action="';
+		html += path;
+		html += '/store/storeManage/menuInsert.do">';
+		html += '<label for ="menu_name">제목 입력 : ';
+		html += '<input type="text" placeholder="메뉴 제목 입력" id="menu_name" name="menu_name" class="form-control"/></label>';
+		html += '<label for="menu_info">정보 입력: <input type="text" placeholder="정보 입력" id="menu_info" "name="menu_info" class="form-control"/></label>';
+		html += '<label name="menu_price">가격 입력: <input type="number" placeholder="가격 입력" id="menu_price" name="menu_price" class="form-control"/></label>';
+		html += '<select name="menu_check"><option value="네일">네일</option><option value="페디">페디</option></select>';
+		html += '<input type="hidden" name = "store_pk" value="' + store_pk+ '"/>';
+		html += '<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
 		li.html(html);
-		$('.menuInsertForm').append(li);	};
+		$('.menuInsertForm').append(li);
+	}
+	;
 
-		function designerInsertForm(){
-			 var li = $('<div></div>'); 
-			 var html='';
-				html+='<form name ="designerInsert" method="post" action="';
-				html+=path;	
-				html+='/store/storeManage/designerInsert.do">';
-				html+='<label for ="designer_name">디자이너 이름 입력 : ';
-				html+='<input type="text" placeholder="디자이너 이름 입력" id="designer_name" name="designer_name" class="form-control"/></label>';
-				html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
-				html+='<button type="submit" id ="designerInsert" class="btn btn-success"> 완료</button></form>';
-				li.html(html);
-				$('.designerInsertForm').append(li);	};		
-				
-				function holidayInsertForm(){
-					 var li = $('<div></div>'); 
-					 var html='';
-						html+='<form name ="menuInsert" method="post" action="';
-						html+=path;	
-						html+='/store/storeManage/holidayInsert.do">';
-						html+='<label for ="menu_name">휴일 입력 : ';
-						html+='<input type="date" id="holiday" name="holiday" class="form-control"/></label>';
-						html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
-						html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
-						li.html(html);
-						$('.holidayInsertForm').append(li);	};
-		
+	function designerInsertForm() {
+		var li = $('<div></div>');
+		var html = '';
+		html += '<form name ="designerInsert" method="post" action="';
+		html += path;
+		html += '/store/storeManage/designerInsert.do">';
+		html += '<label for ="designer_name">디자이너 이름 입력 : ';
+		html += '<input type="text" placeholder="디자이너 이름 입력" id="designer_name" name="designer_name" class="form-control"/></label>';
+		html += '<input type="hidden" name = "store_pk" value="' + store_pk+ '"/>';
+		html += '<button type="submit" id ="designerInsert" class="btn btn-success"> 완료</button></form>';
+		li.html(html);
+		$('.designerInsertForm').append(li);
+	}
+	;
+
+	function holidayInsertForm() {
+		var li = $('<div></div>');
+		var html = '';
+		html += '<form name ="menuInsert" method="post" action="';
+		html += path;
+		html += '/store/storeManage/holidayInsert.do">';
+		html += '<label for ="holiday">휴일 입력 : ';
+		html += '<input type="date" id="holiday" name="holiday" class="form-control"/></label>';
+		html += '<input type="hidden" name = "store_pk" value="' + store_pk+ '"/>';
+		html += '<button type="submit" id ="holidayInsert" class="btn btn-success"> 완료</button></form>';
+		li.html(html);
+		$('.holidayInsertForm').append(li);
+	}
+	;
+
 		//주소 찾기
 		function Postcode() {
 		    new daum.Postcode({
@@ -372,4 +378,3 @@ function menuInsertForm(){
 		        }
 		    }).open();
 		}
-});

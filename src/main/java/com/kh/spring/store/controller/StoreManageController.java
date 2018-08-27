@@ -3,10 +3,12 @@ package com.kh.spring.store.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -97,6 +99,16 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
 		System.out.println("designer확인 : "+ designers);
+		
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		System.out.println(holidayRaw);
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+			
+		}
+		model.addAttribute("holidays",holidays);
 		return view;
 	}
 	
@@ -172,6 +184,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	
@@ -271,6 +290,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	@RequestMapping(value="/store/storeManage/nailUpdate.do", method = RequestMethod.POST, consumes = {
@@ -350,6 +376,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 		}
 
@@ -427,6 +460,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	@RequestMapping(value="/store/storeManage/store_timeUpdate.do")
@@ -454,6 +494,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	@RequestMapping("/store/storeManage/designerDelete.do")
@@ -543,6 +590,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		}
 		model.addAttribute("reviews",reviews);
 		model.addAttribute("store_time",st);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	
@@ -609,23 +663,35 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		model.addAttribute("store_time",st);
 		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
 		model.addAttribute("designers",designers);
+		String holidayRaw = service.selectTime(store.getStore_pk()).getStore_holiday();
+		StringTokenizer stoken = new StringTokenizer(holidayRaw, ",");
+		List<String> holidays = new ArrayList<String>();
+		while (stoken.hasMoreTokens()) {
+			holidays.add(stoken.nextToken());
+		}
+		model.addAttribute("holidays",holidays);
 		return "/store/storeManage";
 	}
 	@RequestMapping("/store/storeManage/holidayDelete.do")
 	@ResponseBody
-	public String holidayDelete(@RequestParam("holiday")String holiday, @RequestParam("holidayOld")String holidayOld, 
+	public String holidayDelete(@RequestParam("holiday")String holidayOld, 
 			@RequestParam("store_pk")int store_pk, HttpServletRequest req,Model model) throws JsonProcessingException {
+		System.out.println("휴일 삭제 접근완료");
+		System.out.println(holidayOld);
 		Store_time temp = service.selectTime(store_pk);
 		String holidayTemp = temp.getStore_holiday();
-		holidayTemp.replaceAll(holidayOld, "");
+		System.out.println("기존 휴일 확인"+holidayTemp);
+		holidayTemp = holidayTemp.replaceAll(holidayOld,"");
+		System.out.println("바뀐 휴일 확인"+holidayTemp);
 		temp.setStore_holiday(holidayTemp);
-		int result = service.updateStore_time(temp);	if(result>0) {
+		int result = service.updateStore_time(temp);	
+		if(result>0) {
 			System.out.println("삽입 완료");
 		}else {
-			System.out.println("인서트 실패");
+			System.out.println("삭제 실패");
 		}
 		HashMap<String, String> map=new HashMap<String, String>(); 
-		map.put("holiday", holiday);
+		map.put("holiday", holidayOld);
 		ObjectMapper mapper=new ObjectMapper();		
 		String jsonstr=mapper.writeValueAsString(map);
 		return jsonstr;
@@ -635,15 +701,20 @@ private Logger logger = Logger.getLogger(StoreController.class);
 	@ResponseBody
 	public  String holidayUpdate(@RequestParam("holiday")String holiday, @RequestParam("holidayOld")String holidayOld, 
 			@RequestParam("store_pk")int store_pk, HttpServletRequest req,Model model)throws JsonProcessingException {
+		System.out.println("휴일 업데이트 접근완료");
+		System.out.println(holiday+holidayOld);
 		Store_time temp = service.selectTime(store_pk);
 		String holidayTemp = temp.getStore_holiday();
-		holidayTemp.replaceAll(holidayOld, holiday);
+		System.out.println(holidayTemp);
+		holidayTemp = holidayTemp.replaceAll(holidayOld, holiday);
+		System.out.println(holidayTemp);
 		temp.setStore_holiday(holidayTemp);
 		int result = service.updateStore_time(temp);
 		logger.debug("holidayUpdate 확인~ : "+result);
-		JSONObject json=JSONObject.fromObject(JSONSerializer.toJSON(holidayTemp));
-		String jsonstr= json.toString();
-		logger.debug("jsonstr 확인~ : "+jsonstr);
+		HashMap<String, String> map=new HashMap<String, String>(); 
+		map.put("holiday", holidayOld);
+		ObjectMapper mapper=new ObjectMapper();		
+		String jsonstr=mapper.writeValueAsString(map);
 
 
 		return jsonstr;

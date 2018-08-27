@@ -27,7 +27,7 @@ var holiday="${store.store_holiday}"
 </script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <!-- storeManage js -->
-<script src="${path }/resources/js/storeManage.js?ver=38"></script>
+<script src="${path }/resources/js/storeManage.js?ver=40"></script>
 
 <div>
 	<div id="wrapper" class="wrappercheck">
@@ -132,7 +132,7 @@ var holiday="${store.store_holiday}"
 								<li><a href="#tab_default_1" data-toggle="tab"> 시술정보 </a></li>
 								<li><a href="#tab_default_3" data-toggle="tab"> 리뷰 </a></li>
 									<li><a href="#tab_default_4" data-toggle="tab"> 디자이너 </a></li>
-									<li><a href="#tab_default_5" data-toggle="tab"> 디자이너 </a></li>
+									<li><a href="#tab_default_5" data-toggle="tab"> 휴일 설정 </a></li>
 							</ul>
 							<div class="tab-content">
 								<!-- tab1 시작 -->
@@ -1006,14 +1006,14 @@ var holiday="${store.store_holiday}"
 										<button onclick="designerInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
 									</div>
 <!-- 									4번째 탭 끝 -->
-								<div class="tab-pane active" id="tab_default_5">
+								<div class="tab-pane" id="tab_default_5">
 									<div style="width: 80%;">
 										<h3 style="margin-left: 30px;">휴일 설정</h3>
 										<hr style="margin-left: 30px;">
-										<c:forEach var="h" items="${store_holidays }" varStatus="status">
+										<c:forEach var="h" items="${holidays }" varStatus="status">
 											<form name="holidayUpdate${status.count }" method="post" action="">
 											<input type="hidden" name="store_pk" value="${store.store_pk }"/>
-											<label for ="holiday_name">입력된 휴일 : 
+											<label for ="holiday">입력된 휴일 : 
 											<input type="date" name="holiday"  id="holiday" value="${h }"
 												class="form-control" /></label>
 												<input type="hidden" name="holidayOld"  id="holidayOld" value="${h }"
