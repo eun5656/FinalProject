@@ -8,6 +8,8 @@
 	<jsp:param value=" " name="pageTitle"/>
 </jsp:include>
 
+
+
   <section id='mypage' style="padding-top: 100px;">
     <div class='container'>
       <div class="panel">
@@ -28,6 +30,7 @@
           
       <div class="row">
           <div class="col-sm-12 col-md-10 col-md-offset-1">
+          	
               <table class="table table-hover">
                   <thead>
                       <tr>
@@ -41,6 +44,13 @@
                   </thead>
                   <tbody>
                   <c:forEach  var='m' items='${list}' varStatus="vs">
+                  <div style="display:none;">
+          				<jsp:useBean id="now" class="java.util.Date" />
+						<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="nowDay" />   
+						<fmt:parseDate value="${m.reserve_start_time }" var="reserveDate1"  pattern="yyyy-MM-dd"/>
+						<fmt:formatDate value="${reserveDate1}"  pattern="yyyy-MM-dd" var="reserveDay"/>
+          		</div>
+                  
                       <tr>
                           <td class="col-sm-3 col-md-3">
                           <div class="media">
@@ -59,13 +69,18 @@
 							   
                           <strong> <fmt:parseDate value="${m.reserve_start_time }" var="reserveDate"  pattern="yyyy-MM-dd HH:mm:ss"/>
                           			<fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd HH:mm"/>
+                          			
                           </strong>
                           </td>
-                          <td class="col-sm-2 col-md-2 text-center"><strong>${m.reserve_status}</strong></td>
-                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>
+                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.reserve_status}</strong></td>
+                          <td class="col-sm-1 col-md-2 text-center"><strong>${m.store_phone}</strong></td>
+  						<c:if test="${nowDay<reserveDay }">
                           <td class="col-sm-1 col-md-1">
+                          	
                         	<button type="button" class="btn btn-info btn-sm" onclick="fn_payment(${m.reserve_pk});" >결제 내역</button>
+                        	
                           </td>
+                  		</c:if>
                           <script>
                           function fn_payment(m){
                         	  var reserve_pk=m;
