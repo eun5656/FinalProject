@@ -67,8 +67,8 @@ var store_pk="${store.store_pk}"
 
 														<div class="col-sm-4 col-md-4">
 															<p contenteditable="contenteditable">질문내용:
-																${qna.qna_content } <br><fmt:formatDate value="${qna.qna_date}"
-															pattern="yyyy/MM/dd HH:mm" /></p>
+																${qna.qna_content } <br>${qna.qna_date}<%-- <fmt:formatDate value="${qna.qna_date}"
+															pattern="yyyy/MM/dd HH:mm" /> --%></p>
 															<div class="panel panel-default">
 																<div class="panel-body" id="resizable">
 																	<form accept-charset="UTF-8" action="${path}/qna/answer.do?qna_pk=${qna.qna_pk}" method="POST">
