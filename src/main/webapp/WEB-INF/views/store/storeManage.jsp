@@ -720,10 +720,7 @@ var holiday="${store.store_holiday}"
 								</div>
 								
 							<div class="tab-pane" id="tab_default_3">
-
-
-
-	<ul id='comment-main-'></ul>
+<ul id='comment-main-'></ul>
 	<c:forEach var="review" items="${reviews }" varStatus="status" >
 	<!--<c:if test="${review.review_level==2 }"></c:if>-->
 	<ul id='comment-main-${status.index}' class="media comment-box level1">
@@ -828,12 +825,15 @@ var holiday="${store.store_holiday}"
               </ul>
                   </ul>
                </c:forEach>
-           
-           <script type="text/javascript">
 
+				
+           <script type="text/javascript">
+      
+           
         	   $('#review_tab').one('click', function() {	
         	   	$('.comment-reply').css('display','none');
         	   });
+    
 
  function fn_reply(index,review_pk,store_pk) {
 
