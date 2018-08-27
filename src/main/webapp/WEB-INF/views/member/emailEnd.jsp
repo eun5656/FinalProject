@@ -11,6 +11,8 @@
 </head>
 <script>
 	function check() {
+	
+
 		var form = document.authenform;
 		var eMailNum = ${ra};
 
@@ -32,6 +34,15 @@
 			
 		}
 	}
+	
+	function submitStop(e){
+	    if (!e) var e = window.event;
+	 
+	    if(e.keyCode == 13)
+	        return false;
+	}
+	
+	
 </script>
 
 <div class="modal-dialog modal-sm">
@@ -46,7 +57,7 @@
         							<div class="form-group row">
           								<form method="post" name="authenform" >
           								    <div class="col-xs-8">
-											<input class="form-control" type="text" name="authNum">
+											<input class="form-control" type="text" name="authNum" onKeyPress="return submitStop(event);">
           								    </div>
           								    <div class="col-xs-4">
 											<input type="button" class="btn btn-danger" onclick="return check();" value="인증">
