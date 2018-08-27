@@ -371,4 +371,5 @@ function menuInsertForm(){
 		            document.getElementById('store_address_detail').focus();
 		        }
 		    }).open();
-		}		
+		}
+});
