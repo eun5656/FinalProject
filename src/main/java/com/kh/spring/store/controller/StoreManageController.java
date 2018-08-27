@@ -681,12 +681,13 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		Store_time temp = service.selectTime(store_pk);
 		String holidayTemp = temp.getStore_holiday();
 		System.out.println("기존 휴일 확인"+holidayTemp);
-		holidayTemp = holidayTemp.replaceAll(holidayOld,"");
+		holidayTemp = holidayTemp.replaceAll(holidayOld+",","");
+		holidayTemp = holidayTemp.replaceAll(","+holidayOld,"");
 		System.out.println("바뀐 휴일 확인"+holidayTemp);
 		temp.setStore_holiday(holidayTemp);
 		int result = service.updateStore_time(temp);	
 		if(result>0) {
-			System.out.println("삽입 완료");
+			System.out.println("삭제 완료");
 		}else {
 			System.out.println("삭제 실패");
 		}
