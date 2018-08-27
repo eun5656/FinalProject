@@ -873,7 +873,6 @@ padding-bottom:140px;
 </div>
   </div>
   </div>
-  </div>
 
   <!--</div>-->
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
