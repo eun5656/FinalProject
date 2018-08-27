@@ -49,4 +49,5 @@ public interface StoreService {
 	List<Reserve> manageReserveList(Reserve reserve,int cPage,int numPerPage);
 	int reserveCount(int store_pk);
 
+
 }

@@ -40,7 +40,7 @@ SELECT * FROM STORE C,(SELECT ROWNUM AS RNUM, STORE_PK , COUNT STORE_REVIEW_COUN
 </update>
 
 <update id="store_timeUpdate" parameterType="store_time">
- update store_time set store_open_time=#{store_open_time},store_close_time=#{store_close_time},store_weekend_open=#{store_weekend_open},store_weekend_close=#{store_weekend_open} where store_pk=#{store_pk}
+ update store_time set store_open_time=#{store_open_time},store_close_time=#{store_close_time},store_holiday=#{store_holiday},store_weekend_open=#{store_weekend_open},store_weekend_close=#{store_weekend_open} where store_pk=#{store_pk}
 </update>
 
 <select id="store_timeSelect" parameterType="int" resultType="store_time">

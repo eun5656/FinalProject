@@ -1301,11 +1301,34 @@ var holiday="${store.store_holiday}"
 										</c:forEach>
 								<div class="designerInsertForm" style=""></div>
 										<button onclick="designerInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
-								
-									
-									
 									</div>
 <!-- 									4번째 탭 끝 -->
+<div class="tab-pane active" id="tab_default_5">
+									<div style="width: 80%;">
+										<h3 style="margin-left: 30px;">휴일 설정</h3>
+										<hr style="margin-left: 30px;">
+										<c:forEach var="h" items="${store_holidays }" varStatus="status">
+											<form name="holidayUpdate${status.count }" method="post" action="">
+											<input type="hidden" name="store_pk" value="${store.store_pk }"/>
+											<label for ="holiday_name">입력된 휴일 : 
+											<input type="date" name="holiday"  id="holiday" value="${h }"
+												class="form-control" /></label>
+												<input type="hidden" name="holidayOld"  id="holidayOld" value="${h }"
+												class="form-control" />
+											<button type="button" id="holidayUpdate" class="btn-success btn holidayUpdate">
+												수정</button>
+											<button id="holidayDelete" class="btn btn-danger holidayDelete" value="${h }">삭제</button>
+											</form>
+											<hr>
+										</c:forEach>
+										<br> <br>
+										<div class="holidayInsertForm" style=""></div>
+										<button onclick="holidayInsertForm()" class="btn btn-primary" value="" style="float: center;">추가</button>
+
+									</div>
+
+								</div>
+<!-- 								5번째 tab 끝 -->
 							</div>
 							<!-- tab content 끝 -->
 						</div>

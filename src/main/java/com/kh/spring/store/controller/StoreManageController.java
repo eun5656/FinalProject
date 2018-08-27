@@ -581,4 +581,71 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return view;
 	}
 	
+	@RequestMapping("/store/storeManage/holidayInsert.do")
+	public String holidayInsert(@RequestParam("holiday")String holiday, 
+			@RequestParam("store_pk")int store_pk, HttpServletRequest req,Model model) {
+		Store_time temp = service.selectTime(store_pk);
+		temp.setStore_holiday(temp.getStore_holiday()+ ","+holiday);
+		int result = service.updateStore_time(temp);
+		if(result>0) {
+			System.out.println("삽입 완료");
+		}else {
+			System.out.println("인서트 실패");
+		}
+		logger.debug(holiday);//입력값 확인
+		
+		Store store = service.selectOne(store_pk);
+		List<Nail> nails= Nailservice.nailListStore(store.getStore_pk());
+		List<Menu> menus = service.selectMenu(store.getStore_pk());
+		model.addAttribute("store", store);
+		model.addAttribute("menus",menus);
+		model.addAttribute("nails",nails);
+		List<StoreReview>reviews=reviewService.storeReviewList(store.getStore_pk());
+		Store_time st = service.selectTime(store.getStore_pk());
+		if(st!=null){
+			st = st.deleteDate(st);
+		}
+		model.addAttribute("reviews",reviews);
+		model.addAttribute("store_time",st);
+		List<designer> designers = designerservice.selectdesigner(store.getStore_pk());
+		model.addAttribute("designers",designers);
+		return "/store/storeManage";
+	}
+	@RequestMapping("/store/storeManage/holidayDelete.do")
+	@ResponseBody
+	public String holidayDelete(@RequestParam("holiday")String holiday, @RequestParam("holidayOld")String holidayOld, 
+			@RequestParam("store_pk")int store_pk, HttpServletRequest req,Model model) throws JsonProcessingException {
+		Store_time temp = service.selectTime(store_pk);
+		String holidayTemp = temp.getStore_holiday();
+		holidayTemp.replaceAll(holidayOld, "");
+		temp.setStore_holiday(holidayTemp);
+		int result = service.updateStore_time(temp);	if(result>0) {
+			System.out.println("삽입 완료");
+		}else {
+			System.out.println("인서트 실패");
+		}
+		HashMap<String, String> map=new HashMap<String, String>(); 
+		map.put("holiday", holiday);
+		ObjectMapper mapper=new ObjectMapper();		
+		String jsonstr=mapper.writeValueAsString(map);
+		return jsonstr;
+	}
+
+	@RequestMapping(value =  "/store/storeManage/holidayUpdate.do",  produces = { "application/text; charset=utf8" })
+	@ResponseBody
+	public  String holidayUpdate(@RequestParam("holiday")String holiday, @RequestParam("holidayOld")String holidayOld, 
+			@RequestParam("store_pk")int store_pk, HttpServletRequest req,Model model)throws JsonProcessingException {
+		Store_time temp = service.selectTime(store_pk);
+		String holidayTemp = temp.getStore_holiday();
+		holidayTemp.replaceAll(holidayOld, holiday);
+		temp.setStore_holiday(holidayTemp);
+		int result = service.updateStore_time(temp);
+		logger.debug("holidayUpdate 확인~ : "+result);
+		JSONObject json=JSONObject.fromObject(JSONSerializer.toJSON(holidayTemp));
+		String jsonstr= json.toString();
+		logger.debug("jsonstr 확인~ : "+jsonstr);
+
+
+		return jsonstr;
+	}
 }

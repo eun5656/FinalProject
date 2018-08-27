@@ -178,6 +178,39 @@ $(".menuUpdate").click(function(){
 				alert(error);
 			}
 		});
+		$(".holidayDelete").click(function(){
+			var holidayOld = this.value;
+				$.ajax({
+					url: path+"/store/storeManage/holidayDelete.do",
+					data:{'holiday':holidayOld},
+					success:function(data){
+						alert("휴일 삭제 완료"+data);
+						location.href=path+"/store/storeManage.do"
+					},
+					error:function(jqXHR, textStatus, errorThrown){
+					}
+				});
+		});
+		$(".holidayUpdate").click(function(){
+//			var queryString = $("form[name=QnaInsert]").serialize();
+			var queryString = $(this).closest("form").serialize().replace(/%/g,'%25');;
+			queryString = decodeURIComponent(queryString);
+
+			console.log(queryString);
+			$.ajax({
+				type :'post',
+				url: path+'/store/storeManage/holidayUpdate.do',
+				data: queryString,
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8", 
+				dataType: "text",
+				success : function(json){
+					alert(json);
+					location.href=path+"/store/storeManage.do"
+				},
+				error : function(xhr, status, error){
+					alert(error);
+				}
+			});
 });
 	
 	//네일 선택
@@ -283,6 +316,19 @@ function menuInsertForm(){
 				html+='<button type="submit" id ="designerInsert" class="btn btn-success"> 완료</button></form>';
 				li.html(html);
 				$('.designerInsertForm').append(li);	};		
+				
+				function holidayInsertForm(){
+					 var li = $('<div></div>'); 
+					 var html='';
+						html+='<form name ="menuInsert" method="post" action="';
+						html+=path;	
+						html+='/store/storeManage/holidayInsert.do">';
+						html+='<label for ="menu_name">휴일 입력 : ';
+						html+='<input type="date" id="holiday" name="holiday" class="form-control"/></label>';
+						html+='<input type="hidden" name = "store_pk" value="'+ store_pk +'"/>';
+						html+='<button type="submit" id ="menuInsert" class="btn btn-success"> 완료</button></form>';
+						li.html(html);
+						$('.holidayInsertForm').append(li);	};
 		
 		//주소 찾기
 		function Postcode() {
@@ -325,6 +371,4 @@ function menuInsertForm(){
 		            document.getElementById('store_address_detail').focus();
 		        }
 		    }).open();
-		}
-
-
+		}		
