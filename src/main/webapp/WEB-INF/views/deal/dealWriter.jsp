@@ -79,6 +79,7 @@
                                 tabsize: 2,
                                 height: 300,
                                 maxHeight:300,
+                                minHeight:300,
                                 focus:true,
                                 callbacks: {
                                 onImageUpload: function(files, editor, welEditable) {

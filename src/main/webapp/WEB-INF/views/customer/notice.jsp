@@ -16,7 +16,7 @@ padding-top:40px;
 </style>
 
 <section style="padding-top: 100px;">
-    <div class="row">
+    <div class="row" style="padding-bottom:40px;">
 				<div class="col-12">
 					<h1 class="text-green mb-4 text-center">공지사항</h1>
 				</div>
