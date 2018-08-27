@@ -31,12 +31,26 @@
 							<input class="form-control" id="memberPw" name="memberPw" type="password" placeholder="비밀번호" required>
 						</div>
 						<div class="col-sm-3">
-							<input class="btn btn-warning" type="submit" value="회원탈퇴">
+							<input class="btn btn-warning" type="submit" value="회원탈퇴" onclick="return delete_check();">
 						</div>
+						<script>
+						function delete_check(){
+							var check=confirm("회원 탈퇴하시겠습니까?");
+							if(check){
+								return true;
+								
+							}
+							return false;
+						}
+						
+						
+						</script>
+						
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </section>
+
 <jsp:include page="/WEB-INF/views/common/footer.jsp" />

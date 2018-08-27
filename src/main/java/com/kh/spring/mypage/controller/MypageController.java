@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -165,56 +168,66 @@ public class MypageController {
 	      return "mypage/mypageUpdate";
 	   }
 
-	   // 회원정보수정 완료 로직
-	   @RequestMapping(value = "/mypage/mypageUpdateEnd.do", method = RequestMethod.POST)
-	   public String mypageUpdateEnd(Member m, Model model,
-	         @RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile,
-	         HttpServletRequest request) {
-	      String msg = "수정 실패";
-	      String loc = "/";
-	      System.out.println("멤버 확인ㅇ" + m.getMemberId());
-	      int result = mypageService.mypageUpdate(m);
+	// 회원정보수정 완료 로직
+		@RequestMapping(value = "/mypage/mypageUpdateEnd.do", method = RequestMethod.POST)
+		public String mypageUpdateEnd(Member m, Model model,
+				@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile, String memberOriImg,
+				HttpServletRequest request) {
+			String msg = "수정 실패";
+			String loc = "/";
+			System.out.println("멤버 확인" + m.getMemberId());
+			
+			boolean flag = false;
+			
+			// 파일 업로드
+			// 저장위치 지정
+			String renamedFileName = m.getMemberReImg();
+			System.out.println("reimge"+renamedFileName);
+			String originalFileName = null;
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
 
-	      // 파일 업로드
-	      // 저장위치 지정
-	      String renamedFileName = null;
-	      String originalFileName = null;
-	      String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/member");
+			File dir = new File(saveDir);
+			if (dir.exists() == false)
+				System.out.println(dir.mkdirs()); // 폴더 생성
 
-	      File dir = new File(saveDir);
-	      if (dir.exists() == false)
-	         System.out.println(dir.mkdirs()); // 폴더 생성
+			if (!uploadFile.isEmpty()) {
+				
+				/*기존파일 삭제로직~*/
+				Map map=new HashMap();
+				map.put("memberPk", m.getMemberPk());
+				map.put("memberOriImg", memberOriImg);
+				flag=new File(saveDir+"/"+ mypageService.findReimg(map)).delete();
+				
+				/*새로운파일등록*/
+				originalFileName = uploadFile.getOriginalFilename();
+				
+				// 확장자 구하기
+				String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSS");
+				int rndNum = (int) (Math.random() * 1000);
+				renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
+				renamedFileName += "_" + rndNum + "." + ext;
+				try {
+					uploadFile.transferTo(new File(saveDir + File.separator + renamedFileName));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				// DB에 저장할 첨부파일에 대한 정보
+				m.setMemberOriImg(originalFileName);
+				m.setMemberReImg(renamedFileName);
+			}
+			int result = mypageService.mypageUpdate(m);
+			
+			if (result > 0) {
+				msg = "수정 성공";
+				loc = "/";
+				model.addAttribute("memberLoggedIn", m);
+			}
+			model.addAttribute("msg", msg);
+			model.addAttribute("loc", loc);
+			return "common/msg";
 
-	      if (!uploadFile.isEmpty()) {
-	         originalFileName = uploadFile.getOriginalFilename();
-	         // 확장자 구하기
-	         String ext = originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-	         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmssSS");
-	         int rndNum = (int) (Math.random() * 1000);
-	         renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
-	         renamedFileName += "_" + rndNum + "." + ext;
-	         try {
-	            uploadFile.transferTo(new File(saveDir + File.separator + renamedFileName));
-	         } catch (IOException e) {
-	            e.printStackTrace();
-	         }
-
-	         // DB에 저장할 첨부파일에 대한 정보
-	         m.setMemberOriImg(originalFileName);
-	         m.setMemberReImg(renamedFileName);
-	      }
-
-	      if (result > 0) {
-	         msg = "수정 성공";
-	         loc = "/";
-	         model.addAttribute("memberLoggedIn", m);
-	      }
-	      model.addAttribute("msg", msg);
-	      model.addAttribute("loc", loc);
-	      return "common/msg";
-
-	   }
-
+		}
 	   // 회원탈퇴
 	   @RequestMapping("/mypage/mypageDelete.do")
 	   public String mypagedelete() {
@@ -223,7 +236,7 @@ public class MypageController {
 
 	   // 회원탈퇴 완료
 	   @RequestMapping("/mypage/mypageDeleteEnd.do")
-	   public String mypageDeleteEnd(int memberPk, String memberPw, Model model) {
+	   public String mypageDeleteEnd(int memberPk, String memberPw, Model model,SessionStatus sessionStatus) {
 	      String pw = mypageService.findCheck(memberPk);
 	      pw = bcryptPasswordEncoder.encode(memberPw);
 
@@ -244,6 +257,11 @@ public class MypageController {
 	         msg = "비밀번호가 일치하지 않습니다.";
 	         loc = "mypage/mypageDelete.do";
 	      }
+	  
+	      if (!sessionStatus.isComplete()) {
+				// 세션끊기
+				sessionStatus.setComplete();
+			}
 	      model.addAttribute("msg", msg);
 	      model.addAttribute("loc", loc);
 	      return view;

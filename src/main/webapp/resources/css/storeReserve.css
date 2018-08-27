@@ -74,3 +74,21 @@
 	pointer-events: none !important;
 	cursor: default !important;
 }
+/*예약공지*/
+#reserv-announce-parent {
+	width: 850px;
+	padding-top: 20px;
+}
+
+.reserve-announce {
+	font-weight: bolder;
+	font-size: 11pt;
+	margin-bottom: 5px;
+}
+
+.announce {
+	border: 1px solid;
+	display: inline-block;
+	width: 50px;
+	"
+}

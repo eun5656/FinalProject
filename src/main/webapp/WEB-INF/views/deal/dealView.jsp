@@ -298,7 +298,7 @@ var deal_pk ="${deal.deal_pk}";
 	        		       else{
 	        		       index=index+1;
 	        		       }
-	        		       console.log(index);
+	        		       /* console.log(index); */
 						 
         		 	$.ajax({
         		 	        type: "POST",
@@ -310,7 +310,7 @@ var deal_pk ="${deal.deal_pk}";
         		 	        contentType: false,
         		 	        cache: false,
         		 	        success: function (data) {
-								alert(data.dealreview_value.deal_review_pk);
+								/* alert(data.dealreview_value.deal_review_pk); */
 							//var re_img;
 							/*re_img+=data.review_value.review_re_img;
 								    re_img+="'";
@@ -318,8 +318,8 @@ var deal_pk ="${deal.deal_pk}";
         		 	        	
         		 	        	var re_img = new String(data.dealreview_value.deal_review_re_img);
         		 	        	//re_img =String.valueOf(re_img);
-        		 				alert(isFinite(re_img));
-        		 				
+        		 				/* alert(isFinite(re_img));
+        		 				 */
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
 								 html2+="<div class='media-left'>";

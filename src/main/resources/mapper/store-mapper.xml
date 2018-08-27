@@ -61,8 +61,8 @@ select * from store_time where store_pk = #{store_pk}
 </update>
 
    <insert id="insertStore" parameterType="store">
-      insert into store(store_pk, member_pk, store_name, store_num, store_phone, store_address, store_ori_img, store_re_img)
-      values(store_seq.nextval, #{member_Pk}, #{store_name}, #{store_num}, #{store_phone}, #{store_address}, #{store_ori_img}, #{store_re_img})
+      insert into store(store_pk, member_pk, store_name, store_num, store_phone, store_address, store_ori_img, store_re_img,store_rank)
+      values(store_seq.nextval, #{member_pk}, #{store_name}, #{store_num}, #{store_phone}, #{store_address}, #{store_ori_img}, #{store_re_img},0)
    </insert>
 
 

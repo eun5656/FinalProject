@@ -46,7 +46,7 @@
 			</div>
 			<div class="row">
 				<label for="" class="col-sm-2 control-label">답변내용</label>
-				<div class="col-sm-3"><textarea class="form-control" id="send_content" name="send_content" rows="10" style="resize: none;" read only>${qna.answer_content }</textarea></div>
+				<div class="col-sm-3"><textarea class="form-control" id="send_content" name="send_content" rows="10" style="resize: none;" readonly>${qna.answer_content }</textarea></div>
 			</div>		
 			
 			<br>

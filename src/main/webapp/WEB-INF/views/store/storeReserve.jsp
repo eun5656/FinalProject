@@ -94,7 +94,6 @@ var store_pk ="${store.store_pk}";
         }
       ];
    	 var  businessHours2= [ // specify an array instead
-   		    //12345 따로해서 입력하게하자...
    		    {
                 dow: [0],
                 start: store_weekend_open,  
@@ -158,6 +157,8 @@ var store_pk ="${store.store_pk}";
 	else{
  		holiday='일';
  	}
+   	
+   	$('#holiday').html(holiday+"요일");
       
        employee = [{
           id: '${designerList[0].designer_id}',
@@ -605,16 +606,38 @@ var store_pk ="${store.store_pk}";
 
     });
   </script>
+  <style>
+ 
+</style>
 <div>
 <div id="wrapper">
    
    <div id="left-side">
       <div id="third" class="active">
-        <div class="row" style="margin-top: 100px;">
+        <div class="row" style=" margin-top: 20px;">
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
-            <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
-      </div>  
-         <div id='calendar' style="margin-top: 20px;"></div>
+             <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
+       </div>  
+       	<div id="reserv-announce-parent">
+       	
+            <div class="col-xs-6" style="padding-left: 0px;">
+       		  <div  class="reserve-announce">
+              		 매주 <span id='holiday'></span>은 휴무 입니다 </div>
+              	<div  class="reserve-announce">현재시간 1시간 전은 예약할 수 없습니다.</div>
+       		</div>
+       		
+       			<div class="col-xs-6" style="text-align: right; padding-right: 0px;">
+            <div class="reserve-announce" >
+              		<span class="announce" style="background: rgb(179, 179, 179); ">&nbsp;</span>
+              		영업시간X</div> 
+                 <div  class="reserve-announce">
+              		<span  class="announce" style="background: rgb(237, 255, 238);">&nbsp;</span>
+              		현재날짜 &nbsp;</div>
+       		</div>
+         	</div>
+         <div id='calendar' style="margin-top: 20px;">
+         	
+         </div>
          <div id='calendarModal' class="modal fade pop-up-1" tabindex="-1"
             role="dialog" aria-labelledby="myLargeModalLabel-1"
             aria-hidden="true">

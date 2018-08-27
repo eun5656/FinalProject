@@ -88,12 +88,12 @@ public class DealController {
 		
 		String str_filename = uuid.toString() + org_filename;
 		
-		
-		System.out.println("¿øº»¸í : " + org_filename);
-		System.out.println("ÀÌ¸§ Àç¼³Á¤ : " + str_filename);
+		/*
+		System.out.println("ì›ë³¸ëª… : " + org_filename);
+		System.out.println("ì´ë¦„ ì¬ì„¤ì • : " + str_filename);*/
 		String filepath = realFolder + str_filename;
 		
-		System.out.println("ÆÄÀÏ°æ·Î : " + filepath);
+		/*System.out.println("íŒŒì¼ê²½ë¡œ : " + filepath);*/
 
 		File f = new File(filepath);
 		if (!f.exists()) {
@@ -111,9 +111,9 @@ public class DealController {
 	@RequestMapping("/deal/dealWriteEnd.do")
 	public ModelAndView dealWriteEnd(String subject, String content,String deal_writer, int member_pk,HttpServletRequest request) {
 		
-		//¹Ş¾Æ¿Â °ª È®ÀÎ
-		System.out.println("Á¦¸ñ :"+subject);
-		System.out.println("³»¿ë : "+content);
+		/*//ë°›ì•„ì˜¨ ê°’ í™•ì¸
+		System.out.println("ì œëª© :"+subject);
+		System.out.println("ë‚´ìš© : "+content);*/
 		
 		String cutting=content;
 		List<String> imageList=new ArrayList<String>();
@@ -122,14 +122,14 @@ public class DealController {
 			int start=cutting.indexOf("src=");
 			String checkSrc = cutting.substring(start+5, start+9);
 			if(checkSrc.equals("http")) {
-				//ÀÎÅÍ³İ ÁÖ¼Ò °¡Á®¿Â ÀÌ¹ÌÁö
+				//ì¸í„°ë„· ì£¼ì†Œ ê°€ì ¸ì˜¨ ì´ë¯¸ì§€
 				int startHttp=cutting.indexOf("src=");
 				int endHttp=cutting.indexOf("\"",start+5);
 				String image = cutting.substring(startHttp+5, endHttp);
 				imageList.add(image);
 				cutting=cutting.substring(endHttp);
 			}else {
-				//¾÷·ÎµåÇÑ ÀÌ¹ÌÁö
+				//ì—…ë¡œë“œí•œ ì´ë¯¸ì§€
 				int startUpload=cutting.indexOf("test/");
 				int endUpload=cutting.indexOf("&",start+5);
 				String image1 = cutting.substring(startUpload+5, endUpload);
@@ -139,15 +139,15 @@ public class DealController {
 		}
 		
 		
-		//¿Å±æ ÁÖ¼Ò
+		//ì˜®ê¸¸ ì£¼ì†Œ
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
 		
 		
-		//¿ø·¡ÁÖ¼Ò
+		//ì›ë˜ì£¼ì†Œ
 		String testFolder=request.getSession().getServletContext().getRealPath("/resources/images/test/");
 		
 		
-		//¿ø·¡ ÁÖ¼ÒÀÇ ÆÄÀÏ¸í °¡Á®¿À±â
+		//ì›ë˜ ì£¼ì†Œì˜ íŒŒì¼ëª… ê°€ì ¸ì˜¤ê¸°
 		
 		File file= new File(testFolder);
 		File[] fileList=file.listFiles();
@@ -163,7 +163,7 @@ public class DealController {
 				 
 				 if(file1.exists()) {
 					 file1.renameTo(file2);
-					 System.out.println("ÆÄÀÏ ¿Å±â±â ¼º°ø");
+					 System.out.println("íŒŒì¼ ì˜®ê¸°ê¸° ì„±ê³µ");
 				 }
 				 if(!file2.exists()) {
 					 file2.mkdirs();
@@ -178,9 +178,9 @@ public class DealController {
 		
 		
 
-		//ºÒ·¯¿Ã Àå¼Ò ¹Ù²Ù±â
+		//ë¶ˆëŸ¬ì˜¬ ì¥ì†Œ ë°”ê¾¸ê¸°
 		String content1=content.replace("/spring/resources/images/test/", "/spring/resources/images/deal/");
-		System.out.println(content1);
+		/*System.out.println(content1);*/
 	
 	
 		
@@ -192,9 +192,9 @@ public class DealController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="°Ô½Ã±Û ÀÛ¼º ¼º°ø";
+			msg="ê²Œì‹œê¸€ ì‘ì„± ì„±ê³µ";
 		}else {
-			msg="°Ô½Ã±Û ÀÛ¼º ½ÇÆĞ";
+			msg="ê²Œì‹œê¸€ ì‘ì„± ì‹¤íŒ¨";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/deal/dealList.do" );
@@ -241,8 +241,8 @@ public class DealController {
 		
 		
 		List<DealImage> list=service.dealImageList(deal_pk);
-		System.out.println("»çÀÌÁî°¡ ¹¹´Ï"+list.size());
-		//ÀÌ¹ÌÁö ÀÌ¸§ ÀúÀå ¸®½ºÆ®
+		/*System.out.println("ì‚¬ì´ì¦ˆê°€ ë­ë‹ˆ"+list.size());*/
+		//ì´ë¯¸ì§€ ì´ë¦„ ì €ì¥ ë¦¬ìŠ¤íŠ¸
 		List<String> listImgName=new ArrayList<String>();
 		
 		
@@ -250,13 +250,13 @@ public class DealController {
 			listImgName.add(a.getDeal_ori_img());
 			System.out.println(a.getDeal_ori_img());
 		}
-		System.out.println("³ª¿À´Ï »çÀÌÁî°¡ ¹¹´Ï"+listImgName.size());
-		//ÀÌ¹ÌÁö ¸í »èÁ¦
+		/*System.out.println("ë‚˜ì˜¤ë‹ˆ ì‚¬ì´ì¦ˆê°€ ë­ë‹ˆ"+listImgName.size());*/
+		//ì´ë¯¸ì§€ ëª… ì‚­ì œ
 		int result=service.deleteDeal(deal_pk);
 		
-		//ÆÄÀÏÀ§Ä¡
+		//íŒŒì¼ìœ„ì¹˜
 		String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
-		//deal Pk¿¡ ÇØ´çÇÏ´Â ÀÌ¹ÌÁö ÆÄÀÏ¸íÀÌ ÀÖ´Ù¸é 
+		//deal Pkì— í•´ë‹¹í•˜ëŠ” ì´ë¯¸ì§€ íŒŒì¼ëª…ì´ ìˆë‹¤ë©´ 
 		if(result>0) {
 			for(String a: listImgName) {
 				String deleteFile=realFolder+a;
@@ -273,9 +273,9 @@ public class DealController {
 		String msg="";
 		String loc="";
 		if(result>0) {
-			msg="°Å·¡±Û »èÁ¦ ¼º°ø";
+			msg="ê±°ë˜ê¸€ ì‚­ì œ ì„±ê³µ";
 		}else {
-			msg="°Å·¡±Û »èÁ¦ ½ÇÆĞ";
+			msg="ê±°ë˜ê¸€ ì‚­ì œ ì‹¤íŒ¨";
 		}
 		mv.addObject("msg",msg);
 		mv.addObject("loc","/deal/dealList.do" );
@@ -298,23 +298,23 @@ public class DealController {
 	
 	@RequestMapping("/deal/dealUpdateEnd.do")
 	public ModelAndView dealUpdateEnd(String subject, String content,String deal_writer,int deal_pk, HttpServletRequest request) {
-				//¹Ş¾Æ¿Â °ª È®ÀÎ
-				System.out.println("Á¦¸ñ :"+subject);
-				System.out.println("³»¿ë : "+content);
+				/*//ë°›ì•„ì˜¨ ê°’ í™•ì¸
+				System.out.println("ì œëª© :"+subject);
+				System.out.println("ë‚´ìš© : "+content);*/
 				
-				//³»¿ë Àß¶ó¼­ ÀÌ¹ÌÁö ¸í °¡Á®¿À±â
+				//ë‚´ìš© ì˜ë¼ì„œ ì´ë¯¸ì§€ ëª… ê°€ì ¸ì˜¤ê¸°
 				String cutting=content;
 				
-				//ÀÌ¹ÌÁö ¸í ¹Ş¾Æ¿À´Â ¸®½ºÆ®
+				//ì´ë¯¸ì§€ ëª… ë°›ì•„ì˜¤ëŠ” ë¦¬ìŠ¤íŠ¸
 				List<String> imageList=new ArrayList<String>();
 				
-				//ÀÌ¹ÌÁö ¸í Àß¶ó¿À´Â ·ÎÁ÷
+				//ì´ë¯¸ì§€ ëª… ì˜ë¼ì˜¤ëŠ” ë¡œì§
 				while(cutting.contains("<img")){
 					int start=cutting.indexOf("src=");
 					String checkSrc = cutting.substring(start+5, start+9);
 					
 					if(checkSrc.equals("http")) {
-						//ÀÎÅÍ³İ ÁÖ¼Ò °¡Á®¿Â ÀÌ¹ÌÁö
+						//ì¸í„°ë„· ì£¼ì†Œ ê°€ì ¸ì˜¨ ì´ë¯¸ì§€
 						int startHttp=cutting.indexOf("src=");
 						int endHttp=cutting.indexOf("\"",start+5);
 						String image = cutting.substring(startHttp+5, endHttp);
@@ -324,16 +324,16 @@ public class DealController {
 						
 						
 						int startUpload=cutting.indexOf("test/");
-						System.out.println("Å×½ºÆ®°¡ ¾ğÁ¦³ª¿À´Ï"+startUpload);
+					/*	System.out.println("í…ŒìŠ¤íŠ¸ê°€ ì–¸ì œë‚˜ì˜¤ë‹ˆ"+startUpload);*/
 						int startUploadDeal=cutting.indexOf("deal/");
-						System.out.println("µôÀÌ¾ğÁ¦³ª¿À´Ï"+startUploadDeal);
+						/*System.out.println("ë”œì´ì–¸ì œë‚˜ì˜¤ë‹ˆ"+startUploadDeal);*/
 						
 						
 						if(startUpload!=-1&&(startUpload<startUploadDeal||startUploadDeal==-1)) {
-						//¾÷·ÎµåÇÑ ÀÌ¹ÌÁö
+						//ì—…ë¡œë“œí•œ ì´ë¯¸ì§€
 						int endUpload=cutting.indexOf("&",start+5);
 						String image1 = cutting.substring(startUpload+5, endUpload);
-						System.out.println("Ãß°¡ÇÒ ÀÌ¹ÌÁö¾ß : "+image1);
+						/*System.out.println("ì¶”ê°€í•  ì´ë¯¸ì§€ì•¼ : "+image1);*/
 						imageList.add(image1);
 						cutting=cutting.substring(endUpload);
 						
@@ -341,7 +341,7 @@ public class DealController {
 							int endUploadDeal=cutting.indexOf("&",start+5);
 							String image1 = cutting.substring(startUploadDeal+5, endUploadDeal);
 							imageList.add(image1);
-							System.out.println("¿ø·¡ ÀÖ´ø ÀÌ¹ÌÁö¾ß : "+image1);
+							/*System.out.println("ì›ë˜ ìˆë˜ ì´ë¯¸ì§€ì•¼ : "+image1);*/
 							cutting=cutting.substring(endUploadDeal);
 						}
 					}	
@@ -349,25 +349,25 @@ public class DealController {
 				
 				
 				
-				//ÀÌ¹ÌÁö ¸í È®ÀÎÇÏ±â 
-				for(String a: imageList) {
-					System.out.println("ÀÌ¹ÌÁö ¸í : "+a);
+				//ì´ë¯¸ì§€ ëª… í™•ì¸í•˜ê¸° 
+				/*for(String a: imageList) {
+					System.out.println("ì´ë¯¸ì§€ ëª… : "+a);
 				}
+				*/
 				
-				
-				//ÀúÀåµÇ¾î ÀÖ´ø ÀÌ¹ÌÁö ¸í °¡Á®¿À±â
+				//ì €ì¥ë˜ì–´ ìˆë˜ ì´ë¯¸ì§€ ëª… ê°€ì ¸ì˜¤ê¸°
 				List<DealImage> saveImage=service.selectDealImageList(deal_pk);
-				for(DealImage a: saveImage) {
-					System.out.println("ÀÌ¹ÌÁö ¸í ÀúÀåÀúÀå : "+a.getDeal_ori_img());
-				}
+				/*for(DealImage a: saveImage) {
+					System.out.println("ì´ë¯¸ì§€ ëª… ì €ì¥ì €ì¥ : "+a.getDeal_ori_img());
+				}*/
 				
 				
 				
 				
-				//µô Æú´õ¿¡¼­ Áö¿ï ÆÄÀÏ 
+				//ë”œ í´ë”ì—ì„œ ì§€ìš¸ íŒŒì¼ 
 				List<String> deleteImage=new ArrayList<String>();
 				
-				//Áö¿ï ÆÄÀÏ¸í °¡Á®¿À±â
+				//ì§€ìš¸ íŒŒì¼ëª… ê°€ì ¸ì˜¤ê¸°
 				for(int i=0;i<saveImage.size();i++) {
 					boolean check=imageList.contains(saveImage.get(i).getDeal_ori_img());
 					if(!check) {
@@ -375,14 +375,14 @@ public class DealController {
 					}
 				}
 				
-				//¿Å±æ ÁÖ¼Ò
+				//ì˜®ê¸¸ ì£¼ì†Œ
 				String realFolder=request.getSession().getServletContext().getRealPath("/resources/images/deal/");
-				System.out.println("ÆÄÀÏ °æ·Î¿À¿À¿À¿À¿À¿À¿À¿À¿À:" + realFolder);
+				/*System.out.println("íŒŒì¼ ê²½ë¡œì˜¤ì˜¤ì˜¤ì˜¤ì˜¤ì˜¤ì˜¤ì˜¤ì˜¤:" + realFolder);*/
 				
-				//¿ø·¡ÁÖ¼Ò
+				//ì›ë˜ì£¼ì†Œ
 				String testFolder=request.getSession().getServletContext().getRealPath("/resources/images/test/");
 				
-				//ÀÓ½ÃÆú´õ ÆÄÀÏ °¡Á®¿À±â(»õ·Î ÀÔ·ÂµÇ´Â °ª)
+				//ì„ì‹œí´ë” íŒŒì¼ ê°€ì ¸ì˜¤ê¸°(ìƒˆë¡œ ì…ë ¥ë˜ëŠ” ê°’)
 				File file= new File(testFolder);
 				File[] fileList=file.listFiles();
 				
@@ -391,9 +391,9 @@ public class DealController {
 				File[] fileDealList=fileDeal.listFiles();
 				
 				
-				//¼öÁ¤ ÀÌÈÄ ¾È¾²´Â ÆÄÀÏ »èÁ¦ÇÏ±â
+				//ìˆ˜ì • ì´í›„ ì•ˆì“°ëŠ” íŒŒì¼ ì‚­ì œí•˜ê¸°
 				for(int i=0;i<deleteImage.size();i++) {
-				System.out.println("Áö¿ï ÆÄÀÏ ÀÔ³×´Ù Áö¿öÁÖ¼¼¿ä : "+deleteImage.get(i));
+				/*System.out.println("ì§€ìš¸ íŒŒì¼ ì…ë„¤ë‹¤ ì§€ì›Œì£¼ì„¸ìš” : "+deleteImage.get(i));*/
 					for(File a: fileDealList) {
 						if(deleteImage.get(i).equals(a.getName())) {
 						 File fileDelete=new File(realFolder+a.getName());
@@ -404,7 +404,7 @@ public class DealController {
 					}
 				}
 				
-				//submit ÀÓ½Ã Æú´õ¿¡ ÀÖ´ø ÆÄÀÏ dealÆú´õ·Î ÀÌµ¿½ÃÅ°±â
+				//submit ì„ì‹œ í´ë”ì— ìˆë˜ íŒŒì¼ dealí´ë”ë¡œ ì´ë™ì‹œí‚¤ê¸°
 				for(int i=0;i<imageList.size();i++) {
 					for(File a: fileList) {
 						if(imageList.get(i).equals(a.getName())) {
@@ -420,17 +420,17 @@ public class DealController {
 						 }
 						 if(!file2.exists()) {
 							 file2.mkdirs();
-							 System.out.println("ÆÄÀÏ»ı¼º ¼º°ø");
+							/* System.out.println("íŒŒì¼ìƒì„± ì„±ê³µ");*/
 						 }
 					}
 				}
 				}
 
-				//µğºñ ÀúÀåÇÒ¶§  ºÒ·¯¿Ã À§Ä¡ º¯°æ½ÃÄÑÁÖ±â
+				//ë””ë¹„ ì €ì¥í• ë•Œ  ë¶ˆëŸ¬ì˜¬ ìœ„ì¹˜ ë³€ê²½ì‹œì¼œì£¼ê¸°
 				String content1=content.replace("/spring/resources/images/test/", "/spring/resources/images/deal/");
 				
-				System.out.println("³»¿ë »Ì¾Æ¿Â°Å È®ÀÎÇÏ±â"+content1);
-				//DB ¾÷µ¥ÀÌÆ® ÇØÁÖ±â
+				/*System.out.println("ë‚´ìš© ë½‘ì•„ì˜¨ê±° í™•ì¸í•˜ê¸°"+content1);*/
+				//DB ì—…ë°ì´íŠ¸ í•´ì£¼ê¸°
 				int result=service.updateDeal(deal_pk,subject,content1,deal_writer,imageList);
 				
 				
@@ -438,9 +438,9 @@ public class DealController {
 				String msg="";
 				String loc="";
 				if(result>0) {
-					msg="°Ô½Ã±Û ÀÛ¼º ¼º°ø";
+					msg="ê²Œì‹œê¸€ ì‘ì„± ì„±ê³µ";
 				}else {
-					msg="°Ô½Ã±Û ÀÛ¼º ½ÇÆĞ";
+					msg="ê²Œì‹œê¸€ ì‘ì„± ì‹¤íŒ¨";
 				}
 				mv.addObject("msg",msg);
 				mv.addObject("loc","/deal/dealList.do");

@@ -1,6 +1,7 @@
 package com.kh.spring.mypage.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,5 +106,11 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.bookmarkCount(sqlSession,member_pk);
 	}
 	*/
+	
+	@Override
+	public String findReimg(Map map) {
+		// TODO Auto-generated method stub
+		return mypageDAO.findReimg(sqlSession, map);
+	}
 	
 }

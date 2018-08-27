@@ -56,7 +56,7 @@
 	</select>
 	
 		<select id="manageReserveList" resultMap="storeReserveMap" parameterType="com.kh.spring.reserve.model.vo.Reserve">
-		select * from store s join reserve r on (s.store_pk=r.store_pk) where r.store_pk=#{store_pk}  
+		select * from store s join (select r.*,m.menu_name,m.menu_info from reserve r join menu m on(r.menu_pk=m.menu_pk)) K on (s.store_pk=K.store_pk) where K.store_pk=#{store_pk}  
 	</select>
 	<select id="reserveCount1" parameterType="int" resultType="int">
 	 	select count(*) from reserve where store_pk=#{store_pk}

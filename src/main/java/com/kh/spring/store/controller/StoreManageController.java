@@ -88,7 +88,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		System.out.println("스토어 값 확인 : "+store);
 		System.out.println("Nail 값 확인 : "+nails);
 		System.out.println("시간 확인  : "+ st);
-		System.out.println(reviews.get(1));
+		//System.out.println(reviews.get(1));
 		model.addAttribute("store",store);
 		model.addAttribute("menus",menus);
 		model.addAttribute("nails",nails);
@@ -114,7 +114,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return view;
 	}
 	
-	
+	//myShop 화면에서 예약 리스트 받아오기
 	@RequestMapping("/store/storeManageReserveList.do")
 	public String storeManageSale(String store_pk,
 			HttpServletRequest req, Model model, HttpSession session,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage

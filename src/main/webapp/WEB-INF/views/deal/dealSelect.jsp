@@ -24,6 +24,9 @@
 
    	<div class="panel-body">
     
+    
+	
+    <div class="row">
     <div class="col-xs-6"></div>
     <div class="col-xs-5">
       <form action="${path }/deal/dealSelect.do" method="post" id="selectForm">
@@ -32,9 +35,8 @@
                   <div class="input-group-btn search-panel">
                      	<select id="selectOption" name="selectOption" title="" class="btn btn-default" style="width:90px;height:34px;">
 					<option selected="" value="1">제목</option>
-					<option value="2">내용</option>
 					<option value="3">작성자</option>
-					<option value="4">제목+내용</option>
+					
 				
 				</select>
                   </div>
@@ -50,9 +52,16 @@
      
       </div>
       <div class="col-xs-1"></div>
-
+	</div>
+	
 	<div class="limiter">
 		<div class="container-table100">
+			<c:if test="${empty list }"> 
+ 				<div class="row text-center">
+ 					<h3> 검색된 결과가 존재하지 않습니다.</h3>
+ 				</div>
+			</c:if>
+			<c:if test="${not empty list }">
 			<div class="wrap-table100" >
 					<div class="table">
 
@@ -100,6 +109,7 @@
 					</div>
 				
       </div>
+      </c:if>
       <c:if test="${memberLoggedIn!=null }">
       <div class="row1 text-right" id="btn-enroll">
           <button type="button" class="btn btn-warning" onclick="location.href='${path}/deal/dealForm.do'">글 등록</button>

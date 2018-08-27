@@ -49,19 +49,24 @@ var store_pk="${store.store_pk}"
                   <tbody>
                   <c:forEach  var='m' items='${list}' varStatus="vs">
                       <tr>
-                          <td class="col-sm-6 col-md-6">
+                          <td class="col-sm-3 col-md-3">
                           <div class="media">
-                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
+                              <a class="thumbnail pull-left" href="#"> <img class="media-object" src="${path}/resources/images/nail_store/${m.store_re_img}" style="width: 72px; height: 72px;"> </a>
                               <div class="media-body">
                                   <h4 class="media-heading"><a href="#">${m.store_name}</a></h4>
                               </div>
                           </div>
                           </td>
-                          <td class="col-sm-1 col-md-1" style="text-align: center">
-                          <strong>${m.reserve_start_time }</strong>
+                           <td class="col-sm-3 col-md-3">
+                          <strong>[${m.menu_name}]${m.menu_info}</strong>
+                          </td>
+                          
+                          <td class="col-sm-1 col-md-2" style="text-align: center">
+                          <strong><fmt:parseDate value="${m.reserve_start_time }" var="reserveDate"  pattern="yyyy-MM-dd HH:mm:ss"/>
+                          			<fmt:formatDate value="${reserveDate}" pattern="yyyy-MM-dd HH:mm"/></strong>
                           </td>
                           <td class="col-sm-2 col-md-2 text-center"><strong>${m.reserve_status}</strong></td>
-                          <td class="col-sm-1 col-md-1 text-center"><strong>${m.store_phone}</strong></td>
+                          <td class="col-sm-1 col-md-2 text-center"><strong>${m.store_phone}</strong></td>
                       
                       </tr>
 					</c:forEach>

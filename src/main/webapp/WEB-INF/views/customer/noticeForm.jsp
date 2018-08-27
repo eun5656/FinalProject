@@ -63,10 +63,10 @@
                           </div>
                     </div>
                      <div class="form-group">
-                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right">작성 완료</button>
+                       <button type="submit" id="submit" name="submit" class="btn btn-warning pull-right" >작성 완료</button>
                      </div>
                   </form>
-					
+				
 
 
                       <script>
@@ -79,7 +79,6 @@
                                     // [groupName, [list of button]]
                                     ['style', ['bold', 'italic', 'underline', 'clear']],
                                     ['font', ['strikethrough', 'superscript', 'subscript']],
-                                    ['fontsize', ['fontsize']],
                                   	['hr', ['hr']],
                                   	['fullscreen',['fullscreen']],
                                   	['help',['help']]

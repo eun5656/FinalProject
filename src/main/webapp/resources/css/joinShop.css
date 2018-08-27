@@ -1,7 +1,4 @@
-   /*´Ü°è style*/
-                                  body {
-                        margin-top:40px;
-                    }
+   /*ï¿½Ü°ï¿½ style*/
                     .stepwizard-step p {
                         margin-top: 10px;
                     }
@@ -42,13 +39,13 @@
                         border-radius: 15px;
                     }
                     
-                    /*ÀÌ¹ÌÁö ³Ö´Â input ÅÂ±× style*/
+                    /*ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ input ï¿½Â±ï¿½ style*/
                     
                       input{
                         margin-bottom: 10px;
                      
                       }
-                        /* ÀÌ¹ÌÁö ¹Þ¾Æ¿À´Â input ½ºÅ¸ÀÏ*/
+                        /* ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½ input ï¿½ï¿½Å¸ï¿½ï¿½*/
                         .image-preview-input {
                           position: relative;
                         overflow: hidden;

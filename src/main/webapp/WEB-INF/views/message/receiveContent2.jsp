@@ -29,7 +29,7 @@
 			</div>	
 			<hr>
 			<div class="row">
-				<div class="col-sm-6 text-center"><textarea class="form-control" id="send_content" name="send_content" rows="13" style="resize: none;" read only>${msg.send_content }</textarea></div>
+				<div class="col-sm-6 text-center"><textarea class="form-control" id="send_content" name="send_content" rows="13" style="resize: none;" readonly>${msg.send_content }</textarea></div>
 			</div>
 			<br>
 			<div class="row">

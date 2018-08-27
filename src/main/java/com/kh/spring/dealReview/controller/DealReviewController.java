@@ -1,4 +1,4 @@
-
+﻿
 package com.kh.spring.dealReview.controller;
 
 import java.io.File;
@@ -63,7 +63,7 @@ public class DealReviewController {
 
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
-				System.out.println(dir.mkdirs());//占쎈솁占쎌뵬占쎄문占쎄쉐
+				System.out.println(dir.mkdirs());
 
 		if (!deal_review_ori_img.isEmpty()) {
 			originalFileName = deal_review_ori_img.getOriginalFilename();
@@ -91,7 +91,7 @@ public class DealReviewController {
 				deal_review.setDeal_review_re_img(renamedFileName);
 
 				int result = service.dealReviewInsert(deal_review);
-				System.out.println("占쎈툧占쎈�욑옙釉�占쎄쉭占쎌뒄 占쎈┷占쎌뵬�넫占� "+result);
+				
 				//selectKey 
 				ObjectMapper mapper = new ObjectMapper();
 				String jsonstr = "";
@@ -163,7 +163,7 @@ public class DealReviewController {
 				System.out.println(deal_review);
 
 				int result = service.dealReviewReplyInsert(deal_review);
-				System.out.println(result);
+				
 
 				ObjectMapper mapper = new ObjectMapper();
 				String jsonstr = "";
@@ -181,7 +181,7 @@ public class DealReviewController {
 
 				int idx = value.indexOf(",");
 				String temp = value.substring(0, idx);
-				System.out.println(temp);
+			
 
 				return temp;
 			}

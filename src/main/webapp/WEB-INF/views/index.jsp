@@ -51,7 +51,7 @@ padding-bottom:140px;
 </style>
 
 
-<div class="container-fluid" style="padding-top: 80px;">
+<div class="container-fluid" style="padding-top: 20px;">
 
     <div class="row">
       <div class="col-xs-12">
@@ -410,14 +410,6 @@ padding-bottom:140px;
   
  <script type="text/javascript">
 				$(function () {
-					
-					
-					
-					
-					
-					
-					
-					console.log("${bookmarkList}");
 					var main_nail_color_img=$("#main-nail-color").find("img");
 					var main_nail_color_button=$("#main-nail-color").find("button");
 					
@@ -487,7 +479,6 @@ padding-bottom:140px;
 										html2 += "</p>";
 										html2 += "</div></div></div>";
 								}
-								 console.log(html2);
 								 selectbar.after(html1);
 								 $("#nail-list").html(html2);
 								 eventBind()
@@ -625,7 +616,6 @@ padding-bottom:140px;
 											html2 += "</p>";
 											html2 += "</div></div></div>";
 									}
-										console.log(html2);
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);
 										eventBind()
@@ -701,7 +691,6 @@ padding-bottom:140px;
 											html2 += "</p>";
 											html2 += "</div></div></div>";
 									}
-										console.log(html2);
 									 selectbar.after(html1);
 									 $("#nail-list").html(html2);
 									 eventBind();

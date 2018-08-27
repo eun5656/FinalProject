@@ -1,6 +1,7 @@
 package com.kh.spring.mypage.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -100,6 +101,10 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 */
 
-
+	@Override
+	public String findReimg(SqlSessionTemplate sqlSession, Map map) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("member.findReimg",map);
+	}
 
 }

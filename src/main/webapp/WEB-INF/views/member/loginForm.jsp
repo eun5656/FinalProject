@@ -21,7 +21,7 @@
 	<jsp:param value="로그인" name="pageTitle" />
 </jsp:include>
 
-<section style="padding-top: 70px; padding-bottom:70px;">
+<section style="padding-top: 10px; padding-bottom:40px;">
 <div class="limiter">
 	<div class="container-login100">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50" style=" margin-top: 40px;">

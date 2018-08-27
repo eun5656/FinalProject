@@ -20,6 +20,8 @@
           								<br>
           								<p>결제자 : ${payment.member_name }</p>
           								<br>
+          								<p>결제 금액 : ${payment.payment_price}원 </p>
+          								<br>
           								<p>결제 상태 : ${payment.payment_check }</p>
        								 </div>
        								 <div class="modal-footer">

@@ -36,7 +36,7 @@
   .serviceBox.orange:hover .read-more{border: 1px solid #e67e22;color: #e67e22;}
   </style>
 
-<section style="padding-top: 100px;">
+<section style="padding-top: 30px;">
     <div class="container">
 	<div class="row">
     <div class="col-md-12">

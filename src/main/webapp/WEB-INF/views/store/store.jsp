@@ -498,15 +498,9 @@ $(function() {
         		 	        contentType: false,
         		 	        cache: false,
         		 	        success: function (data) {
-								alert(data.review_value.review_pk);
-							//var re_img;
-							/*re_img+=data.review_value.review_re_img;
-								    re_img+="'";
-        		 	        	alert(re_img);*/
         		 	        	
         		 	        	var re_img = new String(data.review_value.review_re_img);
         		 	        	//re_img =String.valueOf(re_img);
-        		 				alert(isFinite(re_img));
         		 				
 								 var html1="<ul id='comment-main-"+index+"' class='media comment-box level1'></ul>";
 								 var html2="<li>";
@@ -758,7 +752,6 @@ function fn_reply_delete(index,review_pk){
 			dataType: "json",
  	        success: function (data) {
  	        	$("#comment-main-"+index).remove();
-					//reply_del_btn.parent().parent().parent().parent().remove();
  	        	alert(data);
  	        },
  	        error: function (e) {
@@ -962,7 +955,6 @@ $(".b_icon").click(function() {
 		}
 	})	
 	}	
-	}
 	else{
 		alert("로그인해주세요");
 	}

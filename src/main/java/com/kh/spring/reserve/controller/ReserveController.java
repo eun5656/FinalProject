@@ -109,7 +109,7 @@ public class ReserveController {
 				reserve.setDesigner_name(designer_name);
 				reserve.setReserve_start_time(reserve_start_time);
 				reserve.setReserve_end_time(reserve_end_time);
-				reserve.setReserve_status("대기");
+				reserve.setReserve_status("완료");
 				System.out.println(reserve);
 				int result = service.storeReserveInsert(reserve);
 				System.out.println("result" + result);
