@@ -629,6 +629,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 			model.addAttribute("store_close_time",String.valueOf(storeTime.getStore_close_time()));
 			model.addAttribute("store_weekend_open",String.valueOf(storeTime.getStore_weekend_open()));
 			model.addAttribute("store_weekend_close",String.valueOf(storeTime.getStore_weekend_close()));
+			model.addAttribute("store_holiday",storeTime.getStore_holiday());
 		}
 	
 

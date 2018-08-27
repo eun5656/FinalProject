@@ -66,19 +66,26 @@ var store_pk ="${store.store_pk}";
 
 
 
+      
+
       //전체휴일
       var businessHours1 = [
 
         {
-          start: '2018-07-30',
-          end: '2018-07-30',
-        },
-        {
-          start: '2018-08-21',
-          end: '2018-08-21',
-        },
-
+          start: '',
+          end: '',
+        }
       ];
+      
+      var temp="${store_holiday}";
+      var selectHoliday=temp.split(",");
+      
+      for (var i = 0; i < selectHoliday.length; i++) {
+     	 businessHours1.push({
+     	 start: selectHoliday[i],
+          end: selectHoliday[i],
+      });
+ 	 	}
       
 
       /*변수 초기화*/
