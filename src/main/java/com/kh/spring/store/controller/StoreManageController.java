@@ -114,7 +114,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		return view;
 	}
 	
-	
+	//myShop 화면에서 예약 리스트 받아오기
 	@RequestMapping("/store/storeManageReserveList.do")
 	public String storeManageSale(String store_pk,
 			HttpServletRequest req, Model model, HttpSession session,@RequestParam(value="cPage",required=false,defaultValue="1") int cPage
