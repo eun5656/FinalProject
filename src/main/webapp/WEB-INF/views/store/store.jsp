@@ -302,10 +302,9 @@ $(function() {
 						<div style="text-align: center;">
 						<img class='review-img'alt='' src='${path}/resources/upload/storeReview/${review.review_re_img}'>					 
     	                </div>
+                    <br>
 					  </c:if>
                     <p class="content" style="padding: 10px;">
-                    <br>
-                    	
                     <c:out value="${review.review_content}"></c:out>
                     </p>
                  <div class="reply-btn-positon">
@@ -529,10 +528,10 @@ $(function() {
 								 html2+="<div style='text-align: center;'>";
 								 html2+="<img class='review-img'alt='' src='${path}/resources/upload/storeReview/"+data.review_value.review_re_img+"'>";
 								 html2+="</div>"
+								 html2+="<br>";
 								 }
 								 html2+=" <p clas='content' style='padding: 10px'>";
 								 html2+=""+data.review_value.review_content+"";
-								 html2+="<br>";
 								 html2+="</p>";
 								 html2+="<div class='reply-btn-positon'>";
 								 html2+="<button id='reply-btn-"+index+"' class='btn btn-light basic-btn btn-reply' value='1' type='button' onclick='fn_reply("+index+","+data.review_value.review_pk+","+data.review_value.store_pk+")'>댓글</button>";
