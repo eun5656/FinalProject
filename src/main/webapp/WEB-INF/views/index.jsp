@@ -363,7 +363,7 @@ padding-bottom:140px;
                <div id="" class="w3-dropdown-content w3-card-12 w3-border w3-round" style="z-index: 999">
                   <!--media로 조정해주기 default는 height 3.5%-->
                   <ul id="dropdown-menu">
-                     <li class="nail-style" value="프렌치" style="padding-left: 10px;">
+                     <li class="nail-style" value="프랜치" style="padding-left: 10px;">
                         <a><div style="text-align: center">
                            <img src="${path }/resources/images/indexImg/french.jpg" class="w3-circle" alt="Cinque Terre" width="30" height="30">
                         </div>프렌치</a>
