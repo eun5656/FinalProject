@@ -131,6 +131,7 @@ var holiday="${store.store_holiday}"
 								<li><a href="#tab_default_1" data-toggle="tab"> 시술정보 </a></li>
 								<li><a href="#tab_default_3" data-toggle="tab"> 리뷰 </a></li>
 									<li><a href="#tab_default_4" data-toggle="tab"> 디자이너 </a></li>
+									<li><a href="#tab_default_5" data-toggle="tab"> 디자이너 </a></li>
 							</ul>
 							<div class="tab-content">
 								<!-- tab1 시작 -->
@@ -810,15 +811,7 @@ var holiday="${store.store_holiday}"
 							name="store_weekend_close" class="form-control"
 							value="${store_time.store_weekend_close}">
 						</label>			
-						    <label>예약 오픈 시간 : <input type="time"
-							name="store_reserve_time" class="form-control"
-							value="${store_time.store_reserve_time}">
-						</label>	
-						    <label>예약 마감 시간 : <input type="time"
-							name="store_reserve_end_time" class="form-control"
-							value="${store_time.store_reserve_end_time}">
-						</label>	
-						<input type="hidden" name ="store_pko" value="${store.store_pk }"/>		
+						   <input type="hidden" name ="store_pko" value="${store.store_pk }"/>		
 						<button type="submit" class="btn btn-primary">전송</button>
 						</form>
       </div>

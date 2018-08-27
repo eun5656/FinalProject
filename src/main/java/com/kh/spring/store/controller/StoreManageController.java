@@ -437,6 +437,7 @@ private Logger logger = Logger.getLogger(StoreController.class);
 		int store_pk = Integer.parseInt(store_pko);
 		store_time.setStore_pk(store_pk);
 		store_time =store_time.addDate(store_time);
+		System.out.println(store_time);
 		int result = service.updateStore_time(store_time);
 		Store store = service.selectOne(store_pk);
 		Store_time st = service.selectTime(store_pk);
