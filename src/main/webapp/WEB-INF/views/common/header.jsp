@@ -77,7 +77,7 @@
 <body>
 
   <header>
-    <nav class="navbar navbar-icon-top navbar-default navbar-fixed-top" style="position: relative;margin:0px;">
+    <nav class="navbar navbar-icon-top navbar-default" style="position: relative;margin:0px;">
   
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
