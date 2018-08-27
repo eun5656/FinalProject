@@ -50,7 +50,7 @@
                 <div class="service-content">
                     <h3 class="title">nail multi platform</h3>
                     <p class="description">여러 네일샵들의 디자인을 비교하여 선택할 수 있습니다.</p>
-                    <a href="WebDesigning.html" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
+                    <a href="#" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                 <div class="service-content">
                     <h3 class="title">reservation</h3>
                     <p class="description">전화로 문의NO. 원하는 네일샵 예약을 손쉽게 할 수 있습니다.</p>
-                    <a href="WebDevelopment.html" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
+                    <a href="#" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
                 <div class="service-content">
                     <h3 class="title">nail market</h3>
                     <p class="description">네일관련 재료들만 손쉽게 사고 팔 수 있는 마켓을 이용할 수 있습니다.</p>
-                    <a href="MobileAppDevelopment.html" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
+                    <a href="#" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                 <div class="service-content">
                     <h3 class="title">bookmark</h3>
                     <p class="description">원하는 네일샵, 네일디자인을 즐겨찾기로 담을수 있습니다.</p>
-                    <a href="ECommarce.html" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
+                    <a href="#" class="read-more fa fa-plus" data-toggle="tooltip" title="Read More"></a>
                 </div>
             </div>
         </div>
