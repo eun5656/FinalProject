@@ -39,7 +39,7 @@ $(function() {
 	
 });
 </script>
-<script src="${path }/resources/js/store.js?ver=11"></script>
+<script src="${path }/resources/js/store.js?ver=12"></script>
 
 <div id="wrapper">
 

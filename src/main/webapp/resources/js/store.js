@@ -97,13 +97,13 @@ $(".qna").click(function() {
 //메뉴이동 끝
 
 //북마크 기능
-$("#b_icon").click(function() {
-	if ($('#b_icon').attr("alt")=='false') 
-	{	$('#b_icon').attr("alt","true");
-		$('#b_icon').attr("src","/spring/resources/icons/love_filled.svg");
+$(".b_icon").click(function() {
+	if ($('.b_icon').attr("alt")=='false') 
+	{	$('.b_icon').attr("alt","true");
+		$('.b_icon').attr("src","/spring/resources/icons/love_filled.svg");
 	} else {
-		$('#b_icon').attr("alt","false");
-		$('#b_icon').attr("src","/spring/resources/icons/love_blank.svg");
+		$('.b_icon').attr("alt","false");
+		$('.b_icon').attr("src","/spring/resources/icons/love_blank.svg");
 	}
 });
 //작은케러셀
