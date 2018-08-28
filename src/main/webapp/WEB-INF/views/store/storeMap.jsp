@@ -58,7 +58,7 @@ var LatLng = ""+ results[0].geometry.location;
 <div>
 <div id="wrapper">
 
-	<div id="left-side">
+	<div id="left-side" style="height:100%;">
 
 
 		
