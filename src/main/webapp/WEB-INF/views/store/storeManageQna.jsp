@@ -23,8 +23,8 @@ var store_pk="${store.store_pk}"
 <!-- storeManage js -->
 <script src="${path }/resources/js/storeManage.js?ver=3"></script>
 <div>
-	<div id="wrapper">
-		<div id="left-side">
+	<div id="wrapper" style="display:flex;">
+		<div id="left-side" style="height:100%;"/>
 			<div id="fourth" class="active">
 				<div class="row">
 				<c:if test="${not empty list }">

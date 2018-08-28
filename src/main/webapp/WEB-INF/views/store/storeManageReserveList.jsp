@@ -23,8 +23,8 @@ var store_pk="${store.store_pk}"
 <script src="${path }/resources/js/storeManage.js?ver=8"></script>
 
 
-<div id="wrapper">
-<div id="left-side">
+<div id="wrapper" style="display:flex;">
+<div id="left-side" >
     <div style="width: 80%;height: 100%;position: absolute;top: 40px;left: 50px;">
       <div class="panel">
 		
