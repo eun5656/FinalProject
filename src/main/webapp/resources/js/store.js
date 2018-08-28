@@ -97,13 +97,78 @@ $(".qna").click(function() {
 //메뉴이동 끝
 
 //북마크 기능
-$(".b_icon").click(function() {
-	if ($('.b_icon').attr("alt")=='false') 
-	{	$('.b_icon').attr("alt","true");
-		$('.b_icon').attr("src","/spring/resources/icons/love_filled.svg");
-	} else {
-		$('.b_icon').attr("alt","false");
-		$('.b_icon').attr("src","/spring/resources/icons/love_blank.svg");
+$(".b_icon").click(function() {					    	
+	var memberLoggedIn=$(this).nextAll("[name='member_pk']").val();
+//	alert(memberLoggedIn.length);
+	
+	if(memberLoggedIn.length!=0){
+
+	var temp=$(this);
+	var bookmark_val = { 
+			nail_pk: temp.nextAll("[name='nail_pk']").val(),
+			member_pk: temp.nextAll("[name='member_pk']").val(),
+			store_pk: temp.nextAll("[name='store_pk']").val(),
+			bookmark_check:null 			
+			};
+
+	
+	if (temp.attr("alt")=='false') 
+	{	
+		bookmark_val.bookmark_check="true";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();
+	  var jsonData = JSON.stringify(bookmark_val);
+	  console.log(jsonData);
+      jQuery.ajaxSettings.traditional = true;
+		///*json 객체로 바로넘기기					    							    		
+		    $.ajax({
+		 	url:path+"/bookmark/insertBookmark.do",
+			data:{"bookmark_val":jsonData},
+			type: "post",
+			dataType: "json",
+			success: function(data){
+  		   		alert("등록완료");
+				temp.attr("alt","true");
+    			temp.attr("src","/spring/resources/icons/love_filled.svg");
+    			temp.nextAll('.bookmark_pk').attr('value',data);
+				},
+			error: function(jpxhr,textStatus,errormsg) {
+				console.log("ajax전송실패");
+				console.log(jpxhr);
+				console.log(textStatus);
+				console.log(errormsg);
+			}
+		});	
+		
+	} 
+	else {
+		//bookmark_val.bookmark_check="false";
+		//var nail_pk=temp.next().val();					    		
+		//var member_pk=temp.next().next().val();\ss
+		var bookmark_pk=temp.nextAll("[name='bookmark_pk']").val();
+		var member_pk=temp.nextAll("[name='member_pk']").val();
+	    $.ajax({
+	 	url:path+"/bookmark/deleteBookmark.do",
+		data:{"bookmark_pk":temp.nextAll("[name='bookmark_pk']").val(),"member_pk":temp.nextAll("[name='member_pk']").val()},
+		type: "post",
+		dataType: "json",
+		success: function(data){
+  		    alert("삭제완료");
+			temp.attr("alt","false");
+    		temp.attr("src","/spring/resources/icons/love_blank.svg");
+			temp.nextAll('.bookmark_pk').attr('value','');
+			},
+		error: function(jpxhr,textStatus,errormsg) {
+			console.log("ajax전송실패");
+			console.log(jpxhr);
+			console.log(textStatus);
+			console.log(errormsg);
+		}
+	});	
+	}	
+	}
+	else{
+		alert("북마크는 로그인 후 이용해주세요");
 	}
 });
 //작은케러셀
