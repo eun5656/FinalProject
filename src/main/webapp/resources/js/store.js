@@ -88,7 +88,7 @@ $(".qna").click(function() {
 
 //북마크 기능
 $("#b_icon").click(function() {
-	if ($('#b_icon').attr("alt")=='false') 
+	if ($('#b_icon').attr("alt"=='false');
 	{	$('#b_icon').attr("alt","true");
 		$('#b_icon').attr("src","/spring/resources/icons/love_filled.svg");
 	} else {
