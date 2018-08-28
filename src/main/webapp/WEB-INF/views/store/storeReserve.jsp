@@ -621,7 +621,7 @@ var store_pk ="${store.store_pk}";
    
    <div id="left-side">
       <div id="third" class="active">
-        <div class="row" style=" margin-top: 20px;">
+        <div class="row" style=" margin-top: 50px;">
             <strong style="font-size:20pt; color:rgb(71, 51, 51)"><c:out value="${store.store_name} 샵"/></strong><br>
              <strong style="font-size:20pt; color:rgb(71, 51, 51)">예약페이지</strong>
        </div>  
