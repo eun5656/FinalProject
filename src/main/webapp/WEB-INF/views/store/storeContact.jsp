@@ -89,7 +89,7 @@ var store_pk ="${store.store_pk}";
 		</div>
 	</div>
 <!-- left end -->
-<div id="right-side">
+<div id="right-side" style="margin-top: 200px;">
 <div id="border" >
 	<div id="line" class="four" style="position:fixed;"></div>
 </div>
