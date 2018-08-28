@@ -1,4 +1,4 @@
-   /*·Î±×ÀÎ ¼±ÅÃ*/
+   /*ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
     body {
    
     font-family:sans-serif;
@@ -11,7 +11,7 @@
 }
 .container .box {
     position:relative;
-    width:40%;
+    width:220p;
     height:calc(300px - 100px);
     background:#4caf50;
     float:left;
