@@ -18,7 +18,6 @@ import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -32,7 +31,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.kh.spring.bookmark.model.service.BookmarkService;
 import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.service.MemberService;
@@ -48,7 +46,7 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-	
+
 	@Autowired
 	private BookmarkService bookmarkService;
 
@@ -77,14 +75,13 @@ public class MemberController {
 
 		if (m != null) {
 			if (bcryptPasswordEncoder.matches(memberPw, m.getMemberPw())) {
-				if(count>0) {
-					msg="새로운 쪽지가 도착했습니다.";
-				}
-				else {
-					msg="로그인 성공";
+				if (count > 0) {
+					msg = "새로운 쪽지가 도착했습니다.";
+				} else {
+					msg = "로그인 성공";
 				}
 				model.addAttribute("memberLoggedIn", m);
-				session.setAttribute("bookmarkList",bookmarkService.selectBookMarkList(m.getMemberPk()));
+				session.setAttribute("bookmarkList", bookmarkService.selectBookMarkList(m.getMemberPk()));
 			} else {
 				msg = "비밀번호가 일치하지 않습니다.";
 			}
@@ -93,7 +90,7 @@ public class MemberController {
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("loc", loc);
-		session.setAttribute("count",count);
+		session.setAttribute("count", count);
 
 		return view;
 	}
@@ -107,12 +104,10 @@ public class MemberController {
 		}
 		return "redirect:/";
 	}
-	
 
 	// 아이디 중복체크
 	@RequestMapping("/member/checkIdDuplicate.do")
-	public void duplicateIdCheck(String memberId, HttpServletResponse response, Model model)
-			throws UnsupportedEncodingException, IOException {
+	public void duplicateIdCheck(String memberId, HttpServletResponse response, Model model) throws UnsupportedEncodingException, IOException {
 		logger.debug("아이디 중복체크 : " + memberId);
 
 		String check = service.duplicateIdCheck(memberId) == 0 ? "true" : "false";
@@ -126,9 +121,9 @@ public class MemberController {
 	public void membercheckEmail(String memberEmail, HttpServletResponse response) throws Exception {
 
 		boolean check = service.duplicateMemberEmailCheck(memberEmail) == 0 ? true : false;
-		
+
 		response.getWriter().print(check);
-		System.out.println(check +"check 확인");
+		System.out.println(check + "check 확인");
 
 	}
 
@@ -197,11 +192,11 @@ public class MemberController {
 		return "member/joinShop";
 	}
 
-	
-	//회원가입로직
+	// 회원가입로직
 	@RequestMapping(value = "/member/memberEnrollEnd.do", method = RequestMethod.POST)
 	public String joinMemberEnd(Member m, Store s, Model model,
-			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile, HttpServletRequest request) {
+			@RequestParam(value = "input-file-preview", required = false) MultipartFile uploadFile,
+			HttpServletRequest request) {
 		System.out.println("회원가입(개인)을 실행함");
 		String msg = "";
 		String loc = "";
@@ -241,15 +236,15 @@ public class MemberController {
 		File dir = new File(saveDir);
 		if (dir.exists() == false)
 			System.out.println(dir.mkdirs()); // 폴더 생성
-		
-		//스토어 사진 폴더 생성
+
+		// 스토어 사진 폴더 생성
 		if (m.getMemberLevel().equals("2")) {
 			File dirStore = new File(saveDirStore);
 			if (dirStore.exists() == false)
-				System.out.println(dir.mkdirs()); // 폴더 생성	
+				System.out.println(dir.mkdirs()); // 폴더 생성
 		}
-		
-		File f=null;
+
+		File f = null;
 		if (!uploadFile.isEmpty()) {
 			originalFileName = uploadFile.getOriginalFilename();
 			// 확장자 구하기
@@ -259,38 +254,32 @@ public class MemberController {
 			renamedFileName = sdf.format(new Date(System.currentTimeMillis()));
 			renamedFileName += "_" + rndNum + "." + ext;
 			try {
-				f=new File(saveDir + File.separator + renamedFileName);
+				f = new File(saveDir + File.separator + renamedFileName);
 				uploadFile.transferTo(f);
-	
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	
-			
+
 			// DB에 저장할 첨부파일에 대한 정보
 			m.setMemberOriImg(originalFileName);
 			System.out.println(originalFileName);
 			m.setMemberReImg(renamedFileName);
-			
+
 			if (m.getMemberLevel().equals("2")) {
 				try {
 					Files.copy(f.toPath(), new File(saveDirStore + File.separator + renamedFileName).toPath());
 					System.out.println("파일복사성공");
 				} catch (IOException e) {
-					
+
 					e.printStackTrace();
 				}
-			
-				
-				
+
 				s.setStore_ori_img(originalFileName);
 				s.setStore_re_img(renamedFileName);
 			}
-	
-		
-		}
 
-		
+		}
 
 		int result = 0;
 		System.out.println("store DB야 나와라 :" + s);
@@ -298,7 +287,7 @@ public class MemberController {
 		if (m.getMemberLevel().equals("3")) {
 			result = service.insertMember(m);
 		} else {
-			
+
 			result = service.insertMember(m);
 			Member member = service.loginCheck(m.getMemberId());
 			s.setMember_pk(member.getMemberPk());
@@ -315,20 +304,20 @@ public class MemberController {
 
 		return "common/msg";
 	}
-	
+
 	@RequestMapping("/member/findId.do")
-	public ModelAndView FindId(String memberEmail,ModelAndView mv) {
-		
+	public ModelAndView FindId(String memberEmail, ModelAndView mv) {
+
 		int result = service.checkId(memberEmail);
-		
-		String memberId=service.findId(memberEmail);
-		
+
+		String memberId = service.findId(memberEmail);
+
 		String view = "/";
 		String msg = "";
 		String loc = "/";
-		
-		if(result>0) {
-			
+
+		if (result > 0) {
+
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", "smtp.gmail.com");
 			prop.put("mail.smtp.port", 465);
@@ -345,46 +334,47 @@ public class MemberController {
 
 			try {
 				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+				message.setFrom(
+						new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
 				// 수신자메일주소
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 				// Subject
 				message.setSubject("오늘네일 메일 인증"); // 메일 제목을 입력
-				
-				message.setText("귀하의 아이디는 : "+memberId+"입니다"); // 메일 내용을 입력
+
+				message.setText("귀하의 아이디는 : " + memberId + "입니다"); // 메일 내용을 입력
 				// send the message
 				Transport.send(message); //// 전송
 
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			view = "common/msg";
 			msg = "귀하의 메일로 아이디를 보냈습니다. ";
-			
-		}else {
-			view = "member/loginForm";	
+
+		} else {
+			view = "member/loginForm";
 			msg = "입력하신 정보가 일치하지 않습니다.";
-			
+
 		}
-		
-		mv.addObject("msg",msg);
+
+		mv.addObject("msg", msg);
 		mv.setViewName(view);
-		
+
 		return mv;
 	}
 
 	@RequestMapping("/member/findPw.do")
-	public ModelAndView FindPw(String memberEmail,ModelAndView mv) {
-		
+	public ModelAndView FindPw(String memberEmail, ModelAndView mv) {
+
 		int result = service.checkPw(memberEmail);
-		
+
 		String view = "/";
 		String msg = "";
 		String loc = "/";
-		
-		if(result>0) {
-			
+
+		if (result > 0) {
+
 			Properties prop = new Properties();
 			prop.put("mail.smtp.host", "smtp.gmail.com");
 			prop.put("mail.smtp.port", 465);
@@ -401,12 +391,13 @@ public class MemberController {
 
 			try {
 				MimeMessage message = new MimeMessage(session);
-				message.setFrom(new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
+				message.setFrom(
+						new InternetAddress("ppj1017@gmail.com", MimeUtility.encodeText("오늘네일 관리자", "UTF-8", "B")));
 				// 수신자메일주소
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(memberEmail));
 				// Subject
 				message.setSubject("오늘네일 메일 인증"); // 메일 제목을 입력
-				
+
 				message.setText("비밀번호가 1234로 초기화되었습니다. 로그인 후 마이페이지-비밀번호 변경에서 비밀번호 변경 할 수 있습니다."); // 메일 내용을 입력
 				// send the message
 				Transport.send(message); //// 전송
@@ -414,19 +405,19 @@ public class MemberController {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			
+
 			view = "common/msg";
 			msg = "귀하의 메일로 임시 비밀번호를 보냈습니다. ";
-			
-		}else {
-			view = "member/loginForm";	
+
+		} else {
+			view = "member/loginForm";
 			msg = "입력하신 정보가 일치하지 않습니다.";
-			
+
 		}
-		
-		mv.addObject("msg",msg);
+
+		mv.addObject("msg", msg);
 		mv.setViewName(view);
-		
+
 		return mv;
 	}
 

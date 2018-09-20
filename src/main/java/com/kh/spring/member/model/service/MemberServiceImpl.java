@@ -3,7 +3,6 @@ package com.kh.spring.member.model.service;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.kh.spring.member.model.dao.MemberDAO;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
@@ -24,7 +23,6 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int countMessage(String memberId) {
-		
 		return memberDAO.countMessage(sqlSession,memberId);
 	}
 	
@@ -55,19 +53,16 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int checkPw(String memberEmail) {
-		
 		return memberDAO.checkPw(sqlSession,memberEmail);
 	}
 
 	@Override
 	public String findId(String memberEmail) {
-		
 		return memberDAO.findId(sqlSession,memberEmail);
 	}
 
 	@Override
 	public int checkId(String memberEmail) {
-		
 		return memberDAO.checkId(sqlSession, memberEmail);
 	}
 	

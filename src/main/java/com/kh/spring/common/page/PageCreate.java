@@ -44,8 +44,7 @@ public class PageCreate {
 			pageBar += "<a class='page-link' href='javascript:fn_paging(" + pageNo + ")'>다음</a> ";
 			pageBar += "</li>";
 		}
-
-
+		
 		pageBar += "</ul>";
 		pageBar += "<script>";		//버튼을 눌렀을떄 현재페이지를 쿼리스트링방식으로 다시 controller으로 보내야하므로 
 						//스크립트문을 여기서 정리해준다.
@@ -55,7 +54,6 @@ public class PageCreate {
 		pageBar += "</scrpit>";
 
 		return pageBar;
-
 
 	}
 }

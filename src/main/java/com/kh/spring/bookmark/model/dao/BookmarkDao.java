@@ -9,12 +9,10 @@ import com.kh.spring.bookmark.model.vo.Bookmark;
 
 public interface BookmarkDao {
 
-
 	int insertBookmark(Bookmark bookmark, SqlSessionTemplate sqlSession);
 
 	int deleteBookmark(Map map, SqlSessionTemplate sqlSession);
 
 	List<Bookmark> selectBookMarkList(int memberPk, SqlSessionTemplate sqlSession);
-
 
 }

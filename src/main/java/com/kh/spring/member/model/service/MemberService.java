@@ -24,4 +24,5 @@ public interface MemberService {
 	int checkId(String memberEmail);
 	
 	int checkPw(String memberEmail);
+	
 }

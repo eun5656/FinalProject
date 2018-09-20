@@ -2,14 +2,12 @@ package com.kh.spring.common;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoggerInterceptor extends HandlerInterceptorAdapter {
-	
 	
 	// '/**' 전체 총에 대해 처리 ! 서블릿  요청에 대한것 
 	private Logger logger=(Logger)LoggerFactory.getLogger(LoggerInterceptor.class);
@@ -48,6 +46,5 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter {
 		}
 		super.afterCompletion(request, response, handler, ex);
 	}
-
 
 }

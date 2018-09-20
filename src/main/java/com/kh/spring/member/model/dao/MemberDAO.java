@@ -1,7 +1,6 @@
 package com.kh.spring.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
 
@@ -26,4 +25,5 @@ public interface MemberDAO {
 	int checkId(SqlSessionTemplate sqlSession,String memberEmail);
 
 	int checkPw(SqlSessionTemplate sqlSession, String memberEmail);
+	
 }

@@ -2,11 +2,9 @@ package com.kh.spring.qna.model.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.kh.spring.qna.model.vo.Qna;
 
 @Repository
@@ -25,7 +23,6 @@ public class QnaDAOImpl implements QnaDAO {
 
 	@Override
 	public int qnaSelectCount(SqlSessionTemplate sqlSession, int store_pk) {
-		
 		return sqlSession.selectOne("qna.qnaSelectCount", store_pk);
 	}
 
@@ -36,9 +33,7 @@ public class QnaDAOImpl implements QnaDAO {
 	
 	@Override
 	public int delete(SqlSessionTemplate sqlSession, Map<String, String> map) {
-		
 		return sqlSession.delete("qna.deleteQna", map);
 	}
 
-	
 }

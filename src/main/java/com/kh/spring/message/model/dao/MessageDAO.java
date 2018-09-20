@@ -2,9 +2,7 @@ package com.kh.spring.message.model.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.message.model.vo.Message;
 
 public interface MessageDAO {
@@ -26,4 +24,5 @@ public interface MessageDAO {
 	int update(SqlSessionTemplate sqlSession, int message_pk);
 	
 	int delete(SqlSessionTemplate sqlSession, int message_pk);
+	
 }

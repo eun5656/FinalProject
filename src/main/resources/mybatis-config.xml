@@ -6,7 +6,6 @@
    </settings>
    
 	<typeAliases>
-	
 		<typeAlias type="com.kh.spring.common.StringArrayTypeHandler" alias="stringArray"/> 
 		<typeAlias type="com.kh.spring.member.model.vo.Member" alias="member"/>
 		<typeAlias type="com.kh.spring.nail.model.vo.Nail" alias="nail"/> 
@@ -24,6 +23,6 @@
 		 <typeAlias type="com.kh.spring.dealReview.model.vo.DealReview" alias="dealReivew"/>
 		<typeAlias type="com.kh.spring.customer.model.vo.Notice" alias="notice"/>
 		<typeAlias type="com.kh.spring.customer.model.vo.FAQ" alias="faq"/>
-
 	</typeAliases>  
+	
 </configuration>

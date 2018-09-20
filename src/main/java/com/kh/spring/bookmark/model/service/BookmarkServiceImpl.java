@@ -12,6 +12,7 @@ import com.kh.spring.bookmark.model.vo.Bookmark;
 
 @Service
 public class BookmarkServiceImpl implements BookmarkService {
+	
 	@Autowired
 	private BookmarkDao dao;
 
@@ -35,8 +36,5 @@ public class BookmarkServiceImpl implements BookmarkService {
 		List<Bookmark> list=dao.selectBookMarkList(memberPk,sqlSession);
 		return list;
 	}
-
-	
-	
 	
 }

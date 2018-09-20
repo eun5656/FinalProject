@@ -2,7 +2,6 @@ package com.kh.spring.qna.model.service;
 
 import java.util.List;
 import java.util.Map;
-
 import com.kh.spring.qna.model.vo.Qna;
 
 public interface QnaService {

@@ -1,67 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-
 	<!-- Appenders -->
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+	<appender name="console"
+		class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%-5p: %l - %m%n" />
 		</layout>
 	</appender>
-	
+
 	<!-- 파일시스템에 남기기 -->
-	<appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="file" value="${catalina.base}${file.separator}logs${file.separator}spring${file.separator}spring.log"/>
-		<param name="Append" value="true"/>
-		<param name="dataPattern" value="yyyy-"/>
+	<appender name="fileLogger"
+		class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="${catalina.base}${file.separator}logs${file.separator}spring${file.separator}spring.log" />
+		<param name="Append" value="true" />
+		<param name="dataPattern" value="yyyy-" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%-5p:[%d{yyyy/MM/dd HH:mm:ss}] %F:%L -%m%n"/>
+			<param name="ConversionPattern" value="%-5p:[%d{yyyy/MM/dd HH:mm:ss}] %F:%L -%m%n" />
 		</layout>
-	</appender>	
-	
-	
-	
-	
+	</appender>
+
 	<!-- log4jdbc-remix log출력설정 -->
 	<appender name="sqlLogger" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%-5p %l - %m%n" />
 		</layout>
-	</appender>		
-	
+	</appender>
+
 	<logger name="jdbc.resulttable">
 		<level value="debug"></level>
-		<appender-ref ref="sqlLogger"/>
+		<appender-ref ref="sqlLogger" />
 	</logger>
-	
+
 	<logger name="jdbc.sqlonly" additivity="false">
 		<level value="debug"></level>
-		<appender-ref ref="sqlLogger"/> <!-- 파일에 꽃히지 않고 sqlLogger만 출력한다. -->
-	</logger>	
-	
-	
-	
+		<appender-ref ref="sqlLogger" /> <!-- 파일에 꽃히지 않고 sqlLogger만 출력한다. -->
+	</logger>
+
 	<!-- Application Loggers -->
 	<logger name="com.kh.spring">
 		<level value="debug" />
 	</logger>
-	
-	 <logger name="com.kh.spring.common.LoggerInterceptor" additivity="false">
-															<!-- 	상위 root로 간다	 -->
-		<level value="debug"/>
-		<appender-ref ref="console"/>
+
+	<logger name="com.kh.spring.common.LoggerInterceptor" additivity="false">
+		<!-- 상위 root로 간다 -->
+		<level value="debug" />
+		<appender-ref ref="console" />
 	</logger>
-	
+
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.beans">
 		<level value="info" />
 	</logger>
-	
+
 	<logger name="org.springframework.context">
 		<level value="info" />
 	</logger>
@@ -76,5 +72,5 @@
 		<appender-ref ref="console" />
 		<appender-ref ref="fileLogger" />
 	</root>
-	
+
 </log4j:configuration>

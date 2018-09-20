@@ -2,12 +2,12 @@ package com.kh.spring.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.store.model.vo.Store;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
+	
 	@Override
 	public Member loginCheck(SqlSessionTemplate sqlSession, String memberId) {
 		return sqlSession.selectOne("member.selectOne",memberId);
@@ -15,7 +15,6 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public int countMessage(SqlSessionTemplate sqlSession,String memberId) {
-		
 		return sqlSession.selectOne("message.countMessage",memberId);
 	}
 	
@@ -46,19 +45,17 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	@Override
 	public int checkPw(SqlSessionTemplate sqlSession,String memberEmail) {
-		
 		return sqlSession.update("member.updatePw", memberEmail);
 	}
 
 	@Override
 	public String findId(SqlSessionTemplate sqlSession, String memberEmail) {
-		
 		return sqlSession.selectOne("member.selectId", memberEmail);
 	}
 
 	@Override
 	public int checkId(SqlSessionTemplate sqlSession, String memberEmail) {
-		
 		return sqlSession.selectOne("member.checkId", memberEmail);
 	}
+	
 }

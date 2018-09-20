@@ -1,9 +1,7 @@
 package com.kh.spring.designer.model.dao;
 
 import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.designer.model.vo.designer;
 
 public interface designerDAO {

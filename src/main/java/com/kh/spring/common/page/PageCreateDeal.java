@@ -45,7 +45,6 @@ public class PageCreateDeal {
 			pageBar += "</li>";
 		}
 
-
 		pageBar += "</ul>";
 		pageBar += "<script>";		
 		pageBar += "function fn_paging(cPage,numPerPage){";
@@ -53,10 +52,7 @@ public class PageCreateDeal {
 		pageBar += "}";
 		pageBar += "</script>";
 
-		
-		
 		return pageBar;
-
 
 	}
 }

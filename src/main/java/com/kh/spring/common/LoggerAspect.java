@@ -1,12 +1,9 @@
 package com.kh.spring.common;
 
-
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
@@ -23,13 +20,11 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
 
-
 @Component
 @Aspect
 public class LoggerAspect {
 
 	private Logger logger = LoggerFactory.getLogger(LoggerAspect.class);
-	
 	
 	/*나눠서 하는방식	
     excution표현 = 자세히~
@@ -43,7 +38,7 @@ public class LoggerAspect {
 	
 	@Around("execution(* com.kh.spring..*(..))") //한번에하는방식
 	public Object loggerAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
-		//sSystem.out.println("진입");										//후보군
+		//System.out.println("진입");										//후보군
 		Signature signature=joinPoint.getSignature();
 		String type=signature.getDeclaringTypeName(); //어떤 AOP가 적용됫는지
 		String methodName=signature.getName();
@@ -81,7 +76,6 @@ public class LoggerAspect {
 		HttpServletRequest request = servletContainer.getRequest();
 
 		HttpServletResponse response = servletContainer.getResponse();
-
 		
 		Member member=(Member)session;
 		Object obj=joinPoint.proceed();

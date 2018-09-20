@@ -2,9 +2,7 @@ package com.kh.spring.store.model.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.reserve.model.vo.Reserve;
 import com.kh.spring.store.model.vo.Menu;
 import com.kh.spring.store.model.vo.Store;
@@ -18,6 +16,7 @@ public interface StoreDAO {
 	List<Menu> selectMenus(SqlSessionTemplate sqlSession, int i);
 
 	int deleteMenu(SqlSessionTemplate sqlSession, String menu_pk);
+
 	List<Store> mainStoreList(SqlSessionTemplate sqlSession);
 
 	int menuInsert(SqlSessionTemplate sqlSession, Menu menu);
@@ -29,6 +28,7 @@ public interface StoreDAO {
 	int updateStore_time(SqlSessionTemplate sqlSession, Store_time store_time);
 
 	Store_time selectTime(SqlSessionTemplate sqlSession, int store_pk);
+
 	List<Menu> menuList(SqlSessionTemplate sqlSession, int store_pk);
 
 	int storeStarUpdate(SqlSessionTemplate sqlSession, Map updateStar);
@@ -37,14 +37,8 @@ public interface StoreDAO {
 
 	List<Store> storeReviewCount(SqlSessionTemplate sqlSession);
 
-	List<Reserve> manageReserveList(SqlSessionTemplate sqlSession, Reserve reserve,int cPage,int numPerPage);
+	List<Reserve> manageReserveList(SqlSessionTemplate sqlSession, Reserve reserve, int cPage, int numPerPage);
 
-
-	int reserveCount(SqlSessionTemplate sqlSession,int store_pk);
-
-
-
-
-
+	int reserveCount(SqlSessionTemplate sqlSession, int store_pk);
 
 }

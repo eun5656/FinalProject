@@ -2,15 +2,12 @@ package com.kh.spring.mypage.model.service;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.stereotype.Service;
-
 import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
 import com.kh.spring.reserve.model.vo.Payment;
 import com.kh.spring.reserve.model.vo.Reserve;
-
 
 public interface MypageService {
 
@@ -41,8 +38,8 @@ public interface MypageService {
 
 	int mypageUpdate(Member m);
 	
-	List<Bookmark> mypageBookmarkList(int member_pk/*,int cPage, int numPerPage*/);
+	List<Bookmark> mypageBookmarkList(int member_pk);
 	
 	String findReimg(Map map);
-	//int bookmarkCount(int member_pk);
+	
 }

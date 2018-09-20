@@ -2,9 +2,7 @@ package com.kh.spring.mypage.model.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.bookmark.model.vo.Bookmark;
 import com.kh.spring.member.model.vo.Member;
 import com.kh.spring.qna.model.vo.Qna;
@@ -29,7 +27,6 @@ public interface MypageDAO {
 
 	Member loginCheck(SqlSessionTemplate sqlSession, String memberId);
 
-	
 	int delete(SqlSessionTemplate sqlSession, int memberPk);
 
 	String findCheck(SqlSessionTemplate sqlSession, int memberPk);
@@ -40,9 +37,8 @@ public interface MypageDAO {
 
 	int mypageUpdate(SqlSessionTemplate sqlSession, Member m);
 	
-	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk/*,int cPage, int numPerPage*/);
-	
-	//int bookmarkCount(SqlSessionTemplate sqlSession, int member_pk);
+	List<Bookmark> mypageBookmarkList(SqlSessionTemplate sqlSession, int member_pk);
 	
 	String findReimg(SqlSessionTemplate sqlSession, Map map);
+	
 }

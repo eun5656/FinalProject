@@ -2,7 +2,6 @@ package com.kh.spring.message.model.service;
 
 import java.util.List;
 import java.util.Map;
-
 import com.kh.spring.message.model.vo.Message;
 
 public interface MessageService {
@@ -24,4 +23,5 @@ public interface MessageService {
 	int update(int message_pk);
 	
 	int delete(int message_pk);
+	
 }

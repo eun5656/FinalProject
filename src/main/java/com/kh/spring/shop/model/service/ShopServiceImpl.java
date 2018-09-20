@@ -1,18 +1,17 @@
 package com.kh.spring.shop.model.service;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.kh.spring.shop.model.dao.ShopDao;
 import com.kh.spring.shop.model.vo.Search;
 import com.kh.spring.store.model.vo.Store;
 
 @Service
 public class ShopServiceImpl implements ShopService {
+	
 	@Autowired 
 	ShopDao dao;
 	
@@ -51,7 +50,6 @@ public class ShopServiceImpl implements ShopService {
 
 	@Override
 	public List<Store> searchShopList(Search search) {
-		
 		return dao.searchShopList(sqlSession,search);
 	}
 	public List<Store> shopRankReviewCount() {
@@ -70,7 +68,5 @@ public class ShopServiceImpl implements ShopService {
 		List<Store> list = dao.shopBasicReviewCount(sqlSession);
 		return list;
 	}
-
-	
 
 }

@@ -2,11 +2,9 @@ package com.kh.spring.message.model.dao;
 
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
-
 import com.kh.spring.message.model.vo.Message;
 
 @Repository
@@ -20,14 +18,12 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Override
 	public int insertMsg(SqlSessionTemplate sqlSession, Map<String, Object> map) {
-		
 		return sqlSession.insert("message.insertMsg", map);
 	}
 
 	@Override
 	public List<Message> selectList(SqlSessionTemplate sqlSession,String send_user,int cPage, int numPerPage) {
 		RowBounds rb=new RowBounds((cPage-1)*numPerPage,numPerPage);
-	      
 		return sqlSession.selectList("message.selectList", send_user,rb);
 	}
 
@@ -49,13 +45,11 @@ public class MessageDAOImpl implements MessageDAO {
 
 	@Override
 	public int delete(SqlSessionTemplate sqlSession, int message_pk) {
-		
 		return sqlSession.delete("message.delete", message_pk);
 	}
 
 	@Override
 	public int selectCount(SqlSessionTemplate sqlSession,String send_user) {
-		
 		return sqlSession.selectOne("message.selectCount",send_user);
 	}
 

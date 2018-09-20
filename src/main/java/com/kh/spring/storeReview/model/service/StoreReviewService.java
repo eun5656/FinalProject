@@ -1,7 +1,6 @@
 package com.kh.spring.storeReview.model.service;
 
 import java.util.List;
-
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreReviewService {
@@ -15,8 +14,5 @@ public interface StoreReviewService {
 	int storeReviewReplyInsert(StoreReview store_review);
 
 	String selectReImg(int review_pk);
-
-
-	
 
 }

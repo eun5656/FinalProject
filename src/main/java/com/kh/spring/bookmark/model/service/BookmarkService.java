@@ -7,14 +7,10 @@ import com.kh.spring.bookmark.model.vo.Bookmark;
 
 public interface BookmarkService {
 
-
-
 	int insertBookmark(Bookmark bookmark);
 
 	int deleteBookmark(Map map);
 
 	List<Bookmark> selectBookMarkList(int memberPk);
-
-
 
 }

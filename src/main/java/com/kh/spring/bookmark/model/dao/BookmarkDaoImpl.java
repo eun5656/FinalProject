@@ -9,10 +9,8 @@ import org.springframework.stereotype.Repository;
 import com.kh.spring.bookmark.model.vo.Bookmark;
 
 @Repository
-public class BookmarkDaoImpl implements BookmarkDao{
-
+public class BookmarkDaoImpl implements BookmarkDao {
 	
-
 	@Override
 	public int insertBookmark(Bookmark bookmark, SqlSessionTemplate sqlSession) {
 		int result=sqlSession.insert("bookmark.insertBookmark",bookmark);
@@ -30,10 +28,5 @@ public class BookmarkDaoImpl implements BookmarkDao{
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("bookmark.selectBookMarkList", memberPk);
 	}
-
 	
-
-
-	
-
 }

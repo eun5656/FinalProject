@@ -1,9 +1,7 @@
 package com.kh.spring.storeReview.model.dao;
 
 import java.util.List;
-
 import org.mybatis.spring.SqlSessionTemplate;
-
 import com.kh.spring.storeReview.model.vo.StoreReview;
 
 public interface StoreReviewDao {
@@ -17,6 +15,5 @@ public interface StoreReviewDao {
 	int storeReviewReplyInsert(SqlSessionTemplate sqlsession, StoreReview store_review);
 
 	String selectReImg(SqlSessionTemplate sqlsession, int review_pk);
-
 
 }
