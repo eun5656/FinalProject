@@ -514,10 +514,6 @@
  	 	 					$('#emailCheckText').html("사용가능한 이메일입니다.");
  	 	 					$('#emailCheckText').css("color","green");
  	 	 				 	var nowemail = $('#JHCheck').val();
- 	 	 				 		/* var url="${pageContext.request.contextPath }/member/emailEnd.do?memberEmail="+nowemail;
- 	 	 				 		var title="emailAuther";
- 	 	 				 		var status="left=500px, top=100px, width=600px, height=200px";
- 	 	 				 		var popup=window.open(url,title,status); */
 							$.ajax({
 								type: "POST",
 								url:"${path}/member/emailEnd.do",
